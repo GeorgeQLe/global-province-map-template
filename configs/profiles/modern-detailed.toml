@@ -1,0 +1,24 @@
+[profile]
+id = "modern-detailed"
+label = "Modern Detailed"
+map_mode = "modern world baseline"
+era = "modern"
+description = "Detailed modern baseline for global province generation."
+
+[sources]
+default = ["natural_earth", "geoboundaries"]
+deferred = ["ghsl", "worldpop"]
+optional = ["open_historical_map"]
+excluded = ["openstreetmap", "gadm"]
+
+[generation]
+target_province_count = 18000
+target_region_count = 1800
+land_detail = "detailed"
+sea_zone_strategy = "coast-aware"
+population_weighting = true
+historical_overrides = false
+
+[qa]
+topology_required = true
+render_required = true

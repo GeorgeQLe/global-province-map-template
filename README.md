@@ -41,4 +41,14 @@ The implementation should eventually generate:
 
 ## Status
 
-Planning scaffold. See [ROADMAP.md](ROADMAP.md) for the implementation plan.
+Phase 1 tooling scaffold. See [ROADMAP.md](ROADMAP.md) for the implementation
+plan and [docs/phase-1-scaffold.md](docs/phase-1-scaffold.md) for how the
+current package, configs, schemas, and tests map to that roadmap.
+
+Quick verification:
+
+```bash
+uv run --extra dev pytest
+uv run gpm sources download
+uv run gpm sources manifest
+```

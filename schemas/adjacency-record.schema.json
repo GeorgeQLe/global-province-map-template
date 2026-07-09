@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/global-province-map/adjacency-record.schema.json",
+  "title": "Global Province Map Adjacency Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "from_province_id",
+    "to_province_id",
+    "adjacency_type",
+    "bidirectional",
+    "crossing_type",
+    "source_lineage"
+  ],
+  "properties": {
+    "from_province_id": { "type": "string", "minLength": 1 },
+    "to_province_id": { "type": "string", "minLength": 1 },
+    "adjacency_type": {
+      "type": "string",
+      "enum": ["land", "sea", "strait", "river_crossing", "port_to_sea"]
+    },
+    "bidirectional": { "type": "boolean" },
+    "crossing_type": {
+      "type": ["string", "null"],
+      "enum": ["shared_border", "coastal_link", "strait", "river", "port", null]
+    },
+    "shared_border_km": { "type": ["number", "null"], "minimum": 0 },
+    "source_lineage": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+[profile]
+id = "victoria-like"
+label = "Victoria-like"
+map_mode = "1836-ready modern scaffold"
+era = "1836-ready"
+description = "Population and state-region oriented profile for Victoria-style gameplay."
+
+[sources]
+default = ["natural_earth", "geoboundaries"]
+deferred = ["ghsl", "worldpop"]
+optional = ["open_historical_map"]
+excluded = ["openstreetmap", "gadm"]
+
+[generation]
+target_province_count = 12000
+target_region_count = 1600
+land_detail = "medium-detailed"
+sea_zone_strategy = "trade-coasts-and-oceans"
+population_weighting = true
+historical_overrides = true
+
+[qa]
+topology_required = true
+render_required = true

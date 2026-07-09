@@ -9,8 +9,16 @@ exports/
 .venv/
 __pycache__/
 *.pyc
+*.egg-info/
 .pytest_cache/
 .ruff_cache/
+.coverage
+htmlcov/
+
+# Generated local agent/skillpack artifacts
+.agents/skillpacks/
+.claude/skills/
+.codex/skills/
 
 # Node/viewer tooling
 node_modules/

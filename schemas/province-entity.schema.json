@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/global-province-map/province-entity.schema.json",
+  "title": "Global Province Map Province Entity",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["type", "geometry", "properties"],
+  "properties": {
+    "type": { "const": "Feature" },
+    "geometry": {
+      "type": "object",
+      "description": "GeoJSON Polygon or MultiPolygon geometry."
+    },
+    "properties": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "province_id",
+        "display_name",
+        "kind",
+        "parent_region_id",
+        "parent_country_id",
+        "area_sq_km",
+        "estimated_population",
+        "terrain_class",
+        "coastal",
+        "island",
+        "source_lineage",
+        "license_lineage"
+      ],
+      "properties": {
+        "province_id": { "type": "string", "minLength": 1 },
+        "display_name": { "type": "string", "minLength": 1 },
+        "kind": { "type": "string", "enum": ["land", "sea", "lake"] },
+        "parent_region_id": { "type": ["string", "null"] },
+        "parent_country_id": { "type": ["string", "null"] },
+        "area_sq_km": { "type": "number", "minimum": 0 },
+        "estimated_population": { "type": ["number", "null"], "minimum": 0 },
+        "terrain_class": { "type": ["string", "null"] },
+        "coastal": { "type": "boolean" },
+        "island": { "type": "boolean" },
+        "source_lineage": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "license_lineage": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

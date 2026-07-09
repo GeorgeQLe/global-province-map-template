@@ -1,0 +1,104 @@
+[sources.natural_earth]
+name = "Natural Earth"
+source_url = "https://www.naturalearthdata.com/"
+license = "Public domain"
+license_posture = "public-domain"
+attribution_text = "Natural Earth public domain data."
+default_path = "core"
+enabled_by_default = true
+eligible_for_default_build = true
+optional = false
+isolated = false
+restricted = false
+adapter = "gpm.sources.adapters.natural_earth"
+layers = ["land", "coastline", "admin0_countries", "admin1_states_provinces", "rivers_lakes"]
+
+[sources.geoboundaries]
+name = "geoBoundaries"
+source_url = "https://www.geoboundaries.org/"
+license = "CC BY 4.0"
+license_posture = "attribution-required"
+attribution_text = "geoBoundaries data requires CC BY 4.0 attribution."
+default_path = "core"
+enabled_by_default = true
+eligible_for_default_build = true
+optional = false
+isolated = false
+restricted = false
+adapter = "gpm.sources.adapters.geoboundaries"
+layers = ["adm0", "adm1", "adm2_plus"]
+
+[sources.ghsl]
+name = "GHSL"
+source_url = "https://ghsl.jrc.ec.europa.eu/"
+license = "Open/free Copernicus/JRC data"
+license_posture = "citation-required"
+attribution_text = "GHSL citation requirements must be recorded before generated data is published."
+default_path = "deferred-default"
+enabled_by_default = false
+eligible_for_default_build = true
+optional = false
+isolated = false
+restricted = false
+adapter = ""
+layers = ["built_up_grid", "population_grid"]
+
+[sources.worldpop]
+name = "WorldPop"
+source_url = "https://www.worldpop.org/"
+license = "CC BY 4.0"
+license_posture = "attribution-required"
+attribution_text = "WorldPop data requires CC BY 4.0 attribution."
+default_path = "deferred-default"
+enabled_by_default = false
+eligible_for_default_build = true
+optional = false
+isolated = false
+restricted = false
+adapter = ""
+layers = ["population_density", "population_count"]
+
+[sources.open_historical_map]
+name = "OpenHistoricalMap"
+source_url = "https://www.openhistoricalmap.org/"
+license = "Mostly CC0, with per-feature exceptions"
+license_posture = "review-per-feature"
+attribution_text = "OpenHistoricalMap feature-level licenses must be reviewed before use."
+default_path = "optional"
+enabled_by_default = false
+eligible_for_default_build = false
+optional = true
+isolated = false
+restricted = false
+adapter = ""
+layers = ["historical_boundaries", "historical_places"]
+
+[sources.openstreetmap]
+name = "OpenStreetMap"
+source_url = "https://www.openstreetmap.org/"
+license = "ODbL"
+license_posture = "share-alike-database"
+attribution_text = "OpenStreetMap data is ODbL and must stay in an optional, isolated data path."
+default_path = "optional-isolated"
+enabled_by_default = false
+eligible_for_default_build = false
+optional = true
+isolated = true
+restricted = false
+adapter = ""
+layers = ["roads", "settlements", "ports", "pois", "detailed_geography"]
+
+[sources.gadm]
+name = "GADM"
+source_url = "https://gadm.org/"
+license = "Restricted non-commercial/academic use"
+license_posture = "restricted"
+attribution_text = "GADM is excluded from default builds unless permission is obtained."
+default_path = "excluded"
+enabled_by_default = false
+eligible_for_default_build = false
+optional = false
+isolated = true
+restricted = true
+adapter = ""
+layers = ["administrative_boundaries"]

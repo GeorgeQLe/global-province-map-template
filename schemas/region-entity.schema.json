@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/global-province-map/region-entity.schema.json",
+  "title": "Global Province Map Region Entity",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["type", "geometry", "properties"],
+  "properties": {
+    "type": { "const": "Feature" },
+    "geometry": {
+      "type": "object",
+      "description": "GeoJSON Polygon or MultiPolygon geometry for the grouped region."
+    },
+    "properties": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "region_id",
+        "display_name",
+        "region_type",
+        "parent_country_id",
+        "parent_superregion_id",
+        "province_ids",
+        "source_lineage",
+        "license_lineage"
+      ],
+      "properties": {
+        "region_id": { "type": "string", "minLength": 1 },
+        "display_name": { "type": "string", "minLength": 1 },
+        "region_type": { "type": "string", "enum": ["state", "region", "strategic_region", "superregion"] },
+        "parent_country_id": { "type": ["string", "null"] },
+        "parent_superregion_id": { "type": ["string", "null"] },
+        "province_ids": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "source_lineage": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "license_lineage": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

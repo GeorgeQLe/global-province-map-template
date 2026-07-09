@@ -1,0 +1,43 @@
+import copy
+import json
+
+import pytest
+
+from conftest import PROJECT_ROOT
+from gpm.manifest import build_planned_source_manifest
+from gpm.schemas import SchemaValidationError, load_schema, validate_source_manifest
+
+
+def test_schema_files_are_machine_readable_json_schema_documents():
+    schema_paths = sorted((PROJECT_ROOT / "schemas").glob("*.schema.json"))
+    assert {path.name for path in schema_paths} == {
+        "adjacency-record.schema.json",
+        "attribution-record.schema.json",
+        "province-entity.schema.json",
+        "region-entity.schema.json",
+        "source-manifest.schema.json",
+    }
+
+    for path in schema_paths:
+        with path.open("r", encoding="utf-8") as file:
+            schema = json.load(file)
+        assert schema["$schema"] == "https://json-schema.org/draft/2020-12/schema"
+        assert schema["type"] == "object"
+
+
+def test_source_manifest_schema_accepts_planned_default_manifest():
+    schema = load_schema("source-manifest")
+    manifest = build_planned_source_manifest("modern-small")
+
+    assert schema["properties"]["schema_version"]["const"] == "0.1.0"
+    validate_source_manifest(manifest)
+    assert [source["id"] for source in manifest["sources"]] == ["natural_earth", "geoboundaries"]
+
+
+def test_source_manifest_schema_rejects_missing_required_field():
+    manifest = build_planned_source_manifest("modern-small")
+    invalid = copy.deepcopy(manifest)
+    del invalid["sources"][0]["license"]
+
+    with pytest.raises(SchemaValidationError, match="license"):
+        validate_source_manifest(invalid)

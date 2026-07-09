@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/global-province-map/attribution-record.schema.json",
+  "title": "Global Province Map Attribution Records",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "records"],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source_id", "title", "license", "attribution_text", "url", "required", "downstream_outputs"],
+        "properties": {
+          "source_id": { "type": "string", "minLength": 1 },
+          "title": { "type": "string", "minLength": 1 },
+          "license": { "type": "string", "minLength": 1 },
+          "attribution_text": { "type": "string", "minLength": 1 },
+          "url": { "type": "string", "minLength": 1 },
+          "required": { "type": "boolean" },
+          "downstream_outputs": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    }
+  }
+}

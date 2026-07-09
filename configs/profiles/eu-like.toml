@@ -1,0 +1,24 @@
+[profile]
+id = "eu-like"
+label = "EU-like"
+map_mode = "1444-ready modern scaffold"
+era = "1444-ready"
+description = "Dense province profile for EU-style gameplay and later historical ownership overlays."
+
+[sources]
+default = ["natural_earth", "geoboundaries"]
+deferred = ["ghsl", "worldpop"]
+optional = ["open_historical_map"]
+excluded = ["openstreetmap", "gadm"]
+
+[generation]
+target_province_count = 22000
+target_region_count = 2600
+land_detail = "high"
+sea_zone_strategy = "dense-coastal-seas-and-straits"
+population_weighting = true
+historical_overrides = true
+
+[qa]
+topology_required = true
+render_required = true
