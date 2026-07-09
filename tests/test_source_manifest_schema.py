@@ -32,6 +32,8 @@ def test_source_manifest_schema_accepts_planned_default_manifest():
     assert schema["properties"]["schema_version"]["const"] == "0.1.0"
     validate_source_manifest(manifest)
     assert [source["id"] for source in manifest["sources"]] == ["natural_earth", "geoboundaries"]
+    assert manifest["sources"][0]["version"] == "natural-earth-10m"
+    assert manifest["sources"][0]["artifacts"][0]["status"] == "planned"
 
 
 def test_source_manifest_schema_rejects_missing_required_field():

@@ -53,6 +53,7 @@
         "restricted",
         "enabled",
         "layers",
+        "artifacts",
         "transformation_steps",
         "downstream_files"
       ],
@@ -76,6 +77,10 @@
           "type": "array",
           "items": { "type": "string", "minLength": 1 }
         },
+        "artifacts": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/artifact_record" }
+        },
         "transformation_steps": {
           "type": "array",
           "items": { "type": "string", "minLength": 1 }
@@ -84,6 +89,34 @@
           "type": "array",
           "items": { "type": "string", "minLength": 1 }
         }
+      }
+    },
+    "artifact_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "layer_id",
+        "status",
+        "url",
+        "path",
+        "access_date",
+        "version",
+        "original_format",
+        "bytes",
+        "checksum"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "layer_id": { "type": "string", "minLength": 1 },
+        "status": { "type": "string", "enum": ["planned", "downloaded", "existing"] },
+        "url": { "type": "string", "minLength": 1 },
+        "path": { "type": "string", "minLength": 1 },
+        "access_date": { "$ref": "#/$defs/nullable_string" },
+        "version": { "$ref": "#/$defs/nullable_string" },
+        "original_format": { "$ref": "#/$defs/nullable_string" },
+        "bytes": { "type": ["integer", "null"], "minimum": 0 },
+        "checksum": { "$ref": "#/$defs/nullable_string" }
       }
     }
   }

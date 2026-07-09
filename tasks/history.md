@@ -1,5 +1,18 @@
 # History
 
+## 2026-07-09 - M1 Source Adapter Implementation
+
+- Implemented real Natural Earth and geoBoundaries source artifact downloads
+  behind `gpm sources download --execute`, while preserving the default dry-run
+  planning behavior.
+- Added atomic raw artifact writes, local raw artifact inspection, SHA-256
+  checksum capture, access dates, version/original-format metadata, and
+  persisted downloaded/build source manifests.
+- Extended source manifests with per-artifact records and added deterministic
+  mocked-download tests for the downloader and CLI path.
+- Next project task: generate the first modern global land province draft from
+  downloaded source artifacts.
+
 ## 2026-07-09 - Phase 1 Scaffold Wrap-Up
 
 - Added the Python project scaffold and `gpm` CLI command surface for source

@@ -41,9 +41,12 @@ The implementation should eventually generate:
 
 ## Status
 
-Phase 1 tooling scaffold. See [ROADMAP.md](ROADMAP.md) for the implementation
-plan and [docs/phase-1-scaffold.md](docs/phase-1-scaffold.md) for how the
-current package, configs, schemas, and tests map to that roadmap.
+M1 source adapter implementation is in place for Natural Earth and
+geoBoundaries. The CLI can dry-run planned artifacts, download raw source files
+into ignored local storage, calculate checksums, and write source manifests.
+See [ROADMAP.md](ROADMAP.md) for the implementation plan and
+[docs/phase-1-scaffold.md](docs/phase-1-scaffold.md) for how the current
+package, configs, schemas, and tests map to that roadmap.
 
 Quick verification:
 
@@ -51,4 +54,11 @@ Quick verification:
 uv run --extra dev pytest
 uv run gpm sources download
 uv run gpm sources manifest
+```
+
+Optional real source download:
+
+```bash
+uv run gpm sources download --execute
+uv run gpm sources manifest --from-raw
 ```

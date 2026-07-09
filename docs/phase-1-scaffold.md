@@ -30,13 +30,19 @@ OpenStreetMap is marked optional and isolated because ODbL-derived databases
 must not be mixed into the permissive default build path. GADM is marked
 restricted and excluded from default builds unless permission is obtained.
 
-## Next Milestone
+## M1 Source Adapters
 
-M1 should implement the adapters already named in `configs/sources.toml`:
+M1 implements the adapters named in `configs/sources.toml`:
 
 - `gpm.sources.adapters.natural_earth`
 - `gpm.sources.adapters.geoboundaries`
 
-The first adapter pass should fill source manifests with URL, access date,
-version, original format, checksum, license, attribution text, transformation
-steps, and downstream files without committing downloaded raw datasets.
+`gpm sources download` still defaults to a dry run. Use
+`gpm sources download --execute` to fetch raw artifacts into ignored local
+storage under `data/raw/`, calculate SHA-256 checksums, and write
+`source_manifest.json`. Use `gpm sources manifest --from-raw` to rebuild a
+downloaded/build manifest from files that already exist locally.
+
+Source manifests now include source-level metadata plus per-artifact URL, path,
+access date, version, original format, byte count, and checksum. Downloaded raw
+datasets remain outside git through the repository ignore rules.

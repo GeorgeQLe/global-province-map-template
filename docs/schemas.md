@@ -4,7 +4,8 @@ The canonical contracts live in `schemas/*.schema.json` and use JSON Schema
 draft 2020-12.
 
 - `source-manifest.schema.json` records source metadata, license posture,
-  checksums, processing steps, and downstream files.
+  source-level checksums, per-artifact checksums, processing steps, and
+  downstream files.
 - `attribution-record.schema.json` records notices required by generated
   datasets and exports.
 - `province-entity.schema.json` describes canonical province GeoJSON features.

@@ -7,7 +7,8 @@ Updated: 2026-07-09
 - Phase 1 repository/tooling foundation: complete. The repository now has a
   Python package scaffold, command-line entrypoint, source policy config,
   generation profiles, schemas, tests, and Phase 1 documentation.
-- M1 source adapters and manifests: in progress. Dry-run Natural Earth and
-  geoBoundaries adapter plans exist; the remaining work is real source artifact
-  download handling, checksum capture, access/version metadata, and persisted
-  build manifests.
+- M1 source adapters and manifests: complete. Natural Earth and geoBoundaries
+  adapters can dry-run planned artifacts, download raw source files into ignored
+  local storage, capture checksums/access/version metadata, and persist build
+  manifests.
+- M2 first modern global land province draft: next.

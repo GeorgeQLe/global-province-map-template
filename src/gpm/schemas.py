@@ -63,6 +63,7 @@ def validate_source_manifest(manifest: dict[str, Any]) -> None:
                 "restricted",
                 "enabled",
                 "layers",
+                "artifacts",
                 "transformation_steps",
                 "downstream_files",
             ],
@@ -77,6 +78,14 @@ def validate_source_manifest(manifest: dict[str, Any]) -> None:
         for key in ["layers", "transformation_steps", "downstream_files"]:
             if not isinstance(source[key], list):
                 raise SchemaValidationError(f"{path}.{key} must be a list")
+        if source["status"] not in {"planned", "downloaded", "processed", "excluded"}:
+            raise SchemaValidationError(f"{path}.status has unsupported value '{source['status']}'")
+        _require_nullable_string(source["source_url"], f"{path}.source_url")
+        _require_nullable_string(source["access_date"], f"{path}.access_date")
+        _require_nullable_string(source["version"], f"{path}.version")
+        _require_nullable_string(source["original_format"], f"{path}.original_format")
+        _require_nullable_string(source["checksum"], f"{path}.checksum")
+        _validate_artifacts(source["artifacts"], path)
 
 
 def _require_object(value: Any, path: str) -> None:
@@ -89,3 +98,43 @@ def _require_keys(value: dict[str, Any], keys: list[str], path: str) -> None:
     if missing:
         joined = ", ".join(missing)
         raise SchemaValidationError(f"{path} missing required key(s): {joined}")
+
+
+def _validate_artifacts(value: Any, source_path: str) -> None:
+    if not isinstance(value, list):
+        raise SchemaValidationError(f"{source_path}.artifacts must be a list")
+    for index, artifact in enumerate(value):
+        path = f"{source_path}.artifacts[{index}]"
+        _require_object(artifact, path)
+        _require_keys(
+            artifact,
+            [
+                "id",
+                "layer_id",
+                "status",
+                "url",
+                "path",
+                "access_date",
+                "version",
+                "original_format",
+                "bytes",
+                "checksum",
+            ],
+            path,
+        )
+        if artifact["status"] not in {"planned", "downloaded", "existing"}:
+            raise SchemaValidationError(f"{path}.status has unsupported value '{artifact['status']}'")
+        for key in ["id", "layer_id", "url", "path"]:
+            if not isinstance(artifact[key], str) or not artifact[key]:
+                raise SchemaValidationError(f"{path}.{key} must be a non-empty string")
+        for key in ["access_date", "version", "original_format", "checksum"]:
+            _require_nullable_string(artifact[key], f"{path}.{key}")
+        if artifact["bytes"] is not None and (
+            not isinstance(artifact["bytes"], int) or artifact["bytes"] < 0
+        ):
+            raise SchemaValidationError(f"{path}.bytes must be a non-negative integer or null")
+
+
+def _require_nullable_string(value: Any, path: str) -> None:
+    if value is not None and not isinstance(value, str):
+        raise SchemaValidationError(f"{path} must be a string or null")

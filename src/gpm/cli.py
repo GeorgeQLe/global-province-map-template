@@ -7,8 +7,14 @@ from collections.abc import Sequence
 from pathlib import Path
 
 from .config import DEFAULT_PROFILE_ID, ConfigError, load_profile
-from .manifest import build_planned_source_manifest
+from .manifest import (
+    build_downloaded_source_manifest,
+    build_local_source_manifest,
+    build_planned_source_manifest,
+)
+from .paths import RAW_DATA_DIR
 from .schemas import validate_source_manifest
+from .sources.artifacts import SourceArtifactError, download_source_artifacts
 from .sources.registry import SourceRegistryError, resolve_source_adapters
 
 
@@ -30,19 +36,47 @@ def _build_parser() -> argparse.ArgumentParser:
 
     sources = subcommands.add_parser("sources", help="Manage source downloads and manifests.")
     source_commands = sources.add_subparsers(dest="command")
-    download = source_commands.add_parser("download", help="Plan source downloads without fetching data.")
+    download = source_commands.add_parser("download", help="Download or plan source artifacts.")
     _add_profile_arg(download)
     _add_source_arg(download)
+    _add_raw_dir_arg(download)
+    download.add_argument(
+        "--execute",
+        action="store_true",
+        help="Fetch source artifacts. Omit for a dry-run plan.",
+    )
+    download.add_argument(
+        "--force",
+        action="store_true",
+        help="Re-download artifacts even when target files already exist.",
+    )
+    download.add_argument(
+        "--manifest-output",
+        type=Path,
+        help="Path for the downloaded source manifest. Defaults to <raw-dir>/source_manifest.json.",
+    )
+    download.add_argument(
+        "--timeout",
+        type=float,
+        default=60.0,
+        help="Per-request timeout in seconds when --execute is used. Defaults to 60.",
+    )
     download.add_argument(
         "--format",
         choices=["text", "json"],
         default="text",
-        help="Dry-run output format. Defaults to text.",
+        help="Output format. Dry runs emit planned records; executed downloads emit the manifest.",
     )
     download.set_defaults(handler=_sources_download)
     manifest = source_commands.add_parser("manifest", help="Print a planned source manifest.")
     _add_profile_arg(manifest)
     _add_source_arg(manifest)
+    _add_raw_dir_arg(manifest)
+    manifest.add_argument(
+        "--from-raw",
+        action="store_true",
+        help="Hash local raw artifacts and emit a downloaded/build manifest instead of a planned manifest.",
+    )
     manifest.add_argument(
         "--output",
         type=Path,
@@ -94,12 +128,57 @@ def _add_source_arg(parser: argparse.ArgumentParser) -> None:
     )
 
 
+def _add_raw_dir_arg(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument(
+        "--raw-dir",
+        type=Path,
+        default=RAW_DATA_DIR,
+        help=f"Directory for raw source artifacts. Defaults to {RAW_DATA_DIR}.",
+    )
+
+
 def _sources_download(args: argparse.Namespace) -> int:
     try:
         adapters = resolve_source_adapters(args.profile, args.sources)
     except (ConfigError, SourceRegistryError) as error:
         _print_error(error)
         return 1
+
+    if args.execute:
+        try:
+            artifacts_by_source = download_source_artifacts(
+                adapters,
+                raw_dir=args.raw_dir,
+                force=args.force,
+                timeout=args.timeout,
+            )
+            manifest = build_downloaded_source_manifest(args.profile, adapters, artifacts_by_source)
+            validate_source_manifest(manifest)
+        except SourceArtifactError as error:
+            _print_error(error)
+            return 1
+
+        manifest_output = args.manifest_output or args.raw_dir / "source_manifest.json"
+        manifest_output.parent.mkdir(parents=True, exist_ok=True)
+        manifest_output.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        if args.format == "json":
+            print(json.dumps(manifest, indent=2, sort_keys=True))
+            return 0
+
+        artifact_count = sum(len(artifacts) for artifacts in artifacts_by_source.values())
+        print("gpm sources download: downloaded or verified source artifacts.")
+        print(f"Profile: {args.profile}")
+        print(f"Raw data dir: {args.raw_dir}")
+        print(f"Manifest: {manifest_output}")
+        print(f"Artifact records: {artifact_count}")
+        for artifacts in artifacts_by_source.values():
+            for artifact in artifacts:
+                print(f"- {artifact.source_id}/{artifact.layer_id}/{artifact.artifact_id}")
+                print(f"  Status: {artifact.status}")
+                print(f"  Path: {artifact.path}")
+                print(f"  Bytes: {artifact.bytes}")
+                print(f"  Checksum: {artifact.checksum}")
+        return 0
 
     records = [record for adapter in adapters for record in adapter.planned_downloads()]
     if args.format == "json":
@@ -127,9 +206,12 @@ def _sources_download(args: argparse.Namespace) -> int:
 
 def _sources_manifest(args: argparse.Namespace) -> int:
     try:
-        manifest = build_planned_source_manifest(args.profile, args.sources)
+        if args.from_raw:
+            manifest = build_local_source_manifest(args.profile, args.sources, raw_dir=args.raw_dir)
+        else:
+            manifest = build_planned_source_manifest(args.profile, args.sources)
         validate_source_manifest(manifest)
-    except (ConfigError, SourceRegistryError) as error:
+    except (ConfigError, SourceRegistryError, SourceArtifactError) as error:
         _print_error(error)
         return 1
 
@@ -139,7 +221,7 @@ def _sources_manifest(args: argparse.Namespace) -> int:
     else:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(encoded, encoding="utf-8")
-        print(f"Wrote planned source manifest: {args.output}")
+        print(f"Wrote source manifest: {args.output}")
     return 0
 
 

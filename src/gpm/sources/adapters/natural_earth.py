@@ -14,6 +14,7 @@ _PLANNED_LAYERS = (
 
 class NaturalEarthAdapter(BaseSourceAdapter):
     planned_layers = _PLANNED_LAYERS
+    version = "natural-earth-10m"
 
     def planned_downloads(self) -> tuple[PlannedDownload, ...]:
         return (
@@ -21,26 +22,31 @@ class NaturalEarthAdapter(BaseSourceAdapter):
                 "land",
                 "https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_land.zip",
                 "data/raw/natural_earth/ne_10m_land.zip",
+                version=self.version,
             ),
             self._download(
                 "coastline",
                 "https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_coastline.zip",
                 "data/raw/natural_earth/ne_10m_coastline.zip",
+                version=self.version,
             ),
             self._download(
                 "admin0_countries",
                 "https://naturalearth.s3.amazonaws.com/10m_cultural/ne_10m_admin_0_countries.zip",
                 "data/raw/natural_earth/ne_10m_admin_0_countries.zip",
+                version=self.version,
             ),
             self._download(
                 "admin1_states_provinces",
                 "https://naturalearth.s3.amazonaws.com/10m_cultural/ne_10m_admin_1_states_provinces.zip",
                 "data/raw/natural_earth/ne_10m_admin_1_states_provinces.zip",
+                version=self.version,
             ),
             self._download(
                 "rivers_lakes",
                 "https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_rivers_lake_centerlines.zip",
                 "data/raw/natural_earth/ne_10m_rivers_lake_centerlines.zip",
+                version=self.version,
             ),
         )
 
