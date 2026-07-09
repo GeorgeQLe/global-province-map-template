@@ -1,0 +1,23 @@
+# Local data and generated outputs
+data/raw/
+data/intermediate/
+data/processed/
+dist/
+exports/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# Node/viewer tooling
+node_modules/
+.next/
+vite.config.ts.timestamp-*
+
+# OS/editor
+.DS_Store
+.idea/
+.vscode/
