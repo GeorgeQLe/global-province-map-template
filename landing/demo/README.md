@@ -1,24 +1,29 @@
 # Interactive demo
 
-Static MapLibre product demo for the license-audited beta sample.
+Static MapLibre product demo for the license-audited beta sample plus **M16
+multi-era** geometry + politics packs for the Western Europe priority region.
 
 ## Live
 
-- Scenarios: `official-1444`, `official-1836`, `modern-baseline`
+- Scenarios: `official-1444`, `official-1836`, `official-1936`, `modern-baseline`
 - Layers: owner choropleth, assignment source, adjacency graph, labels
-- Inspector: owner / controller / cores / claims / assignment lineage
-- Data: copied from `samples/beta-license-audited/` (Western Europe, 6 provinces)
+- **M16:** period geometry + historical boundary hints for **1444 / 1836 / 1936**
+- Multi-era pack: `we-multi-era-v1` (region quality matrix + migration notes)
+- Inspector: owner / controller / cores / claims / scaffold lineage fields
+- Data: `samples/beta-license-audited/` + `samples/multi-era-we-v1/`
+
+## Shipped tooling (not map layers)
+
+| Capability | Milestone |
+| --- | --- |
+| Curation diffs, golden borders, external bundles | M17 (`gpm curation`) |
 
 ## Reserved room
 
-Disabled UI slots document the near-term roadmap without over-claiming:
-
 | Slot | Milestone |
 | --- | --- |
-| Period geometry / boundary hints | M15 |
-| Multi-era geometry + politics packs | M16 |
-| Official 1936 era tab | M16+ |
-| Culture & religion paint, PMTiles, curation diffs | M17+ |
+| Culture & religion paint | M18+ |
+| PMTiles / vector tiles | M18+ |
 
 ## Preview
 

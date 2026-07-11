@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/global-province-map/golden-checks.schema.json",
+  "title": "Global Province Map Golden Politics Checks",
+  "description": "M11/M17 golden floors and border acceptance tests for scenario politics QA.",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": { "type": "string" },
+    "scenario_id": { "type": "string" },
+    "description": { "type": "string" },
+    "province_owners": {
+      "type": "object",
+      "additionalProperties": { "type": "string", "minLength": 1 },
+      "description": "province_id → expected owner tag."
+    },
+    "min_owner_counts": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    },
+    "max_owner_counts": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 0 },
+      "description": "M17: owner tag → maximum allowed province count."
+    },
+    "required_owners": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "description": "M17: tags that must appear as owners at least once."
+    },
+    "forbidden_owners": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "description": "M17: tags that must not appear as owners."
+    },
+    "disputed_provinces": {
+      "type": "object",
+      "additionalProperties": { "type": "boolean" },
+      "description": "M17: province_id → expected disputed flag."
+    },
+    "border_pairs": {
+      "type": "array",
+      "description": "M17 golden borders: specific province pairs must meet owner expectations (requires adjacency).",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["left_province_id", "right_province_id"],
+        "properties": {
+          "left_province_id": { "type": "string", "minLength": 1 },
+          "right_province_id": { "type": "string", "minLength": 1 },
+          "left_owner": { "type": "string", "minLength": 1 },
+          "right_owner": { "type": "string", "minLength": 1 },
+          "require_adjacent": {
+            "type": "boolean",
+            "description": "When true (default), the pair must be land/strait adjacent."
+          },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "owner_adjacencies": {
+      "type": "array",
+      "description": "M17: require a minimum number of land/strait edges between two owner tags.",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["owner_a", "owner_b", "min_shared_edges"],
+        "properties": {
+          "owner_a": { "type": "string", "minLength": 1 },
+          "owner_b": { "type": "string", "minLength": 1 },
+          "min_shared_edges": { "type": "integer", "minimum": 1 },
+          "notes": { "type": "string" }
+        }
+      }
+    }
+  }
+}

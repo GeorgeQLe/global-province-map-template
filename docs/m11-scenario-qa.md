@@ -143,4 +143,4 @@ uv run gpm export atlas --scenario demo-1444
 | M13 | Second official era (`official-1444`) using these gates |
 | M14 | License-audited beta (game + atlas faces) — complete |
 | M15–M16 | Period geometry and multi-era packs |
-| M17 | Diffs, golden-border suites, external curator bundles |
+| M17 | Diffs, golden-border suites, external curator bundles — complete |

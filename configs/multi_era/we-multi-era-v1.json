@@ -1,0 +1,145 @@
+{
+  "schema_version": "0.1.0",
+  "pack_id": "we-multi-era-v1",
+  "display_name": "Western Europe multi-era geometry + politics v1",
+  "priority_region": {
+    "id": "western-europe",
+    "label": "Western Europe",
+    "parent_country_ids": ["FRA", "BEL", "NLD", "LUX", "DEU"],
+    "bbox": [-5.5, 42.0, 12.0, 54.0],
+    "notes": "M16 multi-era pack covering 1444, 1836, and 1936 for the WE priority region."
+  },
+  "eras": [
+    {
+      "era": "1444",
+      "scenario_id": "official-1444",
+      "era_geometry_pack_id": "we-1444-v1",
+      "geometry_quality_tier": "period-geometry",
+      "politics_quality_tier": "curated-politics",
+      "recommended_profile": "eu-like",
+      "notes": "EU-leaning start with M15 WE period geometry (Cologne split, Flanders reshape, soft frontiers)."
+    },
+    {
+      "era": "1836",
+      "scenario_id": "official-1836",
+      "era_geometry_pack_id": "we-1836-v1",
+      "geometry_quality_tier": "period-geometry",
+      "politics_quality_tier": "curated-politics",
+      "recommended_profile": "victoria-like",
+      "notes": "Victoria-leaning start with Belgian independence / Prussian Rhine soft geometry."
+    },
+    {
+      "era": "1936",
+      "scenario_id": "official-1936",
+      "era_geometry_pack_id": "we-1936-v1",
+      "geometry_quality_tier": "period-geometry",
+      "politics_quality_tier": "curated-politics",
+      "recommended_profile": "hoi-like",
+      "notes": "HOI-leaning interwar start with Maginot / Rhineland soft geometry."
+    }
+  ],
+  "region_quality_matrix": [
+    {
+      "region_id": "western-europe",
+      "label": "Western Europe (priority region)",
+      "by_era": {
+        "1444": {
+          "geometry": "period-geometry",
+          "politics": "curated-politics"
+        },
+        "1836": {
+          "geometry": "period-geometry",
+          "politics": "curated-politics"
+        },
+        "1936": {
+          "geometry": "period-geometry",
+          "politics": "curated-politics"
+        }
+      }
+    },
+    {
+      "region_id": "europe-elevated",
+      "label": "Europe elevated theaters (outside WE hard overrides)",
+      "by_era": {
+        "1444": {
+          "geometry": "scaffold-baseline",
+          "politics": "curated-politics"
+        },
+        "1836": {
+          "geometry": "scaffold-baseline",
+          "politics": "curated-politics"
+        },
+        "1936": {
+          "geometry": "scaffold-baseline",
+          "politics": "curated-politics"
+        }
+      }
+    },
+    {
+      "region_id": "global-majors",
+      "label": "Global major-power tags",
+      "by_era": {
+        "1444": {
+          "geometry": "scaffold-baseline",
+          "politics": "curated-politics"
+        },
+        "1836": {
+          "geometry": "scaffold-baseline",
+          "politics": "curated-politics"
+        },
+        "1936": {
+          "geometry": "scaffold-baseline",
+          "politics": "curated-politics"
+        }
+      }
+    },
+    {
+      "region_id": "rest-of-world",
+      "label": "Outside elevated theaters",
+      "by_era": {
+        "1444": {
+          "geometry": "scaffold-baseline",
+          "politics": "scaffold-baseline"
+        },
+        "1836": {
+          "geometry": "scaffold-baseline",
+          "politics": "scaffold-baseline"
+        },
+        "1936": {
+          "geometry": "scaffold-baseline",
+          "politics": "scaffold-baseline"
+        }
+      }
+    }
+  ],
+  "migration_notes": {
+    "summary": "Scaffold province IDs are the stable cross-era join key. Era geometry packs may split or replace IDs within a version; use each pack's lineage.json to migrate. Politics are scenario overlays rebuilt per era.",
+    "lineage_strategy": "Each era-geometry pack emits its own lineage map (scaffold_province_id → era_province_id). Do not assume era IDs match across 1444/1836/1936. Cross-era analytics should join on scaffold_province_id.",
+    "consumer_guidance": [
+      "Pin game saves and mod data to era province IDs when consuming a period-geometry layer.",
+      "Use lineage.json / lineage.csv under eras/<era>/geometry/ to migrate scaffold-only packs.",
+      "Rebuild ownership tables after geometry revisions — politics do not rewrite polygons.",
+      "Read region_quality_matrix.json before claiming period geometry outside Western Europe.",
+      "Profile alignment: eu-like (1444), victoria-like (1836), hoi-like (1936)."
+    ],
+    "breaking_changes": [
+      "we-1444-v1 splits sample_de_rhineland into era_de_cologne + era_de_rhineland_residual.",
+      "we-1836-v1 replaces sample_be_flanders with era_be_flanders_1836.",
+      "we-1936-v1 replaces sample_de_rhineland with era_de_rhineland_1936 (different from 1444 split)."
+    ],
+    "do_not_claim": [
+      "period-correct province geometry worldwide",
+      "identical province IDs across all three eras",
+      "Paradox-grade HRE / German Confederation / interwar microborders"
+    ]
+  },
+  "source_notes": [
+    "M16 multi-era packaging over M12–M15 era programs plus official-1936.",
+    "Geometry packs are priority-region scoped; politics remain curated overlays on open geodata."
+  ],
+  "do_not_claim": [
+    "period-correct province geometry worldwide",
+    "Paradox-grade completeness for any single era",
+    "legal historical frontiers — soft hints are illustrative"
+  ]
+}

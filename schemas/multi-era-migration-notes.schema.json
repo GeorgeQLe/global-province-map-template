@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/global-province-map/multi-era-migration-notes.schema.json",
+  "title": "Global Province Map Multi-Era Migration Notes",
+  "description": "M16 consumer migration notes for multi-era geometry + politics packs.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "document_type",
+    "pack_id",
+    "summary",
+    "eras",
+    "consumer_guidance"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "document_type": { "const": "multi-era-migration-notes" },
+    "pack_id": { "type": "string", "minLength": 1 },
+    "display_name": { "type": "string" },
+    "generated_at": { "type": "string" },
+    "generator_version": { "type": "string" },
+    "summary": { "type": "string", "minLength": 1 },
+    "lineage_strategy": { "type": "string" },
+    "eras": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["era"],
+        "properties": {
+          "era": { "type": "string", "minLength": 1 },
+          "scenario_id": { "type": "string" },
+          "era_geometry_pack_id": { "type": ["string", "null"] },
+          "geometry_quality_tier": { "type": "string" },
+          "politics_quality_tier": { "type": "string" },
+          "recommended_profile": { "type": ["string", "null"] },
+          "lineage_path": { "type": ["string", "null"] },
+          "notes": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "region_quality_matrix": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "consumer_guidance": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "breaking_changes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "do_not_claim": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "cross_era_join": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

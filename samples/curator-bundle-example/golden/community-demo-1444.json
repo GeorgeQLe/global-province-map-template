@@ -1,0 +1,23 @@
+{
+  "schema_version": "0.1.0",
+  "scenario_id": "community-demo-1444",
+  "description": "M17 golden floors + border suite for the community demo bundle. Province IDs target the WE sample scaffold when available.",
+  "min_owner_counts": {
+    "FRA": 1,
+    "ENG": 1
+  },
+  "max_owner_counts": {
+    "FRA": 5000,
+    "ENG": 5000
+  },
+  "required_owners": ["FRA", "ENG"],
+  "forbidden_owners": ["XXX_INVALID"],
+  "province_owners": {
+    "sample_de_rhineland": "BUR"
+  },
+  "disputed_provinces": {
+    "sample_de_rhineland": true
+  },
+  "border_pairs": [],
+  "owner_adjacencies": []
+}

@@ -1,0 +1,40 @@
+{
+  "allow_unknown_overrides": false,
+  "counts": {
+    "baseline_only": 0,
+    "countries": 5,
+    "country_rule_hits": 6,
+    "land_provinces": 6,
+    "owner_tags": 5,
+    "ownership_rows": 6,
+    "province_override_hits": 0,
+    "region_rule_hits": 6,
+    "unknown_overrides": 0
+  },
+  "description": "Third official curated-politics scenario for the 1936-01-01 start date. Interwar ownership with elevated Europe / East Asia theaters, contested areas (Rhineland story, Sudeten claims, Danzig corridor, Ethiopian invasion), and colonial/mandate politics as curated tables. Geometry remains the modern Natural Earth scaffold unless paired with a period-geometry pack (see multi-era packs). Recommended profile hoi-like. Not Paradox-grade completeness.",
+  "end_date": null,
+  "era": "1936",
+  "files": [
+    "countries.json",
+    "ownership.csv",
+    "ownership.json",
+    "scenario_manifest.json"
+  ],
+  "generated_at": "2026-07-11T04:16:56+00:00",
+  "generator_version": "0.1.0",
+  "label": "Official 1936 (HOI-leaning curated politics)",
+  "license_lineage": [],
+  "milestone": "M8",
+  "notes": [
+    "Historical ownership is a curated overlay; province geometry is unchanged.",
+    "Assignment precedence: baseline ← country_rules ← region_rules ← province_overrides.",
+    "Sea provinces are excluded from ownership tables."
+  ],
+  "profile_id": "modern-small",
+  "province_input": "samples/multi-era-we-v1/eras/1936/geometry/provinces.geojson",
+  "scenario_definition": "/Users/georgele/projects/games/global-province-map-template/configs/scenarios/official-1936.json",
+  "scenario_id": "official-1936",
+  "schema_version": "0.1.0",
+  "source_lineage": [],
+  "start_date": "1936-01-01"
+}

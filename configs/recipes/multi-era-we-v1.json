@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.1.0",
+  "recipe_id": "multi-era-we-v1",
+  "label": "Western Europe multi-era geometry + politics pack",
+  "milestone": "M16",
+  "profile_id": "modern-small",
+  "scenarios": ["official-1444", "official-1836", "official-1936", "modern-baseline"],
+  "include_seas": false,
+  "include_topology_qa": false,
+  "description": "Build the M16 multi-era pack we-multi-era-v1: period geometry packs for 1444/1836/1936 plus curated-politics scenarios, region quality matrix, and migration notes.",
+  "steps": [
+    {
+      "id": "validate-multi-era",
+      "title": "Validate multi-era pack definition",
+      "command": ["gpm", "multi-era", "validate", "--pack", "we-multi-era-v1"]
+    },
+    {
+      "id": "validate-geometry-packs",
+      "title": "Validate linked era-geometry packs",
+      "command": ["gpm", "era-geometry", "list"]
+    },
+    {
+      "id": "build-multi-era",
+      "title": "Apply geometry + resolve politics for all eras",
+      "command": [
+        "gpm",
+        "multi-era",
+        "build",
+        "--pack",
+        "we-multi-era-v1",
+        "--province-input",
+        "samples/beta-license-audited/sample/provinces.geojson",
+        "--output-dir",
+        "samples/multi-era-we-v1",
+        "--profile",
+        "modern-small"
+      ]
+    },
+    {
+      "id": "migration-notes",
+      "title": "Emit migration notes (also produced by build)",
+      "command": ["gpm", "multi-era", "migration", "--pack", "we-multi-era-v1"]
+    }
+  ],
+  "quality_tiers": {
+    "geometry": "period-geometry",
+    "politics": "curated-politics"
+  },
+  "honesty": [
+    "Period geometry is Western Europe priority-region scoped only.",
+    "Outside the priority region, scaffold geometry remains.",
+    "Politics are curated overlays; residual modern baselines may remain outside elevated theaters.",
+    "Use scaffold_province_id as the cross-era join key; era IDs differ by pack."
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": "0.1.0",
+  "document_type": "curator-bundle",
+  "bundle_id": "curator-bundle-example",
+  "display_name": "Example community curator bundle",
+  "description": "M17 sample external scenario bundle. Demonstrates manifest layout, golden borders, license lineage, and contribution checklist fields for community PRs.",
+  "author": "Global Province Map contributors",
+  "license": "CC0-1.0",
+  "source_lineage": [
+    "Natural Earth modern scaffold (public domain)",
+    "Illustrative community overrides for demo provinces only"
+  ],
+  "license_lineage": [
+    "CC0-1.0",
+    "public domain (Natural Earth)"
+  ],
+  "target_scaffold": "samples/beta-license-audited/sample/provinces.geojson (Western Europe sample IDs)",
+  "recommended_profile": "modern-small",
+  "scenarios": [
+    {
+      "scenario_id": "community-demo-1444",
+      "path": "scenarios/community-demo-1444.json",
+      "golden_path": "golden/community-demo-1444.json",
+      "notes": "Tiny demo overlay for sample WE province IDs."
+    }
+  ],
+  "deprecation": {
+    "policy": "When scaffold province IDs change, republish a new bundle_id (or bump a version suffix) and list this bundle under superseded_by. Do not silently rewrite historical tags in place for consumers who pinned a bundle.",
+    "supersedes": null,
+    "superseded_by": null,
+    "scaffold_pin": "beta-license-audited sample WE",
+    "notes": "Community bundles should pin the scaffold they were authored against."
+  },
+  "checklist": {
+    "sources_documented": true,
+    "licenses_reviewed": true,
+    "golden_borders_present": true,
+    "qa_pass_claimed": true,
+    "no_restricted_sources": true,
+    "notes": "Illustrative self-attestation for the sample bundle."
+  },
+  "notes": "Not an official era. Use as a template for external curator datasets."
+}

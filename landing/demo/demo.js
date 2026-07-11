@@ -26,6 +26,8 @@
     map: null,
     selectedId: null,
     paintMode: "ownership",
+    periodGeometry: false,
+    boundaryHints: true,
   };
 
   const $ = (id) => document.getElementById(id);
@@ -208,6 +210,10 @@
         type: "geojson",
         data: { type: "FeatureCollection", features: [] },
       });
+      map.addSource("boundary-hints", {
+        type: "geojson",
+        data: { type: "FeatureCollection", features: [] },
+      });
 
       map.addLayer({
         id: "provinces-fill",
@@ -235,6 +241,27 @@
         paint: {
           "line-color": "#e8a54b",
           "line-width": 3,
+        },
+      });
+      map.addLayer({
+        id: "boundary-hints-fill",
+        type: "fill",
+        source: "boundary-hints",
+        filter: ["==", ["geometry-type"], "Polygon"],
+        paint: {
+          "fill-color": "#f59e0b",
+          "fill-opacity": 0.12,
+        },
+      });
+      map.addLayer({
+        id: "boundary-hints-line",
+        type: "line",
+        source: "boundary-hints",
+        paint: {
+          "line-color": "#f59e0b",
+          "line-width": 2.4,
+          "line-dasharray": [1.6, 1.2],
+          "line-opacity": 0.95,
         },
       });
       map.addLayer({
@@ -326,10 +353,51 @@
     if (!map?.getLayer("adjacency-lines")) return;
     const adj = $("layer-adjacency")?.checked !== false;
     const labels = $("layer-labels")?.checked !== false;
+    const hints = $("layer-boundary-hints")?.checked === true;
     map.setLayoutProperty("adjacency-lines", "visibility", adj ? "visible" : "none");
     map.setLayoutProperty("adjacency-nodes", "visibility", adj ? "visible" : "none");
     map.setLayoutProperty("province-labels", "visibility", labels ? "visible" : "none");
+    if (map.getLayer("boundary-hints-line")) {
+      const showHints = hints && state.boundaryHints;
+      map.setLayoutProperty("boundary-hints-line", "visibility", showHints ? "visible" : "none");
+      map.setLayoutProperty("boundary-hints-fill", "visibility", showHints ? "visible" : "none");
+    }
     applyPaintMode();
+  }
+
+  function geometryTierLabel(meta) {
+    if (state.periodGeometry && meta?.supports_period_geometry) {
+      return `geometry: ${state.manifest?.period_geometry_tier || "period-geometry"} (WE pack)`;
+    }
+    return `geometry: ${state.manifest?.geometry_tier || "scaffold-baseline"}`;
+  }
+
+  function syncM15Controls(meta) {
+    const periodToggle = $("layer-period-geometry");
+    const hintsToggle = $("layer-boundary-hints");
+    const supports = Boolean(meta?.supports_period_geometry);
+    if (periodToggle) {
+      periodToggle.disabled = !supports;
+      if (!supports) {
+        periodToggle.checked = false;
+        state.periodGeometry = false;
+      } else {
+        state.periodGeometry = periodToggle.checked === true;
+      }
+    }
+    if (hintsToggle) {
+      hintsToggle.disabled = !supports;
+      if (!supports) {
+        hintsToggle.checked = false;
+        state.boundaryHints = false;
+      } else {
+        // Default on for 1444 when supported.
+        if (!hintsToggle.dataset.userTouched) {
+          hintsToggle.checked = true;
+        }
+        state.boundaryHints = hintsToggle.checked === true;
+      }
+    }
   }
 
   function renderFutureSlots() {
@@ -426,6 +494,10 @@
           <dd>${escapeHtml(props.religion || "—")}</dd>
           <dt>Parent</dt>
           <dd><code>${escapeHtml(props.parent_country_id || "—")}</code> / <code>${escapeHtml(props.parent_region_id || "—")}</code></dd>
+          <dt>Scaffold ID</dt>
+          <dd><code>${escapeHtml(props.scaffold_province_id || props.province_id || "—")}</code></dd>
+          <dt>Era geom mode</dt>
+          <dd><code>${escapeHtml(props.era_geometry_mode || "scaffold")}</code></dd>
           <dt>Scenario</dt>
           <dd><code>${escapeHtml(props.scenario_id || state.scenarioId)}</code></dd>
           <dt>Notes</dt>
@@ -445,8 +517,15 @@
       politics.textContent = `politics: ${meta?.politics_tier || "—"}`;
     }
     if (geometry) {
-      geometry.textContent = `geometry: ${state.manifest?.geometry_tier || "scaffold-baseline"}`;
+      geometry.textContent = geometryTierLabel(meta);
     }
+  }
+
+  function activeProvinceCollection(bundle) {
+    if (state.periodGeometry && bundle.periodGeojson) {
+      return bundle.periodGeojson;
+    }
+    return bundle.geojson;
   }
 
   async function loadScenario(scenarioId) {
@@ -467,27 +546,65 @@
       }
     });
 
+    syncM15Controls(meta);
+
     let bundle = state.cache.get(scenarioId);
     if (!bundle) {
-      const [geojson, legend] = await Promise.all([
+      const fetches = [
         fetchJson(`${DATA_BASE}/${meta.geojson}`),
         fetchJson(`${DATA_BASE}/${meta.legend}`),
-      ]);
+      ];
+      if (meta.period_geojson) {
+        fetches.push(fetchJson(`${DATA_BASE}/${meta.period_geojson}`));
+      } else {
+        fetches.push(Promise.resolve(null));
+      }
+      if (meta.period_legend) {
+        fetches.push(fetchJson(`${DATA_BASE}/${meta.period_legend}`));
+      } else {
+        fetches.push(Promise.resolve(null));
+      }
+      if (meta.boundary_hints) {
+        fetches.push(fetchJson(`${DATA_BASE}/${meta.boundary_hints}`));
+      } else {
+        fetches.push(Promise.resolve(null));
+      }
+      const [geojson, legend, periodGeojson, periodLegend, boundaryHints] =
+        await Promise.all(fetches);
       const graph = buildAdjacencyGeoJSON(geojson.features || [], state.adjacency?.edges || []);
-      bundle = { geojson, legend, graph };
+      const periodGraph = periodGeojson
+        ? buildAdjacencyGeoJSON(periodGeojson.features || [], state.adjacency?.edges || [])
+        : null;
+      bundle = {
+        geojson,
+        legend,
+        graph,
+        periodGeojson,
+        periodLegend,
+        periodGraph,
+        boundaryHints,
+      };
       state.cache.set(scenarioId, bundle);
     }
 
     ensureLayers();
-    state.map.getSource("provinces").setData(bundle.geojson);
-    state.map.getSource("adjacency-lines").setData(bundle.graph.lines);
-    state.map.getSource("adjacency-nodes").setData(bundle.graph.nodes);
+    const provinces = activeProvinceCollection(bundle);
+    const graph =
+      state.periodGeometry && bundle.periodGraph ? bundle.periodGraph : bundle.graph;
+    const legend =
+      state.periodGeometry && bundle.periodLegend ? bundle.periodLegend : bundle.legend;
+    state.map.getSource("provinces").setData(provinces);
+    state.map.getSource("adjacency-lines").setData(graph.lines);
+    state.map.getSource("adjacency-nodes").setData(graph.nodes);
+    state.map.getSource("boundary-hints").setData(
+      bundle.boundaryHints || { type: "FeatureCollection", features: [] },
+    );
     applyLayerVisibility();
-    updateChrome(meta, bundle.legend);
-    renderLegend(bundle.legend);
+    updateChrome(meta, legend);
+    renderLegend(legend);
 
     const bounds = new maplibregl.LngLatBounds();
-    (bundle.geojson.features || []).forEach((feature) => {
+    (provinces.features || []).forEach((feature) => {
       const c = centroidOf(feature);
       if (c) bounds.extend(c);
       const coords =
@@ -504,7 +621,7 @@
 
     // Reselect if still present.
     if (state.selectedId) {
-      const match = (bundle.geojson.features || []).find(
+      const match = (provinces.features || []).find(
         (f) => f.properties?.province_id === state.selectedId,
       );
       if (match) {
@@ -522,7 +639,7 @@
       btn.addEventListener("click", () => {
         if (btn.classList.contains("is-future") || btn.getAttribute("aria-disabled") === "true") {
           setStatus(
-            "1936 is a reserved HOI-leaning slot (M16+). Live eras today: official-1444, official-1836, modern-baseline.",
+            "That era slot is reserved for a later milestone. Live eras: official-1444, official-1836, official-1936, modern-baseline.",
             false,
           );
           return;
@@ -538,10 +655,27 @@
       $(id)?.addEventListener("change", () => {
         applyLayerVisibility();
         const meta = scenarioMeta(state.scenarioId);
-        const legend = state.cache.get(state.scenarioId)?.legend;
+        const bundle = state.cache.get(state.scenarioId);
+        const legend =
+          state.periodGeometry && bundle?.periodLegend
+            ? bundle.periodLegend
+            : bundle?.legend;
         renderLegend(legend);
         updateChrome(meta, legend);
       });
+    });
+
+    $("layer-period-geometry")?.addEventListener("change", (event) => {
+      state.periodGeometry = event.target.checked === true;
+      loadScenario(state.scenarioId).catch((err) => {
+        console.error(err);
+        setStatus(err.message || "Failed to toggle period geometry", true);
+      });
+    });
+    $("layer-boundary-hints")?.addEventListener("change", (event) => {
+      event.target.dataset.userTouched = "1";
+      state.boundaryHints = event.target.checked === true;
+      applyLayerVisibility();
     });
   }
 

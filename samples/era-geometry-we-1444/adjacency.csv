@@ -1,0 +1,2 @@
+from_province_id,to_province_id,adjacency_type,bidirectional,crossing_type,shared_border_km,source_lineage
+era_de_cologne,era_de_rhineland_residual,land,true,shared_border,111.19508,"[""era_geometry:we-1444-v1"",""natural_earth:admin1_states_provinces""]"

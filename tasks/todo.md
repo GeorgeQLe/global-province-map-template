@@ -2,15 +2,29 @@
 
 ## Active
 
-- [ ] M15 era-aware geometry v1 for priority regions where modern shapes fail.
+- (none — M17 complete; pick next from roadmap)
 
 ## Up next (from roadmap)
 
-- [ ] M16 multi-era geometry + politics packs with quality tiers (includes 1936).
-- [ ] M17 curation workflow hardening (diffs, golden tests, external bundles).
+- Culture / religion atlas paint layers
+- Optional PMTiles / vector tiles
+- Broader period geometry beyond Western Europe priority region
 
 ## Completed
 
+- [x] M17 curation workflow hardening: external curator bundles with manifests,
+  `gpm curation list|validate|import|diff|checklist`, ownership diffs (tag
+  counts / contested provinces), expanded golden-border suite in
+  `gpm qa scenario`, contribution checklist + deprecation policy, sample
+  `samples/curator-bundle-example/`, docs `docs/m17-curation.md`.
+- [x] M16 multi-era geometry + politics packs: `we-multi-era-v1` with region
+  quality matrix + migration notes, era geometry packs `we-1836-v1` /
+  `we-1936-v1`, official-1936 curated politics + golden floors, `gpm multi-era`,
+  sample `samples/multi-era-we-v1/`, demo 1936 + multi-era live layers, and
+  `docs/m16-multi-era.md`.
+- [x] M15 era-aware geometry v1: pack format, `gpm era-geometry`, WE 1444 pack
+  (`we-1444-v1`) with boundary hints + hard overrides, ID lineage maps, sample
+  `samples/era-geometry-we-1444/`, demo toggles, and `docs/m15-era-geometry.md`.
 - [x] M14.5 demo: interactive MapLibre demo under `landing/demo/` (beta WE sample
   eras, adjacency, inspector) plus hero choropleth on the marketing page;
   validation extended for demo assets; reserved UI slots for M15+.

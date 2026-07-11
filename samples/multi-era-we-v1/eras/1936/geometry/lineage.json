@@ -1,0 +1,70 @@
+{
+  "document_type": "era-geometry-lineage",
+  "era": "1936",
+  "milestone": "M15",
+  "notes": [
+    "Curator-authored soft frontier bands and sample hard overrides for M16 multi-era packs.",
+    "Not derived from proprietary game maps.",
+    "Hard overrides target beta sample province_ids (sample_*); they skip cleanly on full Natural Earth builds."
+  ],
+  "pack_id": "we-1936-v1",
+  "row_count": 6,
+  "rows": [
+    {
+      "display_name": "Flanders",
+      "era_province_id": "sample_be_flanders",
+      "geometry_mode": "hard_overrides",
+      "in_priority_region": true,
+      "operation": "identity",
+      "reason": "Flanders retained as scaffold identity.",
+      "scaffold_province_id": "sample_be_flanders"
+    },
+    {
+      "display_name": "Rhineland (1936)",
+      "era_province_id": "era_de_rhineland_1936",
+      "geometry_mode": "hard_overrides",
+      "in_priority_region": true,
+      "operation": "replace",
+      "reason": "Interwar Rhineland label + modest footprint for demilitarized zone readability on the WE sample.",
+      "scaffold_province_id": "sample_de_rhineland"
+    },
+    {
+      "display_name": "Normandy coast",
+      "era_province_id": "sample_fr_normandy",
+      "geometry_mode": "hard_overrides",
+      "in_priority_region": true,
+      "operation": "identity",
+      "reason": "Normandy retained; Channel story via soft hints.",
+      "scaffold_province_id": "sample_fr_normandy"
+    },
+    {
+      "display_name": "Paris basin",
+      "era_province_id": "sample_fr_paris",
+      "geometry_mode": "hard_overrides",
+      "in_priority_region": true,
+      "operation": "identity",
+      "reason": "Third Republic core retained.",
+      "scaffold_province_id": "sample_fr_paris"
+    },
+    {
+      "display_name": "Luxembourg core",
+      "era_province_id": "sample_lu_core",
+      "geometry_mode": "hard_overrides",
+      "in_priority_region": true,
+      "operation": "identity",
+      "reason": "Luxembourg retained.",
+      "scaffold_province_id": "sample_lu_core"
+    },
+    {
+      "display_name": "Holland",
+      "era_province_id": "sample_nl_holland",
+      "geometry_mode": "hard_overrides",
+      "in_priority_region": true,
+      "operation": "identity",
+      "reason": "Holland retained.",
+      "scaffold_province_id": "sample_nl_holland"
+    }
+  ],
+  "scenario_id": "official-1936",
+  "schema_version": "0.1.0"
+}

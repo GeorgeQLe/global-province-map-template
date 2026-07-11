@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Interactive demo of Global Province Map Template — live ownership eras, adjacency, and reserved slots for period geometry and multi-era packs."
+      content="Interactive demo of Global Province Map Template — multi-era ownership (1444 / 1836 / 1936), period geometry, adjacency, and reserved slots for curation tools."
     />
     <meta name="theme-color" content="#0c1a24" />
     <title>Demo · Global Province Map Template</title>
@@ -58,20 +58,11 @@
             <button type="button" class="era-btn" data-era="official-1836" role="tab" aria-selected="false">
               1836
             </button>
+            <button type="button" class="era-btn" data-era="official-1936" role="tab" aria-selected="false">
+              1936
+            </button>
             <button type="button" class="era-btn" data-era="modern-baseline" role="tab" aria-selected="false">
               Modern
-            </button>
-            <button
-              type="button"
-              class="era-btn is-future"
-              data-era="official-1936"
-              role="tab"
-              aria-selected="false"
-              aria-disabled="true"
-              title="Reserved for a future HOI-leaning official era"
-            >
-              1936
-              <span class="slot-chip">soon</span>
             </button>
           </div>
           <div class="map-meta">
@@ -83,8 +74,9 @@
         <div id="map" role="application" aria-label="Ownership choropleth map"></div>
         <div id="status-banner" class="status-banner" hidden></div>
         <div class="map-footnote">
-          Western Europe beta sample · same scaffold geometry for every era ·
-          click a province to inspect
+          Western Europe beta sample · scaffold geometry by default · M16 multi-era
+          period geometry + boundary hints for 1444 / 1836 / 1936 · click a province
+          to inspect
         </div>
       </section>
 
@@ -121,14 +113,27 @@
                 <small>Stable IDs + names</small>
               </span>
             </label>
+            <label class="layer-row">
+              <input type="checkbox" id="layer-period-geometry" />
+              <span>
+                <strong>Period geometry</strong>
+                <small>M16 multi-era · WE sample (1444 / 1836 / 1936)</small>
+              </span>
+            </label>
+            <label class="layer-row">
+              <input type="checkbox" id="layer-boundary-hints" checked />
+              <span>
+                <strong>Historical boundary hints</strong>
+                <small>M16 soft frontier bands per era</small>
+              </span>
+            </label>
           </div>
         </section>
 
         <section class="panel-block">
           <h2>Reserved for later</h2>
           <p class="help">
-            UI slots for roadmap work — disabled on purpose so the product room
-            is visible before the data exists.
+            UI slots for roadmap work still ahead (curation diffs, tiles).
           </p>
           <ul class="future-list" id="future-slots"></ul>
         </section>
@@ -164,13 +169,13 @@
         <section class="panel-block honesty">
           <h2>Honest quality bar</h2>
           <ul class="compact">
-            <li><code>scaffold-baseline</code> geometry today</li>
+            <li><code>scaffold-baseline</code> default geometry</li>
             <li><code>curated-politics</code> for official-1836 · official-1444</li>
-            <li><code>period-geometry</code> reserved (M15+)</li>
+            <li><code>period-geometry</code> M15 WE priority region (1444 toggle)</li>
           </ul>
           <p class="help">
-            Not Paradox-grade global accuracy. Not period-correct shapes yet.
-            License-audited public channel only.
+            Not Paradox-grade global accuracy. Period shapes are priority-region
+            scoped (Western Europe sample pack). License-audited public channel only.
           </p>
         </section>
       </aside>
@@ -179,8 +184,9 @@
     <footer class="demo-footer">
       <div class="shell footer-row">
         <p>
-          Demo data from <code>samples/beta-license-audited/</code> · milestone
-          <strong>M14.5+</strong>
+          Demo data from <code>samples/beta-license-audited/</code> +
+          <code>samples/era-geometry-we-1444/</code> · milestone
+          <strong>M15</strong>
         </p>
         <p>
           <a href="/#status">Project status</a>

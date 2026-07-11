@@ -390,10 +390,10 @@ Run era work as explicit programs with acceptance criteria, not one-off demos.
 
 ## Phase 12: Continuous Curation and Community Workflow
 
-- Scenario PR / review checklist (sources, licenses, golden borders)
-- Diff tools: ownership choropleth before/after, tag counts, contested provinces
-- Allow external curator datasets with manifests (not only in-repo JSON)
-- Deprecation policy when province IDs or era geometry revisions ship
+- Scenario PR / review checklist (sources, licenses, golden borders) — **done (M17)**
+- Diff tools: ownership choropleth before/after, tag counts, contested provinces — **done (M17)**
+- Allow external curator datasets with manifests (not only in-repo JSON) — **done (M17)**
+- Deprecation policy when province IDs or era geometry revisions ship — **done (M17)**
 - Optional integration points for SaaS (tiles, versioned scenario bundles)
 
 ## Milestones
@@ -418,6 +418,12 @@ Completed foundation:
 - M14.5: Public landing page + GitHub publish + Vercel deploy. Complete (2026-07-10).
 - M14.5 demo: Interactive MapLibre demo under `landing/demo/` with live beta
   sample eras and reserved UI slots for M15+ work. Complete (2026-07-10).
+- M15: Era-aware geometry v1 (Western Europe 1444 priority region, boundary
+  hints, hard overrides, ID lineage maps). Complete (2026-07-10).
+- M16: Multi-era geometry + politics packs (1444 / 1836 / 1936), region quality
+  matrix, migration notes, official-1936. Complete (2026-07-11).
+- M17: Curation workflow hardening (external bundles, diffs, golden borders,
+  contribution path). Complete (2026-07-11).
 
 Near-term product path:
 
@@ -441,10 +447,14 @@ Near-term product path:
   and Vercel deploy. **Complete.**
 - **M15: Era-aware geometry v1 (priority region)** — period shapes or boundary
   hints where modern scaffold fails the historical sniff test; ID lineage maps.
+  **Complete** (`we-1444-v1` pack, `gpm era-geometry`, sample + demo layers).
 - **M16: Multi-era geometry + politics packs** — ship at least two official eras
   with documented quality tiers per region; migration notes for consumers.
+  **Complete** (`we-multi-era-v1`, `we-1836-v1` / `we-1936-v1`, `official-1936`,
+  `gpm multi-era`, sample + demo).
 - **M17: Curation workflow hardening** — external scenario bundles, diffs,
   golden-border tests, community contribution path.
+  **Complete** (`gpm curation`, golden-border suite, sample curator bundle).
 
 ## Open Questions
 

@@ -35,8 +35,20 @@ where = ["src"]
 "share/global-province-map-template/configs" = ["configs/sources.toml"]
 "share/global-province-map-template/configs/profiles" = ["configs/profiles/*.toml"]
 "share/global-province-map-template/configs/scenarios" = ["configs/scenarios/*.json"]
+"share/global-province-map-template/configs/era_geometry" = ["configs/era_geometry/*.json"]
+"share/global-province-map-template/configs/multi_era" = ["configs/multi_era/*.json"]
 "share/global-province-map-template/configs/recipes" = ["configs/recipes/*.json"]
 "share/global-province-map-template/schemas" = ["schemas/*.schema.json"]
+"share/global-province-map-template/samples/curator-bundle-example" = [
+  "samples/curator-bundle-example/bundle_manifest.json",
+  "samples/curator-bundle-example/README.md",
+]
+"share/global-province-map-template/samples/curator-bundle-example/scenarios" = [
+  "samples/curator-bundle-example/scenarios/*.json",
+]
+"share/global-province-map-template/samples/curator-bundle-example/golden" = [
+  "samples/curator-bundle-example/golden/*.json",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

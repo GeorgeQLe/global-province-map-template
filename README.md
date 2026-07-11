@@ -58,22 +58,48 @@ The implementation should eventually generate:
 
 ## Status
 
+M17 curation workflow hardening is in place. `gpm curation` lists, validates,
+and imports **external curator bundles**, diffs ownership tables (tag counts,
+contested provinces), and runs a **contribution checklist**. Golden politics
+checks now include max counts, required/forbidden owners, disputed flags, and
+**golden borders** (province pairs + owner-adjacency floors). Sample:
+`samples/curator-bundle-example/`. See
+[docs/m17-curation.md](docs/m17-curation.md).
+
+M16 multi-era geometry + politics packs are in place. `gpm multi-era` lists,
+validates, builds, and emits **migration notes** for packs that pair era
+geometry with curated politics across multiple official eras, with a
+**region quality matrix** (geometry + politics tiers per region). Bundled pack
+`we-multi-era-v1` covers **1444 / 1836 / 1936** with geometry packs
+`we-1444-v1`, `we-1836-v1`, and `we-1936-v1`. Official HOI-leaning scenario
+`official-1936` ships curated-politics overlays, golden floors, and a
+`hoi-like` recipe. Sample: `samples/multi-era-we-v1/`. Demo: live 1936 tab +
+period geometry for all three eras. See
+[docs/m16-multi-era.md](docs/m16-multi-era.md).
+
+M15 era-aware geometry v1 is in place. `gpm era-geometry` lists, validates, and
+applies **period-geometry** packs: soft historical boundary hints, optional hard
+province overrides/splits for a priority region, and scaffold↔era **ID lineage
+maps**. Bundled pack `we-1444-v1` targets Western Europe for `official-1444`.
+Sample: `samples/era-geometry-we-1444/`. See
+[docs/m15-era-geometry.md](docs/m15-era-geometry.md).
+
 M14.5 public landing page is in place. A static marketing site under `landing/`
 describes dual audiences, the pipeline, honest quality tiers, and license policy.
 An interactive MapLibre **demo** at `landing/demo/` loads the beta Western
-Europe sample (1444 / 1836 / modern ownership, adjacency, inspector) and leaves
-explicit reserved slots for M15+ period geometry, multi-era packs, and 1936.
-`gpm release site` validates the page + demo assets and can ensure a GitHub
-remote (`gh`), commit/push, and deploy to Vercel. See
-[docs/m14.5-landing.md](docs/m14.5-landing.md).
+Europe sample (1444 / 1836 / 1936 / modern ownership, adjacency, inspector) plus
+multi-era period geometry / boundary hints. `gpm release site` validates the
+page + demo assets and can ensure a GitHub remote (`gh`), commit/push, and
+deploy to Vercel. See [docs/m14.5-landing.md](docs/m14.5-landing.md).
 
 M14 license-audited beta release packaging is in place. `gpm release beta` builds
 a public beta bundle with a **license audit** (no restricted/ODbL contamination),
 cleaned attribution pack with isolation notices, honest accuracy labels, a **game
 template pack**, and an **atlas / SaaS face**. Default scenarios are
-`modern-baseline`, `official-1836`, and `official-1444` (politics tier
-`curated-politics` when official eras are included; geometry remains
-`scaffold-baseline`). Sample: `samples/beta-license-audited/`. See
+`modern-baseline`, `official-1836`, `official-1444`, and `official-1936`
+(politics tier `curated-politics` when official eras are included; geometry
+remains `scaffold-baseline` unless a multi-era pack is applied). Sample:
+`samples/beta-license-audited/`. See
 [docs/m14-beta-release.md](docs/m14-beta-release.md).
 
 M13 second curated official scenario is in place. `official-1444` is a

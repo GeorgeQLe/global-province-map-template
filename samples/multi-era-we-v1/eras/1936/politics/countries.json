@@ -1,0 +1,31 @@
+{
+  "count": 5,
+  "countries": [
+    {
+      "display_name": "Belgium",
+      "tag": "BEL"
+    },
+    {
+      "display_name": "France",
+      "notes": "Third Republic",
+      "tag": "FRA"
+    },
+    {
+      "display_name": "Germany",
+      "notes": "Nazi Germany; Rhineland remilitarization context",
+      "tag": "GER"
+    },
+    {
+      "display_name": "Luxembourg",
+      "tag": "LUX"
+    },
+    {
+      "display_name": "Netherlands",
+      "tag": "NET"
+    }
+  ],
+  "generated_at": "2026-07-11T04:16:56+00:00",
+  "milestone": "M8",
+  "scenario_id": "official-1936",
+  "schema_version": "0.1.0"
+}

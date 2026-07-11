@@ -84,6 +84,15 @@ def accuracy_label(
                 "British Isles, east Europe) plus global major tags. "
                 "Geometry remains modern scaffold; not Paradox-grade completeness."
             )
+        elif scenario_id == "official-1936":
+            includes_official_eras.append("official-1936")
+            scenario_notes.append(
+                "official-1936: curated-politics 1936 ownership overlay with "
+                "interwar contested theaters (Rhineland story, Sudeten claims, "
+                "Danzig corridor, Ethiopian invasion), colonial/mandate tables, "
+                "and global majors. Geometry remains modern scaffold unless paired "
+                "with a period-geometry pack; not Paradox-grade completeness."
+            )
         else:
             scenario_notes.append(
                 f"{scenario_id}: treat as uncurated overlay unless separately "
@@ -121,6 +130,10 @@ def accuracy_label(
             )
     if geometry_tier == QUALITY_TIER_SCAFFOLD_BASELINE:
         do_not_claim.append("era-aware borders for pre-modern or wartime maps")
+    elif geometry_tier == QUALITY_TIER_PERIOD_GEOMETRY:
+        do_not_claim.append(
+            "period-correct province geometry worldwide (priority region only)"
+        )
 
     summary = (
         f"{release_channel.capitalize()} release: geometry={geometry_tier}, "
@@ -137,19 +150,33 @@ def accuracy_label(
         "per era unless a period-geometry tier is claimed.",
         "Redistribute with attribution.json and the release manifest.",
     ]
+    if geometry_tier == QUALITY_TIER_PERIOD_GEOMETRY:
+        honest_statements.insert(
+            1,
+            "Period-geometry tier is priority-region scoped (see era-geometry "
+            "pack quality_scope). Outside the pack region, scaffold shapes remain.",
+        )
     if includes_official_eras:
         eras = ", ".join(includes_official_eras)
-        honest_statements.insert(
-            2,
-            f"{eras}: curated-politics era program(s)—major-power tags and "
-            "priority theaters are human-reviewed overlays, not period geometry.",
-        )
+        if geometry_tier == QUALITY_TIER_PERIOD_GEOMETRY:
+            honest_statements.insert(
+                2,
+                f"{eras}: curated-politics plus period-geometry in the pack "
+                "priority region (boundary hints and/or hard overrides); not "
+                "global period-correct shapes.",
+            )
+        else:
+            honest_statements.insert(
+                2,
+                f"{eras}: curated-politics era program(s)—major-power tags and "
+                "priority theaters are human-reviewed overlays, not period geometry.",
+            )
     else:
         honest_statements.insert(
             2,
             "demo remaps and baseline projection are scaffolding tools, not "
-            "official era programs (see official-1444 / official-1836 for "
-            "curated eras).",
+            "official era programs (see official-1444 / official-1836 / "
+            "official-1936 for curated eras).",
         )
 
     return {

@@ -52,8 +52,17 @@ def test_bundled_landing_site_validates():
         )
     )
     assert "future_slots" in manifest
-    assert any(s.get("id") == "period-geometry" for s in manifest["future_slots"])
-    assert len(manifest.get("scenarios", [])) >= 3
+    # M15–M16: period geometry / multi-era packs are live layers, not reserved slots.
+    live_ids = {s.get("id") for s in manifest.get("live_layers") or []}
+    assert "period-geometry" in live_ids
+    assert "boundary-hints" in live_ids
+    assert "multi-era-packs" in live_ids
+    future_ids = {s.get("id") for s in manifest.get("future_slots") or []}
+    assert "period-geometry" not in future_ids
+    assert "multi-era-packs" not in future_ids
+    scenario_ids = {s.get("id") for s in manifest.get("scenarios") or []}
+    assert "official-1936" in scenario_ids
+    assert len(manifest.get("scenarios", [])) >= 4
 
 
 def test_validate_landing_site_rejects_missing_files(tmp_path: Path):

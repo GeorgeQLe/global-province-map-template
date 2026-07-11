@@ -1,0 +1,71 @@
+{
+  "era": "1444",
+  "era_geometry_pack_id": "we-1444-v1",
+  "geometry_apply": {
+    "boundary_hint_count": 5,
+    "boundary_hints_output": "samples/multi-era-we-v1/eras/1444/geometry/boundary_hints.geojson",
+    "era": "1444",
+    "files_written": [
+      "samples/multi-era-we-v1/eras/1444/geometry/provinces.geojson",
+      "samples/multi-era-we-v1/eras/1444/geometry/boundary_hints.geojson",
+      "samples/multi-era-we-v1/eras/1444/geometry/lineage.json",
+      "samples/multi-era-we-v1/eras/1444/geometry/lineage.csv",
+      "samples/multi-era-we-v1/eras/1444/geometry/quality_scope.json",
+      "samples/multi-era-we-v1/eras/1444/geometry/era_geometry_manifest.json"
+    ],
+    "geometry_modes": [
+      "boundary_hints",
+      "hard_overrides"
+    ],
+    "hard_override_applied": 6,
+    "hard_override_skipped": 0,
+    "lineage_csv_output": "samples/multi-era-we-v1/eras/1444/geometry/lineage.csv",
+    "lineage_json_output": "samples/multi-era-we-v1/eras/1444/geometry/lineage.json",
+    "lineage_row_count": 7,
+    "manifest_output": "samples/multi-era-we-v1/eras/1444/geometry/era_geometry_manifest.json",
+    "output_dir": "samples/multi-era-we-v1/eras/1444/geometry",
+    "pack_id": "we-1444-v1",
+    "priority_region_count": 6,
+    "priority_region_id": "western-europe",
+    "province_count_in": 6,
+    "province_count_out": 7,
+    "province_input": "samples/beta-license-audited/sample/provinces.geojson",
+    "provinces_output": "samples/multi-era-we-v1/eras/1444/geometry/provinces.geojson",
+    "quality_tier": "period-geometry",
+    "scenario_id": "official-1444"
+  },
+  "geometry_quality_tier": "period-geometry",
+  "notes": "EU-leaning start with M15 WE period geometry (Cologne split, Flanders reshape, soft frontiers).",
+  "politics_quality_tier": "curated-politics",
+  "politics_resolve": {
+    "baseline_only_count": 0,
+    "countries_json": "/Users/georgele/projects/games/global-province-map-template/samples/multi-era-we-v1/eras/1444/politics/countries.json",
+    "country_rule_hits": 7,
+    "end_date": null,
+    "era": "1444",
+    "files_written": [
+      "countries.json",
+      "ownership.csv",
+      "ownership.json",
+      "scenario_manifest.json"
+    ],
+    "land_province_count": 7,
+    "output_dir": "/Users/georgele/projects/games/global-province-map-template/samples/multi-era-we-v1/eras/1444/politics",
+    "owner_tag_count": 3,
+    "ownership_csv": "/Users/georgele/projects/games/global-province-map-template/samples/multi-era-we-v1/eras/1444/politics/ownership.csv",
+    "ownership_json": "/Users/georgele/projects/games/global-province-map-template/samples/multi-era-we-v1/eras/1444/politics/ownership.json",
+    "ownership_row_count": 7,
+    "profile_id": "modern-small",
+    "province_input": "samples/multi-era-we-v1/eras/1444/geometry/provinces.geojson",
+    "province_override_hits": 0,
+    "region_rule_hits": 2,
+    "scenario_id": "official-1444",
+    "scenario_manifest": "/Users/georgele/projects/games/global-province-map-template/samples/multi-era-we-v1/eras/1444/politics/scenario_manifest.json",
+    "start_date": "1444-11-11",
+    "unknown_override_count": 0
+  },
+  "province_layer": "samples/multi-era-we-v1/eras/1444/geometry/provinces.geojson",
+  "recommended_profile": "eu-like",
+  "scenario_id": "official-1444",
+  "schema_version": "0.1.0"
+}

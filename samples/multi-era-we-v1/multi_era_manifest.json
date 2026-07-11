@@ -1,0 +1,116 @@
+{
+  "apply_geometry": true,
+  "display_name": "Western Europe multi-era geometry + politics v1",
+  "do_not_claim": [
+    "period-correct province geometry worldwide",
+    "Paradox-grade completeness for any single era",
+    "legal historical frontiers \u2014 soft hints are illustrative"
+  ],
+  "era_count": 3,
+  "eras": [
+    {
+      "era": "1444",
+      "era_geometry_pack_id": "we-1444-v1",
+      "geometry_quality_tier": "period-geometry",
+      "has_geometry_apply": true,
+      "has_politics_resolve": true,
+      "politics_quality_tier": "curated-politics",
+      "province_count": 7,
+      "recommended_profile": "eu-like",
+      "scenario_id": "official-1444"
+    },
+    {
+      "era": "1836",
+      "era_geometry_pack_id": "we-1836-v1",
+      "geometry_quality_tier": "period-geometry",
+      "has_geometry_apply": true,
+      "has_politics_resolve": true,
+      "politics_quality_tier": "curated-politics",
+      "province_count": 6,
+      "recommended_profile": "victoria-like",
+      "scenario_id": "official-1836"
+    },
+    {
+      "era": "1936",
+      "era_geometry_pack_id": "we-1936-v1",
+      "geometry_quality_tier": "period-geometry",
+      "has_geometry_apply": true,
+      "has_politics_resolve": true,
+      "politics_quality_tier": "curated-politics",
+      "province_count": 6,
+      "recommended_profile": "hoi-like",
+      "scenario_id": "official-1936"
+    }
+  ],
+  "files": [
+    "MIGRATION.md",
+    "README.md",
+    "eras/1444/era_manifest.json",
+    "eras/1444/geometry/boundary_hints.geojson",
+    "eras/1444/geometry/era_geometry_manifest.json",
+    "eras/1444/geometry/lineage.csv",
+    "eras/1444/geometry/lineage.json",
+    "eras/1444/geometry/provinces.geojson",
+    "eras/1444/geometry/quality_scope.json",
+    "eras/1444/politics/countries.json",
+    "eras/1444/politics/ownership.csv",
+    "eras/1444/politics/ownership.json",
+    "eras/1444/politics/scenario_manifest.json",
+    "eras/1836/era_manifest.json",
+    "eras/1836/geometry/boundary_hints.geojson",
+    "eras/1836/geometry/era_geometry_manifest.json",
+    "eras/1836/geometry/lineage.csv",
+    "eras/1836/geometry/lineage.json",
+    "eras/1836/geometry/provinces.geojson",
+    "eras/1836/geometry/quality_scope.json",
+    "eras/1836/politics/countries.json",
+    "eras/1836/politics/ownership.csv",
+    "eras/1836/politics/ownership.json",
+    "eras/1836/politics/scenario_manifest.json",
+    "eras/1936/era_manifest.json",
+    "eras/1936/geometry/boundary_hints.geojson",
+    "eras/1936/geometry/era_geometry_manifest.json",
+    "eras/1936/geometry/lineage.csv",
+    "eras/1936/geometry/lineage.json",
+    "eras/1936/geometry/provinces.geojson",
+    "eras/1936/geometry/quality_scope.json",
+    "eras/1936/politics/countries.json",
+    "eras/1936/politics/ownership.csv",
+    "eras/1936/politics/ownership.json",
+    "eras/1936/politics/scenario_manifest.json",
+    "migration_notes.json",
+    "pack.json",
+    "region_quality_matrix.json"
+  ],
+  "generated_at": "2026-07-11T04:16:56+00:00",
+  "generator_version": "0.1.0",
+  "manifest_type": "multi-era-pack",
+  "pack_id": "we-multi-era-v1",
+  "priority_region": {
+    "bbox": [
+      -5.5,
+      42.0,
+      12.0,
+      54.0
+    ],
+    "id": "western-europe",
+    "label": "Western Europe",
+    "notes": "M16 multi-era pack covering 1444, 1836, and 1936 for the WE priority region.",
+    "parent_country_ids": [
+      "FRA",
+      "BEL",
+      "NLD",
+      "LUX",
+      "DEU"
+    ]
+  },
+  "province_input": "samples/beta-license-audited/sample/provinces.geojson",
+  "recompute_adjacency": false,
+  "region_quality_matrix_rows": 4,
+  "resolve_politics": true,
+  "schema_version": "0.1.0",
+  "source_notes": [
+    "M16 multi-era packaging over M12\u2013M15 era programs plus official-1936.",
+    "Geometry packs are priority-region scoped; politics remain curated overlays on open geodata."
+  ]
+}

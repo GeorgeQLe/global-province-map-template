@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/global-province-map/era-geometry-pack.schema.json",
+  "title": "Global Province Map Era Geometry Pack",
+  "description": "M15 era-aware geometry pack: soft boundary hints and/or hard province overrides for a priority region, with ID lineage maps.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "pack_id",
+    "era",
+    "display_name",
+    "quality_tier",
+    "priority_region",
+    "geometry_modes"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "pack_id": { "type": "string", "minLength": 1 },
+    "era": { "type": "string", "minLength": 1 },
+    "start_date": { "type": "string", "minLength": 1 },
+    "scenario_id": { "type": "string", "minLength": 1 },
+    "display_name": { "type": "string", "minLength": 1 },
+    "quality_tier": {
+      "type": "string",
+      "enum": ["scaffold-baseline", "curated-politics", "period-geometry"]
+    },
+    "priority_region": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["id", "label"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "label": { "type": "string", "minLength": 1 },
+        "parent_country_ids": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "bbox": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": { "type": "number" }
+        },
+        "notes": { "type": "string" }
+      }
+    },
+    "geometry_modes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": ["boundary_hints", "hard_overrides"]
+      }
+    },
+    "period_true_scope": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "scaffold_backed_scope": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "source_notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "do_not_claim": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "boundary_hints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["hint_id", "label", "geometry"],
+        "properties": {
+          "hint_id": { "type": "string", "minLength": 1 },
+          "label": { "type": "string", "minLength": 1 },
+          "kind": { "type": "string", "minLength": 1 },
+          "confidence": {
+            "type": "string",
+            "enum": ["high", "medium", "low", "illustrative"]
+          },
+          "notes": { "type": "string" },
+          "related_tags": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "geometry": {
+            "type": "object",
+            "required": ["type"],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "LineString",
+                  "MultiLineString",
+                  "Polygon",
+                  "MultiPolygon"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "hard_overrides": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["operation", "scaffold_province_id"],
+        "properties": {
+          "operation": {
+            "type": "string",
+            "enum": ["replace", "split", "identity"]
+          },
+          "scaffold_province_id": { "type": "string", "minLength": 1 },
+          "era_province_id": { "type": "string", "minLength": 1 },
+          "display_name": { "type": "string", "minLength": 1 },
+          "reason": { "type": "string" },
+          "geometry": { "type": "object" },
+          "children": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": ["era_province_id", "geometry"],
+              "properties": {
+                "era_province_id": { "type": "string", "minLength": 1 },
+                "display_name": { "type": "string", "minLength": 1 },
+                "geometry": { "type": "object" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "lineage": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["era_province_id", "scaffold_province_id", "operation"],
+        "properties": {
+          "era_province_id": { "type": "string", "minLength": 1 },
+          "scaffold_province_id": { "type": "string", "minLength": 1 },
+          "operation": {
+            "type": "string",
+            "enum": [
+              "identity",
+              "replace",
+              "split_child",
+              "merge_parent",
+              "reshape"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 # Roadmap Progress
 
-Updated: 2026-07-10
+Updated: 2026-07-11
 
 Product direction (see root `ROADMAP.md`): dual audience for **strategy-game
 seeds** and **historical / SaaS maps**, with a **strong historical accuracy
@@ -72,8 +72,19 @@ later era-aware geometry are first-class tracks.
   dual audiences, pipeline, quality tiers, and license policy.
   `gpm release site` validates and can ensure a GitHub remote, push, and deploy
   to Vercel.
+- M15 era-aware geometry v1: complete. Pack format + `gpm era-geometry` for soft
+  boundary hints and hard overrides; WE 1444 pack `we-1444-v1` with ID lineage
+  maps; sample and demo layers; docs `docs/m15-era-geometry.md`.
+- M16 multi-era geometry + politics packs: complete. `we-multi-era-v1` with
+  region quality matrix and migration notes; era geometry packs for 1836 and
+  1936; `official-1936` curated politics; `gpm multi-era`; sample + demo;
+  docs `docs/m16-multi-era.md`.
+- M17 curation workflow hardening: complete. External curator bundles,
+  ownership diffs, expanded golden-border suites, contribution checklist;
+  `gpm curation`; sample `samples/curator-bundle-example/`;
+  docs `docs/m17-curation.md`.
 
 ## Next
 
-- M15 era-aware geometry v1, then M16–M17 per root roadmap: multi-era packs
-  (including 1936), curation workflow.
+- Post-M17 product work: culture/religion atlas paint, PMTiles / vector tiles,
+  broader period geometry beyond the WE priority region (see root ROADMAP).

@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1.0",
+  "scenario_id": "official-1936",
+  "description": "M16 golden floors for official-1936: ensure major interwar tags own enough provinces after resolve. Province-level golden borders can be added later.",
+  "min_owner_counts": {
+    "GER": 20,
+    "FRA": 30,
+    "ENG": 40,
+    "ITA": 20,
+    "SOV": 40,
+    "USA": 30,
+    "JAP": 10,
+    "CHI": 15,
+    "POL": 10,
+    "CZE": 5,
+    "AUS": 5,
+    "SPA": 15,
+    "BEL": 3,
+    "NET": 3,
+    "MAN": 1,
+    "YUG": 5,
+    "HUN": 3,
+    "ROM": 5,
+    "TUR": 10,
+    "RAJ": 10
+  },
+  "province_owners": {}
+}

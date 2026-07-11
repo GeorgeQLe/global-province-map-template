@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/global-province-map/scenario-diff-report.schema.json",
+  "title": "Global Province Map Scenario Ownership Diff Report",
+  "description": "M17 ownership choropleth / tag-count diff between two resolved scenario states.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "report_type",
+    "milestone",
+    "status",
+    "base",
+    "target",
+    "summary",
+    "owner_count_delta",
+    "changes"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "report_type": { "const": "scenario_ownership_diff" },
+    "milestone": { "const": "M17" },
+    "status": { "type": "string", "enum": ["identical", "changed"] },
+    "base": {
+      "type": "object",
+      "required": ["label", "scenario_id"],
+      "properties": {
+        "label": { "type": "string" },
+        "scenario_id": { "type": ["string", "null"] },
+        "source": { "type": "string" }
+      }
+    },
+    "target": {
+      "type": "object",
+      "required": ["label", "scenario_id"],
+      "properties": {
+        "label": { "type": "string" },
+        "scenario_id": { "type": ["string", "null"] },
+        "source": { "type": "string" }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "base_row_count",
+        "target_row_count",
+        "shared_province_count",
+        "owner_change_count",
+        "controller_change_count",
+        "disputed_change_count",
+        "added_province_count",
+        "removed_province_count",
+        "contested_province_count"
+      ]
+    },
+    "owner_count_delta": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["base", "target", "delta"]
+      }
+    },
+    "changes": {
+      "type": "array",
+      "items": { "type": "object" }
+    }
+  }
+}

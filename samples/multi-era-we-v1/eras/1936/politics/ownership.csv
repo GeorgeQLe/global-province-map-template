@@ -1,0 +1,7 @@
+province_id,scenario_id,start_date,end_date,owner,controller,cores,claims,culture,religion,disputed,assignment_source,parent_country_id,parent_region_id,display_name,notes
+era_de_rhineland_1936,official-1936,1936-01-01,,GER,GER,"[""GER""]",[],german,catholic,false,region_rule,DEU,DE-NW,Rhineland (1936),Rhineland — German owned; DMZ story via geometry hints
+sample_be_flanders,official-1936,1936-01-01,,BEL,BEL,"[""BEL""]",[],flemish,catholic,false,region_rule,BEL,BE-VLG,Flanders,
+sample_fr_normandy,official-1936,1936-01-01,,FRA,FRA,"[""FRA""]",[],french,catholic,false,region_rule,FRA,FR-NOR,Normandy coast,
+sample_fr_paris,official-1936,1936-01-01,,FRA,FRA,"[""FRA""]",[],french,catholic,false,region_rule,FRA,FR-IDF,Paris basin,Paris
+sample_lu_core,official-1936,1936-01-01,,LUX,LUX,"[""LUX""]",[],luxembourgish,catholic,false,region_rule,LUX,LU-LU,Luxembourg core,
+sample_nl_holland,official-1936,1936-01-01,,NET,NET,"[""NET""]",[],dutch,protestant,false,region_rule,NLD,NL-NH,Holland,

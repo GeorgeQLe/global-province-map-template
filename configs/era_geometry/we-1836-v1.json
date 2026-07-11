@@ -1,0 +1,257 @@
+{
+  "schema_version": "0.1.0",
+  "pack_id": "we-1836-v1",
+  "era": "1836",
+  "start_date": "1836-01-01",
+  "scenario_id": "official-1836",
+  "display_name": "Western Europe 1836 period geometry v1",
+  "quality_tier": "period-geometry",
+  "priority_region": {
+    "id": "western-europe",
+    "label": "Western Europe",
+    "parent_country_ids": [
+      "FRA",
+      "BEL",
+      "NLD",
+      "LUX",
+      "DEU"
+    ],
+    "bbox": [
+      -5.5,
+      42.0,
+      12.0,
+      54.0
+    ],
+    "notes": "M16 second era geometry pack. Post-Napoleonic / Belgian independence readability for the Victoria-leaning 1836 start."
+  },
+  "geometry_modes": [
+    "boundary_hints",
+    "hard_overrides"
+  ],
+  "period_true_scope": [
+    "western-europe"
+  ],
+  "scaffold_backed_scope": [
+    "outside priority_region",
+    "seas",
+    "rest of world"
+  ],
+  "source_notes": [
+    "Curator-authored soft frontier bands and sample hard overrides for M16 multi-era packs.",
+    "Not derived from proprietary game maps.",
+    "Hard overrides target beta sample province_ids (sample_*); they skip cleanly on full Natural Earth builds.",
+    "Soft boundary hints are geographic and apply on any scaffold that intersects the priority region."
+  ],
+  "do_not_claim": [
+    "period-correct province geometry worldwide",
+    "Paradox-grade German Confederation microborders",
+    "legal 1836 frontiers \u2014 hints are illustrative for the historical sniff test"
+  ],
+  "boundary_hints": [
+    {
+      "hint_id": "we1836-belgian-southern",
+      "label": "Belgian southern frontier (post-1830)",
+      "kind": "frontier",
+      "confidence": "illustrative",
+      "related_tags": [
+        "BEL",
+        "FRA"
+      ],
+      "notes": "Soft band for independent Belgium vs July Monarchy France after the 1830 revolution.",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            2.5,
+            50.75
+          ],
+          [
+            3.5,
+            50.55
+          ],
+          [
+            4.5,
+            50.35
+          ],
+          [
+            5.5,
+            50.15
+          ],
+          [
+            6.0,
+            49.95
+          ]
+        ]
+      }
+    },
+    {
+      "hint_id": "we1836-rhine-prussian",
+      "label": "Prussian Rhine corridor",
+      "kind": "frontier",
+      "confidence": "illustrative",
+      "related_tags": [
+        "PRU",
+        "FRA"
+      ],
+      "notes": "Illustrative band along the Rhine where modern DEU outlines mislead for 1836 Prussia.",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            6.0,
+            49.5
+          ],
+          [
+            6.5,
+            50.2
+          ],
+          [
+            7.0,
+            50.8
+          ],
+          [
+            7.2,
+            51.5
+          ]
+        ]
+      }
+    },
+    {
+      "hint_id": "we1836-dutch-belgian",
+      "label": "Dutch\u2013Belgian frontier band",
+      "kind": "frontier",
+      "confidence": "illustrative",
+      "related_tags": [
+        "NET",
+        "BEL"
+      ],
+      "notes": "Soft band between Kingdom of the Netherlands and independent Belgium.",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            3.5,
+            51.3
+          ],
+          [
+            4.5,
+            51.4
+          ],
+          [
+            5.5,
+            51.3
+          ],
+          [
+            6.0,
+            51.1
+          ]
+        ]
+      }
+    },
+    {
+      "hint_id": "we1836-luxembourg-band",
+      "label": "Luxembourg / German Confederation fringe",
+      "kind": "disputed_band",
+      "confidence": "illustrative",
+      "related_tags": [
+        "LUX",
+        "NET",
+        "PRU"
+      ],
+      "notes": "Grand Duchy in personal union with Netherlands; Confederation membership story.",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              5.6,
+              49.4
+            ],
+            [
+              6.5,
+              49.4
+            ],
+            [
+              6.5,
+              50.1
+            ],
+            [
+              5.6,
+              50.1
+            ],
+            [
+              5.6,
+              49.4
+            ]
+          ]
+        ]
+      }
+    }
+  ],
+  "hard_overrides": [
+    {
+      "operation": "replace",
+      "scaffold_province_id": "sample_be_flanders",
+      "era_province_id": "era_be_flanders_1836",
+      "display_name": "Flanders (1836)",
+      "reason": "Independent Belgium readability; modest footprint nudge on the WE sample.",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2.85,
+              50.5
+            ],
+            [
+              4.25,
+              50.5
+            ],
+            [
+              4.3,
+              51.2
+            ],
+            [
+              2.9,
+              51.2
+            ],
+            [
+              2.85,
+              50.5
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "operation": "identity",
+      "scaffold_province_id": "sample_de_rhineland",
+      "era_province_id": "sample_de_rhineland",
+      "reason": "Prussian Rhineland retained as scaffold shape; soft Rhine hint covers 1836 story."
+    },
+    {
+      "operation": "identity",
+      "scaffold_province_id": "sample_fr_paris",
+      "era_province_id": "sample_fr_paris",
+      "reason": "July Monarchy core retained."
+    },
+    {
+      "operation": "identity",
+      "scaffold_province_id": "sample_fr_normandy",
+      "era_province_id": "sample_fr_normandy",
+      "reason": "Normandy retained as scaffold identity in v1."
+    },
+    {
+      "operation": "identity",
+      "scaffold_province_id": "sample_nl_holland",
+      "era_province_id": "sample_nl_holland",
+      "reason": "Holland retained; Dutch\u2013Belgian story told via politics + frontier band."
+    },
+    {
+      "operation": "identity",
+      "scaffold_province_id": "sample_lu_core",
+      "era_province_id": "sample_lu_core",
+      "reason": "Luxembourg retained; personal-union / Confederation story via politics."
+    }
+  ]
+}

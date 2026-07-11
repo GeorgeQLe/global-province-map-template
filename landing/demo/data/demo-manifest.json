@@ -1,28 +1,56 @@
 {
   "title": "GPM interactive demo",
-  "sample": "beta-license-audited Western Europe (6 land provinces)",
+  "sample": "beta-license-audited Western Europe + multi-era packs (we-multi-era-v1)",
   "geometry_tier": "scaffold-baseline",
-  "note": "Politics are era overlays on modern scaffold geometry. Period shapes are reserved for M15+.",
+  "period_geometry_tier": "period-geometry",
+  "period_geometry_pack": "we-multi-era-v1",
+  "multi_era_pack": "we-multi-era-v1",
+  "note": "Politics are era overlays. Toggle period geometry / boundary hints for 1444, 1836, and 1936 (M16 multi-era WE packs).",
   "scenarios": [
     {
       "id": "official-1444",
       "era": "1444",
-      "label": "1444 \u00b7 EU-leaning",
+      "label": "1444 · EU-leaning",
       "politics_tier": "curated-politics",
       "start_date": "1444-11-11",
       "geojson": "official-1444.geojson",
       "legend": "official-1444.legend.json",
-      "status": "live"
+      "period_geojson": "official-1444-period.geojson",
+      "period_legend": "official-1444-period.legend.json",
+      "boundary_hints": "boundary-hints-1444.geojson",
+      "lineage": "lineage-1444.json",
+      "status": "live",
+      "supports_period_geometry": true
     },
     {
       "id": "official-1836",
       "era": "1836",
-      "label": "1836 \u00b7 Victoria-leaning",
+      "label": "1836 · Victoria-leaning",
       "politics_tier": "curated-politics",
       "start_date": "1836-01-01",
       "geojson": "official-1836.geojson",
       "legend": "official-1836.legend.json",
-      "status": "live"
+      "period_geojson": "official-1836-period.geojson",
+      "period_legend": "official-1836-period.legend.json",
+      "boundary_hints": "boundary-hints-1836.geojson",
+      "lineage": "lineage-1836.json",
+      "status": "live",
+      "supports_period_geometry": true
+    },
+    {
+      "id": "official-1936",
+      "era": "1936",
+      "label": "1936 · HOI-leaning",
+      "politics_tier": "curated-politics",
+      "start_date": "1936-01-01",
+      "geojson": "official-1936.geojson",
+      "legend": "official-1936.legend.json",
+      "period_geojson": "official-1936-period.geojson",
+      "period_legend": "official-1936-period.legend.json",
+      "boundary_hints": "boundary-hints-1936.geojson",
+      "lineage": "lineage-1936.json",
+      "status": "live",
+      "supports_period_geometry": true
     },
     {
       "id": "modern-baseline",
@@ -32,7 +60,8 @@
       "start_date": "2020-01-01",
       "geojson": "modern-baseline.geojson",
       "legend": "modern-baseline.legend.json",
-      "status": "live"
+      "status": "live",
+      "supports_period_geometry": false
     }
   ],
   "live_layers": [
@@ -44,7 +73,7 @@
     {
       "id": "assignment",
       "label": "Assignment source",
-      "desc": "baseline \u00b7 country_rule \u00b7 region_rule \u00b7 province_override"
+      "desc": "baseline · country_rule · region_rule · province_override"
     },
     {
       "id": "adjacency",
@@ -60,50 +89,44 @@
       "id": "inspector",
       "label": "Province inspector",
       "desc": "Owner, controller, cores, claims, lineage fields"
-    }
-  ],
-  "future_slots": [
+    },
     {
       "id": "period-geometry",
       "label": "Period geometry",
-      "milestone": "M15",
-      "desc": "Era-aware province shapes for priority regions"
+      "desc": "M16 multi-era hard overrides / soft shapes for WE sample (1444 · 1836 · 1936)",
+      "milestone": "M16"
     },
     {
       "id": "boundary-hints",
       "label": "Historical boundary hints",
-      "milestone": "M15",
-      "desc": "Soft frontier bands without full redraw"
+      "desc": "M16 soft frontier bands per era without full world redraw",
+      "milestone": "M16"
     },
     {
       "id": "multi-era-packs",
-      "label": "Multi-era geometry packs",
-      "milestone": "M16",
-      "desc": "Paired geometry + politics with ID lineage maps"
-    },
-    {
-      "id": "era-1936",
-      "label": "Official 1936 scenario",
-      "milestone": "M16+",
-      "desc": "HOI-leaning curated politics program"
-    },
-    {
-      "id": "culture-religion",
-      "label": "Culture & religion paint",
-      "milestone": "M17",
-      "desc": "Atlas layers for explanation products"
-    },
-    {
-      "id": "pmtiles",
-      "label": "PMTiles / vector tiles",
-      "milestone": "M16+",
-      "desc": "Web-scale delivery beyond sample GeoJSON"
+      "label": "Multi-era geometry + politics packs",
+      "desc": "Paired geometry + politics for 1444/1836/1936 with region quality tiers and migration notes",
+      "milestone": "M16"
     },
     {
       "id": "curation-diff",
       "label": "Curation diffs & golden borders",
-      "milestone": "M17",
-      "desc": "Community contribution and acceptance tests"
+      "desc": "M17: gpm curation diff/checklist, external bundles, expanded golden-border suites",
+      "milestone": "M17"
+    }
+  ],
+  "future_slots": [
+    {
+      "id": "culture-religion",
+      "label": "Culture & religion paint",
+      "milestone": "M18+",
+      "desc": "Atlas layers for explanation products (fields already in ownership tables)"
+    },
+    {
+      "id": "pmtiles",
+      "label": "PMTiles / vector tiles",
+      "milestone": "M18+",
+      "desc": "Web-scale delivery beyond sample GeoJSON"
     }
   ],
   "export_faces": [

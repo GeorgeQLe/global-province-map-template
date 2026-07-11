@@ -10,12 +10,42 @@ from .builders.adjacency import AdjacencyBuildError, build_land_adjacency
 from .builders.provinces import ProvinceBuildError, build_land_province_draft
 from .builders.seas import SeaBuildError, build_sea_zones
 from .config import DEFAULT_PROFILE_ID, ConfigError, load_profile
+from .curation import (
+    ChecklistResult,
+    CuratorBundleError,
+    OwnershipDiffError,
+    diff_ownership,
+    import_curator_bundle,
+    list_curator_bundles,
+    load_curator_bundle,
+    load_ownership_side,
+    run_contribution_checklist,
+    validate_curator_bundle,
+)
 from .exporters import ExportError, export_atlas_pack, export_game_pack, export_geojson_pack
 from .manifest import (
     build_downloaded_source_manifest,
     build_local_source_manifest,
     build_planned_source_manifest,
 )
+from .era_geometry import (
+    EraGeometryError,
+    apply_era_geometry_pack,
+    list_era_geometry_packs,
+    load_era_geometry_pack,
+    validate_era_geometry_pack,
+)
+from .era_geometry.packs import EraGeometryPackError
+from .multi_era import (
+    MultiEraError,
+    build_migration_document,
+    build_multi_era_pack,
+    list_multi_era_packs,
+    load_multi_era_pack,
+    migration_markdown,
+    validate_multi_era_pack,
+)
+from .multi_era.packs import MultiEraPackError
 from .paths import EXPORT_DIR, INTERMEDIATE_DATA_DIR, PROCESSED_DATA_DIR, RAW_DATA_DIR, SAMPLE_DIR
 from .qa.scenario import ScenarioPoliticsQAError, run_scenario_politics_qa
 from .qa.topology import TopologyQAError, run_topology_qa
@@ -882,6 +912,352 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     site.set_defaults(handler=_release_site)
 
+    era_geometry = subcommands.add_parser(
+        "era-geometry",
+        help=(
+            "M15 era-aware geometry packs: list, validate, and apply boundary "
+            "hints / hard province overrides with ID lineage maps."
+        ),
+    )
+    era_commands = era_geometry.add_subparsers(dest="command")
+    era_list = era_commands.add_parser(
+        "list",
+        help="List bundled era-geometry packs under configs/era_geometry/.",
+    )
+    era_list.add_argument(
+        "--format",
+        choices=["text", "json"],
+        default="text",
+        help="Output format.",
+    )
+    era_list.set_defaults(handler=_era_geometry_list)
+
+    era_validate = era_commands.add_parser(
+        "validate",
+        help="Validate an era-geometry pack definition.",
+    )
+    era_validate.add_argument(
+        "--pack",
+        required=True,
+        help="Pack id (filename stem under configs/era_geometry/) or path.",
+    )
+    era_validate.add_argument(
+        "--format",
+        choices=["text", "json"],
+        default="text",
+        help="Output format.",
+    )
+    era_validate.set_defaults(handler=_era_geometry_validate)
+
+    era_apply = era_commands.add_parser(
+        "apply",
+        help=(
+            "Apply an era-geometry pack to a scaffold province layer. Writes "
+            "period provinces, boundary hints, lineage maps, and a manifest."
+        ),
+    )
+    era_apply.add_argument(
+        "--pack",
+        required=True,
+        help="Pack id (filename stem under configs/era_geometry/) or path.",
+    )
+    era_apply.add_argument(
+        "--province-input",
+        type=Path,
+        default=PROCESSED_DATA_DIR / "provinces.geojson",
+        help="Scaffold province GeoJSON. Defaults to data/processed/provinces.geojson.",
+    )
+    era_apply.add_argument(
+        "--output-dir",
+        type=Path,
+        default=None,
+        help=(
+            "Output directory. Defaults to "
+            "data/processed/era_geometry/<pack-id>/."
+        ),
+    )
+    era_apply.add_argument(
+        "--recompute-adjacency",
+        action="store_true",
+        help="Recompute land adjacency for the era province layer after apply.",
+    )
+    _add_profile_arg(era_apply)
+    era_apply.add_argument(
+        "--format",
+        choices=["text", "json"],
+        default="text",
+        help="Output format for the apply summary.",
+    )
+    era_apply.set_defaults(handler=_era_geometry_apply)
+
+    multi_era = subcommands.add_parser(
+        "multi-era",
+        help=(
+            "M16 multi-era geometry + politics packs: list, validate, build, "
+            "and emit migration notes with per-region quality tiers."
+        ),
+    )
+    multi_commands = multi_era.add_subparsers(dest="command")
+    multi_list = multi_commands.add_parser(
+        "list",
+        help="List bundled multi-era packs under configs/multi_era/.",
+    )
+    multi_list.add_argument(
+        "--format",
+        choices=["text", "json"],
+        default="text",
+        help="Output format.",
+    )
+    multi_list.set_defaults(handler=_multi_era_list)
+
+    multi_validate = multi_commands.add_parser(
+        "validate",
+        help="Validate a multi-era pack definition.",
+    )
+    multi_validate.add_argument(
+        "--pack",
+        required=True,
+        help="Pack id (filename stem under configs/multi_era/) or path.",
+    )
+    multi_validate.add_argument(
+        "--format",
+        choices=["text", "json"],
+        default="text",
+        help="Output format.",
+    )
+    multi_validate.set_defaults(handler=_multi_era_validate)
+
+    multi_build = multi_commands.add_parser(
+        "build",
+        help=(
+            "Build a multi-era package: apply linked geometry packs, resolve "
+            "scenario politics, write region quality matrix and migration notes."
+        ),
+    )
+    multi_build.add_argument(
+        "--pack",
+        required=True,
+        help="Pack id (filename stem under configs/multi_era/) or path.",
+    )
+    multi_build.add_argument(
+        "--province-input",
+        type=Path,
+        default=PROCESSED_DATA_DIR / "provinces.geojson",
+        help="Scaffold province GeoJSON. Defaults to data/processed/provinces.geojson.",
+    )
+    multi_build.add_argument(
+        "--output-dir",
+        type=Path,
+        default=None,
+        help="Output directory. Defaults to data/processed/multi_era/<pack-id>/.",
+    )
+    multi_build.add_argument(
+        "--recompute-adjacency",
+        action="store_true",
+        help="Recompute land adjacency after each era-geometry apply.",
+    )
+    multi_build.add_argument(
+        "--no-geometry",
+        action="store_true",
+        help="Skip era-geometry apply; copy scaffold provinces per era.",
+    )
+    multi_build.add_argument(
+        "--no-politics",
+        action="store_true",
+        help="Skip scenario ownership resolve.",
+    )
+    _add_profile_arg(multi_build)
+    multi_build.add_argument(
+        "--format",
+        choices=["text", "json"],
+        default="text",
+        help="Output format for the build summary.",
+    )
+    multi_build.set_defaults(handler=_multi_era_build)
+
+    multi_migration = multi_commands.add_parser(
+        "migration",
+        help="Emit migration notes (JSON + Markdown) for a multi-era pack.",
+    )
+    multi_migration.add_argument(
+        "--pack",
+        required=True,
+        help="Pack id (filename stem under configs/multi_era/) or path.",
+    )
+    multi_migration.add_argument(
+        "--output-dir",
+        type=Path,
+        default=None,
+        help="Optional directory to write migration_notes.json and MIGRATION.md.",
+    )
+    multi_migration.add_argument(
+        "--format",
+        choices=["text", "json", "markdown"],
+        default="text",
+        help="Stdout format (files written when --output-dir is set).",
+    )
+    multi_migration.set_defaults(handler=_multi_era_migration)
+
+    curation = subcommands.add_parser(
+        "curation",
+        help=(
+            "M17 curation workflow: external curator bundles, ownership diffs, "
+            "golden-border suites, and contribution checklists."
+        ),
+    )
+    curation_commands = curation.add_subparsers(dest="command")
+
+    curation_list = curation_commands.add_parser(
+        "list",
+        help="List discovered curator bundles under samples/ (and bundles/).",
+    )
+    curation_list.add_argument(
+        "--format",
+        choices=["text", "json"],
+        default="text",
+        help="Output format.",
+    )
+    curation_list.set_defaults(handler=_curation_list)
+
+    curation_validate = curation_commands.add_parser(
+        "validate",
+        help="Validate an external curator bundle manifest and scenario files.",
+    )
+    curation_validate.add_argument(
+        "--bundle",
+        required=True,
+        help="Bundle id, directory path, or path to bundle_manifest.json.",
+    )
+    curation_validate.add_argument(
+        "--format",
+        choices=["text", "json"],
+        default="text",
+        help="Output format.",
+    )
+    curation_validate.set_defaults(handler=_curation_validate)
+
+    curation_import = curation_commands.add_parser(
+        "import",
+        help="Copy a validated curator bundle into an output directory.",
+    )
+    curation_import.add_argument(
+        "--bundle",
+        required=True,
+        help="Bundle id, directory path, or path to bundle_manifest.json.",
+    )
+    curation_import.add_argument(
+        "--output-dir",
+        type=Path,
+        required=True,
+        help="Destination directory for the imported bundle.",
+    )
+    curation_import.add_argument(
+        "--overwrite",
+        action="store_true",
+        help="Replace the output directory if it already has files.",
+    )
+    curation_import.add_argument(
+        "--format",
+        choices=["text", "json"],
+        default="text",
+        help="Output format.",
+    )
+    curation_import.set_defaults(handler=_curation_import)
+
+    curation_diff = curation_commands.add_parser(
+        "diff",
+        help=(
+            "Diff ownership between two scenarios or ownership tables: "
+            "tag counts, owner/controller/disputed changes, contested provinces."
+        ),
+    )
+    curation_diff.add_argument(
+        "--base-scenario",
+        default=None,
+        help="Base scenario id under configs/scenarios/.",
+    )
+    curation_diff.add_argument(
+        "--base-scenario-path",
+        type=Path,
+        default=None,
+        help="Base scenario JSON path.",
+    )
+    curation_diff.add_argument(
+        "--base-ownership",
+        type=Path,
+        default=None,
+        help="Base ownership CSV/JSON (skips resolve for the base side).",
+    )
+    curation_diff.add_argument(
+        "--target-scenario",
+        default=None,
+        help="Target scenario id under configs/scenarios/.",
+    )
+    curation_diff.add_argument(
+        "--target-scenario-path",
+        type=Path,
+        default=None,
+        help="Target scenario JSON path.",
+    )
+    curation_diff.add_argument(
+        "--target-ownership",
+        type=Path,
+        default=None,
+        help="Target ownership CSV/JSON (skips resolve for the target side).",
+    )
+    curation_diff.add_argument(
+        "--province-input",
+        type=Path,
+        default=PROCESSED_DATA_DIR / "provinces.geojson",
+        help="Land province GeoJSON when resolving scenarios. Defaults to data/processed/provinces.geojson.",
+    )
+    curation_diff.add_argument(
+        "--report-output",
+        type=Path,
+        default=None,
+        help="Optional JSON report path (scenario ownership diff).",
+    )
+    curation_diff.add_argument(
+        "--max-changes",
+        type=int,
+        default=None,
+        help="Truncate the change list in the report to this many rows.",
+    )
+    curation_diff.add_argument(
+        "--allow-unknown-overrides",
+        action="store_true",
+        help="Ignore province_overrides that do not match land province IDs when resolving.",
+    )
+    curation_diff.add_argument(
+        "--format",
+        choices=["text", "json"],
+        default="text",
+        help="Output format for the diff summary.",
+    )
+    curation_diff.set_defaults(handler=_curation_diff)
+
+    curation_checklist = curation_commands.add_parser(
+        "checklist",
+        help="Run the community contribution checklist against a curator bundle.",
+    )
+    curation_checklist.add_argument(
+        "--bundle",
+        required=True,
+        help="Bundle id, directory path, or path to bundle_manifest.json.",
+    )
+    curation_checklist.add_argument(
+        "--require-qa-claimed",
+        action="store_true",
+        help="Treat missing checklist.qa_pass_claimed as a hard failure.",
+    )
+    curation_checklist.add_argument(
+        "--format",
+        choices=["text", "json"],
+        default="text",
+        help="Output format.",
+    )
+    curation_checklist.set_defaults(handler=_curation_checklist)
+
     return parser
 
 
@@ -1723,6 +2099,424 @@ def _load_profile_or_report(profile_id: str) -> dict | None:
     except ConfigError as error:
         _print_error(error)
         return None
+
+
+def _era_geometry_list(args: argparse.Namespace) -> int:
+    summaries = list_era_geometry_packs()
+    if args.format == "json":
+        print(json.dumps([item.to_dict() for item in summaries], indent=2, sort_keys=True))
+        return 0
+    if not summaries:
+        print("gpm era-geometry list: no packs found under configs/era_geometry/.")
+        return 0
+    print(f"gpm era-geometry list: {len(summaries)} pack(s).")
+    for item in summaries:
+        modes = ", ".join(item.geometry_modes)
+        scenario = item.scenario_id or "—"
+        print(
+            f"- {item.pack_id}  era={item.era}  scenario={scenario}  "
+            f"tier={item.quality_tier}  region={item.priority_region_id}  "
+            f"modes=[{modes}]  hints={item.boundary_hint_count}  "
+            f"overrides={item.hard_override_count}"
+        )
+    return 0
+
+
+def _era_geometry_validate(args: argparse.Namespace) -> int:
+    pack_arg = str(args.pack)
+    pack_path = Path(pack_arg)
+    try:
+        if pack_path.is_file() or pack_arg.endswith(".json"):
+            document = load_era_geometry_pack(pack_path.stem, path=pack_path)
+        else:
+            document = load_era_geometry_pack(pack_arg)
+        validate_era_geometry_pack(document)
+    except (EraGeometryError, EraGeometryPackError) as error:
+        _print_error(error)
+        return 1
+    payload = {
+        "pack_id": document["pack_id"],
+        "era": document["era"],
+        "scenario_id": document.get("scenario_id"),
+        "quality_tier": document["quality_tier"],
+        "priority_region_id": document["priority_region"]["id"],
+        "geometry_modes": document["geometry_modes"],
+        "boundary_hint_count": len(document.get("boundary_hints") or []),
+        "hard_override_count": len(document.get("hard_overrides") or []),
+        "valid": True,
+    }
+    if args.format == "json":
+        print(json.dumps(payload, indent=2, sort_keys=True))
+        return 0
+    print(f"gpm era-geometry validate: pack `{payload['pack_id']}` is valid.")
+    print(f"Era: {payload['era']}")
+    print(f"Scenario: {payload['scenario_id'] or '—'}")
+    print(f"Quality tier: {payload['quality_tier']}")
+    print(f"Priority region: {payload['priority_region_id']}")
+    print(f"Modes: {', '.join(payload['geometry_modes'])}")
+    print(
+        f"Boundary hints: {payload['boundary_hint_count']}; "
+        f"hard overrides: {payload['hard_override_count']}"
+    )
+    return 0
+
+
+def _era_geometry_apply(args: argparse.Namespace) -> int:
+    pack_arg = str(args.pack)
+    pack_path = Path(pack_arg)
+    pack_id = pack_path.stem if pack_path.is_file() or pack_arg.endswith(".json") else pack_arg
+    explicit_path = pack_path if pack_path.is_file() or pack_arg.endswith(".json") else None
+    try:
+        result = apply_era_geometry_pack(
+            pack_id,
+            province_input=args.province_input,
+            output_dir=args.output_dir,
+            pack_path=explicit_path,
+            recompute_adjacency=bool(args.recompute_adjacency),
+            profile_id=args.profile,
+        )
+    except EraGeometryError as error:
+        _print_error(error)
+        return 1
+    if args.format == "json":
+        print(json.dumps(result.to_dict(), indent=2, sort_keys=True))
+        return 0
+    print(f"gpm era-geometry apply: pack `{result.pack_id}` applied.")
+    print(f"Era: {result.era}  tier={result.quality_tier}")
+    print(f"Priority region: {result.priority_region_id}")
+    print(f"Province input: {result.province_input}")
+    print(f"Output dir: {result.output_dir}")
+    print(
+        f"Provinces: {result.province_count_in} → {result.province_count_out} "
+        f"(priority region: {result.priority_region_count})"
+    )
+    print(
+        f"Hard overrides: applied={result.hard_override_applied} "
+        f"skipped={result.hard_override_skipped}"
+    )
+    print(
+        f"Boundary hints: {result.boundary_hint_count}; "
+        f"lineage rows: {result.lineage_row_count}"
+    )
+    print(f"Provinces: {result.provinces_output}")
+    print(f"Boundary hints: {result.boundary_hints_output}")
+    print(f"Lineage: {result.lineage_json_output}")
+    print(f"Manifest: {result.manifest_output}")
+    return 0
+
+
+def _multi_era_list(args: argparse.Namespace) -> int:
+    summaries = list_multi_era_packs()
+    if args.format == "json":
+        print(json.dumps([item.to_dict() for item in summaries], indent=2, sort_keys=True))
+        return 0
+    if not summaries:
+        print("gpm multi-era list: no packs found under configs/multi_era/.")
+        return 0
+    print(f"gpm multi-era list: {len(summaries)} pack(s).")
+    for item in summaries:
+        eras = ", ".join(item.eras)
+        scenarios = ", ".join(item.scenario_ids)
+        print(
+            f"- {item.pack_id}  eras=[{eras}]  scenarios=[{scenarios}]  "
+            f"region={item.priority_region_id}  "
+            f"matrix_rows={item.region_matrix_row_count}  "
+            f"geometry_packs={len(item.era_geometry_pack_ids)}"
+        )
+    return 0
+
+
+def _multi_era_validate(args: argparse.Namespace) -> int:
+    pack_arg = str(args.pack)
+    pack_path = Path(pack_arg)
+    try:
+        if pack_path.is_file() or pack_arg.endswith(".json"):
+            document = load_multi_era_pack(pack_path.stem, path=pack_path)
+        else:
+            document = load_multi_era_pack(pack_arg)
+        validate_multi_era_pack(document)
+    except (MultiEraError, MultiEraPackError) as error:
+        _print_error(error)
+        return 1
+    eras = [str(slot.get("era")) for slot in document.get("eras") or []]
+    scenarios = [str(slot.get("scenario_id")) for slot in document.get("eras") or []]
+    geom_packs = [
+        str(slot["era_geometry_pack_id"])
+        for slot in document.get("eras") or []
+        if slot.get("era_geometry_pack_id")
+    ]
+    payload = {
+        "pack_id": document["pack_id"],
+        "display_name": document["display_name"],
+        "priority_region_id": (document.get("priority_region") or {}).get("id"),
+        "era_count": len(eras),
+        "eras": eras,
+        "scenario_ids": scenarios,
+        "era_geometry_pack_ids": geom_packs,
+        "region_matrix_row_count": len(document.get("region_quality_matrix") or []),
+    }
+    if args.format == "json":
+        print(json.dumps(payload, indent=2, sort_keys=True))
+        return 0
+    print(f"gpm multi-era validate: pack `{payload['pack_id']}` is valid.")
+    print(f"Display name: {payload['display_name']}")
+    print(f"Priority region: {payload['priority_region_id']}")
+    print(f"Eras ({payload['era_count']}): {', '.join(payload['eras'])}")
+    print(f"Scenarios: {', '.join(payload['scenario_ids'])}")
+    print(
+        f"Geometry packs: {', '.join(payload['era_geometry_pack_ids']) or '—'}"
+    )
+    print(f"Region quality matrix rows: {payload['region_matrix_row_count']}")
+    return 0
+
+
+def _multi_era_build(args: argparse.Namespace) -> int:
+    pack_arg = str(args.pack)
+    pack_path = Path(pack_arg)
+    pack_id = pack_path.stem if pack_path.is_file() or pack_arg.endswith(".json") else pack_arg
+    explicit_path = pack_path if pack_path.is_file() or pack_arg.endswith(".json") else None
+    try:
+        result = build_multi_era_pack(
+            pack_id,
+            province_input=args.province_input,
+            output_dir=args.output_dir,
+            pack_path=explicit_path,
+            recompute_adjacency=bool(args.recompute_adjacency),
+            profile_id=args.profile,
+            apply_geometry=not bool(args.no_geometry),
+            resolve_politics=not bool(args.no_politics),
+        )
+    except MultiEraError as error:
+        _print_error(error)
+        return 1
+    if args.format == "json":
+        print(json.dumps(result.to_dict(), indent=2, sort_keys=True))
+        return 0
+    print(f"gpm multi-era build: pack `{result.pack_id}` built.")
+    print(f"Display name: {result.display_name}")
+    print(f"Output dir: {result.output_dir}")
+    print(f"Eras ({result.era_count}): {', '.join(result.eras)}")
+    print(f"Scenarios: {', '.join(result.scenario_ids)}")
+    print(
+        f"Geometry packs: {', '.join(result.era_geometry_pack_ids) or '—'}"
+    )
+    print(f"Region quality matrix rows: {result.region_matrix_row_count}")
+    print(f"Migration notes: {result.migration_md}")
+    print(f"Manifest: {result.manifest_output}")
+    print(f"Files written: {len(result.files_written)}")
+    return 0
+
+
+def _multi_era_migration(args: argparse.Namespace) -> int:
+    pack_arg = str(args.pack)
+    pack_path = Path(pack_arg)
+    try:
+        if pack_path.is_file() or pack_arg.endswith(".json"):
+            document = load_multi_era_pack(pack_path.stem, path=pack_path)
+        else:
+            document = load_multi_era_pack(pack_arg)
+        migration = build_migration_document(document)
+    except (MultiEraError, MultiEraPackError) as error:
+        _print_error(error)
+        return 1
+
+    if args.output_dir is not None:
+        out_dir = Path(args.output_dir)
+        out_dir.mkdir(parents=True, exist_ok=True)
+        json_path = out_dir / "migration_notes.json"
+        md_path = out_dir / "MIGRATION.md"
+        json_path.write_text(
+            json.dumps(migration, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+        md_path.write_text(migration_markdown(migration), encoding="utf-8")
+
+    if args.format == "json":
+        print(json.dumps(migration, indent=2, sort_keys=True))
+        return 0
+    if args.format == "markdown":
+        print(migration_markdown(migration), end="")
+        return 0
+    print(f"gpm multi-era migration: pack `{migration.get('pack_id')}`.")
+    print(migration.get("summary") or "")
+    print(f"Eras: {', '.join(str(s.get('era')) for s in migration.get('eras') or [])}")
+    print(f"Consumer guidance items: {len(migration.get('consumer_guidance') or [])}")
+    if args.output_dir is not None:
+        print(f"Wrote: {Path(args.output_dir) / 'migration_notes.json'}")
+        print(f"Wrote: {Path(args.output_dir) / 'MIGRATION.md'}")
+    return 0
+
+
+def _curation_list(args: argparse.Namespace) -> int:
+    summaries = list_curator_bundles()
+    if args.format == "json":
+        print(json.dumps([item.to_dict() for item in summaries], indent=2, sort_keys=True))
+        return 0
+    if not summaries:
+        print("gpm curation list: no curator bundles found under samples/ or bundles/.")
+        return 0
+    print(f"gpm curation list: {len(summaries)} bundle(s).")
+    for item in summaries:
+        scenarios = ", ".join(item.scenario_ids) or "—"
+        print(
+            f"- {item.bundle_id}: {item.display_name} "
+            f"(license={item.license}, scenarios=[{scenarios}], "
+            f"golden={item.golden_count})"
+        )
+    return 0
+
+
+def _curation_validate(args: argparse.Namespace) -> int:
+    try:
+        document = load_curator_bundle(args.bundle)
+        root = Path(document["_root"])
+        validate_curator_bundle(
+            document,
+            bundle_root=root,
+            check_files=True,
+            check_scenarios=True,
+        )
+    except CuratorBundleError as error:
+        _print_error(error)
+        return 1
+    payload = {
+        "bundle_id": document["bundle_id"],
+        "display_name": document["display_name"],
+        "license": document["license"],
+        "path": document.get("_root"),
+        "scenario_ids": [entry["scenario_id"] for entry in document.get("scenarios") or []],
+        "golden_paths": [
+            entry.get("golden_path")
+            for entry in document.get("scenarios") or []
+            if entry.get("golden_path")
+        ],
+        "valid": True,
+    }
+    if args.format == "json":
+        print(json.dumps(payload, indent=2, sort_keys=True))
+        return 0
+    print(f"gpm curation validate: bundle `{payload['bundle_id']}` is valid.")
+    print(f"Display name: {payload['display_name']}")
+    print(f"License: {payload['license']}")
+    print(f"Path: {payload['path']}")
+    print(f"Scenarios: {', '.join(payload['scenario_ids'])}")
+    print(f"Golden files: {len(payload['golden_paths'])}")
+    return 0
+
+
+def _curation_import(args: argparse.Namespace) -> int:
+    try:
+        result = import_curator_bundle(
+            args.bundle,
+            output_dir=args.output_dir,
+            overwrite=bool(args.overwrite),
+        )
+    except CuratorBundleError as error:
+        _print_error(error)
+        return 1
+    if args.format == "json":
+        print(json.dumps(result, indent=2, sort_keys=True))
+        return 0
+    print(f"gpm curation import: bundle `{result['bundle_id']}` imported.")
+    print(f"Source: {result['source_root']}")
+    print(f"Output: {result['output_dir']}")
+    print(f"Scenarios: {', '.join(result['scenario_ids'])}")
+    print(f"Files: {len(result['files'])}")
+    return 0
+
+
+def _curation_diff(args: argparse.Namespace) -> int:
+    try:
+        base_records, base_meta = load_ownership_side(
+            scenario_id=args.base_scenario,
+            scenario_path=args.base_scenario_path,
+            ownership_input=args.base_ownership,
+            province_input=args.province_input,
+            allow_unknown_overrides=bool(args.allow_unknown_overrides),
+            label="base",
+        )
+        target_records, target_meta = load_ownership_side(
+            scenario_id=args.target_scenario,
+            scenario_path=args.target_scenario_path,
+            ownership_input=args.target_ownership,
+            province_input=args.province_input,
+            allow_unknown_overrides=bool(args.allow_unknown_overrides),
+            label="target",
+        )
+        result = diff_ownership(
+            base_records,
+            target_records,
+            base_meta=base_meta,
+            target_meta=target_meta,
+            report_output=args.report_output,
+            max_changes=args.max_changes,
+        )
+    except OwnershipDiffError as error:
+        _print_error(error)
+        return 1
+    if args.format == "json":
+        print(json.dumps(result.report, indent=2, sort_keys=True))
+        return 0
+    print(f"gpm curation diff: {result.status}.")
+    print(f"Base: {result.base_label}  Target: {result.target_label}")
+    print(
+        f"Owner changes: {result.owner_change_count}; "
+        f"controller: {result.controller_change_count}; "
+        f"disputed: {result.disputed_change_count}"
+    )
+    print(
+        f"Added provinces: {result.added_province_count}; "
+        f"removed: {result.removed_province_count}; "
+        f"contested: {result.contested_province_count}"
+    )
+    delta = result.report.get("owner_count_delta") or {}
+    if delta:
+        print("Owner count deltas (non-zero):")
+        for tag, row in sorted(delta.items()):
+            print(
+                f"  {tag}: {row['base']} → {row['target']} "
+                f"({row['delta']:+d})"
+            )
+    else:
+        print("Owner count deltas: none")
+    changes = result.report.get("changes") or []
+    preview = changes[:12]
+    if preview:
+        print(f"Change preview ({len(preview)} of {len(changes)}):")
+        for item in preview:
+            print(
+                f"  {item['change_type']}: {item['province_id']} "
+                f"{item.get('base_owner')} → {item.get('target_owner')}"
+            )
+    if result.report_output:
+        print(f"Report: {result.report_output}")
+    return 0
+
+
+def _curation_checklist(args: argparse.Namespace) -> int:
+    try:
+        result: ChecklistResult = run_contribution_checklist(
+            args.bundle,
+            require_qa_claimed=bool(args.require_qa_claimed),
+        )
+    except CuratorBundleError as error:
+        _print_error(error)
+        return 1
+    if args.format == "json":
+        print(json.dumps(result.to_dict(), indent=2, sort_keys=True))
+        return 0 if result.passed else 1
+    print(f"gpm curation checklist: {result.status}.")
+    print(f"Bundle: {result.bundle_id}")
+    print(f"Path: {result.path}")
+    print(
+        f"Items: {result.passed_count} passed, "
+        f"{result.failed_count} failed, "
+        f"{result.warning_count} warnings"
+    )
+    for item in result.items:
+        mark = "ok" if item["passed"] else item["severity"]
+        print(f"  [{mark}] {item['code']}: {item['message']}")
+    return 0 if result.passed else 1
 
 
 def _print_error(error: Exception) -> None:

@@ -1,0 +1,99 @@
+{
+  "document_type": "region-quality-matrix",
+  "generated_at": "2026-07-11T04:16:56+00:00",
+  "generator_version": "0.1.0",
+  "pack_id": "we-multi-era-v1",
+  "priority_region": {
+    "bbox": [
+      -5.5,
+      42.0,
+      12.0,
+      54.0
+    ],
+    "id": "western-europe",
+    "label": "Western Europe",
+    "notes": "M16 multi-era pack covering 1444, 1836, and 1936 for the WE priority region.",
+    "parent_country_ids": [
+      "FRA",
+      "BEL",
+      "NLD",
+      "LUX",
+      "DEU"
+    ]
+  },
+  "rows": [
+    {
+      "by_era": {
+        "1444": {
+          "geometry": "period-geometry",
+          "politics": "curated-politics"
+        },
+        "1836": {
+          "geometry": "period-geometry",
+          "politics": "curated-politics"
+        },
+        "1936": {
+          "geometry": "period-geometry",
+          "politics": "curated-politics"
+        }
+      },
+      "label": "Western Europe (priority region)",
+      "region_id": "western-europe"
+    },
+    {
+      "by_era": {
+        "1444": {
+          "geometry": "scaffold-baseline",
+          "politics": "curated-politics"
+        },
+        "1836": {
+          "geometry": "scaffold-baseline",
+          "politics": "curated-politics"
+        },
+        "1936": {
+          "geometry": "scaffold-baseline",
+          "politics": "curated-politics"
+        }
+      },
+      "label": "Europe elevated theaters (outside WE hard overrides)",
+      "region_id": "europe-elevated"
+    },
+    {
+      "by_era": {
+        "1444": {
+          "geometry": "scaffold-baseline",
+          "politics": "curated-politics"
+        },
+        "1836": {
+          "geometry": "scaffold-baseline",
+          "politics": "curated-politics"
+        },
+        "1936": {
+          "geometry": "scaffold-baseline",
+          "politics": "curated-politics"
+        }
+      },
+      "label": "Global major-power tags",
+      "region_id": "global-majors"
+    },
+    {
+      "by_era": {
+        "1444": {
+          "geometry": "scaffold-baseline",
+          "politics": "scaffold-baseline"
+        },
+        "1836": {
+          "geometry": "scaffold-baseline",
+          "politics": "scaffold-baseline"
+        },
+        "1936": {
+          "geometry": "scaffold-baseline",
+          "politics": "scaffold-baseline"
+        }
+      },
+      "label": "Outside elevated theaters",
+      "region_id": "rest-of-world"
+    }
+  ],
+  "schema_version": "0.1.0"
+}

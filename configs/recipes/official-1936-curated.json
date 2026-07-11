@@ -1,0 +1,110 @@
+{
+  "schema_version": "0.1.0",
+  "recipe_id": "official-1936-curated",
+  "label": "Official 1936 curated-politics scenario",
+  "milestone": "M16",
+  "profile_id": "hoi-like",
+  "scenarios": ["official-1936", "modern-baseline"],
+  "include_seas": true,
+  "include_topology_qa": true,
+  "description": "Build and QA the M16 official-1936 curated-politics overlay over the modern geographic scaffold. Geometry remains scaffold-baseline unless paired with we-1936-v1 / multi-era pack; politics are curated-politics with interwar contested theaters and colonial/mandate tables.",
+  "steps": [
+    {
+      "id": "download-sources",
+      "title": "Download Natural Earth (and other default) source artifacts",
+      "command": ["gpm", "sources", "download", "--execute", "--profile", "hoi-like"]
+    },
+    {
+      "id": "source-manifest",
+      "title": "Record downloaded source checksums and metadata",
+      "command": ["gpm", "sources", "manifest", "--from-raw", "--profile", "hoi-like"]
+    },
+    {
+      "id": "build-provinces",
+      "title": "Generate modern land province draft",
+      "command": ["gpm", "build", "provinces", "--profile", "hoi-like"]
+    },
+    {
+      "id": "build-seas",
+      "title": "Generate coastal and ocean sea zones",
+      "command": ["gpm", "build", "seas", "--profile", "hoi-like"]
+    },
+    {
+      "id": "build-adjacency",
+      "title": "Generate land and marine adjacency",
+      "command": ["gpm", "build", "adjacency", "--profile", "hoi-like"]
+    },
+    {
+      "id": "qa-topology",
+      "title": "Run topology QA",
+      "command": ["gpm", "qa", "topology", "--profile", "hoi-like"]
+    },
+    {
+      "id": "scenario-official-1936",
+      "title": "Resolve official-1936 curated ownership",
+      "command": ["gpm", "scenario", "build", "--scenario", "official-1936", "--profile", "hoi-like"]
+    },
+    {
+      "id": "qa-scenario-official-1936",
+      "title": "Politics QA + golden floors for official-1936",
+      "command": ["gpm", "qa", "scenario", "--scenario", "official-1936", "--profile", "hoi-like"]
+    },
+    {
+      "id": "scenario-modern-baseline",
+      "title": "Resolve modern-baseline reference ownership",
+      "command": ["gpm", "scenario", "build", "--scenario", "modern-baseline", "--profile", "hoi-like"]
+    },
+    {
+      "id": "export-pack",
+      "title": "Export hoi-like game pack with official-1936",
+      "command": [
+        "gpm",
+        "export",
+        "pack",
+        "--profile",
+        "hoi-like",
+        "--scenario",
+        "official-1936",
+        "--scenario",
+        "modern-baseline"
+      ]
+    },
+    {
+      "id": "export-atlas",
+      "title": "Export atlas face with official-1936 choropleth",
+      "command": [
+        "gpm",
+        "export",
+        "atlas",
+        "--profile",
+        "hoi-like",
+        "--scenario",
+        "official-1936"
+      ]
+    },
+    {
+      "id": "multi-era-build",
+      "title": "Optional: build WE multi-era geometry + politics pack",
+      "command": [
+        "gpm",
+        "multi-era",
+        "build",
+        "--pack",
+        "we-multi-era-v1",
+        "--profile",
+        "modern-small"
+      ]
+    }
+  ],
+  "quality_tiers": {
+    "geometry": "scaffold-baseline",
+    "politics": "curated-politics"
+  },
+  "honesty": [
+    "official-1936 is curated-politics with interwar contested theaters, not global period geometry.",
+    "Pair with we-1936-v1 or we-multi-era-v1 for Western Europe period-geometry scope.",
+    "Colonial and mandate politics are curated tables on modern admin shapes.",
+    "Do not claim Paradox-grade completeness or worldwide 1936 borders.",
+    "Keep attribution.json with every redistributed copy."
+  ]
+}

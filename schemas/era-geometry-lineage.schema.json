@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/global-province-map/era-geometry-lineage.schema.json",
+  "title": "Global Province Map Era Geometry Lineage Map",
+  "description": "M15 ID lineage map between modern scaffold province IDs and era-aware province IDs.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "document_type",
+    "pack_id",
+    "era",
+    "row_count",
+    "rows"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "document_type": { "const": "era-geometry-lineage" },
+    "milestone": { "const": "M15" },
+    "pack_id": { "type": "string", "minLength": 1 },
+    "era": { "type": "string", "minLength": 1 },
+    "scenario_id": { "type": ["string", "null"] },
+    "row_count": { "type": "integer", "minimum": 0 },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "rows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "era_province_id",
+          "scaffold_province_id",
+          "operation"
+        ],
+        "properties": {
+          "era_province_id": { "type": "string", "minLength": 1 },
+          "scaffold_province_id": { "type": "string", "minLength": 1 },
+          "operation": {
+            "type": "string",
+            "enum": [
+              "identity",
+              "replace",
+              "split_child",
+              "merge_parent",
+              "reshape"
+            ]
+          },
+          "display_name": { "type": "string" },
+          "part_index": { "type": "integer", "minimum": 1 },
+          "part_count": { "type": "integer", "minimum": 1 },
+          "in_priority_region": { "type": "boolean" },
+          "geometry_mode": { "type": "string" },
+          "reason": { "type": "string" }
+        }
+      }
+    }
+  }
+}

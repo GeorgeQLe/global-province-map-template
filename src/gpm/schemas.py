@@ -242,6 +242,143 @@ def validate_topology_qa_report(report: dict[str, Any]) -> None:
         raise SchemaValidationError("report.status does not match error findings")
 
 
+def validate_era_geometry_pack(document: dict[str, Any]) -> None:
+    """Validate core invariants of an M15 era-geometry pack definition."""
+    from gpm.era_geometry.packs import EraGeometryPackError
+    from gpm.era_geometry.packs import validate_era_geometry_pack as _validate
+
+    try:
+        _validate(document)
+    except EraGeometryPackError as exc:
+        raise SchemaValidationError(str(exc)) from exc
+
+
+def validate_multi_era_pack(document: dict[str, Any]) -> None:
+    """Validate core invariants of an M16 multi-era pack definition."""
+    from gpm.multi_era.packs import MultiEraPackError
+    from gpm.multi_era.packs import validate_multi_era_pack as _validate
+
+    try:
+        _validate(document)
+    except MultiEraPackError as exc:
+        raise SchemaValidationError(str(exc)) from exc
+
+
+def validate_multi_era_migration_notes(document: dict[str, Any]) -> None:
+    """Validate core invariants of an M16 multi-era migration notes document."""
+    schema = load_schema("multi-era-migration-notes")
+    _require_object(document, "migration")
+    _require_keys(document, schema["required"], "migration")
+    if document["schema_version"] != schema["properties"]["schema_version"]["const"]:
+        raise SchemaValidationError("migration.schema_version must be 0.1.0")
+    if document["document_type"] != "multi-era-migration-notes":
+        raise SchemaValidationError(
+            "migration.document_type must be multi-era-migration-notes"
+        )
+    if not isinstance(document["pack_id"], str) or not document["pack_id"]:
+        raise SchemaValidationError("migration.pack_id must be a non-empty string")
+    if not isinstance(document["summary"], str) or not document["summary"].strip():
+        raise SchemaValidationError("migration.summary must be a non-empty string")
+    eras = document["eras"]
+    if not isinstance(eras, list) or len(eras) < 2:
+        raise SchemaValidationError("migration.eras must be a list of at least two eras")
+    guidance = document["consumer_guidance"]
+    if not isinstance(guidance, list) or not all(isinstance(item, str) for item in guidance):
+        raise SchemaValidationError("migration.consumer_guidance must be a list of strings")
+
+
+def validate_era_geometry_lineage(document: dict[str, Any]) -> None:
+    """Validate core invariants of an M15 era-geometry lineage map."""
+    schema = load_schema("era-geometry-lineage")
+    _require_object(document, "lineage")
+    _require_keys(document, schema["required"], "lineage")
+    if document["schema_version"] != schema["properties"]["schema_version"]["const"]:
+        raise SchemaValidationError("lineage.schema_version must be 0.1.0")
+    if document["document_type"] != "era-geometry-lineage":
+        raise SchemaValidationError("lineage.document_type must be era-geometry-lineage")
+    if not isinstance(document["pack_id"], str) or not document["pack_id"]:
+        raise SchemaValidationError("lineage.pack_id must be a non-empty string")
+    if not isinstance(document["era"], str) or not document["era"]:
+        raise SchemaValidationError("lineage.era must be a non-empty string")
+    if not isinstance(document["row_count"], int) or document["row_count"] < 0:
+        raise SchemaValidationError("lineage.row_count must be a non-negative integer")
+    rows = document["rows"]
+    if not isinstance(rows, list):
+        raise SchemaValidationError("lineage.rows must be a list")
+    if document["row_count"] != len(rows):
+        raise SchemaValidationError("lineage.row_count does not match len(rows)")
+    allowed_ops = {
+        "identity",
+        "replace",
+        "split_child",
+        "merge_parent",
+        "reshape",
+    }
+    for index, row in enumerate(rows):
+        path = f"lineage.rows[{index}]"
+        _require_object(row, path)
+        _require_keys(
+            row,
+            ["era_province_id", "scaffold_province_id", "operation"],
+            path,
+        )
+        for key in ("era_province_id", "scaffold_province_id", "operation"):
+            if not isinstance(row[key], str) or not row[key].strip():
+                raise SchemaValidationError(f"{path}.{key} must be a non-empty string")
+        if row["operation"] not in allowed_ops:
+            raise SchemaValidationError(
+                f"{path}.operation must be one of {sorted(allowed_ops)}"
+            )
+
+
+def validate_curator_bundle(document: dict[str, Any]) -> None:
+    """Validate core invariants of an M17 curator-bundle manifest."""
+    from gpm.curation.bundles import CuratorBundleError
+    from gpm.curation.bundles import validate_curator_bundle as _validate
+
+    try:
+        _validate(document, check_files=False, check_scenarios=False)
+    except CuratorBundleError as exc:
+        raise SchemaValidationError(str(exc)) from exc
+
+
+def validate_scenario_diff_report(report: dict[str, Any]) -> None:
+    """Validate core invariants of an M17 ownership diff report."""
+    schema = load_schema("scenario-diff-report")
+    _require_object(report, "report")
+    _require_keys(report, schema["required"], "report")
+    if report["schema_version"] != schema["properties"]["schema_version"]["const"]:
+        raise SchemaValidationError("report.schema_version must be 0.1.0")
+    if report["report_type"] != "scenario_ownership_diff":
+        raise SchemaValidationError("report.report_type must be scenario_ownership_diff")
+    if report.get("milestone") != "M17":
+        raise SchemaValidationError("report.milestone must be M17")
+    if report["status"] not in {"identical", "changed"}:
+        raise SchemaValidationError("report.status must be identical or changed")
+    _require_object(report["base"], "report.base")
+    _require_object(report["target"], "report.target")
+    _require_object(report["summary"], "report.summary")
+    _require_keys(
+        report["summary"],
+        [
+            "base_row_count",
+            "target_row_count",
+            "shared_province_count",
+            "owner_change_count",
+            "controller_change_count",
+            "disputed_change_count",
+            "added_province_count",
+            "removed_province_count",
+            "contested_province_count",
+        ],
+        "report.summary",
+    )
+    if not isinstance(report["owner_count_delta"], dict):
+        raise SchemaValidationError("report.owner_count_delta must be an object")
+    if not isinstance(report["changes"], list):
+        raise SchemaValidationError("report.changes must be a list")
+
+
 def validate_scenario_politics_qa_report(report: dict[str, Any]) -> None:
     """Validate the core invariants of the M11 scenario politics QA report."""
     schema = load_schema("scenario-politics-qa-report")

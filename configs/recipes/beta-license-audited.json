@@ -4,12 +4,12 @@
   "label": "Public beta license-audited dual-face release",
   "milestone": "M14",
   "profile_id": "modern-small",
-  "scenarios": ["modern-baseline", "official-1836", "official-1444"],
+  "scenarios": ["modern-baseline", "official-1836", "official-1444", "official-1936"],
   "sample_countries": ["FRA", "BEL", "NLD", "LUX", "DEU"],
   "include_seas": true,
   "include_topology_qa": true,
   "include_atlas": true,
-  "description": "Reproducible recipe for the M14 license-audited beta sample. Geometry remains scaffold-baseline; politics is curated-politics for official-1836 and official-1444. Restricted and share-alike sources stay off the public path.",
+  "description": "Reproducible recipe for the M14 license-audited beta sample (extended for M16 official-1936). Geometry remains scaffold-baseline; politics is curated-politics for official-1836, official-1444, and official-1936. Restricted and share-alike sources stay off the public path.",
   "steps": [
     {
       "id": "download-sources",

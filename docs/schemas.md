@@ -109,6 +109,24 @@ sample filters, counts, and file inventory. The schema is
 `release-manifest.schema.json`. Accuracy labels ship as `accuracy_label.json`
 and `ACCURACY.md`. See [m9-alpha-release.md](m9-alpha-release.md).
 
+## M15 Era Geometry Packs and Lineage
+
+`gpm era-geometry apply` consumes pack definitions under
+`configs/era_geometry/` (`era-geometry-pack.schema.json`) and writes a lineage
+map (`era-geometry-lineage.schema.json`) plus period provinces and boundary
+hints. Soft mode overlays frontier bands; hard mode replace/split/identity
+operations rewrite priority-region polygons while preserving scaffold IDs in
+lineage rows. See [m15-era-geometry.md](m15-era-geometry.md).
+
+## M16 Multi-Era Packs and Migration Notes
+
+`gpm multi-era build` consumes pack definitions under `configs/multi_era/`
+(`multi-era-pack.schema.json`): at least two era slots, each pairing an optional
+era-geometry pack with a scenario, plus a region quality matrix. Migration notes
+for consumers are `multi-era-migration-notes.schema.json` (also rendered as
+`MIGRATION.md`). Cross-era joins use `scaffold_province_id`. See
+[m16-multi-era.md](m16-multi-era.md).
+
 ## M14 License Audit Reports
 
 `gpm release beta` writes `license_audit.json` (and `LICENSE_AUDIT.md`) describing

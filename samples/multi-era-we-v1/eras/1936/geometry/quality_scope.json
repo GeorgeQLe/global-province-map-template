@@ -1,0 +1,42 @@
+{
+  "do_not_claim": [
+    "period-correct province geometry worldwide",
+    "Paradox-grade interwar microborders or Maginot fort blueprints",
+    "legal 1936 frontiers \u2014 hints are illustrative for the historical sniff test"
+  ],
+  "era": "1936",
+  "pack_id": "we-1936-v1",
+  "period_true_scope": [
+    "western-europe"
+  ],
+  "priority_region": {
+    "bbox": [
+      -5.5,
+      42.0,
+      12.0,
+      54.0
+    ],
+    "id": "western-europe",
+    "label": "Western Europe",
+    "notes": "M16 interwar era geometry pack. Maginot / Rhineland readability for the HOI-leaning 1936 start.",
+    "parent_country_ids": [
+      "FRA",
+      "BEL",
+      "NLD",
+      "LUX",
+      "DEU"
+    ]
+  },
+  "quality_tier": "period-geometry",
+  "scaffold_backed_scope": [
+    "outside priority_region",
+    "seas",
+    "rest of world"
+  ],
+  "schema_version": "0.1.0",
+  "source_notes": [
+    "Curator-authored soft frontier bands and sample hard overrides for M16 multi-era packs.",
+    "Not derived from proprietary game maps.",
+    "Hard overrides target beta sample province_ids (sample_*); they skip cleanly on full Natural Earth builds."
+  ]
+}

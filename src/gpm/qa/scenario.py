@@ -112,7 +112,7 @@ def run_scenario_politics_qa(
     golden_analysis = "skipped"
     if golden is not None:
         golden_analysis = "complete"
-        _check_golden(records, golden, findings)
+        _check_golden(records, golden, findings, land_adjacency=land_adjacency)
 
     findings.sort(key=_finding_sort_key)
     error_count = sum(item["severity"] == "error" for item in findings)
@@ -644,12 +644,17 @@ def _check_golden(
     records: list[dict[str, Any]],
     golden: dict[str, Any],
     findings: list[dict[str, Any]],
+    *,
+    land_adjacency: dict[str, set[str]] | None = None,
 ) -> None:
     by_id = {
         str(row["province_id"]): row
         for row in records
         if isinstance(row.get("province_id"), str) and row["province_id"]
     }
+    counts = Counter(
+        tag for row in records if (tag := _tag_or_none(row.get("owner"))) is not None
+    )
 
     province_owners = golden.get("province_owners")
     if province_owners is not None:
@@ -699,11 +704,6 @@ def _check_golden(
                 "golden.min_owner_counts must be an object of owner tag → minimum province count.",
             )
         else:
-            counts = Counter(
-                tag
-                for row in records
-                if (tag := _tag_or_none(row.get("owner"))) is not None
-            )
             for owner, minimum in sorted(min_owner_counts.items(), key=lambda item: str(item[0])):
                 tag = str(owner).strip()
                 try:
@@ -734,6 +734,322 @@ def _check_golden(
                         owner=tag,
                         actual_count=actual,
                         minimum_count=required,
+                    )
+
+    # --- M17 golden-border suite extensions ---
+    max_owner_counts = golden.get("max_owner_counts")
+    if max_owner_counts is not None:
+        if not isinstance(max_owner_counts, dict):
+            _add_finding(
+                findings,
+                "GOLDEN_CONFIG_INVALID",
+                "error",
+                [],
+                "golden.max_owner_counts must be an object of owner tag → maximum province count.",
+            )
+        else:
+            for owner, maximum in sorted(max_owner_counts.items(), key=lambda item: str(item[0])):
+                tag = str(owner).strip()
+                try:
+                    allowed = int(maximum)
+                except (TypeError, ValueError):
+                    _add_finding(
+                        findings,
+                        "GOLDEN_CONFIG_INVALID",
+                        "error",
+                        [],
+                        f"golden.max_owner_counts[{tag!r}] must be an integer.",
+                    )
+                    continue
+                actual = counts.get(tag, 0)
+                if actual > allowed:
+                    affected = [
+                        str(row["province_id"])
+                        for row in records
+                        if _tag_or_none(row.get("owner")) == tag
+                        and isinstance(row.get("province_id"), str)
+                    ][:40]
+                    _add_finding(
+                        findings,
+                        "GOLDEN_MAX_COUNT_FAILED",
+                        "error",
+                        affected,
+                        f"Owner {tag!r} has {actual} province(s); golden maximum is {allowed}.",
+                        owner=tag,
+                        actual_count=actual,
+                        maximum_count=allowed,
+                    )
+
+    required_owners = golden.get("required_owners")
+    if required_owners is not None:
+        if not isinstance(required_owners, list):
+            _add_finding(
+                findings,
+                "GOLDEN_CONFIG_INVALID",
+                "error",
+                [],
+                "golden.required_owners must be a list of owner tags.",
+            )
+        else:
+            for raw in required_owners:
+                tag = str(raw).strip()
+                if not tag:
+                    continue
+                if counts.get(tag, 0) < 1:
+                    _add_finding(
+                        findings,
+                        "GOLDEN_REQUIRED_OWNER_MISSING",
+                        "error",
+                        [],
+                        f"Required owner tag {tag!r} owns zero provinces.",
+                        owner=tag,
+                    )
+
+    forbidden_owners = golden.get("forbidden_owners")
+    if forbidden_owners is not None:
+        if not isinstance(forbidden_owners, list):
+            _add_finding(
+                findings,
+                "GOLDEN_CONFIG_INVALID",
+                "error",
+                [],
+                "golden.forbidden_owners must be a list of owner tags.",
+            )
+        else:
+            for raw in forbidden_owners:
+                tag = str(raw).strip()
+                if not tag:
+                    continue
+                actual = counts.get(tag, 0)
+                if actual > 0:
+                    affected = [
+                        str(row["province_id"])
+                        for row in records
+                        if _tag_or_none(row.get("owner")) == tag
+                        and isinstance(row.get("province_id"), str)
+                    ][:40]
+                    _add_finding(
+                        findings,
+                        "GOLDEN_FORBIDDEN_OWNER",
+                        "error",
+                        affected,
+                        f"Forbidden owner tag {tag!r} owns {actual} province(s).",
+                        owner=tag,
+                        actual_count=actual,
+                    )
+
+    disputed_provinces = golden.get("disputed_provinces")
+    if disputed_provinces is not None:
+        if not isinstance(disputed_provinces, dict):
+            _add_finding(
+                findings,
+                "GOLDEN_CONFIG_INVALID",
+                "error",
+                [],
+                "golden.disputed_provinces must be an object of province_id → boolean.",
+            )
+        else:
+            for province_id, expected_flag in sorted(
+                disputed_provinces.items(), key=lambda item: str(item[0])
+            ):
+                pid = str(province_id)
+                expected = bool(expected_flag)
+                row = by_id.get(pid)
+                if row is None:
+                    _add_finding(
+                        findings,
+                        "GOLDEN_DISPUTED_MISMATCH",
+                        "error",
+                        [pid],
+                        f"Golden disputed check missing province {pid!r}.",
+                        expected_disputed=expected,
+                    )
+                    continue
+                actual = bool(row.get("disputed"))
+                if actual != expected:
+                    _add_finding(
+                        findings,
+                        "GOLDEN_DISPUTED_MISMATCH",
+                        "error",
+                        [pid],
+                        f"Golden disputed for {pid!r}: expected {expected}, found {actual}.",
+                        expected_disputed=expected,
+                        actual_disputed=actual,
+                    )
+
+    border_pairs = golden.get("border_pairs")
+    if border_pairs is not None:
+        if not isinstance(border_pairs, list):
+            _add_finding(
+                findings,
+                "GOLDEN_CONFIG_INVALID",
+                "error",
+                [],
+                "golden.border_pairs must be a list of border pair objects.",
+            )
+        else:
+            for index, pair in enumerate(border_pairs):
+                path = f"golden.border_pairs[{index}]"
+                if not isinstance(pair, dict):
+                    _add_finding(
+                        findings,
+                        "GOLDEN_CONFIG_INVALID",
+                        "error",
+                        [],
+                        f"{path} must be an object.",
+                    )
+                    continue
+                left_id = str(pair.get("left_province_id") or "").strip()
+                right_id = str(pair.get("right_province_id") or "").strip()
+                if not left_id or not right_id:
+                    _add_finding(
+                        findings,
+                        "GOLDEN_CONFIG_INVALID",
+                        "error",
+                        [],
+                        f"{path} requires left_province_id and right_province_id.",
+                    )
+                    continue
+                require_adjacent = pair.get("require_adjacent", True)
+                if require_adjacent is not False:
+                    if land_adjacency is None:
+                        _add_finding(
+                            findings,
+                            "GOLDEN_BORDER_ADJACENCY_SKIPPED",
+                            "warning",
+                            [left_id, right_id],
+                            f"{path}: adjacency unavailable; border adjacency not verified.",
+                        )
+                    else:
+                        neighbors = land_adjacency.get(left_id, set())
+                        if right_id not in neighbors:
+                            _add_finding(
+                                findings,
+                                "GOLDEN_BORDER_NOT_ADJACENT",
+                                "error",
+                                [left_id, right_id],
+                                f"Golden border pair is not land/strait adjacent: "
+                                f"{left_id!r} — {right_id!r}.",
+                            )
+                left_owner = pair.get("left_owner")
+                right_owner = pair.get("right_owner")
+                left_row = by_id.get(left_id)
+                right_row = by_id.get(right_id)
+                if left_owner is not None:
+                    expected = str(left_owner).strip()
+                    actual = _tag_or_none(left_row.get("owner")) if left_row else None
+                    if left_row is None or actual != expected:
+                        _add_finding(
+                            findings,
+                            "GOLDEN_BORDER_OWNER_MISMATCH",
+                            "error",
+                            [left_id, right_id],
+                            f"Golden border left owner for {left_id!r}: "
+                            f"expected {expected!r}, found {actual!r}.",
+                            expected_owner=expected,
+                            actual_owner=actual,
+                        )
+                if right_owner is not None:
+                    expected = str(right_owner).strip()
+                    actual = _tag_or_none(right_row.get("owner")) if right_row else None
+                    if right_row is None or actual != expected:
+                        _add_finding(
+                            findings,
+                            "GOLDEN_BORDER_OWNER_MISMATCH",
+                            "error",
+                            [left_id, right_id],
+                            f"Golden border right owner for {right_id!r}: "
+                            f"expected {expected!r}, found {actual!r}.",
+                            expected_owner=expected,
+                            actual_owner=actual,
+                        )
+
+    owner_adjacencies = golden.get("owner_adjacencies")
+    if owner_adjacencies is not None:
+        if not isinstance(owner_adjacencies, list):
+            _add_finding(
+                findings,
+                "GOLDEN_CONFIG_INVALID",
+                "error",
+                [],
+                "golden.owner_adjacencies must be a list.",
+            )
+        elif land_adjacency is None:
+            _add_finding(
+                findings,
+                "GOLDEN_BORDER_ADJACENCY_SKIPPED",
+                "warning",
+                [],
+                "golden.owner_adjacencies present but adjacency unavailable; skipped.",
+            )
+        else:
+            owner_of = {
+                pid: _tag_or_none(row.get("owner"))
+                for pid, row in by_id.items()
+            }
+            for index, rule in enumerate(owner_adjacencies):
+                path = f"golden.owner_adjacencies[{index}]"
+                if not isinstance(rule, dict):
+                    _add_finding(
+                        findings,
+                        "GOLDEN_CONFIG_INVALID",
+                        "error",
+                        [],
+                        f"{path} must be an object.",
+                    )
+                    continue
+                owner_a = str(rule.get("owner_a") or "").strip()
+                owner_b = str(rule.get("owner_b") or "").strip()
+                try:
+                    minimum = int(rule.get("min_shared_edges"))
+                except (TypeError, ValueError):
+                    _add_finding(
+                        findings,
+                        "GOLDEN_CONFIG_INVALID",
+                        "error",
+                        [],
+                        f"{path}.min_shared_edges must be an integer.",
+                    )
+                    continue
+                if not owner_a or not owner_b or minimum < 1:
+                    _add_finding(
+                        findings,
+                        "GOLDEN_CONFIG_INVALID",
+                        "error",
+                        [],
+                        f"{path} requires owner_a, owner_b, and min_shared_edges >= 1.",
+                    )
+                    continue
+                edge_count = 0
+                sample_edges: list[str] = []
+                # Count undirected edges once (left < right).
+                for left_id, neighbors in land_adjacency.items():
+                    left_owner = owner_of.get(left_id)
+                    if left_owner not in {owner_a, owner_b}:
+                        continue
+                    for right_id in neighbors:
+                        if left_id >= right_id:
+                            continue
+                        right_owner = owner_of.get(right_id)
+                        if right_owner is None:
+                            continue
+                        pair = {left_owner, right_owner}
+                        if pair == {owner_a, owner_b}:
+                            edge_count += 1
+                            if len(sample_edges) < 8:
+                                sample_edges.append(f"{left_id}|{right_id}")
+                if edge_count < minimum:
+                    _add_finding(
+                        findings,
+                        "GOLDEN_OWNER_ADJACENCY_FAILED",
+                        "error",
+                        sample_edges,
+                        f"Owners {owner_a!r}/{owner_b!r} share {edge_count} edge(s); "
+                        f"golden minimum is {minimum}.",
+                        owner_a=owner_a,
+                        owner_b=owner_b,
+                        actual_count=edge_count,
+                        minimum_count=minimum,
                     )
 
 

@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/global-province-map/multi-era-pack.schema.json",
+  "title": "Global Province Map Multi-Era Pack",
+  "description": "M16 multi-era geometry + politics pack: paired era slots, region quality matrix, and migration notes.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "pack_id",
+    "display_name",
+    "priority_region",
+    "eras",
+    "region_quality_matrix"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "pack_id": { "type": "string", "minLength": 1 },
+    "display_name": { "type": "string", "minLength": 1 },
+    "priority_region": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["id", "label"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "label": { "type": "string", "minLength": 1 },
+        "parent_country_ids": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "bbox": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": { "type": "number" }
+        },
+        "notes": { "type": "string" }
+      }
+    },
+    "eras": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "era",
+          "scenario_id",
+          "politics_quality_tier",
+          "geometry_quality_tier"
+        ],
+        "properties": {
+          "era": { "type": "string", "minLength": 1 },
+          "scenario_id": { "type": "string", "minLength": 1 },
+          "era_geometry_pack_id": { "type": "string", "minLength": 1 },
+          "geometry_quality_tier": {
+            "type": "string",
+            "enum": ["scaffold-baseline", "curated-politics", "period-geometry"]
+          },
+          "politics_quality_tier": {
+            "type": "string",
+            "enum": ["scaffold-baseline", "curated-politics", "period-geometry"]
+          },
+          "recommended_profile": { "type": "string", "minLength": 1 },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "region_quality_matrix": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["region_id", "label", "by_era"],
+        "properties": {
+          "region_id": { "type": "string", "minLength": 1 },
+          "label": { "type": "string", "minLength": 1 },
+          "by_era": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "required": ["geometry", "politics"],
+              "properties": {
+                "geometry": {
+                  "type": "string",
+                  "enum": [
+                    "scaffold-baseline",
+                    "curated-politics",
+                    "period-geometry"
+                  ]
+                },
+                "politics": {
+                  "type": "string",
+                  "enum": [
+                    "scaffold-baseline",
+                    "curated-politics",
+                    "period-geometry"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "migration_notes": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "summary": { "type": "string" },
+        "lineage_strategy": { "type": "string" },
+        "consumer_guidance": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "breaking_changes": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "do_not_claim": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "source_notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "do_not_claim": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

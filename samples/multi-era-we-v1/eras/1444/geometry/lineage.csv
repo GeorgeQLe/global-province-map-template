@@ -1,0 +1,8 @@
+era_province_id,scaffold_province_id,operation,display_name,part_index,part_count,in_priority_region,geometry_mode,reason
+era_be_flanders,sample_be_flanders,replace,Flanders (period),,,true,hard_overrides,Slight reshape toward a denser Low Countries footprint for Burgundian readability.
+era_de_cologne,sample_de_rhineland,split_child,Cologne,1,2,true,hard_overrides,Separate ecclesiastical Cologne from residual Rhineland so 1444 politics are not painted as modern DE-NW.
+era_de_rhineland_residual,sample_de_rhineland,split_child,Rhineland residual,2,2,true,hard_overrides,Separate ecclesiastical Cologne from residual Rhineland so 1444 politics are not painted as modern DE-NW.
+sample_fr_normandy,sample_fr_normandy,identity,Normandy coast,,,true,hard_overrides,Normandy retained as scaffold shape in v1; soft Channel hint covers Calais story.
+sample_fr_paris,sample_fr_paris,identity,Paris basin,,,true,hard_overrides,French crown core retained; lineage documents priority-region identity mapping.
+era_lu_luxembourg,sample_lu_core,replace,Luxembourg (Burgundian),,,true,hard_overrides,Period-facing label and modest footprint nudge for Burgundian Luxembourg.
+sample_nl_holland,sample_nl_holland,identity,Holland,,,true,hard_overrides,Holland retained; Burgundian story told via politics + Low Countries band.

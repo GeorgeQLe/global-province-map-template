@@ -1,5 +1,52 @@
 # History
 
+## 2026-07-11 - Ship M15–M17 + landing redeploy
+
+- Committed and pushed M15 era geometry, M16 multi-era packs / official-1936,
+  and M17 curation workflow to `main`.
+- Redeployed `landing/` to Vercel production (`gpm release site --deploy`).
+- Next: post-M17 product work (culture/religion paint, PMTiles, broader
+  period geometry) from roadmap.
+
+## 2026-07-11 - M17 Curation Workflow Hardening
+
+- Added external curator bundles (`bundle_manifest.json`) with license lineage,
+  golden paths, contribution checklist, and deprecation policy fields.
+- `gpm curation list|validate|import|diff|checklist` for community workflow.
+- Ownership diffs: tag counts, owner/controller/disputed changes, contested
+  provinces; schema `scenario-diff-report`.
+- Expanded golden-border suite in `gpm qa scenario`: max counts, required /
+  forbidden owners, disputed flags, border pairs, owner-adjacency floors.
+- Sample `samples/curator-bundle-example/`; docs `docs/m17-curation.md`;
+  tests `tests/test_m17_curation.py`.
+- Next: culture/religion paint, PMTiles, broader period geometry (post-M17).
+
+## 2026-07-11 - M16 Multi-Era Geometry + Politics Packs
+
+- Added multi-era pack system: `configs/multi_era/`, region quality matrix,
+  migration notes, and `gpm multi-era list|validate|build|migration`.
+- Era geometry packs `we-1836-v1` and `we-1936-v1` alongside existing
+  `we-1444-v1`; multi-era pack `we-multi-era-v1` pairs geometry + politics for
+  three official eras with per-region quality tiers.
+- Official HOI-leaning scenario `official-1936` (curated-politics) with golden
+  floors, recipe, and accuracy-label recognition; beta defaults include 1936.
+- Sample under `samples/multi-era-we-v1/`; demo ships live 1936 tab and period
+  geometry / boundary hints for 1444 / 1836 / 1936.
+- Docs `docs/m16-multi-era.md`; tests `tests/test_m16_multi_era.py`.
+- Next project task was M17 curation workflow hardening (completed).
+
+## 2026-07-10 - M15 Era-Aware Geometry v1 (Western Europe 1444)
+
+- Added era-geometry pack system: `configs/era_geometry/`, schemas for packs and
+  lineage maps, and `gpm era-geometry list|validate|apply`.
+- Modes: soft `boundary_hints` overlays + hard `replace`/`split`/`identity`
+  overrides with scaffold↔era ID lineage (JSON + CSV).
+- Bundled priority pack `we-1444-v1` for official-1444 Western Europe; sample
+  under `samples/era-geometry-we-1444/`; demo toggles for period geometry and
+  boundary hints; quality labeling notes priority-region scope.
+- Docs `docs/m15-era-geometry.md`; tests `tests/test_m15_era_geometry.py`.
+- Next project task was M16 multi-era geometry + politics packs (completed).
+
 ## 2026-07-10 - Demo label font fix + redeploy
 
 - Fixed MapLibre province labels in `landing/demo/demo.js`: demotiles hosts
@@ -14,7 +61,7 @@
   same demo GeoJSON; linked marketing page into `/demo`.
 - Extended `gpm release site` validation for demo files/snippets; updated
   cache headers, docs, README/ROADMAP, and tests.
-- Next project task: implement M15 era-aware geometry v1 for priority regions.
+- Next project task was M15 era-aware geometry v1 (completed later the same day).
 
 ## 2026-07-10 - M14.5 Public Landing Page + Vercel Deploy
 
@@ -24,7 +71,7 @@
   `--ensure-repo` via `gh`, `--push` commit of landing assets, and `--deploy`
   to Vercel (`vercel deploy --yes [--prod]`).
 - Added `docs/m14.5-landing.md` and tests for validation + CLI dry-run.
-- Next project task: implement M15 era-aware geometry v1 for priority regions.
+- Next project task was M15 era-aware geometry v1 (completed later the same day).
 
 ## 2026-07-10 - M14 License-Audited Beta Release
 

@@ -1,0 +1,84 @@
+{
+  "document_type": "era-geometry-lineage",
+  "era": "1444",
+  "milestone": "M15",
+  "notes": [
+    "Curator-authored soft frontier bands and sample hard overrides for M15 priority-region proof.",
+    "Not derived from proprietary game maps. Not a full OpenHistoricalMap extract.",
+    "Hard overrides target beta sample province_ids (sample_*); they skip cleanly on full Natural Earth builds.",
+    "Soft boundary hints are geographic and apply on any scaffold that intersects the priority region."
+  ],
+  "pack_id": "we-1444-v1",
+  "row_count": 7,
+  "rows": [
+    {
+      "display_name": "Flanders (period)",
+      "era_province_id": "era_be_flanders",
+      "geometry_mode": "hard_overrides",
+      "in_priority_region": true,
+      "operation": "replace",
+      "reason": "Slight reshape toward a denser Low Countries footprint for Burgundian readability.",
+      "scaffold_province_id": "sample_be_flanders"
+    },
+    {
+      "display_name": "Cologne",
+      "era_province_id": "era_de_cologne",
+      "geometry_mode": "hard_overrides",
+      "in_priority_region": true,
+      "operation": "split_child",
+      "part_count": 2,
+      "part_index": 1,
+      "reason": "Separate ecclesiastical Cologne from residual Rhineland so 1444 politics are not painted as modern DE-NW.",
+      "scaffold_province_id": "sample_de_rhineland"
+    },
+    {
+      "display_name": "Rhineland residual",
+      "era_province_id": "era_de_rhineland_residual",
+      "geometry_mode": "hard_overrides",
+      "in_priority_region": true,
+      "operation": "split_child",
+      "part_count": 2,
+      "part_index": 2,
+      "reason": "Separate ecclesiastical Cologne from residual Rhineland so 1444 politics are not painted as modern DE-NW.",
+      "scaffold_province_id": "sample_de_rhineland"
+    },
+    {
+      "display_name": "Normandy coast",
+      "era_province_id": "sample_fr_normandy",
+      "geometry_mode": "hard_overrides",
+      "in_priority_region": true,
+      "operation": "identity",
+      "reason": "Normandy retained as scaffold shape in v1; soft Channel hint covers Calais story.",
+      "scaffold_province_id": "sample_fr_normandy"
+    },
+    {
+      "display_name": "Paris basin",
+      "era_province_id": "sample_fr_paris",
+      "geometry_mode": "hard_overrides",
+      "in_priority_region": true,
+      "operation": "identity",
+      "reason": "French crown core retained; lineage documents priority-region identity mapping.",
+      "scaffold_province_id": "sample_fr_paris"
+    },
+    {
+      "display_name": "Luxembourg (Burgundian)",
+      "era_province_id": "era_lu_luxembourg",
+      "geometry_mode": "hard_overrides",
+      "in_priority_region": true,
+      "operation": "replace",
+      "reason": "Period-facing label and modest footprint nudge for Burgundian Luxembourg.",
+      "scaffold_province_id": "sample_lu_core"
+    },
+    {
+      "display_name": "Holland",
+      "era_province_id": "sample_nl_holland",
+      "geometry_mode": "hard_overrides",
+      "in_priority_region": true,
+      "operation": "identity",
+      "reason": "Holland retained; Burgundian story told via politics + Low Countries band.",
+      "scaffold_province_id": "sample_nl_holland"
+    }
+  ],
+  "scenario_id": "official-1444",
+  "schema_version": "0.1.0"
+}

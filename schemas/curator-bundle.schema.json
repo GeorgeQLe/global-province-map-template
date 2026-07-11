@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/global-province-map/curator-bundle.schema.json",
+  "title": "Global Province Map Curator Bundle",
+  "description": "M17 external curator scenario bundle manifest: community or third-party politics overlays with license lineage, golden checks, and contribution checklist.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "document_type",
+    "bundle_id",
+    "display_name",
+    "license",
+    "scenarios"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "document_type": { "const": "curator-bundle" },
+    "bundle_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z0-9][a-z0-9._-]*$"
+    },
+    "display_name": { "type": "string", "minLength": 1 },
+    "description": { "type": "string" },
+    "author": { "type": "string" },
+    "homepage": { "type": "string" },
+    "license": {
+      "type": "string",
+      "minLength": 1,
+      "description": "SPDX id or short license name for the bundle contents."
+    },
+    "source_lineage": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "license_lineage": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "target_scaffold": {
+      "type": "string",
+      "description": "Human-readable pin for which scaffold/province set this bundle expects."
+    },
+    "recommended_profile": { "type": "string", "minLength": 1 },
+    "scenarios": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["scenario_id", "path"],
+        "properties": {
+          "scenario_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z0-9][a-z0-9._-]*$"
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Relative path to scenario JSON inside the bundle."
+          },
+          "golden_path": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Optional relative path to golden check JSON."
+          },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "deprecation": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "policy": { "type": "string" },
+        "supersedes": { "type": ["string", "null"] },
+        "superseded_by": { "type": ["string", "null"] },
+        "scaffold_pin": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    },
+    "checklist": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Self-attested PR / contribution checklist fields.",
+      "properties": {
+        "sources_documented": { "type": "boolean" },
+        "licenses_reviewed": { "type": "boolean" },
+        "golden_borders_present": { "type": "boolean" },
+        "qa_pass_claimed": { "type": "boolean" },
+        "no_restricted_sources": { "type": "boolean" },
+        "notes": { "type": "string" }
+      }
+    },
+    "notes": { "type": "string" }
+  }
+}

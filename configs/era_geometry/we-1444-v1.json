@@ -1,0 +1,229 @@
+{
+  "schema_version": "0.1.0",
+  "pack_id": "we-1444-v1",
+  "era": "1444",
+  "start_date": "1444-11-11",
+  "scenario_id": "official-1444",
+  "display_name": "Western Europe 1444 period geometry v1",
+  "quality_tier": "period-geometry",
+  "priority_region": {
+    "id": "western-europe",
+    "label": "Western Europe",
+    "parent_country_ids": ["FRA", "BEL", "NLD", "LUX", "DEU"],
+    "bbox": [-5.5, 42.0, 12.0, 54.0],
+    "notes": "M15 priority region. Outside these modern ISO parents, scaffold geometry is retained."
+  },
+  "geometry_modes": ["boundary_hints", "hard_overrides"],
+  "period_true_scope": ["western-europe"],
+  "scaffold_backed_scope": ["outside priority_region", "seas", "rest of world"],
+  "source_notes": [
+    "Curator-authored soft frontier bands and sample hard overrides for M15 priority-region proof.",
+    "Not derived from proprietary game maps. Not a full OpenHistoricalMap extract.",
+    "Hard overrides target beta sample province_ids (sample_*); they skip cleanly on full Natural Earth builds.",
+    "Soft boundary hints are geographic and apply on any scaffold that intersects the priority region."
+  ],
+  "do_not_claim": [
+    "period-correct province geometry worldwide",
+    "Paradox-grade HRE microborders or French appanage completeness",
+    "legal 1444 frontiers — hints are illustrative for the historical sniff test"
+  ],
+  "boundary_hints": [
+    {
+      "hint_id": "we1444-burgundy-low-countries-south",
+      "label": "Burgundian Low Countries southern frontier",
+      "kind": "frontier",
+      "confidence": "illustrative",
+      "related_tags": ["BUR", "FRA"],
+      "notes": "Soft band between Burgundian Flanders and French crown lands for 1444 readability.",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [2.2, 50.4],
+          [3.0, 50.35],
+          [3.8, 50.3],
+          [4.5, 50.2],
+          [5.2, 50.05],
+          [5.9, 49.85]
+        ]
+      }
+    },
+    {
+      "hint_id": "we1444-franco-burgundian",
+      "label": "Franco-Burgundian frontier band",
+      "kind": "frontier",
+      "confidence": "illustrative",
+      "related_tags": ["FRA", "BUR"],
+      "notes": "Illustrative band east of the Paris basin toward Burgundian Luxembourg.",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [3.0, 49.0],
+          [3.8, 49.1],
+          [4.6, 49.2],
+          [5.3, 49.35],
+          [5.9, 49.5]
+        ]
+      }
+    },
+    {
+      "hint_id": "we1444-rhine-corridor",
+      "label": "Rhine corridor / Lower Rhine frontier",
+      "kind": "frontier",
+      "confidence": "illustrative",
+      "related_tags": ["COL", "BUR"],
+      "notes": "Soft frontier hint along the Lower Rhine where modern DEU outlines mislead for 1444.",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [6.0, 50.2],
+          [6.4, 50.6],
+          [6.8, 51.0],
+          [7.1, 51.4],
+          [7.3, 51.8]
+        ]
+      }
+    },
+    {
+      "hint_id": "we1444-channel-calais",
+      "label": "Channel / Calais approach",
+      "kind": "frontier",
+      "confidence": "illustrative",
+      "related_tags": ["ENG", "FRA"],
+      "notes": "Illustrative Channel approach toward English Calais interests (soft only).",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [0.5, 50.2],
+          [1.2, 50.5],
+          [1.8, 50.8],
+          [2.4, 51.0]
+        ]
+      }
+    },
+    {
+      "hint_id": "we1444-low-countries-core-band",
+      "label": "Burgundian Low Countries core band",
+      "kind": "disputed_band",
+      "confidence": "illustrative",
+      "related_tags": ["BUR"],
+      "notes": "Soft band linking Flanders–Luxembourg–Holland political story without a full redraw.",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [3.2, 50.4],
+            [5.5, 50.4],
+            [5.8, 51.0],
+            [5.0, 52.2],
+            [4.0, 52.2],
+            [3.2, 51.2],
+            [3.2, 50.4]
+          ]
+        ]
+      }
+    }
+  ],
+  "hard_overrides": [
+    {
+      "operation": "split",
+      "scaffold_province_id": "sample_de_rhineland",
+      "reason": "Separate ecclesiastical Cologne from residual Rhineland so 1444 politics are not painted as modern DE-NW.",
+      "children": [
+        {
+          "era_province_id": "era_de_cologne",
+          "display_name": "Cologne",
+          "parent_region_id": "DE-NW",
+          "parent_country_id": "DEU",
+          "coastal": false,
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [6.5, 50.5],
+                [7.0, 50.5],
+                [7.0, 51.5],
+                [6.5, 51.5],
+                [6.5, 50.5]
+              ]
+            ]
+          }
+        },
+        {
+          "era_province_id": "era_de_rhineland_residual",
+          "display_name": "Rhineland residual",
+          "parent_region_id": "DE-NW",
+          "parent_country_id": "DEU",
+          "coastal": false,
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [7.0, 50.5],
+                [7.5, 50.5],
+                [7.5, 51.5],
+                [7.0, 51.5],
+                [7.0, 50.5]
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "operation": "replace",
+      "scaffold_province_id": "sample_be_flanders",
+      "era_province_id": "era_be_flanders",
+      "display_name": "Flanders (period)",
+      "reason": "Slight reshape toward a denser Low Countries footprint for Burgundian readability.",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [2.9, 50.45],
+            [4.3, 50.45],
+            [4.35, 51.25],
+            [2.95, 51.25],
+            [2.9, 50.45]
+          ]
+        ]
+      }
+    },
+    {
+      "operation": "replace",
+      "scaffold_province_id": "sample_lu_core",
+      "era_province_id": "era_lu_luxembourg",
+      "display_name": "Luxembourg (Burgundian)",
+      "reason": "Period-facing label and modest footprint nudge for Burgundian Luxembourg.",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [5.7, 49.45],
+            [6.45, 49.45],
+            [6.45, 50.05],
+            [5.7, 50.05],
+            [5.7, 49.45]
+          ]
+        ]
+      }
+    },
+    {
+      "operation": "identity",
+      "scaffold_province_id": "sample_fr_paris",
+      "era_province_id": "sample_fr_paris",
+      "reason": "French crown core retained; lineage documents priority-region identity mapping."
+    },
+    {
+      "operation": "identity",
+      "scaffold_province_id": "sample_fr_normandy",
+      "era_province_id": "sample_fr_normandy",
+      "reason": "Normandy retained as scaffold shape in v1; soft Channel hint covers Calais story."
+    },
+    {
+      "operation": "identity",
+      "scaffold_province_id": "sample_nl_holland",
+      "era_province_id": "sample_nl_holland",
+      "reason": "Holland retained; Burgundian story told via politics + Low Countries band."
+    }
+  ]
+}

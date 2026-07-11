@@ -1,0 +1,79 @@
+{
+  "schema_version": "0.1.0",
+  "scenario_id": "community-demo-1444",
+  "label": "Community demo 1444 (sample WE)",
+  "era": "1444",
+  "start_date": "1444-11-11",
+  "end_date": null,
+  "description": "Minimal community-style ownership overlay for the Western Europe sample scaffold. Demonstrates external curator bundles (M17), not official-era depth.",
+  "map_mode": "community curator demo",
+  "quality_tier": "scaffold-baseline",
+  "official_era": false,
+  "recommended_profile": "modern-small",
+  "priority_theaters": ["western-europe-sample"],
+  "countries": {
+    "FRA": { "display_name": "France", "tag": "FRA" },
+    "ENG": { "display_name": "England", "tag": "ENG" },
+    "BUR": { "display_name": "Burgundy", "tag": "BUR" },
+    "HAB": { "display_name": "Austria", "tag": "HAB" }
+  },
+  "defaults": {
+    "culture": null,
+    "religion": null,
+    "disputed": false
+  },
+  "country_rules": [
+    {
+      "match_parent_country_id": "FRA",
+      "owner": "FRA",
+      "controller": "FRA",
+      "cores": ["FRA"],
+      "culture": "french",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "GBR",
+      "owner": "ENG",
+      "controller": "ENG",
+      "cores": ["ENG"],
+      "culture": "english",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "BEL",
+      "owner": "BUR",
+      "controller": "BUR",
+      "cores": ["BUR"],
+      "culture": "flemish",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "DEU",
+      "owner": "HAB",
+      "controller": "HAB",
+      "cores": ["HAB"],
+      "culture": "south_german",
+      "religion": "catholic"
+    }
+  ],
+  "region_rules": [],
+  "province_overrides": [
+    {
+      "province_id": "sample_de_rhineland",
+      "owner": "BUR",
+      "controller": "BUR",
+      "cores": ["BUR", "HAB"],
+      "claims": ["FRA"],
+      "disputed": true,
+      "notes": "Illustrative contested Rhineland for golden border + disputed checks."
+    }
+  ],
+  "source_lineage": [
+    "Community demo overrides over Natural Earth modern scaffold"
+  ],
+  "license_lineage": [
+    "CC0-1.0",
+    "public domain (Natural Earth)"
+  ],
+  "notes": "Sample IDs match samples/beta-license-audited when present; otherwise use as schema template."
+}

@@ -32,6 +32,7 @@ DEFAULT_BETA_SCENARIOS: tuple[str, ...] = (
     "modern-baseline",
     "official-1836",
     "official-1444",
+    "official-1936",
 )
 DEFAULT_SAMPLE_COUNTRIES: tuple[str, ...] = ("FRA", "BEL", "NLD", "LUX", "DEU")
 BETA_GEOMETRY_TIER = QUALITY_TIER_SCAFFOLD_BASELINE
