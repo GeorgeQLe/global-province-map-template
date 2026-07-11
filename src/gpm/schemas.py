@@ -185,6 +185,33 @@ def validate_atlas_manifest(manifest: dict[str, Any]) -> None:
         raise SchemaValidationError("manifest.files must be a list of non-empty strings")
 
 
+def validate_tileset_manifest(manifest: dict[str, Any]) -> None:
+    """Validate core invariants of an M19 tileset (PMTiles) manifest."""
+    schema = load_schema("tileset-manifest")
+    _require_object(manifest, "manifest")
+    _require_keys(manifest, schema["required"], "manifest")
+    if manifest["schema_version"] != schema["properties"]["schema_version"]["const"]:
+        raise SchemaValidationError("manifest.schema_version must be 0.1.0")
+    if manifest["pack_type"] != "tileset":
+        raise SchemaValidationError("manifest.pack_type must be tileset")
+    if manifest["backend"] not in {"native", "tippecanoe"}:
+        raise SchemaValidationError("manifest.backend must be native or tippecanoe")
+    for key in ("feature_count", "tile_count", "min_zoom", "max_zoom"):
+        if not isinstance(manifest[key], int) or manifest[key] < 0:
+            raise SchemaValidationError(f"manifest.{key} must be a non-negative integer")
+    if manifest["max_zoom"] < manifest["min_zoom"]:
+        raise SchemaValidationError("manifest.max_zoom must be >= min_zoom")
+    bounds = manifest["bounds"]
+    _require_object(bounds, "manifest.bounds")
+    for key in ("west", "south", "east", "north"):
+        if key not in bounds or not isinstance(bounds[key], (int, float)):
+            raise SchemaValidationError(f"manifest.bounds.{key} must be a number")
+    if not isinstance(manifest["layer_name"], str) or not manifest["layer_name"]:
+        raise SchemaValidationError("manifest.layer_name must be a non-empty string")
+    if not isinstance(manifest["pmtiles"], str) or not manifest["pmtiles"]:
+        raise SchemaValidationError("manifest.pmtiles must be a non-empty string")
+
+
 
 def validate_scenario_definition(document: dict[str, Any]) -> None:
     """Validate core invariants of an M8 scenario definition document."""

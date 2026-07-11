@@ -22,7 +22,15 @@ from .curation import (
     run_contribution_checklist,
     validate_curator_bundle,
 )
-from .exporters import ExportError, export_atlas_pack, export_game_pack, export_geojson_pack
+from .exporters import (
+    ExportError,
+    export_atlas_pack,
+    export_game_pack,
+    export_geojson_pack,
+    export_tiles_from_atlas,
+    export_tiles_pack,
+)
+from .tiles import TileBuildError
 from .manifest import (
     build_downloaded_source_manifest,
     build_local_source_manifest,
@@ -369,12 +377,112 @@ def _build_parser() -> argparse.ArgumentParser:
         help="Skip cultures.geojson / religions.geojson (identity paint still ships).",
     )
     atlas.add_argument(
+        "--tiles",
+        action="store_true",
+        help=(
+            "Also write PMTiles vector tiles (ownership.pmtiles per scenario, "
+            "tiles/provinces.pmtiles for base geometry)."
+        ),
+    )
+    atlas.add_argument(
+        "--tile-min-zoom",
+        type=int,
+        default=0,
+        help="Minimum zoom for --tiles (default 0).",
+    )
+    atlas.add_argument(
+        "--tile-max-zoom",
+        type=int,
+        default=8,
+        help="Maximum zoom for --tiles (default 8).",
+    )
+    atlas.add_argument(
+        "--no-tippecanoe",
+        action="store_true",
+        help="Force pure-Python tile backend even when tippecanoe is installed.",
+    )
+    atlas.add_argument(
         "--format",
         choices=["text", "json"],
         default="text",
         help="Output format for the export summary.",
     )
     atlas.set_defaults(handler=_export_atlas)
+
+    tiles = export_commands.add_parser(
+        "tiles",
+        help=(
+            "Export PMTiles / Mapbox Vector Tiles from GeoJSON or an atlas pack "
+            "(web-scale delivery; pure-Python backend, tippecanoe when available)."
+        ),
+    )
+    tiles.add_argument(
+        "--input",
+        type=Path,
+        default=None,
+        help="Input GeoJSON (FeatureCollection). Required unless --atlas-dir is set.",
+    )
+    tiles.add_argument(
+        "--atlas-dir",
+        type=Path,
+        default=None,
+        help=(
+            "Existing atlas pack directory. Writes ownership.pmtiles under each "
+            "scenarios/<id>/ and optional tiles/provinces.pmtiles."
+        ),
+    )
+    tiles.add_argument(
+        "--output-dir",
+        type=Path,
+        default=None,
+        help=f"Output directory for a single GeoJSON input. Defaults to {EXPORT_DIR}/tiles/<stem>.",
+    )
+    tiles.add_argument(
+        "--output",
+        type=Path,
+        default=None,
+        help="Explicit .pmtiles output path (single GeoJSON input only).",
+    )
+    tiles.add_argument(
+        "--layer",
+        default="provinces",
+        help="Vector tile layer name (default: provinces).",
+    )
+    tiles.add_argument(
+        "--min-zoom",
+        type=int,
+        default=0,
+        help="Minimum zoom level (default 0).",
+    )
+    tiles.add_argument(
+        "--max-zoom",
+        type=int,
+        default=8,
+        help="Maximum zoom level (default 8).",
+    )
+    tiles.add_argument(
+        "--no-tippecanoe",
+        action="store_true",
+        help="Force pure-Python backend even when tippecanoe is installed.",
+    )
+    tiles.add_argument(
+        "--scenario",
+        action="append",
+        dest="scenarios",
+        help="When using --atlas-dir, limit to these scenario ids (repeatable).",
+    )
+    tiles.add_argument(
+        "--no-base",
+        action="store_true",
+        help="When using --atlas-dir, skip tiles/provinces.pmtiles base layer.",
+    )
+    tiles.add_argument(
+        "--format",
+        choices=["text", "json"],
+        default="text",
+        help="Output format for the export summary.",
+    )
+    tiles.set_defaults(handler=_export_tiles)
 
     scenario = subcommands.add_parser(
         "scenario",
@@ -1595,11 +1703,74 @@ def _export_atlas(args: argparse.Namespace) -> int:
             include_owner_dissolve=not bool(args.no_owner_dissolve),
             include_identity_paint=not bool(args.no_identity_paint),
             include_identity_dissolve=not bool(args.no_identity_dissolve),
+            include_tiles=bool(args.tiles),
+            tile_min_zoom=int(args.tile_min_zoom),
+            tile_max_zoom=int(args.tile_max_zoom),
+            prefer_tippecanoe=not bool(args.no_tippecanoe),
         )
     except (ConfigError, ExportError, ScenarioError) as error:
         _print_error(error)
         return 1
     return _print_atlas_result(result, args.format)
+
+
+def _export_tiles(args: argparse.Namespace) -> int:
+    try:
+        if args.atlas_dir is not None:
+            results = export_tiles_from_atlas(
+                args.atlas_dir,
+                scenarios=tuple(args.scenarios) if args.scenarios else None,
+                min_zoom=int(args.min_zoom),
+                max_zoom=int(args.max_zoom),
+                prefer_tippecanoe=not bool(args.no_tippecanoe),
+                include_base=not bool(args.no_base),
+            )
+            if args.format == "json":
+                print(
+                    json.dumps(
+                        [item.to_dict() for item in results],
+                        indent=2,
+                        sort_keys=True,
+                    )
+                )
+                return 0
+            print(f"gpm export tiles: wrote {len(results)} PMTiles archive(s) from atlas.")
+            for item in results:
+                print(
+                    f"- {item.output_path} "
+                    f"({item.feature_count} features, {item.tile_count} tiles, "
+                    f"z{item.min_zoom}-{item.max_zoom}, backend={item.backend})"
+                )
+            return 0
+
+        if args.input is None:
+            _print_error("gpm export tiles requires --input GeoJSON or --atlas-dir.")
+            return 1
+
+        if args.output is not None:
+            from gpm.tiles import build_pmtiles_from_geojson
+
+            result = build_pmtiles_from_geojson(
+                args.input,
+                args.output,
+                layer_name=args.layer,
+                min_zoom=int(args.min_zoom),
+                max_zoom=int(args.max_zoom),
+                prefer_tippecanoe=not bool(args.no_tippecanoe),
+            )
+        else:
+            result = export_tiles_pack(
+                input_geojson=args.input,
+                output_dir=args.output_dir,
+                layer_name=args.layer,
+                min_zoom=int(args.min_zoom),
+                max_zoom=int(args.max_zoom),
+                prefer_tippecanoe=not bool(args.no_tippecanoe),
+            )
+    except (TileBuildError, OSError) as error:
+        _print_error(error)
+        return 1
+    return _print_tiles_result(result, args.format)
 
 
 def _scenario_list(args: argparse.Namespace) -> int:
@@ -1952,6 +2123,7 @@ def _print_atlas_result(result, format_name: str) -> int:
         f"owner dissolve: {'yes' if result.include_owner_dissolve else 'no'}; "
         f"identity paint: {'yes' if result.include_identity_paint else 'no'}; "
         f"identity dissolve: {'yes' if result.include_identity_dissolve else 'no'}; "
+        f"tiles: {'yes' if result.include_tiles else 'no'}; "
         f"attribution records: {result.attribution_record_count}"
     )
     if result.include_identity_paint:
@@ -1959,6 +2131,29 @@ def _print_atlas_result(result, format_name: str) -> int:
             f"Identity: {result.unique_culture_count} cultures, "
             f"{result.unique_religion_count} religions"
         )
+    if result.include_tiles:
+        print(f"PMTiles files: {result.tile_file_count}")
+    print(f"Files written: {len(result.files_written)}")
+    for path in result.files_written:
+        print(f"- {path}")
+    return 0
+
+
+def _print_tiles_result(result, format_name: str) -> int:
+    if format_name == "json":
+        print(json.dumps(result.to_dict(), indent=2, sort_keys=True))
+        return 0
+    print("gpm export tiles: wrote PMTiles archive.")
+    print(f"Output: {result.output_path}")
+    if result.tileset_manifest:
+        print(f"Manifest: {result.tileset_manifest}")
+    print(
+        f"Layer: {result.layer_name}; features: {result.feature_count}; "
+        f"tiles: {result.tile_count}; zoom: {result.min_zoom}-{result.max_zoom}; "
+        f"backend: {result.backend}"
+    )
+    west, south, east, north = result.bounds
+    print(f"Bounds: west={west:.4f} south={south:.4f} east={east:.4f} north={north:.4f}")
     print(f"Files written: {len(result.files_written)}")
     for path in result.files_written:
         print(f"- {path}")

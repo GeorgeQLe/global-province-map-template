@@ -1,4 +1,4 @@
-/* global maplibregl */
+/* global maplibregl, pmtiles */
 
 (() => {
   // Root-absolute: page is served at /demo (no trailing slash) under Vercel cleanUrls.
@@ -28,7 +28,18 @@
     paintMode: "ownership",
     periodGeometry: false,
     boundaryHints: true,
+    usePmtiles: false,
+    pmtilesProtocolReady: false,
   };
+
+  function ensurePmtilesProtocol() {
+    if (state.pmtilesProtocolReady) return true;
+    if (typeof pmtiles === "undefined" || !pmtiles.Protocol) return false;
+    const protocol = new pmtiles.Protocol();
+    maplibregl.addProtocol("pmtiles", protocol.tile);
+    state.pmtilesProtocolReady = true;
+    return true;
+  }
 
   const $ = (id) => document.getElementById(id);
 
@@ -328,6 +339,176 @@
         map.getCanvas().style.cursor = "";
       });
     }
+  }
+
+  function pmtilesUrlFor(meta) {
+    if (!meta?.pmtiles) return null;
+    // Absolute URL so range requests resolve under /demo cleanUrls hosting.
+    const origin = window.location.origin || "";
+    return `pmtiles://${origin}${DATA_BASE}/${meta.pmtiles}`;
+  }
+
+  function setProvinceSourceMode({ usePmtiles, meta }) {
+    const map = state.map;
+    if (!map) return;
+    const wantTiles = Boolean(usePmtiles && meta?.pmtiles && ensurePmtilesProtocol());
+    state.usePmtiles = wantTiles;
+
+    const sourceLayer = state.manifest?.pmtiles?.source_layer || "ownership";
+    const fillId = "provinces-fill";
+    const outlineId = "provinces-outline";
+    const selectedId = "provinces-selected";
+    const labelsId = "province-labels";
+
+    // Remove paint layers that bind to the province source, then swap source.
+    [labelsId, selectedId, outlineId, fillId].forEach((id) => {
+      if (map.getLayer(id)) map.removeLayer(id);
+    });
+    if (map.getSource("provinces")) map.removeSource("provinces");
+
+    if (wantTiles) {
+      map.addSource("provinces", {
+        type: "vector",
+        url: pmtilesUrlFor(meta),
+        promoteId: "province_id",
+      });
+      map.addLayer(
+        {
+          id: fillId,
+          type: "fill",
+          source: "provinces",
+          "source-layer": sourceLayer,
+          paint: {
+            "fill-color": ownershipFillExpression(),
+            "fill-opacity": 0.78,
+          },
+        },
+        "boundary-hints-fill",
+      );
+      map.addLayer(
+        {
+          id: outlineId,
+          type: "line",
+          source: "provinces",
+          "source-layer": sourceLayer,
+          paint: {
+            "line-color": "rgba(7, 16, 24, 0.75)",
+            "line-width": 1.1,
+          },
+        },
+        "boundary-hints-fill",
+      );
+      map.addLayer(
+        {
+          id: selectedId,
+          type: "line",
+          source: "provinces",
+          "source-layer": sourceLayer,
+          filter: ["==", ["get", "province_id"], ""],
+          paint: {
+            "line-color": "#e8a54b",
+            "line-width": 3,
+          },
+        },
+        "boundary-hints-fill",
+      );
+      map.addLayer(
+        {
+          id: labelsId,
+          type: "symbol",
+          source: "provinces",
+          "source-layer": sourceLayer,
+          layout: {
+            "text-field": ["coalesce", ["get", "display_name"], ["get", "province_id"]],
+            "text-size": 11,
+            "text-font": ["Noto Sans Regular"],
+            "text-max-width": 8,
+          },
+          paint: {
+            "text-color": "#f5f0e4",
+            "text-halo-color": "rgba(7, 16, 24, 0.9)",
+            "text-halo-width": 1.2,
+          },
+        },
+        "adjacency-lines",
+      );
+    } else {
+      map.addSource("provinces", {
+        type: "geojson",
+        data: { type: "FeatureCollection", features: [] },
+        promoteId: "province_id",
+      });
+      map.addLayer(
+        {
+          id: fillId,
+          type: "fill",
+          source: "provinces",
+          paint: {
+            "fill-color": ownershipFillExpression(),
+            "fill-opacity": 0.78,
+          },
+        },
+        "boundary-hints-fill",
+      );
+      map.addLayer(
+        {
+          id: outlineId,
+          type: "line",
+          source: "provinces",
+          paint: {
+            "line-color": "rgba(7, 16, 24, 0.75)",
+            "line-width": 1.1,
+          },
+        },
+        "boundary-hints-fill",
+      );
+      map.addLayer(
+        {
+          id: selectedId,
+          type: "line",
+          source: "provinces",
+          filter: ["==", ["get", "province_id"], ""],
+          paint: {
+            "line-color": "#e8a54b",
+            "line-width": 3,
+          },
+        },
+        "boundary-hints-fill",
+      );
+      map.addLayer(
+        {
+          id: labelsId,
+          type: "symbol",
+          source: "provinces",
+          layout: {
+            "text-field": ["coalesce", ["get", "display_name"], ["get", "province_id"]],
+            "text-size": 11,
+            "text-font": ["Noto Sans Regular"],
+            "text-max-width": 8,
+          },
+          paint: {
+            "text-color": "#f5f0e4",
+            "text-halo-color": "rgba(7, 16, 24, 0.9)",
+            "text-halo-width": 1.2,
+          },
+        },
+        "adjacency-lines",
+      );
+    }
+
+    // Re-bind interaction (layers were recreated).
+    map.off("click", fillId);
+    map.on("click", fillId, (event) => {
+      const feature = event.features?.[0];
+      if (!feature) return;
+      selectProvince(feature.properties?.province_id, feature.properties);
+    });
+    map.on("mouseenter", fillId, () => {
+      map.getCanvas().style.cursor = "pointer";
+    });
+    map.on("mouseleave", fillId, () => {
+      map.getCanvas().style.cursor = "";
+    });
   }
 
   function cultureFillExpression() {
@@ -643,6 +824,17 @@
     }
 
     ensureLayers();
+    const wantPmtiles = $("layer-pmtiles")?.checked === true;
+    // Period geometry remains GeoJSON-only in the sample (no period PMTiles yet).
+    const useTiles = wantPmtiles && !state.periodGeometry && Boolean(meta.pmtiles);
+    if ($("layer-pmtiles")) {
+      $("layer-pmtiles").disabled = state.periodGeometry || !meta.pmtiles;
+      if (state.periodGeometry && wantPmtiles) {
+        $("layer-pmtiles").checked = false;
+      }
+    }
+    setProvinceSourceMode({ usePmtiles: useTiles, meta });
+
     const provinces = activeProvinceCollection(bundle);
     const graph =
       state.periodGeometry && bundle.periodGraph ? bundle.periodGraph : bundle.graph;
@@ -656,7 +848,9 @@
       state.periodGeometry && bundle.periodReligionLegend
         ? bundle.periodReligionLegend
         : bundle.religionLegend;
-    state.map.getSource("provinces").setData(provinces);
+    if (!state.usePmtiles) {
+      state.map.getSource("provinces").setData(provinces);
+    }
     state.map.getSource("adjacency-lines").setData(graph.lines);
     state.map.getSource("adjacency-nodes").setData(graph.nodes);
     state.map.getSource("boundary-hints").setData(
@@ -743,6 +937,13 @@
         $(id)?.addEventListener("change", refreshPaintAndLegend);
       },
     );
+
+    $("layer-pmtiles")?.addEventListener("change", () => {
+      loadScenario(state.scenarioId).catch((err) => {
+        console.error(err);
+        setStatus(err.message || "Failed to switch tile source", true);
+      });
+    });
 
     // Mutual exclusion between culture and religion; priority handles ownership.
     $("layer-culture")?.addEventListener("change", (event) => {

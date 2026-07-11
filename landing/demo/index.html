@@ -141,13 +141,20 @@
                 <small>M16 soft frontier bands per era</small>
               </span>
             </label>
+            <label class="layer-row">
+              <input type="checkbox" id="layer-pmtiles" />
+              <span>
+                <strong>PMTiles vector source</strong>
+                <small>M19 web delivery · GeoJSON still powers inspector</small>
+              </span>
+            </label>
           </div>
         </section>
 
         <section class="panel-block">
           <h2>Reserved for later</h2>
           <p class="help">
-            UI slots for roadmap work still ahead (tiles, broader geometry).
+            UI slots for roadmap work still ahead (broader period geometry).
           </p>
           <ul class="future-list" id="future-slots"></ul>
         </section>
@@ -187,6 +194,7 @@
             <li><code>curated-politics</code> for official-1836 · official-1444 · official-1936</li>
             <li><code>period-geometry</code> M16 WE priority region (period toggle)</li>
             <li>Culture / religion are curated scenario hints (M18); unassigned is gray</li>
+            <li>PMTiles (M19) optional vector delivery; sample remains WE-scoped</li>
           </ul>
           <p class="help">
             Not Paradox-grade global accuracy. Period shapes are priority-region
@@ -200,9 +208,8 @@
     <footer class="demo-footer">
       <div class="shell footer-row">
         <p>
-          Demo data from <code>samples/beta-license-audited/</code> +
-          <code>samples/era-geometry-we-1444/</code> · milestone
-          <strong>M15</strong>
+          Demo data from <code>samples/beta-license-audited/</code> + multi-era WE
+          packs · milestones through <strong>M19</strong> (PMTiles)
         </p>
         <p>
           <a href="/#status">Project status</a>
@@ -217,6 +224,7 @@
     </footer>
 
     <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+    <script src="https://unpkg.com/pmtiles@3.2.1/dist/pmtiles.js"></script>
     <script src="/demo/demo.js" defer></script>
   </body>
 </html>

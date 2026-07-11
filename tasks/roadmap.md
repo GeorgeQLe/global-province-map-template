@@ -86,8 +86,11 @@ later era-aware geometry are first-class tracks.
 - M18 culture / religion atlas paint layers: complete. Atlas identity paint
   (`culture_color` / `religion_color`, legends, dissolve), demo + review
   viewer modes, sample refresh; docs `docs/m18-culture-religion.md`.
+- M19 PMTiles / vector tiles: complete. Pure-Python MVT + PMTiles writer,
+  `gpm export tiles`, atlas `--tiles`, demo vector source; docs
+  `docs/m19-pmtiles.md`.
 
 ## Next
 
-- Post-M18 product work: PMTiles / vector tiles, broader period geometry
-  beyond the WE priority region (see root ROADMAP).
+- Post-M19 product work: broader period geometry beyond the WE priority
+  region (see root ROADMAP).

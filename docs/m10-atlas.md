@@ -118,10 +118,10 @@ legends**.
 
 ## Formats
 
-M10 ships **GeoJSON**, **CSV**, and **JSON** only (stdlib + Shapely). Optional
-tile/columnar formats called out in the roadmap (PMTiles, FlatGeobuf,
-GeoParquet, TopoJSON) are listed in `atlas_manifest.json` under
-`formats.optional_future` for downstream conversion—not generated in-tree yet.
+M10 shipped **GeoJSON**, **CSV**, and **JSON** (stdlib + Shapely). **M19** adds
+optional **PMTiles** via `gpm export atlas --tiles` or `gpm export tiles`
+(see `docs/m19-pmtiles.md`). FlatGeobuf, GeoParquet, and TopoJSON remain listed
+under `formats.optional_future` for downstream conversion.
 
 ## Schema
 

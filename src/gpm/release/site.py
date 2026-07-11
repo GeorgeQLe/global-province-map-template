@@ -65,6 +65,15 @@ REQUIRED_DEMO_FILES: tuple[str, ...] = (
     "demo/data/official-1936-period.religion.legend.json",
     "demo/data/boundary-hints-1936.geojson",
     "demo/data/lineage-1936.json",
+    # M19 PMTiles / vector tiles (ownership layer per scenario)
+    "demo/data/official-1444.pmtiles",
+    "demo/data/official-1444.tileset.json",
+    "demo/data/official-1836.pmtiles",
+    "demo/data/official-1836.tileset.json",
+    "demo/data/official-1936.pmtiles",
+    "demo/data/official-1936.tileset.json",
+    "demo/data/modern-baseline.pmtiles",
+    "demo/data/modern-baseline.tileset.json",
 )
 
 # Content anchors that prove the page still describes the project honestly.
@@ -96,6 +105,8 @@ REQUIRED_DEMO_HTML_SNIPPETS: tuple[str, ...] = (
     "layer-boundary-hints",
     "layer-culture",
     "layer-religion",
+    "layer-pmtiles",
+    "pmtiles",
     "gpm export pack",
     "gpm export atlas",
     "scaffold-baseline",

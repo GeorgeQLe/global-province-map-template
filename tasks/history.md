@@ -1,5 +1,23 @@
 # History
 
+## 2026-07-11 - Ship M19 PMTiles / Vector Tiles
+
+- Committed and pushed M19 PMTiles / vector tiles (encoder, CLI, atlas
+  `--tiles`, demo source, schema, docs, tests) to `main`.
+- Deploy skipped: no explicit manual deploy contract (`deploy.md` or
+  `tasks/deploy.md`).
+- Next: broader period geometry beyond the WE priority region (post-M19).
+
+## 2026-07-11 - M19 PMTiles / Vector Tiles
+
+- Pure-Python MVT encoder + PMTiles v3 writer (`gpm.tiles`); optional tippecanoe
+  backend when installed.
+- CLI: `gpm export tiles` (GeoJSON or `--atlas-dir`); `gpm export atlas --tiles`.
+- Schema `tileset-manifest`; docs `docs/m19-pmtiles.md`; tests
+  `tests/test_m19_pmtiles.py`.
+- Demo: ownership PMTiles per scenario, MapLibre `pmtiles` protocol toggle.
+- Next: broader period geometry beyond the WE priority region (post-M19).
+
 ## 2026-07-11 - Ship M18 Culture / Religion Atlas Paint
 
 - Committed and pushed M18 culture/religion atlas paint (export, viewer, demo,

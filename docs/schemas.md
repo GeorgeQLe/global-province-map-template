@@ -143,6 +143,13 @@ atlas). See [m14-beta-release.md](m14-beta-release.md).
 uncertainty layers, and CSV/JSON tables. The schema is
 `atlas-manifest.schema.json`. See [m10-atlas.md](m10-atlas.md).
 
+## M19 PMTiles / tilesets
+
+`gpm export tiles` writes a sibling `*.tileset.json` next to each `.pmtiles`
+archive: backend (`native` / `tippecanoe`), layer name, zoom range, bounds, and
+MapLibre source hints. The schema is `tileset-manifest.schema.json`. See
+[m19-pmtiles.md](m19-pmtiles.md).
+
 ## M11 Scenario Politics QA
 
 `gpm qa scenario` writes `politics_qa.json` for one scenario: ownership coverage,

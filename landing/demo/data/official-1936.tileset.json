@@ -1,0 +1,55 @@
+{
+  "backend": "native",
+  "bounds": {
+    "east": 7.5,
+    "north": 52.8,
+    "south": 48.5,
+    "west": 0.0
+  },
+  "feature_count": 6,
+  "generated_at": "2026-07-11T05:03:18Z",
+  "generator_version": "0.1.0",
+  "header": {
+    "addressed_tiles_count": 11,
+    "tile_compression": "gzip",
+    "tile_contents_count": 11,
+    "tile_entries_count": 11,
+    "tile_type": "mvt"
+  },
+  "layer_name": "ownership",
+  "maplibre": {
+    "fill_layer": {
+      "id": "ownership-fill",
+      "paint": {
+        "fill-color": [
+          "coalesce",
+          [
+            "get",
+            "owner_color"
+          ],
+          "#b0b0b0"
+        ],
+        "fill-opacity": 0.78
+      },
+      "source": "ownership",
+      "source-layer": "ownership",
+      "type": "fill"
+    },
+    "source": {
+      "type": "vector",
+      "url": "pmtiles://official-1936.pmtiles"
+    }
+  },
+  "max_zoom": 6,
+  "milestone": "M19",
+  "min_zoom": 0,
+  "notes": [
+    "PMTiles v3 archive of Mapbox Vector Tiles (MVT).",
+    "Serve with HTTP range requests or open locally via the pmtiles protocol.",
+    "Native backend does not simplify geometry; use tippecanoe for large global sets."
+  ],
+  "pack_type": "tileset",
+  "pmtiles": "official-1936.pmtiles",
+  "schema_version": "0.1.0",
+  "tile_count": 11
+}

@@ -333,7 +333,7 @@ trivia.
 - Ownership joined to geometry for choropleths (per scenario / date)
 - Country/tag legend and color suggestions
 - Attribution and uncertainty layers
-- Optional PMTiles / vector tiles for web maps
+- Optional PMTiles / vector tiles for web maps (**M19 shipped**: `gpm export tiles`)
 - API-friendly tables (GeoJSON, FlatGeobuf, GeoParquet, CSV/Parquet)
 
 ### Shared

@@ -2,15 +2,18 @@
 
 ## Active
 
-- (none — M18 complete; pick next from roadmap)
+- (none — M19 complete; pick next from roadmap)
 
 ## Up next (from roadmap)
 
-- Optional PMTiles / vector tiles
 - Broader period geometry beyond Western Europe priority region
 
 ## Completed
 
+- [x] M19 PMTiles / vector tiles: pure-Python MVT + PMTiles v3 writer,
+  `gpm export tiles` (+ `--atlas-dir`), `gpm export atlas --tiles`, tippecanoe
+  optional backend, tileset schema/manifest, demo PMTiles vector source + sample
+  archives, docs `docs/m19-pmtiles.md`, tests `tests/test_m19_pmtiles.py`.
 - [x] M18 culture / religion atlas paint layers: `culture_color` /
   `religion_color` on atlas choropleths, identity legends + optional dissolve,
   `gpm export atlas --no-identity-paint|--no-identity-dissolve`, review viewer

@@ -57,12 +57,19 @@ def test_bundled_landing_site_validates():
     assert "period-geometry" in live_ids
     assert "boundary-hints" in live_ids
     assert "multi-era-packs" in live_ids
+    assert "pmtiles" in live_ids
     future_ids = {s.get("id") for s in manifest.get("future_slots") or []}
     assert "period-geometry" not in future_ids
     assert "multi-era-packs" not in future_ids
+    assert "pmtiles" not in future_ids
     scenario_ids = {s.get("id") for s in manifest.get("scenarios") or []}
     assert "official-1936" in scenario_ids
     assert len(manifest.get("scenarios", [])) >= 4
+    for scenario in manifest.get("scenarios") or []:
+        if scenario.get("status") != "live":
+            continue
+        assert scenario.get("pmtiles"), f"missing pmtiles for {scenario.get('id')}"
+        assert (Path(result.landing_dir) / "demo" / "data" / scenario["pmtiles"]).is_file()
 
 
 def test_validate_landing_site_rejects_missing_files(tmp_path: Path):

@@ -29,6 +29,7 @@ def test_schema_files_are_machine_readable_json_schema_documents():
         "scenario-ownership-record.schema.json",
         "scenario-politics-qa-report.schema.json",
         "source-manifest.schema.json",
+        "tileset-manifest.schema.json",
         "topology-qa-report.schema.json",
     }
 

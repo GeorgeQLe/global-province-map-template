@@ -105,7 +105,7 @@ Owner `legend.json` remains owner-centric for backward compatibility.
 - Layers: **Culture** and **Religion** checkboxes (mutual exclusion)
 - Paint priority: assignment → culture → religion → ownership → neutral
 - Manifest keys: `culture_legend`, `religion_legend`, period variants
-- Future slot PMTiles renumbered to **M19+**
+- PMTiles shipped as **M19** (see `docs/m19-pmtiles.md`)
 
 Honesty: culture/religion are **curated scenario hints** (authorial strings;
 synonyms like `shiite` / `shia` may differ by era). Unassigned provinces are gray.

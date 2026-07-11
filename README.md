@@ -58,6 +58,12 @@ The implementation should eventually generate:
 
 ## Status
 
+M19 PMTiles / vector tiles are in place. `gpm export tiles` compiles GeoJSON
+into single-file **PMTiles** (Mapbox Vector Tiles) with a pure-Python backend
+(tippecanoe used automatically when installed). `gpm export atlas --tiles`
+writes `ownership.pmtiles` per scenario; the public demo can load a PMTiles
+vector source. See [docs/m19-pmtiles.md](docs/m19-pmtiles.md).
+
 M18 culture / religion atlas paint is in place. `gpm export atlas` emits
 `culture_color` / `religion_color`, identity legends, and optional dissolved
 multipolygons; review viewer and the public demo paint culture/religion modes.

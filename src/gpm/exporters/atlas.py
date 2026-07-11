@@ -88,8 +88,10 @@ class AtlasExportResult:
     include_owner_dissolve: bool
     include_identity_paint: bool
     include_identity_dissolve: bool
+    include_tiles: bool
     unique_culture_count: int
     unique_religion_count: int
+    tile_file_count: int
     files_written: tuple[str, ...]
 
     def to_dict(self) -> dict[str, Any]:
@@ -107,6 +109,10 @@ def export_atlas_pack(
     include_owner_dissolve: bool = True,
     include_identity_paint: bool = True,
     include_identity_dissolve: bool = True,
+    include_tiles: bool = False,
+    tile_min_zoom: int = 0,
+    tile_max_zoom: int = 8,
+    prefer_tippecanoe: bool = True,
 ) -> AtlasExportResult:
     """Write an atlas / SaaS package under exports/atlas/<profile_id>/."""
     if not include_identity_paint:
@@ -684,12 +690,36 @@ def export_atlas_pack(
     files_written.append(_rel(readme_path, pack_root))
 
     files_written = sorted(set(files_written))
+    tile_file_count = 0
+    if include_tiles:
+        from gpm.tiles import TileBuildError, export_tiles_from_atlas
+
+        try:
+            tile_results = export_tiles_from_atlas(
+                pack_root,
+                scenarios=scenario_ids,
+                min_zoom=tile_min_zoom,
+                max_zoom=tile_max_zoom,
+                prefer_tippecanoe=prefer_tippecanoe,
+                include_base=include_base_geometry,
+            )
+        except TileBuildError as exc:
+            raise ExportError(str(exc)) from exc
+        for tile_result in tile_results:
+            for name in tile_result.files_written:
+                # Tile files land under scenarios/<id>/ or tiles/.
+                candidate = Path(tile_result.output_path).parent / name
+                rel = _rel(candidate, pack_root)
+                if rel not in files_written:
+                    files_written.append(rel)
+                tile_file_count += 1 if name.endswith(".pmtiles") else 0
+
     notes = [
         "Atlas packs join scenario politics onto modern scaffold geometry for web maps.",
         "Colors are deterministic per tag (sha256 → HSL) and stable across rebuilds.",
         "Uncertainty layer flags disputed, foreign-controlled, and UNK-owned provinces.",
         "Supersedes M10 atlas face; culture/religion identity paint added in M18.",
-        "PMTiles / FlatGeobuf / GeoParquet are not generated here; consume GeoJSON or convert downstream.",
+        "PMTiles vector tiles available via --tiles (M19) or gpm export tiles.",
     ]
     if include_identity_paint:
         notes.extend(
@@ -699,9 +729,19 @@ def export_atlas_pack(
                 "Prefer property-based fill (['get','culture_color']) over large match expressions for full packs.",
             ]
         )
+    if include_tiles:
+        notes.append(
+            "PMTiles archives use Mapbox Vector Tiles (MVT); load with MapLibre + pmtiles protocol."
+        )
+    geometry_formats = ["GeoJSON"]
+    optional_future = ["FlatGeobuf", "GeoParquet", "TopoJSON"]
+    if include_tiles:
+        geometry_formats.append("PMTiles")
+    else:
+        optional_future = ["PMTiles", *optional_future]
     manifest = {
         "schema_version": ATLAS_SCHEMA_VERSION,
-        "milestone": "M18",
+        "milestone": "M19" if include_tiles else "M18",
         "pack_type": "atlas",
         "profile_id": profile_id,
         "generated_at": generated_at,
@@ -711,6 +751,7 @@ def export_atlas_pack(
         "include_owner_dissolve": include_owner_dissolve,
         "include_identity_paint": include_identity_paint,
         "include_identity_dissolve": include_identity_dissolve,
+        "include_tiles": include_tiles,
         "inputs": {"provinces": str(province_input)},
         "counts": {
             "provinces": len(land_features),
@@ -721,12 +762,13 @@ def export_atlas_pack(
             "unique_cultures": len(culture_ids),
             "unique_religions": len(religion_ids),
             "attribution_records": len(attribution_records),
+            "tile_files": tile_file_count,
         },
         "scenario_summaries": scenario_summaries,
         "formats": {
-            "geometry": ["GeoJSON"],
+            "geometry": geometry_formats,
             "tables": ["CSV", "JSON"],
-            "optional_future": ["PMTiles", "FlatGeobuf", "GeoParquet", "TopoJSON"],
+            "optional_future": optional_future,
         },
         "files": files_written,
         "notes": notes,
@@ -753,8 +795,10 @@ def export_atlas_pack(
         include_owner_dissolve=include_owner_dissolve,
         include_identity_paint=include_identity_paint,
         include_identity_dissolve=include_identity_dissolve,
+        include_tiles=include_tiles,
         unique_culture_count=len(culture_ids),
         unique_religion_count=len(religion_ids),
+        tile_file_count=tile_file_count,
         files_written=tuple(files_written),
     )
 
@@ -1481,10 +1525,11 @@ tag legends with stable colors, and flat tables for maps or APIs.
   is used. Politics are scenario overlays (see M8).
 - Colors are deterministic per string id (`sha256` → HSL) and stable across rebuilds.
 - Culture/religion are curated hints, not Paradox-grade ethnographic maps.
-- Optional tile formats (PMTiles, FlatGeobuf, GeoParquet) are not produced by
-  the atlas face; convert from GeoJSON/CSV downstream if needed.
+- Optional PMTiles vector tiles: pass ``--tiles`` (or run ``gpm export tiles``)
+  to write ``ownership.pmtiles`` per scenario and ``tiles/provinces.pmtiles``.
+- FlatGeobuf / GeoParquet / TopoJSON remain optional downstream conversions.
 
-Generated by Global Province Map Template (M18 atlas face).
+Generated by Global Province Map Template (atlas face).
 """
 
 
