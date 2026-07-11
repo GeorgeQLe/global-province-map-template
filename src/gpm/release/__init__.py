@@ -37,6 +37,8 @@ from gpm.release.recipes import (
 )
 from gpm.release.site import (
     LANDING_DIR_NAME,
+    REQUIRED_DEMO_FILES,
+    REQUIRED_DEMO_HTML_SNIPPETS,
     REQUIRED_HTML_SNIPPETS,
     REQUIRED_LANDING_FILES,
     LandingValidationResult,
@@ -67,6 +69,8 @@ __all__ = [
     "QUALITY_TIER_PERIOD_GEOMETRY",
     "QUALITY_TIER_SCAFFOLD_BASELINE",
     "QUALITY_TIERS",
+    "REQUIRED_DEMO_FILES",
+    "REQUIRED_DEMO_HTML_SNIPPETS",
     "REQUIRED_HTML_SNIPPETS",
     "REQUIRED_LANDING_FILES",
     "ReleaseError",

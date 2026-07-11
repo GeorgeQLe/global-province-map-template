@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Interactive demo of Global Province Map Template — live ownership eras, adjacency, and reserved slots for period geometry and multi-era packs."
+    />
+    <meta name="theme-color" content="#0c1a24" />
+    <title>Demo · Global Province Map Template</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Literata:opsz,wght@7..72,400;7..72,600&family=Syne:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css"
+      rel="stylesheet"
+    />
+    <!-- Root-absolute paths: Vercel cleanUrls + trailingSlash:false serve this page at
+         /demo (no trailing slash), which breaks sibling-relative URLs like demo.css. -->
+    <link rel="stylesheet" href="/demo/demo.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#demo-main">Skip to demo</a>
+
+    <header class="demo-header">
+      <div class="shell header-row">
+        <a class="brand" href="/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-text">GPM</span>
+        </a>
+        <div class="header-title">
+          <p class="eyebrow">Interactive demo · beta sample</p>
+          <h1>What ships today — with room to grow</h1>
+        </div>
+        <div class="header-actions">
+          <a class="btn btn-ghost" href="/">Landing</a>
+          <a
+            class="btn btn-primary"
+            href="https://github.com/GeorgeQLe/global-province-map-template"
+            rel="noopener noreferrer"
+            >GitHub</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <main id="demo-main" class="demo-layout">
+      <section class="map-stage" aria-label="Province map">
+        <div class="map-toolbar">
+          <div class="era-switch" role="tablist" aria-label="Scenario era">
+            <button type="button" class="era-btn is-active" data-era="official-1444" role="tab" aria-selected="true">
+              1444
+            </button>
+            <button type="button" class="era-btn" data-era="official-1836" role="tab" aria-selected="false">
+              1836
+            </button>
+            <button type="button" class="era-btn" data-era="modern-baseline" role="tab" aria-selected="false">
+              Modern
+            </button>
+            <button
+              type="button"
+              class="era-btn is-future"
+              data-era="official-1936"
+              role="tab"
+              aria-selected="false"
+              aria-disabled="true"
+              title="Reserved for a future HOI-leaning official era"
+            >
+              1936
+              <span class="slot-chip">soon</span>
+            </button>
+          </div>
+          <div class="map-meta">
+            <span id="scenario-label">Loading…</span>
+            <span class="tier-pill" id="politics-tier">—</span>
+            <span class="tier-pill muted" id="geometry-tier">geometry: scaffold-baseline</span>
+          </div>
+        </div>
+        <div id="map" role="application" aria-label="Ownership choropleth map"></div>
+        <div id="status-banner" class="status-banner" hidden></div>
+        <div class="map-footnote">
+          Western Europe beta sample · same scaffold geometry for every era ·
+          click a province to inspect
+        </div>
+      </section>
+
+      <aside class="side-panel" aria-label="Demo controls and inspector">
+        <section class="panel-block">
+          <h2>Live layers</h2>
+          <p class="help">Built from the license-audited beta atlas sample.</p>
+          <div class="layer-list" id="live-layers">
+            <label class="layer-row">
+              <input type="checkbox" id="layer-ownership" checked />
+              <span>
+                <strong>Owner choropleth</strong>
+                <small>Atlas export face</small>
+              </span>
+            </label>
+            <label class="layer-row">
+              <input type="checkbox" id="layer-assignment" />
+              <span>
+                <strong>Assignment source</strong>
+                <small>How politics were applied</small>
+              </span>
+            </label>
+            <label class="layer-row">
+              <input type="checkbox" id="layer-adjacency" checked />
+              <span>
+                <strong>Adjacency graph</strong>
+                <small>Land · sea · port edges</small>
+              </span>
+            </label>
+            <label class="layer-row">
+              <input type="checkbox" id="layer-labels" checked />
+              <span>
+                <strong>Province labels</strong>
+                <small>Stable IDs + names</small>
+              </span>
+            </label>
+          </div>
+        </section>
+
+        <section class="panel-block">
+          <h2>Reserved for later</h2>
+          <p class="help">
+            UI slots for roadmap work — disabled on purpose so the product room
+            is visible before the data exists.
+          </p>
+          <ul class="future-list" id="future-slots"></ul>
+        </section>
+
+        <section class="panel-block">
+          <h2>Inspector</h2>
+          <div id="inspector" class="inspector empty">
+            <p>Select a province on the map.</p>
+          </div>
+        </section>
+
+        <section class="panel-block">
+          <h2>Legend</h2>
+          <div id="legend" class="legend"></div>
+        </section>
+
+        <section class="panel-block faces">
+          <h2>Dual export faces</h2>
+          <div class="face-grid">
+            <article>
+              <p class="card-kicker">Games · modders</p>
+              <h3><code>gpm export pack</code></h3>
+              <p>Definitions, adjacency, localization, scenario trees.</p>
+            </article>
+            <article>
+              <p class="card-kicker">Atlas · SaaS</p>
+              <h3><code>gpm export atlas</code></h3>
+              <p>Choropleths, legends, uncertainty, web tables.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel-block honesty">
+          <h2>Honest quality bar</h2>
+          <ul class="compact">
+            <li><code>scaffold-baseline</code> geometry today</li>
+            <li><code>curated-politics</code> for official-1836 · official-1444</li>
+            <li><code>period-geometry</code> reserved (M15+)</li>
+          </ul>
+          <p class="help">
+            Not Paradox-grade global accuracy. Not period-correct shapes yet.
+            License-audited public channel only.
+          </p>
+        </section>
+      </aside>
+    </main>
+
+    <footer class="demo-footer">
+      <div class="shell footer-row">
+        <p>
+          Demo data from <code>samples/beta-license-audited/</code> · milestone
+          <strong>M14.5+</strong>
+        </p>
+        <p>
+          <a href="/#status">Project status</a>
+          ·
+          <a
+            href="https://github.com/GeorgeQLe/global-province-map-template/blob/main/ROADMAP.md"
+            rel="noopener noreferrer"
+            >Roadmap</a
+          >
+        </p>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+    <script src="/demo/demo.js" defer></script>
+  </body>
+</html>

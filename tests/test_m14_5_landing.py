@@ -10,6 +10,8 @@ import pytest
 from gpm.cli import main
 from gpm.paths import PROJECT_ROOT
 from gpm.release import (
+    REQUIRED_DEMO_FILES,
+    REQUIRED_DEMO_HTML_SNIPPETS,
     REQUIRED_HTML_SNIPPETS,
     REQUIRED_LANDING_FILES,
     ReleaseError,
@@ -30,12 +32,28 @@ def test_bundled_landing_site_validates():
     assert result.valid is True
     assert result.missing_files == ()
     assert result.missing_snippets == ()
+    assert result.missing_demo_files == ()
+    assert result.missing_demo_snippets == ()
     assert result.html_bytes > 1000
+    assert result.demo_html_bytes > 1000
     for name in REQUIRED_LANDING_FILES:
         assert name in result.files_present
+    for name in REQUIRED_DEMO_FILES:
+        assert name in result.demo_files_present
     html = Path(result.landing_dir, "index.html").read_text(encoding="utf-8")
     for snippet in REQUIRED_HTML_SNIPPETS:
         assert snippet in html
+    demo_html = Path(result.landing_dir, "demo", "index.html").read_text(encoding="utf-8")
+    for snippet in REQUIRED_DEMO_HTML_SNIPPETS:
+        assert snippet in demo_html
+    manifest = json.loads(
+        Path(result.landing_dir, "demo", "data", "demo-manifest.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert "future_slots" in manifest
+    assert any(s.get("id") == "period-geometry" for s in manifest["future_slots"])
+    assert len(manifest.get("scenarios", [])) >= 3
 
 
 def test_validate_landing_site_rejects_missing_files(tmp_path: Path):

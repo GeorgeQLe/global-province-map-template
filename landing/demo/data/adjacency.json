@@ -1,0 +1,68 @@
+{
+  "edges": [
+    {
+      "from": "sample_be_flanders",
+      "to": "sample_fr_normandy",
+      "type": "land",
+      "crossing": "shared_border",
+      "shared_border_km": 12.0
+    },
+    {
+      "from": "sample_be_flanders",
+      "to": "sample_nl_holland",
+      "type": "land",
+      "crossing": "shared_border",
+      "shared_border_km": 8.0
+    },
+    {
+      "from": "sample_de_rhineland",
+      "to": "sample_lu_core",
+      "type": "land",
+      "crossing": "shared_border",
+      "shared_border_km": 5.0
+    },
+    {
+      "from": "sample_fr_paris",
+      "to": "sample_fr_normandy",
+      "type": "land",
+      "crossing": "shared_border",
+      "shared_border_km": 15.0
+    },
+    {
+      "from": "sample_fr_normandy",
+      "to": "sample_sea_normandy",
+      "type": "port_to_sea",
+      "crossing": "port",
+      "shared_border_km": 20.0
+    },
+    {
+      "from": "sample_be_flanders",
+      "to": "sample_sea_flanders",
+      "type": "port_to_sea",
+      "crossing": "port",
+      "shared_border_km": 10.0
+    },
+    {
+      "from": "sample_nl_holland",
+      "to": "sample_sea_holland",
+      "type": "port_to_sea",
+      "crossing": "port",
+      "shared_border_km": 14.0
+    },
+    {
+      "from": "sample_sea_flanders",
+      "to": "sample_sea_holland",
+      "type": "sea",
+      "crossing": "shared_border",
+      "shared_border_km": 6.0
+    },
+    {
+      "from": "sample_sea_flanders",
+      "to": "sample_sea_normandy",
+      "type": "sea",
+      "crossing": "shared_border",
+      "shared_border_km": 4.0
+    }
+  ],
+  "count": 9
+}

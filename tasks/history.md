@@ -1,5 +1,15 @@
 # History
 
+## 2026-07-10 - M14.5 Interactive Demo + Hero Choropleth
+
+- Added `landing/demo/` MapLibre product demo with beta Western Europe sample
+  eras (1444 / 1836 / modern), adjacency, inspector, and reserved M15+ slots.
+- Replaced abstract hero tessellation with a real SVG choropleth fed from the
+  same demo GeoJSON; linked marketing page into `/demo`.
+- Extended `gpm release site` validation for demo files/snippets; updated
+  cache headers, docs, README/ROADMAP, and tests.
+- Next project task: implement M15 era-aware geometry v1 for priority regions.
+
 ## 2026-07-10 - M14.5 Public Landing Page + Vercel Deploy
 
 - Added static marketing site under `landing/` (project thesis, dual audiences,

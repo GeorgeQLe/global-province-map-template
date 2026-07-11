@@ -1,36 +1,293 @@
 (() => {
-  const root = document.getElementById("tessellation");
+  const DATA_BASE = "/demo/data";
+  const WIDTH = 360;
+  const HEIGHT = 280;
+  const PAD = 28;
+
+  const root = document.getElementById("hero-map");
+  const svg = document.getElementById("hero-map-svg");
+  const provincesG = document.getElementById("hero-map-provinces");
+  const labelsG = document.getElementById("hero-map-labels");
+  const legendEl = document.getElementById("hero-map-legend");
+  const statusEl = document.getElementById("hero-map-status");
   const buttons = Array.from(document.querySelectorAll(".era-btn"));
   const caption = document.getElementById("era-caption");
   const tier = document.getElementById("era-tier");
 
-  if (!root || !buttons.length) return;
+  if (!root || !svg || !provincesG || !buttons.length) return;
 
-  const copy = {
+  const eras = {
     "1444": {
+      scenario: "official-1444",
       caption: "EU-leaning 1444 politics over modern admin geometry",
       tier: "quality: curated-politics",
     },
     "1836": {
+      scenario: "official-1836",
       caption: "Victoria-leaning 1836 major powers and elevated theaters",
       tier: "quality: curated-politics",
     },
     modern: {
+      scenario: "modern-baseline",
       caption: "Modern baseline owners projected from parent countries",
       tier: "quality: scaffold-baseline",
     },
   };
 
-  function setEra(era) {
-    const next = copy[era] ? era : "1444";
+  const cache = new Map();
+  let project = null;
+
+  function setStatus(message, isError = false) {
+    if (!statusEl) return;
+    if (!message) {
+      statusEl.hidden = true;
+      statusEl.textContent = "";
+      statusEl.classList.remove("is-error");
+      return;
+    }
+    statusEl.hidden = false;
+    statusEl.textContent = message;
+    statusEl.classList.toggle("is-error", isError);
+  }
+
+  async function fetchJson(url) {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`${url} failed (${response.status})`);
+    }
+    return response.json();
+  }
+
+  async function loadScenario(scenarioId) {
+    if (cache.has(scenarioId)) return cache.get(scenarioId);
+    const [geojson, legend] = await Promise.all([
+      fetchJson(`${DATA_BASE}/${scenarioId}.geojson`),
+      fetchJson(`${DATA_BASE}/${scenarioId}.legend.json`).catch(() => null),
+    ]);
+    const payload = { geojson, legend };
+    cache.set(scenarioId, payload);
+    return payload;
+  }
+
+  function eachRing(geometry, visit) {
+    if (!geometry) return;
+    if (geometry.type === "Polygon") {
+      (geometry.coordinates || []).forEach((ring) => visit(ring));
+    } else if (geometry.type === "MultiPolygon") {
+      (geometry.coordinates || []).forEach((poly) => {
+        (poly || []).forEach((ring) => visit(ring));
+      });
+    }
+  }
+
+  function boundsOf(features) {
+    let minX = Infinity;
+    let minY = Infinity;
+    let maxX = -Infinity;
+    let maxY = -Infinity;
+    features.forEach((feature) => {
+      eachRing(feature.geometry, (ring) => {
+        ring.forEach(([x, y]) => {
+          if (x < minX) minX = x;
+          if (y < minY) minY = y;
+          if (x > maxX) maxX = x;
+          if (y > maxY) maxY = y;
+        });
+      });
+    });
+    if (!Number.isFinite(minX)) {
+      return { minX: -1, minY: 48, maxX: 8, maxY: 53 };
+    }
+    return { minX, minY, maxX, maxY };
+  }
+
+  function makeProjector(bounds) {
+    const spanX = Math.max(bounds.maxX - bounds.minX, 0.01);
+    const spanY = Math.max(bounds.maxY - bounds.minY, 0.01);
+    const innerW = WIDTH - PAD * 2;
+    const innerH = HEIGHT - PAD * 2;
+    // Equirectangular with lat flipped for SVG; keep geographic aspect ratio.
+    const scale = Math.min(innerW / spanX, innerH / spanY);
+    const usedW = spanX * scale;
+    const usedH = spanY * scale;
+    const ox = (WIDTH - usedW) / 2;
+    const oy = (HEIGHT - usedH) / 2;
+
+    return {
+      point([lng, lat]) {
+        const x = ox + (lng - bounds.minX) * scale;
+        const y = oy + (bounds.maxY - lat) * scale;
+        return [x, y];
+      },
+      path(ring) {
+        if (!ring || ring.length < 2) return "";
+        return ring
+          .map((coord, i) => {
+            const [x, y] = this.point(coord);
+            return `${i === 0 ? "M" : "L"}${x.toFixed(2)} ${y.toFixed(2)}`;
+          })
+          .join(" ");
+      },
+      centroid(feature) {
+        let sx = 0;
+        let sy = 0;
+        let n = 0;
+        eachRing(feature.geometry, (ring) => {
+          // Skip closing vertex if present.
+          const last = ring.length - 1;
+          const end =
+            last > 0 &&
+            ring[0][0] === ring[last][0] &&
+            ring[0][1] === ring[last][1]
+              ? last
+              : ring.length;
+          for (let i = 0; i < end; i += 1) {
+            sx += ring[i][0];
+            sy += ring[i][1];
+            n += 1;
+          }
+        });
+        if (!n) return null;
+        return this.point([sx / n, sy / n]);
+      },
+    };
+  }
+
+  function featurePath(feature, projector) {
+    const parts = [];
+    eachRing(feature.geometry, (ring) => {
+      const d = projector.path(ring);
+      if (d) parts.push(`${d} Z`);
+    });
+    return parts.join(" ");
+  }
+
+  function uniqueOwners(features, legend) {
+    const fromLegend = Array.isArray(legend?.tags) ? legend.tags : null;
+    if (fromLegend && fromLegend.length) {
+      return fromLegend.map((tag) => {
+        const id = tag.tag || tag.id || tag.owner || "?";
+        return {
+          id,
+          color: tag.fill_color || tag.color || tag.owner_color || "#b0b0b0",
+          label: tag.display_name || tag.label || tag.name || id,
+        };
+      });
+    }
+    const seen = new Map();
+    features.forEach((feature) => {
+      const owner = feature.properties?.owner;
+      if (!owner || seen.has(owner)) return;
+      seen.set(owner, {
+        id: owner,
+        color: feature.properties?.owner_color || "#b0b0b0",
+        label: owner,
+      });
+    });
+    return Array.from(seen.values());
+  }
+
+  function renderLegend(owners) {
+    if (!legendEl) return;
+    legendEl.innerHTML = owners
+      .map(
+        (owner) => `
+      <li title="${escapeHtml(owner.label)}">
+        <span class="swatch" style="background:${owner.color}"></span>
+        <span class="tag">${escapeHtml(owner.id)}</span>
+      </li>`
+      )
+      .join("");
+  }
+
+  function escapeHtml(value) {
+    return String(value ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;");
+  }
+
+  function renderMap(payload) {
+    const features = payload.geojson?.features || [];
+    if (!project) {
+      project = makeProjector(boundsOf(features));
+    }
+
+    provincesG.replaceChildren();
+    labelsG.replaceChildren();
+
+    features.forEach((feature) => {
+      const props = feature.properties || {};
+      const d = featurePath(feature, project);
+      if (!d) return;
+
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d", d);
+      path.setAttribute("fill", props.owner_color || "#b0b0b0");
+      path.setAttribute("data-province-id", props.province_id || "");
+      path.setAttribute("data-owner", props.owner || "");
+      path.setAttribute(
+        "aria-label",
+        `${props.display_name || props.province_id || "Province"} · ${props.owner || "unowned"}`
+      );
+      provincesG.appendChild(path);
+
+      const center = project.centroid(feature);
+      if (!center) return;
+      const [cx, cy] = center;
+
+      const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      label.setAttribute("x", cx.toFixed(1));
+      label.setAttribute("y", (cy - 2).toFixed(1));
+      label.setAttribute("text-anchor", "middle");
+      label.classList.add("map-label-name");
+      label.textContent = props.display_name || props.province_id || "";
+      labelsG.appendChild(label);
+
+      const owner = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      owner.setAttribute("x", cx.toFixed(1));
+      owner.setAttribute("y", (cy + 11).toFixed(1));
+      owner.setAttribute("text-anchor", "middle");
+      owner.classList.add("map-label-owner");
+      owner.textContent = props.owner || "";
+      labelsG.appendChild(owner);
+    });
+
+    renderLegend(uniqueOwners(features, payload.legend));
+    setStatus("");
+  }
+
+  async function setEra(era) {
+    const next = eras[era] ? era : "1444";
     root.dataset.era = next;
     buttons.forEach((btn) => {
       const active = btn.dataset.era === next;
       btn.classList.toggle("is-active", active);
       btn.setAttribute("aria-selected", active ? "true" : "false");
     });
-    if (caption) caption.textContent = copy[next].caption;
-    if (tier) tier.textContent = copy[next].tier;
+    if (caption) caption.textContent = eras[next].caption;
+    if (tier) tier.textContent = eras[next].tier;
+
+    const scenarioId = eras[next].scenario;
+    setStatus("Loading map…");
+    try {
+      const payload = await loadScenario(scenarioId);
+      // Lock projection to first loaded geometry so eras share the same frame.
+      if (!project) {
+        project = makeProjector(boundsOf(payload.geojson.features || []));
+      }
+      renderMap(payload);
+      if (svg) {
+        svg.setAttribute(
+          "aria-label",
+          `Western Europe ownership choropleth · ${eras[next].caption}`
+        );
+      }
+    } catch (err) {
+      console.error(err);
+      setStatus("Could not load demo map data.", true);
+    }
   }
 
   buttons.forEach((btn) => {

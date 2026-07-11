@@ -416,6 +416,8 @@ Completed foundation:
 - M13: Second curated official scenario (1444). Complete (2026-07-10).
 - M14: License-audited beta release. Complete (2026-07-10).
 - M14.5: Public landing page + GitHub publish + Vercel deploy. Complete (2026-07-10).
+- M14.5 demo: Interactive MapLibre demo under `landing/demo/` with live beta
+  sample eras and reserved UI slots for M15+ work. Complete (2026-07-10).
 
 Near-term product path:
 

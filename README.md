@@ -60,8 +60,11 @@ The implementation should eventually generate:
 
 M14.5 public landing page is in place. A static marketing site under `landing/`
 describes dual audiences, the pipeline, honest quality tiers, and license policy.
-`gpm release site` validates the page and can ensure a GitHub remote (`gh`),
-commit/push, and deploy to Vercel. See
+An interactive MapLibre **demo** at `landing/demo/` loads the beta Western
+Europe sample (1444 / 1836 / modern ownership, adjacency, inspector) and leaves
+explicit reserved slots for M15+ period geometry, multi-era packs, and 1936.
+`gpm release site` validates the page + demo assets and can ensure a GitHub
+remote (`gh`), commit/push, and deploy to Vercel. See
 [docs/m14.5-landing.md](docs/m14.5-landing.md).
 
 M14 license-audited beta release packaging is in place. `gpm release beta` builds

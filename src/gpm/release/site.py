@@ -22,6 +22,21 @@ REQUIRED_LANDING_FILES: tuple[str, ...] = (
     "vercel.json",
 )
 
+# Interactive demo (static MapLibre page + beta sample data).
+REQUIRED_DEMO_FILES: tuple[str, ...] = (
+    "demo/index.html",
+    "demo/demo.js",
+    "demo/demo.css",
+    "demo/data/demo-manifest.json",
+    "demo/data/adjacency.json",
+    "demo/data/official-1444.geojson",
+    "demo/data/official-1836.geojson",
+    "demo/data/modern-baseline.geojson",
+    "demo/data/official-1444.legend.json",
+    "demo/data/official-1836.legend.json",
+    "demo/data/modern-baseline.legend.json",
+)
+
 # Content anchors that prove the page still describes the project honestly.
 REQUIRED_HTML_SNIPPETS: tuple[str, ...] = (
     "Global Province Map",
@@ -35,6 +50,24 @@ REQUIRED_HTML_SNIPPETS: tuple[str, ...] = (
     "Natural Earth",
     "geoBoundaries",
     "M14.5",
+    "/demo",
+)
+
+REQUIRED_DEMO_HTML_SNIPPETS: tuple[str, ...] = (
+    "Interactive demo",
+    "official-1444",
+    "official-1836",
+    "modern-baseline",
+    "period-geometry",
+    "gpm export pack",
+    "gpm export atlas",
+    "scaffold-baseline",
+    "curated-politics",
+    "Reserved for later",
+    # Root-absolute assets: required under Vercel cleanUrls + trailingSlash:false
+    # where the page is served as /demo (no trailing slash).
+    'href="/demo/demo.css"',
+    'src="/demo/demo.js"',
 )
 
 
@@ -46,6 +79,10 @@ class LandingValidationResult:
     missing_snippets: tuple[str, ...]
     html_bytes: int
     valid: bool
+    demo_files_present: tuple[str, ...] = ()
+    missing_demo_files: tuple[str, ...] = ()
+    missing_demo_snippets: tuple[str, ...] = ()
+    demo_html_bytes: int = 0
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -89,8 +126,15 @@ def validate_landing_site(landing_dir: Path | None = None) -> LandingValidationR
         else:
             missing.append(name)
 
+    demo_present: list[str] = []
+    demo_missing: list[str] = []
+    for name in REQUIRED_DEMO_FILES:
+        if (path / name).is_file():
+            demo_present.append(name)
+        else:
+            demo_missing.append(name)
+
     html_path = path / "index.html"
-    html_text = ""
     html_bytes = 0
     missing_snippets: list[str] = []
     if html_path.is_file():
@@ -103,7 +147,27 @@ def validate_landing_site(landing_dir: Path | None = None) -> LandingValidationR
     else:
         missing_snippets = list(REQUIRED_HTML_SNIPPETS)
 
-    valid = not missing and not missing_snippets and html_bytes > 0
+    demo_html_path = path / "demo" / "index.html"
+    demo_html_bytes = 0
+    missing_demo_snippets: list[str] = []
+    if demo_html_path.is_file():
+        demo_raw = demo_html_path.read_bytes()
+        demo_html_bytes = len(demo_raw)
+        demo_html_text = demo_raw.decode("utf-8", errors="replace")
+        for snippet in REQUIRED_DEMO_HTML_SNIPPETS:
+            if snippet not in demo_html_text:
+                missing_demo_snippets.append(snippet)
+    else:
+        missing_demo_snippets = list(REQUIRED_DEMO_HTML_SNIPPETS)
+
+    valid = (
+        not missing
+        and not missing_snippets
+        and html_bytes > 0
+        and not demo_missing
+        and not missing_demo_snippets
+        and demo_html_bytes > 0
+    )
     return LandingValidationResult(
         landing_dir=str(path),
         files_present=tuple(present),
@@ -111,6 +175,10 @@ def validate_landing_site(landing_dir: Path | None = None) -> LandingValidationR
         missing_snippets=tuple(missing_snippets),
         html_bytes=html_bytes,
         valid=valid,
+        demo_files_present=tuple(demo_present),
+        missing_demo_files=tuple(demo_missing),
+        missing_demo_snippets=tuple(missing_demo_snippets),
+        demo_html_bytes=demo_html_bytes,
     )
 
 
@@ -148,6 +216,15 @@ def release_landing_site(
         if validation.missing_snippets:
             detail_parts.append(
                 "missing content snippets: " + ", ".join(validation.missing_snippets)
+            )
+        if validation.missing_demo_files:
+            detail_parts.append(
+                "missing demo files: " + ", ".join(validation.missing_demo_files)
+            )
+        if validation.missing_demo_snippets:
+            detail_parts.append(
+                "missing demo content snippets: "
+                + ", ".join(validation.missing_demo_snippets)
             )
         raise ReleaseError(
             "Landing site validation failed (" + "; ".join(detail_parts) + ")"

@@ -11,6 +11,9 @@
 
 ## Completed
 
+- [x] M14.5 demo: interactive MapLibre demo under `landing/demo/` (beta WE sample
+  eras, adjacency, inspector) plus hero choropleth on the marketing page;
+  validation extended for demo assets; reserved UI slots for M15+.
 - [x] M14.5 public landing page: static site under `landing/`,
   `gpm release site` validation + optional `--ensure-repo` / `--push` /
   `--deploy` (Vercel), docs `docs/m14.5-landing.md`.
