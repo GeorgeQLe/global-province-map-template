@@ -114,6 +114,20 @@
               </span>
             </label>
             <label class="layer-row">
+              <input type="checkbox" id="layer-culture" />
+              <span>
+                <strong>Culture</strong>
+                <small>Atlas paint · curated hints</small>
+              </span>
+            </label>
+            <label class="layer-row">
+              <input type="checkbox" id="layer-religion" />
+              <span>
+                <strong>Religion</strong>
+                <small>Atlas paint · curated hints</small>
+              </span>
+            </label>
+            <label class="layer-row">
               <input type="checkbox" id="layer-period-geometry" />
               <span>
                 <strong>Period geometry</strong>
@@ -133,7 +147,7 @@
         <section class="panel-block">
           <h2>Reserved for later</h2>
           <p class="help">
-            UI slots for roadmap work still ahead (curation diffs, tiles).
+            UI slots for roadmap work still ahead (tiles, broader geometry).
           </p>
           <ul class="future-list" id="future-slots"></ul>
         </section>
@@ -170,12 +184,14 @@
           <h2>Honest quality bar</h2>
           <ul class="compact">
             <li><code>scaffold-baseline</code> default geometry</li>
-            <li><code>curated-politics</code> for official-1836 · official-1444</li>
-            <li><code>period-geometry</code> M15 WE priority region (1444 toggle)</li>
+            <li><code>curated-politics</code> for official-1836 · official-1444 · official-1936</li>
+            <li><code>period-geometry</code> M16 WE priority region (period toggle)</li>
+            <li>Culture / religion are curated scenario hints (M18); unassigned is gray</li>
           </ul>
           <p class="help">
             Not Paradox-grade global accuracy. Period shapes are priority-region
-            scoped (Western Europe sample pack). License-audited public channel only.
+            scoped (Western Europe sample pack). Culture/religion synonyms may
+            differ by era. License-audited public channel only.
           </p>
         </section>
       </aside>

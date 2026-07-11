@@ -330,14 +330,31 @@
     }
   }
 
+  function cultureFillExpression() {
+    return ["coalesce", ["get", "culture_color"], "#8a8a8a"];
+  }
+
+  function religionFillExpression() {
+    return ["coalesce", ["get", "religion_color"], "#8a8a8a"];
+  }
+
   function applyPaintMode() {
     const map = state.map;
     if (!map?.getLayer("provinces-fill")) return;
     const ownershipOn = $("layer-ownership")?.checked !== false;
     const assignmentOn = $("layer-assignment")?.checked === true;
+    const cultureOn = $("layer-culture")?.checked === true;
+    const religionOn = $("layer-religion")?.checked === true;
+    // Priority: assignment > culture > religion > ownership > neutral
     if (assignmentOn) {
       state.paintMode = "assignment";
       map.setPaintProperty("provinces-fill", "fill-color", assignmentFillExpression());
+    } else if (cultureOn) {
+      state.paintMode = "culture";
+      map.setPaintProperty("provinces-fill", "fill-color", cultureFillExpression());
+    } else if (religionOn) {
+      state.paintMode = "religion";
+      map.setPaintProperty("provinces-fill", "fill-color", religionFillExpression());
     } else if (ownershipOn) {
       state.paintMode = "ownership";
       map.setPaintProperty("provinces-fill", "fill-color", ownershipFillExpression());
@@ -345,7 +362,8 @@
       state.paintMode = "neutral";
       map.setPaintProperty("provinces-fill", "fill-color", "#4b5c66");
     }
-    map.setPaintProperty("provinces-fill", "fill-opacity", ownershipOn || assignmentOn ? 0.78 : 0.25);
+    const painted = ownershipOn || assignmentOn || cultureOn || religionOn;
+    map.setPaintProperty("provinces-fill", "fill-opacity", painted ? 0.78 : 0.25);
   }
 
   function applyLayerVisibility() {
@@ -422,7 +440,17 @@
       .join("");
   }
 
-  function renderLegend(legend) {
+  function identityLegendRows(legend) {
+    const entries = legend?.entries || [];
+    return entries.map((entry) => ({
+      key: entry.id,
+      label: entry.display_name || entry.id,
+      color: entry.fill_color || entry.color || "#8a8a8a",
+      count: entry.province_count,
+    }));
+  }
+
+  function renderLegend(legend, identityLegend) {
     const root = $("legend");
     if (!root) return;
     if (state.paintMode === "assignment") {
@@ -435,6 +463,27 @@
         </div>`,
         )
         .join("");
+      return;
+    }
+    if (state.paintMode === "culture" || state.paintMode === "religion") {
+      const rows = identityLegendRows(identityLegend);
+      if (!rows.length) {
+        root.innerHTML = `<p class="help">No ${state.paintMode} entries in sample.</p>`;
+        return;
+      }
+      const unassigned = identityLegend?.unassigned_province_count ?? 0;
+      root.innerHTML =
+        rows
+          .map(
+            (row) => `
+      <div class="legend-row">
+        <span class="legend-swatch" style="background:${escapeHtml(row.color)}"></span>
+        <span>${escapeHtml(row.label)} <code>${escapeHtml(row.key)}</code></span>
+        <span class="legend-count">${escapeHtml(String(row.count ?? "—"))} prov</span>
+      </div>`,
+          )
+          .join("") +
+        `<p class="help">unassigned: ${escapeHtml(String(unassigned))} · curated hints</p>`;
       return;
     }
     const tags = legend?.tags || [];
@@ -489,9 +538,9 @@
           <dt>Assignment</dt>
           <dd><code>${escapeHtml(props.assignment_source || "—")}</code></dd>
           <dt>Culture</dt>
-          <dd>${escapeHtml(props.culture || "—")}</dd>
+          <dd><span class="swatch" style="background:${escapeHtml(props.culture_color || "#8a8a8a")}"></span>${escapeHtml(props.culture || "unassigned")}</dd>
           <dt>Religion</dt>
-          <dd>${escapeHtml(props.religion || "—")}</dd>
+          <dd><span class="swatch" style="background:${escapeHtml(props.religion_color || "#8a8a8a")}"></span>${escapeHtml(props.religion || "unassigned")}</dd>
           <dt>Parent</dt>
           <dd><code>${escapeHtml(props.parent_country_id || "—")}</code> / <code>${escapeHtml(props.parent_region_id || "—")}</code></dd>
           <dt>Scaffold ID</dt>
@@ -550,27 +599,29 @@
 
     let bundle = state.cache.get(scenarioId);
     if (!bundle) {
-      const fetches = [
+      const optional = (key) =>
+        meta[key] ? fetchJson(`${DATA_BASE}/${meta[key]}`) : Promise.resolve(null);
+      const [
+        geojson,
+        legend,
+        cultureLegend,
+        religionLegend,
+        periodGeojson,
+        periodLegend,
+        periodCultureLegend,
+        periodReligionLegend,
+        boundaryHints,
+      ] = await Promise.all([
         fetchJson(`${DATA_BASE}/${meta.geojson}`),
         fetchJson(`${DATA_BASE}/${meta.legend}`),
-      ];
-      if (meta.period_geojson) {
-        fetches.push(fetchJson(`${DATA_BASE}/${meta.period_geojson}`));
-      } else {
-        fetches.push(Promise.resolve(null));
-      }
-      if (meta.period_legend) {
-        fetches.push(fetchJson(`${DATA_BASE}/${meta.period_legend}`));
-      } else {
-        fetches.push(Promise.resolve(null));
-      }
-      if (meta.boundary_hints) {
-        fetches.push(fetchJson(`${DATA_BASE}/${meta.boundary_hints}`));
-      } else {
-        fetches.push(Promise.resolve(null));
-      }
-      const [geojson, legend, periodGeojson, periodLegend, boundaryHints] =
-        await Promise.all(fetches);
+        optional("culture_legend"),
+        optional("religion_legend"),
+        optional("period_geojson"),
+        optional("period_legend"),
+        optional("period_culture_legend"),
+        optional("period_religion_legend"),
+        optional("boundary_hints"),
+      ]);
       const graph = buildAdjacencyGeoJSON(geojson.features || [], state.adjacency?.edges || []);
       const periodGraph = periodGeojson
         ? buildAdjacencyGeoJSON(periodGeojson.features || [], state.adjacency?.edges || [])
@@ -578,9 +629,13 @@
       bundle = {
         geojson,
         legend,
+        cultureLegend,
+        religionLegend,
         graph,
         periodGeojson,
         periodLegend,
+        periodCultureLegend,
+        periodReligionLegend,
         periodGraph,
         boundaryHints,
       };
@@ -593,6 +648,14 @@
       state.periodGeometry && bundle.periodGraph ? bundle.periodGraph : bundle.graph;
     const legend =
       state.periodGeometry && bundle.periodLegend ? bundle.periodLegend : bundle.legend;
+    const cultureLegend =
+      state.periodGeometry && bundle.periodCultureLegend
+        ? bundle.periodCultureLegend
+        : bundle.cultureLegend;
+    const religionLegend =
+      state.periodGeometry && bundle.periodReligionLegend
+        ? bundle.periodReligionLegend
+        : bundle.religionLegend;
     state.map.getSource("provinces").setData(provinces);
     state.map.getSource("adjacency-lines").setData(graph.lines);
     state.map.getSource("adjacency-nodes").setData(graph.nodes);
@@ -601,7 +664,9 @@
     );
     applyLayerVisibility();
     updateChrome(meta, legend);
-    renderLegend(legend);
+    const identityLegend =
+      state.paintMode === "religion" ? religionLegend : cultureLegend;
+    renderLegend(legend, identityLegend);
 
     const bounds = new maplibregl.LngLatBounds();
     (provinces.features || []).forEach((feature) => {
@@ -651,18 +716,46 @@
       });
     });
 
-    ["layer-ownership", "layer-assignment", "layer-adjacency", "layer-labels"].forEach((id) => {
-      $(id)?.addEventListener("change", () => {
-        applyLayerVisibility();
-        const meta = scenarioMeta(state.scenarioId);
-        const bundle = state.cache.get(state.scenarioId);
-        const legend =
-          state.periodGeometry && bundle?.periodLegend
-            ? bundle.periodLegend
-            : bundle?.legend;
-        renderLegend(legend);
-        updateChrome(meta, legend);
-      });
+    function refreshPaintAndLegend() {
+      applyLayerVisibility();
+      const meta = scenarioMeta(state.scenarioId);
+      const bundle = state.cache.get(state.scenarioId);
+      const legend =
+        state.periodGeometry && bundle?.periodLegend
+          ? bundle.periodLegend
+          : bundle?.legend;
+      const cultureLegend =
+        state.periodGeometry && bundle?.periodCultureLegend
+          ? bundle.periodCultureLegend
+          : bundle?.cultureLegend;
+      const religionLegend =
+        state.periodGeometry && bundle?.periodReligionLegend
+          ? bundle.periodReligionLegend
+          : bundle?.religionLegend;
+      const identityLegend =
+        state.paintMode === "religion" ? religionLegend : cultureLegend;
+      renderLegend(legend, identityLegend);
+      updateChrome(meta, legend);
+    }
+
+    ["layer-ownership", "layer-assignment", "layer-adjacency", "layer-labels"].forEach(
+      (id) => {
+        $(id)?.addEventListener("change", refreshPaintAndLegend);
+      },
+    );
+
+    // Mutual exclusion between culture and religion; priority handles ownership.
+    $("layer-culture")?.addEventListener("change", (event) => {
+      if (event.target.checked && $("layer-religion")) {
+        $("layer-religion").checked = false;
+      }
+      refreshPaintAndLegend();
+    });
+    $("layer-religion")?.addEventListener("change", (event) => {
+      if (event.target.checked && $("layer-culture")) {
+        $("layer-culture").checked = false;
+      }
+      refreshPaintAndLegend();
     });
 
     $("layer-period-geometry")?.addEventListener("change", (event) => {

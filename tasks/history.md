@@ -1,5 +1,24 @@
 # History
 
+## 2026-07-11 - Ship M18 Culture / Religion Atlas Paint
+
+- Committed and pushed M18 culture/religion atlas paint (export, viewer, demo,
+  samples, docs, tests) to `main`.
+- Deploy skipped: no explicit manual deploy contract (`deploy.md` or
+  `tasks/deploy.md`).
+- Next: PMTiles / vector tiles, broader period geometry (post-M18).
+
+## 2026-07-11 - M18 Culture / Religion Atlas Paint Layers
+
+- Extended `gpm export atlas` with culture/religion colors, identity legends
+  (`culture_legend.json` / `religion_legend.json`), optional dissolve, and
+  CLI flags `--no-identity-paint` / `--no-identity-dissolve`.
+- Review viewer color modes + demo culture/religion layer toggles; demo
+  legends and GeoJSON identity colors regenerated.
+- Sample beta atlas scenarios refreshed; docs `docs/m18-culture-religion.md`;
+  tests `tests/test_m18_culture_religion.py`.
+- Next: PMTiles / vector tiles, broader period geometry (post-M18).
+
 ## 2026-07-11 - Ship M15–M17 + landing redeploy
 
 - Committed and pushed M15 era geometry, M16 multi-era packs / official-1936,

@@ -1,7 +1,7 @@
-province_id,scenario_id,start_date,end_date,owner,controller,cores,claims,culture,religion,disputed,assignment_source,parent_country_id,parent_region_id,display_name,notes,owner_color,controller_color
-sample_be_flanders,official-1836,1836-01-01,,BEL,BEL,"[""BEL""]",[],flemish,catholic,false,country_rule,BEL,BE-VLG,Flanders,Independent Belgium,#bd19a8,#bd19a8
-sample_de_rhineland,official-1836,1836-01-01,,PRU,PRU,"[""PRU""]",[],german,protestant,false,region_rule,DEU,DE-NW,Rhineland,Rhenish / Westphalian Prussia,#4f2ec9,#4f2ec9
-sample_fr_normandy,official-1836,1836-01-01,,FRA,FRA,"[""FRA""]",[],french,catholic,false,country_rule,FRA,FR-NOR,Normandy coast,July Monarchy France,#2e5aa5,#2e5aa5
-sample_fr_paris,official-1836,1836-01-01,,FRA,FRA,"[""FRA""]",[],french,catholic,false,country_rule,FRA,FR-IDF,Paris basin,July Monarchy France,#2e5aa5,#2e5aa5
-sample_lu_core,official-1836,1836-01-01,,LUX,LUX,"[""LUX""]",[],luxembourgish,catholic,false,country_rule,LUX,LU-LU,Luxembourg core,,#a7253a,#a7253a
-sample_nl_holland,official-1836,1836-01-01,,NET,NET,"[""NET""]",[],dutch,protestant,false,country_rule,NLD,NL-NH,Holland,,#e01fa3,#e01fa3
+province_id,scenario_id,start_date,end_date,owner,controller,cores,claims,culture,religion,disputed,assignment_source,parent_country_id,parent_region_id,display_name,notes,owner_color,controller_color,culture_color,religion_color
+sample_be_flanders,official-1836,1836-01-01,,BEL,BEL,"[""BEL""]",[],flemish,catholic,false,country_rule,BEL,BE-VLG,Flanders,Independent Belgium,#bd19a8,#bd19a8,#a5c72e,#20c9dd
+sample_de_rhineland,official-1836,1836-01-01,,PRU,PRU,"[""PRU""]",[],german,protestant,false,region_rule,DEU,DE-NW,Rhineland,Rhenish / Westphalian Prussia,#4f2ec9,#4f2ec9,#a7a02d,#d7ca37
+sample_fr_normandy,official-1836,1836-01-01,,FRA,FRA,"[""FRA""]",[],french,catholic,false,country_rule,FRA,FR-NOR,Normandy coast,July Monarchy France,#2e5aa5,#2e5aa5,#ba9822,#20c9dd
+sample_fr_paris,official-1836,1836-01-01,,FRA,FRA,"[""FRA""]",[],french,catholic,false,country_rule,FRA,FR-IDF,Paris basin,July Monarchy France,#2e5aa5,#2e5aa5,#ba9822,#20c9dd
+sample_lu_core,official-1836,1836-01-01,,LUX,LUX,"[""LUX""]",[],luxembourgish,catholic,false,country_rule,LUX,LU-LU,Luxembourg core,,#a7253a,#a7253a,#a13471,#20c9dd
+sample_nl_holland,official-1836,1836-01-01,,NET,NET,"[""NET""]",[],dutch,protestant,false,country_rule,NLD,NL-NH,Holland,,#e01fa3,#e01fa3,#a626c6,#d7ca37

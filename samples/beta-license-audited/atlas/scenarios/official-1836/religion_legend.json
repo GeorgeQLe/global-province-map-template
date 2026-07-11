@@ -1,0 +1,57 @@
+{
+  "assigned_province_count": 6,
+  "color_field": "religion_color",
+  "count": 2,
+  "end_date": null,
+  "entries": [
+    {
+      "color": "#20c9dd",
+      "display_name": "catholic",
+      "fill_color": "#20c9dd",
+      "id": "catholic",
+      "province_count": 4
+    },
+    {
+      "color": "#d7ca37",
+      "display_name": "protestant",
+      "fill_color": "#d7ca37",
+      "id": "protestant",
+      "province_count": 2
+    }
+  ],
+  "era": "1836",
+  "fallback_color": "#b0b0b0",
+  "generated_at": "2026-07-11T04:44:37+00:00",
+  "generator_version": "0.1.0",
+  "label": "Official 1836 (Victoria-leaning curated politics)",
+  "milestone": "M18",
+  "paint_field": "religion",
+  "profile_id": "modern-small",
+  "scenario_id": "official-1836",
+  "schema_version": "0.1.0",
+  "start_date": "1836-01-01",
+  "styles": {
+    "css_custom_properties": {
+      "--religion-catholic": "#20c9dd",
+      "--religion-protestant": "#d7ca37"
+    },
+    "maplibre_fill_color": [
+      "match",
+      [
+        "get",
+        "religion"
+      ],
+      "catholic",
+      "#20c9dd",
+      "protestant",
+      "#d7ca37",
+      "#8a8a8a"
+    ],
+    "maplibre_fill_color_property": [
+      "get",
+      "religion_color"
+    ]
+  },
+  "unassigned_color": "#8a8a8a",
+  "unassigned_province_count": 0
+}

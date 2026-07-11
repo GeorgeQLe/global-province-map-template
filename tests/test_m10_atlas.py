@@ -49,7 +49,7 @@ def test_export_atlas_pack_writes_choropleth_legend_and_tables(tmp_path):
     assert Path(result.atlas_manifest).is_file()
 
     manifest = json.loads(Path(result.atlas_manifest).read_text(encoding="utf-8"))
-    assert manifest["milestone"] == "M10"
+    assert manifest["milestone"] == "M18"
     assert manifest["pack_type"] == "atlas"
     assert manifest["scenarios"] == ["modern-baseline", "demo-1444"]
     assert manifest["counts"]["provinces"] == 4
@@ -63,7 +63,7 @@ def test_export_atlas_pack_writes_choropleth_legend_and_tables(tmp_path):
     choropleth = json.loads(
         (output_dir / "scenarios" / "demo-1444" / "ownership_choropleth.geojson").read_text()
     )
-    assert choropleth["gpm"]["milestone"] == "M10"
+    assert choropleth["gpm"]["milestone"] == "M18"
     assert choropleth["gpm"]["layer"] == "ownership_choropleth"
     assert len(choropleth["features"]) == 4
     props_by_id = {
@@ -115,7 +115,7 @@ def test_export_atlas_pack_writes_choropleth_legend_and_tables(tmp_path):
     countries = json.loads(
         (output_dir / "scenarios" / "demo-1444" / "countries.json").read_text()
     )
-    assert countries["milestone"] == "M10"
+    assert countries["milestone"] == "M18"
     assert any(item["tag"] == "FRA" and "color" in item for item in countries["countries"])
 
 

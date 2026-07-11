@@ -58,6 +58,12 @@ The implementation should eventually generate:
 
 ## Status
 
+M18 culture / religion atlas paint is in place. `gpm export atlas` emits
+`culture_color` / `religion_color`, identity legends, and optional dissolved
+multipolygons; review viewer and the public demo paint culture/religion modes.
+Culture/religion remain curated scenario hints (not Paradox-grade ethnography).
+See [docs/m18-culture-religion.md](docs/m18-culture-religion.md).
+
 M17 curation workflow hardening is in place. `gpm curation` lists, validates,
 and imports **external curator bundles**, diffs ownership tables (tag counts,
 contested provinces), and runs a **contribution checklist**. Golden politics

@@ -356,6 +356,19 @@ def _build_parser() -> argparse.ArgumentParser:
         help="Skip writing owners.geojson dissolved multipolygons per scenario.",
     )
     atlas.add_argument(
+        "--no-identity-paint",
+        action="store_true",
+        help=(
+            "Skip culture/religion colors, legends, and dissolve "
+            "(exact pre-M18 ownership paint surface)."
+        ),
+    )
+    atlas.add_argument(
+        "--no-identity-dissolve",
+        action="store_true",
+        help="Skip cultures.geojson / religions.geojson (identity paint still ships).",
+    )
+    atlas.add_argument(
         "--format",
         choices=["text", "json"],
         default="text",
@@ -1580,6 +1593,8 @@ def _export_atlas(args: argparse.Namespace) -> int:
             allow_unknown_overrides=bool(args.allow_unknown_overrides),
             include_base_geometry=not bool(args.no_base_geometry),
             include_owner_dissolve=not bool(args.no_owner_dissolve),
+            include_identity_paint=not bool(args.no_identity_paint),
+            include_identity_dissolve=not bool(args.no_identity_dissolve),
         )
     except (ConfigError, ExportError, ScenarioError) as error:
         _print_error(error)
@@ -1935,8 +1950,15 @@ def _print_atlas_result(result, format_name: str) -> int:
     print(
         f"Base geometry: {'yes' if result.include_base_geometry else 'no'}; "
         f"owner dissolve: {'yes' if result.include_owner_dissolve else 'no'}; "
+        f"identity paint: {'yes' if result.include_identity_paint else 'no'}; "
+        f"identity dissolve: {'yes' if result.include_identity_dissolve else 'no'}; "
         f"attribution records: {result.attribution_record_count}"
     )
+    if result.include_identity_paint:
+        print(
+            f"Identity: {result.unique_culture_count} cultures, "
+            f"{result.unique_religion_count} religions"
+        )
     print(f"Files written: {len(result.files_written)}")
     for path in result.files_written:
         print(f"- {path}")

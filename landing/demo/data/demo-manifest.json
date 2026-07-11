@@ -5,7 +5,7 @@
   "period_geometry_tier": "period-geometry",
   "period_geometry_pack": "we-multi-era-v1",
   "multi_era_pack": "we-multi-era-v1",
-  "note": "Politics are era overlays. Toggle period geometry / boundary hints for 1444, 1836, and 1936 (M16 multi-era WE packs).",
+  "note": "Politics are era overlays. Culture/religion paint (M18) uses curated scenario hints. Toggle period geometry / boundary hints for 1444, 1836, and 1936 (M16 multi-era WE packs).",
   "scenarios": [
     {
       "id": "official-1444",
@@ -15,8 +15,12 @@
       "start_date": "1444-11-11",
       "geojson": "official-1444.geojson",
       "legend": "official-1444.legend.json",
+      "culture_legend": "official-1444.culture.legend.json",
+      "religion_legend": "official-1444.religion.legend.json",
       "period_geojson": "official-1444-period.geojson",
       "period_legend": "official-1444-period.legend.json",
+      "period_culture_legend": "official-1444-period.culture.legend.json",
+      "period_religion_legend": "official-1444-period.religion.legend.json",
       "boundary_hints": "boundary-hints-1444.geojson",
       "lineage": "lineage-1444.json",
       "status": "live",
@@ -30,8 +34,12 @@
       "start_date": "1836-01-01",
       "geojson": "official-1836.geojson",
       "legend": "official-1836.legend.json",
+      "culture_legend": "official-1836.culture.legend.json",
+      "religion_legend": "official-1836.religion.legend.json",
       "period_geojson": "official-1836-period.geojson",
       "period_legend": "official-1836-period.legend.json",
+      "period_culture_legend": "official-1836-period.culture.legend.json",
+      "period_religion_legend": "official-1836-period.religion.legend.json",
       "boundary_hints": "boundary-hints-1836.geojson",
       "lineage": "lineage-1836.json",
       "status": "live",
@@ -45,8 +53,12 @@
       "start_date": "1936-01-01",
       "geojson": "official-1936.geojson",
       "legend": "official-1936.legend.json",
+      "culture_legend": "official-1936.culture.legend.json",
+      "religion_legend": "official-1936.religion.legend.json",
       "period_geojson": "official-1936-period.geojson",
       "period_legend": "official-1936-period.legend.json",
+      "period_culture_legend": "official-1936-period.culture.legend.json",
+      "period_religion_legend": "official-1936-period.religion.legend.json",
       "boundary_hints": "boundary-hints-1936.geojson",
       "lineage": "lineage-1936.json",
       "status": "live",
@@ -60,6 +72,8 @@
       "start_date": "2020-01-01",
       "geojson": "modern-baseline.geojson",
       "legend": "modern-baseline.legend.json",
+      "culture_legend": "modern-baseline.culture.legend.json",
+      "religion_legend": "modern-baseline.religion.legend.json",
       "status": "live",
       "supports_period_geometry": false
     }
@@ -69,6 +83,18 @@
       "id": "ownership",
       "label": "Owner choropleth",
       "desc": "Scenario owner colors from atlas export"
+    },
+    {
+      "id": "culture",
+      "label": "Culture paint",
+      "desc": "M18 curated culture hints with deterministic colors",
+      "milestone": "M18"
+    },
+    {
+      "id": "religion",
+      "label": "Religion paint",
+      "desc": "M18 curated religion hints with deterministic colors",
+      "milestone": "M18"
     },
     {
       "id": "assignment",
@@ -88,7 +114,7 @@
     {
       "id": "inspector",
       "label": "Province inspector",
-      "desc": "Owner, controller, cores, claims, lineage fields"
+      "desc": "Owner, controller, cores, claims, culture, religion, lineage fields"
     },
     {
       "id": "period-geometry",
@@ -117,16 +143,16 @@
   ],
   "future_slots": [
     {
-      "id": "culture-religion",
-      "label": "Culture & religion paint",
-      "milestone": "M18+",
-      "desc": "Atlas layers for explanation products (fields already in ownership tables)"
-    },
-    {
       "id": "pmtiles",
       "label": "PMTiles / vector tiles",
-      "milestone": "M18+",
+      "milestone": "M19+",
       "desc": "Web-scale delivery beyond sample GeoJSON"
+    },
+    {
+      "id": "broader-period-geometry",
+      "label": "Broader period geometry",
+      "milestone": "M20+",
+      "desc": "Period shapes beyond the Western Europe priority region"
     }
   ],
   "export_faces": [

@@ -1,0 +1,84 @@
+{
+  "assigned_province_count": 6,
+  "color_field": "culture_color",
+  "count": 5,
+  "end_date": null,
+  "entries": [
+    {
+      "color": "#ba9822",
+      "display_name": "french",
+      "fill_color": "#ba9822",
+      "id": "french",
+      "province_count": 2
+    },
+    {
+      "color": "#a626c6",
+      "display_name": "dutch",
+      "fill_color": "#a626c6",
+      "id": "dutch",
+      "province_count": 1
+    },
+    {
+      "color": "#a5c72e",
+      "display_name": "flemish",
+      "fill_color": "#a5c72e",
+      "id": "flemish",
+      "province_count": 1
+    },
+    {
+      "color": "#a7a02d",
+      "display_name": "german",
+      "fill_color": "#a7a02d",
+      "id": "german",
+      "province_count": 1
+    },
+    {
+      "color": "#a13471",
+      "display_name": "luxembourgish",
+      "fill_color": "#a13471",
+      "id": "luxembourgish",
+      "province_count": 1
+    }
+  ],
+  "era": "1936",
+  "fallback_color": "#b0b0b0",
+  "label": "1936 · HOI-leaning",
+  "milestone": "M18",
+  "paint_field": "culture",
+  "scenario_id": "official-1936",
+  "schema_version": "0.1.0",
+  "start_date": "1936-01-01",
+  "styles": {
+    "css_custom_properties": {
+      "--culture-dutch": "#a626c6",
+      "--culture-flemish": "#a5c72e",
+      "--culture-french": "#ba9822",
+      "--culture-german": "#a7a02d",
+      "--culture-luxembourgish": "#a13471"
+    },
+    "maplibre_fill_color": [
+      "match",
+      [
+        "get",
+        "culture"
+      ],
+      "french",
+      "#ba9822",
+      "dutch",
+      "#a626c6",
+      "flemish",
+      "#a5c72e",
+      "german",
+      "#a7a02d",
+      "luxembourgish",
+      "#a13471",
+      "#8a8a8a"
+    ],
+    "maplibre_fill_color_property": [
+      "get",
+      "culture_color"
+    ]
+  },
+  "unassigned_color": "#8a8a8a",
+  "unassigned_province_count": 0
+}

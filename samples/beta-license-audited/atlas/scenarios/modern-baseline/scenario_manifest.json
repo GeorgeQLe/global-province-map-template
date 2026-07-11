@@ -3,37 +3,81 @@
     "baseline_only": 6,
     "choropleth_features": 6,
     "country_rule_hits": 0,
+    "culture_assigned": 0,
+    "culture_features": 1,
+    "culture_unassigned": 6,
     "legend_tags": 5,
     "owner_features": 5,
     "owner_tags": 5,
     "ownership_rows": 6,
     "province_override_hits": 0,
     "region_rule_hits": 0,
-    "uncertainty_features": 0
+    "religion_assigned": 0,
+    "religion_features": 1,
+    "religion_unassigned": 6,
+    "uncertainty_features": 0,
+    "unique_cultures": 0,
+    "unique_religions": 0
   },
   "end_date": null,
   "era": "modern",
   "files": [
     "countries.json",
+    "culture_legend.json",
+    "cultures.csv",
+    "cultures.geojson",
     "legend.json",
     "owners.geojson",
     "ownership.csv",
     "ownership.json",
     "ownership_choropleth.geojson",
+    "religion_legend.json",
+    "religions.csv",
+    "religions.geojson",
     "scenario_manifest.json",
     "tags.csv",
     "uncertainty.geojson"
   ],
-  "generated_at": "2026-07-11T02:37:28+00:00",
+  "generated_at": "2026-07-11T04:44:37+00:00",
   "generator_version": "0.1.0",
   "label": "Modern baseline ownership",
-  "milestone": "M10",
+  "milestone": "M18",
   "pack_type": "atlas-scenario",
   "paint": {
     "color_field": "owner_color",
+    "default_color_field": "owner_color",
+    "default_field": "owner",
     "disputed_outline": "#c0392b",
     "fallback_color": "#b0b0b0",
-    "field": "owner"
+    "field": "owner",
+    "modes": [
+      {
+        "color_field": "owner_color",
+        "dissolve": "owners.geojson",
+        "field": "owner",
+        "legend": "legend.json"
+      },
+      {
+        "color_field": "controller_color",
+        "dissolve": null,
+        "field": "controller",
+        "legend": null,
+        "note": "Colors on choropleth only; no dedicated controller legend file in M10/M18"
+      },
+      {
+        "color_field": "culture_color",
+        "dissolve": "cultures.geojson",
+        "field": "culture",
+        "legend": "culture_legend.json"
+      },
+      {
+        "color_field": "religion_color",
+        "dissolve": "religions.geojson",
+        "field": "religion",
+        "legend": "religion_legend.json"
+      }
+    ],
+    "unassigned_color": "#8a8a8a"
   },
   "profile_id": "modern-small",
   "scenario_id": "modern-baseline",

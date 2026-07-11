@@ -1,0 +1,44 @@
+{
+  "assigned_province_count": 7,
+  "color_field": "religion_color",
+  "count": 1,
+  "end_date": null,
+  "entries": [
+    {
+      "color": "#20c9dd",
+      "display_name": "catholic",
+      "fill_color": "#20c9dd",
+      "id": "catholic",
+      "province_count": 7
+    }
+  ],
+  "era": "1444",
+  "fallback_color": "#b0b0b0",
+  "label": "1444 · EU-leaning",
+  "milestone": "M18",
+  "paint_field": "religion",
+  "scenario_id": "official-1444",
+  "schema_version": "0.1.0",
+  "start_date": "1444-11-11",
+  "styles": {
+    "css_custom_properties": {
+      "--religion-catholic": "#20c9dd"
+    },
+    "maplibre_fill_color": [
+      "match",
+      [
+        "get",
+        "religion"
+      ],
+      "catholic",
+      "#20c9dd",
+      "#8a8a8a"
+    ],
+    "maplibre_fill_color_property": [
+      "get",
+      "religion_color"
+    ]
+  },
+  "unassigned_color": "#8a8a8a",
+  "unassigned_province_count": 0
+}

@@ -5,6 +5,8 @@
     "provinces": 6,
     "scenario_ownership_rows": 18,
     "scenarios": 3,
+    "unique_cultures": 6,
+    "unique_religions": 2,
     "unique_tags": 9
   },
   "files": [
@@ -13,29 +15,47 @@
     "attribution.json",
     "geojson/provinces.geojson",
     "scenarios/modern-baseline/countries.json",
+    "scenarios/modern-baseline/culture_legend.json",
+    "scenarios/modern-baseline/cultures.csv",
+    "scenarios/modern-baseline/cultures.geojson",
     "scenarios/modern-baseline/legend.json",
     "scenarios/modern-baseline/owners.geojson",
     "scenarios/modern-baseline/ownership.csv",
     "scenarios/modern-baseline/ownership.json",
     "scenarios/modern-baseline/ownership_choropleth.geojson",
+    "scenarios/modern-baseline/religion_legend.json",
+    "scenarios/modern-baseline/religions.csv",
+    "scenarios/modern-baseline/religions.geojson",
     "scenarios/modern-baseline/scenario_manifest.json",
     "scenarios/modern-baseline/tags.csv",
     "scenarios/modern-baseline/uncertainty.geojson",
     "scenarios/official-1444/countries.json",
+    "scenarios/official-1444/culture_legend.json",
+    "scenarios/official-1444/cultures.csv",
+    "scenarios/official-1444/cultures.geojson",
     "scenarios/official-1444/legend.json",
     "scenarios/official-1444/owners.geojson",
     "scenarios/official-1444/ownership.csv",
     "scenarios/official-1444/ownership.json",
     "scenarios/official-1444/ownership_choropleth.geojson",
+    "scenarios/official-1444/religion_legend.json",
+    "scenarios/official-1444/religions.csv",
+    "scenarios/official-1444/religions.geojson",
     "scenarios/official-1444/scenario_manifest.json",
     "scenarios/official-1444/tags.csv",
     "scenarios/official-1444/uncertainty.geojson",
     "scenarios/official-1836/countries.json",
+    "scenarios/official-1836/culture_legend.json",
+    "scenarios/official-1836/cultures.csv",
+    "scenarios/official-1836/cultures.geojson",
     "scenarios/official-1836/legend.json",
     "scenarios/official-1836/owners.geojson",
     "scenarios/official-1836/ownership.csv",
     "scenarios/official-1836/ownership.json",
     "scenarios/official-1836/ownership_choropleth.geojson",
+    "scenarios/official-1836/religion_legend.json",
+    "scenarios/official-1836/religions.csv",
+    "scenarios/official-1836/religions.geojson",
     "scenarios/official-1836/scenario_manifest.json",
     "scenarios/official-1836/tags.csv",
     "scenarios/official-1836/uncertainty.geojson",
@@ -56,52 +76,76 @@
       "JSON"
     ]
   },
-  "generated_at": "2026-07-11T02:37:28+00:00",
+  "generated_at": "2026-07-11T04:44:37+00:00",
   "generator_version": "0.1.0",
   "include_base_geometry": true,
+  "include_identity_dissolve": true,
+  "include_identity_paint": true,
   "include_owner_dissolve": true,
   "inputs": {
-    "provinces": "/Users/georgele/projects/games/global-province-map-template/samples/beta-license-audited/_inputs/provinces.geojson"
+    "provinces": "geojson/provinces.geojson"
   },
-  "milestone": "M10",
+  "milestone": "M18",
   "notes": [
     "Atlas packs join scenario politics onto modern scaffold geometry for web maps.",
     "Colors are deterministic per tag (sha256 → HSL) and stable across rebuilds.",
     "Uncertainty layer flags disputed, foreign-controlled, and UNK-owned provinces.",
-    "PMTiles / FlatGeobuf / GeoParquet are not generated in M10; consume GeoJSON or convert downstream."
+    "Supersedes M10 atlas face; culture/religion identity paint added in M18.",
+    "PMTiles / FlatGeobuf / GeoParquet are not generated here; consume GeoJSON or convert downstream.",
+    "Culture/religion paint is curated scenario hints, not Paradox-grade ethnography.",
+    "Unassigned culture/religion provinces use unassigned gray (#8a8a8a).",
+    "Prefer property-based fill (['get','culture_color']) over large match expressions for full packs."
   ],
   "pack_type": "atlas",
   "profile_id": "modern-small",
   "scenario_summaries": [
     {
+      "culture_assigned": 0,
+      "culture_unassigned": 6,
       "era": "modern",
       "legend_tags": 5,
       "ownership_rows": 6,
+      "religion_assigned": 0,
+      "religion_unassigned": 6,
       "scenario_id": "modern-baseline",
       "start_date": "2020-01-01",
-      "uncertainty_features": 0
+      "uncertainty_features": 0,
+      "unique_cultures": 0,
+      "unique_religions": 0
     },
     {
-      "era": "1836",
-      "legend_tags": 5,
-      "ownership_rows": 6,
-      "scenario_id": "official-1836",
-      "start_date": "1836-01-01",
-      "uncertainty_features": 0
-    },
-    {
+      "culture_assigned": 6,
+      "culture_unassigned": 0,
       "era": "1444",
       "legend_tags": 3,
       "ownership_rows": 6,
+      "religion_assigned": 6,
+      "religion_unassigned": 0,
       "scenario_id": "official-1444",
       "start_date": "1444-11-11",
-      "uncertainty_features": 0
+      "uncertainty_features": 0,
+      "unique_cultures": 5,
+      "unique_religions": 1
+    },
+    {
+      "culture_assigned": 6,
+      "culture_unassigned": 0,
+      "era": "1836",
+      "legend_tags": 5,
+      "ownership_rows": 6,
+      "religion_assigned": 6,
+      "religion_unassigned": 0,
+      "scenario_id": "official-1836",
+      "start_date": "1836-01-01",
+      "uncertainty_features": 0,
+      "unique_cultures": 5,
+      "unique_religions": 2
     }
   ],
   "scenarios": [
     "modern-baseline",
-    "official-1836",
-    "official-1444"
+    "official-1444",
+    "official-1836"
   ],
   "schema_version": "0.1.0"
 }

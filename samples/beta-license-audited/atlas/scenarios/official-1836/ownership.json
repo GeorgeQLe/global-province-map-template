@@ -2,9 +2,9 @@
   "count": 6,
   "end_date": null,
   "era": "1836",
-  "generated_at": "2026-07-11T02:37:28+00:00",
+  "generated_at": "2026-07-11T04:44:37+00:00",
   "generator_version": "0.1.0",
-  "milestone": "M10",
+  "milestone": "M18",
   "profile_id": "modern-small",
   "records": [
     {
@@ -16,6 +16,7 @@
         "BEL"
       ],
       "culture": "flemish",
+      "culture_color": "#a5c72e",
       "display_name": "Flanders",
       "disputed": false,
       "end_date": null,
@@ -26,6 +27,7 @@
       "parent_region_id": "BE-VLG",
       "province_id": "sample_be_flanders",
       "religion": "catholic",
+      "religion_color": "#20c9dd",
       "scenario_id": "official-1836",
       "start_date": "1836-01-01"
     },
@@ -38,6 +40,7 @@
         "PRU"
       ],
       "culture": "german",
+      "culture_color": "#a7a02d",
       "display_name": "Rhineland",
       "disputed": false,
       "end_date": null,
@@ -48,6 +51,7 @@
       "parent_region_id": "DE-NW",
       "province_id": "sample_de_rhineland",
       "religion": "protestant",
+      "religion_color": "#d7ca37",
       "scenario_id": "official-1836",
       "start_date": "1836-01-01"
     },
@@ -60,6 +64,7 @@
         "FRA"
       ],
       "culture": "french",
+      "culture_color": "#ba9822",
       "display_name": "Normandy coast",
       "disputed": false,
       "end_date": null,
@@ -70,6 +75,7 @@
       "parent_region_id": "FR-NOR",
       "province_id": "sample_fr_normandy",
       "religion": "catholic",
+      "religion_color": "#20c9dd",
       "scenario_id": "official-1836",
       "start_date": "1836-01-01"
     },
@@ -82,6 +88,7 @@
         "FRA"
       ],
       "culture": "french",
+      "culture_color": "#ba9822",
       "display_name": "Paris basin",
       "disputed": false,
       "end_date": null,
@@ -92,6 +99,7 @@
       "parent_region_id": "FR-IDF",
       "province_id": "sample_fr_paris",
       "religion": "catholic",
+      "religion_color": "#20c9dd",
       "scenario_id": "official-1836",
       "start_date": "1836-01-01"
     },
@@ -104,6 +112,7 @@
         "LUX"
       ],
       "culture": "luxembourgish",
+      "culture_color": "#a13471",
       "display_name": "Luxembourg core",
       "disputed": false,
       "end_date": null,
@@ -114,6 +123,7 @@
       "parent_region_id": "LU-LU",
       "province_id": "sample_lu_core",
       "religion": "catholic",
+      "religion_color": "#20c9dd",
       "scenario_id": "official-1836",
       "start_date": "1836-01-01"
     },
@@ -126,6 +136,7 @@
         "NET"
       ],
       "culture": "dutch",
+      "culture_color": "#a626c6",
       "display_name": "Holland",
       "disputed": false,
       "end_date": null,
@@ -136,6 +147,7 @@
       "parent_region_id": "NL-NH",
       "province_id": "sample_nl_holland",
       "religion": "protestant",
+      "religion_color": "#d7ca37",
       "scenario_id": "official-1836",
       "start_date": "1836-01-01"
     }

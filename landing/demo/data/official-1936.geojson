@@ -39,6 +39,7 @@
           "FRA"
         ],
         "culture": "french",
+        "culture_color": "#ba9822",
         "display_name": "Paris basin",
         "disputed": false,
         "end_date": null,
@@ -55,6 +56,7 @@
         "parent_region_id": "FR-IDF",
         "province_id": "sample_fr_paris",
         "religion": "catholic",
+        "religion_color": "#20c9dd",
         "scenario_id": "official-1936",
         "source_lineage": [
           "natural_earth:admin1_states_provinces"
@@ -104,6 +106,7 @@
           "FRA"
         ],
         "culture": "french",
+        "culture_color": "#ba9822",
         "display_name": "Normandy coast",
         "disputed": false,
         "end_date": null,
@@ -120,6 +123,7 @@
         "parent_region_id": "FR-NOR",
         "province_id": "sample_fr_normandy",
         "religion": "catholic",
+        "religion_color": "#20c9dd",
         "scenario_id": "official-1936",
         "source_lineage": [
           "natural_earth:admin1_states_provinces"
@@ -169,6 +173,7 @@
           "BEL"
         ],
         "culture": "flemish",
+        "culture_color": "#a5c72e",
         "display_name": "Flanders",
         "disputed": false,
         "end_date": null,
@@ -185,6 +190,7 @@
         "parent_region_id": "BE-VLG",
         "province_id": "sample_be_flanders",
         "religion": "catholic",
+        "religion_color": "#20c9dd",
         "scenario_id": "official-1936",
         "source_lineage": [
           "natural_earth:admin1_states_provinces"
@@ -234,6 +240,7 @@
           "NET"
         ],
         "culture": "dutch",
+        "culture_color": "#a626c6",
         "display_name": "Holland",
         "disputed": false,
         "end_date": null,
@@ -250,6 +257,7 @@
         "parent_region_id": "NL-NH",
         "province_id": "sample_nl_holland",
         "religion": "protestant",
+        "religion_color": "#d7ca37",
         "scenario_id": "official-1936",
         "source_lineage": [
           "natural_earth:admin1_states_provinces"
@@ -299,6 +307,7 @@
           "GER"
         ],
         "culture": "german",
+        "culture_color": "#a7a02d",
         "display_name": "Rhineland",
         "disputed": false,
         "end_date": null,
@@ -308,13 +317,14 @@
         "license_lineage": [
           "Natural Earth public domain"
         ],
-        "notes": "Rhineland \u2014 German owned; DMZ story via geometry hints",
+        "notes": "Rhineland — German owned; DMZ story via geometry hints",
         "owner": "GER",
         "owner_color": "#38de44",
         "parent_country_id": "DEU",
         "parent_region_id": "DE-NW",
         "province_id": "sample_de_rhineland",
         "religion": "catholic",
+        "religion_color": "#20c9dd",
         "scenario_id": "official-1936",
         "source_lineage": [
           "natural_earth:admin1_states_provinces"
@@ -364,6 +374,7 @@
           "LUX"
         ],
         "culture": "luxembourgish",
+        "culture_color": "#a13471",
         "display_name": "Luxembourg core",
         "disputed": false,
         "end_date": null,
@@ -380,6 +391,7 @@
         "parent_region_id": "LU-LU",
         "province_id": "sample_lu_core",
         "religion": "catholic",
+        "religion_color": "#20c9dd",
         "scenario_id": "official-1936",
         "source_lineage": [
           "natural_earth:admin1_states_provinces"
@@ -392,9 +404,21 @@
     }
   ],
   "gpm": {
+    "color_fields": {
+      "controller": "controller_color",
+      "culture": "culture_color",
+      "owner": "owner_color",
+      "religion": "religion_color"
+    },
     "era": "1936",
     "generated_at": "2026-07-11T04:17:04+00:00",
     "generator_version": "0.1.0",
+    "paint_fields": [
+      "owner",
+      "controller",
+      "culture",
+      "religion"
+    ],
     "sample": "beta-license-audited Western Europe",
     "scenario_id": "official-1936"
   },

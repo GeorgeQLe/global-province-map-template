@@ -2,7 +2,9 @@
 
 M10 is the second export face of the dual-face pipeline. Game packs (M7/M8)
 target engines and mod tools; **atlas packs** target web maps, historical
-explanation UIs, and SaaS-style consumption.
+explanation UIs, and SaaS-style consumption. **M18** extends the same face with
+culture/religion paint (see `docs/m18-culture-religion.md`); pack `milestone`
+is now `M18` while `schema_version` remains `0.1.0`.
 
 Atlas packages join **scenario politics onto modern scaffold geometry**, emit
 **tag legends with stable colors**, and ship **flat tables** alongside GeoJSON

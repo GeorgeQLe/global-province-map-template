@@ -1,0 +1,32 @@
+{
+  "assigned_province_count": 0,
+  "color_field": "religion_color",
+  "count": 0,
+  "end_date": null,
+  "entries": [],
+  "era": "modern",
+  "fallback_color": "#b0b0b0",
+  "label": "Modern baseline",
+  "milestone": "M18",
+  "paint_field": "religion",
+  "scenario_id": "modern-baseline",
+  "schema_version": "0.1.0",
+  "start_date": "2020-01-01",
+  "styles": {
+    "css_custom_properties": {},
+    "maplibre_fill_color": [
+      "match",
+      [
+        "get",
+        "religion"
+      ],
+      "#8a8a8a"
+    ],
+    "maplibre_fill_color_property": [
+      "get",
+      "religion_color"
+    ]
+  },
+  "unassigned_color": "#8a8a8a",
+  "unassigned_province_count": 6
+}

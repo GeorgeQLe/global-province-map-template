@@ -144,6 +144,18 @@ function provinceFillColor(feature) {
     }
     return ownership.controller_color || hashColor(ownership.controller || ownership.owner);
   }
+  if (state.colorMode === "culture") {
+    if (!ownership) {
+      return "#64748b";
+    }
+    return ownership.culture_color || "#8a8a8a";
+  }
+  if (state.colorMode === "religion") {
+    if (!ownership) {
+      return "#64748b";
+    }
+    return ownership.religion_color || "#8a8a8a";
+  }
   if (state.colorMode === "assignment") {
     if (!ownership) {
       return "#64748b";
@@ -200,6 +212,9 @@ function renderLegend() {
   } else if (state.colorMode === "owner" || state.colorMode === "controller") {
     add(PALETTE[0], "Scenario tag color");
     add("#8a8a8a", "UNK");
+  } else if (state.colorMode === "culture" || state.colorMode === "religion") {
+    add(PALETTE[0], "Identity color");
+    add("#8a8a8a", "unassigned");
   } else if (state.colorMode === "assignment") {
     Object.entries(ASSIGNMENT_COLORS).forEach(([key, color]) => add(color, key));
   } else if (state.colorMode === "area") {
@@ -863,6 +878,10 @@ function attachOwnershipToFeatures() {
       feature.properties.assignment_source = ownership.assignment_source;
       feature.properties.owner_color = ownership.owner_color;
       feature.properties.controller_color = ownership.controller_color;
+      feature.properties.culture = ownership.culture;
+      feature.properties.religion = ownership.religion;
+      feature.properties.culture_color = ownership.culture_color;
+      feature.properties.religion_color = ownership.religion_color;
       feature.properties.disputed = ownership.disputed;
     }
   }
@@ -957,7 +976,14 @@ async function main() {
     state.meta = await fetchJson("/api/meta");
     state.scenarioId = state.meta.scenario_id || null;
     state.authoringEnabled = Boolean(state.meta.authoring_enabled);
-    if (state.scenarioId && !["owner", "controller", "assignment"].includes(state.colorMode)) {
+    const SCENARIO_COLOR_MODES = [
+      "owner",
+      "controller",
+      "assignment",
+      "culture",
+      "religion",
+    ];
+    if (state.scenarioId && !SCENARIO_COLOR_MODES.includes(state.colorMode)) {
       state.colorMode = "owner";
       $("color-mode").value = "owner";
     }

@@ -83,8 +83,11 @@ later era-aware geometry are first-class tracks.
   ownership diffs, expanded golden-border suites, contribution checklist;
   `gpm curation`; sample `samples/curator-bundle-example/`;
   docs `docs/m17-curation.md`.
+- M18 culture / religion atlas paint layers: complete. Atlas identity paint
+  (`culture_color` / `religion_color`, legends, dissolve), demo + review
+  viewer modes, sample refresh; docs `docs/m18-culture-religion.md`.
 
 ## Next
 
-- Post-M17 product work: culture/religion atlas paint, PMTiles / vector tiles,
-  broader period geometry beyond the WE priority region (see root ROADMAP).
+- Post-M18 product work: PMTiles / vector tiles, broader period geometry
+  beyond the WE priority region (see root ROADMAP).

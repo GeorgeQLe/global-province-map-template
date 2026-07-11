@@ -2,16 +2,19 @@
 
 ## Active
 
-- (none — M17 complete; pick next from roadmap)
+- (none — M18 complete; pick next from roadmap)
 
 ## Up next (from roadmap)
 
-- Culture / religion atlas paint layers
 - Optional PMTiles / vector tiles
 - Broader period geometry beyond Western Europe priority region
 
 ## Completed
 
+- [x] M18 culture / religion atlas paint layers: `culture_color` /
+  `religion_color` on atlas choropleths, identity legends + optional dissolve,
+  `gpm export atlas --no-identity-paint|--no-identity-dissolve`, review viewer
+  + demo paint modes, sample/demo regen, docs `docs/m18-culture-religion.md`.
 - [x] M17 curation workflow hardening: external curator bundles with manifests,
   `gpm curation list|validate|import|diff|checklist`, ownership diffs (tag
   counts / contested provinces), expanded golden-border suite in

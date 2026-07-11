@@ -1,7 +1,7 @@
-province_id,scenario_id,start_date,end_date,owner,controller,cores,claims,culture,religion,disputed,assignment_source,parent_country_id,parent_region_id,display_name,notes,owner_color,controller_color
-sample_be_flanders,modern-baseline,2020-01-01,,BEL,BEL,"[""BEL""]",[],,,false,baseline,BEL,BE-VLG,Flanders,,#bd19a8,#bd19a8
-sample_de_rhineland,modern-baseline,2020-01-01,,DEU,DEU,"[""DEU""]",[],,,false,baseline,DEU,DE-NW,Rhineland,,#38e138,#38e138
-sample_fr_normandy,modern-baseline,2020-01-01,,FRA,FRA,"[""FRA""]",[],,,false,baseline,FRA,FR-NOR,Normandy coast,,#2e5aa5,#2e5aa5
-sample_fr_paris,modern-baseline,2020-01-01,,FRA,FRA,"[""FRA""]",[],,,false,baseline,FRA,FR-IDF,Paris basin,,#2e5aa5,#2e5aa5
-sample_lu_core,modern-baseline,2020-01-01,,LUX,LUX,"[""LUX""]",[],,,false,baseline,LUX,LU-LU,Luxembourg core,,#a7253a,#a7253a
-sample_nl_holland,modern-baseline,2020-01-01,,NLD,NLD,"[""NLD""]",[],,,false,baseline,NLD,NL-NH,Holland,,#b65b37,#b65b37
+province_id,scenario_id,start_date,end_date,owner,controller,cores,claims,culture,religion,disputed,assignment_source,parent_country_id,parent_region_id,display_name,notes,owner_color,controller_color,culture_color,religion_color
+sample_be_flanders,modern-baseline,2020-01-01,,BEL,BEL,"[""BEL""]",[],,,false,baseline,BEL,BE-VLG,Flanders,,#bd19a8,#bd19a8,#8a8a8a,#8a8a8a
+sample_de_rhineland,modern-baseline,2020-01-01,,DEU,DEU,"[""DEU""]",[],,,false,baseline,DEU,DE-NW,Rhineland,,#38e138,#38e138,#8a8a8a,#8a8a8a
+sample_fr_normandy,modern-baseline,2020-01-01,,FRA,FRA,"[""FRA""]",[],,,false,baseline,FRA,FR-NOR,Normandy coast,,#2e5aa5,#2e5aa5,#8a8a8a,#8a8a8a
+sample_fr_paris,modern-baseline,2020-01-01,,FRA,FRA,"[""FRA""]",[],,,false,baseline,FRA,FR-IDF,Paris basin,,#2e5aa5,#2e5aa5,#8a8a8a,#8a8a8a
+sample_lu_core,modern-baseline,2020-01-01,,LUX,LUX,"[""LUX""]",[],,,false,baseline,LUX,LU-LU,Luxembourg core,,#a7253a,#a7253a,#8a8a8a,#8a8a8a
+sample_nl_holland,modern-baseline,2020-01-01,,NLD,NLD,"[""NLD""]",[],,,false,baseline,NLD,NL-NH,Holland,,#b65b37,#b65b37,#8a8a8a,#8a8a8a

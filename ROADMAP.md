@@ -424,6 +424,7 @@ Completed foundation:
   matrix, migration notes, official-1936. Complete (2026-07-11).
 - M17: Curation workflow hardening (external bundles, diffs, golden borders,
   contribution path). Complete (2026-07-11).
+- M18: Culture / religion atlas paint layers. Complete (2026-07-11).
 
 Near-term product path:
 
@@ -455,6 +456,9 @@ Near-term product path:
 - **M17: Curation workflow hardening** — external scenario bundles, diffs,
   golden-border tests, community contribution path.
   **Complete** (`gpm curation`, golden-border suite, sample curator bundle).
+- **M18: Culture / religion atlas paint layers** — identity colors, legends,
+  optional dissolve on atlas packs; demo + review viewer paint modes.
+  **Complete** (`culture_color` / `religion_color`, identity legends, demo).
 
 ## Open Questions
 

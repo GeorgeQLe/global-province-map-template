@@ -15,7 +15,7 @@ from typing import Any
 from urllib.parse import unquote, urlparse
 
 from gpm.config import load_profile
-from gpm.exporters.atlas import tag_fill_color
+from gpm.exporters.atlas import identity_fill_color, tag_fill_color
 from gpm.paths import PROCESSED_DATA_DIR
 from gpm.qa.scenario import ScenarioPoliticsQAError, run_scenario_politics_qa
 from gpm.scenarios import (
@@ -30,6 +30,16 @@ from gpm.scenarios import (
 
 class ReviewError(RuntimeError):
     """Raised when the interactive review viewer cannot start."""
+
+
+def _enrich_ownership_colors(row: dict[str, Any]) -> dict[str, Any]:
+    """Attach deterministic owner/controller/culture/religion fill colors."""
+    item = dict(row)
+    item["owner_color"] = tag_fill_color(str(row.get("owner") or ""))
+    item["controller_color"] = tag_fill_color(str(row.get("controller") or ""))
+    item["culture_color"] = identity_fill_color(row.get("culture"))
+    item["religion_color"] = identity_fill_color(row.get("religion"))
+    return item
 
 
 @dataclass(frozen=True)
@@ -554,12 +564,7 @@ class _ReviewRequestHandler(BaseHTTPRequestHandler):
                 self._send_json({"available": False, "scenario_id": None, "records": []})
                 return
             records = sorted(self.dataset.ownership_by_id.values(), key=lambda row: row["province_id"])
-            enriched = []
-            for row in records:
-                item = dict(row)
-                item["owner_color"] = tag_fill_color(str(row.get("owner") or ""))
-                item["controller_color"] = tag_fill_color(str(row.get("controller") or ""))
-                enriched.append(item)
+            enriched = [_enrich_ownership_colors(row) for row in records]
             self._send_json(
                 {
                     "available": True,
@@ -600,13 +605,9 @@ class _ReviewRequestHandler(BaseHTTPRequestHandler):
                 self._send_error_json(404, f"Unknown province_id: {province_id}")
                 return
             ownership = self.dataset.ownership_by_id.get(province_id)
-            ownership_payload = None
-            if ownership is not None:
-                ownership_payload = dict(ownership)
-                ownership_payload["owner_color"] = tag_fill_color(str(ownership.get("owner") or ""))
-                ownership_payload["controller_color"] = tag_fill_color(
-                    str(ownership.get("controller") or "")
-                )
+            ownership_payload = (
+                _enrich_ownership_colors(ownership) if ownership is not None else None
+            )
             self._send_json(
                 {
                     "province_id": province_id,
@@ -693,13 +694,9 @@ class _ReviewRequestHandler(BaseHTTPRequestHandler):
             return
 
         ownership = self.dataset.ownership_by_id.get(province_id)
-        ownership_payload = None
-        if ownership is not None:
-            ownership_payload = dict(ownership)
-            ownership_payload["owner_color"] = tag_fill_color(str(ownership.get("owner") or ""))
-            ownership_payload["controller_color"] = tag_fill_color(
-                str(ownership.get("controller") or "")
-            )
+        ownership_payload = (
+            _enrich_ownership_colors(ownership) if ownership is not None else None
+        )
         self._send_json(
             {
                 "ok": True,
