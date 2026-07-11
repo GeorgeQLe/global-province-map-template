@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/global-province-map/license-audit-report.schema.json",
+  "title": "Global Province Map License Audit Report",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "report_type",
+    "milestone",
+    "passed",
+    "profile_id",
+    "release_channel",
+    "error_count",
+    "warning_count",
+    "public_source_ids",
+    "isolated_source_ids",
+    "restricted_source_ids",
+    "findings",
+    "attribution_records"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "report_type": { "const": "license-audit" },
+    "milestone": { "type": "string", "minLength": 1 },
+    "passed": { "type": "boolean" },
+    "profile_id": { "type": "string", "minLength": 1 },
+    "release_channel": {
+      "type": "string",
+      "enum": ["alpha", "beta", "stable"]
+    },
+    "error_count": { "type": "integer", "minimum": 0 },
+    "warning_count": { "type": "integer", "minimum": 0 },
+    "public_source_ids": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "isolated_source_ids": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "restricted_source_ids": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "feature_license_lineage": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "feature_source_lineage": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "catalog_sources": { "type": "array" },
+    "attribution_records": { "type": "array" },
+    "isolation_notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code", "severity", "message"],
+        "properties": {
+          "code": { "type": "string", "minLength": 1 },
+          "severity": {
+            "type": "string",
+            "enum": ["error", "warning", "info"]
+          },
+          "message": { "type": "string", "minLength": 1 },
+          "source_id": { "type": "string" },
+          "detail": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "policy": { "type": "object" }
+  }
+}

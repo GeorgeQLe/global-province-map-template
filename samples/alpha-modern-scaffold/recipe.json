@@ -1,0 +1,167 @@
+{
+  "environment": {
+    "install": [
+      "uv sync",
+      "uv pip install -e '.[dev]'"
+    ],
+    "notes": [
+      "Run commands from the repository root with the gpm entrypoint available.",
+      "Do not commit data/raw/ or full data/processed/ global builds.",
+      "Sample subsets may be committed under samples/ when size is modest."
+    ],
+    "python": ">=3.11"
+  },
+  "generator_version": "0.1.0",
+  "include_seas": true,
+  "include_topology_qa": true,
+  "label": "Public alpha modern scaffold",
+  "milestone": "M9",
+  "population_input": null,
+  "profile_id": "modern-small",
+  "recipe_id": "alpha-modern-scaffold",
+  "sample_countries": [
+    "FRA",
+    "BEL",
+    "NLD",
+    "LUX",
+    "DEU"
+  ],
+  "scenarios": [
+    "modern-baseline",
+    "demo-1444"
+  ],
+  "schema_version": "0.1.0",
+  "settlement_input": null,
+  "steps": [
+    {
+      "command": [
+        "gpm",
+        "sources",
+        "download",
+        "--execute",
+        "--profile",
+        "modern-small"
+      ],
+      "id": "download-sources",
+      "notes": "Raw data stays under data/raw/ (gitignored). Dry-run omits --execute.",
+      "title": "Download Natural Earth (and other default) source artifacts"
+    },
+    {
+      "command": [
+        "gpm",
+        "sources",
+        "manifest",
+        "--from-raw",
+        "--profile",
+        "modern-small"
+      ],
+      "id": "source-manifest",
+      "notes": "Emit a build source manifest for the release lineage.",
+      "title": "Record downloaded source checksums and metadata"
+    },
+    {
+      "command": [
+        "gpm",
+        "build",
+        "provinces",
+        "--profile",
+        "modern-small"
+      ],
+      "id": "build-provinces",
+      "notes": "Writes data/processed/provinces.geojson and intermediate candidates. Omit population/settlement flags for the unrefined M2/M3 draft.",
+      "title": "Generate modern land province draft"
+    },
+    {
+      "command": [
+        "gpm",
+        "build",
+        "seas",
+        "--profile",
+        "modern-small"
+      ],
+      "id": "build-seas",
+      "notes": "Gameplay-first sea zones; not legal maritime boundaries.",
+      "title": "Generate coastal and ocean sea zones"
+    },
+    {
+      "command": [
+        "gpm",
+        "build",
+        "adjacency",
+        "--profile",
+        "modern-small"
+      ],
+      "id": "build-adjacency",
+      "notes": "Marine edges appear only when sea_zones.geojson is present.",
+      "title": "Generate land (and marine) adjacency"
+    },
+    {
+      "command": [
+        "gpm",
+        "qa",
+        "topology",
+        "--profile",
+        "modern-small"
+      ],
+      "id": "qa-topology",
+      "notes": "CI-gating geometry, coverage, and graph checks.",
+      "title": "Run topology QA"
+    },
+    {
+      "command": [
+        "gpm",
+        "scenario",
+        "build",
+        "--scenario",
+        "modern-baseline",
+        "--profile",
+        "modern-small"
+      ],
+      "id": "scenario-modern-baseline",
+      "notes": "Politics overlay only; does not rewrite province geometry.",
+      "title": "Resolve scenario ownership overlay: modern-baseline"
+    },
+    {
+      "command": [
+        "gpm",
+        "scenario",
+        "build",
+        "--scenario",
+        "demo-1444",
+        "--profile",
+        "modern-small"
+      ],
+      "id": "scenario-demo-1444",
+      "notes": "Politics overlay only; does not rewrite province geometry.",
+      "title": "Resolve scenario ownership overlay: demo-1444"
+    },
+    {
+      "command": [
+        "gpm",
+        "release",
+        "alpha",
+        "--profile",
+        "modern-small",
+        "--scenario",
+        "modern-baseline",
+        "--scenario",
+        "demo-1444",
+        "--country",
+        "FRA",
+        "--country",
+        "BEL",
+        "--country",
+        "NLD",
+        "--country",
+        "LUX",
+        "--country",
+        "DEU",
+        "--tag",
+        "alpha-0.1.0-sample-we"
+      ],
+      "id": "release-alpha",
+      "notes": "Writes release_manifest.json, ACCURACY.md, recipe files, attribution, and an embedded game template pack.",
+      "title": "Package public alpha release bundle"
+    }
+  ]
+}

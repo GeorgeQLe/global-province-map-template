@@ -1,0 +1,110 @@
+{
+  "color_field": "owner_color",
+  "count": 5,
+  "disputed_outline_color": "#c0392b",
+  "end_date": null,
+  "era": "modern",
+  "fallback_color": "#b0b0b0",
+  "generated_at": "2026-07-11T02:37:28+00:00",
+  "generator_version": "0.1.0",
+  "label": "Modern baseline ownership",
+  "milestone": "M10",
+  "paint_field": "owner",
+  "profile_id": "modern-small",
+  "scenario_id": "modern-baseline",
+  "schema_version": "0.1.0",
+  "start_date": "2020-01-01",
+  "styles": {
+    "css_custom_properties": {
+      "--tag-BEL": "#bd19a8",
+      "--tag-DEU": "#38e138",
+      "--tag-FRA": "#2e5aa5",
+      "--tag-LUX": "#a7253a",
+      "--tag-NLD": "#b65b37"
+    },
+    "maplibre_fill_color": [
+      "match",
+      [
+        "get",
+        "owner"
+      ],
+      "FRA",
+      "#2e5aa5",
+      "BEL",
+      "#bd19a8",
+      "DEU",
+      "#38e138",
+      "LUX",
+      "#a7253a",
+      "NLD",
+      "#b65b37",
+      "#b0b0b0"
+    ],
+    "maplibre_fill_color_property": [
+      "get",
+      "owner_color"
+    ]
+  },
+  "tags": [
+    {
+      "color": "#2e5aa5",
+      "controller_province_count": 2,
+      "display_name": "FRA",
+      "fill_color": "#2e5aa5",
+      "owner_province_count": 2,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "FRA"
+    },
+    {
+      "color": "#bd19a8",
+      "controller_province_count": 1,
+      "display_name": "BEL",
+      "fill_color": "#bd19a8",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "BEL"
+    },
+    {
+      "color": "#38e138",
+      "controller_province_count": 1,
+      "display_name": "DEU",
+      "fill_color": "#38e138",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "DEU"
+    },
+    {
+      "color": "#a7253a",
+      "controller_province_count": 1,
+      "display_name": "LUX",
+      "fill_color": "#a7253a",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "LUX"
+    },
+    {
+      "color": "#b65b37",
+      "controller_province_count": 1,
+      "display_name": "NLD",
+      "fill_color": "#b65b37",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "NLD"
+    }
+  ]
+}

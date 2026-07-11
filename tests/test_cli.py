@@ -22,19 +22,16 @@ class FakeResponse:
 
 
 def test_stub_cli_commands_print_helpful_placeholder_output(capsys):
-    commands = [
-        ["build", "provinces"],
-        ["build", "adjacency"],
-        ["export", "geojson"],
-        ["qa", "topology"],
-        ["qa", "render"],
-    ]
+    assert main(["qa", "render"]) == 0
+    output = capsys.readouterr().out
+    assert "Phase 1 placeholder" in output
+    assert "Profile: modern-small" in output
 
-    for command in commands:
-        assert main(command) == 0
-        output = capsys.readouterr().out
-        assert "Phase 1 placeholder" in output
-        assert "Profile: modern-small" in output
+
+def test_qa_render_points_to_interactive_review_command(capsys):
+    assert main(["qa", "render"]) == 0
+    output = capsys.readouterr().out
+    assert "gpm review" in output
 
 
 def test_sources_download_dry_run_includes_default_adapters(capsys):
@@ -147,8 +144,10 @@ def test_unknown_profile_returns_clean_cli_error(capsys):
         ["build", "provinces", "--profile", "missing-profile"],
         ["build", "adjacency", "--profile", "missing-profile"],
         ["export", "geojson", "--profile", "missing-profile"],
+        ["export", "pack", "--profile", "missing-profile"],
         ["qa", "topology", "--profile", "missing-profile"],
         ["qa", "render", "--profile", "missing-profile"],
+        ["review", "--profile", "missing-profile"],
     ]
 
     for command in commands:

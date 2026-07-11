@@ -14,7 +14,10 @@ authors = [
   { name = "Global Province Map contributors" }
 ]
 keywords = ["gis", "geodata", "strategy-games", "provinces", "maps"]
-dependencies = []
+dependencies = [
+    "rasterio>=1.4,<2",
+    "shapely>=2.1,<3",
+]
 
 [project.optional-dependencies]
 dev = ["pytest>=8"]
@@ -25,9 +28,14 @@ gpm = "gpm.cli:main"
 [tool.setuptools.packages.find]
 where = ["src"]
 
+[tool.setuptools.package-data]
+"gpm.viewer" = ["static/*"]
+
 [tool.setuptools.data-files]
 "share/global-province-map-template/configs" = ["configs/sources.toml"]
 "share/global-province-map-template/configs/profiles" = ["configs/profiles/*.toml"]
+"share/global-province-map-template/configs/scenarios" = ["configs/scenarios/*.json"]
+"share/global-province-map-template/configs/recipes" = ["configs/recipes/*.json"]
 "share/global-province-map-template/schemas" = ["schemas/*.schema.json"]
 
 [tool.pytest.ini_options]

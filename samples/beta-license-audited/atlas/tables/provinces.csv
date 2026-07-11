@@ -1,0 +1,7 @@
+province_id,display_name,kind,parent_region_id,parent_country_id,area_sq_km,estimated_population,terrain_class,coastal,island
+sample_be_flanders,Flanders,land,BE-VLG,BEL,1200.0,8000.0,plains,true,false
+sample_de_rhineland,Rhineland,land,DE-NW,DEU,1200.0,8000.0,plains,false,false
+sample_fr_normandy,Normandy coast,land,FR-NOR,FRA,1200.0,8000.0,plains,true,false
+sample_fr_paris,Paris basin,land,FR-IDF,FRA,1200.0,8000.0,plains,false,false
+sample_lu_core,Luxembourg core,land,LU-LU,LUX,1200.0,8000.0,plains,false,false
+sample_nl_holland,Holland,land,NL-NH,NLD,1200.0,8000.0,plains,true,false

@@ -88,6 +88,245 @@ def validate_source_manifest(manifest: dict[str, Any]) -> None:
         _validate_artifacts(source["artifacts"], path)
 
 
+def validate_release_manifest(manifest: dict[str, Any]) -> None:
+    """Validate core invariants of an M9 release manifest document."""
+    schema = load_schema("release-manifest")
+    _require_object(manifest, "manifest")
+    _require_keys(manifest, schema["required"], "manifest")
+    if manifest["schema_version"] != schema["properties"]["schema_version"]["const"]:
+        raise SchemaValidationError("manifest.schema_version must be 0.1.0")
+    if manifest["manifest_type"] != "release":
+        raise SchemaValidationError("manifest.manifest_type must be release")
+    if manifest["release_channel"] not in {"alpha", "beta", "stable"}:
+        raise SchemaValidationError("manifest.release_channel must be alpha, beta, or stable")
+    tiers = manifest["quality_tiers"]
+    _require_object(tiers, "manifest.quality_tiers")
+    _require_keys(tiers, ["geometry", "politics"], "manifest.quality_tiers")
+    allowed_tiers = {"scaffold-baseline", "curated-politics", "period-geometry"}
+    for key in ("geometry", "politics"):
+        if tiers[key] not in allowed_tiers:
+            raise SchemaValidationError(
+                f"manifest.quality_tiers.{key} must be one of {sorted(allowed_tiers)}"
+            )
+    if not isinstance(manifest["scenario_set"], list):
+        raise SchemaValidationError("manifest.scenario_set must be a list")
+    if not isinstance(manifest["is_sample"], bool):
+        raise SchemaValidationError("manifest.is_sample must be a boolean")
+    counts = manifest["counts"]
+    _require_object(counts, "manifest.counts")
+    for key in ("provinces", "sea_zones", "adjacency_rows"):
+        if key not in counts:
+            raise SchemaValidationError(f"manifest.counts missing required key: {key}")
+        if not isinstance(counts[key], int) or counts[key] < 0:
+            raise SchemaValidationError(f"manifest.counts.{key} must be a non-negative integer")
+    if not isinstance(manifest["files"], list) or not all(
+        isinstance(item, str) and item for item in manifest["files"]
+    ):
+        raise SchemaValidationError("manifest.files must be a list of non-empty strings")
+
+
+def validate_license_audit_report(report: dict[str, Any]) -> None:
+    """Validate core invariants of an M14 license audit report document."""
+    schema = load_schema("license-audit-report")
+    _require_object(report, "report")
+    _require_keys(report, schema["required"], "report")
+    if report["schema_version"] != schema["properties"]["schema_version"]["const"]:
+        raise SchemaValidationError("report.schema_version must be 0.1.0")
+    if report["report_type"] != "license-audit":
+        raise SchemaValidationError("report.report_type must be license-audit")
+    if not isinstance(report["passed"], bool):
+        raise SchemaValidationError("report.passed must be a boolean")
+    if report["release_channel"] not in {"alpha", "beta", "stable"}:
+        raise SchemaValidationError("report.release_channel must be alpha, beta, or stable")
+    for key in ("error_count", "warning_count"):
+        if not isinstance(report[key], int) or report[key] < 0:
+            raise SchemaValidationError(f"report.{key} must be a non-negative integer")
+    for key in ("public_source_ids", "isolated_source_ids", "restricted_source_ids", "findings", "attribution_records"):
+        if not isinstance(report[key], list):
+            raise SchemaValidationError(f"report.{key} must be a list")
+    for index, finding in enumerate(report["findings"]):
+        path = f"report.findings[{index}]"
+        _require_object(finding, path)
+        _require_keys(finding, ["code", "severity", "message"], path)
+        if finding["severity"] not in {"error", "warning", "info"}:
+            raise SchemaValidationError(f"{path}.severity must be error, warning, or info")
+
+
+def validate_atlas_manifest(manifest: dict[str, Any]) -> None:
+    """Validate core invariants of an M10 atlas pack manifest document."""
+    schema = load_schema("atlas-manifest")
+    _require_object(manifest, "manifest")
+    _require_keys(manifest, schema["required"], "manifest")
+    if manifest["schema_version"] != schema["properties"]["schema_version"]["const"]:
+        raise SchemaValidationError("manifest.schema_version must be 0.1.0")
+    if manifest["pack_type"] != "atlas":
+        raise SchemaValidationError("manifest.pack_type must be atlas")
+    if not isinstance(manifest["scenarios"], list) or not manifest["scenarios"]:
+        raise SchemaValidationError("manifest.scenarios must be a non-empty list")
+    if not all(isinstance(item, str) and item for item in manifest["scenarios"]):
+        raise SchemaValidationError("manifest.scenarios must contain non-empty strings")
+    counts = manifest["counts"]
+    _require_object(counts, "manifest.counts")
+    for key in (
+        "provinces",
+        "scenarios",
+        "scenario_ownership_rows",
+        "unique_tags",
+        "legend_entries",
+        "attribution_records",
+    ):
+        if key not in counts:
+            raise SchemaValidationError(f"manifest.counts missing required key: {key}")
+        if not isinstance(counts[key], int) or counts[key] < 0:
+            raise SchemaValidationError(f"manifest.counts.{key} must be a non-negative integer")
+    if not isinstance(manifest["files"], list) or not all(
+        isinstance(item, str) and item for item in manifest["files"]
+    ):
+        raise SchemaValidationError("manifest.files must be a list of non-empty strings")
+
+
+
+def validate_scenario_definition(document: dict[str, Any]) -> None:
+    """Validate core invariants of an M8 scenario definition document."""
+    # Prefer the dedicated scenario module validator so CLI and loaders share one path.
+    from gpm.scenarios.resolve import ScenarioError, validate_scenario_document
+
+    try:
+        validate_scenario_document(document)
+    except ScenarioError as exc:
+        raise SchemaValidationError(str(exc)) from exc
+
+
+def validate_topology_qa_report(report: dict[str, Any]) -> None:
+    """Validate the core invariants of the topology QA report contract."""
+    schema = load_schema("topology-qa-report")
+    _require_object(report, "report")
+    _require_keys(report, schema["required"], "report")
+    if report["schema_version"] != schema["properties"]["schema_version"]["const"]:
+        raise SchemaValidationError("report.schema_version must be 0.1.0")
+    if report["report_type"] != "topology_qa":
+        raise SchemaValidationError("report.report_type must be topology_qa")
+    if report["status"] not in {"pass", "fail"}:
+        raise SchemaValidationError("report.status must be pass or fail")
+
+    _require_object(report["inputs"], "report.inputs")
+    _require_keys(
+        report["inputs"],
+        ["province_input", "adjacency_input", "natural_earth_admin0_mask"],
+        "report.inputs",
+    )
+    _require_object(report["thresholds"], "report.thresholds")
+    _require_keys(
+        report["thresholds"],
+        ["max_overlap_area_sq_km", "max_gap_component_area_sq_km", "min_shared_border_km"],
+        "report.thresholds",
+    )
+    _require_object(report["summary"], "report.summary")
+    _require_keys(
+        report["summary"],
+        [
+            "province_count",
+            "land_province_count",
+            "adjacency_count",
+            "error_count",
+            "warning_count",
+            "isolated_province_count",
+            "connected_component_count",
+            "analysis",
+        ],
+        "report.summary",
+    )
+    _validate_findings_list(report["findings"], report["summary"], "report")
+    expected_status = "fail" if report["summary"]["error_count"] else "pass"
+    if report["status"] != expected_status:
+        raise SchemaValidationError("report.status does not match error findings")
+
+
+def validate_scenario_politics_qa_report(report: dict[str, Any]) -> None:
+    """Validate the core invariants of the M11 scenario politics QA report."""
+    schema = load_schema("scenario-politics-qa-report")
+    _require_object(report, "report")
+    _require_keys(report, schema["required"], "report")
+    if report["schema_version"] != schema["properties"]["schema_version"]["const"]:
+        raise SchemaValidationError("report.schema_version must be 0.1.0")
+    if report["report_type"] != "scenario_politics_qa":
+        raise SchemaValidationError("report.report_type must be scenario_politics_qa")
+    if report.get("milestone") != "M11":
+        raise SchemaValidationError("report.milestone must be M11")
+    if report["status"] not in {"pass", "fail"}:
+        raise SchemaValidationError("report.status must be pass or fail")
+    if not isinstance(report.get("profile_id"), str) or not report["profile_id"]:
+        raise SchemaValidationError("report.profile_id must be a non-empty string")
+    if not isinstance(report.get("scenario_id"), str) or not report["scenario_id"]:
+        raise SchemaValidationError("report.scenario_id must be a non-empty string")
+
+    _require_object(report["inputs"], "report.inputs")
+    _require_keys(
+        report["inputs"],
+        [
+            "province_input",
+            "adjacency_input",
+            "scenario_definition",
+            "ownership_input",
+            "golden_input",
+        ],
+        "report.inputs",
+    )
+    _require_object(report["thresholds"], "report.thresholds")
+    _require_keys(
+        report["thresholds"],
+        ["max_owner_components", "min_provinces_for_fragment_check"],
+        "report.thresholds",
+    )
+    _require_object(report["summary"], "report.summary")
+    _require_keys(
+        report["summary"],
+        [
+            "land_province_count",
+            "ownership_row_count",
+            "owner_tag_count",
+            "error_count",
+            "warning_count",
+            "unknown_tag_finding_count",
+            "orphan_tag_finding_count",
+            "analysis",
+        ],
+        "report.summary",
+    )
+    analysis = report["summary"]["analysis"]
+    _require_object(analysis, "report.summary.analysis")
+    _require_keys(analysis, ["adjacency", "golden"], "report.summary.analysis")
+    for key in ("adjacency", "golden"):
+        if analysis[key] not in {"complete", "incomplete", "skipped"}:
+            raise SchemaValidationError(
+                f"report.summary.analysis.{key} must be complete, incomplete, or skipped"
+            )
+    _validate_findings_list(report["findings"], report["summary"], "report")
+    expected_status = "fail" if report["summary"]["error_count"] else "pass"
+    if report["status"] != expected_status:
+        raise SchemaValidationError("report.status does not match error findings")
+
+
+def _validate_findings_list(findings: Any, summary: dict[str, Any], path: str) -> None:
+    if not isinstance(findings, list):
+        raise SchemaValidationError(f"{path}.findings must be a list")
+    for index, finding in enumerate(findings):
+        item_path = f"{path}.findings[{index}]"
+        _require_object(finding, item_path)
+        _require_keys(finding, ["code", "severity", "affected_ids", "message", "measurements"], item_path)
+        if finding["severity"] not in {"error", "warning"}:
+            raise SchemaValidationError(f"{item_path}.severity must be error or warning")
+        if not isinstance(finding["affected_ids"], list) or not all(
+            isinstance(item, str) for item in finding["affected_ids"]
+        ):
+            raise SchemaValidationError(f"{item_path}.affected_ids must be a string array")
+        _require_object(finding["measurements"], f"{item_path}.measurements")
+    errors = sum(finding["severity"] == "error" for finding in findings)
+    warnings = sum(finding["severity"] == "warning" for finding in findings)
+    if summary["error_count"] != errors or summary["warning_count"] != warnings:
+        raise SchemaValidationError(f"{path} summary finding counts do not match report.findings")
+
+
 def _require_object(value: Any, path: str) -> None:
     if not isinstance(value, dict):
         raise SchemaValidationError(f"{path} must be an object")

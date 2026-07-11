@@ -1,0 +1,146 @@
+{
+  "count": 6,
+  "end_date": null,
+  "era": "modern",
+  "generated_at": "2026-07-11T02:37:28+00:00",
+  "generator_version": "0.1.0",
+  "milestone": "M10",
+  "profile_id": "modern-small",
+  "records": [
+    {
+      "assignment_source": "baseline",
+      "claims": [],
+      "controller": "BEL",
+      "controller_color": "#bd19a8",
+      "cores": [
+        "BEL"
+      ],
+      "culture": null,
+      "display_name": "Flanders",
+      "disputed": false,
+      "end_date": null,
+      "notes": null,
+      "owner": "BEL",
+      "owner_color": "#bd19a8",
+      "parent_country_id": "BEL",
+      "parent_region_id": "BE-VLG",
+      "province_id": "sample_be_flanders",
+      "religion": null,
+      "scenario_id": "modern-baseline",
+      "start_date": "2020-01-01"
+    },
+    {
+      "assignment_source": "baseline",
+      "claims": [],
+      "controller": "DEU",
+      "controller_color": "#38e138",
+      "cores": [
+        "DEU"
+      ],
+      "culture": null,
+      "display_name": "Rhineland",
+      "disputed": false,
+      "end_date": null,
+      "notes": null,
+      "owner": "DEU",
+      "owner_color": "#38e138",
+      "parent_country_id": "DEU",
+      "parent_region_id": "DE-NW",
+      "province_id": "sample_de_rhineland",
+      "religion": null,
+      "scenario_id": "modern-baseline",
+      "start_date": "2020-01-01"
+    },
+    {
+      "assignment_source": "baseline",
+      "claims": [],
+      "controller": "FRA",
+      "controller_color": "#2e5aa5",
+      "cores": [
+        "FRA"
+      ],
+      "culture": null,
+      "display_name": "Normandy coast",
+      "disputed": false,
+      "end_date": null,
+      "notes": null,
+      "owner": "FRA",
+      "owner_color": "#2e5aa5",
+      "parent_country_id": "FRA",
+      "parent_region_id": "FR-NOR",
+      "province_id": "sample_fr_normandy",
+      "religion": null,
+      "scenario_id": "modern-baseline",
+      "start_date": "2020-01-01"
+    },
+    {
+      "assignment_source": "baseline",
+      "claims": [],
+      "controller": "FRA",
+      "controller_color": "#2e5aa5",
+      "cores": [
+        "FRA"
+      ],
+      "culture": null,
+      "display_name": "Paris basin",
+      "disputed": false,
+      "end_date": null,
+      "notes": null,
+      "owner": "FRA",
+      "owner_color": "#2e5aa5",
+      "parent_country_id": "FRA",
+      "parent_region_id": "FR-IDF",
+      "province_id": "sample_fr_paris",
+      "religion": null,
+      "scenario_id": "modern-baseline",
+      "start_date": "2020-01-01"
+    },
+    {
+      "assignment_source": "baseline",
+      "claims": [],
+      "controller": "LUX",
+      "controller_color": "#a7253a",
+      "cores": [
+        "LUX"
+      ],
+      "culture": null,
+      "display_name": "Luxembourg core",
+      "disputed": false,
+      "end_date": null,
+      "notes": null,
+      "owner": "LUX",
+      "owner_color": "#a7253a",
+      "parent_country_id": "LUX",
+      "parent_region_id": "LU-LU",
+      "province_id": "sample_lu_core",
+      "religion": null,
+      "scenario_id": "modern-baseline",
+      "start_date": "2020-01-01"
+    },
+    {
+      "assignment_source": "baseline",
+      "claims": [],
+      "controller": "NLD",
+      "controller_color": "#b65b37",
+      "cores": [
+        "NLD"
+      ],
+      "culture": null,
+      "display_name": "Holland",
+      "disputed": false,
+      "end_date": null,
+      "notes": null,
+      "owner": "NLD",
+      "owner_color": "#b65b37",
+      "parent_country_id": "NLD",
+      "parent_region_id": "NL-NH",
+      "province_id": "sample_nl_holland",
+      "religion": null,
+      "scenario_id": "modern-baseline",
+      "start_date": "2020-01-01"
+    }
+  ],
+  "scenario_id": "modern-baseline",
+  "schema_version": "0.1.0",
+  "start_date": "2020-01-01"
+}

@@ -1,0 +1,6 @@
+tag,display_name,color,fill_color,owner_province_count,controller_province_count,roles
+FRA,France,#2e5aa5,#2e5aa5,2,2,"[""owner"", ""controller""]"
+BEL,Belgium,#bd19a8,#bd19a8,1,1,"[""owner"", ""controller""]"
+LUX,Luxembourg,#a7253a,#a7253a,1,1,"[""owner"", ""controller""]"
+NET,Netherlands,#e01fa3,#e01fa3,1,1,"[""owner"", ""controller""]"
+PRU,Prussia,#4f2ec9,#4f2ec9,1,1,"[""owner"", ""controller""]"

@@ -1,0 +1,10 @@
+province_id,terrain_class,kind,coastal,island
+sample_be_flanders,plains,land,true,false
+sample_de_rhineland,plains,land,false,false
+sample_fr_normandy,plains,land,true,false
+sample_fr_paris,plains,land,false,false
+sample_lu_core,plains,land,false,false
+sample_nl_holland,plains,land,true,false
+sample_sea_flanders,ocean,sea,false,false
+sample_sea_holland,ocean,sea,false,false
+sample_sea_normandy,ocean,sea,false,false

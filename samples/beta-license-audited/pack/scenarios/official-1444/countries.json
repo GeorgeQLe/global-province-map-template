@@ -1,0 +1,22 @@
+{
+  "count": 3,
+  "countries": [
+    {
+      "display_name": "Burgundy",
+      "notes": "Valois Burgundy + Low Countries",
+      "tag": "BUR"
+    },
+    {
+      "display_name": "Cologne",
+      "tag": "COL"
+    },
+    {
+      "display_name": "France",
+      "tag": "FRA"
+    }
+  ],
+  "generated_at": "2026-07-11T02:37:28+00:00",
+  "milestone": "M8",
+  "scenario_id": "official-1444",
+  "schema_version": "0.1.0"
+}

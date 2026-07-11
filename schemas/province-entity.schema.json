@@ -39,6 +39,43 @@
         "terrain_class": { "type": ["string", "null"] },
         "coastal": { "type": "boolean" },
         "island": { "type": "boolean" },
+        "sea_class": {
+          "type": "string",
+          "enum": ["coastal", "ocean"],
+          "description": "M6 sea-zone class when kind is sea."
+        },
+        "parent_land_province_id": {
+          "type": ["string", "null"],
+          "description": "Coastal sea zone parent land province for port links."
+        },
+        "sea_zone_strategy": { "type": "string", "minLength": 1 },
+        "ocean_grid_col": { "type": "integer", "minimum": 0 },
+        "ocean_grid_row": { "type": "integer", "minimum": 0 },
+        "settlement_count": { "type": "integer", "minimum": 0 },
+        "population_estimation_method": {
+          "type": "string",
+          "enum": [
+            "unavailable",
+            "population-point-sum",
+            "population-raster-cell-sum",
+            "settlement-population-sum"
+          ]
+        },
+        "refinement_parent_id": { "type": "string", "minLength": 1 },
+        "refinement_strategy": {
+          "type": "string",
+          "enum": [
+            "area-weighted-voronoi",
+            "population-weighted-voronoi",
+            "source-geometry-preserved"
+          ]
+        },
+        "refinement_skipped_reason": {
+          "type": "string",
+          "enum": ["invalid-source-geometry"]
+        },
+        "refinement_part_index": { "type": "integer", "minimum": 1 },
+        "refinement_part_count": { "type": "integer", "minimum": 1 },
         "source_lineage": {
           "type": "array",
           "items": { "type": "string", "minLength": 1 }

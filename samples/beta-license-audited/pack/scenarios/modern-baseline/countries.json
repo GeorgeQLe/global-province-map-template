@@ -1,0 +1,29 @@
+{
+  "count": 5,
+  "countries": [
+    {
+      "display_name": "BEL",
+      "tag": "BEL"
+    },
+    {
+      "display_name": "DEU",
+      "tag": "DEU"
+    },
+    {
+      "display_name": "FRA",
+      "tag": "FRA"
+    },
+    {
+      "display_name": "LUX",
+      "tag": "LUX"
+    },
+    {
+      "display_name": "NLD",
+      "tag": "NLD"
+    }
+  ],
+  "generated_at": "2026-07-11T02:37:28+00:00",
+  "milestone": "M8",
+  "scenario_id": "modern-baseline",
+  "schema_version": "0.1.0"
+}

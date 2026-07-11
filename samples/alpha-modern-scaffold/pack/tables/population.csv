@@ -1,0 +1,10 @@
+province_id,estimated_population,area_sq_km,kind
+sample_be_flanders,8000.0,1200.0,land
+sample_de_rhineland,8000.0,1200.0,land
+sample_fr_normandy,8000.0,1200.0,land
+sample_fr_paris,8000.0,1200.0,land
+sample_lu_core,8000.0,1200.0,land
+sample_nl_holland,8000.0,1200.0,land
+sample_sea_flanders,,400.0,sea
+sample_sea_holland,,400.0,sea
+sample_sea_normandy,,400.0,sea

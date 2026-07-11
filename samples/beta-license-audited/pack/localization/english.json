@@ -1,0 +1,99 @@
+{
+  "count": 15,
+  "entries": [
+    {
+      "entity_id": "sample_be_flanders",
+      "entity_type": "province",
+      "key": "PROVINCE_sample_be_flanders",
+      "text": "Flanders"
+    },
+    {
+      "entity_id": "sample_de_rhineland",
+      "entity_type": "province",
+      "key": "PROVINCE_sample_de_rhineland",
+      "text": "Rhineland"
+    },
+    {
+      "entity_id": "sample_fr_normandy",
+      "entity_type": "province",
+      "key": "PROVINCE_sample_fr_normandy",
+      "text": "Normandy coast"
+    },
+    {
+      "entity_id": "sample_fr_paris",
+      "entity_type": "province",
+      "key": "PROVINCE_sample_fr_paris",
+      "text": "Paris basin"
+    },
+    {
+      "entity_id": "sample_lu_core",
+      "entity_type": "province",
+      "key": "PROVINCE_sample_lu_core",
+      "text": "Luxembourg core"
+    },
+    {
+      "entity_id": "sample_nl_holland",
+      "entity_type": "province",
+      "key": "PROVINCE_sample_nl_holland",
+      "text": "Holland"
+    },
+    {
+      "entity_id": "BE-VLG",
+      "entity_type": "region",
+      "key": "REGION_BE-VLG",
+      "text": "BE VLG"
+    },
+    {
+      "entity_id": "DE-NW",
+      "entity_type": "region",
+      "key": "REGION_DE-NW",
+      "text": "DE NW"
+    },
+    {
+      "entity_id": "FR-IDF",
+      "entity_type": "region",
+      "key": "REGION_FR-IDF",
+      "text": "FR IDF"
+    },
+    {
+      "entity_id": "FR-NOR",
+      "entity_type": "region",
+      "key": "REGION_FR-NOR",
+      "text": "FR NOR"
+    },
+    {
+      "entity_id": "LU-LU",
+      "entity_type": "region",
+      "key": "REGION_LU-LU",
+      "text": "LU LU"
+    },
+    {
+      "entity_id": "NL-NH",
+      "entity_type": "region",
+      "key": "REGION_NL-NH",
+      "text": "NL NH"
+    },
+    {
+      "entity_id": "sample_sea_flanders",
+      "entity_type": "sea_zone",
+      "key": "SEA_sample_sea_flanders",
+      "text": "Waters of sample_be_flanders"
+    },
+    {
+      "entity_id": "sample_sea_holland",
+      "entity_type": "sea_zone",
+      "key": "SEA_sample_sea_holland",
+      "text": "Waters of sample_nl_holland"
+    },
+    {
+      "entity_id": "sample_sea_normandy",
+      "entity_type": "sea_zone",
+      "key": "SEA_sample_sea_normandy",
+      "text": "Waters of sample_fr_normandy"
+    }
+  ],
+  "generated_at": "2026-07-11T02:37:28+00:00",
+  "language": "english",
+  "profile_id": "modern-small",
+  "schema_version": "0.1.0"
+}

@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/global-province-map/topology-qa-report.schema.json",
+  "title": "Global Province Map Topology QA Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "report_type",
+    "profile_id",
+    "status",
+    "inputs",
+    "thresholds",
+    "summary",
+    "findings"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "report_type": { "const": "topology_qa" },
+    "profile_id": { "type": "string", "minLength": 1 },
+    "status": { "type": "string", "enum": ["pass", "fail"] },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["province_input", "adjacency_input", "natural_earth_admin0_mask"],
+      "properties": {
+        "province_input": { "type": "string", "minLength": 1 },
+        "adjacency_input": { "type": "string", "minLength": 1 },
+        "natural_earth_admin0_mask": { "type": "string", "minLength": 1 }
+      }
+    },
+    "thresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "max_overlap_area_sq_km",
+        "max_gap_component_area_sq_km",
+        "min_shared_border_km"
+      ],
+      "properties": {
+        "max_overlap_area_sq_km": { "type": "number", "exclusiveMinimum": 0 },
+        "max_gap_component_area_sq_km": { "type": "number", "exclusiveMinimum": 0 },
+        "min_shared_border_km": { "type": "number", "exclusiveMinimum": 0 }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "province_count",
+        "land_province_count",
+        "adjacency_count",
+        "error_count",
+        "warning_count",
+        "isolated_province_count",
+        "connected_component_count",
+        "analysis"
+      ],
+      "properties": {
+        "province_count": { "type": "integer", "minimum": 0 },
+        "land_province_count": { "type": "integer", "minimum": 0 },
+        "adjacency_count": { "type": "integer", "minimum": 0 },
+        "error_count": { "type": "integer", "minimum": 0 },
+        "warning_count": { "type": "integer", "minimum": 0 },
+        "isolated_province_count": { "type": "integer", "minimum": 0 },
+        "connected_component_count": { "type": "integer", "minimum": 0 },
+        "analysis": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["coverage", "graph"],
+          "properties": {
+            "coverage": { "type": "string", "enum": ["complete", "incomplete"] },
+            "graph": { "type": "string", "enum": ["complete", "incomplete"] }
+          }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["code", "severity", "affected_ids", "message", "measurements"],
+        "properties": {
+          "code": { "type": "string", "minLength": 1 },
+          "severity": { "type": "string", "enum": ["error", "warning"] },
+          "affected_ids": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "message": { "type": "string", "minLength": 1 },
+          "measurements": { "type": "object", "additionalProperties": true }
+        }
+      }
+    }
+  }
+}

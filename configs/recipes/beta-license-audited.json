@@ -1,0 +1,109 @@
+{
+  "schema_version": "0.1.0",
+  "recipe_id": "beta-license-audited",
+  "label": "Public beta license-audited dual-face release",
+  "milestone": "M14",
+  "profile_id": "modern-small",
+  "scenarios": ["modern-baseline", "official-1836", "official-1444"],
+  "sample_countries": ["FRA", "BEL", "NLD", "LUX", "DEU"],
+  "include_seas": true,
+  "include_topology_qa": true,
+  "include_atlas": true,
+  "description": "Reproducible recipe for the M14 license-audited beta sample. Geometry remains scaffold-baseline; politics is curated-politics for official-1836 and official-1444. Restricted and share-alike sources stay off the public path.",
+  "steps": [
+    {
+      "id": "download-sources",
+      "title": "Download core (public-safe) source artifacts only",
+      "command": ["gpm", "sources", "download", "--execute", "--profile", "modern-small"]
+    },
+    {
+      "id": "source-manifest",
+      "title": "Record downloaded source checksums and metadata",
+      "command": ["gpm", "sources", "manifest", "--from-raw", "--profile", "modern-small"]
+    },
+    {
+      "id": "build-provinces",
+      "title": "Generate modern land province draft",
+      "command": ["gpm", "build", "provinces", "--profile", "modern-small"]
+    },
+    {
+      "id": "build-seas",
+      "title": "Generate coastal and ocean sea zones",
+      "command": ["gpm", "build", "seas", "--profile", "modern-small"]
+    },
+    {
+      "id": "build-adjacency",
+      "title": "Generate land and marine adjacency",
+      "command": ["gpm", "build", "adjacency", "--profile", "modern-small"]
+    },
+    {
+      "id": "qa-topology",
+      "title": "Run topology QA",
+      "command": ["gpm", "qa", "topology", "--profile", "modern-small"]
+    },
+    {
+      "id": "scenario-modern-baseline",
+      "title": "Resolve modern-baseline ownership",
+      "command": ["gpm", "scenario", "build", "--scenario", "modern-baseline", "--profile", "modern-small"]
+    },
+    {
+      "id": "scenario-official-1836",
+      "title": "Resolve official-1836 ownership",
+      "command": ["gpm", "scenario", "build", "--scenario", "official-1836", "--profile", "modern-small"]
+    },
+    {
+      "id": "qa-scenario-official-1836",
+      "title": "Run politics QA for official-1836",
+      "command": ["gpm", "qa", "scenario", "--scenario", "official-1836", "--profile", "modern-small"]
+    },
+    {
+      "id": "scenario-official-1444",
+      "title": "Resolve official-1444 ownership",
+      "command": ["gpm", "scenario", "build", "--scenario", "official-1444", "--profile", "modern-small"]
+    },
+    {
+      "id": "qa-scenario-official-1444",
+      "title": "Run politics QA for official-1444",
+      "command": ["gpm", "qa", "scenario", "--scenario", "official-1444", "--profile", "modern-small"]
+    },
+    {
+      "id": "release-beta-sample",
+      "title": "Package license-audited beta sample (Western Europe scaffold)",
+      "command": [
+        "gpm",
+        "release",
+        "beta",
+        "--profile",
+        "modern-small",
+        "--scenario",
+        "modern-baseline",
+        "--scenario",
+        "official-1836",
+        "--scenario",
+        "official-1444",
+        "--country",
+        "FRA",
+        "--country",
+        "BEL",
+        "--country",
+        "NLD",
+        "--country",
+        "LUX",
+        "--country",
+        "DEU",
+        "--tag",
+        "beta-0.1.0-sample-we"
+      ]
+    }
+  ],
+  "environment": {
+    "python": ">=3.11",
+    "install": ["uv sync", "uv pip install -e '.[dev]'"],
+    "notes": [
+      "Run commands from the repository root with the gpm entrypoint available.",
+      "Do not mix ODbL or restricted sources into public beta packs.",
+      "Do not commit data/raw/ or full data/processed/ global builds.",
+      "Sample subsets may be committed under samples/ when size is modest."
+    ]
+  }
+}

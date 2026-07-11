@@ -2,12 +2,59 @@
 
 ## Active
 
-- [ ] M2 first modern global land province draft: ingest downloaded source
-  artifacts into canonical intermediate geometry and generate an initial land
-  province layer.
+- [ ] M15 era-aware geometry v1 for priority regions where modern shapes fail.
+
+## Up next (from roadmap)
+
+- [ ] M16 multi-era geometry + politics packs with quality tiers (includes 1936).
+- [ ] M17 curation workflow hardening (diffs, golden tests, external bundles).
 
 ## Completed
 
+- [x] M14.5 public landing page: static site under `landing/`,
+  `gpm release site` validation + optional `--ensure-repo` / `--push` /
+  `--deploy` (Vercel), docs `docs/m14.5-landing.md`.
+- [x] M14 license-audited beta release: `gpm release beta` with license audit,
+  cleaned attribution pack, restricted-path isolation, dual game + atlas faces,
+  official-era defaults, sample `samples/beta-license-audited/`, and
+  `docs/m14-beta-release.md`.
+- [x] M13 second curated official scenario (1444): `official-1444` curated-politics
+  overlay with Europe-first elevated depth and global major tags, golden floors,
+  `eu-like` recipe, accuracy labeling, and `docs/m13-1444.md`. (1936 deferred.)
+- [x] M12 first curated official scenario (1836): `official-1836` curated-politics
+  overlay with elevated Europe / North America / colonial theaters, golden
+  floors, schema quality-tier metadata, and `docs/m12-1836.md`.
+- [x] M11 scenario politics QA + review authoring: `gpm qa scenario` ownership
+  coverage/tag/orphan/component/golden checks; `gpm review --scenario` owner
+  layers, politics QA overlays, and province_override authoring.
+- [x] M10 atlas / SaaS export face: scenario-joined choropleths, tag legends,
+  uncertainty layers, owner dissolve, and web-friendly tables via
+  `gpm export atlas`.
+- [x] M9 public alpha dataset release: sample modern scaffold datasets,
+  reproducible recipes, attribution packaging, release tagging, and honest
+  accuracy labeling (scaffold vs curated politics vs period geometry).
+- [x] M8 historical scenario proof of concept: ownership/controller tables over
+  the modern geographic scaffold, with country/region/province override
+  tooling rather than baked-in historical geometry.
+- [x] M7 export profiles for game templates: province/region/adjacency packs,
+  localization stubs, and profile-specific export layouts via `gpm export pack`
+  and `gpm export geojson`.
+- [x] M6 sea zones, ports, and straits: coastal and ocean sea zones from open
+  land geography, coastal land flags, port-to-sea links, sea adjacency, and
+  land-to-land strait shortcuts via `gpm build seas` and extended adjacency.
+- [x] M5 interactive review viewer: local MapLibre server loads processed
+  provinces, adjacency, and topology QA, with attribute inspection, lineage
+  display, refinement coloring, and QA finding overlays.
+- [x] M4 population-weighted split/merge algorithm: ingest population-count
+  GeoTIFF or point GeoJSON plus settlement points, allocate profile targets,
+  split with deterministic weighted Voronoi seeds, merge tiny sibling
+  fragments, and preserve population/coverage/lineage.
+- [x] M3 deterministic IDs, land adjacency, and topology QA: hash normalized
+  source geometry into reproducible IDs, generate canonical shared-border CSV,
+  and emit CI-gating geometry, coverage, and graph reports.
+- [x] M2 first modern global land province draft: ingest downloaded Natural
+  Earth admin boundary artifacts into canonical intermediate geometry and
+  generate an initial processed land province layer.
 - [x] M1 source adapter implementation: download Natural Earth and geoBoundaries
   source artifacts, calculate checksums, record access/version metadata, and write
   source manifests without committing raw geodata.

@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/global-province-map/scenario-definition.schema.json",
+  "title": "Global Province Map Scenario Definition",
+  "description": "Curated historical (or baseline) ownership overlay over modern province geometry. Geometry is not rewritten; only political attributes are layered.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "scenario_id",
+    "label",
+    "era",
+    "start_date"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "scenario_id": { "type": "string", "minLength": 1, "pattern": "^[a-z0-9][a-z0-9._-]*$" },
+    "label": { "type": "string", "minLength": 1 },
+    "era": { "type": "string", "minLength": 1 },
+    "start_date": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Inclusive scenario start date (ISO-8601 date preferred)."
+    },
+    "end_date": {
+      "type": ["string", "null"],
+      "description": "Optional exclusive or inclusive end date; null means open-ended."
+    },
+    "description": { "type": "string" },
+    "map_mode": { "type": "string" },
+    "quality_tier": {
+      "type": "string",
+      "enum": ["scaffold-baseline", "curated-politics", "period-geometry"],
+      "description": "Honest politics/geometry fidelity label for this scenario overlay."
+    },
+    "official_era": {
+      "type": "boolean",
+      "description": "True when this scenario is an official era program (not a demo/scaffold)."
+    },
+    "recommended_profile": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Preferred generation/export profile id (e.g. victoria-like for 1836)."
+    },
+    "priority_theaters": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "description": "Regions with elevated curation depth for this era."
+    },
+    "countries": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["display_name"],
+        "properties": {
+          "display_name": { "type": "string", "minLength": 1 },
+          "tag": { "type": "string", "minLength": 1 },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "defaults": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "culture": { "type": ["string", "null"] },
+        "religion": { "type": ["string", "null"] },
+        "disputed": { "type": "boolean" }
+      }
+    },
+    "country_rules": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/bulkRule" }
+    },
+    "region_rules": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/bulkRule" }
+    },
+    "province_overrides": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/provinceOverride" }
+    },
+    "notes": { "type": "string" },
+    "source_lineage": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "license_lineage": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "$defs": {
+    "stringList": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "ownershipFields": {
+      "type": "object",
+      "properties": {
+        "owner": { "type": "string", "minLength": 1 },
+        "controller": { "type": "string", "minLength": 1 },
+        "cores": { "$ref": "#/$defs/stringList" },
+        "claims": { "$ref": "#/$defs/stringList" },
+        "culture": { "type": ["string", "null"] },
+        "religion": { "type": ["string", "null"] },
+        "disputed": { "type": "boolean" },
+        "notes": { "type": "string" }
+      }
+    },
+    "bulkRule": {
+      "type": "object",
+      "additionalProperties": true,
+      "allOf": [{ "$ref": "#/$defs/ownershipFields" }],
+      "properties": {
+        "match_parent_country_id": { "type": "string", "minLength": 1 },
+        "match_parent_region_id": { "type": "string", "minLength": 1 },
+        "owner": { "type": "string", "minLength": 1 },
+        "controller": { "type": "string", "minLength": 1 },
+        "cores": { "$ref": "#/$defs/stringList" },
+        "claims": { "$ref": "#/$defs/stringList" },
+        "culture": { "type": ["string", "null"] },
+        "religion": { "type": ["string", "null"] },
+        "disputed": { "type": "boolean" },
+        "notes": { "type": "string" }
+      }
+    },
+    "provinceOverride": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["province_id"],
+      "allOf": [{ "$ref": "#/$defs/ownershipFields" }],
+      "properties": {
+        "province_id": { "type": "string", "minLength": 1 },
+        "owner": { "type": "string", "minLength": 1 },
+        "controller": { "type": "string", "minLength": 1 },
+        "cores": { "$ref": "#/$defs/stringList" },
+        "claims": { "$ref": "#/$defs/stringList" },
+        "culture": { "type": ["string", "null"] },
+        "religion": { "type": ["string", "null"] },
+        "disputed": { "type": "boolean" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

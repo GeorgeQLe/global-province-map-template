@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="License-aware global province maps from open geodata — seed strategy games and power historical SaaS maps with stable IDs, adjacency, and honest accuracy tiers."
+    />
+    <meta name="theme-color" content="#0c1a24" />
+    <title>Global Province Map Template</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Literata:opsz,wght@7..72,400;7..72,600&family=Syne:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="#top" aria-label="Global Province Map home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-text">GPM</span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a href="#audiences">Audiences</a>
+          <a href="#pipeline">Pipeline</a>
+          <a href="#accuracy">Accuracy</a>
+          <a href="#status">Status</a>
+          <a href="#sources">Sources</a>
+        </nav>
+        <div class="header-actions">
+          <a
+            class="btn btn-ghost"
+            href="https://github.com/GeorgeQLe/global-province-map-template"
+            rel="noopener noreferrer"
+            >GitHub</a
+          >
+          <a class="btn btn-primary" href="#start">Get started</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="shell hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Open geodata · dual export faces · license-aware</p>
+            <h1>
+              Province maps that games can seed and
+              <em>history can stand behind</em>
+            </h1>
+            <p class="lede">
+              Global Province Map Template is a reproducible pipeline for stable
+              land and sea provinces, adjacency graphs, scenario politics, and
+              two export faces — game packs and atlas / SaaS choropleths — built
+              only from open sources with explicit attribution.
+            </p>
+            <div class="hero-ctas">
+              <a
+                class="btn btn-primary"
+                href="https://github.com/GeorgeQLe/global-province-map-template"
+                rel="noopener noreferrer"
+                >View repository</a
+              >
+              <a class="btn btn-ghost" href="#accuracy">Read the accuracy bar</a>
+            </div>
+            <dl class="hero-meta">
+              <div>
+                <dt>Geometry today</dt>
+                <dd>scaffold-baseline</dd>
+              </div>
+              <div>
+                <dt>Politics shipped</dt>
+                <dd>curated 1836 · 1444</dd>
+              </div>
+              <div>
+                <dt>Public channel</dt>
+                <dd>license-audited beta</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="hero-panel" aria-labelledby="era-demo-title">
+            <div class="panel-chrome">
+              <h2 id="era-demo-title">Ownership eras on one scaffold</h2>
+              <p class="panel-note">
+                Politics are overlays. Geometry stays modern until era-aware
+                shapes arrive (M15+).
+              </p>
+            </div>
+            <div class="era-switch" role="tablist" aria-label="Scenario era">
+              <button type="button" class="era-btn is-active" data-era="1444" role="tab" aria-selected="true">
+                1444
+              </button>
+              <button type="button" class="era-btn" data-era="1836" role="tab" aria-selected="false">
+                1836
+              </button>
+              <button type="button" class="era-btn" data-era="modern" role="tab" aria-selected="false">
+                Modern
+              </button>
+            </div>
+            <figure class="tessellation" id="tessellation" data-era="1444">
+              <svg viewBox="0 0 360 280" role="img" aria-label="Stylized province tessellation recolored by era">
+                <!-- abstract western-europe-ish province cells -->
+                <g class="cells">
+                  <path data-cell="a" d="M20 40 L95 28 L120 90 L55 120 Z" />
+                  <path data-cell="b" d="M95 28 L175 22 L190 85 L120 90 Z" />
+                  <path data-cell="c" d="M175 22 L250 35 L245 100 L190 85 Z" />
+                  <path data-cell="d" d="M250 35 L330 55 L310 120 L245 100 Z" />
+                  <path data-cell="e" d="M55 120 L120 90 L145 155 L70 175 Z" />
+                  <path data-cell="f" d="M120 90 L190 85 L205 150 L145 155 Z" />
+                  <path data-cell="g" d="M190 85 L245 100 L255 165 L205 150 Z" />
+                  <path data-cell="h" d="M245 100 L310 120 L300 185 L255 165 Z" />
+                  <path data-cell="i" d="M70 175 L145 155 L155 220 L85 240 Z" />
+                  <path data-cell="j" d="M145 155 L205 150 L215 215 L155 220 Z" />
+                  <path data-cell="k" d="M205 150 L255 165 L260 230 L215 215 Z" />
+                  <path data-cell="l" d="M255 165 L300 185 L285 245 L260 230 Z" />
+                  <path data-cell="sea1" class="sea" d="M20 40 L55 120 L40 200 L12 120 Z" />
+                  <path data-cell="sea2" class="sea" d="M330 55 L348 140 L300 185 L310 120 Z" />
+                </g>
+                <g class="graph" aria-hidden="true">
+                  <line x1="95" y1="70" x2="150" y2="70" />
+                  <line x1="150" y1="70" x2="210" y2="75" />
+                  <line x1="210" y1="75" x2="270" y2="85" />
+                  <line x1="100" y1="70" x2="110" y2="130" />
+                  <line x1="160" y1="70" x2="170" y2="130" />
+                  <line x1="220" y1="80" x2="230" y2="140" />
+                  <line x1="110" y1="130" x2="170" y2="130" />
+                  <line x1="170" y1="130" x2="230" y2="140" />
+                  <line x1="115" y1="130" x2="120" y2="190" />
+                  <line x1="175" y1="135" x2="180" y2="190" />
+                </g>
+              </svg>
+              <figcaption>
+                <span id="era-caption">EU-leaning 1444 politics over modern admin geometry</span>
+                <span class="caption-meta" id="era-tier">quality: curated-politics</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="meridian" aria-hidden="true"></div>
+      </section>
+
+      <section class="section" id="audiences">
+        <div class="shell">
+          <header class="section-head">
+            <p class="eyebrow">Who it is for</p>
+            <h2>One scaffold, two product faces</h2>
+            <p>
+              The same province graph feeds game seeds and historical explanation.
+              Consumers pick the export face; lineage and licenses stay attached.
+            </p>
+          </header>
+          <div class="card-grid two">
+            <article class="card">
+              <p class="card-kicker">Strategy games · modders</p>
+              <h3>Seed EU / Victoria / HOI-style maps</h3>
+              <p>
+                Stable province IDs, land and sea adjacency, localization stubs,
+                terrain and population hooks, and start-date ownership trees —
+                portable packs, not proprietary engine formats.
+              </p>
+              <ul class="compact-list">
+                <li><code>gpm export pack</code> game template packs</li>
+                <li>Profiles: <code>eu-like</code>, <code>victoria-like</code>, <code>hoi-like</code></li>
+                <li>Scenario overlays for 1444, 1836, modern baseline</li>
+              </ul>
+            </article>
+            <article class="card">
+              <p class="card-kicker">Atlas · education · SaaS</p>
+              <h3>Choropleths that admit uncertainty</h3>
+              <p>
+                Scenario-joined ownership layers, tag legends, disputed flags,
+                and web-friendly tables — maps built for explanation, not only
+                for playable provinces.
+              </p>
+              <ul class="compact-list">
+                <li><code>gpm export atlas</code> SaaS / web face</li>
+                <li>Owner-dissolved multipolygons and legends</li>
+                <li>Attribution and accuracy labels in every bundle</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="pipeline">
+        <div class="shell">
+          <header class="section-head">
+            <p class="eyebrow">How it works</p>
+            <h2>Scaffold → graph → politics → export</h2>
+            <p>
+              Geometry and historical politics evolve on different cadences.
+              Official eras start as curated ownership overlays; period shapes
+              arrive only where modern outlines fail the sniff test.
+            </p>
+          </header>
+          <ol class="pipeline">
+            <li>
+              <span class="step-id">01</span>
+              <div>
+                <h3>Open sources</h3>
+                <p>Natural Earth, geoBoundaries, optional population rasters — manifests with checksums and license metadata.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step-id">02</span>
+              <div>
+                <h3>Provinces &amp; seas</h3>
+                <p>Deterministic IDs, coastal and ocean sea zones, ports and strait shortcuts, topology QA gates.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step-id">03</span>
+              <div>
+                <h3>Scenario politics</h3>
+                <p>Owner, controller, cores, and claims layered via baseline projection plus region and province overrides.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step-id">04</span>
+              <div>
+                <h3>Dual export</h3>
+                <p>Game packs for modders and studios; atlas packs for choropleths, legends, and SaaS ingestion.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section" id="accuracy">
+        <div class="shell">
+          <header class="section-head">
+            <p class="eyebrow">Historical accuracy bar</p>
+            <h2>Paradox-adjacent eyes are welcome</h2>
+            <p>
+              Anachronisms destroy trust. Official eras aim for a strong balance —
+              not pure archival GIS on day one, and not “modern ISO with period
+              skins.” Labels are honest about what shipped.
+            </p>
+          </header>
+          <div class="tier-table-wrap">
+            <table class="tier-table">
+              <thead>
+                <tr>
+                  <th scope="col">Quality tier</th>
+                  <th scope="col">Meaning</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><code>scaffold-baseline</code></th>
+                  <td>Modern open-geodata shapes; politics project modern parents or coarse demos.</td>
+                  <td>Default geometry today</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>curated-politics</code></th>
+                  <td>Human-reviewed owner/controller trees for supported start dates.</td>
+                  <td>official-1836 · official-1444</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>period-geometry</code></th>
+                  <td>Era-aware boundaries where modern outlines break the political story.</td>
+                  <td>M15+ roadmap</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout">
+            <h3>We do not claim</h3>
+            <ul>
+              <li>Paradox-grade historical accuracy worldwide</li>
+              <li>Period-correct province geometry (yet)</li>
+              <li>Legal maritime boundaries (sea zones are gameplay abstractions)</li>
+              <li>Complete global politics outside priority theaters</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="status">
+        <div class="shell">
+          <header class="section-head">
+            <p class="eyebrow">Project status</p>
+            <h2>Beta packs ship dual faces</h2>
+            <p>
+              Through M14 the pipeline packages license-audited public betas with
+              game and atlas faces, cleaned attribution, and restricted-path
+              isolation (GADM / ODbL stay out of public packs).
+            </p>
+          </header>
+          <div class="status-grid">
+            <article class="status-card">
+              <h3>Shipped</h3>
+              <ul class="compact-list">
+                <li>Deterministic provinces, adjacency, topology QA</li>
+                <li>Sea zones, ports, straits</li>
+                <li>Interactive review viewer</li>
+                <li>Game export profiles + atlas face</li>
+                <li>official-1836 and official-1444 politics</li>
+                <li>License-audited beta packaging</li>
+              </ul>
+            </article>
+            <article class="status-card">
+              <h3>Next</h3>
+              <ul class="compact-list">
+                <li>M15 era-aware geometry for priority regions</li>
+                <li>M16 multi-era geometry + politics packs</li>
+                <li>M17 curation workflow and golden border hardening</li>
+                <li>Optional 1936 official era program</li>
+              </ul>
+            </article>
+            <article class="status-card status-highlight">
+              <h3>Try a beta sample</h3>
+              <p>
+                Commit-friendly Western Europe sample under
+                <code>samples/beta-license-audited/</code> with modern, 1836,
+                and 1444 on both faces.
+              </p>
+              <pre class="code-block"><code>uv run gpm release beta --sample-we</code></pre>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="sources">
+        <div class="shell">
+          <header class="section-head">
+            <p class="eyebrow">Data policy</p>
+            <h2>Permissive core, isolated options</h2>
+            <p>
+              Public packs refuse restricted and share-alike contamination. Optional
+              paths stay behind policy walls with isolation notices in the
+              attribution pack.
+            </p>
+          </header>
+          <div class="card-grid three">
+            <article class="card thin">
+              <h3>Public-safe core</h3>
+              <p>Natural Earth (PD), geoBoundaries (CC BY), optional GHSL / WorldPop when lineage is present.</p>
+            </article>
+            <article class="card thin">
+              <h3>Isolated</h3>
+              <p>OpenStreetMap / ODbL may power optional experiments but does not enter public redistributable packs.</p>
+            </article>
+            <article class="card thin">
+              <h3>Excluded</h3>
+              <p>GADM and other restricted sources are catalogued as blocked for default and public builds.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section cta-section" id="start">
+        <div class="shell cta-panel">
+          <div>
+            <p class="eyebrow">Get started</p>
+            <h2>Clone, generate, package</h2>
+            <p>
+              Requires Python 3.11+, <code>uv</code>, and downloaded open source
+              artifacts. Full docs live in the repository README and
+              <code>docs/</code> milestone notes.
+            </p>
+          </div>
+          <pre class="code-block large"><code>git clone https://github.com/GeorgeQLe/global-province-map-template.git
+cd global-province-map-template
+uv sync
+uv run gpm sources download --execute --profile modern-small
+uv run gpm build provinces --profile modern-small
+uv run gpm release beta --sample-we</code></pre>
+          <div class="hero-ctas">
+            <a
+              class="btn btn-primary"
+              href="https://github.com/GeorgeQLe/global-province-map-template"
+              rel="noopener noreferrer"
+              >Open on GitHub</a
+            >
+            <a
+              class="btn btn-ghost"
+              href="https://github.com/GeorgeQLe/global-province-map-template/blob/main/ROADMAP.md"
+              rel="noopener noreferrer"
+              >Read the roadmap</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-inner">
+        <p>
+          Global Province Map Template · MIT · built for license-aware province
+          maps, not proprietary game data.
+        </p>
+        <p class="footer-meta">
+          Landing page milestone <strong>M14.5</strong> ·
+          <a href="https://github.com/GeorgeQLe/global-province-map-template" rel="noopener noreferrer">source</a>
+        </p>
+      </div>
+    </footer>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>

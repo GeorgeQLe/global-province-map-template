@@ -1,0 +1,42 @@
+{
+  "counts": {
+    "baseline_only": 0,
+    "choropleth_features": 6,
+    "country_rule_hits": 6,
+    "legend_tags": 5,
+    "owner_features": 5,
+    "owner_tags": 5,
+    "ownership_rows": 6,
+    "province_override_hits": 0,
+    "region_rule_hits": 1,
+    "uncertainty_features": 0
+  },
+  "end_date": null,
+  "era": "1836",
+  "files": [
+    "countries.json",
+    "legend.json",
+    "owners.geojson",
+    "ownership.csv",
+    "ownership.json",
+    "ownership_choropleth.geojson",
+    "scenario_manifest.json",
+    "tags.csv",
+    "uncertainty.geojson"
+  ],
+  "generated_at": "2026-07-11T02:37:28+00:00",
+  "generator_version": "0.1.0",
+  "label": "Official 1836 (Victoria-leaning curated politics)",
+  "milestone": "M10",
+  "pack_type": "atlas-scenario",
+  "paint": {
+    "color_field": "owner_color",
+    "disputed_outline": "#c0392b",
+    "fallback_color": "#b0b0b0",
+    "field": "owner"
+  },
+  "profile_id": "modern-small",
+  "scenario_id": "official-1836",
+  "schema_version": "0.1.0",
+  "start_date": "1836-01-01"
+}

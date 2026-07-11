@@ -19,6 +19,33 @@ sea_zone_strategy = "simple-coastal-and-ocean"
 population_weighting = false
 historical_overrides = false
 
+[refinement]
+population_weight = 0.0
+min_area_sq_km = 100.0
+min_population = 1000.0
+max_split_parts = 64
+max_seed_candidates = 512
+
+# Optional M6 overrides. Unset keys use the sea_zone_strategy preset.
+[sea]
+# coastal_buffer_km = 150.0
+# ocean_cell_size_deg = 45.0
+# strait_max_distance_km = 40.0
+# min_sea_area_sq_km = 250.0
+# min_shared_border_km = 0.01
+
+# M7 export pack settings. Unset keys use the layout preset (generic for modern-small).
+[export]
+layout = "generic"
+region_type = "region"
+include_sea_zones = true
+include_geometry = true
+definition_format = "json"
+localization_language = "english"
+
 [qa]
 topology_required = true
 render_required = true
+max_overlap_area_sq_km = 1.0
+max_gap_component_area_sq_km = 10.0
+min_shared_border_km = 0.01

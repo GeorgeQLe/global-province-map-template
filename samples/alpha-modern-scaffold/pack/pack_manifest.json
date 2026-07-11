@@ -1,0 +1,60 @@
+{
+  "counts": {
+    "adjacency_rows": 9,
+    "attribution_records": 1,
+    "localization_entries": 15,
+    "provinces": 6,
+    "regions": 6,
+    "scenario_ownership_rows": 12,
+    "sea_zones": 3
+  },
+  "definition_format": "json",
+  "files": [
+    "README.md",
+    "attribution.json",
+    "definitions/adjacency.csv",
+    "definitions/provinces.json",
+    "definitions/regions.json",
+    "definitions/sea_zones.json",
+    "geojson/provinces.geojson",
+    "geojson/regions.geojson",
+    "geojson/sea_zones.geojson",
+    "localization/english.json",
+    "localization/english.yml",
+    "pack_manifest.json",
+    "scenarios/demo-1444/countries.json",
+    "scenarios/demo-1444/ownership.csv",
+    "scenarios/demo-1444/ownership.json",
+    "scenarios/demo-1444/scenario_manifest.json",
+    "scenarios/modern-baseline/countries.json",
+    "scenarios/modern-baseline/ownership.csv",
+    "scenarios/modern-baseline/ownership.json",
+    "scenarios/modern-baseline/scenario_manifest.json",
+    "tables/population.csv",
+    "tables/terrain.csv"
+  ],
+  "generated_at": "2026-07-10T18:51:39+00:00",
+  "generator_version": "0.1.0",
+  "include_geometry": true,
+  "include_sea_zones": true,
+  "inputs": {
+    "adjacency": "/Users/georgele/projects/games/global-province-map-template/samples/alpha-modern-scaffold/_inputs/adjacency.csv",
+    "provinces": "/Users/georgele/projects/games/global-province-map-template/samples/alpha-modern-scaffold/_inputs/provinces.geojson",
+    "sea_zones": "/Users/georgele/projects/games/global-province-map-template/samples/alpha-modern-scaffold/_inputs/sea_zones.geojson"
+  },
+  "layout": "generic",
+  "localization_language": "english",
+  "milestone": "M8",
+  "pack_type": "game-template",
+  "profile_description": "Fast modern baseline for early QA and small downstream products.",
+  "profile_id": "modern-small",
+  "profile_label": "Modern Small",
+  "region_type": "region",
+  "scenarios": [
+    "modern-baseline",
+    "demo-1444"
+  ],
+  "schema_version": "0.1.0",
+  "target_province_count": 5000,
+  "target_region_count": 600
+}

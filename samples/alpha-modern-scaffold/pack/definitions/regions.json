@@ -1,0 +1,117 @@
+{
+  "count": 6,
+  "generated_at": "2026-07-10T18:51:39+00:00",
+  "profile_id": "modern-small",
+  "region_type": "region",
+  "regions": [
+    {
+      "area_sq_km": 6557.221,
+      "display_name": "BE VLG",
+      "license_lineage": [
+        "Natural Earth public domain"
+      ],
+      "parent_country_id": "BEL",
+      "parent_superregion_id": null,
+      "province_count": 1,
+      "province_ids": [
+        "sample_be_flanders"
+      ],
+      "region_id": "BE-VLG",
+      "region_type": "region",
+      "source_lineage": [
+        "natural_earth:admin1_states_provinces"
+      ]
+    },
+    {
+      "area_sq_km": 7781.036,
+      "display_name": "DE NW",
+      "license_lineage": [
+        "Natural Earth public domain"
+      ],
+      "parent_country_id": "DEU",
+      "parent_superregion_id": null,
+      "province_count": 1,
+      "province_ids": [
+        "sample_de_rhineland"
+      ],
+      "region_id": "DE-NW",
+      "region_type": "region",
+      "source_lineage": [
+        "natural_earth:admin1_states_provinces"
+      ]
+    },
+    {
+      "area_sq_km": 4556.212,
+      "display_name": "FR IDF",
+      "license_lineage": [
+        "Natural Earth public domain"
+      ],
+      "parent_country_id": "FRA",
+      "parent_superregion_id": null,
+      "province_count": 1,
+      "province_ids": [
+        "sample_fr_paris"
+      ],
+      "region_id": "FR-IDF",
+      "region_type": "region",
+      "source_lineage": [
+        "natural_earth:admin1_states_provinces"
+      ]
+    },
+    {
+      "area_sq_km": 9655.599,
+      "display_name": "FR NOR",
+      "license_lineage": [
+        "Natural Earth public domain"
+      ],
+      "parent_country_id": "FRA",
+      "parent_superregion_id": null,
+      "province_count": 1,
+      "province_ids": [
+        "sample_fr_normandy"
+      ],
+      "region_id": "FR-NOR",
+      "region_type": "region",
+      "source_lineage": [
+        "natural_earth:admin1_states_provinces"
+      ]
+    },
+    {
+      "area_sq_km": 2396.663,
+      "display_name": "LU LU",
+      "license_lineage": [
+        "Natural Earth public domain"
+      ],
+      "parent_country_id": "LUX",
+      "parent_superregion_id": null,
+      "province_count": 1,
+      "province_ids": [
+        "sample_lu_core"
+      ],
+      "region_id": "LU-LU",
+      "region_type": "region",
+      "source_lineage": [
+        "natural_earth:admin1_states_provinces"
+      ]
+    },
+    {
+      "area_sq_km": 6035.188,
+      "display_name": "NL NH",
+      "license_lineage": [
+        "Natural Earth public domain"
+      ],
+      "parent_country_id": "NLD",
+      "parent_superregion_id": null,
+      "province_count": 1,
+      "province_ids": [
+        "sample_nl_holland"
+      ],
+      "region_id": "NL-NH",
+      "region_type": "region",
+      "source_lineage": [
+        "natural_earth:admin1_states_provinces"
+      ]
+    }
+  ],
+  "schema_version": "0.1.0"
+}

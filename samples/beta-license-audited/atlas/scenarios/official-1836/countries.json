@@ -1,0 +1,42 @@
+{
+  "count": 5,
+  "countries": [
+    {
+      "color": "#bd19a8",
+      "display_name": "Belgium",
+      "notes": "Independent since 1830",
+      "province_count": 1,
+      "tag": "BEL"
+    },
+    {
+      "color": "#2e5aa5",
+      "display_name": "France",
+      "notes": "July Monarchy",
+      "province_count": 2,
+      "tag": "FRA"
+    },
+    {
+      "color": "#a7253a",
+      "display_name": "Luxembourg",
+      "notes": "Grand Duchy in personal union with Netherlands",
+      "province_count": 1,
+      "tag": "LUX"
+    },
+    {
+      "color": "#e01fa3",
+      "display_name": "Netherlands",
+      "province_count": 1,
+      "tag": "NET"
+    },
+    {
+      "color": "#4f2ec9",
+      "display_name": "Prussia",
+      "province_count": 1,
+      "tag": "PRU"
+    }
+  ],
+  "generated_at": "2026-07-11T02:37:28+00:00",
+  "milestone": "M10",
+  "scenario_id": "official-1836",
+  "schema_version": "0.1.0"
+}

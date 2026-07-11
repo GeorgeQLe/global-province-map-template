@@ -1,0 +1,7 @@
+province_id,scenario_id,start_date,end_date,owner,controller,cores,claims,culture,religion,disputed,assignment_source,parent_country_id,parent_region_id,display_name,notes
+sample_be_flanders,modern-baseline,2020-01-01,,BEL,BEL,"[""BEL""]",[],,,false,baseline,BEL,BE-VLG,Flanders,
+sample_de_rhineland,modern-baseline,2020-01-01,,DEU,DEU,"[""DEU""]",[],,,false,baseline,DEU,DE-NW,Rhineland,
+sample_fr_normandy,modern-baseline,2020-01-01,,FRA,FRA,"[""FRA""]",[],,,false,baseline,FRA,FR-NOR,Normandy coast,
+sample_fr_paris,modern-baseline,2020-01-01,,FRA,FRA,"[""FRA""]",[],,,false,baseline,FRA,FR-IDF,Paris basin,
+sample_lu_core,modern-baseline,2020-01-01,,LUX,LUX,"[""LUX""]",[],,,false,baseline,LUX,LU-LU,Luxembourg core,
+sample_nl_holland,modern-baseline,2020-01-01,,NLD,NLD,"[""NLD""]",[],,,false,baseline,NLD,NL-NH,Holland,

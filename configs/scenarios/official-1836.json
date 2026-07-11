@@ -1,0 +1,3648 @@
+{
+  "schema_version": "0.1.0",
+  "scenario_id": "official-1836",
+  "label": "Official 1836 (Victoria-leaning curated politics)",
+  "era": "1836",
+  "start_date": "1836-01-01",
+  "end_date": null,
+  "description": "First official curated-politics scenario for the 1836 start date. Global major-power tags with elevated depth in Europe, North America, and key colonial theaters. Geometry remains the modern Natural Earth scaffold; ownership is a curated overlay (quality tier curated-politics). Not Paradox-grade completeness: residual modern ISO baselines may remain outside priority theaters.",
+  "map_mode": "1836 victoria-leaning",
+  "quality_tier": "curated-politics",
+  "official_era": true,
+  "recommended_profile": "victoria-like",
+  "priority_theaters": [
+    "europe",
+    "north-america",
+    "colonial-theaters"
+  ],
+  "countries": {
+    "GBR": {
+      "display_name": "United Kingdom",
+      "tag": "GBR",
+      "notes": "Includes Ireland (Act of Union)"
+    },
+    "FRA": {
+      "display_name": "France",
+      "tag": "FRA",
+      "notes": "July Monarchy"
+    },
+    "PRU": {
+      "display_name": "Prussia",
+      "tag": "PRU"
+    },
+    "AUS": {
+      "display_name": "Austrian Empire",
+      "tag": "AUS"
+    },
+    "RUS": {
+      "display_name": "Russian Empire",
+      "tag": "RUS"
+    },
+    "SPA": {
+      "display_name": "Spain",
+      "tag": "SPA"
+    },
+    "POR": {
+      "display_name": "Portugal",
+      "tag": "POR"
+    },
+    "NET": {
+      "display_name": "Netherlands",
+      "tag": "NET"
+    },
+    "BEL": {
+      "display_name": "Belgium",
+      "tag": "BEL",
+      "notes": "Independent since 1830"
+    },
+    "LUX": {
+      "display_name": "Luxembourg",
+      "tag": "LUX",
+      "notes": "Grand Duchy in personal union with Netherlands"
+    },
+    "SWI": {
+      "display_name": "Switzerland",
+      "tag": "SWI"
+    },
+    "SWE": {
+      "display_name": "Sweden",
+      "tag": "SWE",
+      "notes": "Sweden–Norway union"
+    },
+    "DEN": {
+      "display_name": "Denmark",
+      "tag": "DEN"
+    },
+    "FIN": {
+      "display_name": "Finland",
+      "tag": "FIN",
+      "notes": "Grand Duchy under Russian Empire"
+    },
+    "GRE": {
+      "display_name": "Greece",
+      "tag": "GRE",
+      "notes": "Kingdom of Greece"
+    },
+    "PAP": {
+      "display_name": "Papal States",
+      "tag": "PAP"
+    },
+    "SAR": {
+      "display_name": "Sardinia-Piedmont",
+      "tag": "SAR"
+    },
+    "SIC": {
+      "display_name": "Two Sicilies",
+      "tag": "SIC"
+    },
+    "TUS": {
+      "display_name": "Tuscany",
+      "tag": "TUS"
+    },
+    "MOD": {
+      "display_name": "Modena",
+      "tag": "MOD"
+    },
+    "PAR": {
+      "display_name": "Parma",
+      "tag": "PAR"
+    },
+    "LUC": {
+      "display_name": "Lucca",
+      "tag": "LUC"
+    },
+    "BAV": {
+      "display_name": "Bavaria",
+      "tag": "BAV"
+    },
+    "SAX": {
+      "display_name": "Saxony",
+      "tag": "SAX"
+    },
+    "WUR": {
+      "display_name": "Württemberg",
+      "tag": "WUR"
+    },
+    "BAD": {
+      "display_name": "Baden",
+      "tag": "BAD"
+    },
+    "HAN": {
+      "display_name": "Hanover",
+      "tag": "HAN"
+    },
+    "HES": {
+      "display_name": "Hesse",
+      "tag": "HES"
+    },
+    "HAM": {
+      "display_name": "Hamburg",
+      "tag": "HAM"
+    },
+    "BRE": {
+      "display_name": "Bremen",
+      "tag": "BRE"
+    },
+    "MEC": {
+      "display_name": "Mecklenburg",
+      "tag": "MEC"
+    },
+    "OLD": {
+      "display_name": "Oldenburg",
+      "tag": "OLD"
+    },
+    "USA": {
+      "display_name": "United States",
+      "tag": "USA"
+    },
+    "TEX": {
+      "display_name": "Republic of Texas",
+      "tag": "TEX",
+      "notes": "Independent 1836"
+    },
+    "MEX": {
+      "display_name": "Mexico",
+      "tag": "MEX"
+    },
+    "BRZ": {
+      "display_name": "Empire of Brazil",
+      "tag": "BRZ"
+    },
+    "ARG": {
+      "display_name": "Argentine Confederation",
+      "tag": "ARG"
+    },
+    "CHL": {
+      "display_name": "Chile",
+      "tag": "CHL"
+    },
+    "PEU": {
+      "display_name": "Peru",
+      "tag": "PEU"
+    },
+    "BOL": {
+      "display_name": "Bolivia",
+      "tag": "BOL"
+    },
+    "COL": {
+      "display_name": "New Granada / Colombia",
+      "tag": "COL"
+    },
+    "VEN": {
+      "display_name": "Venezuela",
+      "tag": "VEN"
+    },
+    "ECU": {
+      "display_name": "Ecuador",
+      "tag": "ECU"
+    },
+    "URY": {
+      "display_name": "Uruguay",
+      "tag": "URY"
+    },
+    "PRY": {
+      "display_name": "Paraguay",
+      "tag": "PRY"
+    },
+    "HAW": {
+      "display_name": "Kingdom of Hawaii",
+      "tag": "HAW"
+    },
+    "TUR": {
+      "display_name": "Ottoman Empire",
+      "tag": "TUR"
+    },
+    "EGY": {
+      "display_name": "Egypt",
+      "tag": "EGY",
+      "notes": "Muhammad Ali; nominally Ottoman"
+    },
+    "QNG": {
+      "display_name": "Qing China",
+      "tag": "QNG"
+    },
+    "JAP": {
+      "display_name": "Tokugawa Japan",
+      "tag": "JAP"
+    },
+    "PER": {
+      "display_name": "Qajar Persia",
+      "tag": "PER"
+    },
+    "AFG": {
+      "display_name": "Afghanistan",
+      "tag": "AFG"
+    },
+    "SIA": {
+      "display_name": "Siam",
+      "tag": "SIA"
+    },
+    "KOR": {
+      "display_name": "Joseon Korea",
+      "tag": "KOR"
+    },
+    "ETH": {
+      "display_name": "Ethiopia",
+      "tag": "ETH"
+    },
+    "MOR": {
+      "display_name": "Morocco",
+      "tag": "MOR"
+    },
+    "OMA": {
+      "display_name": "Oman",
+      "tag": "OMA"
+    },
+    "UNK": {
+      "display_name": "Unknown / uncurated",
+      "tag": "UNK",
+      "notes": "Scaffold residual where no rule applies"
+    },
+    "HAI": {
+      "display_name": "Haiti",
+      "tag": "HAI"
+    },
+    "CAM": {
+      "display_name": "Central America",
+      "tag": "CAM",
+      "notes": "Federal Republic of Central America remnant"
+    },
+    "DAI": {
+      "display_name": "Đại Nam (Vietnam)",
+      "tag": "DAI"
+    },
+    "CAMK": {
+      "display_name": "Cambodia",
+      "tag": "CAMK"
+    },
+    "BUR": {
+      "display_name": "Burma (Konbaung)",
+      "tag": "BUR"
+    },
+    "NEP": {
+      "display_name": "Nepal",
+      "tag": "NEP"
+    },
+    "BHU": {
+      "display_name": "Bhutan",
+      "tag": "BHU"
+    },
+    "NAJ": {
+      "display_name": "Najd / Arabian interior",
+      "tag": "NAJ",
+      "notes": "Scaffold tag for ununified Arabia"
+    },
+    "MER": {
+      "display_name": "Merina Kingdom",
+      "tag": "MER"
+    },
+    "BRN": {
+      "display_name": "Brunei",
+      "tag": "BRN"
+    }
+  },
+  "defaults": {
+    "culture": null,
+    "religion": null,
+    "disputed": false
+  },
+  "country_rules": [
+    {
+      "match_parent_country_id": "FRA",
+      "owner": "FRA",
+      "controller": "FRA",
+      "cores": [
+        "FRA"
+      ],
+      "culture": "french",
+      "religion": "catholic",
+      "notes": "July Monarchy France"
+    },
+    {
+      "match_parent_country_id": "GBR",
+      "owner": "GBR",
+      "controller": "GBR",
+      "cores": [
+        "GBR"
+      ],
+      "culture": "english",
+      "religion": "protestant",
+      "notes": "United Kingdom"
+    },
+    {
+      "match_parent_country_id": "IRL",
+      "owner": "GBR",
+      "controller": "GBR",
+      "cores": [
+        "GBR"
+      ],
+      "culture": "irish",
+      "religion": "catholic",
+      "notes": "Ireland under UK (Act of Union)"
+    },
+    {
+      "match_parent_country_id": "ESP",
+      "owner": "SPA",
+      "controller": "SPA",
+      "cores": [
+        "SPA"
+      ],
+      "culture": "spanish",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "PRT",
+      "owner": "POR",
+      "controller": "POR",
+      "cores": [
+        "POR"
+      ],
+      "culture": "portuguese",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "BEL",
+      "owner": "BEL",
+      "controller": "BEL",
+      "cores": [
+        "BEL"
+      ],
+      "culture": "flemish",
+      "religion": "catholic",
+      "notes": "Independent Belgium"
+    },
+    {
+      "match_parent_country_id": "NLD",
+      "owner": "NET",
+      "controller": "NET",
+      "cores": [
+        "NET"
+      ],
+      "culture": "dutch",
+      "religion": "protestant"
+    },
+    {
+      "match_parent_country_id": "LUX",
+      "owner": "LUX",
+      "controller": "LUX",
+      "cores": [
+        "LUX"
+      ],
+      "culture": "luxembourgish",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "CHE",
+      "owner": "SWI",
+      "controller": "SWI",
+      "cores": [
+        "SWI"
+      ],
+      "culture": "swiss",
+      "religion": "protestant"
+    },
+    {
+      "match_parent_country_id": "SWE",
+      "owner": "SWE",
+      "controller": "SWE",
+      "cores": [
+        "SWE"
+      ],
+      "culture": "swedish",
+      "religion": "protestant"
+    },
+    {
+      "match_parent_country_id": "NOR",
+      "owner": "SWE",
+      "controller": "SWE",
+      "cores": [
+        "SWE"
+      ],
+      "culture": "norwegian",
+      "religion": "protestant",
+      "notes": "Sweden–Norway personal union"
+    },
+    {
+      "match_parent_country_id": "DNK",
+      "owner": "DEN",
+      "controller": "DEN",
+      "cores": [
+        "DEN"
+      ],
+      "culture": "danish",
+      "religion": "protestant"
+    },
+    {
+      "match_parent_country_id": "FIN",
+      "owner": "RUS",
+      "controller": "RUS",
+      "cores": [
+        "RUS",
+        "FIN"
+      ],
+      "culture": "finnish",
+      "religion": "protestant",
+      "notes": "Grand Duchy of Finland under Russia"
+    },
+    {
+      "match_parent_country_id": "ISL",
+      "owner": "DEN",
+      "controller": "DEN",
+      "cores": [
+        "DEN"
+      ],
+      "culture": "icelandic",
+      "religion": "protestant",
+      "notes": "Danish possession"
+    },
+    {
+      "match_parent_country_id": "AND",
+      "owner": "SPA",
+      "controller": "SPA",
+      "cores": [
+        "SPA"
+      ],
+      "culture": "catalan",
+      "religion": "catholic",
+      "notes": "Andorra scaffold → Spanish sphere (simplification)"
+    },
+    {
+      "match_parent_country_id": "MCO",
+      "owner": "FRA",
+      "controller": "FRA",
+      "cores": [
+        "FRA"
+      ],
+      "culture": "french",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "SMR",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "San Marino near Papal sphere (simplification)"
+    },
+    {
+      "match_parent_country_id": "VAT",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "MLT",
+      "owner": "GBR",
+      "controller": "GBR",
+      "cores": [
+        "GBR"
+      ],
+      "culture": "maltese",
+      "religion": "catholic",
+      "notes": "British Malta"
+    },
+    {
+      "match_parent_country_id": "GIB",
+      "owner": "GBR",
+      "controller": "GBR",
+      "cores": [
+        "GBR"
+      ],
+      "notes": "British Gibraltar"
+    },
+    {
+      "match_parent_country_id": "CYP",
+      "owner": "TUR",
+      "controller": "TUR",
+      "cores": [
+        "TUR"
+      ],
+      "claims": [
+        "GRE"
+      ],
+      "culture": "greek",
+      "religion": "orthodox",
+      "notes": "Ottoman Cyprus (simplification)"
+    },
+    {
+      "match_parent_country_id": "AUT",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "austrian",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "HUN",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "hungarian",
+      "religion": "catholic",
+      "notes": "Hungarian lands in Austrian Empire"
+    },
+    {
+      "match_parent_country_id": "CZE",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "czech",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "SVK",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "slovak",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "SVN",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "slovene",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "HRV",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "croatian",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "BIH",
+      "owner": "TUR",
+      "controller": "TUR",
+      "cores": [
+        "TUR"
+      ],
+      "claims": [
+        "AUS"
+      ],
+      "culture": "bosniak",
+      "religion": "sunni",
+      "notes": "Ottoman Bosnia"
+    },
+    {
+      "match_parent_country_id": "SRB",
+      "owner": "TUR",
+      "controller": "TUR",
+      "cores": [
+        "TUR"
+      ],
+      "claims": [
+        "AUS"
+      ],
+      "culture": "serbian",
+      "religion": "orthodox",
+      "notes": "Principality of Serbia (autonomous Ottoman)"
+    },
+    {
+      "match_parent_country_id": "MNE",
+      "owner": "TUR",
+      "controller": "TUR",
+      "cores": [
+        "TUR"
+      ],
+      "culture": "montenegrin",
+      "religion": "orthodox",
+      "notes": "Montenegro semi-independent; Ottoman claim retained"
+    },
+    {
+      "match_parent_country_id": "ALB",
+      "owner": "TUR",
+      "controller": "TUR",
+      "cores": [
+        "TUR"
+      ],
+      "culture": "albanian",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "MKD",
+      "owner": "TUR",
+      "controller": "TUR",
+      "cores": [
+        "TUR"
+      ],
+      "culture": "macedonian",
+      "religion": "orthodox"
+    },
+    {
+      "match_parent_country_id": "BGR",
+      "owner": "TUR",
+      "controller": "TUR",
+      "cores": [
+        "TUR"
+      ],
+      "culture": "bulgarian",
+      "religion": "orthodox"
+    },
+    {
+      "match_parent_country_id": "ROU",
+      "owner": "TUR",
+      "controller": "TUR",
+      "cores": [
+        "TUR"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Danubian Principalities under Ottoman suzerainty (scaffold)"
+    },
+    {
+      "match_parent_country_id": "MDA",
+      "owner": "RUS",
+      "controller": "RUS",
+      "cores": [
+        "RUS"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Bessarabia under Russia after 1812"
+    },
+    {
+      "match_parent_country_id": "GRC",
+      "owner": "GRE",
+      "controller": "GRE",
+      "cores": [
+        "GRE"
+      ],
+      "culture": "greek",
+      "religion": "orthodox"
+    },
+    {
+      "match_parent_country_id": "POL",
+      "owner": "RUS",
+      "controller": "RUS",
+      "cores": [
+        "RUS"
+      ],
+      "culture": "polish",
+      "religion": "catholic",
+      "notes": "Default Congress Poland → Russia; region rules partition west/south"
+    },
+    {
+      "match_parent_country_id": "LTU",
+      "owner": "RUS",
+      "controller": "RUS",
+      "cores": [
+        "RUS"
+      ],
+      "culture": "lithuanian",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "LVA",
+      "owner": "RUS",
+      "controller": "RUS",
+      "cores": [
+        "RUS"
+      ],
+      "culture": "latvian",
+      "religion": "protestant"
+    },
+    {
+      "match_parent_country_id": "EST",
+      "owner": "RUS",
+      "controller": "RUS",
+      "cores": [
+        "RUS"
+      ],
+      "culture": "estonian",
+      "religion": "protestant"
+    },
+    {
+      "match_parent_country_id": "BLR",
+      "owner": "RUS",
+      "controller": "RUS",
+      "cores": [
+        "RUS"
+      ],
+      "culture": "belarusian",
+      "religion": "orthodox"
+    },
+    {
+      "match_parent_country_id": "UKR",
+      "owner": "RUS",
+      "controller": "RUS",
+      "cores": [
+        "RUS"
+      ],
+      "culture": "ukrainian",
+      "religion": "orthodox",
+      "notes": "Most of modern Ukraine under Russia; Galicia is Austrian via region rules if present"
+    },
+    {
+      "match_parent_country_id": "RUS",
+      "owner": "RUS",
+      "controller": "RUS",
+      "cores": [
+        "RUS"
+      ],
+      "culture": "russian",
+      "religion": "orthodox"
+    },
+    {
+      "match_parent_country_id": "GEO",
+      "owner": "RUS",
+      "controller": "RUS",
+      "cores": [
+        "RUS"
+      ],
+      "culture": "georgian",
+      "religion": "orthodox"
+    },
+    {
+      "match_parent_country_id": "ARM",
+      "owner": "RUS",
+      "controller": "RUS",
+      "cores": [
+        "RUS"
+      ],
+      "culture": "armenian",
+      "religion": "orthodox",
+      "notes": "Eastern Armenia under Russia"
+    },
+    {
+      "match_parent_country_id": "AZE",
+      "owner": "RUS",
+      "controller": "RUS",
+      "cores": [
+        "RUS"
+      ],
+      "culture": "azerbaijani",
+      "religion": "shiite"
+    },
+    {
+      "match_parent_country_id": "DEU",
+      "owner": "PRU",
+      "controller": "PRU",
+      "cores": [
+        "PRU"
+      ],
+      "culture": "prussian",
+      "religion": "protestant",
+      "notes": "Default modern Germany scaffold → Prussia; region rules assign Bavaria/Saxony/etc."
+    },
+    {
+      "match_parent_country_id": "ITA",
+      "owner": "SAR",
+      "controller": "SAR",
+      "cores": [
+        "SAR"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Default Italy scaffold → Sardinia-Piedmont; region rules split peninsula"
+    },
+    {
+      "match_parent_country_id": "TUR",
+      "owner": "TUR",
+      "controller": "TUR",
+      "cores": [
+        "TUR"
+      ],
+      "culture": "turkish",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "EGY",
+      "owner": "EGY",
+      "controller": "EGY",
+      "cores": [
+        "EGY"
+      ],
+      "claims": [
+        "TUR"
+      ],
+      "culture": "egyptian",
+      "religion": "sunni",
+      "notes": "Muhammad Ali Egypt; nominal Ottoman suzerainty"
+    },
+    {
+      "match_parent_country_id": "LBY",
+      "owner": "TUR",
+      "controller": "TUR",
+      "cores": [
+        "TUR"
+      ],
+      "culture": "arab",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "TUN",
+      "owner": "TUR",
+      "controller": "TUR",
+      "cores": [
+        "TUR"
+      ],
+      "culture": "arab",
+      "religion": "sunni",
+      "notes": "Husainid Tunisia under Ottoman suzerainty"
+    },
+    {
+      "match_parent_country_id": "DZA",
+      "owner": "FRA",
+      "controller": "FRA",
+      "cores": [
+        "FRA"
+      ],
+      "culture": "arab",
+      "religion": "sunni",
+      "notes": "French Algeria (from 1830)"
+    },
+    {
+      "match_parent_country_id": "MAR",
+      "owner": "MOR",
+      "controller": "MOR",
+      "cores": [
+        "MOR"
+      ],
+      "culture": "amazigh",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "USA",
+      "owner": "USA",
+      "controller": "USA",
+      "cores": [
+        "USA"
+      ],
+      "culture": "american",
+      "religion": "protestant",
+      "notes": "USA; region rules strip Mexican Cession / Texas / Oregon / Alaska"
+    },
+    {
+      "match_parent_country_id": "MEX",
+      "owner": "MEX",
+      "controller": "MEX",
+      "cores": [
+        "MEX"
+      ],
+      "culture": "mexican",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "CAN",
+      "owner": "GBR",
+      "controller": "GBR",
+      "cores": [
+        "GBR"
+      ],
+      "culture": "english",
+      "religion": "protestant",
+      "notes": "British North America"
+    },
+    {
+      "match_parent_country_id": "GRL",
+      "owner": "DEN",
+      "controller": "DEN",
+      "cores": [
+        "DEN"
+      ],
+      "culture": "inuit",
+      "religion": "protestant",
+      "notes": "Danish Greenland"
+    },
+    {
+      "match_parent_country_id": "BRA",
+      "owner": "BRZ",
+      "controller": "BRZ",
+      "cores": [
+        "BRZ"
+      ],
+      "culture": "brazilian",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "ARG",
+      "owner": "ARG",
+      "controller": "ARG",
+      "cores": [
+        "ARG"
+      ],
+      "culture": "argentinian",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "CHL",
+      "owner": "CHL",
+      "controller": "CHL",
+      "cores": [
+        "CHL"
+      ],
+      "culture": "chilean",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "PER",
+      "owner": "PEU",
+      "controller": "PEU",
+      "cores": [
+        "PEU"
+      ],
+      "culture": "peruvian",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "BOL",
+      "owner": "BOL",
+      "controller": "BOL",
+      "cores": [
+        "BOL"
+      ],
+      "culture": "bolivian",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "COL",
+      "owner": "COL",
+      "controller": "COL",
+      "cores": [
+        "COL"
+      ],
+      "culture": "colombian",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "VEN",
+      "owner": "VEN",
+      "controller": "VEN",
+      "cores": [
+        "VEN"
+      ],
+      "culture": "venezuelan",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "ECU",
+      "owner": "ECU",
+      "controller": "ECU",
+      "cores": [
+        "ECU"
+      ],
+      "culture": "ecuadorian",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "URY",
+      "owner": "URY",
+      "controller": "URY",
+      "cores": [
+        "URY"
+      ],
+      "culture": "uruguayan",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "PRY",
+      "owner": "PRY",
+      "controller": "PRY",
+      "cores": [
+        "PRY"
+      ],
+      "culture": "paraguayan",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "GUY",
+      "owner": "GBR",
+      "controller": "GBR",
+      "cores": [
+        "GBR"
+      ],
+      "culture": "english",
+      "religion": "protestant",
+      "notes": "British Guiana"
+    },
+    {
+      "match_parent_country_id": "SUR",
+      "owner": "NET",
+      "controller": "NET",
+      "cores": [
+        "NET"
+      ],
+      "culture": "dutch",
+      "religion": "protestant",
+      "notes": "Dutch Suriname"
+    },
+    {
+      "match_parent_country_id": "GUF",
+      "owner": "FRA",
+      "controller": "FRA",
+      "cores": [
+        "FRA"
+      ],
+      "culture": "french",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "CUB",
+      "owner": "SPA",
+      "controller": "SPA",
+      "cores": [
+        "SPA"
+      ],
+      "culture": "spanish",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "DOM",
+      "owner": "HAI",
+      "controller": "HAI",
+      "cores": [
+        "HAI"
+      ],
+      "culture": "spanish",
+      "religion": "catholic",
+      "notes": "Haitian occupation ended 1844; 1836 under Haiti — tag HAI if present else SPA claim"
+    },
+    {
+      "match_parent_country_id": "HTI",
+      "owner": "HAI",
+      "controller": "HAI",
+      "cores": [
+        "HAI"
+      ],
+      "culture": "haitian",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "JAM",
+      "owner": "GBR",
+      "controller": "GBR",
+      "cores": [
+        "GBR"
+      ],
+      "culture": "english",
+      "religion": "protestant"
+    },
+    {
+      "match_parent_country_id": "PRI",
+      "owner": "SPA",
+      "controller": "SPA",
+      "cores": [
+        "SPA"
+      ],
+      "culture": "spanish",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "GTM",
+      "owner": "CAM",
+      "controller": "CAM",
+      "cores": [
+        "CAM"
+      ],
+      "culture": "guatemalan",
+      "religion": "catholic",
+      "notes": "Federal Republic of Central America remnant (scaffold)"
+    },
+    {
+      "match_parent_country_id": "HND",
+      "owner": "CAM",
+      "controller": "CAM",
+      "cores": [
+        "CAM"
+      ],
+      "culture": "honduran",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "SLV",
+      "owner": "CAM",
+      "controller": "CAM",
+      "cores": [
+        "CAM"
+      ],
+      "culture": "salvadoran",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "NIC",
+      "owner": "CAM",
+      "controller": "CAM",
+      "cores": [
+        "CAM"
+      ],
+      "culture": "nicaraguan",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "CRI",
+      "owner": "CAM",
+      "controller": "CAM",
+      "cores": [
+        "CAM"
+      ],
+      "culture": "costa_rican",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "CHN",
+      "owner": "QNG",
+      "controller": "QNG",
+      "cores": [
+        "QNG"
+      ],
+      "culture": "chinese",
+      "religion": "confucian"
+    },
+    {
+      "match_parent_country_id": "TWN",
+      "owner": "QNG",
+      "controller": "QNG",
+      "cores": [
+        "QNG"
+      ],
+      "culture": "chinese",
+      "religion": "confucian"
+    },
+    {
+      "match_parent_country_id": "MNG",
+      "owner": "QNG",
+      "controller": "QNG",
+      "cores": [
+        "QNG"
+      ],
+      "culture": "mongol",
+      "religion": "buddhist"
+    },
+    {
+      "match_parent_country_id": "HKG",
+      "owner": "QNG",
+      "controller": "QNG",
+      "cores": [
+        "QNG"
+      ],
+      "culture": "chinese",
+      "religion": "confucian",
+      "notes": "Pre-Opium War; British claim not yet formalized as colony"
+    },
+    {
+      "match_parent_country_id": "MAC",
+      "owner": "POR",
+      "controller": "POR",
+      "cores": [
+        "POR"
+      ],
+      "culture": "chinese",
+      "religion": "catholic",
+      "notes": "Portuguese Macau"
+    },
+    {
+      "match_parent_country_id": "JPN",
+      "owner": "JAP",
+      "controller": "JAP",
+      "cores": [
+        "JAP"
+      ],
+      "culture": "japanese",
+      "religion": "shinto"
+    },
+    {
+      "match_parent_country_id": "KOR",
+      "owner": "KOR",
+      "controller": "KOR",
+      "cores": [
+        "KOR"
+      ],
+      "culture": "korean",
+      "religion": "confucian"
+    },
+    {
+      "match_parent_country_id": "PRK",
+      "owner": "KOR",
+      "controller": "KOR",
+      "cores": [
+        "KOR"
+      ],
+      "culture": "korean",
+      "religion": "confucian"
+    },
+    {
+      "match_parent_country_id": "THA",
+      "owner": "SIA",
+      "controller": "SIA",
+      "cores": [
+        "SIA"
+      ],
+      "culture": "thai",
+      "religion": "buddhist"
+    },
+    {
+      "match_parent_country_id": "VNM",
+      "owner": "DAI",
+      "controller": "DAI",
+      "cores": [
+        "DAI"
+      ],
+      "culture": "vietnamese",
+      "religion": "buddhist",
+      "notes": "Nguyễn Vietnam (Đại Nam)"
+    },
+    {
+      "match_parent_country_id": "KHM",
+      "owner": "CAMK",
+      "controller": "CAMK",
+      "cores": [
+        "CAMK"
+      ],
+      "culture": "khmer",
+      "religion": "buddhist",
+      "notes": "Cambodia under Siamese/Vietnamese pressure"
+    },
+    {
+      "match_parent_country_id": "LAO",
+      "owner": "SIA",
+      "controller": "SIA",
+      "cores": [
+        "SIA"
+      ],
+      "culture": "lao",
+      "religion": "buddhist",
+      "notes": "Lao lands under Siamese influence (scaffold)"
+    },
+    {
+      "match_parent_country_id": "MMR",
+      "owner": "BUR",
+      "controller": "BUR",
+      "cores": [
+        "BUR"
+      ],
+      "culture": "burmese",
+      "religion": "buddhist"
+    },
+    {
+      "match_parent_country_id": "IND",
+      "owner": "GBR",
+      "controller": "GBR",
+      "cores": [
+        "GBR"
+      ],
+      "culture": "hindustani",
+      "religion": "hindu",
+      "notes": "British India default; princely states not fully expanded"
+    },
+    {
+      "match_parent_country_id": "BGD",
+      "owner": "GBR",
+      "controller": "GBR",
+      "cores": [
+        "GBR"
+      ],
+      "culture": "bengali",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "PAK",
+      "owner": "GBR",
+      "controller": "GBR",
+      "cores": [
+        "GBR"
+      ],
+      "culture": "punjabi",
+      "religion": "sunni",
+      "notes": "Indus basin under Company / Sikh frontier simplifications"
+    },
+    {
+      "match_parent_country_id": "LKA",
+      "owner": "GBR",
+      "controller": "GBR",
+      "cores": [
+        "GBR"
+      ],
+      "culture": "sinhalese",
+      "religion": "buddhist",
+      "notes": "British Ceylon"
+    },
+    {
+      "match_parent_country_id": "NPL",
+      "owner": "NEP",
+      "controller": "NEP",
+      "cores": [
+        "NEP"
+      ],
+      "culture": "nepali",
+      "religion": "hindu"
+    },
+    {
+      "match_parent_country_id": "BTN",
+      "owner": "BHU",
+      "controller": "BHU",
+      "cores": [
+        "BHU"
+      ],
+      "culture": "bhutanese",
+      "religion": "buddhist"
+    },
+    {
+      "match_parent_country_id": "AFG",
+      "owner": "AFG",
+      "controller": "AFG",
+      "cores": [
+        "AFG"
+      ],
+      "culture": "pashtun",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "IRN",
+      "owner": "PER",
+      "controller": "PER",
+      "cores": [
+        "PER"
+      ],
+      "culture": "persian",
+      "religion": "shiite"
+    },
+    {
+      "match_parent_country_id": "IRQ",
+      "owner": "TUR",
+      "controller": "TUR",
+      "cores": [
+        "TUR"
+      ],
+      "culture": "arab",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "SYR",
+      "owner": "TUR",
+      "controller": "TUR",
+      "cores": [
+        "TUR"
+      ],
+      "culture": "arab",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "LBN",
+      "owner": "TUR",
+      "controller": "TUR",
+      "cores": [
+        "TUR"
+      ],
+      "culture": "arab",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "JOR",
+      "owner": "TUR",
+      "controller": "TUR",
+      "cores": [
+        "TUR"
+      ],
+      "culture": "arab",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "ISR",
+      "owner": "TUR",
+      "controller": "TUR",
+      "cores": [
+        "TUR"
+      ],
+      "culture": "arab",
+      "religion": "sunni",
+      "notes": "Ottoman Palestine scaffold"
+    },
+    {
+      "match_parent_country_id": "PSE",
+      "owner": "TUR",
+      "controller": "TUR",
+      "cores": [
+        "TUR"
+      ],
+      "culture": "arab",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "SAU",
+      "owner": "NAJ",
+      "controller": "NAJ",
+      "cores": [
+        "NAJ"
+      ],
+      "culture": "arab",
+      "religion": "sunni",
+      "notes": "Najd / Arabian interior (scaffold tag)"
+    },
+    {
+      "match_parent_country_id": "YEM",
+      "owner": "TUR",
+      "controller": "TUR",
+      "cores": [
+        "TUR"
+      ],
+      "culture": "arab",
+      "religion": "sunni",
+      "notes": "Ottoman Yemen coast claim (scaffold)"
+    },
+    {
+      "match_parent_country_id": "OMN",
+      "owner": "OMA",
+      "controller": "OMA",
+      "cores": [
+        "OMA"
+      ],
+      "culture": "omani",
+      "religion": "ibadi"
+    },
+    {
+      "match_parent_country_id": "ARE",
+      "owner": "OMA",
+      "controller": "OMA",
+      "cores": [
+        "OMA"
+      ],
+      "culture": "arab",
+      "religion": "sunni",
+      "notes": "Trucial/Omani sphere (scaffold)"
+    },
+    {
+      "match_parent_country_id": "QAT",
+      "owner": "OMA",
+      "controller": "OMA",
+      "cores": [
+        "OMA"
+      ],
+      "culture": "arab",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "BHR",
+      "owner": "GBR",
+      "controller": "GBR",
+      "cores": [
+        "GBR"
+      ],
+      "culture": "arab",
+      "religion": "sunni",
+      "notes": "British influence in Gulf"
+    },
+    {
+      "match_parent_country_id": "KWT",
+      "owner": "TUR",
+      "controller": "TUR",
+      "cores": [
+        "TUR"
+      ],
+      "culture": "arab",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "ETH",
+      "owner": "ETH",
+      "controller": "ETH",
+      "cores": [
+        "ETH"
+      ],
+      "culture": "amhara",
+      "religion": "orthodox"
+    },
+    {
+      "match_parent_country_id": "ERI",
+      "owner": "ETH",
+      "controller": "ETH",
+      "cores": [
+        "ETH"
+      ],
+      "culture": "tigrinya",
+      "religion": "orthodox",
+      "notes": "Ethiopian highland sphere (scaffold)"
+    },
+    {
+      "match_parent_country_id": "ZAF",
+      "owner": "GBR",
+      "controller": "GBR",
+      "cores": [
+        "GBR"
+      ],
+      "culture": "english",
+      "religion": "protestant",
+      "notes": "Cape Colony sphere; Boer republics not fully expanded"
+    },
+    {
+      "match_parent_country_id": "NAM",
+      "owner": "GBR",
+      "controller": "GBR",
+      "cores": [
+        "GBR"
+      ],
+      "notes": "Sparse European claim; scaffold British/Cape sphere"
+    },
+    {
+      "match_parent_country_id": "BWA",
+      "owner": "GBR",
+      "controller": "GBR",
+      "cores": [
+        "GBR"
+      ]
+    },
+    {
+      "match_parent_country_id": "ZWE",
+      "owner": "UNK",
+      "controller": "UNK",
+      "cores": [
+        "UNK"
+      ],
+      "notes": "Ndebele/Shona polities; uncurated residual"
+    },
+    {
+      "match_parent_country_id": "MOZ",
+      "owner": "POR",
+      "controller": "POR",
+      "cores": [
+        "POR"
+      ],
+      "culture": "portuguese",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "AGO",
+      "owner": "POR",
+      "controller": "POR",
+      "cores": [
+        "POR"
+      ],
+      "culture": "portuguese",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "SEN",
+      "owner": "FRA",
+      "controller": "FRA",
+      "cores": [
+        "FRA"
+      ],
+      "culture": "french",
+      "religion": "sunni",
+      "notes": "French Senegal foothold"
+    },
+    {
+      "match_parent_country_id": "GHA",
+      "owner": "GBR",
+      "controller": "GBR",
+      "cores": [
+        "GBR"
+      ],
+      "notes": "Gold Coast footholds"
+    },
+    {
+      "match_parent_country_id": "NGA",
+      "owner": "GBR",
+      "controller": "GBR",
+      "cores": [
+        "GBR"
+      ],
+      "notes": "Coastal British footholds; interior uncurated residual risk"
+    },
+    {
+      "match_parent_country_id": "MDG",
+      "owner": "MER",
+      "controller": "MER",
+      "cores": [
+        "MER"
+      ],
+      "culture": "malagasy",
+      "religion": "traditional",
+      "notes": "Merina Kingdom"
+    },
+    {
+      "match_parent_country_id": "AUS",
+      "owner": "GBR",
+      "controller": "GBR",
+      "cores": [
+        "GBR"
+      ],
+      "culture": "english",
+      "religion": "protestant",
+      "notes": "British Australian colonies"
+    },
+    {
+      "match_parent_country_id": "NZL",
+      "owner": "GBR",
+      "controller": "GBR",
+      "cores": [
+        "GBR"
+      ],
+      "culture": "english",
+      "religion": "protestant",
+      "notes": "Pre-Treaty contact / British claim expansion (1835–40)"
+    },
+    {
+      "match_parent_country_id": "PNG",
+      "owner": "UNK",
+      "controller": "UNK",
+      "cores": [
+        "UNK"
+      ],
+      "notes": "Uncurated Melanesian residual"
+    },
+    {
+      "match_parent_country_id": "FJI",
+      "owner": "UNK",
+      "controller": "UNK",
+      "cores": [
+        "UNK"
+      ]
+    },
+    {
+      "match_parent_country_id": "NCL",
+      "owner": "UNK",
+      "controller": "UNK",
+      "cores": [
+        "UNK"
+      ],
+      "notes": "Pre-French annexation"
+    },
+    {
+      "match_parent_country_id": "IDN",
+      "owner": "NET",
+      "controller": "NET",
+      "cores": [
+        "NET"
+      ],
+      "culture": "javanese",
+      "religion": "sunni",
+      "notes": "Dutch East Indies"
+    },
+    {
+      "match_parent_country_id": "MYS",
+      "owner": "GBR",
+      "controller": "GBR",
+      "cores": [
+        "GBR"
+      ],
+      "notes": "Straits Settlements / Malay states (scaffold British)"
+    },
+    {
+      "match_parent_country_id": "SGP",
+      "owner": "GBR",
+      "controller": "GBR",
+      "cores": [
+        "GBR"
+      ]
+    },
+    {
+      "match_parent_country_id": "BRN",
+      "owner": "BRN",
+      "controller": "BRN",
+      "cores": [
+        "BRN"
+      ],
+      "culture": "malay",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "PHL",
+      "owner": "SPA",
+      "controller": "SPA",
+      "cores": [
+        "SPA"
+      ],
+      "culture": "filipino",
+      "religion": "catholic",
+      "notes": "Spanish Philippines"
+    }
+  ],
+  "region_rules": [
+    {
+      "match_parent_region_id": "DE-BY",
+      "owner": "BAV",
+      "controller": "BAV",
+      "cores": [
+        "BAV"
+      ],
+      "culture": "bavarian",
+      "religion": "catholic",
+      "notes": "Bavaria"
+    },
+    {
+      "match_parent_region_id": "DE-BW",
+      "owner": "WUR",
+      "controller": "WUR",
+      "cores": [
+        "WUR"
+      ],
+      "culture": "german",
+      "religion": "protestant",
+      "notes": "Württemberg/Baden scaffold → Württemberg (Baden not separate NE unit)"
+    },
+    {
+      "match_parent_region_id": "DE-SN",
+      "owner": "SAX",
+      "controller": "SAX",
+      "cores": [
+        "SAX"
+      ],
+      "culture": "german",
+      "religion": "protestant",
+      "notes": "Kingdom of Saxony"
+    },
+    {
+      "match_parent_region_id": "DE-HH",
+      "owner": "HAM",
+      "controller": "HAM",
+      "cores": [
+        "HAM"
+      ],
+      "culture": "german",
+      "religion": "protestant",
+      "notes": "Free City of Hamburg"
+    },
+    {
+      "match_parent_region_id": "DE-HB",
+      "owner": "BRE",
+      "controller": "BRE",
+      "cores": [
+        "BRE"
+      ],
+      "culture": "german",
+      "religion": "protestant",
+      "notes": "Free City of Bremen"
+    },
+    {
+      "match_parent_region_id": "DE-MV",
+      "owner": "MEC",
+      "controller": "MEC",
+      "cores": [
+        "MEC"
+      ],
+      "culture": "german",
+      "religion": "protestant",
+      "notes": "Mecklenburg"
+    },
+    {
+      "match_parent_region_id": "DE-SH",
+      "owner": "DEN",
+      "controller": "DEN",
+      "cores": [
+        "DEN"
+      ],
+      "claims": [
+        "PRU",
+        "DEN"
+      ],
+      "culture": "german",
+      "religion": "protestant",
+      "disputed": true,
+      "notes": "Schleswig-Holstein under Danish crown (disputed)"
+    },
+    {
+      "match_parent_region_id": "DE-NI",
+      "owner": "HAN",
+      "controller": "HAN",
+      "cores": [
+        "HAN"
+      ],
+      "culture": "german",
+      "religion": "protestant",
+      "notes": "Kingdom of Hanover (modern Lower Saxony scaffold)"
+    },
+    {
+      "match_parent_region_id": "DE-HE",
+      "owner": "HES",
+      "controller": "HES",
+      "cores": [
+        "HES"
+      ],
+      "culture": "german",
+      "religion": "protestant",
+      "notes": "Hesse"
+    },
+    {
+      "match_parent_region_id": "DE-TH",
+      "owner": "SAX",
+      "controller": "SAX",
+      "cores": [
+        "SAX"
+      ],
+      "culture": "german",
+      "religion": "protestant",
+      "notes": "Thuringian states → Saxon sphere (scaffold)"
+    },
+    {
+      "match_parent_region_id": "DE-RP",
+      "owner": "PRU",
+      "controller": "PRU",
+      "cores": [
+        "PRU"
+      ],
+      "culture": "german",
+      "religion": "protestant",
+      "notes": "Rhenish Prussia"
+    },
+    {
+      "match_parent_region_id": "DE-NW",
+      "owner": "PRU",
+      "controller": "PRU",
+      "cores": [
+        "PRU"
+      ],
+      "culture": "german",
+      "religion": "protestant",
+      "notes": "Rhenish / Westphalian Prussia"
+    },
+    {
+      "match_parent_region_id": "DE-SL",
+      "owner": "PRU",
+      "controller": "PRU",
+      "cores": [
+        "PRU"
+      ],
+      "culture": "german",
+      "religion": "protestant",
+      "notes": "Saar Prussian sphere"
+    },
+    {
+      "match_parent_region_id": "DE-BE",
+      "owner": "PRU",
+      "controller": "PRU",
+      "cores": [
+        "PRU"
+      ],
+      "culture": "german",
+      "religion": "protestant",
+      "notes": "Berlin — Prussia"
+    },
+    {
+      "match_parent_region_id": "DE-BB",
+      "owner": "PRU",
+      "controller": "PRU",
+      "cores": [
+        "PRU"
+      ],
+      "culture": "german",
+      "religion": "protestant",
+      "notes": "Brandenburg — Prussia"
+    },
+    {
+      "match_parent_region_id": "DE-ST",
+      "owner": "PRU",
+      "controller": "PRU",
+      "cores": [
+        "PRU"
+      ],
+      "culture": "german",
+      "religion": "protestant",
+      "notes": "Prussian Saxony / Magdeburg area"
+    },
+    {
+      "match_parent_region_id": "IT-AL",
+      "owner": "SAR",
+      "controller": "SAR",
+      "cores": [
+        "SAR"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Sardinia-Piedmont"
+    },
+    {
+      "match_parent_region_id": "IT-AO",
+      "owner": "SAR",
+      "controller": "SAR",
+      "cores": [
+        "SAR"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Sardinia-Piedmont"
+    },
+    {
+      "match_parent_region_id": "IT-AT",
+      "owner": "SAR",
+      "controller": "SAR",
+      "cores": [
+        "SAR"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Sardinia-Piedmont"
+    },
+    {
+      "match_parent_region_id": "IT-BI",
+      "owner": "SAR",
+      "controller": "SAR",
+      "cores": [
+        "SAR"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Sardinia-Piedmont"
+    },
+    {
+      "match_parent_region_id": "IT-CA",
+      "owner": "SAR",
+      "controller": "SAR",
+      "cores": [
+        "SAR"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Sardinia-Piedmont"
+    },
+    {
+      "match_parent_region_id": "IT-CI",
+      "owner": "SAR",
+      "controller": "SAR",
+      "cores": [
+        "SAR"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Sardinia-Piedmont"
+    },
+    {
+      "match_parent_region_id": "IT-CN",
+      "owner": "SAR",
+      "controller": "SAR",
+      "cores": [
+        "SAR"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Sardinia-Piedmont"
+    },
+    {
+      "match_parent_region_id": "IT-GE",
+      "owner": "SAR",
+      "controller": "SAR",
+      "cores": [
+        "SAR"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Sardinia-Piedmont"
+    },
+    {
+      "match_parent_region_id": "IT-IM",
+      "owner": "SAR",
+      "controller": "SAR",
+      "cores": [
+        "SAR"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Sardinia-Piedmont"
+    },
+    {
+      "match_parent_region_id": "IT-NO",
+      "owner": "SAR",
+      "controller": "SAR",
+      "cores": [
+        "SAR"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Sardinia-Piedmont"
+    },
+    {
+      "match_parent_region_id": "IT-NU",
+      "owner": "SAR",
+      "controller": "SAR",
+      "cores": [
+        "SAR"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Sardinia-Piedmont"
+    },
+    {
+      "match_parent_region_id": "IT-OG",
+      "owner": "SAR",
+      "controller": "SAR",
+      "cores": [
+        "SAR"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Sardinia-Piedmont"
+    },
+    {
+      "match_parent_region_id": "IT-OR",
+      "owner": "SAR",
+      "controller": "SAR",
+      "cores": [
+        "SAR"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Sardinia-Piedmont"
+    },
+    {
+      "match_parent_region_id": "IT-OT",
+      "owner": "SAR",
+      "controller": "SAR",
+      "cores": [
+        "SAR"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Sardinia-Piedmont"
+    },
+    {
+      "match_parent_region_id": "IT-SP",
+      "owner": "SAR",
+      "controller": "SAR",
+      "cores": [
+        "SAR"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Sardinia-Piedmont"
+    },
+    {
+      "match_parent_region_id": "IT-SS",
+      "owner": "SAR",
+      "controller": "SAR",
+      "cores": [
+        "SAR"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Sardinia-Piedmont"
+    },
+    {
+      "match_parent_region_id": "IT-SU",
+      "owner": "SAR",
+      "controller": "SAR",
+      "cores": [
+        "SAR"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Sardinia-Piedmont"
+    },
+    {
+      "match_parent_region_id": "IT-SV",
+      "owner": "SAR",
+      "controller": "SAR",
+      "cores": [
+        "SAR"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Sardinia-Piedmont"
+    },
+    {
+      "match_parent_region_id": "IT-TO",
+      "owner": "SAR",
+      "controller": "SAR",
+      "cores": [
+        "SAR"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Sardinia-Piedmont"
+    },
+    {
+      "match_parent_region_id": "IT-VB",
+      "owner": "SAR",
+      "controller": "SAR",
+      "cores": [
+        "SAR"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Sardinia-Piedmont"
+    },
+    {
+      "match_parent_region_id": "IT-VC",
+      "owner": "SAR",
+      "controller": "SAR",
+      "cores": [
+        "SAR"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Sardinia-Piedmont"
+    },
+    {
+      "match_parent_region_id": "IT-VS",
+      "owner": "SAR",
+      "controller": "SAR",
+      "cores": [
+        "SAR"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Sardinia-Piedmont"
+    },
+    {
+      "match_parent_region_id": "IT-BG",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Lombardy-Venetia / Austrian Italy"
+    },
+    {
+      "match_parent_region_id": "IT-BL",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Lombardy-Venetia / Austrian Italy"
+    },
+    {
+      "match_parent_region_id": "IT-BS",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Lombardy-Venetia / Austrian Italy"
+    },
+    {
+      "match_parent_region_id": "IT-BZ",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Lombardy-Venetia / Austrian Italy"
+    },
+    {
+      "match_parent_region_id": "IT-CO",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Lombardy-Venetia / Austrian Italy"
+    },
+    {
+      "match_parent_region_id": "IT-CR",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Lombardy-Venetia / Austrian Italy"
+    },
+    {
+      "match_parent_region_id": "IT-GO",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Lombardy-Venetia / Austrian Italy"
+    },
+    {
+      "match_parent_region_id": "IT-LC",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Lombardy-Venetia / Austrian Italy"
+    },
+    {
+      "match_parent_region_id": "IT-LO",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Lombardy-Venetia / Austrian Italy"
+    },
+    {
+      "match_parent_region_id": "IT-MB",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Lombardy-Venetia / Austrian Italy"
+    },
+    {
+      "match_parent_region_id": "IT-MI",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Lombardy-Venetia / Austrian Italy"
+    },
+    {
+      "match_parent_region_id": "IT-MN",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Lombardy-Venetia / Austrian Italy"
+    },
+    {
+      "match_parent_region_id": "IT-PD",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Lombardy-Venetia / Austrian Italy"
+    },
+    {
+      "match_parent_region_id": "IT-PN",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Lombardy-Venetia / Austrian Italy"
+    },
+    {
+      "match_parent_region_id": "IT-PV",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Lombardy-Venetia / Austrian Italy"
+    },
+    {
+      "match_parent_region_id": "IT-RO",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Lombardy-Venetia / Austrian Italy"
+    },
+    {
+      "match_parent_region_id": "IT-SO",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Lombardy-Venetia / Austrian Italy"
+    },
+    {
+      "match_parent_region_id": "IT-TN",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Lombardy-Venetia / Austrian Italy"
+    },
+    {
+      "match_parent_region_id": "IT-TS",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Lombardy-Venetia / Austrian Italy"
+    },
+    {
+      "match_parent_region_id": "IT-TV",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Lombardy-Venetia / Austrian Italy"
+    },
+    {
+      "match_parent_region_id": "IT-UD",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Lombardy-Venetia / Austrian Italy"
+    },
+    {
+      "match_parent_region_id": "IT-VA",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Lombardy-Venetia / Austrian Italy"
+    },
+    {
+      "match_parent_region_id": "IT-VE",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Lombardy-Venetia / Austrian Italy"
+    },
+    {
+      "match_parent_region_id": "IT-VI",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Lombardy-Venetia / Austrian Italy"
+    },
+    {
+      "match_parent_region_id": "IT-VR",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Lombardy-Venetia / Austrian Italy"
+    },
+    {
+      "match_parent_region_id": "IT-AN",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-AP",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-BO",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-FC",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-FE",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-FM",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-FR",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-LT",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-MC",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-PG",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-PU",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-RA",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-RI",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-RM",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-RN",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-TR",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-VT",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-AR",
+      "owner": "TUS",
+      "controller": "TUS",
+      "cores": [
+        "TUS"
+      ],
+      "culture": "tuscan",
+      "religion": "catholic",
+      "notes": "Grand Duchy of Tuscany"
+    },
+    {
+      "match_parent_region_id": "IT-FI",
+      "owner": "TUS",
+      "controller": "TUS",
+      "cores": [
+        "TUS"
+      ],
+      "culture": "tuscan",
+      "religion": "catholic",
+      "notes": "Grand Duchy of Tuscany"
+    },
+    {
+      "match_parent_region_id": "IT-GR",
+      "owner": "TUS",
+      "controller": "TUS",
+      "cores": [
+        "TUS"
+      ],
+      "culture": "tuscan",
+      "religion": "catholic",
+      "notes": "Grand Duchy of Tuscany"
+    },
+    {
+      "match_parent_region_id": "IT-LI",
+      "owner": "TUS",
+      "controller": "TUS",
+      "cores": [
+        "TUS"
+      ],
+      "culture": "tuscan",
+      "religion": "catholic",
+      "notes": "Grand Duchy of Tuscany"
+    },
+    {
+      "match_parent_region_id": "IT-MS",
+      "owner": "TUS",
+      "controller": "TUS",
+      "cores": [
+        "TUS"
+      ],
+      "culture": "tuscan",
+      "religion": "catholic",
+      "notes": "Grand Duchy of Tuscany"
+    },
+    {
+      "match_parent_region_id": "IT-PI",
+      "owner": "TUS",
+      "controller": "TUS",
+      "cores": [
+        "TUS"
+      ],
+      "culture": "tuscan",
+      "religion": "catholic",
+      "notes": "Grand Duchy of Tuscany"
+    },
+    {
+      "match_parent_region_id": "IT-PO",
+      "owner": "TUS",
+      "controller": "TUS",
+      "cores": [
+        "TUS"
+      ],
+      "culture": "tuscan",
+      "religion": "catholic",
+      "notes": "Grand Duchy of Tuscany"
+    },
+    {
+      "match_parent_region_id": "IT-PT",
+      "owner": "TUS",
+      "controller": "TUS",
+      "cores": [
+        "TUS"
+      ],
+      "culture": "tuscan",
+      "religion": "catholic",
+      "notes": "Grand Duchy of Tuscany"
+    },
+    {
+      "match_parent_region_id": "IT-SI",
+      "owner": "TUS",
+      "controller": "TUS",
+      "cores": [
+        "TUS"
+      ],
+      "culture": "tuscan",
+      "religion": "catholic",
+      "notes": "Grand Duchy of Tuscany"
+    },
+    {
+      "match_parent_region_id": "IT-LU",
+      "owner": "LUC",
+      "controller": "LUC",
+      "cores": [
+        "LUC"
+      ],
+      "culture": "tuscan",
+      "religion": "catholic",
+      "notes": "Duchy of Lucca"
+    },
+    {
+      "match_parent_region_id": "IT-MO",
+      "owner": "MOD",
+      "controller": "MOD",
+      "cores": [
+        "MOD"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Duchy of Modena"
+    },
+    {
+      "match_parent_region_id": "IT-RE",
+      "owner": "MOD",
+      "controller": "MOD",
+      "cores": [
+        "MOD"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Duchy of Modena"
+    },
+    {
+      "match_parent_region_id": "IT-PC",
+      "owner": "PAR",
+      "controller": "PAR",
+      "cores": [
+        "PAR"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Duchy of Parma"
+    },
+    {
+      "match_parent_region_id": "IT-PR",
+      "owner": "PAR",
+      "controller": "PAR",
+      "cores": [
+        "PAR"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Duchy of Parma"
+    },
+    {
+      "match_parent_region_id": "IT-AG",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-AQ",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-AV",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-BA",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-BN",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-BR",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-BT",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-CB",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-CE",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-CH",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-CL",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-CS",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-CT",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-CZ",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-EN",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-FG",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-IS",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-KR",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-LE",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-ME",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-MT",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-NA",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-PA",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-PE",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-PZ",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-RC",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-RG",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-SA",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-SR",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-TA",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-TE",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-TP",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "IT-VV",
+      "owner": "SIC",
+      "controller": "SIC",
+      "cores": [
+        "SIC"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of the Two Sicilies"
+    },
+    {
+      "match_parent_region_id": "PL-DS",
+      "owner": "PRU",
+      "controller": "PRU",
+      "cores": [
+        "PRU"
+      ],
+      "culture": "polish",
+      "religion": "catholic",
+      "notes": "Prussian partition of Poland"
+    },
+    {
+      "match_parent_region_id": "PL-KP",
+      "owner": "PRU",
+      "controller": "PRU",
+      "cores": [
+        "PRU"
+      ],
+      "culture": "polish",
+      "religion": "catholic",
+      "notes": "Prussian partition of Poland"
+    },
+    {
+      "match_parent_region_id": "PL-LB",
+      "owner": "PRU",
+      "controller": "PRU",
+      "cores": [
+        "PRU"
+      ],
+      "culture": "polish",
+      "religion": "catholic",
+      "notes": "Prussian partition of Poland"
+    },
+    {
+      "match_parent_region_id": "PL-OP",
+      "owner": "PRU",
+      "controller": "PRU",
+      "cores": [
+        "PRU"
+      ],
+      "culture": "polish",
+      "religion": "catholic",
+      "notes": "Prussian partition of Poland"
+    },
+    {
+      "match_parent_region_id": "PL-PM",
+      "owner": "PRU",
+      "controller": "PRU",
+      "cores": [
+        "PRU"
+      ],
+      "culture": "polish",
+      "religion": "catholic",
+      "notes": "Prussian partition of Poland"
+    },
+    {
+      "match_parent_region_id": "PL-SL",
+      "owner": "PRU",
+      "controller": "PRU",
+      "cores": [
+        "PRU"
+      ],
+      "culture": "polish",
+      "religion": "catholic",
+      "notes": "Prussian partition of Poland"
+    },
+    {
+      "match_parent_region_id": "PL-WP",
+      "owner": "PRU",
+      "controller": "PRU",
+      "cores": [
+        "PRU"
+      ],
+      "culture": "polish",
+      "religion": "catholic",
+      "notes": "Prussian partition of Poland"
+    },
+    {
+      "match_parent_region_id": "PL-ZP",
+      "owner": "PRU",
+      "controller": "PRU",
+      "cores": [
+        "PRU"
+      ],
+      "culture": "polish",
+      "religion": "catholic",
+      "notes": "Prussian partition of Poland"
+    },
+    {
+      "match_parent_region_id": "PL-MA",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "polish",
+      "religion": "catholic",
+      "notes": "Austrian Galicia"
+    },
+    {
+      "match_parent_region_id": "PL-PK",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "polish",
+      "religion": "catholic",
+      "notes": "Austrian Galicia"
+    },
+    {
+      "match_parent_region_id": "PL-LD",
+      "owner": "RUS",
+      "controller": "RUS",
+      "cores": [
+        "RUS"
+      ],
+      "culture": "polish",
+      "religion": "catholic",
+      "notes": "Congress Poland / Russian partition"
+    },
+    {
+      "match_parent_region_id": "PL-LU",
+      "owner": "RUS",
+      "controller": "RUS",
+      "cores": [
+        "RUS"
+      ],
+      "culture": "polish",
+      "religion": "catholic",
+      "notes": "Congress Poland / Russian partition"
+    },
+    {
+      "match_parent_region_id": "PL-MZ",
+      "owner": "RUS",
+      "controller": "RUS",
+      "cores": [
+        "RUS"
+      ],
+      "culture": "polish",
+      "religion": "catholic",
+      "notes": "Congress Poland / Russian partition"
+    },
+    {
+      "match_parent_region_id": "PL-PD",
+      "owner": "RUS",
+      "controller": "RUS",
+      "cores": [
+        "RUS"
+      ],
+      "culture": "polish",
+      "religion": "catholic",
+      "notes": "Congress Poland / Russian partition"
+    },
+    {
+      "match_parent_region_id": "PL-SK",
+      "owner": "RUS",
+      "controller": "RUS",
+      "cores": [
+        "RUS"
+      ],
+      "culture": "polish",
+      "religion": "catholic",
+      "notes": "Congress Poland / Russian partition"
+    },
+    {
+      "match_parent_region_id": "PL-WN",
+      "owner": "RUS",
+      "controller": "RUS",
+      "cores": [
+        "RUS"
+      ],
+      "culture": "polish",
+      "religion": "catholic",
+      "notes": "Congress Poland / Russian partition"
+    },
+    {
+      "match_parent_region_id": "RO-AB",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "romanian",
+      "religion": "catholic",
+      "notes": "Transylvania / Banat in Austrian Empire"
+    },
+    {
+      "match_parent_region_id": "RO-AR",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "romanian",
+      "religion": "catholic",
+      "notes": "Transylvania / Banat in Austrian Empire"
+    },
+    {
+      "match_parent_region_id": "RO-BH",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "romanian",
+      "religion": "catholic",
+      "notes": "Transylvania / Banat in Austrian Empire"
+    },
+    {
+      "match_parent_region_id": "RO-BN",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "romanian",
+      "religion": "catholic",
+      "notes": "Transylvania / Banat in Austrian Empire"
+    },
+    {
+      "match_parent_region_id": "RO-BV",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "romanian",
+      "religion": "catholic",
+      "notes": "Transylvania / Banat in Austrian Empire"
+    },
+    {
+      "match_parent_region_id": "RO-CJ",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "romanian",
+      "religion": "catholic",
+      "notes": "Transylvania / Banat in Austrian Empire"
+    },
+    {
+      "match_parent_region_id": "RO-CS",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "romanian",
+      "religion": "catholic",
+      "notes": "Transylvania / Banat in Austrian Empire"
+    },
+    {
+      "match_parent_region_id": "RO-CV",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "romanian",
+      "religion": "catholic",
+      "notes": "Transylvania / Banat in Austrian Empire"
+    },
+    {
+      "match_parent_region_id": "RO-HR",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "romanian",
+      "religion": "catholic",
+      "notes": "Transylvania / Banat in Austrian Empire"
+    },
+    {
+      "match_parent_region_id": "RO-MM",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "romanian",
+      "religion": "catholic",
+      "notes": "Transylvania / Banat in Austrian Empire"
+    },
+    {
+      "match_parent_region_id": "RO-MS",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "romanian",
+      "religion": "catholic",
+      "notes": "Transylvania / Banat in Austrian Empire"
+    },
+    {
+      "match_parent_region_id": "RO-SB",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "romanian",
+      "religion": "catholic",
+      "notes": "Transylvania / Banat in Austrian Empire"
+    },
+    {
+      "match_parent_region_id": "RO-SJ",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "romanian",
+      "religion": "catholic",
+      "notes": "Transylvania / Banat in Austrian Empire"
+    },
+    {
+      "match_parent_region_id": "RO-SM",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "romanian",
+      "religion": "catholic",
+      "notes": "Transylvania / Banat in Austrian Empire"
+    },
+    {
+      "match_parent_region_id": "RO-TM",
+      "owner": "AUS",
+      "controller": "AUS",
+      "cores": [
+        "AUS"
+      ],
+      "culture": "romanian",
+      "religion": "catholic",
+      "notes": "Transylvania / Banat in Austrian Empire"
+    },
+    {
+      "match_parent_region_id": "US-TX",
+      "owner": "TEX",
+      "controller": "TEX",
+      "cores": [
+        "TEX"
+      ],
+      "claims": [
+        "MEX"
+      ],
+      "culture": "texan",
+      "religion": "protestant",
+      "disputed": true,
+      "notes": "Republic of Texas (1836)"
+    },
+    {
+      "match_parent_region_id": "US-CA",
+      "owner": "MEX",
+      "controller": "MEX",
+      "cores": [
+        "MEX"
+      ],
+      "culture": "mexican",
+      "religion": "catholic",
+      "notes": "Mexican North (pre-1848)"
+    },
+    {
+      "match_parent_region_id": "US-AZ",
+      "owner": "MEX",
+      "controller": "MEX",
+      "cores": [
+        "MEX"
+      ],
+      "culture": "mexican",
+      "religion": "catholic",
+      "notes": "Mexican North (pre-1848)"
+    },
+    {
+      "match_parent_region_id": "US-NM",
+      "owner": "MEX",
+      "controller": "MEX",
+      "cores": [
+        "MEX"
+      ],
+      "culture": "mexican",
+      "religion": "catholic",
+      "notes": "Mexican North (pre-1848)"
+    },
+    {
+      "match_parent_region_id": "US-NV",
+      "owner": "MEX",
+      "controller": "MEX",
+      "cores": [
+        "MEX"
+      ],
+      "culture": "mexican",
+      "religion": "catholic",
+      "notes": "Mexican North (pre-1848)"
+    },
+    {
+      "match_parent_region_id": "US-UT",
+      "owner": "MEX",
+      "controller": "MEX",
+      "cores": [
+        "MEX"
+      ],
+      "culture": "mexican",
+      "religion": "catholic",
+      "notes": "Mexican North (pre-1848)"
+    },
+    {
+      "match_parent_region_id": "US-CO",
+      "owner": "MEX",
+      "controller": "MEX",
+      "cores": [
+        "MEX"
+      ],
+      "culture": "mexican",
+      "religion": "catholic",
+      "notes": "Mexican North (pre-1848)"
+    },
+    {
+      "match_parent_region_id": "US-WY",
+      "owner": "MEX",
+      "controller": "MEX",
+      "cores": [
+        "MEX"
+      ],
+      "culture": "mexican",
+      "religion": "catholic",
+      "notes": "Mexican North (pre-1848)"
+    },
+    {
+      "match_parent_region_id": "US-OR",
+      "owner": "GBR",
+      "controller": "GBR",
+      "cores": [
+        "GBR"
+      ],
+      "claims": [
+        "USA"
+      ],
+      "culture": "english",
+      "religion": "protestant",
+      "disputed": true,
+      "notes": "Oregon Country disputed (Oregon scaffold)"
+    },
+    {
+      "match_parent_region_id": "US-WA",
+      "owner": "GBR",
+      "controller": "GBR",
+      "cores": [
+        "GBR"
+      ],
+      "claims": [
+        "USA"
+      ],
+      "culture": "english",
+      "religion": "protestant",
+      "disputed": true,
+      "notes": "Oregon Country disputed (Washington scaffold)"
+    },
+    {
+      "match_parent_region_id": "US-ID",
+      "owner": "GBR",
+      "controller": "GBR",
+      "cores": [
+        "GBR"
+      ],
+      "claims": [
+        "USA"
+      ],
+      "culture": "english",
+      "religion": "protestant",
+      "disputed": true,
+      "notes": "Oregon Country disputed (Idaho scaffold)"
+    },
+    {
+      "match_parent_region_id": "US-AK",
+      "owner": "RUS",
+      "controller": "RUS",
+      "cores": [
+        "RUS"
+      ],
+      "culture": "russian",
+      "religion": "orthodox",
+      "notes": "Russian America"
+    },
+    {
+      "match_parent_region_id": "US-HI",
+      "owner": "HAW",
+      "controller": "HAW",
+      "cores": [
+        "HAW"
+      ],
+      "culture": "hawaiian",
+      "religion": "protestant",
+      "notes": "Kingdom of Hawaii"
+    }
+  ],
+  "province_overrides": [],
+  "notes": "M12 official era program. Curated for major powers and priority theaters on modern admin geometry. German Confederation, Italian states, Polish partitions, Texas independence, Mexican North, and Oregon Country are elevated via region rules. Add province_overrides for local exceptions. Run gpm qa scenario --scenario official-1836 (golden auto-discovered).",
+  "source_lineage": [
+    "gpm:scenario:official-1836",
+    "natural_earth:admin0/admin1 (modern scaffold identity only)",
+    "manual curation: 1836 political ownership (project-internal)"
+  ],
+  "license_lineage": [
+    "scenario authoring (project-internal curated politics)",
+    "Natural Earth public domain (geographic scaffold only)"
+  ]
+}

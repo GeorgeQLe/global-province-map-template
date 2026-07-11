@@ -1,0 +1,44 @@
+{
+  "allow_unknown_overrides": true,
+  "counts": {
+    "baseline_only": 6,
+    "countries": 5,
+    "country_rule_hits": 0,
+    "land_provinces": 6,
+    "owner_tags": 5,
+    "ownership_rows": 6,
+    "province_override_hits": 0,
+    "region_rule_hits": 0,
+    "unknown_overrides": 0
+  },
+  "description": "Projects each land province's modern parent_country_id into owner/controller without historical remapping. Useful as the default scaffold and as a reference layer for override tooling.",
+  "end_date": null,
+  "era": "modern",
+  "files": [
+    "countries.json",
+    "ownership.csv",
+    "ownership.json",
+    "scenario_manifest.json"
+  ],
+  "generated_at": "2026-07-10T18:51:39+00:00",
+  "generator_version": "0.1.0",
+  "label": "Modern baseline ownership",
+  "license_lineage": [
+    "scenario authoring (project-internal proof of concept)"
+  ],
+  "milestone": "M8",
+  "notes": [
+    "Historical ownership is a curated overlay; province geometry is unchanged.",
+    "Assignment precedence: baseline ← country_rules ← region_rules ← province_overrides.",
+    "Sea provinces are excluded from ownership tables."
+  ],
+  "profile_id": "modern-small",
+  "province_input": "/Users/georgele/projects/games/global-province-map-template/samples/alpha-modern-scaffold/_inputs/provinces.geojson",
+  "scenario_definition": "/Users/georgele/projects/games/global-province-map-template/configs/scenarios/modern-baseline.json",
+  "scenario_id": "modern-baseline",
+  "schema_version": "0.1.0",
+  "source_lineage": [
+    "gpm:scenario:modern-baseline"
+  ],
+  "start_date": "2020-01-01"
+}

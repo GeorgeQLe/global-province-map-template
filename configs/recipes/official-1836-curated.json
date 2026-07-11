@@ -1,0 +1,96 @@
+{
+  "schema_version": "0.1.0",
+  "recipe_id": "official-1836-curated",
+  "label": "Official 1836 curated-politics scenario",
+  "milestone": "M12",
+  "profile_id": "victoria-like",
+  "scenarios": ["official-1836", "modern-baseline"],
+  "include_seas": true,
+  "include_topology_qa": true,
+  "description": "Build and QA the M12 official-1836 curated-politics overlay over the modern geographic scaffold. Geometry remains scaffold-baseline; politics are curated-politics for major powers and priority theaters.",
+  "steps": [
+    {
+      "id": "download-sources",
+      "title": "Download Natural Earth (and other default) source artifacts",
+      "command": ["gpm", "sources", "download", "--execute", "--profile", "victoria-like"]
+    },
+    {
+      "id": "source-manifest",
+      "title": "Record downloaded source checksums and metadata",
+      "command": ["gpm", "sources", "manifest", "--from-raw", "--profile", "victoria-like"]
+    },
+    {
+      "id": "build-provinces",
+      "title": "Generate modern land province draft",
+      "command": ["gpm", "build", "provinces", "--profile", "victoria-like"]
+    },
+    {
+      "id": "build-seas",
+      "title": "Generate coastal and ocean sea zones",
+      "command": ["gpm", "build", "seas", "--profile", "victoria-like"]
+    },
+    {
+      "id": "build-adjacency",
+      "title": "Generate land and marine adjacency",
+      "command": ["gpm", "build", "adjacency", "--profile", "victoria-like"]
+    },
+    {
+      "id": "qa-topology",
+      "title": "Run topology QA",
+      "command": ["gpm", "qa", "topology", "--profile", "victoria-like"]
+    },
+    {
+      "id": "scenario-official-1836",
+      "title": "Resolve official-1836 curated ownership",
+      "command": ["gpm", "scenario", "build", "--scenario", "official-1836", "--profile", "victoria-like"]
+    },
+    {
+      "id": "qa-scenario-official-1836",
+      "title": "Politics QA + golden floors for official-1836",
+      "command": ["gpm", "qa", "scenario", "--scenario", "official-1836", "--profile", "victoria-like"]
+    },
+    {
+      "id": "scenario-modern-baseline",
+      "title": "Resolve modern-baseline reference ownership",
+      "command": ["gpm", "scenario", "build", "--scenario", "modern-baseline", "--profile", "victoria-like"]
+    },
+    {
+      "id": "export-pack",
+      "title": "Export victoria-like game pack with official-1836",
+      "command": [
+        "gpm",
+        "export",
+        "pack",
+        "--profile",
+        "victoria-like",
+        "--scenario",
+        "official-1836",
+        "--scenario",
+        "modern-baseline"
+      ]
+    },
+    {
+      "id": "export-atlas",
+      "title": "Export atlas face with official-1836 choropleth",
+      "command": [
+        "gpm",
+        "export",
+        "atlas",
+        "--profile",
+        "victoria-like",
+        "--scenario",
+        "official-1836"
+      ]
+    }
+  ],
+  "quality_tiers": {
+    "geometry": "scaffold-baseline",
+    "politics": "curated-politics"
+  },
+  "honesty": [
+    "official-1836 is curated-politics for major powers and priority theaters, not period geometry.",
+    "Residual modern ISO baselines may remain outside Europe, North America, and key colonial theaters.",
+    "Do not claim Paradox-grade completeness or worldwide 1836 borders.",
+    "Keep attribution.json with every redistributed copy."
+  ]
+}

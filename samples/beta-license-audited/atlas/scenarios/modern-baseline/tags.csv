@@ -1,0 +1,6 @@
+tag,display_name,color,fill_color,owner_province_count,controller_province_count,roles
+FRA,FRA,#2e5aa5,#2e5aa5,2,2,"[""owner"", ""controller""]"
+BEL,BEL,#bd19a8,#bd19a8,1,1,"[""owner"", ""controller""]"
+DEU,DEU,#38e138,#38e138,1,1,"[""owner"", ""controller""]"
+LUX,LUX,#a7253a,#a7253a,1,1,"[""owner"", ""controller""]"
+NLD,NLD,#b65b37,#b65b37,1,1,"[""owner"", ""controller""]"

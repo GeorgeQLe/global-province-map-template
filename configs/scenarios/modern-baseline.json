@@ -1,0 +1,24 @@
+{
+  "schema_version": "0.1.0",
+  "scenario_id": "modern-baseline",
+  "label": "Modern baseline ownership",
+  "era": "modern",
+  "start_date": "2020-01-01",
+  "end_date": null,
+  "description": "Projects each land province's modern parent_country_id into owner/controller without historical remapping. Useful as the default scaffold and as a reference layer for override tooling.",
+  "map_mode": "modern",
+  "quality_tier": "scaffold-baseline",
+  "official_era": false,
+  "countries": {},
+  "defaults": {
+    "culture": null,
+    "religion": null,
+    "disputed": false
+  },
+  "country_rules": [],
+  "region_rules": [],
+  "province_overrides": [],
+  "notes": "No curated overrides. Owner and controller equal the modern geographic parent country.",
+  "source_lineage": ["gpm:scenario:modern-baseline"],
+  "license_lineage": ["scenario authoring (project-internal proof of concept)"]
+}

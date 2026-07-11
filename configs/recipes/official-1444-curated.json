@@ -1,0 +1,97 @@
+{
+  "schema_version": "0.1.0",
+  "recipe_id": "official-1444-curated",
+  "label": "Official 1444 curated-politics scenario",
+  "milestone": "M13",
+  "profile_id": "eu-like",
+  "scenarios": ["official-1444", "modern-baseline"],
+  "include_seas": true,
+  "include_topology_qa": true,
+  "description": "Build and QA the M13 official-1444 curated-politics overlay over the modern geographic scaffold. Geometry remains scaffold-baseline; politics are curated-politics with Europe-first elevated depth and global major tags.",
+  "steps": [
+    {
+      "id": "download-sources",
+      "title": "Download Natural Earth (and other default) source artifacts",
+      "command": ["gpm", "sources", "download", "--execute", "--profile", "eu-like"]
+    },
+    {
+      "id": "source-manifest",
+      "title": "Record downloaded source checksums and metadata",
+      "command": ["gpm", "sources", "manifest", "--from-raw", "--profile", "eu-like"]
+    },
+    {
+      "id": "build-provinces",
+      "title": "Generate modern land province draft",
+      "command": ["gpm", "build", "provinces", "--profile", "eu-like"]
+    },
+    {
+      "id": "build-seas",
+      "title": "Generate coastal and ocean sea zones",
+      "command": ["gpm", "build", "seas", "--profile", "eu-like"]
+    },
+    {
+      "id": "build-adjacency",
+      "title": "Generate land and marine adjacency",
+      "command": ["gpm", "build", "adjacency", "--profile", "eu-like"]
+    },
+    {
+      "id": "qa-topology",
+      "title": "Run topology QA",
+      "command": ["gpm", "qa", "topology", "--profile", "eu-like"]
+    },
+    {
+      "id": "scenario-official-1444",
+      "title": "Resolve official-1444 curated ownership",
+      "command": ["gpm", "scenario", "build", "--scenario", "official-1444", "--profile", "eu-like"]
+    },
+    {
+      "id": "qa-scenario-official-1444",
+      "title": "Politics QA + golden floors for official-1444",
+      "command": ["gpm", "qa", "scenario", "--scenario", "official-1444", "--profile", "eu-like"]
+    },
+    {
+      "id": "scenario-modern-baseline",
+      "title": "Resolve modern-baseline reference ownership",
+      "command": ["gpm", "scenario", "build", "--scenario", "modern-baseline", "--profile", "eu-like"]
+    },
+    {
+      "id": "export-pack",
+      "title": "Export eu-like game pack with official-1444",
+      "command": [
+        "gpm",
+        "export",
+        "pack",
+        "--profile",
+        "eu-like",
+        "--scenario",
+        "official-1444",
+        "--scenario",
+        "modern-baseline"
+      ]
+    },
+    {
+      "id": "export-atlas",
+      "title": "Export atlas face with official-1444 choropleth",
+      "command": [
+        "gpm",
+        "export",
+        "atlas",
+        "--profile",
+        "eu-like",
+        "--scenario",
+        "official-1444"
+      ]
+    }
+  ],
+  "quality_tiers": {
+    "geometry": "scaffold-baseline",
+    "politics": "curated-politics"
+  },
+  "honesty": [
+    "official-1444 is curated-politics with Europe-first elevated depth, not period geometry.",
+    "demo-1444 remains a coarse scaffold-baseline pedagogy scenario; prefer official-1444 for product claims.",
+    "Residual modern ISO baselines and NAH/UNK tags may remain outside priority theaters.",
+    "Do not claim Paradox-grade completeness or worldwide 1444 borders.",
+    "Keep attribution.json with every redistributed copy."
+  ]
+}

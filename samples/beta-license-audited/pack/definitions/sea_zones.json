@@ -1,0 +1,68 @@
+{
+  "count": 3,
+  "generated_at": "2026-07-11T02:37:28+00:00",
+  "profile_id": "modern-small",
+  "schema_version": "0.1.0",
+  "sea_zones": [
+    {
+      "area_sq_km": 400.0,
+      "coastal": false,
+      "display_name": "Waters of sample_be_flanders",
+      "estimated_population": null,
+      "island": false,
+      "kind": "sea",
+      "license_lineage": [
+        "Natural Earth public domain"
+      ],
+      "parent_country_id": "BEL",
+      "parent_land_province_id": "sample_be_flanders",
+      "parent_region_id": "BE-VLG",
+      "province_id": "sample_sea_flanders",
+      "sea_class": "coastal",
+      "source_lineage": [
+        "natural_earth:land"
+      ],
+      "terrain_class": "ocean"
+    },
+    {
+      "area_sq_km": 400.0,
+      "coastal": false,
+      "display_name": "Waters of sample_nl_holland",
+      "estimated_population": null,
+      "island": false,
+      "kind": "sea",
+      "license_lineage": [
+        "Natural Earth public domain"
+      ],
+      "parent_country_id": "NLD",
+      "parent_land_province_id": "sample_nl_holland",
+      "parent_region_id": "NL-NH",
+      "province_id": "sample_sea_holland",
+      "sea_class": "coastal",
+      "source_lineage": [
+        "natural_earth:land"
+      ],
+      "terrain_class": "ocean"
+    },
+    {
+      "area_sq_km": 400.0,
+      "coastal": false,
+      "display_name": "Waters of sample_fr_normandy",
+      "estimated_population": null,
+      "island": false,
+      "kind": "sea",
+      "license_lineage": [
+        "Natural Earth public domain"
+      ],
+      "parent_country_id": "FRA",
+      "parent_land_province_id": "sample_fr_normandy",
+      "parent_region_id": "FR-NOR",
+      "province_id": "sample_sea_normandy",
+      "sea_class": "coastal",
+      "source_lineage": [
+        "natural_earth:land"
+      ],
+      "terrain_class": "ocean"
+    }
+  ]
+}

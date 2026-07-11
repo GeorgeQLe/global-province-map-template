@@ -1,0 +1,22 @@
+{
+  "features": [],
+  "gpm": {
+    "criteria": [
+      "disputed == true",
+      "owner != controller",
+      "owner == UNK"
+    ],
+    "feature_count": 0,
+    "generated_at": "2026-07-11T02:37:28+00:00",
+    "generator_version": "0.1.0",
+    "layer": "uncertainty",
+    "milestone": "M10",
+    "outline_color": "#c0392b",
+    "pack_type": "atlas",
+    "profile_id": "modern-small",
+    "scenario_id": "modern-baseline",
+    "schema_version": "0.1.0"
+  },
+  "name": "uncertainty_modern-baseline",
+  "type": "FeatureCollection"
+}

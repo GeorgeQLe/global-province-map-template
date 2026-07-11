@@ -1,0 +1,84 @@
+{
+  "accuracy_label_path": "accuracy_label.json",
+  "counts": {
+    "adjacency_rows": 9,
+    "attribution_records": 1,
+    "provinces": 6,
+    "scenarios": 2,
+    "sea_zones": 3
+  },
+  "data_vintage": "2026-07-10",
+  "files": [
+    "ACCURACY.md",
+    "README.md",
+    "RECIPE.md",
+    "accuracy_label.json",
+    "attribution.json",
+    "pack/README.md",
+    "pack/attribution.json",
+    "pack/definitions/adjacency.csv",
+    "pack/definitions/provinces.json",
+    "pack/definitions/regions.json",
+    "pack/definitions/sea_zones.json",
+    "pack/geojson/provinces.geojson",
+    "pack/geojson/regions.geojson",
+    "pack/geojson/sea_zones.geojson",
+    "pack/localization/english.json",
+    "pack/localization/english.yml",
+    "pack/pack_manifest.json",
+    "pack/scenarios/demo-1444/countries.json",
+    "pack/scenarios/demo-1444/ownership.csv",
+    "pack/scenarios/demo-1444/ownership.json",
+    "pack/scenarios/demo-1444/scenario_manifest.json",
+    "pack/scenarios/modern-baseline/countries.json",
+    "pack/scenarios/modern-baseline/ownership.csv",
+    "pack/scenarios/modern-baseline/ownership.json",
+    "pack/scenarios/modern-baseline/scenario_manifest.json",
+    "pack/tables/population.csv",
+    "pack/tables/terrain.csv",
+    "recipe.json",
+    "release_manifest.json",
+    "sample/adjacency.csv",
+    "sample/provinces.geojson",
+    "sample/sea_zones.geojson"
+  ],
+  "generated_at": "2026-07-10T18:51:39+00:00",
+  "generator_version": "0.1.0",
+  "inputs": {
+    "adjacency": "samples/_staging/adjacency.csv",
+    "provinces": "samples/_staging/provinces.geojson",
+    "sea_zones": "samples/_staging/sea_zones.geojson"
+  },
+  "is_sample": true,
+  "manifest_type": "release",
+  "milestone": "M9",
+  "notes": [
+    "Public alpha: modern geographic scaffold with honest accuracy labels.",
+    "Not an official curated historical era release.",
+    "Sea zones are gameplay abstractions, not legal maritime boundaries."
+  ],
+  "pack": {
+    "pack_manifest": "pack/pack_manifest.json",
+    "pack_type": "game-template",
+    "path": "pack"
+  },
+  "profile_id": "modern-small",
+  "quality_tiers": {
+    "geometry": "scaffold-baseline",
+    "politics": "scaffold-baseline"
+  },
+  "release_channel": "alpha",
+  "release_tag": "alpha-0.1.0-sample-we",
+  "sample_countries": [
+    "FRA",
+    "BEL",
+    "NLD",
+    "LUX",
+    "DEU"
+  ],
+  "scenario_set": [
+    "modern-baseline",
+    "demo-1444"
+  ],
+  "schema_version": "0.1.0"
+}

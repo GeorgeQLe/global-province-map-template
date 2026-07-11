@@ -12,10 +12,17 @@ def test_schema_files_are_machine_readable_json_schema_documents():
     schema_paths = sorted((PROJECT_ROOT / "schemas").glob("*.schema.json"))
     assert {path.name for path in schema_paths} == {
         "adjacency-record.schema.json",
+        "atlas-manifest.schema.json",
         "attribution-record.schema.json",
+        "license-audit-report.schema.json",
         "province-entity.schema.json",
         "region-entity.schema.json",
+        "release-manifest.schema.json",
+        "scenario-definition.schema.json",
+        "scenario-ownership-record.schema.json",
+        "scenario-politics-qa-report.schema.json",
         "source-manifest.schema.json",
+        "topology-qa-report.schema.json",
     }
 
     for path in schema_paths:

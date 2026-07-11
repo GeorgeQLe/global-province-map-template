@@ -1,0 +1,26 @@
+{
+  "records": [
+    {
+      "attribution_text": "Natural Earth public domain",
+      "downstream_outputs": [
+        "definitions/adjacency.csv",
+        "definitions/provinces.json",
+        "definitions/regions.json",
+        "definitions/sea_zones.json",
+        "geojson/provinces.geojson",
+        "geojson/regions.geojson",
+        "geojson/sea_zones.geojson",
+        "localization/english.json",
+        "localization/english.yml",
+        "tables/population.csv",
+        "tables/terrain.csv"
+      ],
+      "license": "Natural Earth public domain",
+      "required": true,
+      "source_id": "natural_earth",
+      "title": "Natural Earth",
+      "url": "https://www.naturalearthdata.com/"
+    }
+  ],
+  "schema_version": "0.1.0"
+}

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GPM Interactive Review</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;650&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header id="topbar">
+        <div class="brand">
+          <h1>Global Province Map · Review</h1>
+          <div class="subtitle" id="subtitle">Loading processed outputs…</div>
+        </div>
+        <div class="top-controls">
+          <label class="control">
+            Color by
+            <select id="color-mode">
+              <option value="country">Country</option>
+              <option value="owner">Owner (scenario)</option>
+              <option value="controller">Controller</option>
+              <option value="assignment">Assignment source</option>
+              <option value="area">Area</option>
+              <option value="population">Population</option>
+              <option value="refinement">Refinement</option>
+              <option value="qa">Topology QA</option>
+              <option value="politics_qa">Politics QA</option>
+            </select>
+          </label>
+          <label class="control">
+            <input id="toggle-basemap" type="checkbox" checked />
+            Basemap
+          </label>
+          <label class="control">
+            <input id="toggle-qa-overlay" type="checkbox" checked />
+            Topology QA
+          </label>
+          <label class="control">
+            <input id="toggle-politics-overlay" type="checkbox" checked />
+            Politics QA
+          </label>
+          <label class="control">
+            Search
+            <input id="search" type="search" placeholder="province id or name" />
+          </label>
+          <button id="clear-selection" class="ghost" type="button">Clear</button>
+        </div>
+      </header>
+
+      <aside id="sidebar-left">
+        <section class="panel-section">
+          <h2>Dataset</h2>
+          <div class="stat-grid" id="dataset-stats"></div>
+        </section>
+        <section class="panel-section">
+          <h2>Scenario</h2>
+          <div id="scenario-summary" class="help">No scenario loaded. Start with <code>gpm review --scenario &lt;id&gt;</code>.</div>
+        </section>
+        <section class="panel-section">
+          <h2>Topology QA</h2>
+          <div id="qa-summary" class="help">No QA report loaded.</div>
+          <div class="finding-list" id="finding-list" style="margin-top: 0.65rem"></div>
+        </section>
+        <section class="panel-section">
+          <h2>Politics QA</h2>
+          <div id="politics-qa-summary" class="help">No politics QA report.</div>
+          <div class="finding-list" id="politics-finding-list" style="margin-top: 0.65rem"></div>
+        </section>
+        <section class="panel-section">
+          <h2>Help</h2>
+          <p class="help">
+            Click a province to inspect geometry attributes, adjacency, topology
+            findings, and scenario ownership. With a scenario loaded, edit owner /
+            controller / cores / claims and save province overrides into the
+            scenario definition.
+          </p>
+        </section>
+      </aside>
+
+      <main id="map">
+        <div id="status-banner">Preparing map…</div>
+        <div id="legend">
+          <h3>Legend</h3>
+          <div class="legend-swatches" id="legend-swatches"></div>
+        </div>
+      </main>
+
+      <aside id="sidebar-right">
+        <section class="panel-section">
+          <h2>Inspector</h2>
+          <div id="inspector" class="empty">Select a province on the map.</div>
+        </section>
+        <section class="panel-section">
+          <h2>Scenario ownership</h2>
+          <div id="ownership-panel" class="empty">No scenario loaded.</div>
+        </section>
+        <section class="panel-section">
+          <h2>Curator edit</h2>
+          <div id="authoring-panel" class="empty">Load a scenario to author province overrides.</div>
+        </section>
+        <section class="panel-section">
+          <h2>Adjacency</h2>
+          <div id="adjacency-list" class="empty">No province selected.</div>
+        </section>
+        <section class="panel-section">
+          <h2>Province findings</h2>
+          <div id="province-findings" class="empty">No province selected.</div>
+        </section>
+      </aside>
+    </div>
+
+    <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+    <script src="/static/app.js"></script>
+  </body>
+</html>

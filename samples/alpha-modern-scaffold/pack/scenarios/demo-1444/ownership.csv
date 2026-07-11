@@ -1,0 +1,7 @@
+province_id,scenario_id,start_date,end_date,owner,controller,cores,claims,culture,religion,disputed,assignment_source,parent_country_id,parent_region_id,display_name,notes
+sample_be_flanders,demo-1444,1444-11-11,,BEL,BEL,"[""BEL""]",[],,,false,baseline,BEL,BE-VLG,Flanders,
+sample_de_rhineland,demo-1444,1444-11-11,,DEU,DEU,"[""DEU""]",[],,,false,baseline,DEU,DE-NW,Rhineland,
+sample_fr_normandy,demo-1444,1444-11-11,,FRA,FRA,"[""FRA""]",[],french,catholic,false,country_rule,FRA,FR-NOR,Normandy coast,Modern France scaffold → France tag
+sample_fr_paris,demo-1444,1444-11-11,,FRA,FRA,"[""FRA""]",[],french,catholic,false,country_rule,FRA,FR-IDF,Paris basin,Modern France scaffold → France tag
+sample_lu_core,demo-1444,1444-11-11,,LUX,LUX,"[""LUX""]",[],,,false,baseline,LUX,LU-LU,Luxembourg core,
+sample_nl_holland,demo-1444,1444-11-11,,NLD,NLD,"[""NLD""]",[],,,false,baseline,NLD,NL-NH,Holland,

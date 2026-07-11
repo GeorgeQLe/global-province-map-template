@@ -4,6 +4,9 @@ data/intermediate/
 data/processed/
 dist/
 exports/
+releases/
+
+# Committed public samples live under samples/ (not ignored).
 
 # Python
 .venv/

@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/global-province-map/scenario-politics-qa-report.schema.json",
+  "title": "Global Province Map Scenario Politics QA Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "report_type",
+    "milestone",
+    "profile_id",
+    "scenario_id",
+    "status",
+    "inputs",
+    "thresholds",
+    "summary",
+    "findings"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "report_type": { "const": "scenario_politics_qa" },
+    "milestone": { "const": "M11" },
+    "profile_id": { "type": "string", "minLength": 1 },
+    "scenario_id": { "type": "string", "minLength": 1 },
+    "status": { "type": "string", "enum": ["pass", "fail"] },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "province_input",
+        "adjacency_input",
+        "scenario_definition",
+        "ownership_input",
+        "golden_input"
+      ],
+      "properties": {
+        "province_input": { "type": "string", "minLength": 1 },
+        "adjacency_input": { "type": ["string", "null"] },
+        "scenario_definition": { "type": ["string", "null"] },
+        "ownership_input": { "type": ["string", "null"] },
+        "golden_input": { "type": ["string", "null"] }
+      }
+    },
+    "thresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["max_owner_components", "min_provinces_for_fragment_check"],
+      "properties": {
+        "max_owner_components": { "type": "integer", "minimum": 1 },
+        "min_provinces_for_fragment_check": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "land_province_count",
+        "ownership_row_count",
+        "owner_tag_count",
+        "error_count",
+        "warning_count",
+        "unknown_tag_finding_count",
+        "orphan_tag_finding_count",
+        "analysis"
+      ],
+      "properties": {
+        "land_province_count": { "type": "integer", "minimum": 0 },
+        "ownership_row_count": { "type": "integer", "minimum": 0 },
+        "owner_tag_count": { "type": "integer", "minimum": 0 },
+        "error_count": { "type": "integer", "minimum": 0 },
+        "warning_count": { "type": "integer", "minimum": 0 },
+        "unknown_tag_finding_count": { "type": "integer", "minimum": 0 },
+        "orphan_tag_finding_count": { "type": "integer", "minimum": 0 },
+        "analysis": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["adjacency", "golden"],
+          "properties": {
+            "adjacency": {
+              "type": "string",
+              "enum": ["complete", "incomplete", "skipped"]
+            },
+            "golden": {
+              "type": "string",
+              "enum": ["complete", "incomplete", "skipped"]
+            }
+          }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["code", "severity", "affected_ids", "message", "measurements"],
+        "properties": {
+          "code": { "type": "string", "minLength": 1 },
+          "severity": { "type": "string", "enum": ["error", "warning"] },
+          "affected_ids": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "message": { "type": "string", "minLength": 1 },
+          "measurements": { "type": "object", "additionalProperties": true }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "count": 5,
+  "countries": [
+    {
+      "color": "#bd19a8",
+      "display_name": "BEL",
+      "province_count": 1,
+      "tag": "BEL"
+    },
+    {
+      "color": "#38e138",
+      "display_name": "DEU",
+      "province_count": 1,
+      "tag": "DEU"
+    },
+    {
+      "color": "#2e5aa5",
+      "display_name": "FRA",
+      "province_count": 2,
+      "tag": "FRA"
+    },
+    {
+      "color": "#a7253a",
+      "display_name": "LUX",
+      "province_count": 1,
+      "tag": "LUX"
+    },
+    {
+      "color": "#b65b37",
+      "display_name": "NLD",
+      "province_count": 1,
+      "tag": "NLD"
+    }
+  ],
+  "generated_at": "2026-07-11T02:37:28+00:00",
+  "milestone": "M10",
+  "scenario_id": "modern-baseline",
+  "schema_version": "0.1.0"
+}

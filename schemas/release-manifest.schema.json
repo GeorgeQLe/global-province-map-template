@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/global-province-map/release-manifest.schema.json",
+  "title": "Global Province Map Release Manifest",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "manifest_type",
+    "milestone",
+    "release_channel",
+    "release_tag",
+    "data_vintage",
+    "generated_at",
+    "generator_version",
+    "profile_id",
+    "scenario_set",
+    "quality_tiers",
+    "is_sample",
+    "counts",
+    "files"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "manifest_type": { "const": "release" },
+    "milestone": { "type": "string", "minLength": 1 },
+    "release_channel": {
+      "type": "string",
+      "enum": ["alpha", "beta", "stable"]
+    },
+    "release_tag": { "type": "string", "minLength": 1 },
+    "data_vintage": { "type": "string", "minLength": 1 },
+    "generated_at": { "type": "string", "minLength": 1 },
+    "generator_version": { "type": "string", "minLength": 1 },
+    "profile_id": { "type": "string", "minLength": 1 },
+    "scenario_set": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "quality_tiers": {
+      "type": "object",
+      "required": ["geometry", "politics"],
+      "properties": {
+        "geometry": {
+          "type": "string",
+          "enum": ["scaffold-baseline", "curated-politics", "period-geometry"]
+        },
+        "politics": {
+          "type": "string",
+          "enum": ["scaffold-baseline", "curated-politics", "period-geometry"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "accuracy_label_path": { "type": "string" },
+    "license_audit_path": { "type": "string" },
+    "license_audit_passed": { "type": "boolean" },
+    "faces": { "type": "object" },
+    "is_sample": { "type": "boolean" },
+    "sample_countries": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "inputs": { "type": "object" },
+    "counts": {
+      "type": "object",
+      "required": ["provinces", "sea_zones", "adjacency_rows"],
+      "properties": {
+        "provinces": { "type": "integer", "minimum": 0 },
+        "sea_zones": { "type": "integer", "minimum": 0 },
+        "adjacency_rows": { "type": "integer", "minimum": 0 },
+        "attribution_records": { "type": "integer", "minimum": 0 },
+        "scenarios": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": true
+    },
+    "pack": { "type": "object" },
+    "files": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

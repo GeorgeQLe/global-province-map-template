@@ -1,0 +1,7 @@
+province_id,scenario_id,start_date,end_date,owner,controller,cores,claims,culture,religion,disputed,assignment_source,parent_country_id,parent_region_id,display_name,notes,owner_color,controller_color
+sample_be_flanders,official-1444,1444-11-11,,BUR,BUR,"[""BUR""]",[],flemish,catholic,false,country_rule,BEL,BE-VLG,Flanders,Burgundian Low Countries,#3ac524,#3ac524
+sample_de_rhineland,official-1444,1444-11-11,,COL,COL,"[""COL""]",[],rhenish,catholic,false,region_rule,DEU,DE-NW,Rhineland,North Rhine-Westphalia → Cologne sphere (scaffold),#53c8c7,#53c8c7
+sample_fr_normandy,official-1444,1444-11-11,,FRA,FRA,"[""FRA""]",[],french,catholic,false,country_rule,FRA,FR-NOR,Normandy coast,France; region rules peel Burgundy/Brittany/Provence,#2e5aa5,#2e5aa5
+sample_fr_paris,official-1444,1444-11-11,,FRA,FRA,"[""FRA""]",[],french,catholic,false,country_rule,FRA,FR-IDF,Paris basin,France; region rules peel Burgundy/Brittany/Provence,#2e5aa5,#2e5aa5
+sample_lu_core,official-1444,1444-11-11,,BUR,BUR,"[""BUR""]",[],luxembourgish,catholic,false,country_rule,LUX,LU-LU,Luxembourg core,,#3ac524,#3ac524
+sample_nl_holland,official-1444,1444-11-11,,BUR,BUR,"[""BUR""]",[],dutch,catholic,false,country_rule,NLD,NL-NH,Holland,Burgundian Netherlands,#3ac524,#3ac524

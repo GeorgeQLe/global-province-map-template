@@ -1,0 +1,4 @@
+tag,display_name,color,fill_color,owner_province_count,controller_province_count,roles
+BUR,Burgundy,#3ac524,#3ac524,3,3,"[""owner"", ""controller""]"
+FRA,France,#2e5aa5,#2e5aa5,2,2,"[""owner"", ""controller""]"
+COL,Cologne,#53c8c7,#53c8c7,1,1,"[""owner"", ""controller""]"

@@ -1,0 +1,219 @@
+{
+  "schema_version": "0.1.0",
+  "scenario_id": "demo-1444",
+  "label": "Demo 1444-style ownership overlay",
+  "era": "1444",
+  "start_date": "1444-11-11",
+  "end_date": null,
+  "description": "Proof-of-concept historical ownership layered on modern province geometry. Country rules remap modern ISO tags to era tags; province overrides demonstrate cores, claims, controllers, and disputed status without rewriting borders.",
+  "map_mode": "1444-ready modern scaffold",
+  "quality_tier": "scaffold-baseline",
+  "official_era": false,
+  "countries": {
+    "FRA": {
+      "display_name": "France",
+      "tag": "FRA",
+      "notes": "Demo French crown"
+    },
+    "ENG": {
+      "display_name": "England",
+      "tag": "ENG",
+      "notes": "Demo English crown"
+    },
+    "BUR": {
+      "display_name": "Burgundy",
+      "tag": "BUR"
+    },
+    "CAS": {
+      "display_name": "Castile",
+      "tag": "CAS"
+    },
+    "ARA": {
+      "display_name": "Aragon",
+      "tag": "ARA"
+    },
+    "POR": {
+      "display_name": "Portugal",
+      "tag": "POR"
+    },
+    "HAB": {
+      "display_name": "Austria",
+      "tag": "HAB"
+    },
+    "VEN": {
+      "display_name": "Venice",
+      "tag": "VEN"
+    },
+    "TUR": {
+      "display_name": "Ottomans",
+      "tag": "TUR"
+    },
+    "MOS": {
+      "display_name": "Muscovy",
+      "tag": "MOS"
+    },
+    "MNG": {
+      "display_name": "Ming",
+      "tag": "MNG"
+    },
+    "JAP": {
+      "display_name": "Japan",
+      "tag": "JAP"
+    }
+  },
+  "defaults": {
+    "culture": null,
+    "religion": null,
+    "disputed": false
+  },
+  "country_rules": [
+    {
+      "match_parent_country_id": "FRA",
+      "owner": "FRA",
+      "controller": "FRA",
+      "cores": ["FRA"],
+      "culture": "french",
+      "religion": "catholic",
+      "notes": "Modern France scaffold → France tag"
+    },
+    {
+      "match_parent_country_id": "GBR",
+      "owner": "ENG",
+      "controller": "ENG",
+      "cores": ["ENG"],
+      "culture": "english",
+      "religion": "catholic",
+      "notes": "Modern United Kingdom scaffold → England (demo simplification)"
+    },
+    {
+      "match_parent_country_id": "ESP",
+      "owner": "CAS",
+      "controller": "CAS",
+      "cores": ["CAS"],
+      "culture": "castilian",
+      "religion": "catholic",
+      "notes": "Modern Spain scaffold → Castile (demo simplification)"
+    },
+    {
+      "match_parent_country_id": "PRT",
+      "owner": "POR",
+      "controller": "POR",
+      "cores": ["POR"],
+      "culture": "portuguese",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "AUT",
+      "owner": "HAB",
+      "controller": "HAB",
+      "cores": ["HAB"],
+      "culture": "austrian",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "ITA",
+      "owner": "VEN",
+      "controller": "VEN",
+      "cores": ["VEN"],
+      "culture": "venetian",
+      "religion": "catholic",
+      "notes": "Demo: entire modern Italy scaffold treated as Venice"
+    },
+    {
+      "match_parent_country_id": "TUR",
+      "owner": "TUR",
+      "controller": "TUR",
+      "cores": ["TUR"],
+      "culture": "turkish",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "RUS",
+      "owner": "MOS",
+      "controller": "MOS",
+      "cores": ["MOS"],
+      "culture": "russian",
+      "religion": "orthodox",
+      "notes": "Modern Russia scaffold → Muscovy (demo simplification)"
+    },
+    {
+      "match_parent_country_id": "CHN",
+      "owner": "MNG",
+      "controller": "MNG",
+      "cores": ["MNG"],
+      "culture": "chinese",
+      "religion": "confucian"
+    },
+    {
+      "match_parent_country_id": "JPN",
+      "owner": "JAP",
+      "controller": "JAP",
+      "cores": ["JAP"],
+      "culture": "japanese",
+      "religion": "shinto"
+    }
+  ],
+  "region_rules": [
+    {
+      "match_parent_region_id": "FR-HDF",
+      "owner": "BUR",
+      "controller": "BUR",
+      "cores": ["BUR", "FRA"],
+      "culture": "burgundian",
+      "religion": "catholic",
+      "notes": "Demo: modern Hauts-de-France region claimed for Burgundy"
+    },
+    {
+      "match_parent_region_id": "FR-GES",
+      "owner": "BUR",
+      "controller": "BUR",
+      "cores": ["BUR", "FRA"],
+      "culture": "burgundian",
+      "religion": "catholic",
+      "notes": "Demo: modern Grand Est region claimed for Burgundy"
+    },
+    {
+      "match_parent_region_id": "ES-CT",
+      "owner": "ARA",
+      "controller": "ARA",
+      "cores": ["ARA", "CAS"],
+      "culture": "catalan",
+      "religion": "catholic",
+      "notes": "Demo: modern Catalonia as Aragon"
+    },
+    {
+      "match_parent_region_id": "ES-VC",
+      "owner": "ARA",
+      "controller": "ARA",
+      "cores": ["ARA"],
+      "culture": "catalan",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_region_id": "ES-IB",
+      "owner": "ARA",
+      "controller": "ARA",
+      "cores": ["ARA"],
+      "culture": "catalan",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_region_id": "ES-AR",
+      "owner": "ARA",
+      "controller": "ARA",
+      "cores": ["ARA"],
+      "culture": "aragonese",
+      "religion": "catholic"
+    }
+  ],
+  "province_overrides": [],
+  "notes": "This is a pedagogical POC, not a historically complete 1444 dataset. Country and region rules are coarse simplifications over modern Natural Earth admin units. Add province_overrides with real generated province_ids when authoring production scenarios (see docs/m8-scenarios.md).",
+  "source_lineage": [
+    "gpm:scenario:demo-1444",
+    "natural_earth:admin0_countries (modern scaffold identity only)"
+  ],
+  "license_lineage": [
+    "scenario authoring (project-internal proof of concept)",
+    "Natural Earth public domain (geographic scaffold only)"
+  ]
+}

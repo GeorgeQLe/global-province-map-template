@@ -1,0 +1,252 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              3.0,
+              50.5
+            ],
+            [
+              4.2,
+              50.5
+            ],
+            [
+              4.2,
+              51.2
+            ],
+            [
+              3.0,
+              51.2
+            ],
+            [
+              3.0,
+              50.5
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "area_sq_km": 10409.4,
+        "display_name": "BEL",
+        "disputed_province_count": 0,
+        "owner": "BEL",
+        "owner_color": "#bd19a8",
+        "province_count": 1,
+        "province_ids": [
+          "sample_be_flanders"
+        ]
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              6.5,
+              50.5
+            ],
+            [
+              7.5,
+              50.5
+            ],
+            [
+              7.5,
+              51.5
+            ],
+            [
+              6.5,
+              51.5
+            ],
+            [
+              6.5,
+              50.5
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "area_sq_km": 12392.142,
+        "display_name": "DEU",
+        "disputed_province_count": 0,
+        "owner": "DEU",
+        "owner_color": "#38e138",
+        "province_count": 1,
+        "province_ids": [
+          "sample_de_rhineland"
+        ]
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              [
+                2.0,
+                49.2
+              ],
+              [
+                2.8,
+                49.2
+              ],
+              [
+                2.8,
+                48.5
+              ],
+              [
+                2.0,
+                48.5
+              ],
+              [
+                2.0,
+                49.2
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                0.0,
+                49.8
+              ],
+              [
+                1.5,
+                49.8
+              ],
+              [
+                1.5,
+                49.0
+              ],
+              [
+                0.0,
+                49.0
+              ],
+              [
+                0.0,
+                49.8
+              ]
+            ]
+          ]
+        ],
+        "type": "MultiPolygon"
+      },
+      "properties": {
+        "area_sq_km": 21810.171,
+        "display_name": "FRA",
+        "disputed_province_count": 0,
+        "owner": "FRA",
+        "owner_color": "#2e5aa5",
+        "province_count": 2,
+        "province_ids": [
+          "sample_fr_normandy",
+          "sample_fr_paris"
+        ]
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              5.8,
+              49.5
+            ],
+            [
+              6.4,
+              49.5
+            ],
+            [
+              6.4,
+              50.0
+            ],
+            [
+              5.8,
+              50.0
+            ],
+            [
+              5.8,
+              49.5
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "area_sq_km": 3717.643,
+        "display_name": "LUX",
+        "disputed_province_count": 0,
+        "owner": "LUX",
+        "owner_color": "#a7253a",
+        "province_count": 1,
+        "province_ids": [
+          "sample_lu_core"
+        ]
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              4.2,
+              52.0
+            ],
+            [
+              5.2,
+              52.0
+            ],
+            [
+              5.2,
+              52.8
+            ],
+            [
+              4.2,
+              52.8
+            ],
+            [
+              4.2,
+              52.0
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "area_sq_km": 9913.714,
+        "display_name": "NLD",
+        "disputed_province_count": 0,
+        "owner": "NLD",
+        "owner_color": "#b65b37",
+        "province_count": 1,
+        "province_ids": [
+          "sample_nl_holland"
+        ]
+      },
+      "type": "Feature"
+    }
+  ],
+  "gpm": {
+    "color_field": "owner_color",
+    "dissolve": "owner",
+    "feature_count": 5,
+    "generated_at": "2026-07-11T02:37:28+00:00",
+    "generator_version": "0.1.0",
+    "layer": "owners",
+    "milestone": "M10",
+    "pack_type": "atlas",
+    "paint_field": "owner",
+    "profile_id": "modern-small",
+    "scenario_id": "modern-baseline",
+    "schema_version": "0.1.0"
+  },
+  "name": "owners_modern-baseline",
+  "type": "FeatureCollection"
+}

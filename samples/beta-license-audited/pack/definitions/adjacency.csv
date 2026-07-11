@@ -1,0 +1,10 @@
+from_province_id,to_province_id,adjacency_type,bidirectional,crossing_type,shared_border_km,source_lineage
+sample_be_flanders,sample_fr_normandy,land,true,shared_border,12.0,"[""sample""]"
+sample_be_flanders,sample_nl_holland,land,true,shared_border,8.0,"[""sample""]"
+sample_de_rhineland,sample_lu_core,land,true,shared_border,5.0,"[""sample""]"
+sample_fr_paris,sample_fr_normandy,land,true,shared_border,15.0,"[""sample""]"
+sample_fr_normandy,sample_sea_normandy,port_to_sea,true,port,20.0,"[""sample""]"
+sample_be_flanders,sample_sea_flanders,port_to_sea,true,port,10.0,"[""sample""]"
+sample_nl_holland,sample_sea_holland,port_to_sea,true,port,14.0,"[""sample""]"
+sample_sea_flanders,sample_sea_holland,sea,true,shared_border,6.0,"[""sample""]"
+sample_sea_flanders,sample_sea_normandy,sea,true,shared_border,4.0,"[""sample""]"

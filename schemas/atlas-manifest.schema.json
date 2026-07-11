@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/global-province-map/atlas-manifest.schema.json",
+  "title": "Global Province Map Atlas / SaaS Pack Manifest",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "milestone",
+    "pack_type",
+    "profile_id",
+    "generated_at",
+    "generator_version",
+    "scenarios",
+    "counts",
+    "files"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "milestone": { "type": "string", "minLength": 1 },
+    "pack_type": { "const": "atlas" },
+    "profile_id": { "type": "string", "minLength": 1 },
+    "generated_at": { "type": "string", "minLength": 1 },
+    "generator_version": { "type": "string", "minLength": 1 },
+    "scenarios": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "include_base_geometry": { "type": "boolean" },
+    "include_owner_dissolve": { "type": "boolean" },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "provinces",
+        "scenarios",
+        "scenario_ownership_rows",
+        "unique_tags",
+        "legend_entries",
+        "attribution_records"
+      ],
+      "properties": {
+        "provinces": { "type": "integer", "minimum": 0 },
+        "scenarios": { "type": "integer", "minimum": 1 },
+        "scenario_ownership_rows": { "type": "integer", "minimum": 0 },
+        "unique_tags": { "type": "integer", "minimum": 0 },
+        "legend_entries": { "type": "integer", "minimum": 0 },
+        "attribution_records": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": true
+    },
+    "scenario_summaries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["scenario_id"],
+        "properties": {
+          "scenario_id": { "type": "string", "minLength": 1 },
+          "era": { "type": "string" },
+          "start_date": { "type": "string" },
+          "ownership_rows": { "type": "integer", "minimum": 0 },
+          "legend_tags": { "type": "integer", "minimum": 0 },
+          "uncertainty_features": { "type": "integer", "minimum": 0 }
+        },
+        "additionalProperties": true
+      }
+    },
+    "formats": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "files": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

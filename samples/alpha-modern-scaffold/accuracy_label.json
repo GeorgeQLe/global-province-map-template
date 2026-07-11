@@ -1,0 +1,42 @@
+{
+  "do_not_claim": [
+    "Paradox-grade historical accuracy",
+    "curated official 1444 / 1836 / 1936 politics",
+    "period-correct province geometry worldwide",
+    "legal maritime boundaries (sea zones are gameplay abstractions)",
+    "complete population fidelity without documented raster inputs",
+    "production-ready historical start-date tags",
+    "era-aware borders for pre-modern or wartime maps"
+  ],
+  "geometry_quality_description": "Modern open-geodata scaffold only. Politics project modern parent_country_id (or coarse demo remaps). Not a claim of historical accuracy for any pre-modern or wartime era.",
+  "geometry_quality_tier": "scaffold-baseline",
+  "honest_statements": [
+    "Province polygons come from modern Natural Earth (and optional admin candidates), not from proprietary game maps.",
+    "Scenario ownership is a separate layer; geometry is not rewritten per era in this alpha.",
+    "demo remaps and baseline projection are scaffolding tools, not official era programs (see M12+ for curated eras).",
+    "Redistribute with attribution.json and the release manifest."
+  ],
+  "politics_quality_description": "Modern open-geodata scaffold only. Politics project modern parent_country_id (or coarse demo remaps). Not a claim of historical accuracy for any pre-modern or wartime era.",
+  "politics_quality_tier": "scaffold-baseline",
+  "quality_tier_catalog": [
+    {
+      "description": "Modern open-geodata scaffold only. Politics project modern parent_country_id (or coarse demo remaps). Not a claim of historical accuracy for any pre-modern or wartime era.",
+      "id": "scaffold-baseline"
+    },
+    {
+      "description": "Human-reviewed owner/controller/cores/claims for priority regions and/or global major tags. Geometry may still be modern scaffold.",
+      "id": "curated-politics"
+    },
+    {
+      "description": "Era-aware province shapes or boundary hints where modern admin outlines would fail a historian or Paradox-eye sniff test.",
+      "id": "period-geometry"
+    }
+  ],
+  "release_channel": "alpha",
+  "scenario_notes": [
+    "modern-baseline: projects each land province's modern parent_country_id to owner/controller. Scaffold only.",
+    "demo-1444: coarse country/region remaps for tooling demos. Not curated 1444 politics; do not market as an official era."
+  ],
+  "schema_version": "0.1.0",
+  "summary": "Profile `modern-small`. Alpha release: geometry=scaffold-baseline, politics=scaffold-baseline. Modern open-geodata scaffold is the engineering foundation—not a final claim of historical truth."
+}

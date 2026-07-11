@@ -1,0 +1,28 @@
+{
+  "count": 3,
+  "countries": [
+    {
+      "color": "#3ac524",
+      "display_name": "Burgundy",
+      "notes": "Valois Burgundy + Low Countries",
+      "province_count": 3,
+      "tag": "BUR"
+    },
+    {
+      "color": "#53c8c7",
+      "display_name": "Cologne",
+      "province_count": 1,
+      "tag": "COL"
+    },
+    {
+      "color": "#2e5aa5",
+      "display_name": "France",
+      "province_count": 2,
+      "tag": "FRA"
+    }
+  ],
+  "generated_at": "2026-07-11T02:37:28+00:00",
+  "milestone": "M10",
+  "scenario_id": "official-1444",
+  "schema_version": "0.1.0"
+}

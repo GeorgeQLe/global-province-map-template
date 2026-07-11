@@ -1,0 +1,33 @@
+{
+  "schema_version": "0.1.0",
+  "scenario_id": "official-1444",
+  "description": "M13 golden floors for official-1444: ensure major 1444 tags own enough provinces after resolve. Province-level golden borders can be added later with stable province_ids.",
+  "min_owner_counts": {
+    "ENG": 20,
+    "FRA": 30,
+    "BUR": 10,
+    "CAS": 20,
+    "ARA": 10,
+    "POR": 10,
+    "HAB": 10,
+    "BOH": 5,
+    "HUN": 10,
+    "POL": 10,
+    "LIT": 10,
+    "MOS": 15,
+    "TUR": 30,
+    "MNG": 20,
+    "MAM": 10,
+    "VEN": 5,
+    "NAP": 10,
+    "PAP": 5,
+    "MLO": 3,
+    "SCO": 5,
+    "BAV": 1,
+    "NOV": 1,
+    "BYZ": 1,
+    "GRA": 1,
+    "TEU": 1
+  },
+  "province_owners": {}
+}

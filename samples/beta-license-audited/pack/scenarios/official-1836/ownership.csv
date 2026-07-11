@@ -1,0 +1,7 @@
+province_id,scenario_id,start_date,end_date,owner,controller,cores,claims,culture,religion,disputed,assignment_source,parent_country_id,parent_region_id,display_name,notes
+sample_be_flanders,official-1836,1836-01-01,,BEL,BEL,"[""BEL""]",[],flemish,catholic,false,country_rule,BEL,BE-VLG,Flanders,Independent Belgium
+sample_de_rhineland,official-1836,1836-01-01,,PRU,PRU,"[""PRU""]",[],german,protestant,false,region_rule,DEU,DE-NW,Rhineland,Rhenish / Westphalian Prussia
+sample_fr_normandy,official-1836,1836-01-01,,FRA,FRA,"[""FRA""]",[],french,catholic,false,country_rule,FRA,FR-NOR,Normandy coast,July Monarchy France
+sample_fr_paris,official-1836,1836-01-01,,FRA,FRA,"[""FRA""]",[],french,catholic,false,country_rule,FRA,FR-IDF,Paris basin,July Monarchy France
+sample_lu_core,official-1836,1836-01-01,,LUX,LUX,"[""LUX""]",[],luxembourgish,catholic,false,country_rule,LUX,LU-LU,Luxembourg core,
+sample_nl_holland,official-1836,1836-01-01,,NET,NET,"[""NET""]",[],dutch,protestant,false,country_rule,NLD,NL-NH,Holland,

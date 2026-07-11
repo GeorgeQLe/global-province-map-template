@@ -1,0 +1,214 @@
+{
+  "environment": {
+    "install": [
+      "uv sync",
+      "uv pip install -e '.[dev]'"
+    ],
+    "notes": [
+      "Run commands from the repository root with the gpm entrypoint available.",
+      "Do not mix ODbL or restricted sources into public beta packs.",
+      "Do not commit data/raw/ or full data/processed/ global builds.",
+      "Sample subsets may be committed under samples/ when size is modest."
+    ],
+    "python": ">=3.11"
+  },
+  "generator_version": "0.1.0",
+  "include_atlas": true,
+  "include_seas": true,
+  "include_topology_qa": true,
+  "label": "Public beta license-audited dual-face release",
+  "milestone": "M14",
+  "population_input": null,
+  "profile_id": "modern-small",
+  "recipe_id": "beta-license-audited",
+  "sample_countries": [
+    "FRA",
+    "BEL",
+    "NLD",
+    "LUX",
+    "DEU"
+  ],
+  "scenarios": [
+    "modern-baseline",
+    "official-1836",
+    "official-1444"
+  ],
+  "schema_version": "0.1.0",
+  "settlement_input": null,
+  "steps": [
+    {
+      "command": [
+        "gpm",
+        "sources",
+        "download",
+        "--execute",
+        "--profile",
+        "modern-small"
+      ],
+      "id": "download-sources",
+      "notes": "Uses profile defaults. Restricted (GADM) and share-alike (OSM) sources are not on the default path and must stay isolated.",
+      "title": "Download core (public-safe) source artifacts only"
+    },
+    {
+      "command": [
+        "gpm",
+        "sources",
+        "manifest",
+        "--from-raw",
+        "--profile",
+        "modern-small"
+      ],
+      "id": "source-manifest",
+      "notes": "Emit a build source manifest for the release lineage.",
+      "title": "Record downloaded source checksums and metadata"
+    },
+    {
+      "command": [
+        "gpm",
+        "build",
+        "provinces",
+        "--profile",
+        "modern-small"
+      ],
+      "id": "build-provinces",
+      "notes": "Writes data/processed/provinces.geojson. Features must carry license_lineage for the beta license audit.",
+      "title": "Generate modern land province draft"
+    },
+    {
+      "command": [
+        "gpm",
+        "build",
+        "seas",
+        "--profile",
+        "modern-small"
+      ],
+      "id": "build-seas",
+      "notes": "Gameplay-first sea zones; not legal maritime boundaries.",
+      "title": "Generate coastal and ocean sea zones"
+    },
+    {
+      "command": [
+        "gpm",
+        "build",
+        "adjacency",
+        "--profile",
+        "modern-small"
+      ],
+      "id": "build-adjacency",
+      "notes": "Marine edges appear only when sea_zones.geojson is present.",
+      "title": "Generate land (and marine) adjacency"
+    },
+    {
+      "command": [
+        "gpm",
+        "qa",
+        "topology",
+        "--profile",
+        "modern-small"
+      ],
+      "id": "qa-topology",
+      "notes": "CI-gating geometry, coverage, and graph checks.",
+      "title": "Run topology QA"
+    },
+    {
+      "command": [
+        "gpm",
+        "scenario",
+        "build",
+        "--scenario",
+        "modern-baseline",
+        "--profile",
+        "modern-small"
+      ],
+      "id": "scenario-modern-baseline",
+      "notes": "Politics overlay only; does not rewrite province geometry.",
+      "title": "Resolve scenario ownership overlay: modern-baseline"
+    },
+    {
+      "command": [
+        "gpm",
+        "scenario",
+        "build",
+        "--scenario",
+        "official-1836",
+        "--profile",
+        "modern-small"
+      ],
+      "id": "scenario-official-1836",
+      "notes": "Politics overlay only; does not rewrite province geometry.",
+      "title": "Resolve scenario ownership overlay: official-1836"
+    },
+    {
+      "command": [
+        "gpm",
+        "qa",
+        "scenario",
+        "--scenario",
+        "official-1836",
+        "--profile",
+        "modern-small"
+      ],
+      "id": "qa-scenario-official-1836",
+      "notes": "Coverage, tag, component, and golden-floor checks.",
+      "title": "Run politics QA for official-1836"
+    },
+    {
+      "command": [
+        "gpm",
+        "scenario",
+        "build",
+        "--scenario",
+        "official-1444",
+        "--profile",
+        "modern-small"
+      ],
+      "id": "scenario-official-1444",
+      "notes": "Politics overlay only; does not rewrite province geometry.",
+      "title": "Resolve scenario ownership overlay: official-1444"
+    },
+    {
+      "command": [
+        "gpm",
+        "qa",
+        "scenario",
+        "--scenario",
+        "official-1444",
+        "--profile",
+        "modern-small"
+      ],
+      "id": "qa-scenario-official-1444",
+      "notes": "Coverage, tag, component, and golden-floor checks.",
+      "title": "Run politics QA for official-1444"
+    },
+    {
+      "command": [
+        "gpm",
+        "release",
+        "beta",
+        "--profile",
+        "modern-small",
+        "--scenario",
+        "modern-baseline",
+        "--scenario",
+        "official-1836",
+        "--scenario",
+        "official-1444",
+        "--country",
+        "FRA",
+        "--country",
+        "BEL",
+        "--country",
+        "NLD",
+        "--country",
+        "LUX",
+        "--country",
+        "DEU",
+        "--tag",
+        "beta-0.1.0-sample-we"
+      ],
+      "id": "release-beta",
+      "notes": "Writes release_manifest.json, LICENSE_AUDIT.md, attribution pack, ACCURACY.md, recipe files, game pack/, and optional atlas/.",
+      "title": "Package license-audited beta (game + atlas faces)"
+    }
+  ]
+}

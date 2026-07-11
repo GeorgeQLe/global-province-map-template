@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1.0",
+  "recipe_id": "alpha-modern-scaffold",
+  "label": "Public alpha modern scaffold",
+  "milestone": "M9",
+  "profile_id": "modern-small",
+  "scenarios": ["modern-baseline", "demo-1444"],
+  "sample_countries": ["FRA", "BEL", "NLD", "LUX", "DEU"],
+  "include_seas": true,
+  "include_topology_qa": true,
+  "description": "Reproducible recipe for the M9 public alpha modern scaffold sample. Geometry and politics quality tiers are both scaffold-baseline.",
+  "steps": [
+    {
+      "id": "download-sources",
+      "title": "Download Natural Earth (and other default) source artifacts",
+      "command": ["gpm", "sources", "download", "--execute", "--profile", "modern-small"]
+    },
+    {
+      "id": "source-manifest",
+      "title": "Record downloaded source checksums and metadata",
+      "command": ["gpm", "sources", "manifest", "--from-raw", "--profile", "modern-small"]
+    },
+    {
+      "id": "build-provinces",
+      "title": "Generate modern land province draft",
+      "command": ["gpm", "build", "provinces", "--profile", "modern-small"]
+    },
+    {
+      "id": "build-seas",
+      "title": "Generate coastal and ocean sea zones",
+      "command": ["gpm", "build", "seas", "--profile", "modern-small"]
+    },
+    {
+      "id": "build-adjacency",
+      "title": "Generate land and marine adjacency",
+      "command": ["gpm", "build", "adjacency", "--profile", "modern-small"]
+    },
+    {
+      "id": "qa-topology",
+      "title": "Run topology QA",
+      "command": ["gpm", "qa", "topology", "--profile", "modern-small"]
+    },
+    {
+      "id": "scenario-modern-baseline",
+      "title": "Resolve modern-baseline ownership",
+      "command": ["gpm", "scenario", "build", "--scenario", "modern-baseline", "--profile", "modern-small"]
+    },
+    {
+      "id": "scenario-demo-1444",
+      "title": "Resolve demo-1444 ownership (coarse demo remaps)",
+      "command": ["gpm", "scenario", "build", "--scenario", "demo-1444", "--profile", "modern-small"]
+    },
+    {
+      "id": "release-alpha-sample",
+      "title": "Package public alpha sample release (Western Europe scaffold)",
+      "command": [
+        "gpm",
+        "release",
+        "alpha",
+        "--profile",
+        "modern-small",
+        "--scenario",
+        "modern-baseline",
+        "--scenario",
+        "demo-1444",
+        "--country",
+        "FRA",
+        "--country",
+        "BEL",
+        "--country",
+        "NLD",
+        "--country",
+        "LUX",
+        "--country",
+        "DEU",
+        "--tag",
+        "alpha-0.1.0-sample-we"
+      ]
+    }
+  ],
+  "quality_tiers": {
+    "geometry": "scaffold-baseline",
+    "politics": "scaffold-baseline"
+  },
+  "honesty": [
+    "This recipe produces a modern geographic scaffold sample, not curated historical politics.",
+    "demo-1444 is a tooling demo overlay; do not market it as an official 1444 era.",
+    "Keep attribution.json with every redistributed copy."
+  ]
+}

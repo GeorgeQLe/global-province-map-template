@@ -1,0 +1,30 @@
+{
+  "count": 5,
+  "countries": [
+    {
+      "display_name": "BEL",
+      "tag": "BEL"
+    },
+    {
+      "display_name": "DEU",
+      "tag": "DEU"
+    },
+    {
+      "display_name": "France",
+      "notes": "Demo French crown",
+      "tag": "FRA"
+    },
+    {
+      "display_name": "LUX",
+      "tag": "LUX"
+    },
+    {
+      "display_name": "NLD",
+      "tag": "NLD"
+    }
+  ],
+  "generated_at": "2026-07-10T18:51:39+00:00",
+  "milestone": "M8",
+  "scenario_id": "demo-1444",
+  "schema_version": "0.1.0"
+}

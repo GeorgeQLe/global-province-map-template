@@ -1,0 +1,46 @@
+{
+  "allow_unknown_overrides": true,
+  "counts": {
+    "baseline_only": 4,
+    "countries": 5,
+    "country_rule_hits": 2,
+    "land_provinces": 6,
+    "owner_tags": 5,
+    "ownership_rows": 6,
+    "province_override_hits": 0,
+    "region_rule_hits": 0,
+    "unknown_overrides": 0
+  },
+  "description": "Proof-of-concept historical ownership layered on modern province geometry. Country rules remap modern ISO tags to era tags; province overrides demonstrate cores, claims, controllers, and disputed status without rewriting borders.",
+  "end_date": null,
+  "era": "1444",
+  "files": [
+    "countries.json",
+    "ownership.csv",
+    "ownership.json",
+    "scenario_manifest.json"
+  ],
+  "generated_at": "2026-07-10T18:51:39+00:00",
+  "generator_version": "0.1.0",
+  "label": "Demo 1444-style ownership overlay",
+  "license_lineage": [
+    "scenario authoring (project-internal proof of concept)",
+    "Natural Earth public domain (geographic scaffold only)"
+  ],
+  "milestone": "M8",
+  "notes": [
+    "Historical ownership is a curated overlay; province geometry is unchanged.",
+    "Assignment precedence: baseline ← country_rules ← region_rules ← province_overrides.",
+    "Sea provinces are excluded from ownership tables."
+  ],
+  "profile_id": "modern-small",
+  "province_input": "/Users/georgele/projects/games/global-province-map-template/samples/alpha-modern-scaffold/_inputs/provinces.geojson",
+  "scenario_definition": "/Users/georgele/projects/games/global-province-map-template/configs/scenarios/demo-1444.json",
+  "scenario_id": "demo-1444",
+  "schema_version": "0.1.0",
+  "source_lineage": [
+    "gpm:scenario:demo-1444",
+    "natural_earth:admin0_countries (modern scaffold identity only)"
+  ],
+  "start_date": "1444-11-11"
+}

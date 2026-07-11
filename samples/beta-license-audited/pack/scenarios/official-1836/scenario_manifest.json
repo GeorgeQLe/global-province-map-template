@@ -1,0 +1,47 @@
+{
+  "allow_unknown_overrides": true,
+  "counts": {
+    "baseline_only": 0,
+    "countries": 5,
+    "country_rule_hits": 6,
+    "land_provinces": 6,
+    "owner_tags": 5,
+    "ownership_rows": 6,
+    "province_override_hits": 0,
+    "region_rule_hits": 1,
+    "unknown_overrides": 0
+  },
+  "description": "First official curated-politics scenario for the 1836 start date. Global major-power tags with elevated depth in Europe, North America, and key colonial theaters. Geometry remains the modern Natural Earth scaffold; ownership is a curated overlay (quality tier curated-politics). Not Paradox-grade completeness: residual modern ISO baselines may remain outside priority theaters.",
+  "end_date": null,
+  "era": "1836",
+  "files": [
+    "countries.json",
+    "ownership.csv",
+    "ownership.json",
+    "scenario_manifest.json"
+  ],
+  "generated_at": "2026-07-11T02:37:28+00:00",
+  "generator_version": "0.1.0",
+  "label": "Official 1836 (Victoria-leaning curated politics)",
+  "license_lineage": [
+    "scenario authoring (project-internal curated politics)",
+    "Natural Earth public domain (geographic scaffold only)"
+  ],
+  "milestone": "M8",
+  "notes": [
+    "Historical ownership is a curated overlay; province geometry is unchanged.",
+    "Assignment precedence: baseline ← country_rules ← region_rules ← province_overrides.",
+    "Sea provinces are excluded from ownership tables."
+  ],
+  "profile_id": "modern-small",
+  "province_input": "/Users/georgele/projects/games/global-province-map-template/samples/beta-license-audited/_inputs/provinces.geojson",
+  "scenario_definition": "/Users/georgele/projects/games/global-province-map-template/configs/scenarios/official-1836.json",
+  "scenario_id": "official-1836",
+  "schema_version": "0.1.0",
+  "source_lineage": [
+    "gpm:scenario:official-1836",
+    "natural_earth:admin0/admin1 (modern scaffold identity only)",
+    "manual curation: 1836 political ownership (project-internal)"
+  ],
+  "start_date": "1836-01-01"
+}

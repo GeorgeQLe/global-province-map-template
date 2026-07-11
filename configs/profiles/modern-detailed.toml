@@ -19,6 +19,24 @@ sea_zone_strategy = "coast-aware"
 population_weighting = true
 historical_overrides = false
 
+[refinement]
+population_weight = 0.65
+min_area_sq_km = 20.0
+min_population = 250.0
+max_split_parts = 64
+max_seed_candidates = 512
+
+[export]
+layout = "generic"
+region_type = "region"
+include_sea_zones = true
+include_geometry = true
+definition_format = "json"
+localization_language = "english"
+
 [qa]
 topology_required = true
 render_required = true
+max_overlap_area_sq_km = 1.0
+max_gap_component_area_sq_km = 10.0
+min_shared_border_km = 0.01

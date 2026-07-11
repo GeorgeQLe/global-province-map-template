@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/global-province-map/scenario-ownership-record.schema.json",
+  "title": "Global Province Map Scenario Ownership Record",
+  "description": "One land province political assignment for a historical or baseline scenario overlay.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "province_id",
+    "scenario_id",
+    "start_date",
+    "owner",
+    "controller",
+    "cores",
+    "claims",
+    "disputed",
+    "assignment_source"
+  ],
+  "properties": {
+    "province_id": { "type": "string", "minLength": 1 },
+    "scenario_id": { "type": "string", "minLength": 1 },
+    "start_date": { "type": "string", "minLength": 1 },
+    "end_date": { "type": ["string", "null"] },
+    "owner": { "type": "string", "minLength": 1 },
+    "controller": { "type": "string", "minLength": 1 },
+    "cores": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "claims": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "culture": { "type": ["string", "null"] },
+    "religion": { "type": ["string", "null"] },
+    "disputed": { "type": "boolean" },
+    "assignment_source": {
+      "type": "string",
+      "enum": ["baseline", "country_rule", "region_rule", "province_override"]
+    },
+    "parent_country_id": { "type": ["string", "null"] },
+    "parent_region_id": { "type": ["string", "null"] },
+    "display_name": { "type": ["string", "null"] },
+    "notes": { "type": ["string", "null"] }
+  }
+}

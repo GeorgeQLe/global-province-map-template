@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1.0",
+  "scenario_id": "official-1836",
+  "description": "M12 golden floors for official-1836: ensure major 1836 tags own enough provinces after resolve. Province-level golden borders can be added later with stable province_ids.",
+  "min_owner_counts": {
+    "GBR": 50,
+    "FRA": 40,
+    "PRU": 5,
+    "AUS": 20,
+    "RUS": 30,
+    "USA": 15,
+    "MEX": 20,
+    "SPA": 20,
+    "NET": 10,
+    "QNG": 20,
+    "TUR": 30,
+    "BAV": 1,
+    "SAR": 5,
+    "SIC": 5,
+    "PAP": 3,
+    "TEX": 1,
+    "HAW": 1,
+    "BEL": 5,
+    "BRZ": 10
+  },
+  "province_owners": {}
+}

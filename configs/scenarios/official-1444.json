@@ -1,0 +1,5591 @@
+{
+  "schema_version": "0.1.0",
+  "scenario_id": "official-1444",
+  "label": "Official 1444 (EU-leaning curated politics)",
+  "era": "1444",
+  "start_date": "1444-11-11",
+  "end_date": null,
+  "description": "Second official curated-politics scenario for the 1444-11-11 start date. Europe-first elevated depth (HRE, Italian states, Iberia, France/Burgundy, British Isles, Poland-Lithuania, Balkans, Muscovy/Novgorod) with global major tags (Ming, Ottomans, Mamluks, India majors). Geometry remains the modern Natural Earth scaffold; ownership is a curated overlay (quality tier curated-politics). Not Paradox-grade completeness: residual modern ISO baselines and NAH/UNK tags remain outside priority theaters.",
+  "map_mode": "1444 eu-leaning",
+  "quality_tier": "curated-politics",
+  "official_era": true,
+  "recommended_profile": "eu-like",
+  "priority_theaters": [
+    "europe",
+    "mediterranean",
+    "near-east",
+    "east-asia-majors"
+  ],
+  "countries": {
+    "ALB": {
+      "display_name": "Albania",
+      "tag": "ALB",
+      "notes": "League of Lezhë / residual"
+    },
+    "AQQ": {
+      "display_name": "Aq Qoyunlu",
+      "tag": "AQQ"
+    },
+    "ARA": {
+      "display_name": "Aragon",
+      "tag": "ARA"
+    },
+    "ARM": {
+      "display_name": "Armenia residual",
+      "tag": "ARM"
+    },
+    "AVA": {
+      "display_name": "Ava",
+      "tag": "AVA",
+      "notes": "Burmese interior"
+    },
+    "AYU": {
+      "display_name": "Ayutthaya",
+      "tag": "AYU"
+    },
+    "BAH": {
+      "display_name": "Bahmanis",
+      "tag": "BAH"
+    },
+    "BAV": {
+      "display_name": "Bavaria",
+      "tag": "BAV"
+    },
+    "BEN": {
+      "display_name": "Bengal",
+      "tag": "BEN"
+    },
+    "BOH": {
+      "display_name": "Bohemia",
+      "tag": "BOH"
+    },
+    "BOS": {
+      "display_name": "Bosnia",
+      "tag": "BOS"
+    },
+    "BRA": {
+      "display_name": "Brandenburg",
+      "tag": "BRA"
+    },
+    "BRE": {
+      "display_name": "Bremen",
+      "tag": "BRE"
+    },
+    "BRI": {
+      "display_name": "Brittany",
+      "tag": "BRI"
+    },
+    "BUR": {
+      "display_name": "Burgundy",
+      "tag": "BUR",
+      "notes": "Valois Burgundy + Low Countries"
+    },
+    "BYZ": {
+      "display_name": "Byzantium",
+      "tag": "BYZ"
+    },
+    "CAS": {
+      "display_name": "Castile",
+      "tag": "CAS"
+    },
+    "CHAG": {
+      "display_name": "Chagatai residual",
+      "tag": "CHAG"
+    },
+    "CIR": {
+      "display_name": "Circassia",
+      "tag": "CIR"
+    },
+    "COL": {
+      "display_name": "Cologne",
+      "tag": "COL"
+    },
+    "CRI": {
+      "display_name": "Crimea",
+      "tag": "CRI"
+    },
+    "CYP": {
+      "display_name": "Cyprus",
+      "tag": "CYP",
+      "notes": "Lusignan / Venetian sphere"
+    },
+    "DAI": {
+      "display_name": "Đại Việt",
+      "tag": "DAI"
+    },
+    "DAN": {
+      "display_name": "Denmark",
+      "tag": "DAN",
+      "notes": "Kalmar Union senior partner"
+    },
+    "DEL": {
+      "display_name": "Delhi",
+      "tag": "DEL"
+    },
+    "ENG": {
+      "display_name": "England",
+      "tag": "ENG"
+    },
+    "ETH": {
+      "display_name": "Ethiopia",
+      "tag": "ETH"
+    },
+    "FER": {
+      "display_name": "Ferrara",
+      "tag": "FER"
+    },
+    "FLO": {
+      "display_name": "Florence",
+      "tag": "FLO"
+    },
+    "FRA": {
+      "display_name": "France",
+      "tag": "FRA"
+    },
+    "GEN": {
+      "display_name": "Genoa",
+      "tag": "GEN"
+    },
+    "GEO": {
+      "display_name": "Georgia",
+      "tag": "GEO"
+    },
+    "GRA": {
+      "display_name": "Granada",
+      "tag": "GRA",
+      "notes": "Nasrid Emirate"
+    },
+    "GUJ": {
+      "display_name": "Gujarat",
+      "tag": "GUJ"
+    },
+    "HAB": {
+      "display_name": "Austria",
+      "tag": "HAB",
+      "notes": "Habsburg Austria"
+    },
+    "HAM": {
+      "display_name": "Hamburg",
+      "tag": "HAM"
+    },
+    "HAN": {
+      "display_name": "Hanover",
+      "tag": "HAN"
+    },
+    "HES": {
+      "display_name": "Hesse",
+      "tag": "HES"
+    },
+    "HOS": {
+      "display_name": "Knights Hospitaller",
+      "tag": "HOS"
+    },
+    "HUN": {
+      "display_name": "Hungary",
+      "tag": "HUN"
+    },
+    "IRE": {
+      "display_name": "Ireland",
+      "tag": "IRE",
+      "notes": "Gaelic Irish sphere (scaffold simplification)"
+    },
+    "JAP": {
+      "display_name": "Japan",
+      "tag": "JAP",
+      "notes": "Ashikaga / daimyo scaffold"
+    },
+    "KAN": {
+      "display_name": "Kanem-Bornu",
+      "tag": "KAN"
+    },
+    "KAZ": {
+      "display_name": "Kazakh residual",
+      "tag": "KAZ"
+    },
+    "KHM": {
+      "display_name": "Khmer",
+      "tag": "KHM"
+    },
+    "KON": {
+      "display_name": "Kongo",
+      "tag": "KON"
+    },
+    "KOR": {
+      "display_name": "Joseon Korea",
+      "tag": "KOR"
+    },
+    "LIT": {
+      "display_name": "Lithuania",
+      "tag": "LIT"
+    },
+    "LIV": {
+      "display_name": "Livonian Order",
+      "tag": "LIV"
+    },
+    "LUC": {
+      "display_name": "Lucca",
+      "tag": "LUC"
+    },
+    "MAL": {
+      "display_name": "Mali",
+      "tag": "MAL"
+    },
+    "MAM": {
+      "display_name": "Mamluks",
+      "tag": "MAM"
+    },
+    "MAN": {
+      "display_name": "Mantua",
+      "tag": "MAN"
+    },
+    "MLO": {
+      "display_name": "Milan",
+      "tag": "MLO"
+    },
+    "MNG": {
+      "display_name": "Ming",
+      "tag": "MNG"
+    },
+    "MOL": {
+      "display_name": "Moldavia",
+      "tag": "MOL"
+    },
+    "MOR": {
+      "display_name": "Morocco",
+      "tag": "MOR"
+    },
+    "MOS": {
+      "display_name": "Muscovy",
+      "tag": "MOS"
+    },
+    "NAH": {
+      "display_name": "Native / uncolonized Americas",
+      "tag": "NAH",
+      "notes": "Scaffold residual for pre-Columbian Americas"
+    },
+    "NAP": {
+      "display_name": "Naples",
+      "tag": "NAP"
+    },
+    "NAV": {
+      "display_name": "Navarre",
+      "tag": "NAV"
+    },
+    "NEP": {
+      "display_name": "Nepal",
+      "tag": "NEP"
+    },
+    "NOR": {
+      "display_name": "Norway",
+      "tag": "NOR",
+      "notes": "Kalmar under Denmark"
+    },
+    "NOV": {
+      "display_name": "Novgorod",
+      "tag": "NOV"
+    },
+    "OIR": {
+      "display_name": "Oirat",
+      "tag": "OIR"
+    },
+    "OYO": {
+      "display_name": "Oyo",
+      "tag": "OYO"
+    },
+    "PAL": {
+      "display_name": "Palatinate",
+      "tag": "PAL"
+    },
+    "PAP": {
+      "display_name": "Papal States",
+      "tag": "PAP"
+    },
+    "PER": {
+      "display_name": "Persia residual",
+      "tag": "PER",
+      "notes": "Scaffold for Iranian plateau"
+    },
+    "POL": {
+      "display_name": "Poland",
+      "tag": "POL"
+    },
+    "POM": {
+      "display_name": "Pomerania",
+      "tag": "POM"
+    },
+    "POR": {
+      "display_name": "Portugal",
+      "tag": "POR"
+    },
+    "PRO": {
+      "display_name": "Provence",
+      "tag": "PRO",
+      "notes": "Anjou Provence"
+    },
+    "QQA": {
+      "display_name": "Qara Qoyunlu",
+      "tag": "QQA"
+    },
+    "RAG": {
+      "display_name": "Ragusa",
+      "tag": "RAG"
+    },
+    "SAV": {
+      "display_name": "Savoy",
+      "tag": "SAV"
+    },
+    "SAX": {
+      "display_name": "Saxony",
+      "tag": "SAX"
+    },
+    "SCO": {
+      "display_name": "Scotland",
+      "tag": "SCO"
+    },
+    "SER": {
+      "display_name": "Serbia",
+      "tag": "SER"
+    },
+    "SIA": {
+      "display_name": "Siamese sphere",
+      "tag": "SIA"
+    },
+    "SIE": {
+      "display_name": "Siena",
+      "tag": "SIE"
+    },
+    "SON": {
+      "display_name": "Songhai",
+      "tag": "SON"
+    },
+    "SWE": {
+      "display_name": "Sweden",
+      "tag": "SWE"
+    },
+    "SWI": {
+      "display_name": "Swiss Confederation",
+      "tag": "SWI"
+    },
+    "TEU": {
+      "display_name": "Teutonic Order",
+      "tag": "TEU"
+    },
+    "TIB": {
+      "display_name": "Tibet",
+      "tag": "TIB"
+    },
+    "TIM": {
+      "display_name": "Timurids",
+      "tag": "TIM"
+    },
+    "TLC": {
+      "display_name": "Tlemcen",
+      "tag": "TLC"
+    },
+    "TUN": {
+      "display_name": "Tunis",
+      "tag": "TUN",
+      "notes": "Hafsid"
+    },
+    "TUR": {
+      "display_name": "Ottomans",
+      "tag": "TUR"
+    },
+    "UNK": {
+      "display_name": "Unknown / uncurated",
+      "tag": "UNK",
+      "notes": "Scaffold residual where no rule applies"
+    },
+    "UZB": {
+      "display_name": "Uzbek",
+      "tag": "UZB"
+    },
+    "VEN": {
+      "display_name": "Venice",
+      "tag": "VEN"
+    },
+    "VIJ": {
+      "display_name": "Vijayanagar",
+      "tag": "VIJ"
+    },
+    "WAL": {
+      "display_name": "Wallachia",
+      "tag": "WAL"
+    },
+    "WLS": {
+      "display_name": "Wales",
+      "tag": "WLS",
+      "notes": "Under English crown; retained for cores"
+    },
+    "WUR": {
+      "display_name": "Württemberg",
+      "tag": "WUR"
+    }
+  },
+  "defaults": {
+    "culture": null,
+    "religion": null,
+    "disputed": false
+  },
+  "country_rules": [
+    {
+      "match_parent_country_id": "AFG",
+      "owner": "TIM",
+      "controller": "TIM",
+      "cores": [
+        "TIM"
+      ],
+      "culture": "afghan",
+      "religion": "sunni",
+      "notes": "Timurid residual"
+    },
+    {
+      "match_parent_country_id": "AGO",
+      "owner": "KON",
+      "controller": "KON",
+      "cores": [
+        "KON"
+      ],
+      "culture": "kongo",
+      "religion": "fetishist"
+    },
+    {
+      "match_parent_country_id": "ALB",
+      "owner": "TUR",
+      "controller": "TUR",
+      "cores": [
+        "TUR"
+      ],
+      "claims": [
+        "ALB"
+      ],
+      "culture": "albanian",
+      "religion": "catholic",
+      "notes": "Ottoman pressure; Albanian residual cores"
+    },
+    {
+      "match_parent_country_id": "AND",
+      "owner": "ARA",
+      "controller": "ARA",
+      "cores": [
+        "ARA"
+      ],
+      "culture": "catalan",
+      "religion": "catholic",
+      "notes": "Andorra near Aragon sphere"
+    },
+    {
+      "match_parent_country_id": "ARE",
+      "owner": "UNK",
+      "controller": "UNK",
+      "cores": [
+        "UNK"
+      ],
+      "culture": "arab",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "ARG",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "South America residual"
+    },
+    {
+      "match_parent_country_id": "ARM",
+      "owner": "QQA",
+      "controller": "QQA",
+      "cores": [
+        "QQA"
+      ],
+      "culture": "armenian",
+      "religion": "apostolic",
+      "notes": "Armenian lands under Qara Qoyunlu sphere"
+    },
+    {
+      "match_parent_country_id": "AUS",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "Australian residual"
+    },
+    {
+      "match_parent_country_id": "AUT",
+      "owner": "HAB",
+      "controller": "HAB",
+      "cores": [
+        "HAB"
+      ],
+      "culture": "austrian",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "AZE",
+      "owner": "QQA",
+      "controller": "QQA",
+      "cores": [
+        "QQA"
+      ],
+      "culture": "azerbaijani",
+      "religion": "shiite"
+    },
+    {
+      "match_parent_country_id": "BEL",
+      "owner": "BUR",
+      "controller": "BUR",
+      "cores": [
+        "BUR"
+      ],
+      "culture": "flemish",
+      "religion": "catholic",
+      "notes": "Burgundian Low Countries"
+    },
+    {
+      "match_parent_country_id": "BFA",
+      "owner": "SON",
+      "controller": "SON",
+      "cores": [
+        "SON"
+      ],
+      "culture": "mossi",
+      "religion": "fetishist"
+    },
+    {
+      "match_parent_country_id": "BGD",
+      "owner": "BEN",
+      "controller": "BEN",
+      "cores": [
+        "BEN"
+      ],
+      "culture": "bengali",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "BGR",
+      "owner": "TUR",
+      "controller": "TUR",
+      "cores": [
+        "TUR"
+      ],
+      "culture": "bulgarian",
+      "religion": "orthodox",
+      "notes": "Ottoman Rumelia expansion"
+    },
+    {
+      "match_parent_country_id": "BHR",
+      "owner": "UNK",
+      "controller": "UNK",
+      "cores": [
+        "UNK"
+      ],
+      "culture": "arab",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "BHS",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "Caribbean residual"
+    },
+    {
+      "match_parent_country_id": "BIH",
+      "owner": "BOS",
+      "controller": "BOS",
+      "cores": [
+        "BOS"
+      ],
+      "claims": [
+        "TUR",
+        "HUN"
+      ],
+      "culture": "bosniak",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "BLR",
+      "owner": "LIT",
+      "controller": "LIT",
+      "cores": [
+        "LIT"
+      ],
+      "culture": "belarusian",
+      "religion": "orthodox",
+      "notes": "Grand Duchy of Lithuania Ruthenia"
+    },
+    {
+      "match_parent_country_id": "BLZ",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "Maya residual"
+    },
+    {
+      "match_parent_country_id": "BOL",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "Andean residual"
+    },
+    {
+      "match_parent_country_id": "BRA",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "South America residual"
+    },
+    {
+      "match_parent_country_id": "BRN",
+      "owner": "UNK",
+      "controller": "UNK",
+      "cores": [
+        "UNK"
+      ],
+      "culture": "malay",
+      "religion": "sunni",
+      "notes": "Brunei residual"
+    },
+    {
+      "match_parent_country_id": "BTN",
+      "owner": "TIB",
+      "controller": "TIB",
+      "cores": [
+        "TIB"
+      ],
+      "culture": "tibetan",
+      "religion": "vajrayana"
+    },
+    {
+      "match_parent_country_id": "CAN",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "Pre-Columbian North America residual"
+    },
+    {
+      "match_parent_country_id": "CHE",
+      "owner": "SWI",
+      "controller": "SWI",
+      "cores": [
+        "SWI"
+      ],
+      "culture": "swiss",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "CHL",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "South America residual"
+    },
+    {
+      "match_parent_country_id": "CHN",
+      "owner": "MNG",
+      "controller": "MNG",
+      "cores": [
+        "MNG"
+      ],
+      "culture": "chinese",
+      "religion": "confucian"
+    },
+    {
+      "match_parent_country_id": "CMR",
+      "owner": "KAN",
+      "controller": "KAN",
+      "cores": [
+        "KAN"
+      ],
+      "culture": "kanuri",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "COD",
+      "owner": "KON",
+      "controller": "KON",
+      "cores": [
+        "KON"
+      ],
+      "culture": "kongo",
+      "religion": "fetishist"
+    },
+    {
+      "match_parent_country_id": "COG",
+      "owner": "KON",
+      "controller": "KON",
+      "cores": [
+        "KON"
+      ],
+      "culture": "kongo",
+      "religion": "fetishist"
+    },
+    {
+      "match_parent_country_id": "COL",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "South America residual"
+    },
+    {
+      "match_parent_country_id": "CRI",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "Mesoamerican residual"
+    },
+    {
+      "match_parent_country_id": "CUB",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "Caribbean residual"
+    },
+    {
+      "match_parent_country_id": "CYP",
+      "owner": "CYP",
+      "controller": "CYP",
+      "cores": [
+        "CYP"
+      ],
+      "culture": "greek",
+      "religion": "catholic",
+      "notes": "Kingdom of Cyprus"
+    },
+    {
+      "match_parent_country_id": "CZE",
+      "owner": "BOH",
+      "controller": "BOH",
+      "cores": [
+        "BOH"
+      ],
+      "culture": "czech",
+      "religion": "catholic",
+      "notes": "Lands of the Bohemian Crown"
+    },
+    {
+      "match_parent_country_id": "DEU",
+      "owner": "HAB",
+      "controller": "HAB",
+      "cores": [
+        "HAB"
+      ],
+      "culture": "german",
+      "religion": "catholic",
+      "notes": "Default Germany scaffold → Habsburg sphere; region rules assign electors/orders"
+    },
+    {
+      "match_parent_country_id": "DNK",
+      "owner": "DAN",
+      "controller": "DAN",
+      "cores": [
+        "DAN"
+      ],
+      "culture": "danish",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "DOM",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "Caribbean residual"
+    },
+    {
+      "match_parent_country_id": "DZA",
+      "owner": "TLC",
+      "controller": "TLC",
+      "cores": [
+        "TLC"
+      ],
+      "culture": "arab",
+      "religion": "sunni",
+      "notes": "Tlemcen / Maghreb"
+    },
+    {
+      "match_parent_country_id": "ECU",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "Andean residual"
+    },
+    {
+      "match_parent_country_id": "EGY",
+      "owner": "MAM",
+      "controller": "MAM",
+      "cores": [
+        "MAM"
+      ],
+      "culture": "egyptian",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "ERI",
+      "owner": "ETH",
+      "controller": "ETH",
+      "cores": [
+        "ETH"
+      ],
+      "culture": "tigrinya",
+      "religion": "coptic"
+    },
+    {
+      "match_parent_country_id": "ESH",
+      "owner": "MOR",
+      "controller": "MOR",
+      "cores": [
+        "MOR"
+      ],
+      "culture": "amazigh",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "ESP",
+      "owner": "CAS",
+      "controller": "CAS",
+      "cores": [
+        "CAS"
+      ],
+      "culture": "castilian",
+      "religion": "catholic",
+      "notes": "Default Spain scaffold → Castile; region rules for Aragon/Navarre/Granada"
+    },
+    {
+      "match_parent_country_id": "EST",
+      "owner": "LIV",
+      "controller": "LIV",
+      "cores": [
+        "LIV"
+      ],
+      "culture": "estonian",
+      "religion": "catholic",
+      "notes": "Livonian Order"
+    },
+    {
+      "match_parent_country_id": "ETH",
+      "owner": "ETH",
+      "controller": "ETH",
+      "cores": [
+        "ETH"
+      ],
+      "culture": "amhara",
+      "religion": "coptic"
+    },
+    {
+      "match_parent_country_id": "FIN",
+      "owner": "SWE",
+      "controller": "SWE",
+      "cores": [
+        "SWE"
+      ],
+      "culture": "finnish",
+      "religion": "catholic",
+      "notes": "Finland under Sweden"
+    },
+    {
+      "match_parent_country_id": "FJI",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "Pacific residual"
+    },
+    {
+      "match_parent_country_id": "FRA",
+      "owner": "FRA",
+      "controller": "FRA",
+      "cores": [
+        "FRA"
+      ],
+      "culture": "french",
+      "religion": "catholic",
+      "notes": "France; region rules peel Burgundy/Brittany/Provence"
+    },
+    {
+      "match_parent_country_id": "GBR",
+      "owner": "ENG",
+      "controller": "ENG",
+      "cores": [
+        "ENG"
+      ],
+      "culture": "english",
+      "religion": "catholic",
+      "notes": "Default UK scaffold → England; region rules assign Scotland/Wales/Ireland NI"
+    },
+    {
+      "match_parent_country_id": "GEO",
+      "owner": "GEO",
+      "controller": "GEO",
+      "cores": [
+        "GEO"
+      ],
+      "culture": "georgian",
+      "religion": "orthodox"
+    },
+    {
+      "match_parent_country_id": "GHA",
+      "owner": "MAL",
+      "controller": "MAL",
+      "cores": [
+        "MAL"
+      ],
+      "culture": "akan",
+      "religion": "fetishist",
+      "notes": "West African scaffold"
+    },
+    {
+      "match_parent_country_id": "GIB",
+      "owner": "CAS",
+      "controller": "CAS",
+      "cores": [
+        "CAS"
+      ],
+      "culture": "andalusian",
+      "religion": "catholic",
+      "notes": "Gibraltar still Muslim/contested scaffold → Castile claim"
+    },
+    {
+      "match_parent_country_id": "GIN",
+      "owner": "MAL",
+      "controller": "MAL",
+      "cores": [
+        "MAL"
+      ],
+      "culture": "mandinka",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "GRC",
+      "owner": "TUR",
+      "controller": "TUR",
+      "cores": [
+        "TUR"
+      ],
+      "culture": "greek",
+      "religion": "orthodox",
+      "notes": "Default Greece → Ottoman; region rules for Morea/Byzantine remnants"
+    },
+    {
+      "match_parent_country_id": "GTM",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "Maya residual"
+    },
+    {
+      "match_parent_country_id": "GUF",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "South America residual"
+    },
+    {
+      "match_parent_country_id": "GUY",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "South America residual"
+    },
+    {
+      "match_parent_country_id": "HND",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "Mesoamerican residual"
+    },
+    {
+      "match_parent_country_id": "HRV",
+      "owner": "HUN",
+      "controller": "HUN",
+      "cores": [
+        "HUN"
+      ],
+      "culture": "croatian",
+      "religion": "catholic",
+      "notes": "Croatia in personal union / Hungarian crown"
+    },
+    {
+      "match_parent_country_id": "HTI",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "Caribbean residual"
+    },
+    {
+      "match_parent_country_id": "HUN",
+      "owner": "HUN",
+      "controller": "HUN",
+      "cores": [
+        "HUN"
+      ],
+      "culture": "hungarian",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "IDN",
+      "owner": "UNK",
+      "controller": "UNK",
+      "cores": [
+        "UNK"
+      ],
+      "culture": "javanese",
+      "religion": "sunni",
+      "notes": "Nusantara polities residual"
+    },
+    {
+      "match_parent_country_id": "IND",
+      "owner": "DEL",
+      "controller": "DEL",
+      "cores": [
+        "DEL"
+      ],
+      "culture": "hindustani",
+      "religion": "sunni",
+      "notes": "Default India → Delhi sphere; region rules for Vijayanagar south"
+    },
+    {
+      "match_parent_country_id": "IRL",
+      "owner": "IRE",
+      "controller": "IRE",
+      "cores": [
+        "IRE"
+      ],
+      "culture": "irish",
+      "religion": "catholic",
+      "notes": "Gaelic Ireland scaffold; England claims Pale"
+    },
+    {
+      "match_parent_country_id": "IRN",
+      "owner": "QQA",
+      "controller": "QQA",
+      "cores": [
+        "QQA"
+      ],
+      "culture": "persian",
+      "religion": "shiite",
+      "notes": "Default Iran → Qara Qoyunlu; region rules may refine"
+    },
+    {
+      "match_parent_country_id": "IRQ",
+      "owner": "QQA",
+      "controller": "QQA",
+      "cores": [
+        "QQA"
+      ],
+      "culture": "iraqi",
+      "religion": "sunni",
+      "notes": "Mesopotamia contested Turkmen sphere"
+    },
+    {
+      "match_parent_country_id": "ISL",
+      "owner": "NOR",
+      "controller": "NOR",
+      "cores": [
+        "NOR",
+        "DAN"
+      ],
+      "culture": "icelandic",
+      "religion": "catholic",
+      "notes": "Norwegian Iceland under Kalmar"
+    },
+    {
+      "match_parent_country_id": "ISR",
+      "owner": "MAM",
+      "controller": "MAM",
+      "cores": [
+        "MAM"
+      ],
+      "culture": "levantine",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "ITA",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Default Italy → Naples; region rules assign north/center"
+    },
+    {
+      "match_parent_country_id": "JAM",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "Caribbean residual"
+    },
+    {
+      "match_parent_country_id": "JOR",
+      "owner": "MAM",
+      "controller": "MAM",
+      "cores": [
+        "MAM"
+      ],
+      "culture": "levantine",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "JPN",
+      "owner": "JAP",
+      "controller": "JAP",
+      "cores": [
+        "JAP"
+      ],
+      "culture": "japanese",
+      "religion": "shinto"
+    },
+    {
+      "match_parent_country_id": "KAZ",
+      "owner": "UZB",
+      "controller": "UZB",
+      "cores": [
+        "UZB"
+      ],
+      "culture": "kazakh",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "KGZ",
+      "owner": "CHAG",
+      "controller": "CHAG",
+      "cores": [
+        "CHAG"
+      ],
+      "culture": "kyrgyz",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "KHM",
+      "owner": "KHM",
+      "controller": "KHM",
+      "cores": [
+        "KHM"
+      ],
+      "culture": "khmer",
+      "religion": "theravada"
+    },
+    {
+      "match_parent_country_id": "KOR",
+      "owner": "KOR",
+      "controller": "KOR",
+      "cores": [
+        "KOR"
+      ],
+      "culture": "korean",
+      "religion": "confucian"
+    },
+    {
+      "match_parent_country_id": "KWT",
+      "owner": "UNK",
+      "controller": "UNK",
+      "cores": [
+        "UNK"
+      ],
+      "culture": "arab",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "LAO",
+      "owner": "DAI",
+      "controller": "DAI",
+      "cores": [
+        "DAI"
+      ],
+      "culture": "lao",
+      "religion": "theravada",
+      "notes": "Lao polities near Đại Việt/Ayutthaya"
+    },
+    {
+      "match_parent_country_id": "LBN",
+      "owner": "MAM",
+      "controller": "MAM",
+      "cores": [
+        "MAM"
+      ],
+      "culture": "levantine",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "LBY",
+      "owner": "TLC",
+      "controller": "TLC",
+      "cores": [
+        "TLC"
+      ],
+      "culture": "arab",
+      "religion": "sunni",
+      "notes": "Maghreb residual"
+    },
+    {
+      "match_parent_country_id": "LIE",
+      "owner": "HAB",
+      "controller": "HAB",
+      "cores": [
+        "HAB"
+      ],
+      "culture": "german",
+      "religion": "catholic",
+      "notes": "Liechtenstein near Habsburg"
+    },
+    {
+      "match_parent_country_id": "LKA",
+      "owner": "VIJ",
+      "controller": "VIJ",
+      "cores": [
+        "VIJ"
+      ],
+      "culture": "sinhala",
+      "religion": "theravada",
+      "notes": "Ceylon near South Indian sphere"
+    },
+    {
+      "match_parent_country_id": "LTU",
+      "owner": "LIT",
+      "controller": "LIT",
+      "cores": [
+        "LIT"
+      ],
+      "culture": "lithuanian",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "LUX",
+      "owner": "BUR",
+      "controller": "BUR",
+      "cores": [
+        "BUR"
+      ],
+      "culture": "luxembourgish",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "LVA",
+      "owner": "LIV",
+      "controller": "LIV",
+      "cores": [
+        "LIV"
+      ],
+      "culture": "latvian",
+      "religion": "catholic",
+      "notes": "Livonian Order"
+    },
+    {
+      "match_parent_country_id": "MAR",
+      "owner": "MOR",
+      "controller": "MOR",
+      "cores": [
+        "MOR"
+      ],
+      "culture": "amazigh",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "MCO",
+      "owner": "SAV",
+      "controller": "SAV",
+      "cores": [
+        "SAV"
+      ],
+      "culture": "ligurian",
+      "religion": "catholic",
+      "notes": "Monaco near Savoy/Genoa sphere"
+    },
+    {
+      "match_parent_country_id": "MDA",
+      "owner": "MOL",
+      "controller": "MOL",
+      "cores": [
+        "MOL"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Moldavia"
+    },
+    {
+      "match_parent_country_id": "MDG",
+      "owner": "UNK",
+      "controller": "UNK",
+      "cores": [
+        "UNK"
+      ],
+      "culture": "malagasy",
+      "religion": "animist",
+      "notes": "Uncurated Madagascar polities"
+    },
+    {
+      "match_parent_country_id": "MEX",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "Mesoamerican residual"
+    },
+    {
+      "match_parent_country_id": "MKD",
+      "owner": "TUR",
+      "controller": "TUR",
+      "cores": [
+        "TUR"
+      ],
+      "culture": "macedonian",
+      "religion": "orthodox"
+    },
+    {
+      "match_parent_country_id": "MLI",
+      "owner": "MAL",
+      "controller": "MAL",
+      "cores": [
+        "MAL"
+      ],
+      "culture": "mandinka",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "MLT",
+      "owner": "ARA",
+      "controller": "ARA",
+      "cores": [
+        "ARA"
+      ],
+      "culture": "maltese",
+      "religion": "catholic",
+      "notes": "Aragonese Sicily sphere / Hospitaller later"
+    },
+    {
+      "match_parent_country_id": "MMR",
+      "owner": "AVA",
+      "controller": "AVA",
+      "cores": [
+        "AVA"
+      ],
+      "culture": "burmese",
+      "religion": "theravada"
+    },
+    {
+      "match_parent_country_id": "MNE",
+      "owner": "SER",
+      "controller": "SER",
+      "cores": [
+        "SER"
+      ],
+      "culture": "montenegrin",
+      "religion": "orthodox"
+    },
+    {
+      "match_parent_country_id": "MNG",
+      "owner": "OIR",
+      "controller": "OIR",
+      "cores": [
+        "OIR"
+      ],
+      "culture": "mongol",
+      "religion": "tengri",
+      "notes": "Mongolia scaffold → Oirat sphere (not Ming)"
+    },
+    {
+      "match_parent_country_id": "MYS",
+      "owner": "MAL",
+      "controller": "MAL",
+      "cores": [
+        "MAL"
+      ],
+      "culture": "malay",
+      "religion": "sunni",
+      "notes": "Malay polities scaffold (tag reuse)"
+    },
+    {
+      "match_parent_country_id": "NER",
+      "owner": "SON",
+      "controller": "SON",
+      "cores": [
+        "SON"
+      ],
+      "culture": "songhai",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "NGA",
+      "owner": "OYO",
+      "controller": "OYO",
+      "cores": [
+        "OYO"
+      ],
+      "culture": "yoruba",
+      "religion": "fetishist"
+    },
+    {
+      "match_parent_country_id": "NIC",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "Mesoamerican residual"
+    },
+    {
+      "match_parent_country_id": "NLD",
+      "owner": "BUR",
+      "controller": "BUR",
+      "cores": [
+        "BUR"
+      ],
+      "culture": "dutch",
+      "religion": "catholic",
+      "notes": "Burgundian Netherlands"
+    },
+    {
+      "match_parent_country_id": "NOR",
+      "owner": "DAN",
+      "controller": "DAN",
+      "cores": [
+        "DAN",
+        "NOR"
+      ],
+      "culture": "norwegian",
+      "religion": "catholic",
+      "notes": "Kalmar Union under Denmark"
+    },
+    {
+      "match_parent_country_id": "NPL",
+      "owner": "NEP",
+      "controller": "NEP",
+      "cores": [
+        "NEP"
+      ],
+      "culture": "nepali",
+      "religion": "hindu"
+    },
+    {
+      "match_parent_country_id": "NZL",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "Maori residual"
+    },
+    {
+      "match_parent_country_id": "OMN",
+      "owner": "UNK",
+      "controller": "UNK",
+      "cores": [
+        "UNK"
+      ],
+      "culture": "omani",
+      "religion": "ibadi"
+    },
+    {
+      "match_parent_country_id": "PAK",
+      "owner": "DEL",
+      "controller": "DEL",
+      "cores": [
+        "DEL"
+      ],
+      "culture": "punjabi",
+      "religion": "sunni",
+      "notes": "North India / Delhi sphere scaffold"
+    },
+    {
+      "match_parent_country_id": "PAN",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "Isthmian residual"
+    },
+    {
+      "match_parent_country_id": "PER",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "Andean residual"
+    },
+    {
+      "match_parent_country_id": "PHL",
+      "owner": "UNK",
+      "controller": "UNK",
+      "cores": [
+        "UNK"
+      ],
+      "culture": "filipino",
+      "religion": "animist"
+    },
+    {
+      "match_parent_country_id": "PNG",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "Melanesian residual"
+    },
+    {
+      "match_parent_country_id": "POL",
+      "owner": "POL",
+      "controller": "POL",
+      "cores": [
+        "POL"
+      ],
+      "culture": "polish",
+      "religion": "catholic",
+      "notes": "Kingdom of Poland; Teutonic region rules on Baltic"
+    },
+    {
+      "match_parent_country_id": "PRI",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "Caribbean residual"
+    },
+    {
+      "match_parent_country_id": "PRK",
+      "owner": "KOR",
+      "controller": "KOR",
+      "cores": [
+        "KOR"
+      ],
+      "culture": "korean",
+      "religion": "confucian"
+    },
+    {
+      "match_parent_country_id": "PRT",
+      "owner": "POR",
+      "controller": "POR",
+      "cores": [
+        "POR"
+      ],
+      "culture": "portuguese",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "PRY",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "South America residual"
+    },
+    {
+      "match_parent_country_id": "PSE",
+      "owner": "MAM",
+      "controller": "MAM",
+      "cores": [
+        "MAM"
+      ],
+      "culture": "levantine",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "QAT",
+      "owner": "UNK",
+      "controller": "UNK",
+      "cores": [
+        "UNK"
+      ],
+      "culture": "arab",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "ROU",
+      "owner": "WAL",
+      "controller": "WAL",
+      "cores": [
+        "WAL"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Default Romania → Wallachia; Transylvania Hungarian via regions"
+    },
+    {
+      "match_parent_country_id": "RUS",
+      "owner": "MOS",
+      "controller": "MOS",
+      "cores": [
+        "MOS"
+      ],
+      "culture": "russian",
+      "religion": "orthodox",
+      "notes": "Default Russia → Muscovy; Novgorod region rules north-west"
+    },
+    {
+      "match_parent_country_id": "SAU",
+      "owner": "MAM",
+      "controller": "MAM",
+      "cores": [
+        "MAM"
+      ],
+      "culture": "bedouin",
+      "religion": "sunni",
+      "notes": "Hejaz under Mamluk influence (scaffold)"
+    },
+    {
+      "match_parent_country_id": "SDN",
+      "owner": "MAM",
+      "controller": "MAM",
+      "cores": [
+        "MAM"
+      ],
+      "culture": "sudanese",
+      "religion": "sunni",
+      "notes": "Mamluk southern sphere simplification"
+    },
+    {
+      "match_parent_country_id": "SEN",
+      "owner": "MAL",
+      "controller": "MAL",
+      "cores": [
+        "MAL"
+      ],
+      "culture": "wolof",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "SGP",
+      "owner": "MAL",
+      "controller": "MAL",
+      "cores": [
+        "MAL"
+      ],
+      "culture": "malay",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "SLV",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "Mesoamerican residual"
+    },
+    {
+      "match_parent_country_id": "SMR",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "SRB",
+      "owner": "SER",
+      "controller": "SER",
+      "cores": [
+        "SER"
+      ],
+      "claims": [
+        "TUR"
+      ],
+      "culture": "serbian",
+      "religion": "orthodox",
+      "notes": "Serbian Despotate residual"
+    },
+    {
+      "match_parent_country_id": "SUR",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "South America residual"
+    },
+    {
+      "match_parent_country_id": "SVK",
+      "owner": "HUN",
+      "controller": "HUN",
+      "cores": [
+        "HUN"
+      ],
+      "culture": "slovak",
+      "religion": "catholic",
+      "notes": "Upper Hungary"
+    },
+    {
+      "match_parent_country_id": "SVN",
+      "owner": "HAB",
+      "controller": "HAB",
+      "cores": [
+        "HAB"
+      ],
+      "culture": "slovene",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "SWE",
+      "owner": "SWE",
+      "controller": "SWE",
+      "cores": [
+        "SWE"
+      ],
+      "claims": [
+        "DAN"
+      ],
+      "culture": "swedish",
+      "religion": "catholic",
+      "notes": "Sweden in Kalmar; independent-leaning scaffold"
+    },
+    {
+      "match_parent_country_id": "SYR",
+      "owner": "MAM",
+      "controller": "MAM",
+      "cores": [
+        "MAM"
+      ],
+      "culture": "syrian",
+      "religion": "sunni",
+      "notes": "Mamluk Syria"
+    },
+    {
+      "match_parent_country_id": "TCD",
+      "owner": "KAN",
+      "controller": "KAN",
+      "cores": [
+        "KAN"
+      ],
+      "culture": "kanuri",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "THA",
+      "owner": "AYU",
+      "controller": "AYU",
+      "cores": [
+        "AYU"
+      ],
+      "culture": "thai",
+      "religion": "theravada"
+    },
+    {
+      "match_parent_country_id": "TJK",
+      "owner": "TIM",
+      "controller": "TIM",
+      "cores": [
+        "TIM"
+      ],
+      "culture": "tajik",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "TKM",
+      "owner": "TIM",
+      "controller": "TIM",
+      "cores": [
+        "TIM"
+      ],
+      "culture": "turkmen",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "TUN",
+      "owner": "TUN",
+      "controller": "TUN",
+      "cores": [
+        "TUN"
+      ],
+      "culture": "arab",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "TUR",
+      "owner": "TUR",
+      "controller": "TUR",
+      "cores": [
+        "TUR"
+      ],
+      "culture": "turkish",
+      "religion": "sunni",
+      "notes": "Ottoman Anatolia; region rules for Byzantium remnant"
+    },
+    {
+      "match_parent_country_id": "TWN",
+      "owner": "MNG",
+      "controller": "MNG",
+      "cores": [
+        "MNG"
+      ],
+      "culture": "chinese",
+      "religion": "confucian",
+      "notes": "Ming claim / Austronesian residual scaffold"
+    },
+    {
+      "match_parent_country_id": "UKR",
+      "owner": "LIT",
+      "controller": "LIT",
+      "cores": [
+        "LIT"
+      ],
+      "culture": "ukrainian",
+      "religion": "orthodox",
+      "notes": "Most of modern Ukraine under Lithuania; Crimea/south Ottoman/Crimean later"
+    },
+    {
+      "match_parent_country_id": "URY",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "South America residual"
+    },
+    {
+      "match_parent_country_id": "USA",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "Pre-Columbian North America residual"
+    },
+    {
+      "match_parent_country_id": "UZB",
+      "owner": "TIM",
+      "controller": "TIM",
+      "cores": [
+        "TIM"
+      ],
+      "culture": "uzbek",
+      "religion": "sunni"
+    },
+    {
+      "match_parent_country_id": "VAT",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic"
+    },
+    {
+      "match_parent_country_id": "VEN",
+      "owner": "NAH",
+      "controller": "NAH",
+      "cores": [
+        "NAH"
+      ],
+      "notes": "South America residual"
+    },
+    {
+      "match_parent_country_id": "VNM",
+      "owner": "DAI",
+      "controller": "DAI",
+      "cores": [
+        "DAI"
+      ],
+      "culture": "vietnamese",
+      "religion": "mahayana"
+    },
+    {
+      "match_parent_country_id": "YEM",
+      "owner": "UNK",
+      "controller": "UNK",
+      "cores": [
+        "UNK"
+      ],
+      "culture": "yemeni",
+      "religion": "sunni"
+    }
+  ],
+  "region_rules": [
+    {
+      "match_parent_region_id": "CN-XJ",
+      "owner": "OIR",
+      "controller": "OIR",
+      "cores": [
+        "OIR"
+      ],
+      "culture": "uyghur",
+      "religion": "sunni",
+      "notes": "Oirat/steppe sphere"
+    },
+    {
+      "match_parent_region_id": "CN-XZ",
+      "owner": "TIB",
+      "controller": "TIB",
+      "cores": [
+        "TIB"
+      ],
+      "culture": "tibetan",
+      "religion": "vajrayana",
+      "notes": "Tibet"
+    },
+    {
+      "match_parent_region_id": "DE-BB",
+      "owner": "BRA",
+      "controller": "BRA",
+      "cores": [
+        "BRA"
+      ],
+      "culture": "prussian",
+      "religion": "catholic",
+      "notes": "Brandenburg"
+    },
+    {
+      "match_parent_region_id": "DE-BE",
+      "owner": "BRA",
+      "controller": "BRA",
+      "cores": [
+        "BRA"
+      ],
+      "culture": "prussian",
+      "religion": "catholic",
+      "notes": "Berlin → Brandenburg"
+    },
+    {
+      "match_parent_region_id": "DE-BW",
+      "owner": "WUR",
+      "controller": "WUR",
+      "cores": [
+        "WUR"
+      ],
+      "culture": "swabian",
+      "religion": "catholic",
+      "notes": "Württemberg/Baden scaffold → Württemberg"
+    },
+    {
+      "match_parent_region_id": "DE-BY",
+      "owner": "BAV",
+      "controller": "BAV",
+      "cores": [
+        "BAV"
+      ],
+      "culture": "bavarian",
+      "religion": "catholic",
+      "notes": "Bavaria"
+    },
+    {
+      "match_parent_region_id": "DE-HB",
+      "owner": "BRE",
+      "controller": "BRE",
+      "cores": [
+        "BRE"
+      ],
+      "culture": "german",
+      "religion": "catholic",
+      "notes": "Bremen free city"
+    },
+    {
+      "match_parent_region_id": "DE-HE",
+      "owner": "HES",
+      "controller": "HES",
+      "cores": [
+        "HES"
+      ],
+      "culture": "hessian",
+      "religion": "catholic",
+      "notes": "Hesse"
+    },
+    {
+      "match_parent_region_id": "DE-HH",
+      "owner": "HAM",
+      "controller": "HAM",
+      "cores": [
+        "HAM"
+      ],
+      "culture": "german",
+      "religion": "catholic",
+      "notes": "Hamburg free city"
+    },
+    {
+      "match_parent_region_id": "DE-MV",
+      "owner": "POM",
+      "controller": "POM",
+      "cores": [
+        "POM"
+      ],
+      "culture": "pommeranian",
+      "religion": "catholic",
+      "notes": "Mecklenburg/Pomerania scaffold"
+    },
+    {
+      "match_parent_region_id": "DE-NI",
+      "owner": "HAN",
+      "controller": "HAN",
+      "cores": [
+        "HAN"
+      ],
+      "culture": "hannoverian",
+      "religion": "catholic",
+      "notes": "Lower Saxony → Hanover/Brunswick sphere"
+    },
+    {
+      "match_parent_region_id": "DE-NW",
+      "owner": "COL",
+      "controller": "COL",
+      "cores": [
+        "COL"
+      ],
+      "culture": "rhenish",
+      "religion": "catholic",
+      "notes": "North Rhine-Westphalia → Cologne sphere (scaffold)"
+    },
+    {
+      "match_parent_region_id": "DE-RP",
+      "owner": "PAL",
+      "controller": "PAL",
+      "cores": [
+        "PAL"
+      ],
+      "culture": "rhenish",
+      "religion": "catholic",
+      "notes": "Rhineland-Palatinate"
+    },
+    {
+      "match_parent_region_id": "DE-SH",
+      "owner": "DAN",
+      "controller": "DAN",
+      "cores": [
+        "DAN"
+      ],
+      "culture": "danish",
+      "religion": "catholic",
+      "notes": "Schleswig-Holstein under Danish crown"
+    },
+    {
+      "match_parent_region_id": "DE-SL",
+      "owner": "PAL",
+      "controller": "PAL",
+      "cores": [
+        "PAL"
+      ],
+      "culture": "rhenish",
+      "religion": "catholic",
+      "notes": "Saarland Rhenish sphere"
+    },
+    {
+      "match_parent_region_id": "DE-SN",
+      "owner": "SAX",
+      "controller": "SAX",
+      "cores": [
+        "SAX"
+      ],
+      "culture": "saxon",
+      "religion": "catholic",
+      "notes": "Saxony"
+    },
+    {
+      "match_parent_region_id": "DE-ST",
+      "owner": "SAX",
+      "controller": "SAX",
+      "cores": [
+        "SAX"
+      ],
+      "culture": "saxon",
+      "religion": "catholic",
+      "notes": "Saxony-Anhalt → Saxon sphere"
+    },
+    {
+      "match_parent_region_id": "DE-TH",
+      "owner": "SAX",
+      "controller": "SAX",
+      "cores": [
+        "SAX"
+      ],
+      "culture": "thuringian",
+      "religion": "catholic",
+      "notes": "Thuringia Saxon sphere"
+    },
+    {
+      "match_parent_region_id": "ES-A",
+      "owner": "ARA",
+      "controller": "ARA",
+      "cores": [
+        "ARA"
+      ],
+      "culture": "catalan",
+      "religion": "catholic",
+      "notes": "Crown of Aragon"
+    },
+    {
+      "match_parent_region_id": "ES-AL",
+      "owner": "GRA",
+      "controller": "GRA",
+      "cores": [
+        "GRA"
+      ],
+      "claims": [
+        "CAS"
+      ],
+      "culture": "andalusian",
+      "religion": "sunni",
+      "notes": "Nasrid Granada"
+    },
+    {
+      "match_parent_region_id": "ES-B",
+      "owner": "ARA",
+      "controller": "ARA",
+      "cores": [
+        "ARA"
+      ],
+      "culture": "catalan",
+      "religion": "catholic",
+      "notes": "Crown of Aragon"
+    },
+    {
+      "match_parent_region_id": "ES-BI",
+      "owner": "CAS",
+      "controller": "CAS",
+      "cores": [
+        "CAS"
+      ],
+      "claims": [
+        "NAV"
+      ],
+      "culture": "basque",
+      "religion": "catholic",
+      "notes": "Basque lands Castile sphere"
+    },
+    {
+      "match_parent_region_id": "ES-CS",
+      "owner": "ARA",
+      "controller": "ARA",
+      "cores": [
+        "ARA"
+      ],
+      "culture": "catalan",
+      "religion": "catholic",
+      "notes": "Crown of Aragon"
+    },
+    {
+      "match_parent_region_id": "ES-GC",
+      "owner": "CAS",
+      "controller": "CAS",
+      "cores": [
+        "CAS"
+      ],
+      "culture": "castilian",
+      "religion": "catholic",
+      "notes": "Canary Islands Castile"
+    },
+    {
+      "match_parent_region_id": "ES-GI",
+      "owner": "ARA",
+      "controller": "ARA",
+      "cores": [
+        "ARA"
+      ],
+      "culture": "catalan",
+      "religion": "catholic",
+      "notes": "Crown of Aragon"
+    },
+    {
+      "match_parent_region_id": "ES-GR",
+      "owner": "GRA",
+      "controller": "GRA",
+      "cores": [
+        "GRA"
+      ],
+      "claims": [
+        "CAS"
+      ],
+      "culture": "andalusian",
+      "religion": "sunni",
+      "notes": "Nasrid Granada"
+    },
+    {
+      "match_parent_region_id": "ES-HU",
+      "owner": "ARA",
+      "controller": "ARA",
+      "cores": [
+        "ARA"
+      ],
+      "culture": "aragonese",
+      "religion": "catholic",
+      "notes": "Crown of Aragon"
+    },
+    {
+      "match_parent_region_id": "ES-L",
+      "owner": "ARA",
+      "controller": "ARA",
+      "cores": [
+        "ARA"
+      ],
+      "culture": "catalan",
+      "religion": "catholic",
+      "notes": "Crown of Aragon"
+    },
+    {
+      "match_parent_region_id": "ES-MA",
+      "owner": "GRA",
+      "controller": "GRA",
+      "cores": [
+        "GRA"
+      ],
+      "claims": [
+        "CAS"
+      ],
+      "culture": "andalusian",
+      "religion": "sunni",
+      "notes": "Nasrid Granada"
+    },
+    {
+      "match_parent_region_id": "ES-NA",
+      "owner": "NAV",
+      "controller": "NAV",
+      "cores": [
+        "NAV"
+      ],
+      "culture": "basque",
+      "religion": "catholic",
+      "notes": "Navarre"
+    },
+    {
+      "match_parent_region_id": "ES-PM",
+      "owner": "ARA",
+      "controller": "ARA",
+      "cores": [
+        "ARA"
+      ],
+      "culture": "catalan",
+      "religion": "catholic",
+      "notes": "Crown of Aragon"
+    },
+    {
+      "match_parent_region_id": "ES-SS",
+      "owner": "CAS",
+      "controller": "CAS",
+      "cores": [
+        "CAS"
+      ],
+      "claims": [
+        "NAV"
+      ],
+      "culture": "basque",
+      "religion": "catholic",
+      "notes": "Basque lands Castile sphere"
+    },
+    {
+      "match_parent_region_id": "ES-T",
+      "owner": "ARA",
+      "controller": "ARA",
+      "cores": [
+        "ARA"
+      ],
+      "culture": "catalan",
+      "religion": "catholic",
+      "notes": "Crown of Aragon"
+    },
+    {
+      "match_parent_region_id": "ES-TE",
+      "owner": "ARA",
+      "controller": "ARA",
+      "cores": [
+        "ARA"
+      ],
+      "culture": "aragonese",
+      "religion": "catholic",
+      "notes": "Crown of Aragon"
+    },
+    {
+      "match_parent_region_id": "ES-TF",
+      "owner": "CAS",
+      "controller": "CAS",
+      "cores": [
+        "CAS"
+      ],
+      "culture": "castilian",
+      "religion": "catholic",
+      "notes": "Canary Islands Castile"
+    },
+    {
+      "match_parent_region_id": "ES-V",
+      "owner": "ARA",
+      "controller": "ARA",
+      "cores": [
+        "ARA"
+      ],
+      "culture": "catalan",
+      "religion": "catholic",
+      "notes": "Crown of Aragon"
+    },
+    {
+      "match_parent_region_id": "ES-VI",
+      "owner": "CAS",
+      "controller": "CAS",
+      "cores": [
+        "CAS"
+      ],
+      "claims": [
+        "NAV"
+      ],
+      "culture": "basque",
+      "religion": "catholic",
+      "notes": "Basque lands Castile sphere"
+    },
+    {
+      "match_parent_region_id": "ES-Z",
+      "owner": "ARA",
+      "controller": "ARA",
+      "cores": [
+        "ARA"
+      ],
+      "culture": "aragonese",
+      "religion": "catholic",
+      "notes": "Crown of Aragon"
+    },
+    {
+      "match_parent_region_id": "FR-02",
+      "owner": "BUR",
+      "controller": "BUR",
+      "cores": [
+        "BUR",
+        "FRA"
+      ],
+      "culture": "burgundian",
+      "religion": "catholic",
+      "notes": "Burgundian France/Low Countries fringe"
+    },
+    {
+      "match_parent_region_id": "FR-04",
+      "owner": "PRO",
+      "controller": "PRO",
+      "cores": [
+        "PRO"
+      ],
+      "culture": "provençal",
+      "religion": "catholic",
+      "notes": "Provence"
+    },
+    {
+      "match_parent_region_id": "FR-05",
+      "owner": "PRO",
+      "controller": "PRO",
+      "cores": [
+        "PRO"
+      ],
+      "culture": "provençal",
+      "religion": "catholic",
+      "notes": "Provence"
+    },
+    {
+      "match_parent_region_id": "FR-06",
+      "owner": "PRO",
+      "controller": "PRO",
+      "cores": [
+        "PRO"
+      ],
+      "culture": "provençal",
+      "religion": "catholic",
+      "notes": "Provence"
+    },
+    {
+      "match_parent_region_id": "FR-13",
+      "owner": "PRO",
+      "controller": "PRO",
+      "cores": [
+        "PRO"
+      ],
+      "culture": "provençal",
+      "religion": "catholic",
+      "notes": "Provence"
+    },
+    {
+      "match_parent_region_id": "FR-21",
+      "owner": "BUR",
+      "controller": "BUR",
+      "cores": [
+        "BUR",
+        "FRA"
+      ],
+      "culture": "burgundian",
+      "religion": "catholic",
+      "notes": "Burgundian France/Low Countries fringe"
+    },
+    {
+      "match_parent_region_id": "FR-22",
+      "owner": "BRI",
+      "controller": "BRI",
+      "cores": [
+        "BRI"
+      ],
+      "culture": "breton",
+      "religion": "catholic",
+      "notes": "Brittany"
+    },
+    {
+      "match_parent_region_id": "FR-25",
+      "owner": "BUR",
+      "controller": "BUR",
+      "cores": [
+        "BUR",
+        "FRA"
+      ],
+      "culture": "burgundian",
+      "religion": "catholic",
+      "notes": "Burgundian France/Low Countries fringe"
+    },
+    {
+      "match_parent_region_id": "FR-29",
+      "owner": "BRI",
+      "controller": "BRI",
+      "cores": [
+        "BRI"
+      ],
+      "culture": "breton",
+      "religion": "catholic",
+      "notes": "Brittany"
+    },
+    {
+      "match_parent_region_id": "FR-2A",
+      "owner": "GEN",
+      "controller": "GEN",
+      "cores": [
+        "GEN"
+      ],
+      "culture": "corsican",
+      "religion": "catholic",
+      "notes": "Genoese Corsica"
+    },
+    {
+      "match_parent_region_id": "FR-2B",
+      "owner": "GEN",
+      "controller": "GEN",
+      "cores": [
+        "GEN"
+      ],
+      "culture": "corsican",
+      "religion": "catholic",
+      "notes": "Genoese Corsica"
+    },
+    {
+      "match_parent_region_id": "FR-35",
+      "owner": "BRI",
+      "controller": "BRI",
+      "cores": [
+        "BRI"
+      ],
+      "culture": "breton",
+      "religion": "catholic",
+      "notes": "Brittany"
+    },
+    {
+      "match_parent_region_id": "FR-39",
+      "owner": "BUR",
+      "controller": "BUR",
+      "cores": [
+        "BUR",
+        "FRA"
+      ],
+      "culture": "burgundian",
+      "religion": "catholic",
+      "notes": "Burgundian France/Low Countries fringe"
+    },
+    {
+      "match_parent_region_id": "FR-56",
+      "owner": "BRI",
+      "controller": "BRI",
+      "cores": [
+        "BRI"
+      ],
+      "culture": "breton",
+      "religion": "catholic",
+      "notes": "Brittany"
+    },
+    {
+      "match_parent_region_id": "FR-58",
+      "owner": "BUR",
+      "controller": "BUR",
+      "cores": [
+        "BUR",
+        "FRA"
+      ],
+      "culture": "burgundian",
+      "religion": "catholic",
+      "notes": "Burgundian France/Low Countries fringe"
+    },
+    {
+      "match_parent_region_id": "FR-59",
+      "owner": "BUR",
+      "controller": "BUR",
+      "cores": [
+        "BUR",
+        "FRA"
+      ],
+      "culture": "burgundian",
+      "religion": "catholic",
+      "notes": "Burgundian France/Low Countries fringe"
+    },
+    {
+      "match_parent_region_id": "FR-60",
+      "owner": "BUR",
+      "controller": "BUR",
+      "cores": [
+        "BUR",
+        "FRA"
+      ],
+      "culture": "burgundian",
+      "religion": "catholic",
+      "notes": "Burgundian France/Low Countries fringe"
+    },
+    {
+      "match_parent_region_id": "FR-62",
+      "owner": "ENG",
+      "controller": "ENG",
+      "cores": [
+        "ENG"
+      ],
+      "claims": [
+        "FRA"
+      ],
+      "culture": "english",
+      "religion": "catholic",
+      "disputed": true,
+      "notes": "Calais / Pale of Calais"
+    },
+    {
+      "match_parent_region_id": "FR-70",
+      "owner": "BUR",
+      "controller": "BUR",
+      "cores": [
+        "BUR",
+        "FRA"
+      ],
+      "culture": "burgundian",
+      "religion": "catholic",
+      "notes": "Burgundian France/Low Countries fringe"
+    },
+    {
+      "match_parent_region_id": "FR-71",
+      "owner": "BUR",
+      "controller": "BUR",
+      "cores": [
+        "BUR",
+        "FRA"
+      ],
+      "culture": "burgundian",
+      "religion": "catholic",
+      "notes": "Burgundian France/Low Countries fringe"
+    },
+    {
+      "match_parent_region_id": "FR-80",
+      "owner": "BUR",
+      "controller": "BUR",
+      "cores": [
+        "BUR",
+        "FRA"
+      ],
+      "culture": "burgundian",
+      "religion": "catholic",
+      "notes": "Burgundian France/Low Countries fringe"
+    },
+    {
+      "match_parent_region_id": "FR-83",
+      "owner": "PRO",
+      "controller": "PRO",
+      "cores": [
+        "PRO"
+      ],
+      "culture": "provençal",
+      "religion": "catholic",
+      "notes": "Provence"
+    },
+    {
+      "match_parent_region_id": "FR-84",
+      "owner": "PRO",
+      "controller": "PRO",
+      "cores": [
+        "PRO"
+      ],
+      "culture": "provençal",
+      "religion": "catholic",
+      "notes": "Provence"
+    },
+    {
+      "match_parent_region_id": "FR-89",
+      "owner": "BUR",
+      "controller": "BUR",
+      "cores": [
+        "BUR",
+        "FRA"
+      ],
+      "culture": "burgundian",
+      "religion": "catholic",
+      "notes": "Burgundian France/Low Countries fringe"
+    },
+    {
+      "match_parent_region_id": "FR-90",
+      "owner": "BUR",
+      "controller": "BUR",
+      "cores": [
+        "BUR",
+        "FRA"
+      ],
+      "culture": "burgundian",
+      "religion": "catholic",
+      "notes": "Burgundian France/Low Countries fringe"
+    },
+    {
+      "match_parent_region_id": "GB-ABD",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-ABE",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-AGB",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-AGY",
+      "owner": "ENG",
+      "controller": "ENG",
+      "cores": [
+        "ENG",
+        "WLS"
+      ],
+      "culture": "welsh",
+      "religion": "catholic",
+      "notes": "Wales under England"
+    },
+    {
+      "match_parent_region_id": "GB-ANS",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-ANT",
+      "owner": "IRE",
+      "controller": "IRE",
+      "cores": [
+        "IRE"
+      ],
+      "claims": [
+        "ENG"
+      ],
+      "culture": "irish",
+      "religion": "catholic",
+      "notes": "Ulster Gaelic Ireland scaffold"
+    },
+    {
+      "match_parent_region_id": "GB-ARD",
+      "owner": "IRE",
+      "controller": "IRE",
+      "cores": [
+        "IRE"
+      ],
+      "claims": [
+        "ENG"
+      ],
+      "culture": "irish",
+      "religion": "catholic",
+      "notes": "Ulster Gaelic Ireland scaffold"
+    },
+    {
+      "match_parent_region_id": "GB-ARM",
+      "owner": "IRE",
+      "controller": "IRE",
+      "cores": [
+        "IRE"
+      ],
+      "claims": [
+        "ENG"
+      ],
+      "culture": "irish",
+      "religion": "catholic",
+      "notes": "Ulster Gaelic Ireland scaffold"
+    },
+    {
+      "match_parent_region_id": "GB-BFS",
+      "owner": "IRE",
+      "controller": "IRE",
+      "cores": [
+        "IRE"
+      ],
+      "claims": [
+        "ENG"
+      ],
+      "culture": "irish",
+      "religion": "catholic",
+      "notes": "Ulster Gaelic Ireland scaffold"
+    },
+    {
+      "match_parent_region_id": "GB-BLA",
+      "owner": "IRE",
+      "controller": "IRE",
+      "cores": [
+        "IRE"
+      ],
+      "claims": [
+        "ENG"
+      ],
+      "culture": "irish",
+      "religion": "catholic",
+      "notes": "Ulster Gaelic Ireland scaffold"
+    },
+    {
+      "match_parent_region_id": "GB-BLY",
+      "owner": "IRE",
+      "controller": "IRE",
+      "cores": [
+        "IRE"
+      ],
+      "claims": [
+        "ENG"
+      ],
+      "culture": "irish",
+      "religion": "catholic",
+      "notes": "Ulster Gaelic Ireland scaffold"
+    },
+    {
+      "match_parent_region_id": "GB-BNB",
+      "owner": "IRE",
+      "controller": "IRE",
+      "cores": [
+        "IRE"
+      ],
+      "claims": [
+        "ENG"
+      ],
+      "culture": "irish",
+      "religion": "catholic",
+      "notes": "Ulster Gaelic Ireland scaffold"
+    },
+    {
+      "match_parent_region_id": "GB-CGN",
+      "owner": "ENG",
+      "controller": "ENG",
+      "cores": [
+        "ENG",
+        "WLS"
+      ],
+      "culture": "welsh",
+      "religion": "catholic",
+      "notes": "Wales under England"
+    },
+    {
+      "match_parent_region_id": "GB-CGV",
+      "owner": "IRE",
+      "controller": "IRE",
+      "cores": [
+        "IRE"
+      ],
+      "claims": [
+        "ENG"
+      ],
+      "culture": "irish",
+      "religion": "catholic",
+      "notes": "Ulster Gaelic Ireland scaffold"
+    },
+    {
+      "match_parent_region_id": "GB-CKT",
+      "owner": "IRE",
+      "controller": "IRE",
+      "cores": [
+        "IRE"
+      ],
+      "claims": [
+        "ENG"
+      ],
+      "culture": "irish",
+      "religion": "catholic",
+      "notes": "Ulster Gaelic Ireland scaffold"
+    },
+    {
+      "match_parent_region_id": "GB-CLK",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-CLR",
+      "owner": "IRE",
+      "controller": "IRE",
+      "cores": [
+        "IRE"
+      ],
+      "claims": [
+        "ENG"
+      ],
+      "culture": "irish",
+      "religion": "catholic",
+      "notes": "Ulster Gaelic Ireland scaffold"
+    },
+    {
+      "match_parent_region_id": "GB-CMN",
+      "owner": "ENG",
+      "controller": "ENG",
+      "cores": [
+        "ENG",
+        "WLS"
+      ],
+      "culture": "welsh",
+      "religion": "catholic",
+      "notes": "Wales under England"
+    },
+    {
+      "match_parent_region_id": "GB-CRF",
+      "owner": "ENG",
+      "controller": "ENG",
+      "cores": [
+        "ENG",
+        "WLS"
+      ],
+      "culture": "welsh",
+      "religion": "catholic",
+      "notes": "Wales under England"
+    },
+    {
+      "match_parent_region_id": "GB-CSR",
+      "owner": "IRE",
+      "controller": "IRE",
+      "cores": [
+        "IRE"
+      ],
+      "claims": [
+        "ENG"
+      ],
+      "culture": "irish",
+      "religion": "catholic",
+      "notes": "Ulster Gaelic Ireland scaffold"
+    },
+    {
+      "match_parent_region_id": "GB-CWY",
+      "owner": "ENG",
+      "controller": "ENG",
+      "cores": [
+        "ENG",
+        "WLS"
+      ],
+      "culture": "welsh",
+      "religion": "catholic",
+      "notes": "Wales under England"
+    },
+    {
+      "match_parent_region_id": "GB-DEN",
+      "owner": "ENG",
+      "controller": "ENG",
+      "cores": [
+        "ENG",
+        "WLS"
+      ],
+      "culture": "welsh",
+      "religion": "catholic",
+      "notes": "Wales under England"
+    },
+    {
+      "match_parent_region_id": "GB-DGN",
+      "owner": "IRE",
+      "controller": "IRE",
+      "cores": [
+        "IRE"
+      ],
+      "claims": [
+        "ENG"
+      ],
+      "culture": "irish",
+      "religion": "catholic",
+      "notes": "Ulster Gaelic Ireland scaffold"
+    },
+    {
+      "match_parent_region_id": "GB-DGY",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-DND",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-DOW",
+      "owner": "IRE",
+      "controller": "IRE",
+      "cores": [
+        "IRE"
+      ],
+      "claims": [
+        "ENG"
+      ],
+      "culture": "irish",
+      "religion": "catholic",
+      "notes": "Ulster Gaelic Ireland scaffold"
+    },
+    {
+      "match_parent_region_id": "GB-DRY",
+      "owner": "IRE",
+      "controller": "IRE",
+      "cores": [
+        "IRE"
+      ],
+      "claims": [
+        "ENG"
+      ],
+      "culture": "irish",
+      "religion": "catholic",
+      "notes": "Ulster Gaelic Ireland scaffold"
+    },
+    {
+      "match_parent_region_id": "GB-EAY",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-EDH",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-EDU",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-ELN",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-ELS",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-ERW",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-FAL",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-FIF",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-FLN",
+      "owner": "ENG",
+      "controller": "ENG",
+      "cores": [
+        "ENG",
+        "WLS"
+      ],
+      "culture": "welsh",
+      "religion": "catholic",
+      "notes": "Wales under England"
+    },
+    {
+      "match_parent_region_id": "GB-GLG",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-GWN",
+      "owner": "ENG",
+      "controller": "ENG",
+      "cores": [
+        "ENG",
+        "WLS"
+      ],
+      "culture": "welsh",
+      "religion": "catholic",
+      "notes": "Wales under England"
+    },
+    {
+      "match_parent_region_id": "GB-HLD",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-IVC",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-LRN",
+      "owner": "IRE",
+      "controller": "IRE",
+      "cores": [
+        "IRE"
+      ],
+      "claims": [
+        "ENG"
+      ],
+      "culture": "irish",
+      "religion": "catholic",
+      "notes": "Ulster Gaelic Ireland scaffold"
+    },
+    {
+      "match_parent_region_id": "GB-LSB",
+      "owner": "IRE",
+      "controller": "IRE",
+      "cores": [
+        "IRE"
+      ],
+      "claims": [
+        "ENG"
+      ],
+      "culture": "irish",
+      "religion": "catholic",
+      "notes": "Ulster Gaelic Ireland scaffold"
+    },
+    {
+      "match_parent_region_id": "GB-MFT",
+      "owner": "IRE",
+      "controller": "IRE",
+      "cores": [
+        "IRE"
+      ],
+      "claims": [
+        "ENG"
+      ],
+      "culture": "irish",
+      "religion": "catholic",
+      "notes": "Ulster Gaelic Ireland scaffold"
+    },
+    {
+      "match_parent_region_id": "GB-MLN",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-MON",
+      "owner": "ENG",
+      "controller": "ENG",
+      "cores": [
+        "ENG",
+        "WLS"
+      ],
+      "culture": "welsh",
+      "religion": "catholic",
+      "notes": "Wales under England"
+    },
+    {
+      "match_parent_region_id": "GB-MRY",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-MTY",
+      "owner": "ENG",
+      "controller": "ENG",
+      "cores": [
+        "ENG",
+        "WLS"
+      ],
+      "culture": "welsh",
+      "religion": "catholic",
+      "notes": "Wales under England"
+    },
+    {
+      "match_parent_region_id": "GB-MYL",
+      "owner": "IRE",
+      "controller": "IRE",
+      "cores": [
+        "IRE"
+      ],
+      "claims": [
+        "ENG"
+      ],
+      "culture": "irish",
+      "religion": "catholic",
+      "notes": "Ulster Gaelic Ireland scaffold"
+    },
+    {
+      "match_parent_region_id": "GB-NAY",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-NDN",
+      "owner": "IRE",
+      "controller": "IRE",
+      "cores": [
+        "IRE"
+      ],
+      "claims": [
+        "ENG"
+      ],
+      "culture": "irish",
+      "religion": "catholic",
+      "notes": "Ulster Gaelic Ireland scaffold"
+    },
+    {
+      "match_parent_region_id": "GB-NLK",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-NTA",
+      "owner": "IRE",
+      "controller": "IRE",
+      "cores": [
+        "IRE"
+      ],
+      "claims": [
+        "ENG"
+      ],
+      "culture": "irish",
+      "religion": "catholic",
+      "notes": "Ulster Gaelic Ireland scaffold"
+    },
+    {
+      "match_parent_region_id": "GB-NTL",
+      "owner": "ENG",
+      "controller": "ENG",
+      "cores": [
+        "ENG",
+        "WLS"
+      ],
+      "culture": "welsh",
+      "religion": "catholic",
+      "notes": "Wales under England"
+    },
+    {
+      "match_parent_region_id": "GB-NWP",
+      "owner": "ENG",
+      "controller": "ENG",
+      "cores": [
+        "ENG",
+        "WLS"
+      ],
+      "culture": "welsh",
+      "religion": "catholic",
+      "notes": "Wales under England"
+    },
+    {
+      "match_parent_region_id": "GB-NYM",
+      "owner": "IRE",
+      "controller": "IRE",
+      "cores": [
+        "IRE"
+      ],
+      "claims": [
+        "ENG"
+      ],
+      "culture": "irish",
+      "religion": "catholic",
+      "notes": "Ulster Gaelic Ireland scaffold"
+    },
+    {
+      "match_parent_region_id": "GB-OMH",
+      "owner": "IRE",
+      "controller": "IRE",
+      "cores": [
+        "IRE"
+      ],
+      "claims": [
+        "ENG"
+      ],
+      "culture": "irish",
+      "religion": "catholic",
+      "notes": "Ulster Gaelic Ireland scaffold"
+    },
+    {
+      "match_parent_region_id": "GB-ORK",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-PEM",
+      "owner": "ENG",
+      "controller": "ENG",
+      "cores": [
+        "ENG",
+        "WLS"
+      ],
+      "culture": "welsh",
+      "religion": "catholic",
+      "notes": "Wales under England"
+    },
+    {
+      "match_parent_region_id": "GB-PKN",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-POW",
+      "owner": "ENG",
+      "controller": "ENG",
+      "cores": [
+        "ENG",
+        "WLS"
+      ],
+      "culture": "welsh",
+      "religion": "catholic",
+      "notes": "Wales under England"
+    },
+    {
+      "match_parent_region_id": "GB-RCT",
+      "owner": "ENG",
+      "controller": "ENG",
+      "cores": [
+        "ENG",
+        "WLS"
+      ],
+      "culture": "welsh",
+      "religion": "catholic",
+      "notes": "Wales under England"
+    },
+    {
+      "match_parent_region_id": "GB-RFW",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-SAY",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-SCB",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-SLK",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-STB",
+      "owner": "IRE",
+      "controller": "IRE",
+      "cores": [
+        "IRE"
+      ],
+      "claims": [
+        "ENG"
+      ],
+      "culture": "irish",
+      "religion": "catholic",
+      "notes": "Ulster Gaelic Ireland scaffold"
+    },
+    {
+      "match_parent_region_id": "GB-STG",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-SWA",
+      "owner": "ENG",
+      "controller": "ENG",
+      "cores": [
+        "ENG",
+        "WLS"
+      ],
+      "culture": "welsh",
+      "religion": "catholic",
+      "notes": "Wales under England"
+    },
+    {
+      "match_parent_region_id": "GB-TOF",
+      "owner": "ENG",
+      "controller": "ENG",
+      "cores": [
+        "ENG",
+        "WLS"
+      ],
+      "culture": "welsh",
+      "religion": "catholic",
+      "notes": "Wales under England"
+    },
+    {
+      "match_parent_region_id": "GB-VGL",
+      "owner": "ENG",
+      "controller": "ENG",
+      "cores": [
+        "ENG",
+        "WLS"
+      ],
+      "culture": "welsh",
+      "religion": "catholic",
+      "notes": "Wales under England"
+    },
+    {
+      "match_parent_region_id": "GB-WDU",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-WLN",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GB-WRX",
+      "owner": "ENG",
+      "controller": "ENG",
+      "cores": [
+        "ENG",
+        "WLS"
+      ],
+      "culture": "welsh",
+      "religion": "catholic",
+      "notes": "Wales under England"
+    },
+    {
+      "match_parent_region_id": "GB-ZET",
+      "owner": "SCO",
+      "controller": "SCO",
+      "cores": [
+        "SCO"
+      ],
+      "culture": "scottish",
+      "religion": "catholic",
+      "notes": "Scotland"
+    },
+    {
+      "match_parent_region_id": "GR-J",
+      "owner": "BYZ",
+      "controller": "BYZ",
+      "cores": [
+        "BYZ"
+      ],
+      "claims": [
+        "TUR"
+      ],
+      "culture": "greek",
+      "religion": "orthodox",
+      "notes": "Morea Byzantine remnant"
+    },
+    {
+      "match_parent_region_id": "IN-AP",
+      "owner": "VIJ",
+      "controller": "VIJ",
+      "cores": [
+        "VIJ"
+      ],
+      "culture": "kannada",
+      "religion": "hindu",
+      "notes": "Vijayanagar south India"
+    },
+    {
+      "match_parent_region_id": "IN-GA",
+      "owner": "VIJ",
+      "controller": "VIJ",
+      "cores": [
+        "VIJ"
+      ],
+      "culture": "kannada",
+      "religion": "hindu",
+      "notes": "Vijayanagar south India"
+    },
+    {
+      "match_parent_region_id": "IN-GJ",
+      "owner": "GUJ",
+      "controller": "GUJ",
+      "cores": [
+        "GUJ"
+      ],
+      "culture": "gujarati",
+      "religion": "hindu",
+      "notes": "Gujarat"
+    },
+    {
+      "match_parent_region_id": "IN-KA",
+      "owner": "VIJ",
+      "controller": "VIJ",
+      "cores": [
+        "VIJ"
+      ],
+      "culture": "kannada",
+      "religion": "hindu",
+      "notes": "Vijayanagar south India"
+    },
+    {
+      "match_parent_region_id": "IN-KL",
+      "owner": "VIJ",
+      "controller": "VIJ",
+      "cores": [
+        "VIJ"
+      ],
+      "culture": "kannada",
+      "religion": "hindu",
+      "notes": "Vijayanagar south India"
+    },
+    {
+      "match_parent_region_id": "IN-MH",
+      "owner": "BAH",
+      "controller": "BAH",
+      "cores": [
+        "BAH"
+      ],
+      "culture": "marathi",
+      "religion": "sunni",
+      "notes": "Bahmani Deccan"
+    },
+    {
+      "match_parent_region_id": "IN-PY",
+      "owner": "VIJ",
+      "controller": "VIJ",
+      "cores": [
+        "VIJ"
+      ],
+      "culture": "kannada",
+      "religion": "hindu",
+      "notes": "Vijayanagar south India"
+    },
+    {
+      "match_parent_region_id": "IN-TG",
+      "owner": "VIJ",
+      "controller": "VIJ",
+      "cores": [
+        "VIJ"
+      ],
+      "culture": "kannada",
+      "religion": "hindu",
+      "notes": "Vijayanagar south India"
+    },
+    {
+      "match_parent_region_id": "IN-TN",
+      "owner": "VIJ",
+      "controller": "VIJ",
+      "cores": [
+        "VIJ"
+      ],
+      "culture": "kannada",
+      "religion": "hindu",
+      "notes": "Vijayanagar south India"
+    },
+    {
+      "match_parent_region_id": "IN-WB",
+      "owner": "BEN",
+      "controller": "BEN",
+      "cores": [
+        "BEN"
+      ],
+      "culture": "bengali",
+      "religion": "sunni",
+      "notes": "Bengal"
+    },
+    {
+      "match_parent_region_id": "IT-AG",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-AL",
+      "owner": "SAV",
+      "controller": "SAV",
+      "cores": [
+        "SAV"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Savoy"
+    },
+    {
+      "match_parent_region_id": "IT-AN",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-AO",
+      "owner": "SAV",
+      "controller": "SAV",
+      "cores": [
+        "SAV"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Savoy"
+    },
+    {
+      "match_parent_region_id": "IT-AP",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-AQ",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-AR",
+      "owner": "FLO",
+      "controller": "FLO",
+      "cores": [
+        "FLO"
+      ],
+      "culture": "tuscan",
+      "religion": "catholic",
+      "notes": "Florence"
+    },
+    {
+      "match_parent_region_id": "IT-AT",
+      "owner": "SAV",
+      "controller": "SAV",
+      "cores": [
+        "SAV"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Savoy"
+    },
+    {
+      "match_parent_region_id": "IT-AV",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-BA",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-BG",
+      "owner": "MLO",
+      "controller": "MLO",
+      "cores": [
+        "MLO"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Milan"
+    },
+    {
+      "match_parent_region_id": "IT-BI",
+      "owner": "SAV",
+      "controller": "SAV",
+      "cores": [
+        "SAV"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Savoy"
+    },
+    {
+      "match_parent_region_id": "IT-BL",
+      "owner": "VEN",
+      "controller": "VEN",
+      "cores": [
+        "VEN"
+      ],
+      "culture": "venetian",
+      "religion": "catholic",
+      "notes": "Venice"
+    },
+    {
+      "match_parent_region_id": "IT-BN",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-BO",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-BR",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-BS",
+      "owner": "MLO",
+      "controller": "MLO",
+      "cores": [
+        "MLO"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Milan"
+    },
+    {
+      "match_parent_region_id": "IT-BT",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-BZ",
+      "owner": "HAB",
+      "controller": "HAB",
+      "cores": [
+        "HAB"
+      ],
+      "culture": "austrian",
+      "religion": "catholic",
+      "notes": "Tyrol Habsburg"
+    },
+    {
+      "match_parent_region_id": "IT-CA",
+      "owner": "ARA",
+      "controller": "ARA",
+      "cores": [
+        "ARA"
+      ],
+      "culture": "sardinian",
+      "religion": "catholic",
+      "notes": "Aragonese Sardinia"
+    },
+    {
+      "match_parent_region_id": "IT-CB",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-CE",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-CH",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-CI",
+      "owner": "ARA",
+      "controller": "ARA",
+      "cores": [
+        "ARA"
+      ],
+      "culture": "sardinian",
+      "religion": "catholic",
+      "notes": "Aragonese Sardinia"
+    },
+    {
+      "match_parent_region_id": "IT-CL",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-CN",
+      "owner": "SAV",
+      "controller": "SAV",
+      "cores": [
+        "SAV"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Savoy"
+    },
+    {
+      "match_parent_region_id": "IT-CO",
+      "owner": "MLO",
+      "controller": "MLO",
+      "cores": [
+        "MLO"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Milan"
+    },
+    {
+      "match_parent_region_id": "IT-CR",
+      "owner": "MLO",
+      "controller": "MLO",
+      "cores": [
+        "MLO"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Milan"
+    },
+    {
+      "match_parent_region_id": "IT-CS",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-CT",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-CZ",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-EN",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-FC",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-FE",
+      "owner": "FER",
+      "controller": "FER",
+      "cores": [
+        "FER"
+      ],
+      "culture": "romagnan",
+      "religion": "catholic",
+      "notes": "Ferrara/Modena sphere"
+    },
+    {
+      "match_parent_region_id": "IT-FG",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-FI",
+      "owner": "FLO",
+      "controller": "FLO",
+      "cores": [
+        "FLO"
+      ],
+      "culture": "tuscan",
+      "religion": "catholic",
+      "notes": "Florence"
+    },
+    {
+      "match_parent_region_id": "IT-FM",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-FR",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-GE",
+      "owner": "GEN",
+      "controller": "GEN",
+      "cores": [
+        "GEN"
+      ],
+      "culture": "ligurian",
+      "religion": "catholic",
+      "notes": "Genoa"
+    },
+    {
+      "match_parent_region_id": "IT-GO",
+      "owner": "VEN",
+      "controller": "VEN",
+      "cores": [
+        "VEN"
+      ],
+      "culture": "venetian",
+      "religion": "catholic",
+      "notes": "Venice"
+    },
+    {
+      "match_parent_region_id": "IT-GR",
+      "owner": "SIE",
+      "controller": "SIE",
+      "cores": [
+        "SIE"
+      ],
+      "culture": "tuscan",
+      "religion": "catholic",
+      "notes": "Siena"
+    },
+    {
+      "match_parent_region_id": "IT-IM",
+      "owner": "GEN",
+      "controller": "GEN",
+      "cores": [
+        "GEN"
+      ],
+      "culture": "ligurian",
+      "religion": "catholic",
+      "notes": "Genoa"
+    },
+    {
+      "match_parent_region_id": "IT-IS",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-KR",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-LC",
+      "owner": "MLO",
+      "controller": "MLO",
+      "cores": [
+        "MLO"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Milan"
+    },
+    {
+      "match_parent_region_id": "IT-LE",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-LI",
+      "owner": "FLO",
+      "controller": "FLO",
+      "cores": [
+        "FLO"
+      ],
+      "culture": "tuscan",
+      "religion": "catholic",
+      "notes": "Florence"
+    },
+    {
+      "match_parent_region_id": "IT-LO",
+      "owner": "MLO",
+      "controller": "MLO",
+      "cores": [
+        "MLO"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Milan"
+    },
+    {
+      "match_parent_region_id": "IT-LT",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-LU",
+      "owner": "LUC",
+      "controller": "LUC",
+      "cores": [
+        "LUC"
+      ],
+      "culture": "tuscan",
+      "religion": "catholic",
+      "notes": "Lucca"
+    },
+    {
+      "match_parent_region_id": "IT-MB",
+      "owner": "MLO",
+      "controller": "MLO",
+      "cores": [
+        "MLO"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Milan"
+    },
+    {
+      "match_parent_region_id": "IT-MC",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-ME",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-MI",
+      "owner": "MLO",
+      "controller": "MLO",
+      "cores": [
+        "MLO"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Milan"
+    },
+    {
+      "match_parent_region_id": "IT-MN",
+      "owner": "MAN",
+      "controller": "MAN",
+      "cores": [
+        "MAN"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Mantua"
+    },
+    {
+      "match_parent_region_id": "IT-MO",
+      "owner": "FER",
+      "controller": "FER",
+      "cores": [
+        "FER"
+      ],
+      "culture": "romagnan",
+      "religion": "catholic",
+      "notes": "Ferrara/Modena sphere"
+    },
+    {
+      "match_parent_region_id": "IT-MS",
+      "owner": "LUC",
+      "controller": "LUC",
+      "cores": [
+        "LUC"
+      ],
+      "culture": "tuscan",
+      "religion": "catholic",
+      "notes": "Lucca"
+    },
+    {
+      "match_parent_region_id": "IT-MT",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-NA",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-NO",
+      "owner": "SAV",
+      "controller": "SAV",
+      "cores": [
+        "SAV"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Savoy"
+    },
+    {
+      "match_parent_region_id": "IT-NU",
+      "owner": "ARA",
+      "controller": "ARA",
+      "cores": [
+        "ARA"
+      ],
+      "culture": "sardinian",
+      "religion": "catholic",
+      "notes": "Aragonese Sardinia"
+    },
+    {
+      "match_parent_region_id": "IT-OG",
+      "owner": "ARA",
+      "controller": "ARA",
+      "cores": [
+        "ARA"
+      ],
+      "culture": "sardinian",
+      "religion": "catholic",
+      "notes": "Aragonese Sardinia"
+    },
+    {
+      "match_parent_region_id": "IT-OR",
+      "owner": "ARA",
+      "controller": "ARA",
+      "cores": [
+        "ARA"
+      ],
+      "culture": "sardinian",
+      "religion": "catholic",
+      "notes": "Aragonese Sardinia"
+    },
+    {
+      "match_parent_region_id": "IT-OT",
+      "owner": "ARA",
+      "controller": "ARA",
+      "cores": [
+        "ARA"
+      ],
+      "culture": "sardinian",
+      "religion": "catholic",
+      "notes": "Aragonese Sardinia"
+    },
+    {
+      "match_parent_region_id": "IT-PA",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-PC",
+      "owner": "MLO",
+      "controller": "MLO",
+      "cores": [
+        "MLO"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Milan"
+    },
+    {
+      "match_parent_region_id": "IT-PD",
+      "owner": "VEN",
+      "controller": "VEN",
+      "cores": [
+        "VEN"
+      ],
+      "culture": "venetian",
+      "religion": "catholic",
+      "notes": "Venice"
+    },
+    {
+      "match_parent_region_id": "IT-PE",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-PG",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "umbrian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-PI",
+      "owner": "FLO",
+      "controller": "FLO",
+      "cores": [
+        "FLO"
+      ],
+      "culture": "tuscan",
+      "religion": "catholic",
+      "notes": "Florence"
+    },
+    {
+      "match_parent_region_id": "IT-PN",
+      "owner": "VEN",
+      "controller": "VEN",
+      "cores": [
+        "VEN"
+      ],
+      "culture": "venetian",
+      "religion": "catholic",
+      "notes": "Venice"
+    },
+    {
+      "match_parent_region_id": "IT-PO",
+      "owner": "FLO",
+      "controller": "FLO",
+      "cores": [
+        "FLO"
+      ],
+      "culture": "tuscan",
+      "religion": "catholic",
+      "notes": "Florence"
+    },
+    {
+      "match_parent_region_id": "IT-PR",
+      "owner": "MLO",
+      "controller": "MLO",
+      "cores": [
+        "MLO"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Milan"
+    },
+    {
+      "match_parent_region_id": "IT-PT",
+      "owner": "FLO",
+      "controller": "FLO",
+      "cores": [
+        "FLO"
+      ],
+      "culture": "tuscan",
+      "religion": "catholic",
+      "notes": "Florence"
+    },
+    {
+      "match_parent_region_id": "IT-PU",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-PV",
+      "owner": "MLO",
+      "controller": "MLO",
+      "cores": [
+        "MLO"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Milan"
+    },
+    {
+      "match_parent_region_id": "IT-PZ",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-RA",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-RC",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-RE",
+      "owner": "FER",
+      "controller": "FER",
+      "cores": [
+        "FER"
+      ],
+      "culture": "romagnan",
+      "religion": "catholic",
+      "notes": "Ferrara/Modena sphere"
+    },
+    {
+      "match_parent_region_id": "IT-RG",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-RI",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-RM",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-RN",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-RO",
+      "owner": "VEN",
+      "controller": "VEN",
+      "cores": [
+        "VEN"
+      ],
+      "culture": "venetian",
+      "religion": "catholic",
+      "notes": "Venice"
+    },
+    {
+      "match_parent_region_id": "IT-SA",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-SI",
+      "owner": "SIE",
+      "controller": "SIE",
+      "cores": [
+        "SIE"
+      ],
+      "culture": "tuscan",
+      "religion": "catholic",
+      "notes": "Siena"
+    },
+    {
+      "match_parent_region_id": "IT-SO",
+      "owner": "MLO",
+      "controller": "MLO",
+      "cores": [
+        "MLO"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Milan"
+    },
+    {
+      "match_parent_region_id": "IT-SP",
+      "owner": "GEN",
+      "controller": "GEN",
+      "cores": [
+        "GEN"
+      ],
+      "culture": "ligurian",
+      "religion": "catholic",
+      "notes": "Genoa"
+    },
+    {
+      "match_parent_region_id": "IT-SR",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-SS",
+      "owner": "ARA",
+      "controller": "ARA",
+      "cores": [
+        "ARA"
+      ],
+      "culture": "sardinian",
+      "religion": "catholic",
+      "notes": "Aragonese Sardinia"
+    },
+    {
+      "match_parent_region_id": "IT-SU",
+      "owner": "ARA",
+      "controller": "ARA",
+      "cores": [
+        "ARA"
+      ],
+      "culture": "sardinian",
+      "religion": "catholic",
+      "notes": "Aragonese Sardinia"
+    },
+    {
+      "match_parent_region_id": "IT-SV",
+      "owner": "GEN",
+      "controller": "GEN",
+      "cores": [
+        "GEN"
+      ],
+      "culture": "ligurian",
+      "religion": "catholic",
+      "notes": "Genoa"
+    },
+    {
+      "match_parent_region_id": "IT-TA",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-TE",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-TN",
+      "owner": "HAB",
+      "controller": "HAB",
+      "cores": [
+        "HAB"
+      ],
+      "culture": "austrian",
+      "religion": "catholic",
+      "notes": "Tyrol Habsburg"
+    },
+    {
+      "match_parent_region_id": "IT-TO",
+      "owner": "SAV",
+      "controller": "SAV",
+      "cores": [
+        "SAV"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Savoy"
+    },
+    {
+      "match_parent_region_id": "IT-TP",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "IT-TR",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "umbrian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-TS",
+      "owner": "VEN",
+      "controller": "VEN",
+      "cores": [
+        "VEN"
+      ],
+      "culture": "venetian",
+      "religion": "catholic",
+      "notes": "Venice"
+    },
+    {
+      "match_parent_region_id": "IT-TV",
+      "owner": "VEN",
+      "controller": "VEN",
+      "cores": [
+        "VEN"
+      ],
+      "culture": "venetian",
+      "religion": "catholic",
+      "notes": "Venice"
+    },
+    {
+      "match_parent_region_id": "IT-UD",
+      "owner": "VEN",
+      "controller": "VEN",
+      "cores": [
+        "VEN"
+      ],
+      "culture": "venetian",
+      "religion": "catholic",
+      "notes": "Venice"
+    },
+    {
+      "match_parent_region_id": "IT-VA",
+      "owner": "MLO",
+      "controller": "MLO",
+      "cores": [
+        "MLO"
+      ],
+      "culture": "lombard",
+      "religion": "catholic",
+      "notes": "Milan"
+    },
+    {
+      "match_parent_region_id": "IT-VB",
+      "owner": "SAV",
+      "controller": "SAV",
+      "cores": [
+        "SAV"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Savoy"
+    },
+    {
+      "match_parent_region_id": "IT-VC",
+      "owner": "SAV",
+      "controller": "SAV",
+      "cores": [
+        "SAV"
+      ],
+      "culture": "piedmontese",
+      "religion": "catholic",
+      "notes": "Savoy"
+    },
+    {
+      "match_parent_region_id": "IT-VE",
+      "owner": "VEN",
+      "controller": "VEN",
+      "cores": [
+        "VEN"
+      ],
+      "culture": "venetian",
+      "religion": "catholic",
+      "notes": "Venice"
+    },
+    {
+      "match_parent_region_id": "IT-VI",
+      "owner": "VEN",
+      "controller": "VEN",
+      "cores": [
+        "VEN"
+      ],
+      "culture": "venetian",
+      "religion": "catholic",
+      "notes": "Venice"
+    },
+    {
+      "match_parent_region_id": "IT-VR",
+      "owner": "VEN",
+      "controller": "VEN",
+      "cores": [
+        "VEN"
+      ],
+      "culture": "venetian",
+      "religion": "catholic",
+      "notes": "Venice"
+    },
+    {
+      "match_parent_region_id": "IT-VS",
+      "owner": "ARA",
+      "controller": "ARA",
+      "cores": [
+        "ARA"
+      ],
+      "culture": "sardinian",
+      "religion": "catholic",
+      "notes": "Aragonese Sardinia"
+    },
+    {
+      "match_parent_region_id": "IT-VT",
+      "owner": "PAP",
+      "controller": "PAP",
+      "cores": [
+        "PAP"
+      ],
+      "culture": "italian",
+      "religion": "catholic",
+      "notes": "Papal States"
+    },
+    {
+      "match_parent_region_id": "IT-VV",
+      "owner": "NAP",
+      "controller": "NAP",
+      "cores": [
+        "NAP"
+      ],
+      "culture": "neapolitan",
+      "religion": "catholic",
+      "notes": "Kingdom of Naples"
+    },
+    {
+      "match_parent_region_id": "PL-PM",
+      "owner": "TEU",
+      "controller": "TEU",
+      "cores": [
+        "TEU"
+      ],
+      "claims": [
+        "POL"
+      ],
+      "culture": "prussian",
+      "religion": "catholic",
+      "notes": "Teutonic Order Baltic"
+    },
+    {
+      "match_parent_region_id": "PL-WN",
+      "owner": "TEU",
+      "controller": "TEU",
+      "cores": [
+        "TEU"
+      ],
+      "claims": [
+        "POL"
+      ],
+      "culture": "prussian",
+      "religion": "catholic",
+      "notes": "Teutonic Order Baltic"
+    },
+    {
+      "match_parent_region_id": "PL-ZP",
+      "owner": "TEU",
+      "controller": "TEU",
+      "cores": [
+        "TEU"
+      ],
+      "claims": [
+        "POL"
+      ],
+      "culture": "prussian",
+      "religion": "catholic",
+      "notes": "Teutonic Order Baltic"
+    },
+    {
+      "match_parent_region_id": "PT-20",
+      "owner": "POR",
+      "controller": "POR",
+      "cores": [
+        "POR"
+      ],
+      "culture": "portuguese",
+      "religion": "catholic",
+      "notes": "Azores/Madeira"
+    },
+    {
+      "match_parent_region_id": "PT-30",
+      "owner": "POR",
+      "controller": "POR",
+      "cores": [
+        "POR"
+      ],
+      "culture": "portuguese",
+      "religion": "catholic",
+      "notes": "Azores/Madeira"
+    },
+    {
+      "match_parent_region_id": "RO-AB",
+      "owner": "HUN",
+      "controller": "HUN",
+      "cores": [
+        "HUN"
+      ],
+      "culture": "transylvanian",
+      "religion": "catholic",
+      "notes": "Transylvania Hungarian crown"
+    },
+    {
+      "match_parent_region_id": "RO-AG",
+      "owner": "WAL",
+      "controller": "WAL",
+      "cores": [
+        "WAL"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Wallachia"
+    },
+    {
+      "match_parent_region_id": "RO-AR",
+      "owner": "HUN",
+      "controller": "HUN",
+      "cores": [
+        "HUN"
+      ],
+      "culture": "hungarian",
+      "religion": "catholic",
+      "notes": "Banat Hungarian sphere"
+    },
+    {
+      "match_parent_region_id": "RO-B",
+      "owner": "WAL",
+      "controller": "WAL",
+      "cores": [
+        "WAL"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Wallachia"
+    },
+    {
+      "match_parent_region_id": "RO-BC",
+      "owner": "MOL",
+      "controller": "MOL",
+      "cores": [
+        "MOL"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Moldavia"
+    },
+    {
+      "match_parent_region_id": "RO-BH",
+      "owner": "HUN",
+      "controller": "HUN",
+      "cores": [
+        "HUN"
+      ],
+      "culture": "transylvanian",
+      "religion": "catholic",
+      "notes": "Transylvania Hungarian crown"
+    },
+    {
+      "match_parent_region_id": "RO-BN",
+      "owner": "HUN",
+      "controller": "HUN",
+      "cores": [
+        "HUN"
+      ],
+      "culture": "transylvanian",
+      "religion": "catholic",
+      "notes": "Transylvania Hungarian crown"
+    },
+    {
+      "match_parent_region_id": "RO-BR",
+      "owner": "WAL",
+      "controller": "WAL",
+      "cores": [
+        "WAL"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Wallachia"
+    },
+    {
+      "match_parent_region_id": "RO-BT",
+      "owner": "MOL",
+      "controller": "MOL",
+      "cores": [
+        "MOL"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Moldavia"
+    },
+    {
+      "match_parent_region_id": "RO-BV",
+      "owner": "HUN",
+      "controller": "HUN",
+      "cores": [
+        "HUN"
+      ],
+      "culture": "transylvanian",
+      "religion": "catholic",
+      "notes": "Transylvania Hungarian crown"
+    },
+    {
+      "match_parent_region_id": "RO-BZ",
+      "owner": "WAL",
+      "controller": "WAL",
+      "cores": [
+        "WAL"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Wallachia"
+    },
+    {
+      "match_parent_region_id": "RO-CJ",
+      "owner": "HUN",
+      "controller": "HUN",
+      "cores": [
+        "HUN"
+      ],
+      "culture": "transylvanian",
+      "religion": "catholic",
+      "notes": "Transylvania Hungarian crown"
+    },
+    {
+      "match_parent_region_id": "RO-CL",
+      "owner": "WAL",
+      "controller": "WAL",
+      "cores": [
+        "WAL"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Wallachia"
+    },
+    {
+      "match_parent_region_id": "RO-CS",
+      "owner": "HUN",
+      "controller": "HUN",
+      "cores": [
+        "HUN"
+      ],
+      "culture": "hungarian",
+      "religion": "catholic",
+      "notes": "Banat Hungarian sphere"
+    },
+    {
+      "match_parent_region_id": "RO-CT",
+      "owner": "WAL",
+      "controller": "WAL",
+      "cores": [
+        "WAL"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Wallachia"
+    },
+    {
+      "match_parent_region_id": "RO-CV",
+      "owner": "HUN",
+      "controller": "HUN",
+      "cores": [
+        "HUN"
+      ],
+      "culture": "transylvanian",
+      "religion": "catholic",
+      "notes": "Transylvania Hungarian crown"
+    },
+    {
+      "match_parent_region_id": "RO-DB",
+      "owner": "WAL",
+      "controller": "WAL",
+      "cores": [
+        "WAL"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Wallachia"
+    },
+    {
+      "match_parent_region_id": "RO-DJ",
+      "owner": "WAL",
+      "controller": "WAL",
+      "cores": [
+        "WAL"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Wallachia"
+    },
+    {
+      "match_parent_region_id": "RO-GJ",
+      "owner": "WAL",
+      "controller": "WAL",
+      "cores": [
+        "WAL"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Wallachia"
+    },
+    {
+      "match_parent_region_id": "RO-GL",
+      "owner": "WAL",
+      "controller": "WAL",
+      "cores": [
+        "WAL"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Wallachia"
+    },
+    {
+      "match_parent_region_id": "RO-GR",
+      "owner": "WAL",
+      "controller": "WAL",
+      "cores": [
+        "WAL"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Wallachia"
+    },
+    {
+      "match_parent_region_id": "RO-HD",
+      "owner": "HUN",
+      "controller": "HUN",
+      "cores": [
+        "HUN"
+      ],
+      "culture": "transylvanian",
+      "religion": "catholic",
+      "notes": "Transylvania Hungarian crown"
+    },
+    {
+      "match_parent_region_id": "RO-HR",
+      "owner": "HUN",
+      "controller": "HUN",
+      "cores": [
+        "HUN"
+      ],
+      "culture": "transylvanian",
+      "religion": "catholic",
+      "notes": "Transylvania Hungarian crown"
+    },
+    {
+      "match_parent_region_id": "RO-IF",
+      "owner": "WAL",
+      "controller": "WAL",
+      "cores": [
+        "WAL"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Wallachia"
+    },
+    {
+      "match_parent_region_id": "RO-IL",
+      "owner": "WAL",
+      "controller": "WAL",
+      "cores": [
+        "WAL"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Wallachia"
+    },
+    {
+      "match_parent_region_id": "RO-IS",
+      "owner": "MOL",
+      "controller": "MOL",
+      "cores": [
+        "MOL"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Moldavia"
+    },
+    {
+      "match_parent_region_id": "RO-MH",
+      "owner": "WAL",
+      "controller": "WAL",
+      "cores": [
+        "WAL"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Wallachia"
+    },
+    {
+      "match_parent_region_id": "RO-MM",
+      "owner": "HUN",
+      "controller": "HUN",
+      "cores": [
+        "HUN"
+      ],
+      "culture": "transylvanian",
+      "religion": "catholic",
+      "notes": "Transylvania Hungarian crown"
+    },
+    {
+      "match_parent_region_id": "RO-MS",
+      "owner": "HUN",
+      "controller": "HUN",
+      "cores": [
+        "HUN"
+      ],
+      "culture": "transylvanian",
+      "religion": "catholic",
+      "notes": "Transylvania Hungarian crown"
+    },
+    {
+      "match_parent_region_id": "RO-NT",
+      "owner": "MOL",
+      "controller": "MOL",
+      "cores": [
+        "MOL"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Moldavia"
+    },
+    {
+      "match_parent_region_id": "RO-OT",
+      "owner": "WAL",
+      "controller": "WAL",
+      "cores": [
+        "WAL"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Wallachia"
+    },
+    {
+      "match_parent_region_id": "RO-PH",
+      "owner": "WAL",
+      "controller": "WAL",
+      "cores": [
+        "WAL"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Wallachia"
+    },
+    {
+      "match_parent_region_id": "RO-SB",
+      "owner": "HUN",
+      "controller": "HUN",
+      "cores": [
+        "HUN"
+      ],
+      "culture": "transylvanian",
+      "religion": "catholic",
+      "notes": "Transylvania Hungarian crown"
+    },
+    {
+      "match_parent_region_id": "RO-SJ",
+      "owner": "HUN",
+      "controller": "HUN",
+      "cores": [
+        "HUN"
+      ],
+      "culture": "transylvanian",
+      "religion": "catholic",
+      "notes": "Transylvania Hungarian crown"
+    },
+    {
+      "match_parent_region_id": "RO-SM",
+      "owner": "HUN",
+      "controller": "HUN",
+      "cores": [
+        "HUN"
+      ],
+      "culture": "transylvanian",
+      "religion": "catholic",
+      "notes": "Transylvania Hungarian crown"
+    },
+    {
+      "match_parent_region_id": "RO-SV",
+      "owner": "MOL",
+      "controller": "MOL",
+      "cores": [
+        "MOL"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Moldavia"
+    },
+    {
+      "match_parent_region_id": "RO-TL",
+      "owner": "WAL",
+      "controller": "WAL",
+      "cores": [
+        "WAL"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Wallachia"
+    },
+    {
+      "match_parent_region_id": "RO-TM",
+      "owner": "HUN",
+      "controller": "HUN",
+      "cores": [
+        "HUN"
+      ],
+      "culture": "hungarian",
+      "religion": "catholic",
+      "notes": "Banat Hungarian sphere"
+    },
+    {
+      "match_parent_region_id": "RO-TR",
+      "owner": "WAL",
+      "controller": "WAL",
+      "cores": [
+        "WAL"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Wallachia"
+    },
+    {
+      "match_parent_region_id": "RO-VL",
+      "owner": "WAL",
+      "controller": "WAL",
+      "cores": [
+        "WAL"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Wallachia"
+    },
+    {
+      "match_parent_region_id": "RO-VS",
+      "owner": "MOL",
+      "controller": "MOL",
+      "cores": [
+        "MOL"
+      ],
+      "culture": "romanian",
+      "religion": "orthodox",
+      "notes": "Moldavia"
+    },
+    {
+      "match_parent_region_id": "RU-ARK",
+      "owner": "NOV",
+      "controller": "NOV",
+      "cores": [
+        "NOV"
+      ],
+      "culture": "novgorodian",
+      "religion": "orthodox",
+      "notes": "Novgorod"
+    },
+    {
+      "match_parent_region_id": "RU-KGD",
+      "owner": "TEU",
+      "controller": "TEU",
+      "cores": [
+        "TEU"
+      ],
+      "culture": "prussian",
+      "religion": "catholic",
+      "notes": "Teutonic Prussia"
+    },
+    {
+      "match_parent_region_id": "RU-KO",
+      "owner": "NOV",
+      "controller": "NOV",
+      "cores": [
+        "NOV"
+      ],
+      "culture": "novgorodian",
+      "religion": "orthodox",
+      "notes": "Novgorod"
+    },
+    {
+      "match_parent_region_id": "RU-KR",
+      "owner": "NOV",
+      "controller": "NOV",
+      "cores": [
+        "NOV"
+      ],
+      "culture": "novgorodian",
+      "religion": "orthodox",
+      "notes": "Novgorod"
+    },
+    {
+      "match_parent_region_id": "RU-LEN",
+      "owner": "NOV",
+      "controller": "NOV",
+      "cores": [
+        "NOV"
+      ],
+      "culture": "novgorodian",
+      "religion": "orthodox",
+      "notes": "Novgorod"
+    },
+    {
+      "match_parent_region_id": "RU-MUR",
+      "owner": "NOV",
+      "controller": "NOV",
+      "cores": [
+        "NOV"
+      ],
+      "culture": "novgorodian",
+      "religion": "orthodox",
+      "notes": "Novgorod"
+    },
+    {
+      "match_parent_region_id": "RU-NEN",
+      "owner": "NOV",
+      "controller": "NOV",
+      "cores": [
+        "NOV"
+      ],
+      "culture": "novgorodian",
+      "religion": "orthodox",
+      "notes": "Novgorod"
+    },
+    {
+      "match_parent_region_id": "RU-NGR",
+      "owner": "NOV",
+      "controller": "NOV",
+      "cores": [
+        "NOV"
+      ],
+      "culture": "novgorodian",
+      "religion": "orthodox",
+      "notes": "Novgorod"
+    },
+    {
+      "match_parent_region_id": "RU-PSK",
+      "owner": "NOV",
+      "controller": "NOV",
+      "cores": [
+        "NOV"
+      ],
+      "culture": "novgorodian",
+      "religion": "orthodox",
+      "notes": "Novgorod"
+    },
+    {
+      "match_parent_region_id": "RU-SPE",
+      "owner": "NOV",
+      "controller": "NOV",
+      "cores": [
+        "NOV"
+      ],
+      "culture": "novgorodian",
+      "religion": "orthodox",
+      "notes": "Novgorod"
+    },
+    {
+      "match_parent_region_id": "RU-VLG",
+      "owner": "NOV",
+      "controller": "NOV",
+      "cores": [
+        "NOV"
+      ],
+      "culture": "novgorodian",
+      "religion": "orthodox",
+      "notes": "Novgorod"
+    },
+    {
+      "match_parent_region_id": "TR-34",
+      "owner": "BYZ",
+      "controller": "BYZ",
+      "cores": [
+        "BYZ"
+      ],
+      "claims": [
+        "TUR"
+      ],
+      "culture": "greek",
+      "religion": "orthodox",
+      "disputed": true,
+      "notes": "Constantinople Byzantine remnant"
+    },
+    {
+      "match_parent_region_id": "UA-23",
+      "owner": "CRI",
+      "controller": "CRI",
+      "cores": [
+        "CRI"
+      ],
+      "claims": [
+        "LIT",
+        "TUR"
+      ],
+      "culture": "crimean",
+      "religion": "sunni",
+      "notes": "Crimean sphere"
+    }
+  ],
+  "province_overrides": [],
+  "notes": "M13 official era program. Demo counterpart is demo-1444 (scaffold-baseline pedagogy only). Prefer this scenario for EU-leaning packs and atlas choropleths. Modern nation outlines are not 1444 borders (M15+ period geometry). Golden floors enforce major-tag presence, not every frontier.",
+  "source_lineage": [
+    "gpm:scenario:official-1444",
+    "natural_earth:admin0_countries (modern scaffold identity only)",
+    "natural_earth:admin1_states_provinces (region match keys only)"
+  ],
+  "license_lineage": [
+    "scenario authoring (project-internal curated politics)",
+    "Natural Earth public domain (geographic scaffold only)"
+  ]
+}

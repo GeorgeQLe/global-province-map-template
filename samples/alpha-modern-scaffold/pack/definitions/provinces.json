@@ -1,0 +1,128 @@
+{
+  "count": 6,
+  "generated_at": "2026-07-10T18:51:39+00:00",
+  "profile_id": "modern-small",
+  "provinces": [
+    {
+      "area_sq_km": 1200.0,
+      "coastal": true,
+      "display_name": "Flanders",
+      "estimated_population": 8000.0,
+      "island": false,
+      "kind": "land",
+      "license_lineage": [
+        "Natural Earth public domain"
+      ],
+      "parent_country_id": "BEL",
+      "parent_land_province_id": null,
+      "parent_region_id": "BE-VLG",
+      "province_id": "sample_be_flanders",
+      "sea_class": null,
+      "source_lineage": [
+        "natural_earth:admin1_states_provinces"
+      ],
+      "terrain_class": "plains"
+    },
+    {
+      "area_sq_km": 1200.0,
+      "coastal": false,
+      "display_name": "Rhineland",
+      "estimated_population": 8000.0,
+      "island": false,
+      "kind": "land",
+      "license_lineage": [
+        "Natural Earth public domain"
+      ],
+      "parent_country_id": "DEU",
+      "parent_land_province_id": null,
+      "parent_region_id": "DE-NW",
+      "province_id": "sample_de_rhineland",
+      "sea_class": null,
+      "source_lineage": [
+        "natural_earth:admin1_states_provinces"
+      ],
+      "terrain_class": "plains"
+    },
+    {
+      "area_sq_km": 1200.0,
+      "coastal": true,
+      "display_name": "Normandy coast",
+      "estimated_population": 8000.0,
+      "island": false,
+      "kind": "land",
+      "license_lineage": [
+        "Natural Earth public domain"
+      ],
+      "parent_country_id": "FRA",
+      "parent_land_province_id": null,
+      "parent_region_id": "FR-NOR",
+      "province_id": "sample_fr_normandy",
+      "sea_class": null,
+      "source_lineage": [
+        "natural_earth:admin1_states_provinces"
+      ],
+      "terrain_class": "plains"
+    },
+    {
+      "area_sq_km": 1200.0,
+      "coastal": false,
+      "display_name": "Paris basin",
+      "estimated_population": 8000.0,
+      "island": false,
+      "kind": "land",
+      "license_lineage": [
+        "Natural Earth public domain"
+      ],
+      "parent_country_id": "FRA",
+      "parent_land_province_id": null,
+      "parent_region_id": "FR-IDF",
+      "province_id": "sample_fr_paris",
+      "sea_class": null,
+      "source_lineage": [
+        "natural_earth:admin1_states_provinces"
+      ],
+      "terrain_class": "plains"
+    },
+    {
+      "area_sq_km": 1200.0,
+      "coastal": false,
+      "display_name": "Luxembourg core",
+      "estimated_population": 8000.0,
+      "island": false,
+      "kind": "land",
+      "license_lineage": [
+        "Natural Earth public domain"
+      ],
+      "parent_country_id": "LUX",
+      "parent_land_province_id": null,
+      "parent_region_id": "LU-LU",
+      "province_id": "sample_lu_core",
+      "sea_class": null,
+      "source_lineage": [
+        "natural_earth:admin1_states_provinces"
+      ],
+      "terrain_class": "plains"
+    },
+    {
+      "area_sq_km": 1200.0,
+      "coastal": true,
+      "display_name": "Holland",
+      "estimated_population": 8000.0,
+      "island": false,
+      "kind": "land",
+      "license_lineage": [
+        "Natural Earth public domain"
+      ],
+      "parent_country_id": "NLD",
+      "parent_land_province_id": null,
+      "parent_region_id": "NL-NH",
+      "province_id": "sample_nl_holland",
+      "sea_class": null,
+      "source_lineage": [
+        "natural_earth:admin1_states_provinces"
+      ],
+      "terrain_class": "plains"
+    }
+  ],
+  "schema_version": "0.1.0"
+}

@@ -1,0 +1,107 @@
+{
+  "counts": {
+    "attribution_records": 4,
+    "legend_entries": 13,
+    "provinces": 6,
+    "scenario_ownership_rows": 18,
+    "scenarios": 3,
+    "unique_tags": 9
+  },
+  "files": [
+    "README.md",
+    "atlas_manifest.json",
+    "attribution.json",
+    "geojson/provinces.geojson",
+    "scenarios/modern-baseline/countries.json",
+    "scenarios/modern-baseline/legend.json",
+    "scenarios/modern-baseline/owners.geojson",
+    "scenarios/modern-baseline/ownership.csv",
+    "scenarios/modern-baseline/ownership.json",
+    "scenarios/modern-baseline/ownership_choropleth.geojson",
+    "scenarios/modern-baseline/scenario_manifest.json",
+    "scenarios/modern-baseline/tags.csv",
+    "scenarios/modern-baseline/uncertainty.geojson",
+    "scenarios/official-1444/countries.json",
+    "scenarios/official-1444/legend.json",
+    "scenarios/official-1444/owners.geojson",
+    "scenarios/official-1444/ownership.csv",
+    "scenarios/official-1444/ownership.json",
+    "scenarios/official-1444/ownership_choropleth.geojson",
+    "scenarios/official-1444/scenario_manifest.json",
+    "scenarios/official-1444/tags.csv",
+    "scenarios/official-1444/uncertainty.geojson",
+    "scenarios/official-1836/countries.json",
+    "scenarios/official-1836/legend.json",
+    "scenarios/official-1836/owners.geojson",
+    "scenarios/official-1836/ownership.csv",
+    "scenarios/official-1836/ownership.json",
+    "scenarios/official-1836/ownership_choropleth.geojson",
+    "scenarios/official-1836/scenario_manifest.json",
+    "scenarios/official-1836/tags.csv",
+    "scenarios/official-1836/uncertainty.geojson",
+    "tables/provinces.csv"
+  ],
+  "formats": {
+    "geometry": [
+      "GeoJSON"
+    ],
+    "optional_future": [
+      "PMTiles",
+      "FlatGeobuf",
+      "GeoParquet",
+      "TopoJSON"
+    ],
+    "tables": [
+      "CSV",
+      "JSON"
+    ]
+  },
+  "generated_at": "2026-07-11T02:37:28+00:00",
+  "generator_version": "0.1.0",
+  "include_base_geometry": true,
+  "include_owner_dissolve": true,
+  "inputs": {
+    "provinces": "/Users/georgele/projects/games/global-province-map-template/samples/beta-license-audited/_inputs/provinces.geojson"
+  },
+  "milestone": "M10",
+  "notes": [
+    "Atlas packs join scenario politics onto modern scaffold geometry for web maps.",
+    "Colors are deterministic per tag (sha256 → HSL) and stable across rebuilds.",
+    "Uncertainty layer flags disputed, foreign-controlled, and UNK-owned provinces.",
+    "PMTiles / FlatGeobuf / GeoParquet are not generated in M10; consume GeoJSON or convert downstream."
+  ],
+  "pack_type": "atlas",
+  "profile_id": "modern-small",
+  "scenario_summaries": [
+    {
+      "era": "modern",
+      "legend_tags": 5,
+      "ownership_rows": 6,
+      "scenario_id": "modern-baseline",
+      "start_date": "2020-01-01",
+      "uncertainty_features": 0
+    },
+    {
+      "era": "1836",
+      "legend_tags": 5,
+      "ownership_rows": 6,
+      "scenario_id": "official-1836",
+      "start_date": "1836-01-01",
+      "uncertainty_features": 0
+    },
+    {
+      "era": "1444",
+      "legend_tags": 3,
+      "ownership_rows": 6,
+      "scenario_id": "official-1444",
+      "start_date": "1444-11-11",
+      "uncertainty_features": 0
+    }
+  ],
+  "scenarios": [
+    "modern-baseline",
+    "official-1836",
+    "official-1444"
+  ],
+  "schema_version": "0.1.0"
+}

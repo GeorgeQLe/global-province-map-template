@@ -1,0 +1,146 @@
+{
+  "count": 6,
+  "end_date": null,
+  "era": "1444",
+  "generated_at": "2026-07-11T02:37:28+00:00",
+  "generator_version": "0.1.0",
+  "milestone": "M10",
+  "profile_id": "modern-small",
+  "records": [
+    {
+      "assignment_source": "country_rule",
+      "claims": [],
+      "controller": "BUR",
+      "controller_color": "#3ac524",
+      "cores": [
+        "BUR"
+      ],
+      "culture": "flemish",
+      "display_name": "Flanders",
+      "disputed": false,
+      "end_date": null,
+      "notes": "Burgundian Low Countries",
+      "owner": "BUR",
+      "owner_color": "#3ac524",
+      "parent_country_id": "BEL",
+      "parent_region_id": "BE-VLG",
+      "province_id": "sample_be_flanders",
+      "religion": "catholic",
+      "scenario_id": "official-1444",
+      "start_date": "1444-11-11"
+    },
+    {
+      "assignment_source": "region_rule",
+      "claims": [],
+      "controller": "COL",
+      "controller_color": "#53c8c7",
+      "cores": [
+        "COL"
+      ],
+      "culture": "rhenish",
+      "display_name": "Rhineland",
+      "disputed": false,
+      "end_date": null,
+      "notes": "North Rhine-Westphalia → Cologne sphere (scaffold)",
+      "owner": "COL",
+      "owner_color": "#53c8c7",
+      "parent_country_id": "DEU",
+      "parent_region_id": "DE-NW",
+      "province_id": "sample_de_rhineland",
+      "religion": "catholic",
+      "scenario_id": "official-1444",
+      "start_date": "1444-11-11"
+    },
+    {
+      "assignment_source": "country_rule",
+      "claims": [],
+      "controller": "FRA",
+      "controller_color": "#2e5aa5",
+      "cores": [
+        "FRA"
+      ],
+      "culture": "french",
+      "display_name": "Normandy coast",
+      "disputed": false,
+      "end_date": null,
+      "notes": "France; region rules peel Burgundy/Brittany/Provence",
+      "owner": "FRA",
+      "owner_color": "#2e5aa5",
+      "parent_country_id": "FRA",
+      "parent_region_id": "FR-NOR",
+      "province_id": "sample_fr_normandy",
+      "religion": "catholic",
+      "scenario_id": "official-1444",
+      "start_date": "1444-11-11"
+    },
+    {
+      "assignment_source": "country_rule",
+      "claims": [],
+      "controller": "FRA",
+      "controller_color": "#2e5aa5",
+      "cores": [
+        "FRA"
+      ],
+      "culture": "french",
+      "display_name": "Paris basin",
+      "disputed": false,
+      "end_date": null,
+      "notes": "France; region rules peel Burgundy/Brittany/Provence",
+      "owner": "FRA",
+      "owner_color": "#2e5aa5",
+      "parent_country_id": "FRA",
+      "parent_region_id": "FR-IDF",
+      "province_id": "sample_fr_paris",
+      "religion": "catholic",
+      "scenario_id": "official-1444",
+      "start_date": "1444-11-11"
+    },
+    {
+      "assignment_source": "country_rule",
+      "claims": [],
+      "controller": "BUR",
+      "controller_color": "#3ac524",
+      "cores": [
+        "BUR"
+      ],
+      "culture": "luxembourgish",
+      "display_name": "Luxembourg core",
+      "disputed": false,
+      "end_date": null,
+      "notes": null,
+      "owner": "BUR",
+      "owner_color": "#3ac524",
+      "parent_country_id": "LUX",
+      "parent_region_id": "LU-LU",
+      "province_id": "sample_lu_core",
+      "religion": "catholic",
+      "scenario_id": "official-1444",
+      "start_date": "1444-11-11"
+    },
+    {
+      "assignment_source": "country_rule",
+      "claims": [],
+      "controller": "BUR",
+      "controller_color": "#3ac524",
+      "cores": [
+        "BUR"
+      ],
+      "culture": "dutch",
+      "display_name": "Holland",
+      "disputed": false,
+      "end_date": null,
+      "notes": "Burgundian Netherlands",
+      "owner": "BUR",
+      "owner_color": "#3ac524",
+      "parent_country_id": "NLD",
+      "parent_region_id": "NL-NH",
+      "province_id": "sample_nl_holland",
+      "religion": "catholic",
+      "scenario_id": "official-1444",
+      "start_date": "1444-11-11"
+    }
+  ],
+  "scenario_id": "official-1444",
+  "schema_version": "0.1.0",
+  "start_date": "1444-11-11"
+}
