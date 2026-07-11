@@ -1,5 +1,11 @@
 # History
 
+## 2026-07-10 - Demo label font fix + redeploy
+
+- Fixed MapLibre province labels in `landing/demo/demo.js`: demotiles hosts
+  `Noto Sans Regular`; `Open Sans Regular` 404'd and blocked GeoJSON tiling.
+- Shipped to main and redeployed landing to Vercel production.
+
 ## 2026-07-10 - M14.5 Interactive Demo + Hero Choropleth
 
 - Added `landing/demo/` MapLibre product demo with beta Western Europe sample

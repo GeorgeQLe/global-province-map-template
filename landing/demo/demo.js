@@ -277,7 +277,9 @@
         layout: {
           "text-field": ["coalesce", ["get", "display_name"], ["get", "province_id"]],
           "text-size": 11,
-          "text-font": ["Open Sans Regular"],
+          // demotiles hosts Noto Sans Regular; "Open Sans Regular" 404s and
+          // prevents the entire provinces GeoJSON source from tiling/rendering.
+          "text-font": ["Noto Sans Regular"],
           "text-max-width": 8,
         },
         paint: {
