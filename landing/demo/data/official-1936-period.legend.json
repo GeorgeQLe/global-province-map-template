@@ -1,26 +1,30 @@
 {
   "color_field": "owner_color",
-  "count": 5,
+  "count": 9,
   "disputed_outline_color": "#c0392b",
   "end_date": null,
   "era": "1936",
   "fallback_color": "#b0b0b0",
-  "generated_at": "2026-07-11T04:17:04+00:00",
+  "generated_at": "2026-07-11T06:15:00+00:00",
   "generator_version": "0.1.0",
   "label": "Official 1936 (HOI-leaning curated politics)",
-  "milestone": "M10",
+  "milestone": "M18",
   "paint_field": "owner",
-  "profile_id": "modern-small",
+  "profile_id": "hoi-like",
   "scenario_id": "official-1936",
   "schema_version": "0.1.0",
   "start_date": "1936-01-01",
   "styles": {
     "css_custom_properties": {
+      "--tag-AUS": "#49d142",
       "--tag-BEL": "#bd19a8",
+      "--tag-CZE": "#9e325d",
       "--tag-FRA": "#2e5aa5",
       "--tag-GER": "#38de44",
+      "--tag-HUN": "#a2c42b",
       "--tag-LUX": "#a7253a",
-      "--tag-NET": "#e01fa3"
+      "--tag-NET": "#e01fa3",
+      "--tag-POL": "#a93b8e"
     },
     "maplibre_fill_color": [
       "match",
@@ -30,14 +34,22 @@
       ],
       "FRA",
       "#2e5aa5",
+      "AUS",
+      "#49d142",
       "BEL",
       "#bd19a8",
+      "CZE",
+      "#9e325d",
       "GER",
       "#38de44",
+      "HUN",
+      "#a2c42b",
       "LUX",
       "#a7253a",
       "NET",
       "#e01fa3",
+      "POL",
+      "#a93b8e",
       "#b0b0b0"
     ],
     "maplibre_fill_color_property": [
@@ -59,6 +71,18 @@
       "tag": "FRA"
     },
     {
+      "color": "#49d142",
+      "controller_province_count": 1,
+      "display_name": "Austria",
+      "fill_color": "#49d142",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "AUS"
+    },
+    {
       "color": "#bd19a8",
       "controller_province_count": 1,
       "display_name": "Belgium",
@@ -71,6 +95,18 @@
       "tag": "BEL"
     },
     {
+      "color": "#9e325d",
+      "controller_province_count": 1,
+      "display_name": "Czechoslovakia",
+      "fill_color": "#9e325d",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "CZE"
+    },
+    {
       "color": "#38de44",
       "controller_province_count": 1,
       "display_name": "Germany",
@@ -81,6 +117,18 @@
         "controller"
       ],
       "tag": "GER"
+    },
+    {
+      "color": "#a2c42b",
+      "controller_province_count": 1,
+      "display_name": "Hungary",
+      "fill_color": "#a2c42b",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "HUN"
     },
     {
       "color": "#a7253a",
@@ -105,6 +153,18 @@
         "controller"
       ],
       "tag": "NET"
+    },
+    {
+      "color": "#a93b8e",
+      "controller_province_count": 1,
+      "display_name": "Poland",
+      "fill_color": "#a93b8e",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "POL"
     }
   ]
 }

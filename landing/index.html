@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Literata:opsz,wght@7..72,400;7..72,600&family=Syne:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles.css?v=m22" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -91,8 +91,8 @@
             <div class="panel-chrome">
               <h2 id="era-demo-title">Ownership eras on one scaffold</h2>
               <p class="panel-note">
-                Politics are overlays. M15 adds period geometry and boundary
-                hints for the Western Europe priority region (toggle in demo).
+                Politics are overlays. M16/M20 add period geometry and boundary
+                hints for Western and Central Europe (toggle in demo).
               </p>
             </div>
             <div class="era-switch" role="tablist" aria-label="Scenario era">
@@ -112,7 +112,7 @@
                   id="hero-map-svg"
                   viewBox="0 0 360 280"
                   role="img"
-                  aria-label="Western Europe ownership choropleth from the interactive demo sample"
+                  aria-label="Global ownership choropleth from the interactive demo build"
                 >
                   <defs>
                     <pattern
@@ -142,7 +142,7 @@
                 <span class="caption-meta" id="era-tier">quality: curated-politics</span>
               </figcaption>
               <p class="hero-map-foot">
-                Same beta sample as the
+                Same global M22 build as the
                 <a href="/demo">interactive demo</a>
                 · scaffold geometry · owner choropleth
               </p>
@@ -411,12 +411,12 @@ uv run gpm release beta --sample-we</code></pre>
           maps, not proprietary game data.
         </p>
         <p class="footer-meta">
-          Landing page milestone <strong>M14.5</strong> ·
+          Landing page milestone <strong>M14.5</strong> · demo through <strong>M22</strong> ·
           <a href="https://github.com/GeorgeQLe/global-province-map-template" rel="noopener noreferrer">source</a>
         </p>
       </div>
     </footer>
 
-    <script src="/app.js" defer></script>
+    <script src="/app.js?v=m22" defer></script>
   </body>
 </html>

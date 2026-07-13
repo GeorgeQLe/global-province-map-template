@@ -1,0 +1,12 @@
+era_province_id,scaffold_province_id,operation,display_name,part_index,part_count,in_priority_region,geometry_mode,reason
+era_at_vienna_1836,sample_at_vienna,replace,Vienna (1836),,,true,hard_overrides,Austrian Empire capital readability; modest footprint nudge on the CE sample.
+sample_at_vienna,sample_at_vienna,identity,Vienna basin,,,false,scaffold,
+era_be_flanders_1836,sample_be_flanders,replace,Flanders (1836),,,true,hard_overrides,Independent Belgium readability; modest footprint nudge on the WE sample.
+sample_cz_bohemia,sample_cz_bohemia,identity,Bohemia,,,true,hard_overrides,Bohemia retained as scaffold shape; crownland story via soft band + politics.
+sample_de_rhineland,sample_de_rhineland,identity,Rhineland,,,true,hard_overrides,Prussian Rhineland retained as scaffold shape; soft Rhine hint covers 1836 story.
+sample_fr_normandy,sample_fr_normandy,identity,Normandy coast,,,true,hard_overrides,Normandy retained as scaffold identity in v1.
+sample_fr_paris,sample_fr_paris,identity,Paris basin,,,true,hard_overrides,July Monarchy core retained.
+sample_hu_pannon,sample_hu_pannon,identity,Pannonia plain,,,true,hard_overrides,Hungarian plain retained; lands-under-Habsburg story via soft frontier.
+sample_lu_core,sample_lu_core,identity,Luxembourg core,,,true,hard_overrides,Luxembourg retained; personal-union / Confederation story via politics.
+sample_nl_holland,sample_nl_holland,identity,Holland,,,true,hard_overrides,Holland retained; Dutch–Belgian story told via politics + frontier band.
+sample_pl_mazovia,sample_pl_mazovia,identity,Mazovia,,,true,hard_overrides,Mazovia retained; Congress Poland / partition story via politics + Galicia band.

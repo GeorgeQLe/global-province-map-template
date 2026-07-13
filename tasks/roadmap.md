@@ -89,8 +89,19 @@ later era-aware geometry are first-class tracks.
 - M19 PMTiles / vector tiles: complete. Pure-Python MVT + PMTiles writer,
   `gpm export tiles`, atlas `--tiles`, demo vector source; docs
   `docs/m19-pmtiles.md`.
+- M20 broader period geometry: complete. Central Europe packs
+  `ce-1444-v1` / `ce-1836-v1` / `ce-1936-v1`; multi-pack composition via
+  `era_geometry_pack_ids` and `apply_era_geometry_packs`; multi-era pack
+  `europe-multi-era-v1`; scaffold `samples/scaffold-we-ce/`; samples + demo;
+  docs `docs/m20-broader-period-geometry.md`.
+- M21 four-level hierarchy: complete. Stable area, region, and superregion
+  entities; enriched province parents; hierarchy exports and demo overlays;
+  docs `docs/m21-hierarchy.md`.
+- M22 global PMTiles-first demo: complete. Four scenario archives over the
+  4,603-province global build, hero dissolves, hierarchy and adjacency overlays,
+  regenerated manifest, and cache-safe public entrypoints.
 
 ## Next
 
-- Post-M19 product work: broader period geometry beyond the WE priority
-  region (see root ROADMAP).
+- M23 game-like province density is design-only; see
+  `docs/m23-density-design-note.md`. Implementation has not started.

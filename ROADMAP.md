@@ -425,6 +425,15 @@ Completed foundation:
 - M17: Curation workflow hardening (external bundles, diffs, golden borders,
   contribution path). Complete (2026-07-11).
 - M18: Culture / religion atlas paint layers. Complete (2026-07-11).
+- M19: PMTiles / vector tiles. Complete (2026-07-11).
+- M20: Broader period geometry beyond Western Europe (Central Europe packs +
+  europe-multi-era-v1 multi-region composition). Complete (2026-07-11).
+- M21: Four-level hierarchy — province → area → region → superregion as real
+  entities with stable sha256 IDs (`gpm build hierarchy`). Complete
+  (2026-07-11).
+- M22: Global PMTiles-first demo over the full Natural Earth build
+  (`gpm demo build`: atlas exports, per-scenario PMTiles, hierarchy overlays,
+  adjacency lines, regenerated manifest + validation). Complete (2026-07-11).
 
 Near-term product path:
 
@@ -459,6 +468,27 @@ Near-term product path:
 - **M18: Culture / religion atlas paint layers** — identity colors, legends,
   optional dissolve on atlas packs; demo + review viewer paint modes.
   **Complete** (`culture_color` / `religion_color`, identity legends, demo).
+- **M19: PMTiles / vector tiles** — pure-Python MVT + PMTiles writer, atlas
+  `--tiles`, demo vector source.
+  **Complete** (`gpm export tiles`, tileset schema, demo PMTiles).
+- **M20: Broader period geometry** — second priority region (Central Europe) and
+  multi-region multi-era composition beyond Western Europe.
+  **Complete** (`ce-*-v1`, `europe-multi-era-v1`, `apply_era_geometry_packs`,
+  WE+CE scaffold + demo).
+- **M21: Four-level hierarchy** — areas (clustered admin-1 groups), regions,
+  and superregions as real entities with stable IDs; provinces enriched with
+  `parent_area_id` / `parent_geo_region_id` / `parent_superregion_id`; pack
+  export prefers hierarchy entities. **Complete** (`gpm build hierarchy`,
+  `docs/m21-hierarchy.md`).
+- **M22: Global PMTiles-first demo** — landing demo backed by the full global
+  build (4,603 provinces): per-scenario ownership PMTiles as the only polygon
+  source, `queryRenderedFeatures` inspector, nested hierarchy borders + paint
+  mode, precomputed adjacency lines, hero owner dissolves, one-command
+  regeneration. **Complete** (`gpm demo build`).
+- **M23: Game-like province density** — population-weighted M4 splitting with
+  pacing caps, historical-fragmentation priors, iconic-location forced seeds,
+  engineered wastelands/chokepoints; hierarchy re-run keeps area IDs stable.
+  **Design note ready** (`docs/m23-density-design-note.md`).
 
 ## Open Questions
 

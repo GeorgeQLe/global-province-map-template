@@ -28,6 +28,26 @@ SEA_SETTING_KEYS = (
     "min_sea_area_sq_km",
     "min_shared_border_km",
 )
+HIERARCHY_SETTING_KEYS = (
+    "area_target_size",
+    "area_min_size",
+    "area_max_size",
+    "mega_region_area_threshold",
+    "mega_region_min_area_sq_km",
+    "region_target_size",
+)
+# M21 hierarchy defaults; profiles override under [hierarchy].
+# Mega-country region splits require BOTH enough areas and a continental-scale
+# footprint, so municipality-dense micro-states (Malta, North Macedonia) stay
+# single regions while USA/RUS/CHN/IND split by the NE admin-1 region attribute.
+DEFAULT_HIERARCHY_SETTINGS: dict[str, int] = {
+    "area_target_size": 8,
+    "area_min_size": 3,
+    "area_max_size": 15,
+    "mega_region_area_threshold": 4,
+    "mega_region_min_area_sq_km": 2_000_000,
+    "region_target_size": 10,
+}
 EXPORT_SETTING_KEYS = (
     "layout",
     "region_type",
@@ -262,6 +282,27 @@ def sea_zone_settings(profile: dict[str, Any]) -> dict[str, float | str]:
         "min_sea_area_sq_km": settings["min_sea_area_sq_km"],
         "min_shared_border_km": settings["min_shared_border_km"],
     }
+
+
+def hierarchy_settings(profile: dict[str, Any]) -> dict[str, int]:
+    """Resolve M21 hierarchy parameters from the optional [hierarchy] table."""
+    overrides = profile.get("hierarchy")
+    settings = dict(DEFAULT_HIERARCHY_SETTINGS)
+    if overrides is not None:
+        if not isinstance(overrides, dict):
+            raise ConfigError("Profile [hierarchy] table must be a mapping when present.")
+        for key in HIERARCHY_SETTING_KEYS:
+            if key not in overrides:
+                continue
+            value = overrides[key]
+            if isinstance(value, bool) or not isinstance(value, int) or value < 1:
+                raise ConfigError(f"Profile hierarchy.{key} must be a positive integer.")
+            settings[key] = value
+    if not settings["area_min_size"] <= settings["area_target_size"] <= settings["area_max_size"]:
+        raise ConfigError(
+            "Profile hierarchy sizes must satisfy area_min_size <= area_target_size <= area_max_size."
+        )
+    return settings
 
 
 def export_settings(profile: dict[str, Any]) -> dict[str, Any]:

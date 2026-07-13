@@ -1,0 +1,143 @@
+{
+  "schema_version": "0.1.0",
+  "pack_id": "ce-1936-v1",
+  "era": "1936",
+  "start_date": "1936-01-01",
+  "scenario_id": "official-1936",
+  "display_name": "Central Europe 1936 period geometry v1",
+  "quality_tier": "period-geometry",
+  "priority_region": {
+    "id": "central-europe",
+    "label": "Central Europe",
+    "parent_country_ids": ["AUT", "CZE", "POL", "HUN"],
+    "bbox": [12.0, 45.5, 24.5, 55.0],
+    "notes": "M20 interwar CE geometry. Sudeten / Anschluss / Polish corridor framing for the HOI-leaning 1936 start."
+  },
+  "geometry_modes": ["boundary_hints", "hard_overrides"],
+  "period_true_scope": ["central-europe"],
+  "scaffold_backed_scope": ["outside priority_region", "seas", "rest of world"],
+  "source_notes": [
+    "Curator-authored soft frontier bands and sample hard overrides for M20 multi-region period geometry.",
+    "Not derived from proprietary game maps.",
+    "Hard overrides target sample_* CE province IDs; they skip cleanly on full Natural Earth builds."
+  ],
+  "do_not_claim": [
+    "period-correct province geometry worldwide",
+    "Paradox-grade interwar microborders or fortification blueprints",
+    "legal 1936 frontiers — hints are illustrative for the historical sniff test"
+  ],
+  "boundary_hints": [
+    {
+      "hint_id": "ce1936-sudetenland",
+      "label": "Sudetenland fringe band",
+      "kind": "disputed_band",
+      "confidence": "illustrative",
+      "related_tags": ["CZE", "GER"],
+      "notes": "Soft band for Sudeten German claims on Czechoslovakia at the 1936 start (pre-Munich).",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [12.8, 50.0],
+            [14.5, 50.8],
+            [16.5, 50.5],
+            [16.8, 49.5],
+            [14.0, 48.8],
+            [12.8, 49.5],
+            [12.8, 50.0]
+          ]
+        ]
+      }
+    },
+    {
+      "hint_id": "ce1936-anschluss-corridor",
+      "label": "Anschluss approach / Austrian independence",
+      "kind": "frontier",
+      "confidence": "illustrative",
+      "related_tags": ["AUS", "GER"],
+      "notes": "Soft band for independent Austria pre-Anschluss (1938).",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [13.0, 47.8],
+          [14.5, 48.0],
+          [15.5, 48.2],
+          [16.5, 48.3]
+        ]
+      }
+    },
+    {
+      "hint_id": "ce1936-polish-corridor",
+      "label": "Polish corridor / Danzig approach",
+      "kind": "frontier",
+      "confidence": "illustrative",
+      "related_tags": ["POL", "GER"],
+      "notes": "Illustrative northern approach toward the Polish corridor / Free City story (soft only; sample Mazovia is further south).",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [16.5, 53.5],
+          [17.5, 53.8],
+          [18.5, 54.2],
+          [19.5, 54.4]
+        ]
+      }
+    },
+    {
+      "hint_id": "ce1936-hungarian-revision",
+      "label": "Hungarian revisionist fringe",
+      "kind": "frontier",
+      "confidence": "illustrative",
+      "related_tags": ["HUN", "CZE", "ROM"],
+      "notes": "Soft band for interwar Hungarian revisionist claims on neighbors.",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [17.0, 48.0],
+          [18.5, 48.2],
+          [20.0, 47.8],
+          [21.5, 47.2]
+        ]
+      }
+    }
+  ],
+  "hard_overrides": [
+    {
+      "operation": "replace",
+      "scaffold_province_id": "sample_cz_bohemia",
+      "era_province_id": "era_cz_bohemia_1936",
+      "display_name": "Bohemia (1936)",
+      "reason": "Interwar Czechoslovakia core label + modest footprint for Sudeten-band readability on the CE sample.",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [14.05, 48.85],
+            [16.05, 48.85],
+            [16.05, 50.55],
+            [14.05, 50.55],
+            [14.05, 48.85]
+          ]
+        ]
+      }
+    },
+    {
+      "operation": "identity",
+      "scaffold_province_id": "sample_at_vienna",
+      "era_province_id": "sample_at_vienna",
+      "reason": "Vienna retained; Anschluss story via soft corridor + politics."
+    },
+    {
+      "operation": "identity",
+      "scaffold_province_id": "sample_pl_mazovia",
+      "era_province_id": "sample_pl_mazovia",
+      "reason": "Mazovia retained; corridor story via soft northern band."
+    },
+    {
+      "operation": "identity",
+      "scaffold_province_id": "sample_hu_pannon",
+      "era_province_id": "sample_hu_pannon",
+      "reason": "Hungarian plain retained; revisionist fringe via soft frontier."
+    }
+  ]
+}

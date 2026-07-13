@@ -1,0 +1,81 @@
+{
+  "composed_pack_ids": [
+    "we-1936-v1",
+    "ce-1936-v1"
+  ],
+  "do_not_claim": [
+    "period-correct province geometry worldwide",
+    "Paradox-grade completeness for any single region"
+  ],
+  "era": "1936",
+  "pack_id": "we-1936-v1+ce-1936-v1",
+  "period_true_scope": [
+    "western-europe",
+    "central-europe"
+  ],
+  "priority_region": {
+    "bbox": [
+      -5.5,
+      42.0,
+      12.0,
+      54.0
+    ],
+    "id": "western-europe",
+    "label": "Western Europe",
+    "notes": "M16 interwar era geometry pack. Maginot / Rhineland readability for the HOI-leaning 1936 start.",
+    "parent_country_ids": [
+      "FRA",
+      "BEL",
+      "NLD",
+      "LUX",
+      "DEU"
+    ]
+  },
+  "priority_regions": [
+    {
+      "bbox": [
+        -5.5,
+        42.0,
+        12.0,
+        54.0
+      ],
+      "id": "western-europe",
+      "label": "Western Europe",
+      "notes": "M16 interwar era geometry pack. Maginot / Rhineland readability for the HOI-leaning 1936 start.",
+      "parent_country_ids": [
+        "FRA",
+        "BEL",
+        "NLD",
+        "LUX",
+        "DEU"
+      ]
+    },
+    {
+      "bbox": [
+        12.0,
+        45.5,
+        24.5,
+        55.0
+      ],
+      "id": "central-europe",
+      "label": "Central Europe",
+      "notes": "M20 interwar CE geometry. Sudeten / Anschluss / Polish corridor framing for the HOI-leaning 1936 start.",
+      "parent_country_ids": [
+        "AUT",
+        "CZE",
+        "POL",
+        "HUN"
+      ]
+    }
+  ],
+  "quality_tier": "period-geometry",
+  "scaffold_backed_scope": [
+    "outside priority_regions",
+    "seas",
+    "rest of world"
+  ],
+  "schema_version": "0.1.0",
+  "source_notes": [
+    "Composed from packs: we-1936-v1, ce-1936-v1"
+  ]
+}

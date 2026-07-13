@@ -1,0 +1,75 @@
+{
+  "era": "1936",
+  "era_geometry_pack_id": "we-1936-v1+ce-1936-v1",
+  "era_geometry_pack_ids": [
+    "we-1936-v1",
+    "ce-1936-v1"
+  ],
+  "geometry_apply": {
+    "boundary_hint_count": 8,
+    "boundary_hints_output": "samples/multi-era-europe-v1/eras/1936/geometry/boundary_hints.geojson",
+    "era": "1936",
+    "files_written": [
+      "samples/multi-era-europe-v1/eras/1936/geometry/provinces.geojson",
+      "samples/multi-era-europe-v1/eras/1936/geometry/boundary_hints.geojson",
+      "samples/multi-era-europe-v1/eras/1936/geometry/lineage.json",
+      "samples/multi-era-europe-v1/eras/1936/geometry/lineage.csv",
+      "samples/multi-era-europe-v1/eras/1936/geometry/quality_scope.json",
+      "samples/multi-era-europe-v1/eras/1936/geometry/era_geometry_manifest.json"
+    ],
+    "geometry_modes": [
+      "boundary_hints",
+      "hard_overrides"
+    ],
+    "hard_override_applied": 10,
+    "hard_override_skipped": 0,
+    "lineage_csv_output": "samples/multi-era-europe-v1/eras/1936/geometry/lineage.csv",
+    "lineage_json_output": "samples/multi-era-europe-v1/eras/1936/geometry/lineage.json",
+    "lineage_row_count": 11,
+    "manifest_output": "samples/multi-era-europe-v1/eras/1936/geometry/era_geometry_manifest.json",
+    "output_dir": "samples/multi-era-europe-v1/eras/1936/geometry",
+    "pack_id": "we-1936-v1+ce-1936-v1",
+    "priority_region_count": 10,
+    "priority_region_id": "western-europe+central-europe",
+    "province_count_in": 10,
+    "province_count_out": 10,
+    "province_input": "samples/scaffold-we-ce/provinces.geojson",
+    "provinces_output": "samples/multi-era-europe-v1/eras/1936/geometry/provinces.geojson",
+    "quality_tier": "period-geometry",
+    "scenario_id": "official-1936"
+  },
+  "geometry_quality_tier": "period-geometry",
+  "notes": "HOI-leaning interwar start: WE (Maginot / Rhineland) + CE (Sudeten / Anschluss / Polish corridor soft geometry).",
+  "politics_quality_tier": "curated-politics",
+  "politics_resolve": {
+    "baseline_only_count": 0,
+    "countries_json": "/Users/georgele/projects/games/global-province-map-template/samples/multi-era-europe-v1/eras/1936/politics/countries.json",
+    "country_rule_hits": 10,
+    "end_date": null,
+    "era": "1936",
+    "files_written": [
+      "countries.json",
+      "ownership.csv",
+      "ownership.json",
+      "scenario_manifest.json"
+    ],
+    "land_province_count": 10,
+    "output_dir": "/Users/georgele/projects/games/global-province-map-template/samples/multi-era-europe-v1/eras/1936/politics",
+    "owner_tag_count": 9,
+    "ownership_csv": "/Users/georgele/projects/games/global-province-map-template/samples/multi-era-europe-v1/eras/1936/politics/ownership.csv",
+    "ownership_json": "/Users/georgele/projects/games/global-province-map-template/samples/multi-era-europe-v1/eras/1936/politics/ownership.json",
+    "ownership_row_count": 10,
+    "profile_id": "modern-small",
+    "province_input": "samples/multi-era-europe-v1/eras/1936/geometry/provinces.geojson",
+    "province_override_hits": 0,
+    "region_rule_hits": 9,
+    "scenario_id": "official-1936",
+    "scenario_manifest": "/Users/georgele/projects/games/global-province-map-template/samples/multi-era-europe-v1/eras/1936/politics/scenario_manifest.json",
+    "start_date": "1936-01-01",
+    "unknown_override_count": 0
+  },
+  "province_layer": "samples/multi-era-europe-v1/eras/1936/geometry/provinces.geojson",
+  "recommended_profile": "hoi-like",
+  "scenario_id": "official-1936",
+  "schema_version": "0.1.0"
+}

@@ -13,6 +13,12 @@ from gpm.release.beta import (
     BetaReleaseResult,
     build_beta_release,
 )
+from gpm.release.demo import (
+    DEMO_SCENARIOS,
+    DemoBuildError,
+    DemoBuildResult,
+    build_demo,
+)
 from gpm.release.license_audit import (
     LicenseAuditError,
     LicenseAuditResult,
@@ -61,6 +67,9 @@ __all__ = [
     "DEFAULT_BETA_SCENARIOS",
     "DEFAULT_BETA_SAMPLE_COUNTRIES",
     "DEFAULT_SAMPLE_COUNTRIES",
+    "DEMO_SCENARIOS",
+    "DemoBuildError",
+    "DemoBuildResult",
     "LANDING_DIR_NAME",
     "LicenseAuditError",
     "LicenseAuditResult",
@@ -80,6 +89,7 @@ __all__ = [
     "audit_public_release",
     "beta_license_audited_recipe",
     "build_alpha_release",
+    "build_demo",
     "build_attribution_pack",
     "build_beta_release",
     "default_landing_dir",

@@ -34,6 +34,17 @@ include_geometry = true
 definition_format = "json"
 localization_language = "english"
 
+# M21 hierarchy grouping (admin-1 units per area at baseline density).
+# Retune area_target_size toward per-game norms once density splitting lands
+# (eu-like ~4, hoi-like ~16).
+[hierarchy]
+area_target_size = 8
+area_min_size = 3
+area_max_size = 15
+mega_region_area_threshold = 4
+mega_region_min_area_sq_km = 2000000
+region_target_size = 10
+
 [qa]
 topology_required = true
 render_required = true

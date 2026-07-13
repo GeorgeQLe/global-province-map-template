@@ -6,9 +6,12 @@
   "entries": [],
   "era": "modern",
   "fallback_color": "#b0b0b0",
-  "label": "Modern baseline",
+  "generated_at": "2026-07-13T15:05:01+00:00",
+  "generator_version": "0.1.0",
+  "label": "Modern baseline ownership",
   "milestone": "M18",
   "paint_field": "religion",
+  "profile_id": "modern-small",
   "scenario_id": "modern-baseline",
   "schema_version": "0.1.0",
   "start_date": "2020-01-01",
@@ -28,5 +31,5 @@
     ]
   },
   "unassigned_color": "#8a8a8a",
-  "unassigned_province_count": 6
+  "unassigned_province_count": 4603
 }

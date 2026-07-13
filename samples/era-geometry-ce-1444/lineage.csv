@@ -1,0 +1,12 @@
+era_province_id,scaffold_province_id,operation,display_name,part_index,part_count,in_priority_region,geometry_mode,reason
+sample_at_vienna,sample_at_vienna,identity,Vienna basin,,,true,hard_overrides,Vienna basin retained as scaffold shape; Habsburg story via politics + corridor hint.
+sample_be_flanders,sample_be_flanders,identity,Flanders,,,false,scaffold,
+era_cz_bohemia_residual,sample_cz_bohemia,split_child,Bohemia residual,2,2,true,hard_overrides,Separate Prague core from residual Bohemia so 1444 politics are not painted as modern CZE-wide admin.
+era_cz_prague,sample_cz_bohemia,split_child,Prague,1,2,true,hard_overrides,Separate Prague core from residual Bohemia so 1444 politics are not painted as modern CZE-wide admin.
+sample_de_rhineland,sample_de_rhineland,identity,Rhineland,,,false,scaffold,
+sample_fr_normandy,sample_fr_normandy,identity,Normandy coast,,,false,scaffold,
+sample_fr_paris,sample_fr_paris,identity,Paris basin,,,false,scaffold,
+era_hu_pannon,sample_hu_pannon,replace,Pannonia (period),,,true,hard_overrides,Slight reshape toward a denser Hungarian plain footprint for 1444 readability.
+sample_lu_core,sample_lu_core,identity,Luxembourg core,,,false,scaffold,
+sample_nl_holland,sample_nl_holland,identity,Holland,,,false,scaffold,
+sample_pl_mazovia,sample_pl_mazovia,identity,Mazovia,,,true,hard_overrides,Mazovia retained; Jagiellon story via politics + western approach band.

@@ -1,0 +1,150 @@
+{
+  "composed_pack_ids": [
+    "we-1444-v1",
+    "ce-1444-v1"
+  ],
+  "counts": {
+    "boundary_hints": 10,
+    "composed_steps": 2,
+    "hard_overrides_applied": 10,
+    "hard_overrides_skipped": 0,
+    "lineage_rows": 14,
+    "priority_region_provinces": 10,
+    "provinces_in": 10,
+    "provinces_out": 12
+  },
+  "display_name": "Composed: we-1444-v1 + ce-1444-v1",
+  "era": "1444",
+  "files": [
+    "provinces.geojson",
+    "boundary_hints.geojson",
+    "lineage.json",
+    "lineage.csv",
+    "quality_scope.json",
+    "era_geometry_manifest.json"
+  ],
+  "generated_at": "2026-07-11T06:16:54+00:00",
+  "generator_version": "0.1.0",
+  "geometry_modes": [
+    "boundary_hints",
+    "hard_overrides"
+  ],
+  "inputs": {
+    "pack_ids": [
+      "we-1444-v1",
+      "ce-1444-v1"
+    ],
+    "province_input": "samples/scaffold-we-ce/provinces.geojson"
+  },
+  "manifest_type": "era-geometry-composed",
+  "milestone": "M20",
+  "pack_id": "we-1444-v1+ce-1444-v1",
+  "priority_regions": [
+    {
+      "bbox": [
+        -5.5,
+        42.0,
+        12.0,
+        54.0
+      ],
+      "id": "western-europe",
+      "label": "Western Europe",
+      "notes": "M15 priority region. Outside these modern ISO parents, scaffold geometry is retained.",
+      "parent_country_ids": [
+        "FRA",
+        "BEL",
+        "NLD",
+        "LUX",
+        "DEU"
+      ]
+    },
+    {
+      "bbox": [
+        12.0,
+        45.5,
+        24.5,
+        55.0
+      ],
+      "id": "central-europe",
+      "label": "Central Europe",
+      "notes": "M20 second priority region. Habsburg / Bohemian Crown / Poland-Lithuania / Hungarian frontier readability for 1444. Outside these modern ISO parents, scaffold geometry is retained.",
+      "parent_country_ids": [
+        "AUT",
+        "CZE",
+        "POL",
+        "HUN"
+      ]
+    }
+  ],
+  "quality_tier": "period-geometry",
+  "scenario_id": "official-1444",
+  "schema_version": "0.1.0",
+  "step_results": [
+    {
+      "boundary_hint_count": 5,
+      "boundary_hints_output": "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_izku6d0k/00_we-1444-v1/boundary_hints.geojson",
+      "era": "1444",
+      "files_written": [
+        "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_izku6d0k/00_we-1444-v1/provinces.geojson",
+        "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_izku6d0k/00_we-1444-v1/boundary_hints.geojson",
+        "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_izku6d0k/00_we-1444-v1/lineage.json",
+        "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_izku6d0k/00_we-1444-v1/lineage.csv",
+        "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_izku6d0k/00_we-1444-v1/quality_scope.json",
+        "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_izku6d0k/00_we-1444-v1/era_geometry_manifest.json"
+      ],
+      "geometry_modes": [
+        "boundary_hints",
+        "hard_overrides"
+      ],
+      "hard_override_applied": 6,
+      "hard_override_skipped": 0,
+      "lineage_csv_output": "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_izku6d0k/00_we-1444-v1/lineage.csv",
+      "lineage_json_output": "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_izku6d0k/00_we-1444-v1/lineage.json",
+      "lineage_row_count": 11,
+      "manifest_output": "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_izku6d0k/00_we-1444-v1/era_geometry_manifest.json",
+      "output_dir": "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_izku6d0k/00_we-1444-v1",
+      "pack_id": "we-1444-v1",
+      "priority_region_count": 6,
+      "priority_region_id": "western-europe",
+      "province_count_in": 10,
+      "province_count_out": 11,
+      "province_input": "samples/scaffold-we-ce/provinces.geojson",
+      "provinces_output": "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_izku6d0k/00_we-1444-v1/provinces.geojson",
+      "quality_tier": "period-geometry",
+      "scenario_id": "official-1444"
+    },
+    {
+      "boundary_hint_count": 5,
+      "boundary_hints_output": "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_izku6d0k/01_ce-1444-v1/boundary_hints.geojson",
+      "era": "1444",
+      "files_written": [
+        "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_izku6d0k/01_ce-1444-v1/provinces.geojson",
+        "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_izku6d0k/01_ce-1444-v1/boundary_hints.geojson",
+        "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_izku6d0k/01_ce-1444-v1/lineage.json",
+        "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_izku6d0k/01_ce-1444-v1/lineage.csv",
+        "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_izku6d0k/01_ce-1444-v1/quality_scope.json",
+        "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_izku6d0k/01_ce-1444-v1/era_geometry_manifest.json"
+      ],
+      "geometry_modes": [
+        "boundary_hints",
+        "hard_overrides"
+      ],
+      "hard_override_applied": 4,
+      "hard_override_skipped": 0,
+      "lineage_csv_output": "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_izku6d0k/01_ce-1444-v1/lineage.csv",
+      "lineage_json_output": "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_izku6d0k/01_ce-1444-v1/lineage.json",
+      "lineage_row_count": 12,
+      "manifest_output": "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_izku6d0k/01_ce-1444-v1/era_geometry_manifest.json",
+      "output_dir": "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_izku6d0k/01_ce-1444-v1",
+      "pack_id": "ce-1444-v1",
+      "priority_region_count": 4,
+      "priority_region_id": "central-europe",
+      "province_count_in": 11,
+      "province_count_out": 12,
+      "province_input": "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_izku6d0k/00_we-1444-v1/provinces.geojson",
+      "provinces_output": "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_izku6d0k/01_ce-1444-v1/provinces.geojson",
+      "quality_tier": "period-geometry",
+      "scenario_id": "official-1444"
+    }
+  ]
+}

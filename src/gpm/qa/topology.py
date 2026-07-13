@@ -8,7 +8,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
 
-from shapely import STRtree
+from shapely import STRtree, make_valid
 from shapely.errors import ShapelyError
 from shapely.geometry import shape
 from shapely.geometry.base import BaseGeometry
@@ -360,17 +360,30 @@ def _load_land_mask(
                 f"Natural Earth admin-0 mask geometry cannot be parsed: {exc}",
             )
             continue
-        geometries.append(geometry)
         if geometry.is_empty or not geometry.is_valid:
-            invalid_count += 1
             reason = "empty" if geometry.is_empty else explain_validity(geometry)
-            _add_finding(
-                findings,
-                "INVALID_MASK_GEOMETRY",
-                "error",
-                [affected_id],
-                f"Natural Earth admin-0 mask geometry is invalid: {reason}",
-            )
+            repaired = make_valid(geometry) if not geometry.is_empty else geometry
+            repaired_polygons = [part for part in polygon_parts(repaired) if not part.is_empty]
+            if repaired_polygons:
+                geometry = unary_union(repaired_polygons)
+                _add_finding(
+                    findings,
+                    "MASK_GEOMETRY_REPAIRED",
+                    "warning",
+                    [affected_id],
+                    f"Natural Earth admin-0 mask geometry was repaired with make_valid: {reason}",
+                )
+            else:
+                invalid_count += 1
+                _add_finding(
+                    findings,
+                    "INVALID_MASK_GEOMETRY",
+                    "error",
+                    [affected_id],
+                    f"Natural Earth admin-0 mask geometry is invalid: {reason}",
+                )
+                continue
+        geometries.append(geometry)
     if not geometries:
         raise TopologyQAError(f"Natural Earth admin-0 mask contains no polygon geometry: {mask_path}")
     if invalid_count:

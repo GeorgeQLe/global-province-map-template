@@ -3,8 +3,32 @@ import struct
 import zipfile
 from pathlib import Path
 
-from gpm.builders.provinces import build_land_province_draft
+from gpm.builders.provinces import _repaired_geometry, build_land_province_draft
 from gpm.cli import main
+from shapely.geometry import shape
+
+
+def test_repaired_geometry_fixes_invalid_polygons_and_flags_them():
+    bowtie = {
+        "type": "Polygon",
+        "coordinates": [[[0, 0], [2, 2], [0, 2], [2, 0], [0, 0]]],
+    }
+    repaired, was_repaired = _repaired_geometry(bowtie)
+    assert was_repaired is True
+    geom = shape(repaired)
+    assert geom.is_valid
+    assert geom.geom_type in {"Polygon", "MultiPolygon"}
+    assert geom.area > 0
+
+
+def test_repaired_geometry_leaves_valid_polygons_untouched():
+    square = {
+        "type": "Polygon",
+        "coordinates": [[[0, 0], [1, 0], [1, 1], [0, 1], [0, 0]]],
+    }
+    repaired, was_repaired = _repaired_geometry(square)
+    assert was_repaired is False
+    assert repaired is square
 
 
 def test_build_land_province_draft_creates_candidates_and_processed_provinces(tmp_path):

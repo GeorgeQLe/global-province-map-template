@@ -26,6 +26,16 @@ class ExportError(RuntimeError):
     """Raised when an export pack cannot be produced."""
 
 
+# Maps profile export.region_type onto the M21 hierarchy level it should emit
+# when a hierarchy.geojson build artifact is available.
+REGION_TYPE_TO_HIERARCHY_LEVEL = {
+    "state": "area",
+    "region": "region",
+    "strategic_region": "region",
+    "superregion": "superregion",
+}
+
+
 @dataclass(frozen=True)
 class ExportPackResult:
     profile_id: str
@@ -74,6 +84,7 @@ def export_game_pack(
     province_input: Path = PROCESSED_DATA_DIR / "provinces.geojson",
     sea_input: Path | None = None,
     adjacency_input: Path | None = None,
+    hierarchy_input: Path | None = None,
     output_dir: Path | None = None,
     geojson_only: bool = False,
     scenarios: tuple[str, ...] | list[str] = (),
@@ -117,11 +128,28 @@ def export_game_pack(
     language = str(settings["localization_language"])
     definition_format = str(settings["definition_format"])
 
-    region_features = _build_region_features(
-        land_features,
-        region_type=region_type,
-        include_geometry=include_geometry,
+    resolved_hierarchy = _resolve_optional_input(
+        hierarchy_input,
+        default=province_input.parent / "hierarchy.geojson",
+        enabled=True,
     )
+    region_features: list[dict[str, Any]] | None = None
+    region_id_scheme = "parent-region-id-v1"
+    if resolved_hierarchy is not None:
+        region_features = _regions_from_hierarchy(
+            resolved_hierarchy,
+            region_type=region_type,
+            include_geometry=include_geometry,
+        )
+        if region_features is not None:
+            region_id_scheme = "hierarchy-sha256-v1"
+    if region_features is None:
+        # Fallback: label-only dissolve over parent_region_id (sample scaffolds).
+        region_features = _build_region_features(
+            land_features,
+            region_type=region_type,
+            include_geometry=include_geometry,
+        )
 
     pack_root.mkdir(parents=True, exist_ok=True)
     files_written: list[str] = []
@@ -180,7 +208,7 @@ def export_game_pack(
                 "milestone": "M7",
                 "layer": "regions",
                 "region_type": region_type,
-                "id_scheme": "parent-region-id-v1",
+                "id_scheme": region_id_scheme,
             },
         ),
     )
@@ -447,6 +475,64 @@ def _load_adjacency_csv(path: Path) -> list[dict[str, str]]:
     except OSError as exc:
         raise ExportError(f"Unable to read adjacency CSV at {path}: {exc}") from exc
     return rows
+
+
+def _regions_from_hierarchy(
+    hierarchy_input: Path,
+    *,
+    region_type: str,
+    include_geometry: bool,
+) -> list[dict[str, Any]] | None:
+    """Emit region features from an M21 hierarchy build artifact.
+
+    Returns None when the file has no entities at the level mapped from
+    ``region_type`` so callers can fall back to the parent_region_id dissolve.
+    """
+    level = REGION_TYPE_TO_HIERARCHY_LEVEL.get(region_type, "region")
+    document = _load_feature_collection(hierarchy_input, "hierarchy")
+    regions: list[dict[str, Any]] = []
+    for feature in document["features"]:
+        if not isinstance(feature, dict):
+            continue
+        properties = feature.get("properties")
+        if not isinstance(properties, dict) or properties.get("region_type") != level:
+            continue
+        region_id = properties.get("region_id")
+        if not isinstance(region_id, str) or not region_id:
+            continue
+        province_ids = [
+            item for item in (properties.get("province_ids") or []) if isinstance(item, str)
+        ]
+        regions.append(
+            {
+                "type": "Feature",
+                "geometry": feature.get("geometry") if include_geometry else None,
+                "properties": {
+                    "region_id": region_id,
+                    "display_name": properties.get("display_name") or region_id,
+                    "region_type": region_type,
+                    "hierarchy_level": level,
+                    "parent_country_id": _nullable_str(properties.get("parent_country_id")),
+                    "parent_region_id": _nullable_str(properties.get("parent_region_id")),
+                    "parent_superregion_id": _nullable_str(properties.get("parent_superregion_id")),
+                    "province_ids": province_ids,
+                    "province_count": len(province_ids),
+                    "member_region_ids": [
+                        item
+                        for item in (properties.get("member_region_ids") or [])
+                        if isinstance(item, str)
+                    ],
+                    "area_sq_km": _safe_float(properties.get("area_sq_km")) or 0.0,
+                    "label_point": properties.get("label_point"),
+                    "source_lineage": _as_string_list(properties.get("source_lineage")),
+                    "license_lineage": _as_string_list(properties.get("license_lineage")),
+                },
+            }
+        )
+    if not regions:
+        return None
+    regions.sort(key=lambda feature: feature["properties"]["region_id"])
+    return regions
 
 
 def _build_region_features(

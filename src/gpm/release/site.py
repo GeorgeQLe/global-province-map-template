@@ -22,17 +22,22 @@ REQUIRED_LANDING_FILES: tuple[str, ...] = (
     "vercel.json",
 )
 
-# Interactive demo (static MapLibre page + beta sample data).
+# Interactive demo (static MapLibre page over the PMTiles-first global build).
 REQUIRED_DEMO_FILES: tuple[str, ...] = (
     "demo/index.html",
     "demo/demo.js",
     "demo/demo.css",
     "demo/data/demo-manifest.json",
-    "demo/data/adjacency.json",
-    "demo/data/official-1444.geojson",
-    "demo/data/official-1836.geojson",
-    "demo/data/official-1936.geojson",
-    "demo/data/modern-baseline.geojson",
+    # M22 global demo overlays (hierarchy + precomputed adjacency lines)
+    "demo/data/adjacency-lines.geojson",
+    "demo/data/hierarchy-areas.geojson",
+    "demo/data/hierarchy-regions.geojson",
+    "demo/data/hierarchy-superregions.geojson",
+    # M22 landing hero owner dissolves (replace the dropped global GeoJSON)
+    "demo/data/hero-official-1444.geojson",
+    "demo/data/hero-official-1836.geojson",
+    "demo/data/hero-official-1936.geojson",
+    "demo/data/hero-modern-baseline.geojson",
     "demo/data/official-1444.legend.json",
     "demo/data/official-1836.legend.json",
     "demo/data/official-1936.legend.json",
@@ -91,6 +96,8 @@ REQUIRED_HTML_SNIPPETS: tuple[str, ...] = (
     "geoBoundaries",
     "M14.5",
     "/demo",
+    "/styles.css?v=m22",
+    "/app.js?v=m22",
 )
 
 REQUIRED_DEMO_HTML_SNIPPETS: tuple[str, ...] = (
@@ -105,7 +112,8 @@ REQUIRED_DEMO_HTML_SNIPPETS: tuple[str, ...] = (
     "layer-boundary-hints",
     "layer-culture",
     "layer-religion",
-    "layer-pmtiles",
+    "layer-hierarchy",
+    "layer-adjacency",
     "pmtiles",
     "gpm export pack",
     "gpm export atlas",
@@ -114,8 +122,8 @@ REQUIRED_DEMO_HTML_SNIPPETS: tuple[str, ...] = (
     "Reserved for later",
     # Root-absolute assets: required under Vercel cleanUrls + trailingSlash:false
     # where the page is served as /demo (no trailing slash).
-    'href="/demo/demo.css"',
-    'src="/demo/demo.js"',
+    'href="/demo/demo.css?v=m22"',
+    'src="/demo/demo.js?v=m22"',
 )
 
 

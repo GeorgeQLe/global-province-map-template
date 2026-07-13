@@ -1,0 +1,48 @@
+{
+  "count": 9,
+  "countries": [
+    {
+      "display_name": "Austria",
+      "notes": "Independent (pre-Anschluss)",
+      "tag": "AUS"
+    },
+    {
+      "display_name": "Belgium",
+      "tag": "BEL"
+    },
+    {
+      "display_name": "Czechoslovakia",
+      "tag": "CZE"
+    },
+    {
+      "display_name": "France",
+      "notes": "Third Republic",
+      "tag": "FRA"
+    },
+    {
+      "display_name": "Germany",
+      "notes": "Nazi Germany; Rhineland remilitarization context",
+      "tag": "GER"
+    },
+    {
+      "display_name": "Hungary",
+      "tag": "HUN"
+    },
+    {
+      "display_name": "Luxembourg",
+      "tag": "LUX"
+    },
+    {
+      "display_name": "Netherlands",
+      "tag": "NET"
+    },
+    {
+      "display_name": "Poland",
+      "tag": "POL"
+    }
+  ],
+  "generated_at": "2026-07-11T06:16:54+00:00",
+  "milestone": "M8",
+  "scenario_id": "official-1936",
+  "schema_version": "0.1.0"
+}

@@ -1,0 +1,39 @@
+{
+  "count": 7,
+  "countries": [
+    {
+      "display_name": "Bohemia",
+      "tag": "BOH"
+    },
+    {
+      "display_name": "Burgundy",
+      "notes": "Valois Burgundy + Low Countries",
+      "tag": "BUR"
+    },
+    {
+      "display_name": "Cologne",
+      "tag": "COL"
+    },
+    {
+      "display_name": "France",
+      "tag": "FRA"
+    },
+    {
+      "display_name": "Austria",
+      "notes": "Habsburg Austria",
+      "tag": "HAB"
+    },
+    {
+      "display_name": "Hungary",
+      "tag": "HUN"
+    },
+    {
+      "display_name": "Poland",
+      "tag": "POL"
+    }
+  ],
+  "generated_at": "2026-07-11T06:16:54+00:00",
+  "milestone": "M8",
+  "scenario_id": "official-1444",
+  "schema_version": "0.1.0"
+}

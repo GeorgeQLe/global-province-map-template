@@ -1,0 +1,11 @@
+province_id,scenario_id,start_date,end_date,owner,controller,cores,claims,culture,religion,disputed,assignment_source,parent_country_id,parent_region_id,display_name,notes
+era_at_vienna_1836,official-1836,1836-01-01,,AUS,AUS,"[""AUS""]",[],austrian,catholic,false,country_rule,AUT,AT-9,Vienna (1836),
+era_be_flanders_1836,official-1836,1836-01-01,,BEL,BEL,"[""BEL""]",[],flemish,catholic,false,country_rule,BEL,BE-VLG,Flanders (1836),Independent Belgium
+sample_cz_bohemia,official-1836,1836-01-01,,AUS,AUS,"[""AUS""]",[],czech,catholic,false,country_rule,CZE,CZ-ST,Bohemia,
+sample_de_rhineland,official-1836,1836-01-01,,PRU,PRU,"[""PRU""]",[],german,protestant,false,region_rule,DEU,DE-NW,Rhineland,Rhenish / Westphalian Prussia
+sample_fr_normandy,official-1836,1836-01-01,,FRA,FRA,"[""FRA""]",[],french,catholic,false,country_rule,FRA,FR-NOR,Normandy coast,July Monarchy France
+sample_fr_paris,official-1836,1836-01-01,,FRA,FRA,"[""FRA""]",[],french,catholic,false,country_rule,FRA,FR-IDF,Paris basin,July Monarchy France
+sample_hu_pannon,official-1836,1836-01-01,,AUS,AUS,"[""AUS""]",[],hungarian,catholic,false,country_rule,HUN,HU-BU,Pannonia plain,Hungarian lands in Austrian Empire
+sample_lu_core,official-1836,1836-01-01,,LUX,LUX,"[""LUX""]",[],luxembourgish,catholic,false,country_rule,LUX,LU-LU,Luxembourg core,
+sample_nl_holland,official-1836,1836-01-01,,NET,NET,"[""NET""]",[],dutch,protestant,false,country_rule,NLD,NL-NH,Holland,
+sample_pl_mazovia,official-1836,1836-01-01,,RUS,RUS,"[""RUS""]",[],polish,catholic,false,region_rule,POL,PL-MZ,Mazovia,Congress Poland / Russian partition

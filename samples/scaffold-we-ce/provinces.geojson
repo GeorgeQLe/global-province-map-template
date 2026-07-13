@@ -30,40 +30,21 @@
       },
       "properties": {
         "area_sq_km": 1200.0,
-        "assignment_source": "region_rule",
-        "claims": [],
         "coastal": false,
-        "controller": "FRA",
-        "controller_color": "#2e5aa5",
-        "cores": [
-          "FRA"
-        ],
-        "culture": "french",
-        "culture_color": "#ba9822",
         "display_name": "Paris basin",
-        "disputed": false,
-        "end_date": null,
         "estimated_population": 8000.0,
         "island": false,
         "kind": "land",
         "license_lineage": [
           "Natural Earth public domain"
         ],
-        "notes": "Paris",
-        "owner": "FRA",
-        "owner_color": "#2e5aa5",
         "parent_country_id": "FRA",
         "parent_region_id": "FR-IDF",
         "province_id": "sample_fr_paris",
-        "religion": "catholic",
-        "religion_color": "#20c9dd",
-        "scenario_id": "official-1936",
         "source_lineage": [
           "natural_earth:admin1_states_provinces"
         ],
-        "start_date": "1936-01-01",
-        "terrain_class": "plains",
-        "uncertain": false
+        "terrain_class": "plains"
       },
       "type": "Feature"
     },
@@ -97,40 +78,21 @@
       },
       "properties": {
         "area_sq_km": 1200.0,
-        "assignment_source": "region_rule",
-        "claims": [],
         "coastal": true,
-        "controller": "FRA",
-        "controller_color": "#2e5aa5",
-        "cores": [
-          "FRA"
-        ],
-        "culture": "french",
-        "culture_color": "#ba9822",
         "display_name": "Normandy coast",
-        "disputed": false,
-        "end_date": null,
         "estimated_population": 8000.0,
         "island": false,
         "kind": "land",
         "license_lineage": [
           "Natural Earth public domain"
         ],
-        "notes": null,
-        "owner": "FRA",
-        "owner_color": "#2e5aa5",
         "parent_country_id": "FRA",
         "parent_region_id": "FR-NOR",
         "province_id": "sample_fr_normandy",
-        "religion": "catholic",
-        "religion_color": "#20c9dd",
-        "scenario_id": "official-1936",
         "source_lineage": [
           "natural_earth:admin1_states_provinces"
         ],
-        "start_date": "1936-01-01",
-        "terrain_class": "plains",
-        "uncertain": false
+        "terrain_class": "plains"
       },
       "type": "Feature"
     },
@@ -164,40 +126,21 @@
       },
       "properties": {
         "area_sq_km": 1200.0,
-        "assignment_source": "region_rule",
-        "claims": [],
         "coastal": true,
-        "controller": "BEL",
-        "controller_color": "#bd19a8",
-        "cores": [
-          "BEL"
-        ],
-        "culture": "flemish",
-        "culture_color": "#a5c72e",
         "display_name": "Flanders",
-        "disputed": false,
-        "end_date": null,
         "estimated_population": 8000.0,
         "island": false,
         "kind": "land",
         "license_lineage": [
           "Natural Earth public domain"
         ],
-        "notes": null,
-        "owner": "BEL",
-        "owner_color": "#bd19a8",
         "parent_country_id": "BEL",
         "parent_region_id": "BE-VLG",
         "province_id": "sample_be_flanders",
-        "religion": "catholic",
-        "religion_color": "#20c9dd",
-        "scenario_id": "official-1936",
         "source_lineage": [
           "natural_earth:admin1_states_provinces"
         ],
-        "start_date": "1936-01-01",
-        "terrain_class": "plains",
-        "uncertain": false
+        "terrain_class": "plains"
       },
       "type": "Feature"
     },
@@ -231,40 +174,21 @@
       },
       "properties": {
         "area_sq_km": 1200.0,
-        "assignment_source": "region_rule",
-        "claims": [],
         "coastal": true,
-        "controller": "NET",
-        "controller_color": "#e01fa3",
-        "cores": [
-          "NET"
-        ],
-        "culture": "dutch",
-        "culture_color": "#a626c6",
         "display_name": "Holland",
-        "disputed": false,
-        "end_date": null,
         "estimated_population": 8000.0,
         "island": false,
         "kind": "land",
         "license_lineage": [
           "Natural Earth public domain"
         ],
-        "notes": null,
-        "owner": "NET",
-        "owner_color": "#e01fa3",
         "parent_country_id": "NLD",
         "parent_region_id": "NL-NH",
         "province_id": "sample_nl_holland",
-        "religion": "protestant",
-        "religion_color": "#d7ca37",
-        "scenario_id": "official-1936",
         "source_lineage": [
           "natural_earth:admin1_states_provinces"
         ],
-        "start_date": "1936-01-01",
-        "terrain_class": "plains",
-        "uncertain": false
+        "terrain_class": "plains"
       },
       "type": "Feature"
     },
@@ -298,40 +222,21 @@
       },
       "properties": {
         "area_sq_km": 1200.0,
-        "assignment_source": "region_rule",
-        "claims": [],
         "coastal": false,
-        "controller": "GER",
-        "controller_color": "#38de44",
-        "cores": [
-          "GER"
-        ],
-        "culture": "german",
-        "culture_color": "#a7a02d",
         "display_name": "Rhineland",
-        "disputed": false,
-        "end_date": null,
         "estimated_population": 8000.0,
         "island": false,
         "kind": "land",
         "license_lineage": [
           "Natural Earth public domain"
         ],
-        "notes": "Rhineland — German owned; DMZ story via geometry hints",
-        "owner": "GER",
-        "owner_color": "#38de44",
         "parent_country_id": "DEU",
         "parent_region_id": "DE-NW",
         "province_id": "sample_de_rhineland",
-        "religion": "catholic",
-        "religion_color": "#20c9dd",
-        "scenario_id": "official-1936",
         "source_lineage": [
           "natural_earth:admin1_states_provinces"
         ],
-        "start_date": "1936-01-01",
-        "terrain_class": "plains",
-        "uncertain": false
+        "terrain_class": "plains"
       },
       "type": "Feature"
     },
@@ -365,63 +270,237 @@
       },
       "properties": {
         "area_sq_km": 1200.0,
-        "assignment_source": "region_rule",
-        "claims": [],
         "coastal": false,
-        "controller": "LUX",
-        "controller_color": "#a7253a",
-        "cores": [
-          "LUX"
-        ],
-        "culture": "luxembourgish",
-        "culture_color": "#a13471",
         "display_name": "Luxembourg core",
-        "disputed": false,
-        "end_date": null,
         "estimated_population": 8000.0,
         "island": false,
         "kind": "land",
         "license_lineage": [
           "Natural Earth public domain"
         ],
-        "notes": null,
-        "owner": "LUX",
-        "owner_color": "#a7253a",
         "parent_country_id": "LUX",
         "parent_region_id": "LU-LU",
         "province_id": "sample_lu_core",
-        "religion": "catholic",
-        "religion_color": "#20c9dd",
-        "scenario_id": "official-1936",
         "source_lineage": [
           "natural_earth:admin1_states_provinces"
         ],
-        "start_date": "1936-01-01",
-        "terrain_class": "plains",
-        "uncertain": false
+        "terrain_class": "plains"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              15.5,
+              48.0
+            ],
+            [
+              16.8,
+              48.0
+            ],
+            [
+              16.8,
+              48.8
+            ],
+            [
+              15.5,
+              48.8
+            ],
+            [
+              15.5,
+              48.0
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "area_sq_km": 1200.0,
+        "coastal": false,
+        "display_name": "Vienna basin",
+        "estimated_population": 8000.0,
+        "island": false,
+        "kind": "land",
+        "license_lineage": [
+          "Natural Earth public domain"
+        ],
+        "parent_country_id": "AUT",
+        "parent_region_id": "AT-9",
+        "province_id": "sample_at_vienna",
+        "source_lineage": [
+          "natural_earth:admin1_states_provinces"
+        ],
+        "terrain_class": "plains"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              14.0,
+              48.8
+            ],
+            [
+              16.0,
+              48.8
+            ],
+            [
+              16.0,
+              50.5
+            ],
+            [
+              14.0,
+              50.5
+            ],
+            [
+              14.0,
+              48.8
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "area_sq_km": 1200.0,
+        "coastal": false,
+        "display_name": "Bohemia",
+        "estimated_population": 8000.0,
+        "island": false,
+        "kind": "land",
+        "license_lineage": [
+          "Natural Earth public domain"
+        ],
+        "parent_country_id": "CZE",
+        "parent_region_id": "CZ-ST",
+        "province_id": "sample_cz_bohemia",
+        "source_lineage": [
+          "natural_earth:admin1_states_provinces"
+        ],
+        "terrain_class": "plains"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              20.0,
+              51.8
+            ],
+            [
+              21.5,
+              51.8
+            ],
+            [
+              21.5,
+              52.6
+            ],
+            [
+              20.0,
+              52.6
+            ],
+            [
+              20.0,
+              51.8
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "area_sq_km": 1200.0,
+        "coastal": false,
+        "display_name": "Mazovia",
+        "estimated_population": 8000.0,
+        "island": false,
+        "kind": "land",
+        "license_lineage": [
+          "Natural Earth public domain"
+        ],
+        "parent_country_id": "POL",
+        "parent_region_id": "PL-MZ",
+        "province_id": "sample_pl_mazovia",
+        "source_lineage": [
+          "natural_earth:admin1_states_provinces"
+        ],
+        "terrain_class": "plains"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              17.5,
+              47.0
+            ],
+            [
+              19.5,
+              47.0
+            ],
+            [
+              19.5,
+              47.8
+            ],
+            [
+              17.5,
+              47.8
+            ],
+            [
+              17.5,
+              47.0
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "area_sq_km": 1200.0,
+        "coastal": false,
+        "display_name": "Pannonia plain",
+        "estimated_population": 8000.0,
+        "island": false,
+        "kind": "land",
+        "license_lineage": [
+          "Natural Earth public domain"
+        ],
+        "parent_country_id": "HUN",
+        "parent_region_id": "HU-BU",
+        "province_id": "sample_hu_pannon",
+        "source_lineage": [
+          "natural_earth:admin1_states_provinces"
+        ],
+        "terrain_class": "plains"
       },
       "type": "Feature"
     }
   ],
   "gpm": {
-    "color_fields": {
-      "controller": "controller_color",
-      "culture": "culture_color",
-      "owner": "owner_color",
-      "religion": "religion_color"
-    },
-    "era": "1936",
-    "generated_at": "2026-07-11T04:17:04+00:00",
+    "feature_count": 10,
+    "generated_at": "2026-07-11T06:12:05+00:00",
     "generator_version": "0.1.0",
-    "paint_fields": [
-      "owner",
-      "controller",
-      "culture",
-      "religion"
+    "layer": "provinces",
+    "milestone": "M20",
+    "notes": "Western Europe beta sample provinces plus Central Europe M20 scaffold provinces.",
+    "sample_countries": [
+      "FRA",
+      "BEL",
+      "NLD",
+      "LUX",
+      "DEU",
+      "AUT",
+      "CZE",
+      "POL",
+      "HUN"
     ],
-    "sample": "beta-license-audited Western Europe",
-    "scenario_id": "official-1936"
+    "schema_version": "0.1.0"
   },
-  "name": "official-1936-demo",
+  "name": "provinces",
   "type": "FeatureCollection"
 }

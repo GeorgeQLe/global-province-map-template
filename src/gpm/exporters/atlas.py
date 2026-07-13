@@ -816,6 +816,13 @@ def tag_fill_color(tag: str) -> str:
     return f"#{int(r * 255):02x}{int(g * 255):02x}{int(b * 255):02x}"
 
 
+def _area_fill_color(area_id: Any) -> str:
+    """Deterministic fill for the hierarchy paint mode (hash color per area)."""
+    if not isinstance(area_id, str) or not area_id:
+        return UNKNOWN_FILL
+    return tag_fill_color(area_id)
+
+
 def identity_fill_color(value: str | None) -> str:
     """Deterministic fill for culture or religion; null/empty → UNKNOWN_FILL."""
     if value is None:
@@ -880,12 +887,16 @@ def _build_choropleth_features(
                 "kind",
                 "parent_region_id",
                 "parent_country_id",
+                "parent_area_id",
+                "parent_geo_region_id",
+                "parent_superregion_id",
                 "area_sq_km",
                 "estimated_population",
                 "terrain_class",
                 "coastal",
                 "island",
             )},
+            "area_color": _area_fill_color(props.get("parent_area_id")),
             "scenario_id": row["scenario_id"],
             "start_date": row["start_date"],
             "end_date": row["end_date"],

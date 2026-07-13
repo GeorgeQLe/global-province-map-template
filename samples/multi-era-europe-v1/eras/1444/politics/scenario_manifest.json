@@ -1,0 +1,47 @@
+{
+  "allow_unknown_overrides": false,
+  "counts": {
+    "baseline_only": 0,
+    "countries": 7,
+    "country_rule_hits": 12,
+    "land_provinces": 12,
+    "owner_tags": 7,
+    "ownership_rows": 12,
+    "province_override_hits": 0,
+    "region_rule_hits": 2,
+    "unknown_overrides": 0
+  },
+  "description": "Second official curated-politics scenario for the 1444-11-11 start date. Europe-first elevated depth (HRE, Italian states, Iberia, France/Burgundy, British Isles, Poland-Lithuania, Balkans, Muscovy/Novgorod) with global major tags (Ming, Ottomans, Mamluks, India majors). Geometry remains the modern Natural Earth scaffold; ownership is a curated overlay (quality tier curated-politics). Not Paradox-grade completeness: residual modern ISO baselines and NAH/UNK tags remain outside priority theaters.",
+  "end_date": null,
+  "era": "1444",
+  "files": [
+    "countries.json",
+    "ownership.csv",
+    "ownership.json",
+    "scenario_manifest.json"
+  ],
+  "generated_at": "2026-07-11T06:16:54+00:00",
+  "generator_version": "0.1.0",
+  "label": "Official 1444 (EU-leaning curated politics)",
+  "license_lineage": [
+    "scenario authoring (project-internal curated politics)",
+    "Natural Earth public domain (geographic scaffold only)"
+  ],
+  "milestone": "M8",
+  "notes": [
+    "Historical ownership is a curated overlay; province geometry is unchanged.",
+    "Assignment precedence: baseline ← country_rules ← region_rules ← province_overrides.",
+    "Sea provinces are excluded from ownership tables."
+  ],
+  "profile_id": "modern-small",
+  "province_input": "samples/multi-era-europe-v1/eras/1444/geometry/provinces.geojson",
+  "scenario_definition": "/Users/georgele/projects/games/global-province-map-template/configs/scenarios/official-1444.json",
+  "scenario_id": "official-1444",
+  "schema_version": "0.1.0",
+  "source_lineage": [
+    "gpm:scenario:official-1444",
+    "natural_earth:admin0_countries (modern scaffold identity only)",
+    "natural_earth:admin1_states_provinces (region match keys only)"
+  ],
+  "start_date": "1444-11-11"
+}

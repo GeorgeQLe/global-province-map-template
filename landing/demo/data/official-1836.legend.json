@@ -1,14 +1,14 @@
 {
   "color_field": "owner_color",
-  "count": 5,
+  "count": 189,
   "disputed_outline_color": "#c0392b",
   "end_date": null,
   "era": "1836",
   "fallback_color": "#b0b0b0",
-  "generated_at": "2026-07-11T02:37:28+00:00",
+  "generated_at": "2026-07-13T15:05:01+00:00",
   "generator_version": "0.1.0",
   "label": "Official 1836 (Victoria-leaning curated politics)",
-  "milestone": "M10",
+  "milestone": "M18",
   "paint_field": "owner",
   "profile_id": "modern-small",
   "scenario_id": "official-1836",
@@ -16,11 +16,195 @@
   "start_date": "1836-01-01",
   "styles": {
     "css_custom_properties": {
+      "--tag-ABW": "#997435",
+      "--tag-AFG": "#35aecc",
+      "--tag-AIA": "#50d726",
+      "--tag-ALD": "#da3362",
+      "--tag-ARG": "#c7a439",
+      "--tag-ASM": "#4174c8",
+      "--tag-ATA": "#ae1d2e",
+      "--tag-ATC": "#3cbc67",
+      "--tag-ATF": "#398bd1",
+      "--tag-ATG": "#3bb273",
+      "--tag-AUS": "#49d142",
+      "--tag-BAV": "#d3a827",
+      "--tag-BDI": "#dd2cdb",
       "--tag-BEL": "#bd19a8",
+      "--tag-BEN": "#9e338b",
+      "--tag-BFA": "#4bc0cb",
+      "--tag-BHS": "#84bc22",
+      "--tag-BHU": "#37d8da",
+      "--tag-BJN": "#2dcbcd",
+      "--tag-BLM": "#cfa541",
+      "--tag-BLZ": "#ae268f",
+      "--tag-BMU": "#3686c3",
+      "--tag-BOL": "#b5bd37",
+      "--tag-BRB": "#a022c4",
+      "--tag-BRE": "#2ca1a9",
+      "--tag-BRI": "#b9a83a",
+      "--tag-BRN": "#39aecf",
+      "--tag-BRT": "#344bc3",
+      "--tag-BRZ": "#1d54c3",
+      "--tag-BUR": "#3ac524",
+      "--tag-CAF": "#a3d439",
+      "--tag-CAM": "#2d5fbd",
+      "--tag-CAMK": "#cd248c",
+      "--tag-CHL": "#22ac94",
+      "--tag-CIV": "#6eac25",
+      "--tag-CLP": "#c74b25",
+      "--tag-CMR": "#2ebc1f",
+      "--tag-CNM": "#1f1fb1",
+      "--tag-COD": "#9b2bc0",
+      "--tag-COG": "#39c99e",
+      "--tag-COK": "#c28d33",
+      "--tag-COL": "#53c8c7",
+      "--tag-COM": "#a33139",
+      "--tag-CPV": "#39d35d",
+      "--tag-CSI": "#4da9cf",
+      "--tag-CUW": "#6fc826",
+      "--tag-CYM": "#ad1f3d",
+      "--tag-CYN": "#35da4d",
+      "--tag-DAI": "#6f26de",
+      "--tag-DEN": "#abbb20",
+      "--tag-DJI": "#892ba1",
+      "--tag-DMA": "#c14b3b",
+      "--tag-ECU": "#1db19a",
+      "--tag-EGY": "#3350a3",
+      "--tag-ESB": "#b87e40",
+      "--tag-ETH": "#c82952",
+      "--tag-FIN": "#40dac6",
+      "--tag-FLK": "#3ab280",
       "--tag-FRA": "#2e5aa5",
+      "--tag-FRO": "#38a82f",
+      "--tag-FSM": "#a229a1",
+      "--tag-GAB": "#9d357f",
+      "--tag-GBR": "#ca3c38",
+      "--tag-GGY": "#26ad30",
+      "--tag-GIN": "#4c47bf",
+      "--tag-GMB": "#723fb7",
+      "--tag-GNB": "#74ae2f",
+      "--tag-GNQ": "#2545d2",
+      "--tag-GRD": "#9020de",
+      "--tag-GRE": "#23ba3f",
+      "--tag-GUM": "#c0305c",
+      "--tag-HAI": "#27b2d0",
+      "--tag-HAM": "#3dc526",
+      "--tag-HAN": "#d98e36",
+      "--tag-HAW": "#34b4aa",
+      "--tag-HES": "#bf4d2e",
+      "--tag-HMD": "#a5b726",
+      "--tag-IMN": "#a9cb50",
+      "--tag-IOA": "#33c07c",
+      "--tag-IOT": "#d0934a",
+      "--tag-JAP": "#4ea0ca",
+      "--tag-JEY": "#9e3ebe",
+      "--tag-KAB": "#c92f82",
+      "--tag-KAS": "#ce6632",
+      "--tag-KAZ": "#3654a0",
+      "--tag-KEN": "#39b95a",
+      "--tag-KGZ": "#1d6dd0",
+      "--tag-KIR": "#2baa40",
+      "--tag-KNA": "#cc31da",
+      "--tag-KOR": "#89db30",
+      "--tag-KOS": "#ce3082",
+      "--tag-LBR": "#d5763c",
+      "--tag-LCA": "#a82e95",
+      "--tag-LIE": "#4e4ecb",
+      "--tag-LSO": "#b538b6",
+      "--tag-LUC": "#c51f61",
       "--tag-LUX": "#a7253a",
+      "--tag-MAF": "#af2664",
+      "--tag-MDV": "#b138d9",
+      "--tag-MEC": "#b85a34",
+      "--tag-MER": "#2ea3a5",
+      "--tag-MEX": "#9422be",
+      "--tag-MHL": "#a26432",
+      "--tag-MLI": "#30a38f",
+      "--tag-MNP": "#b7304c",
+      "--tag-MOD": "#2841da",
+      "--tag-MOR": "#61d932",
+      "--tag-MRT": "#b3d721",
+      "--tag-MSR": "#bd632c",
+      "--tag-MUS": "#cb284a",
+      "--tag-MWI": "#a139a5",
+      "--tag-NAJ": "#a17f37",
+      "--tag-NEP": "#3725b8",
+      "--tag-NER": "#1a9bb6",
       "--tag-NET": "#e01fa3",
-      "--tag-PRU": "#4f2ec9"
+      "--tag-NFK": "#cb2064",
+      "--tag-NIU": "#c51f52",
+      "--tag-NRU": "#3fa5da",
+      "--tag-OMA": "#c73278",
+      "--tag-PAN": "#b0387f",
+      "--tag-PAP": "#1c8cbb",
+      "--tag-PAR": "#2ca237",
+      "--tag-PCN": "#ab6921",
+      "--tag-PER": "#2bb860",
+      "--tag-PEU": "#d844a2",
+      "--tag-PGA": "#54a530",
+      "--tag-PLW": "#3da3b2",
+      "--tag-POR": "#a76036",
+      "--tag-PRU": "#4f2ec9",
+      "--tag-PRY": "#c8dc20",
+      "--tag-PSX": "#b34c3e",
+      "--tag-PYF": "#3e25d9",
+      "--tag-QNG": "#bb2263",
+      "--tag-RUS": "#c4d03f",
+      "--tag-RWA": "#da3149",
+      "--tag-SAH": "#37a634",
+      "--tag-SAR": "#6c369f",
+      "--tag-SAX": "#d6477d",
+      "--tag-SCR": "#3b56ba",
+      "--tag-SDN": "#2f6dc2",
+      "--tag-SDS": "#32d72e",
+      "--tag-SER": "#b3aa1e",
+      "--tag-SGS": "#dd4631",
+      "--tag-SHN": "#b22796",
+      "--tag-SIA": "#44cc67",
+      "--tag-SIC": "#a0b81f",
+      "--tag-SLB": "#3bda4a",
+      "--tag-SLE": "#40a4ba",
+      "--tag-SOL": "#b5b138",
+      "--tag-SOM": "#8d4bcb",
+      "--tag-SPA": "#3d9fc0",
+      "--tag-SPI": "#1fb245",
+      "--tag-SPM": "#3fb5bc",
+      "--tag-STP": "#48af34",
+      "--tag-SWE": "#cb4199",
+      "--tag-SWI": "#b32998",
+      "--tag-SWZ": "#51aa26",
+      "--tag-SXM": "#21c65f",
+      "--tag-SYC": "#2b75ae",
+      "--tag-TCA": "#53bd1f",
+      "--tag-TCD": "#90cf3d",
+      "--tag-TEX": "#32b9ba",
+      "--tag-TGO": "#61b51e",
+      "--tag-TJK": "#c15335",
+      "--tag-TKM": "#b02536",
+      "--tag-TLS": "#c426d3",
+      "--tag-TON": "#a4772f",
+      "--tag-TTO": "#c542cd",
+      "--tag-TUR": "#2f9d7f",
+      "--tag-TUS": "#5129d3",
+      "--tag-TUV": "#762eae",
+      "--tag-TZA": "#19b0b5",
+      "--tag-UGA": "#33339d",
+      "--tag-UMI": "#c77d2d",
+      "--tag-UNK": "#8a8a8a",
+      "--tag-URY": "#53c771",
+      "--tag-USA": "#3a3aca",
+      "--tag-USG": "#ccb328",
+      "--tag-UZB": "#a43ac3",
+      "--tag-VCT": "#34c9a1",
+      "--tag-VEN": "#93bf1c",
+      "--tag-VGB": "#6fa62d",
+      "--tag-VIR": "#cc291d",
+      "--tag-VUT": "#26de2a",
+      "--tag-WLF": "#92a528",
+      "--tag-WSB": "#cdaf23",
+      "--tag-WSM": "#c7c045",
+      "--tag-WUR": "#34afa5",
+      "--tag-ZMB": "#bc2263"
     },
     "maplibre_fill_color": [
       "match",
@@ -28,16 +212,382 @@
         "get",
         "owner"
       ],
+      "GBR",
+      "#ca3c38",
+      "TUR",
+      "#2f9d7f",
+      "RUS",
+      "#c4d03f",
+      "AUS",
+      "#49d142",
+      "SPA",
+      "#3d9fc0",
       "FRA",
       "#2e5aa5",
-      "BEL",
-      "#bd19a8",
-      "LUX",
-      "#a7253a",
+      "UGA",
+      "#33339d",
+      "SIA",
+      "#44cc67",
+      "QNG",
+      "#bb2263",
+      "CAM",
+      "#2d5fbd",
+      "DAI",
+      "#6f26de",
       "NET",
       "#e01fa3",
+      "POR",
+      "#a76036",
+      "JAP",
+      "#4ea0ca",
+      "BFA",
+      "#4bc0cb",
+      "HAI",
+      "#27b2d0",
+      "SWE",
+      "#cb4199",
+      "MEX",
+      "#9422be",
+      "UNK",
+      "#8a8a8a",
+      "USA",
+      "#3a3aca",
+      "AFG",
+      "#35aecc",
+      "COL",
+      "#53c8c7",
+      "GIN",
+      "#4c47bf",
+      "SIC",
+      "#a0b81f",
+      "PER",
+      "#2bb860",
+      "BHS",
+      "#84bc22",
+      "KOS",
+      "#ce3082",
+      "TZA",
+      "#19b0b5",
+      "KOR",
+      "#89db30",
+      "MWI",
+      "#a139a5",
+      "BRZ",
+      "#1d54c3",
+      "EGY",
+      "#3350a3",
+      "OMA",
+      "#c73278",
+      "PAP",
+      "#1c8cbb",
+      "PEU",
+      "#d844a2",
+      "SWI",
+      "#b32998",
+      "SYC",
+      "#2b75ae",
+      "VEN",
+      "#93bf1c",
+      "ARG",
+      "#c7a439",
+      "CAMK",
+      "#cd248c",
+      "ECU",
+      "#1db19a",
+      "CPV",
+      "#39d35d",
+      "MER",
+      "#2ea3a5",
+      "TCD",
+      "#90cf3d",
+      "DEN",
+      "#abbb20",
+      "MDV",
+      "#b138d9",
+      "SAR",
+      "#6c369f",
+      "BHU",
+      "#37d8da",
+      "CIV",
+      "#6eac25",
+      "URY",
+      "#53c771",
+      "PRY",
+      "#c8dc20",
+      "BDI",
+      "#dd2cdb",
+      "CAF",
+      "#a3d439",
+      "ETH",
+      "#c82952",
+      "SDN",
+      "#2f6dc2",
+      "CHL",
+      "#22ac94",
+      "KAZ",
+      "#3654a0",
+      "MOR",
+      "#61d932",
+      "MUS",
+      "#cb284a",
+      "PLW",
+      "#3da3b2",
+      "TTO",
+      "#c542cd",
+      "AIA",
+      "#50d726",
+      "LBR",
+      "#d5763c",
+      "BUR",
+      "#3ac524",
+      "GRE",
+      "#23ba3f",
+      "KNA",
+      "#cc31da",
+      "NEP",
+      "#3725b8",
+      "NRU",
+      "#3fa5da",
       "PRU",
       "#4f2ec9",
+      "UZB",
+      "#a43ac3",
+      "MRT",
+      "#b3d721",
+      "NAJ",
+      "#a17f37",
+      "SOM",
+      "#8d4bcb",
+      "TLS",
+      "#c426d3",
+      "BEN",
+      "#9e338b",
+      "COG",
+      "#39c99e",
+      "PAN",
+      "#b0387f",
+      "ALD",
+      "#da3362",
+      "BEL",
+      "#bd19a8",
+      "BMU",
+      "#3686c3",
+      "BRB",
+      "#a022c4",
+      "COD",
+      "#9b2bc0",
+      "COK",
+      "#c28d33",
+      "LCA",
+      "#a82e95",
+      "LIE",
+      "#4e4ecb",
+      "WSM",
+      "#c7c045",
+      "CMR",
+      "#2ebc1f",
+      "DMA",
+      "#c14b3b",
+      "LSO",
+      "#b538b6",
+      "SDS",
+      "#32d72e",
+      "SLB",
+      "#3bda4a",
+      "ZMB",
+      "#bc2263",
+      "BOL",
+      "#b5bd37",
+      "GAB",
+      "#9d357f",
+      "GNB",
+      "#74ae2f",
+      "MLI",
+      "#30a38f",
+      "TUS",
+      "#5129d3",
+      "ATG",
+      "#3bb273",
+      "KEN",
+      "#39b95a",
+      "KGZ",
+      "#1d6dd0",
+      "NER",
+      "#1a9bb6",
+      "UMI",
+      "#c77d2d",
+      "GNQ",
+      "#2545d2",
+      "GRD",
+      "#9020de",
+      "BLZ",
+      "#ae268f",
+      "DJI",
+      "#892ba1",
+      "GMB",
+      "#723fb7",
+      "TCA",
+      "#53bd1f",
+      "VCT",
+      "#34c9a1",
+      "VUT",
+      "#26de2a",
+      "ASM",
+      "#4174c8",
+      "PYF",
+      "#3e25d9",
+      "RWA",
+      "#da3149",
+      "TGO",
+      "#61b51e",
+      "TJK",
+      "#c15335",
+      "TKM",
+      "#b02536",
+      "TON",
+      "#a4772f",
+      "ATF",
+      "#398bd1",
+      "BRN",
+      "#39aecf",
+      "FSM",
+      "#a229a1",
+      "MNP",
+      "#b7304c",
+      "SLE",
+      "#40a4ba",
+      "SWZ",
+      "#51aa26",
+      "COM",
+      "#a33139",
+      "LUX",
+      "#a7253a",
+      "MSR",
+      "#bd632c",
+      "SHN",
+      "#b22796",
+      "VIR",
+      "#cc291d",
+      "WLF",
+      "#92a528",
+      "ATA",
+      "#ae1d2e",
+      "IOA",
+      "#33c07c",
+      "KIR",
+      "#2baa40",
+      "MHL",
+      "#a26432",
+      "MOD",
+      "#2841da",
+      "PAR",
+      "#2ca237",
+      "PSX",
+      "#b34c3e",
+      "SAX",
+      "#d6477d",
+      "SPM",
+      "#3fb5bc",
+      "STP",
+      "#48af34",
+      "ABW",
+      "#997435",
+      "ATC",
+      "#3cbc67",
+      "BAV",
+      "#d3a827",
+      "BJN",
+      "#2dcbcd",
+      "BLM",
+      "#cfa541",
+      "BRE",
+      "#2ca1a9",
+      "BRI",
+      "#b9a83a",
+      "BRT",
+      "#344bc3",
+      "CLP",
+      "#c74b25",
+      "CNM",
+      "#1f1fb1",
+      "CSI",
+      "#4da9cf",
+      "CUW",
+      "#6fc826",
+      "CYM",
+      "#ad1f3d",
+      "CYN",
+      "#35da4d",
+      "ESB",
+      "#b87e40",
+      "FLK",
+      "#3ab280",
+      "FRO",
+      "#38a82f",
+      "GGY",
+      "#26ad30",
+      "GUM",
+      "#c0305c",
+      "HAM",
+      "#3dc526",
+      "HAN",
+      "#d98e36",
+      "HAW",
+      "#34b4aa",
+      "HES",
+      "#bf4d2e",
+      "HMD",
+      "#a5b726",
+      "IMN",
+      "#a9cb50",
+      "IOT",
+      "#d0934a",
+      "JEY",
+      "#9e3ebe",
+      "KAB",
+      "#c92f82",
+      "KAS",
+      "#ce6632",
+      "LUC",
+      "#c51f61",
+      "MAF",
+      "#af2664",
+      "MEC",
+      "#b85a34",
+      "NFK",
+      "#cb2064",
+      "NIU",
+      "#c51f52",
+      "PCN",
+      "#ab6921",
+      "PGA",
+      "#54a530",
+      "SAH",
+      "#37a634",
+      "SCR",
+      "#3b56ba",
+      "SER",
+      "#b3aa1e",
+      "SGS",
+      "#dd4631",
+      "SOL",
+      "#b5b138",
+      "SPI",
+      "#1fb245",
+      "SXM",
+      "#21c65f",
+      "TEX",
+      "#32b9ba",
+      "TUV",
+      "#762eae",
+      "USG",
+      "#ccb328",
+      "VGB",
+      "#6fa62d",
+      "WSB",
+      "#cdaf23",
+      "WUR",
+      "#34afa5",
       "#b0b0b0"
     ],
     "maplibre_fill_color_property": [
@@ -47,11 +597,71 @@
   },
   "tags": [
     {
+      "color": "#ca3c38",
+      "controller_province_count": 596,
+      "display_name": "United Kingdom",
+      "fill_color": "#ca3c38",
+      "owner_province_count": 596,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "GBR"
+    },
+    {
+      "color": "#2f9d7f",
+      "controller_province_count": 430,
+      "display_name": "Ottoman Empire",
+      "fill_color": "#2f9d7f",
+      "owner_province_count": 430,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "TUR"
+    },
+    {
+      "color": "#c4d03f",
+      "controller_province_count": 428,
+      "display_name": "Russian Empire",
+      "fill_color": "#c4d03f",
+      "owner_province_count": 428,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "RUS"
+    },
+    {
+      "color": "#49d142",
+      "controller_province_count": 330,
+      "display_name": "Austrian Empire",
+      "fill_color": "#49d142",
+      "owner_province_count": 330,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "AUS"
+    },
+    {
+      "color": "#3d9fc0",
+      "controller_province_count": 194,
+      "display_name": "Spain",
+      "fill_color": "#3d9fc0",
+      "owner_province_count": 194,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "SPA"
+    },
+    {
       "color": "#2e5aa5",
-      "controller_province_count": 2,
+      "controller_province_count": 164,
       "display_name": "France",
       "fill_color": "#2e5aa5",
-      "owner_province_count": 2,
+      "owner_province_count": 164,
       "roles": [
         "owner",
         "controller"
@@ -59,35 +669,71 @@
       "tag": "FRA"
     },
     {
-      "color": "#bd19a8",
-      "controller_province_count": 1,
-      "display_name": "Belgium",
-      "fill_color": "#bd19a8",
-      "owner_province_count": 1,
+      "color": "#33339d",
+      "controller_province_count": 112,
+      "display_name": "UGA",
+      "fill_color": "#33339d",
+      "owner_province_count": 112,
       "roles": [
         "owner",
         "controller"
       ],
-      "tag": "BEL"
+      "tag": "UGA"
     },
     {
-      "color": "#a7253a",
-      "controller_province_count": 1,
-      "display_name": "Luxembourg",
-      "fill_color": "#a7253a",
-      "owner_province_count": 1,
+      "color": "#44cc67",
+      "controller_province_count": 94,
+      "display_name": "Siam",
+      "fill_color": "#44cc67",
+      "owner_province_count": 94,
       "roles": [
         "owner",
         "controller"
       ],
-      "tag": "LUX"
+      "tag": "SIA"
+    },
+    {
+      "color": "#bb2263",
+      "controller_province_count": 93,
+      "display_name": "Qing China",
+      "fill_color": "#bb2263",
+      "owner_province_count": 93,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "QNG"
+    },
+    {
+      "color": "#2d5fbd",
+      "controller_province_count": 78,
+      "display_name": "Central America",
+      "fill_color": "#2d5fbd",
+      "owner_province_count": 78,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "CAM"
+    },
+    {
+      "color": "#6f26de",
+      "controller_province_count": 63,
+      "display_name": "Đại Nam (Vietnam)",
+      "fill_color": "#6f26de",
+      "owner_province_count": 63,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "DAI"
     },
     {
       "color": "#e01fa3",
-      "controller_province_count": 1,
+      "controller_province_count": 58,
       "display_name": "Netherlands",
       "fill_color": "#e01fa3",
-      "owner_province_count": 1,
+      "owner_province_count": 58,
       "roles": [
         "owner",
         "controller"
@@ -95,16 +741,2127 @@
       "tag": "NET"
     },
     {
+      "color": "#a76036",
+      "controller_province_count": 50,
+      "display_name": "Portugal",
+      "fill_color": "#a76036",
+      "owner_province_count": 50,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "POR"
+    },
+    {
+      "color": "#4ea0ca",
+      "controller_province_count": 47,
+      "display_name": "Tokugawa Japan",
+      "fill_color": "#4ea0ca",
+      "owner_province_count": 47,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "JAP"
+    },
+    {
+      "color": "#4bc0cb",
+      "controller_province_count": 45,
+      "display_name": "BFA",
+      "fill_color": "#4bc0cb",
+      "owner_province_count": 45,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "BFA"
+    },
+    {
+      "color": "#27b2d0",
+      "controller_province_count": 42,
+      "display_name": "Haiti",
+      "fill_color": "#27b2d0",
+      "owner_province_count": 42,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "HAI"
+    },
+    {
+      "color": "#cb4199",
+      "controller_province_count": 42,
+      "display_name": "Sweden",
+      "fill_color": "#cb4199",
+      "owner_province_count": 42,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "SWE"
+    },
+    {
+      "color": "#9422be",
+      "controller_province_count": 40,
+      "display_name": "Mexico",
+      "fill_color": "#9422be",
+      "owner_province_count": 40,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "MEX"
+    },
+    {
+      "color": "#8a8a8a",
+      "controller_province_count": 38,
+      "display_name": "Unknown / uncurated",
+      "fill_color": "#8a8a8a",
+      "owner_province_count": 38,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "UNK"
+    },
+    {
+      "color": "#3a3aca",
+      "controller_province_count": 38,
+      "display_name": "United States",
+      "fill_color": "#3a3aca",
+      "owner_province_count": 38,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "USA"
+    },
+    {
+      "color": "#35aecc",
+      "controller_province_count": 34,
+      "display_name": "Afghanistan",
+      "fill_color": "#35aecc",
+      "owner_province_count": 34,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "AFG"
+    },
+    {
+      "color": "#53c8c7",
+      "controller_province_count": 34,
+      "display_name": "New Granada / Colombia",
+      "fill_color": "#53c8c7",
+      "owner_province_count": 34,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "COL"
+    },
+    {
+      "color": "#4c47bf",
+      "controller_province_count": 34,
+      "display_name": "GIN",
+      "fill_color": "#4c47bf",
+      "owner_province_count": 34,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "GIN"
+    },
+    {
+      "color": "#a0b81f",
+      "controller_province_count": 33,
+      "display_name": "Two Sicilies",
+      "fill_color": "#a0b81f",
+      "owner_province_count": 33,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "SIC"
+    },
+    {
+      "color": "#2bb860",
+      "controller_province_count": 31,
+      "display_name": "Qajar Persia",
+      "fill_color": "#2bb860",
+      "owner_province_count": 31,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "PER"
+    },
+    {
+      "color": "#84bc22",
+      "controller_province_count": 30,
+      "display_name": "BHS",
+      "fill_color": "#84bc22",
+      "owner_province_count": 30,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "BHS"
+    },
+    {
+      "color": "#ce3082",
+      "controller_province_count": 30,
+      "display_name": "KOS",
+      "fill_color": "#ce3082",
+      "owner_province_count": 30,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "KOS"
+    },
+    {
+      "color": "#19b0b5",
+      "controller_province_count": 30,
+      "display_name": "TZA",
+      "fill_color": "#19b0b5",
+      "owner_province_count": 30,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "TZA"
+    },
+    {
+      "color": "#89db30",
+      "controller_province_count": 28,
+      "display_name": "Joseon Korea",
+      "fill_color": "#89db30",
+      "owner_province_count": 28,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "KOR"
+    },
+    {
+      "color": "#a139a5",
+      "controller_province_count": 28,
+      "display_name": "MWI",
+      "fill_color": "#a139a5",
+      "owner_province_count": 28,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "MWI"
+    },
+    {
+      "color": "#1d54c3",
+      "controller_province_count": 27,
+      "display_name": "Empire of Brazil",
+      "fill_color": "#1d54c3",
+      "owner_province_count": 27,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "BRZ"
+    },
+    {
+      "color": "#3350a3",
+      "controller_province_count": 27,
+      "display_name": "Egypt",
+      "fill_color": "#3350a3",
+      "owner_province_count": 27,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "EGY"
+    },
+    {
+      "color": "#c73278",
+      "controller_province_count": 27,
+      "display_name": "Oman",
+      "fill_color": "#c73278",
+      "owner_province_count": 27,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "OMA"
+    },
+    {
+      "color": "#1c8cbb",
+      "controller_province_count": 27,
+      "display_name": "Papal States",
+      "fill_color": "#1c8cbb",
+      "owner_province_count": 27,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "PAP"
+    },
+    {
+      "color": "#d844a2",
+      "controller_province_count": 26,
+      "display_name": "Peru",
+      "fill_color": "#d844a2",
+      "owner_province_count": 26,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "PEU"
+    },
+    {
+      "color": "#b32998",
+      "controller_province_count": 26,
+      "display_name": "Switzerland",
+      "fill_color": "#b32998",
+      "owner_province_count": 26,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "SWI"
+    },
+    {
+      "color": "#2b75ae",
+      "controller_province_count": 26,
+      "display_name": "SYC",
+      "fill_color": "#2b75ae",
+      "owner_province_count": 26,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "SYC"
+    },
+    {
+      "color": "#93bf1c",
+      "controller_province_count": 26,
+      "display_name": "Venezuela",
+      "fill_color": "#93bf1c",
+      "owner_province_count": 26,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "VEN"
+    },
+    {
+      "color": "#c7a439",
+      "controller_province_count": 24,
+      "display_name": "Argentine Confederation",
+      "fill_color": "#c7a439",
+      "owner_province_count": 24,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "ARG"
+    },
+    {
+      "color": "#cd248c",
+      "controller_province_count": 24,
+      "display_name": "Cambodia",
+      "fill_color": "#cd248c",
+      "owner_province_count": 24,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "CAMK"
+    },
+    {
+      "color": "#1db19a",
+      "controller_province_count": 24,
+      "display_name": "Ecuador",
+      "fill_color": "#1db19a",
+      "owner_province_count": 24,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "ECU"
+    },
+    {
+      "color": "#39d35d",
+      "controller_province_count": 22,
+      "display_name": "CPV",
+      "fill_color": "#39d35d",
+      "owner_province_count": 22,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "CPV"
+    },
+    {
+      "color": "#2ea3a5",
+      "controller_province_count": 22,
+      "display_name": "Merina Kingdom",
+      "fill_color": "#2ea3a5",
+      "owner_province_count": 22,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "MER"
+    },
+    {
+      "color": "#90cf3d",
+      "controller_province_count": 22,
+      "display_name": "TCD",
+      "fill_color": "#90cf3d",
+      "owner_province_count": 22,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "TCD"
+    },
+    {
+      "color": "#abbb20",
+      "controller_province_count": 21,
+      "display_name": "Denmark",
+      "fill_color": "#abbb20",
+      "owner_province_count": 21,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "DEN"
+    },
+    {
+      "color": "#b138d9",
+      "controller_province_count": 21,
+      "display_name": "MDV",
+      "fill_color": "#b138d9",
+      "owner_province_count": 21,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "MDV"
+    },
+    {
+      "color": "#6c369f",
+      "controller_province_count": 21,
+      "display_name": "Sardinia-Piedmont",
+      "fill_color": "#6c369f",
+      "owner_province_count": 21,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "SAR"
+    },
+    {
+      "color": "#37d8da",
+      "controller_province_count": 20,
+      "display_name": "Bhutan",
+      "fill_color": "#37d8da",
+      "owner_province_count": 20,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "BHU"
+    },
+    {
+      "color": "#6eac25",
+      "controller_province_count": 19,
+      "display_name": "CIV",
+      "fill_color": "#6eac25",
+      "owner_province_count": 19,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "CIV"
+    },
+    {
+      "color": "#53c771",
+      "controller_province_count": 19,
+      "display_name": "Uruguay",
+      "fill_color": "#53c771",
+      "owner_province_count": 19,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "URY"
+    },
+    {
+      "color": "#c8dc20",
+      "controller_province_count": 18,
+      "display_name": "Paraguay",
+      "fill_color": "#c8dc20",
+      "owner_province_count": 18,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "PRY"
+    },
+    {
+      "color": "#dd2cdb",
+      "controller_province_count": 17,
+      "display_name": "BDI",
+      "fill_color": "#dd2cdb",
+      "owner_province_count": 17,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "BDI"
+    },
+    {
+      "color": "#a3d439",
+      "controller_province_count": 17,
+      "display_name": "CAF",
+      "fill_color": "#a3d439",
+      "owner_province_count": 17,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "CAF"
+    },
+    {
+      "color": "#c82952",
+      "controller_province_count": 17,
+      "display_name": "Ethiopia",
+      "fill_color": "#c82952",
+      "owner_province_count": 17,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "ETH"
+    },
+    {
+      "color": "#2f6dc2",
+      "controller_province_count": 17,
+      "display_name": "SDN",
+      "fill_color": "#2f6dc2",
+      "owner_province_count": 17,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "SDN"
+    },
+    {
+      "color": "#22ac94",
+      "controller_province_count": 16,
+      "display_name": "Chile",
+      "fill_color": "#22ac94",
+      "owner_province_count": 16,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "CHL"
+    },
+    {
+      "color": "#3654a0",
+      "controller_province_count": 16,
+      "display_name": "KAZ",
+      "fill_color": "#3654a0",
+      "owner_province_count": 16,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "KAZ"
+    },
+    {
+      "color": "#61d932",
+      "controller_province_count": 16,
+      "display_name": "Morocco",
+      "fill_color": "#61d932",
+      "owner_province_count": 16,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "MOR"
+    },
+    {
+      "color": "#cb284a",
+      "controller_province_count": 16,
+      "display_name": "MUS",
+      "fill_color": "#cb284a",
+      "owner_province_count": 16,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "MUS"
+    },
+    {
+      "color": "#3da3b2",
+      "controller_province_count": 16,
+      "display_name": "PLW",
+      "fill_color": "#3da3b2",
+      "owner_province_count": 16,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "PLW"
+    },
+    {
+      "color": "#c542cd",
+      "controller_province_count": 16,
+      "display_name": "TTO",
+      "fill_color": "#c542cd",
+      "owner_province_count": 16,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "TTO"
+    },
+    {
+      "color": "#50d726",
+      "controller_province_count": 15,
+      "display_name": "AIA",
+      "fill_color": "#50d726",
+      "owner_province_count": 15,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "AIA"
+    },
+    {
+      "color": "#d5763c",
+      "controller_province_count": 15,
+      "display_name": "LBR",
+      "fill_color": "#d5763c",
+      "owner_province_count": 15,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "LBR"
+    },
+    {
+      "color": "#3ac524",
+      "controller_province_count": 14,
+      "display_name": "Burma (Konbaung)",
+      "fill_color": "#3ac524",
+      "owner_province_count": 14,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "BUR"
+    },
+    {
+      "color": "#23ba3f",
+      "controller_province_count": 14,
+      "display_name": "Greece",
+      "fill_color": "#23ba3f",
+      "owner_province_count": 14,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "GRE"
+    },
+    {
+      "color": "#cc31da",
+      "controller_province_count": 14,
+      "display_name": "KNA",
+      "fill_color": "#cc31da",
+      "owner_province_count": 14,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "KNA"
+    },
+    {
+      "color": "#3725b8",
+      "controller_province_count": 14,
+      "display_name": "Nepal",
+      "fill_color": "#3725b8",
+      "owner_province_count": 14,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "NEP"
+    },
+    {
+      "color": "#3fa5da",
+      "controller_province_count": 14,
+      "display_name": "NRU",
+      "fill_color": "#3fa5da",
+      "owner_province_count": 14,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "NRU"
+    },
+    {
       "color": "#4f2ec9",
-      "controller_province_count": 1,
+      "controller_province_count": 14,
       "display_name": "Prussia",
       "fill_color": "#4f2ec9",
-      "owner_province_count": 1,
+      "owner_province_count": 14,
       "roles": [
         "owner",
         "controller"
       ],
       "tag": "PRU"
+    },
+    {
+      "color": "#a43ac3",
+      "controller_province_count": 14,
+      "display_name": "UZB",
+      "fill_color": "#a43ac3",
+      "owner_province_count": 14,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "UZB"
+    },
+    {
+      "color": "#b3d721",
+      "controller_province_count": 13,
+      "display_name": "MRT",
+      "fill_color": "#b3d721",
+      "owner_province_count": 13,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "MRT"
+    },
+    {
+      "color": "#a17f37",
+      "controller_province_count": 13,
+      "display_name": "Najd / Arabian interior",
+      "fill_color": "#a17f37",
+      "owner_province_count": 13,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "NAJ"
+    },
+    {
+      "color": "#8d4bcb",
+      "controller_province_count": 13,
+      "display_name": "SOM",
+      "fill_color": "#8d4bcb",
+      "owner_province_count": 13,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "SOM"
+    },
+    {
+      "color": "#c426d3",
+      "controller_province_count": 13,
+      "display_name": "TLS",
+      "fill_color": "#c426d3",
+      "owner_province_count": 13,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "TLS"
+    },
+    {
+      "color": "#9e338b",
+      "controller_province_count": 12,
+      "display_name": "BEN",
+      "fill_color": "#9e338b",
+      "owner_province_count": 12,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "BEN"
+    },
+    {
+      "color": "#39c99e",
+      "controller_province_count": 12,
+      "display_name": "COG",
+      "fill_color": "#39c99e",
+      "owner_province_count": 12,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "COG"
+    },
+    {
+      "color": "#b0387f",
+      "controller_province_count": 12,
+      "display_name": "PAN",
+      "fill_color": "#b0387f",
+      "owner_province_count": 12,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "PAN"
+    },
+    {
+      "color": "#da3362",
+      "controller_province_count": 11,
+      "display_name": "ALD",
+      "fill_color": "#da3362",
+      "owner_province_count": 11,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "ALD"
+    },
+    {
+      "color": "#bd19a8",
+      "controller_province_count": 11,
+      "display_name": "Belgium",
+      "fill_color": "#bd19a8",
+      "owner_province_count": 11,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "BEL"
+    },
+    {
+      "color": "#3686c3",
+      "controller_province_count": 11,
+      "display_name": "BMU",
+      "fill_color": "#3686c3",
+      "owner_province_count": 11,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "BMU"
+    },
+    {
+      "color": "#a022c4",
+      "controller_province_count": 11,
+      "display_name": "BRB",
+      "fill_color": "#a022c4",
+      "owner_province_count": 11,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "BRB"
+    },
+    {
+      "color": "#9b2bc0",
+      "controller_province_count": 11,
+      "display_name": "COD",
+      "fill_color": "#9b2bc0",
+      "owner_province_count": 11,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "COD"
+    },
+    {
+      "color": "#c28d33",
+      "controller_province_count": 11,
+      "display_name": "COK",
+      "fill_color": "#c28d33",
+      "owner_province_count": 11,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "COK"
+    },
+    {
+      "color": "#a82e95",
+      "controller_province_count": 11,
+      "display_name": "LCA",
+      "fill_color": "#a82e95",
+      "owner_province_count": 11,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "LCA"
+    },
+    {
+      "color": "#4e4ecb",
+      "controller_province_count": 11,
+      "display_name": "LIE",
+      "fill_color": "#4e4ecb",
+      "owner_province_count": 11,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "LIE"
+    },
+    {
+      "color": "#c7c045",
+      "controller_province_count": 11,
+      "display_name": "WSM",
+      "fill_color": "#c7c045",
+      "owner_province_count": 11,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "WSM"
+    },
+    {
+      "color": "#2ebc1f",
+      "controller_province_count": 10,
+      "display_name": "CMR",
+      "fill_color": "#2ebc1f",
+      "owner_province_count": 10,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "CMR"
+    },
+    {
+      "color": "#c14b3b",
+      "controller_province_count": 10,
+      "display_name": "DMA",
+      "fill_color": "#c14b3b",
+      "owner_province_count": 10,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "DMA"
+    },
+    {
+      "color": "#b538b6",
+      "controller_province_count": 10,
+      "display_name": "LSO",
+      "fill_color": "#b538b6",
+      "owner_province_count": 10,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "LSO"
+    },
+    {
+      "color": "#32d72e",
+      "controller_province_count": 10,
+      "display_name": "SDS",
+      "fill_color": "#32d72e",
+      "owner_province_count": 10,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "SDS"
+    },
+    {
+      "color": "#3bda4a",
+      "controller_province_count": 10,
+      "display_name": "SLB",
+      "fill_color": "#3bda4a",
+      "owner_province_count": 10,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "SLB"
+    },
+    {
+      "color": "#bc2263",
+      "controller_province_count": 10,
+      "display_name": "ZMB",
+      "fill_color": "#bc2263",
+      "owner_province_count": 10,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "ZMB"
+    },
+    {
+      "color": "#b5bd37",
+      "controller_province_count": 9,
+      "display_name": "Bolivia",
+      "fill_color": "#b5bd37",
+      "owner_province_count": 9,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "BOL"
+    },
+    {
+      "color": "#9d357f",
+      "controller_province_count": 9,
+      "display_name": "GAB",
+      "fill_color": "#9d357f",
+      "owner_province_count": 9,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "GAB"
+    },
+    {
+      "color": "#74ae2f",
+      "controller_province_count": 9,
+      "display_name": "GNB",
+      "fill_color": "#74ae2f",
+      "owner_province_count": 9,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "GNB"
+    },
+    {
+      "color": "#30a38f",
+      "controller_province_count": 9,
+      "display_name": "MLI",
+      "fill_color": "#30a38f",
+      "owner_province_count": 9,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "MLI"
+    },
+    {
+      "color": "#5129d3",
+      "controller_province_count": 9,
+      "display_name": "Tuscany",
+      "fill_color": "#5129d3",
+      "owner_province_count": 9,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "TUS"
+    },
+    {
+      "color": "#3bb273",
+      "controller_province_count": 8,
+      "display_name": "ATG",
+      "fill_color": "#3bb273",
+      "owner_province_count": 8,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "ATG"
+    },
+    {
+      "color": "#39b95a",
+      "controller_province_count": 8,
+      "display_name": "KEN",
+      "fill_color": "#39b95a",
+      "owner_province_count": 8,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "KEN"
+    },
+    {
+      "color": "#1d6dd0",
+      "controller_province_count": 8,
+      "display_name": "KGZ",
+      "fill_color": "#1d6dd0",
+      "owner_province_count": 8,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "KGZ"
+    },
+    {
+      "color": "#1a9bb6",
+      "controller_province_count": 8,
+      "display_name": "NER",
+      "fill_color": "#1a9bb6",
+      "owner_province_count": 8,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "NER"
+    },
+    {
+      "color": "#c77d2d",
+      "controller_province_count": 8,
+      "display_name": "UMI",
+      "fill_color": "#c77d2d",
+      "owner_province_count": 8,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "UMI"
+    },
+    {
+      "color": "#2545d2",
+      "controller_province_count": 7,
+      "display_name": "GNQ",
+      "fill_color": "#2545d2",
+      "owner_province_count": 7,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "GNQ"
+    },
+    {
+      "color": "#9020de",
+      "controller_province_count": 7,
+      "display_name": "GRD",
+      "fill_color": "#9020de",
+      "owner_province_count": 7,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "GRD"
+    },
+    {
+      "color": "#ae268f",
+      "controller_province_count": 6,
+      "display_name": "BLZ",
+      "fill_color": "#ae268f",
+      "owner_province_count": 6,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "BLZ"
+    },
+    {
+      "color": "#892ba1",
+      "controller_province_count": 6,
+      "display_name": "DJI",
+      "fill_color": "#892ba1",
+      "owner_province_count": 6,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "DJI"
+    },
+    {
+      "color": "#723fb7",
+      "controller_province_count": 6,
+      "display_name": "GMB",
+      "fill_color": "#723fb7",
+      "owner_province_count": 6,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "GMB"
+    },
+    {
+      "color": "#53bd1f",
+      "controller_province_count": 6,
+      "display_name": "TCA",
+      "fill_color": "#53bd1f",
+      "owner_province_count": 6,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "TCA"
+    },
+    {
+      "color": "#34c9a1",
+      "controller_province_count": 6,
+      "display_name": "VCT",
+      "fill_color": "#34c9a1",
+      "owner_province_count": 6,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "VCT"
+    },
+    {
+      "color": "#26de2a",
+      "controller_province_count": 6,
+      "display_name": "VUT",
+      "fill_color": "#26de2a",
+      "owner_province_count": 6,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "VUT"
+    },
+    {
+      "color": "#4174c8",
+      "controller_province_count": 5,
+      "display_name": "ASM",
+      "fill_color": "#4174c8",
+      "owner_province_count": 5,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "ASM"
+    },
+    {
+      "color": "#3e25d9",
+      "controller_province_count": 5,
+      "display_name": "PYF",
+      "fill_color": "#3e25d9",
+      "owner_province_count": 5,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "PYF"
+    },
+    {
+      "color": "#da3149",
+      "controller_province_count": 5,
+      "display_name": "RWA",
+      "fill_color": "#da3149",
+      "owner_province_count": 5,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "RWA"
+    },
+    {
+      "color": "#61b51e",
+      "controller_province_count": 5,
+      "display_name": "TGO",
+      "fill_color": "#61b51e",
+      "owner_province_count": 5,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "TGO"
+    },
+    {
+      "color": "#c15335",
+      "controller_province_count": 5,
+      "display_name": "TJK",
+      "fill_color": "#c15335",
+      "owner_province_count": 5,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "TJK"
+    },
+    {
+      "color": "#b02536",
+      "controller_province_count": 5,
+      "display_name": "TKM",
+      "fill_color": "#b02536",
+      "owner_province_count": 5,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "TKM"
+    },
+    {
+      "color": "#a4772f",
+      "controller_province_count": 5,
+      "display_name": "TON",
+      "fill_color": "#a4772f",
+      "owner_province_count": 5,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "TON"
+    },
+    {
+      "color": "#398bd1",
+      "controller_province_count": 4,
+      "display_name": "ATF",
+      "fill_color": "#398bd1",
+      "owner_province_count": 4,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "ATF"
+    },
+    {
+      "color": "#39aecf",
+      "controller_province_count": 4,
+      "display_name": "Brunei",
+      "fill_color": "#39aecf",
+      "owner_province_count": 4,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "BRN"
+    },
+    {
+      "color": "#a229a1",
+      "controller_province_count": 4,
+      "display_name": "FSM",
+      "fill_color": "#a229a1",
+      "owner_province_count": 4,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "FSM"
+    },
+    {
+      "color": "#b7304c",
+      "controller_province_count": 4,
+      "display_name": "MNP",
+      "fill_color": "#b7304c",
+      "owner_province_count": 4,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "MNP"
+    },
+    {
+      "color": "#40a4ba",
+      "controller_province_count": 4,
+      "display_name": "SLE",
+      "fill_color": "#40a4ba",
+      "owner_province_count": 4,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "SLE"
+    },
+    {
+      "color": "#51aa26",
+      "controller_province_count": 4,
+      "display_name": "SWZ",
+      "fill_color": "#51aa26",
+      "owner_province_count": 4,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "SWZ"
+    },
+    {
+      "color": "#a33139",
+      "controller_province_count": 3,
+      "display_name": "COM",
+      "fill_color": "#a33139",
+      "owner_province_count": 3,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "COM"
+    },
+    {
+      "color": "#a7253a",
+      "controller_province_count": 3,
+      "display_name": "Luxembourg",
+      "fill_color": "#a7253a",
+      "owner_province_count": 3,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "LUX"
+    },
+    {
+      "color": "#bd632c",
+      "controller_province_count": 3,
+      "display_name": "MSR",
+      "fill_color": "#bd632c",
+      "owner_province_count": 3,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "MSR"
+    },
+    {
+      "color": "#b22796",
+      "controller_province_count": 3,
+      "display_name": "SHN",
+      "fill_color": "#b22796",
+      "owner_province_count": 3,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "SHN"
+    },
+    {
+      "color": "#cc291d",
+      "controller_province_count": 3,
+      "display_name": "VIR",
+      "fill_color": "#cc291d",
+      "owner_province_count": 3,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "VIR"
+    },
+    {
+      "color": "#92a528",
+      "controller_province_count": 3,
+      "display_name": "WLF",
+      "fill_color": "#92a528",
+      "owner_province_count": 3,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "WLF"
+    },
+    {
+      "color": "#ae1d2e",
+      "controller_province_count": 2,
+      "display_name": "ATA",
+      "fill_color": "#ae1d2e",
+      "owner_province_count": 2,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "ATA"
+    },
+    {
+      "color": "#33c07c",
+      "controller_province_count": 2,
+      "display_name": "IOA",
+      "fill_color": "#33c07c",
+      "owner_province_count": 2,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "IOA"
+    },
+    {
+      "color": "#2baa40",
+      "controller_province_count": 2,
+      "display_name": "KIR",
+      "fill_color": "#2baa40",
+      "owner_province_count": 2,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "KIR"
+    },
+    {
+      "color": "#a26432",
+      "controller_province_count": 2,
+      "display_name": "MHL",
+      "fill_color": "#a26432",
+      "owner_province_count": 2,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "MHL"
+    },
+    {
+      "color": "#2841da",
+      "controller_province_count": 2,
+      "display_name": "Modena",
+      "fill_color": "#2841da",
+      "owner_province_count": 2,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "MOD"
+    },
+    {
+      "color": "#2ca237",
+      "controller_province_count": 2,
+      "display_name": "Parma",
+      "fill_color": "#2ca237",
+      "owner_province_count": 2,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "PAR"
+    },
+    {
+      "color": "#b34c3e",
+      "controller_province_count": 2,
+      "display_name": "PSX",
+      "fill_color": "#b34c3e",
+      "owner_province_count": 2,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "PSX"
+    },
+    {
+      "color": "#d6477d",
+      "controller_province_count": 2,
+      "display_name": "Saxony",
+      "fill_color": "#d6477d",
+      "owner_province_count": 2,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "SAX"
+    },
+    {
+      "color": "#3fb5bc",
+      "controller_province_count": 2,
+      "display_name": "SPM",
+      "fill_color": "#3fb5bc",
+      "owner_province_count": 2,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "SPM"
+    },
+    {
+      "color": "#48af34",
+      "controller_province_count": 2,
+      "display_name": "STP",
+      "fill_color": "#48af34",
+      "owner_province_count": 2,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "STP"
+    },
+    {
+      "color": "#997435",
+      "controller_province_count": 1,
+      "display_name": "ABW",
+      "fill_color": "#997435",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "ABW"
+    },
+    {
+      "color": "#3cbc67",
+      "controller_province_count": 1,
+      "display_name": "ATC",
+      "fill_color": "#3cbc67",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "ATC"
+    },
+    {
+      "color": "#d3a827",
+      "controller_province_count": 1,
+      "display_name": "Bavaria",
+      "fill_color": "#d3a827",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "BAV"
+    },
+    {
+      "color": "#2dcbcd",
+      "controller_province_count": 1,
+      "display_name": "BJN",
+      "fill_color": "#2dcbcd",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "BJN"
+    },
+    {
+      "color": "#cfa541",
+      "controller_province_count": 1,
+      "display_name": "BLM",
+      "fill_color": "#cfa541",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "BLM"
+    },
+    {
+      "color": "#2ca1a9",
+      "controller_province_count": 1,
+      "display_name": "Bremen",
+      "fill_color": "#2ca1a9",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "BRE"
+    },
+    {
+      "color": "#b9a83a",
+      "controller_province_count": 1,
+      "display_name": "BRI",
+      "fill_color": "#b9a83a",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "BRI"
+    },
+    {
+      "color": "#344bc3",
+      "controller_province_count": 1,
+      "display_name": "BRT",
+      "fill_color": "#344bc3",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "BRT"
+    },
+    {
+      "color": "#c74b25",
+      "controller_province_count": 1,
+      "display_name": "CLP",
+      "fill_color": "#c74b25",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "CLP"
+    },
+    {
+      "color": "#1f1fb1",
+      "controller_province_count": 1,
+      "display_name": "CNM",
+      "fill_color": "#1f1fb1",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "CNM"
+    },
+    {
+      "color": "#4da9cf",
+      "controller_province_count": 1,
+      "display_name": "CSI",
+      "fill_color": "#4da9cf",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "CSI"
+    },
+    {
+      "color": "#6fc826",
+      "controller_province_count": 1,
+      "display_name": "CUW",
+      "fill_color": "#6fc826",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "CUW"
+    },
+    {
+      "color": "#ad1f3d",
+      "controller_province_count": 1,
+      "display_name": "CYM",
+      "fill_color": "#ad1f3d",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "CYM"
+    },
+    {
+      "color": "#35da4d",
+      "controller_province_count": 1,
+      "display_name": "CYN",
+      "fill_color": "#35da4d",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "CYN"
+    },
+    {
+      "color": "#b87e40",
+      "controller_province_count": 1,
+      "display_name": "ESB",
+      "fill_color": "#b87e40",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "ESB"
+    },
+    {
+      "color": "#3ab280",
+      "controller_province_count": 1,
+      "display_name": "FLK",
+      "fill_color": "#3ab280",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "FLK"
+    },
+    {
+      "color": "#38a82f",
+      "controller_province_count": 1,
+      "display_name": "FRO",
+      "fill_color": "#38a82f",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "FRO"
+    },
+    {
+      "color": "#26ad30",
+      "controller_province_count": 1,
+      "display_name": "GGY",
+      "fill_color": "#26ad30",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "GGY"
+    },
+    {
+      "color": "#c0305c",
+      "controller_province_count": 1,
+      "display_name": "GUM",
+      "fill_color": "#c0305c",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "GUM"
+    },
+    {
+      "color": "#3dc526",
+      "controller_province_count": 1,
+      "display_name": "Hamburg",
+      "fill_color": "#3dc526",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "HAM"
+    },
+    {
+      "color": "#d98e36",
+      "controller_province_count": 1,
+      "display_name": "Hanover",
+      "fill_color": "#d98e36",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "HAN"
+    },
+    {
+      "color": "#34b4aa",
+      "controller_province_count": 1,
+      "display_name": "Kingdom of Hawaii",
+      "fill_color": "#34b4aa",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "HAW"
+    },
+    {
+      "color": "#bf4d2e",
+      "controller_province_count": 1,
+      "display_name": "Hesse",
+      "fill_color": "#bf4d2e",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "HES"
+    },
+    {
+      "color": "#a5b726",
+      "controller_province_count": 1,
+      "display_name": "HMD",
+      "fill_color": "#a5b726",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "HMD"
+    },
+    {
+      "color": "#a9cb50",
+      "controller_province_count": 1,
+      "display_name": "IMN",
+      "fill_color": "#a9cb50",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "IMN"
+    },
+    {
+      "color": "#d0934a",
+      "controller_province_count": 1,
+      "display_name": "IOT",
+      "fill_color": "#d0934a",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "IOT"
+    },
+    {
+      "color": "#9e3ebe",
+      "controller_province_count": 1,
+      "display_name": "JEY",
+      "fill_color": "#9e3ebe",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "JEY"
+    },
+    {
+      "color": "#c92f82",
+      "controller_province_count": 1,
+      "display_name": "KAB",
+      "fill_color": "#c92f82",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "KAB"
+    },
+    {
+      "color": "#ce6632",
+      "controller_province_count": 1,
+      "display_name": "KAS",
+      "fill_color": "#ce6632",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "KAS"
+    },
+    {
+      "color": "#c51f61",
+      "controller_province_count": 1,
+      "display_name": "Lucca",
+      "fill_color": "#c51f61",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "LUC"
+    },
+    {
+      "color": "#af2664",
+      "controller_province_count": 1,
+      "display_name": "MAF",
+      "fill_color": "#af2664",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "MAF"
+    },
+    {
+      "color": "#b85a34",
+      "controller_province_count": 1,
+      "display_name": "Mecklenburg",
+      "fill_color": "#b85a34",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "MEC"
+    },
+    {
+      "color": "#cb2064",
+      "controller_province_count": 1,
+      "display_name": "NFK",
+      "fill_color": "#cb2064",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "NFK"
+    },
+    {
+      "color": "#c51f52",
+      "controller_province_count": 1,
+      "display_name": "NIU",
+      "fill_color": "#c51f52",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "NIU"
+    },
+    {
+      "color": "#ab6921",
+      "controller_province_count": 1,
+      "display_name": "PCN",
+      "fill_color": "#ab6921",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "PCN"
+    },
+    {
+      "color": "#54a530",
+      "controller_province_count": 1,
+      "display_name": "PGA",
+      "fill_color": "#54a530",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "PGA"
+    },
+    {
+      "color": "#37a634",
+      "controller_province_count": 1,
+      "display_name": "SAH",
+      "fill_color": "#37a634",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "SAH"
+    },
+    {
+      "color": "#3b56ba",
+      "controller_province_count": 1,
+      "display_name": "SCR",
+      "fill_color": "#3b56ba",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "SCR"
+    },
+    {
+      "color": "#b3aa1e",
+      "controller_province_count": 1,
+      "display_name": "SER",
+      "fill_color": "#b3aa1e",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "SER"
+    },
+    {
+      "color": "#dd4631",
+      "controller_province_count": 1,
+      "display_name": "SGS",
+      "fill_color": "#dd4631",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "SGS"
+    },
+    {
+      "color": "#b5b138",
+      "controller_province_count": 1,
+      "display_name": "SOL",
+      "fill_color": "#b5b138",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "SOL"
+    },
+    {
+      "color": "#1fb245",
+      "controller_province_count": 1,
+      "display_name": "SPI",
+      "fill_color": "#1fb245",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "SPI"
+    },
+    {
+      "color": "#21c65f",
+      "controller_province_count": 1,
+      "display_name": "SXM",
+      "fill_color": "#21c65f",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "SXM"
+    },
+    {
+      "color": "#32b9ba",
+      "controller_province_count": 1,
+      "display_name": "Republic of Texas",
+      "fill_color": "#32b9ba",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "TEX"
+    },
+    {
+      "color": "#762eae",
+      "controller_province_count": 1,
+      "display_name": "TUV",
+      "fill_color": "#762eae",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "TUV"
+    },
+    {
+      "color": "#ccb328",
+      "controller_province_count": 1,
+      "display_name": "USG",
+      "fill_color": "#ccb328",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "USG"
+    },
+    {
+      "color": "#6fa62d",
+      "controller_province_count": 1,
+      "display_name": "VGB",
+      "fill_color": "#6fa62d",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "VGB"
+    },
+    {
+      "color": "#cdaf23",
+      "controller_province_count": 1,
+      "display_name": "WSB",
+      "fill_color": "#cdaf23",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "WSB"
+    },
+    {
+      "color": "#34afa5",
+      "controller_province_count": 1,
+      "display_name": "Württemberg",
+      "fill_color": "#34afa5",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "WUR"
+    },
+    {
+      "color": "#40dac6",
+      "controller_province_count": 0,
+      "display_name": "Finland",
+      "fill_color": "#40dac6",
+      "owner_province_count": 0,
+      "roles": [
+        "referenced"
+      ],
+      "tag": "FIN"
     }
   ]
 }

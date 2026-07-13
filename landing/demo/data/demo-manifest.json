@@ -1,104 +1,46 @@
 {
   "title": "GPM interactive demo",
-  "sample": "beta-license-audited Western Europe + multi-era packs (we-multi-era-v1)",
+  "sample": "Global Natural Earth build (M22) + europe-multi-era-v1 period geometry (M20)",
   "geometry_tier": "scaffold-baseline",
   "period_geometry_tier": "period-geometry",
-  "period_geometry_pack": "we-multi-era-v1",
-  "multi_era_pack": "we-multi-era-v1",
-  "note": "Politics are era overlays. Culture/religion paint (M18) uses curated scenario hints. PMTiles (M19) ship alongside GeoJSON for web-scale delivery. Toggle period geometry / boundary hints for 1444, 1836, and 1936 (M16 multi-era WE packs).",
+  "period_geometry_pack": "europe-multi-era-v1",
+  "multi_era_pack": "europe-multi-era-v1",
+  "note": "PMTiles-first global demo over the full Natural Earth admin-1 build (4603 provinces) with the M21 area/region/superregion hierarchy. Politics are era overlays; culture/religion paint (M18) uses curated scenario hints. Period geometry / boundary hints stay on the curated Western/Central Europe sample packs (M20).",
+  "generated": {
+    "generated_at": "2026-07-13T15:08:10Z",
+    "generator_version": "0.1.0",
+    "profile_id": "modern-small",
+    "province_count": 4603,
+    "command": "uv run gpm demo build"
+  },
   "pmtiles": {
     "enabled": true,
     "protocol": "pmtiles",
     "source_layer": "ownership",
     "min_zoom": 0,
-    "max_zoom": 6,
-    "note": "M19: pure-Python PMTiles from atlas choropleth GeoJSON; MapLibre vector source optional."
+    "max_zoom": 7,
+    "backend": "native",
+    "note": "Primary polygon source; the inspector reads rendered vector features."
   },
-  "scenarios": [
-    {
-      "id": "official-1444",
-      "era": "1444",
-      "label": "1444 · EU-leaning",
-      "politics_tier": "curated-politics",
-      "start_date": "1444-11-11",
-      "geojson": "official-1444.geojson",
-      "pmtiles": "official-1444.pmtiles",
-      "tileset": "official-1444.tileset.json",
-      "legend": "official-1444.legend.json",
-      "culture_legend": "official-1444.culture.legend.json",
-      "religion_legend": "official-1444.religion.legend.json",
-      "period_geojson": "official-1444-period.geojson",
-      "period_legend": "official-1444-period.legend.json",
-      "period_culture_legend": "official-1444-period.culture.legend.json",
-      "period_religion_legend": "official-1444-period.religion.legend.json",
-      "boundary_hints": "boundary-hints-1444.geojson",
-      "lineage": "lineage-1444.json",
-      "status": "live",
-      "supports_period_geometry": true
-    },
-    {
-      "id": "official-1836",
-      "era": "1836",
-      "label": "1836 · Victoria-leaning",
-      "politics_tier": "curated-politics",
-      "start_date": "1836-01-01",
-      "geojson": "official-1836.geojson",
-      "pmtiles": "official-1836.pmtiles",
-      "tileset": "official-1836.tileset.json",
-      "legend": "official-1836.legend.json",
-      "culture_legend": "official-1836.culture.legend.json",
-      "religion_legend": "official-1836.religion.legend.json",
-      "period_geojson": "official-1836-period.geojson",
-      "period_legend": "official-1836-period.legend.json",
-      "period_culture_legend": "official-1836-period.culture.legend.json",
-      "period_religion_legend": "official-1836-period.religion.legend.json",
-      "boundary_hints": "boundary-hints-1836.geojson",
-      "lineage": "lineage-1836.json",
-      "status": "live",
-      "supports_period_geometry": true
-    },
-    {
-      "id": "official-1936",
-      "era": "1936",
-      "label": "1936 · HOI-leaning",
-      "politics_tier": "curated-politics",
-      "start_date": "1936-01-01",
-      "geojson": "official-1936.geojson",
-      "pmtiles": "official-1936.pmtiles",
-      "tileset": "official-1936.tileset.json",
-      "legend": "official-1936.legend.json",
-      "culture_legend": "official-1936.culture.legend.json",
-      "religion_legend": "official-1936.religion.legend.json",
-      "period_geojson": "official-1936-period.geojson",
-      "period_legend": "official-1936-period.legend.json",
-      "period_culture_legend": "official-1936-period.culture.legend.json",
-      "period_religion_legend": "official-1936-period.religion.legend.json",
-      "boundary_hints": "boundary-hints-1936.geojson",
-      "lineage": "lineage-1936.json",
-      "status": "live",
-      "supports_period_geometry": true
-    },
-    {
-      "id": "modern-baseline",
-      "era": "modern",
-      "label": "Modern baseline",
-      "politics_tier": "scaffold-baseline",
-      "start_date": "2020-01-01",
-      "geojson": "modern-baseline.geojson",
-      "pmtiles": "modern-baseline.pmtiles",
-      "tileset": "modern-baseline.tileset.json",
-      "legend": "modern-baseline.legend.json",
-      "culture_legend": "modern-baseline.culture.legend.json",
-      "religion_legend": "modern-baseline.religion.legend.json",
-      "status": "live",
-      "supports_period_geometry": false
+  "hierarchy": {
+    "areas": "hierarchy-areas.geojson",
+    "regions": "hierarchy-regions.geojson",
+    "superregions": "hierarchy-superregions.geojson",
+    "counts": {
+      "areas": 660,
+      "regions": 169,
+      "superregions": 8
     }
-  ],
+  },
+  "adjacency": {
+    "lines": "adjacency-lines.geojson",
+    "edge_count": 10781
+  },
   "live_layers": [
     {
       "id": "ownership",
       "label": "Owner choropleth",
-      "desc": "Scenario owner colors from atlas export"
+      "desc": "Scenario owner colors from atlas export (PMTiles vector source)"
     },
     {
       "id": "culture",
@@ -113,6 +55,12 @@
       "milestone": "M18"
     },
     {
+      "id": "hierarchy",
+      "label": "Area / region / superregion hierarchy",
+      "desc": "M21 nested hierarchy borders and paint over 660 areas, 169 regions, 8 superregions",
+      "milestone": "M21"
+    },
+    {
       "id": "assignment",
       "label": "Assignment source",
       "desc": "baseline · country_rule · region_rule · province_override"
@@ -120,7 +68,7 @@
     {
       "id": "adjacency",
       "label": "Adjacency graph",
-      "desc": "Land / sea / port edges from sample graph"
+      "desc": "Precomputed land/strait centroid lines from the global adjacency CSV"
     },
     {
       "id": "labels",
@@ -130,12 +78,12 @@
     {
       "id": "inspector",
       "label": "Province inspector",
-      "desc": "Owner, controller, cores, claims, culture, religion, lineage fields"
+      "desc": "Owner, controller, cores, claims, culture, religion, hierarchy fields"
     },
     {
       "id": "period-geometry",
       "label": "Period geometry",
-      "desc": "M16 multi-era hard overrides / soft shapes for WE sample (1444 · 1836 · 1936)",
+      "desc": "M16 multi-era hard overrides / soft shapes for WE+CE sample (1444 · 1836 · 1936)",
       "milestone": "M16"
     },
     {
@@ -159,16 +107,22 @@
     {
       "id": "pmtiles",
       "label": "PMTiles / vector tiles",
-      "desc": "M19: ownership.pmtiles per scenario; gpm export tiles / atlas --tiles",
+      "desc": "M19/M22: per-scenario global ownership PMTiles are the primary polygon source",
       "milestone": "M19"
     }
   ],
   "future_slots": [
     {
+      "id": "game-density-provinces",
+      "label": "Game-like province density",
+      "milestone": "M23+",
+      "desc": "Population-weighted M4 splitting with iconic-location seeding (Paradox-style density; hierarchy area IDs stay stable)"
+    },
+    {
       "id": "broader-period-geometry",
       "label": "Broader period geometry",
       "milestone": "M20+",
-      "desc": "Period shapes beyond the Western Europe priority region"
+      "desc": "Period shapes beyond the Western/Central Europe priority regions"
     }
   ],
   "export_faces": [
@@ -186,6 +140,98 @@
       "id": "tiles",
       "command": "gpm export tiles",
       "label": "PMTiles / vector tiles"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "official-1444",
+      "era": "1444",
+      "label": "1444 · EU-leaning",
+      "politics_tier": "curated-politics",
+      "start_date": "1444-11-11",
+      "geojson": null,
+      "hero": "hero-official-1444.geojson",
+      "pmtiles": "official-1444.pmtiles",
+      "tileset": "official-1444.tileset.json",
+      "legend": "official-1444.legend.json",
+      "culture_legend": "official-1444.culture.legend.json",
+      "religion_legend": "official-1444.religion.legend.json",
+      "status": "live",
+      "supports_period_geometry": true,
+      "period_geojson": "official-1444-period.geojson",
+      "period_legend": "official-1444-period.legend.json",
+      "period_culture_legend": "official-1444-period.culture.legend.json",
+      "period_religion_legend": "official-1444-period.religion.legend.json",
+      "boundary_hints": "boundary-hints-1444.geojson",
+      "lineage": "lineage-1444.json",
+      "tile_backend": "native",
+      "tile_count": 11330
+    },
+    {
+      "id": "official-1836",
+      "era": "1836",
+      "label": "1836 · Victoria-leaning",
+      "politics_tier": "curated-politics",
+      "start_date": "1836-01-01",
+      "geojson": null,
+      "hero": "hero-official-1836.geojson",
+      "pmtiles": "official-1836.pmtiles",
+      "tileset": "official-1836.tileset.json",
+      "legend": "official-1836.legend.json",
+      "culture_legend": "official-1836.culture.legend.json",
+      "religion_legend": "official-1836.religion.legend.json",
+      "status": "live",
+      "supports_period_geometry": true,
+      "period_geojson": "official-1836-period.geojson",
+      "period_legend": "official-1836-period.legend.json",
+      "period_culture_legend": "official-1836-period.culture.legend.json",
+      "period_religion_legend": "official-1836-period.religion.legend.json",
+      "boundary_hints": "boundary-hints-1836.geojson",
+      "lineage": "lineage-1836.json",
+      "tile_backend": "native",
+      "tile_count": 11330
+    },
+    {
+      "id": "official-1936",
+      "era": "1936",
+      "label": "1936 · HOI-leaning",
+      "politics_tier": "curated-politics",
+      "start_date": "1936-01-01",
+      "geojson": null,
+      "hero": "hero-official-1936.geojson",
+      "pmtiles": "official-1936.pmtiles",
+      "tileset": "official-1936.tileset.json",
+      "legend": "official-1936.legend.json",
+      "culture_legend": "official-1936.culture.legend.json",
+      "religion_legend": "official-1936.religion.legend.json",
+      "status": "live",
+      "supports_period_geometry": true,
+      "period_geojson": "official-1936-period.geojson",
+      "period_legend": "official-1936-period.legend.json",
+      "period_culture_legend": "official-1936-period.culture.legend.json",
+      "period_religion_legend": "official-1936-period.religion.legend.json",
+      "boundary_hints": "boundary-hints-1936.geojson",
+      "lineage": "lineage-1936.json",
+      "tile_backend": "native",
+      "tile_count": 11330
+    },
+    {
+      "id": "modern-baseline",
+      "era": "modern",
+      "label": "Modern · Baseline",
+      "politics_tier": "scaffold-baseline",
+      "start_date": "2020-01-01",
+      "geojson": null,
+      "hero": "hero-modern-baseline.geojson",
+      "pmtiles": "modern-baseline.pmtiles",
+      "tileset": "modern-baseline.tileset.json",
+      "legend": "modern-baseline.legend.json",
+      "culture_legend": "modern-baseline.culture.legend.json",
+      "religion_legend": "modern-baseline.religion.legend.json",
+      "status": "live",
+      "supports_period_geometry": false,
+      "tile_backend": "native",
+      "tile_count": 11330
     }
   ]
 }

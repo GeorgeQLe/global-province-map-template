@@ -1,7 +1,7 @@
 {
-  "assigned_province_count": 6,
+  "assigned_province_count": 3902,
   "color_field": "religion_color",
-  "count": 2,
+  "count": 11,
   "end_date": null,
   "entries": [
     {
@@ -9,28 +9,103 @@
       "display_name": "catholic",
       "fill_color": "#20c9dd",
       "id": "catholic",
-      "province_count": 5
+      "province_count": 1314
     },
     {
       "color": "#d7ca37",
       "display_name": "protestant",
       "fill_color": "#d7ca37",
       "id": "protestant",
-      "province_count": 1
+      "province_count": 810
+    },
+    {
+      "color": "#af4c3c",
+      "display_name": "sunni",
+      "fill_color": "#af4c3c",
+      "id": "sunni",
+      "province_count": 642
+    },
+    {
+      "color": "#27c954",
+      "display_name": "orthodox",
+      "fill_color": "#27c954",
+      "id": "orthodox",
+      "province_count": 416
+    },
+    {
+      "color": "#ae2535",
+      "display_name": "buddhist",
+      "fill_color": "#ae2535",
+      "id": "buddhist",
+      "province_count": 268
+    },
+    {
+      "color": "#ae3c4f",
+      "display_name": "animist",
+      "fill_color": "#ae3c4f",
+      "id": "animist",
+      "province_count": 176
+    },
+    {
+      "color": "#c78937",
+      "display_name": "shia",
+      "fill_color": "#c78937",
+      "id": "shia",
+      "province_count": 127
+    },
+    {
+      "color": "#64d346",
+      "display_name": "confucian",
+      "fill_color": "#64d346",
+      "id": "confucian",
+      "province_count": 60
+    },
+    {
+      "color": "#48d02e",
+      "display_name": "shinto",
+      "fill_color": "#48d02e",
+      "id": "shinto",
+      "province_count": 47
+    },
+    {
+      "color": "#ca1b71",
+      "display_name": "hindu",
+      "fill_color": "#ca1b71",
+      "id": "hindu",
+      "province_count": 36
+    },
+    {
+      "color": "#cb3ea8",
+      "display_name": "christian",
+      "fill_color": "#cb3ea8",
+      "id": "christian",
+      "province_count": 6
     }
   ],
   "era": "1936",
   "fallback_color": "#b0b0b0",
-  "label": "1936 · HOI-leaning",
+  "generated_at": "2026-07-13T15:05:01+00:00",
+  "generator_version": "0.1.0",
+  "label": "Official 1936 (HOI-leaning curated politics)",
   "milestone": "M18",
   "paint_field": "religion",
+  "profile_id": "modern-small",
   "scenario_id": "official-1936",
   "schema_version": "0.1.0",
   "start_date": "1936-01-01",
   "styles": {
     "css_custom_properties": {
+      "--religion-animist": "#ae3c4f",
+      "--religion-buddhist": "#ae2535",
       "--religion-catholic": "#20c9dd",
-      "--religion-protestant": "#d7ca37"
+      "--religion-christian": "#cb3ea8",
+      "--religion-confucian": "#64d346",
+      "--religion-hindu": "#ca1b71",
+      "--religion-orthodox": "#27c954",
+      "--religion-protestant": "#d7ca37",
+      "--religion-shia": "#c78937",
+      "--religion-shinto": "#48d02e",
+      "--religion-sunni": "#af4c3c"
     },
     "maplibre_fill_color": [
       "match",
@@ -42,6 +117,24 @@
       "#20c9dd",
       "protestant",
       "#d7ca37",
+      "sunni",
+      "#af4c3c",
+      "orthodox",
+      "#27c954",
+      "buddhist",
+      "#ae2535",
+      "animist",
+      "#ae3c4f",
+      "shia",
+      "#c78937",
+      "confucian",
+      "#64d346",
+      "shinto",
+      "#48d02e",
+      "hindu",
+      "#ca1b71",
+      "christian",
+      "#cb3ea8",
       "#8a8a8a"
     ],
     "maplibre_fill_color_property": [
@@ -50,5 +143,5 @@
     ]
   },
   "unassigned_color": "#8a8a8a",
-  "unassigned_province_count": 0
+  "unassigned_province_count": 701
 }

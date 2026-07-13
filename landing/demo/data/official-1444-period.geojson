@@ -5,154 +5,6 @@
         "coordinates": [
           [
             [
-              2.0,
-              48.5
-            ],
-            [
-              2.8,
-              48.5
-            ],
-            [
-              2.8,
-              49.2
-            ],
-            [
-              2.0,
-              49.2
-            ],
-            [
-              2.0,
-              48.5
-            ]
-          ]
-        ],
-        "type": "Polygon"
-      },
-      "properties": {
-        "area_sq_km": 1200.0,
-        "assignment_source": "country_rule",
-        "claims": [],
-        "coastal": false,
-        "controller": "FRA",
-        "controller_color": "#2e5aa5",
-        "cores": [
-          "FRA"
-        ],
-        "culture": "french",
-        "culture_color": "#ba9822",
-        "display_name": "Paris basin",
-        "disputed": false,
-        "end_date": null,
-        "era": "1444",
-        "era_geometry_mode": "identity",
-        "era_geometry_pack_id": "we-1444-v1",
-        "era_priority_region": true,
-        "estimated_population": 8000.0,
-        "geometry_quality_tier": "period-geometry",
-        "island": false,
-        "kind": "land",
-        "license_lineage": [
-          "Natural Earth public domain"
-        ],
-        "notes": "France; region rules peel Burgundy/Brittany/Provence",
-        "owner": "FRA",
-        "owner_color": "#2e5aa5",
-        "parent_country_id": "FRA",
-        "parent_region_id": "FR-IDF",
-        "province_id": "sample_fr_paris",
-        "religion": "catholic",
-        "religion_color": "#20c9dd",
-        "scaffold_province_id": "sample_fr_paris",
-        "scenario_id": "official-1444",
-        "source_lineage": [
-          "natural_earth:admin1_states_provinces",
-          "era_geometry:we-1444-v1"
-        ],
-        "start_date": "1444-11-11",
-        "terrain_class": "plains",
-        "uncertain": false
-      },
-      "type": "Feature"
-    },
-    {
-      "geometry": {
-        "coordinates": [
-          [
-            [
-              0.0,
-              49.0
-            ],
-            [
-              1.5,
-              49.0
-            ],
-            [
-              1.5,
-              49.8
-            ],
-            [
-              0.0,
-              49.8
-            ],
-            [
-              0.0,
-              49.0
-            ]
-          ]
-        ],
-        "type": "Polygon"
-      },
-      "properties": {
-        "area_sq_km": 1200.0,
-        "assignment_source": "country_rule",
-        "claims": [],
-        "coastal": true,
-        "controller": "FRA",
-        "controller_color": "#2e5aa5",
-        "cores": [
-          "FRA"
-        ],
-        "culture": "french",
-        "culture_color": "#ba9822",
-        "display_name": "Normandy coast",
-        "disputed": false,
-        "end_date": null,
-        "era": "1444",
-        "era_geometry_mode": "identity",
-        "era_geometry_pack_id": "we-1444-v1",
-        "era_priority_region": true,
-        "estimated_population": 8000.0,
-        "geometry_quality_tier": "period-geometry",
-        "island": false,
-        "kind": "land",
-        "license_lineage": [
-          "Natural Earth public domain"
-        ],
-        "notes": "France; region rules peel Burgundy/Brittany/Provence",
-        "owner": "FRA",
-        "owner_color": "#2e5aa5",
-        "parent_country_id": "FRA",
-        "parent_region_id": "FR-NOR",
-        "province_id": "sample_fr_normandy",
-        "religion": "catholic",
-        "religion_color": "#20c9dd",
-        "scaffold_province_id": "sample_fr_normandy",
-        "scenario_id": "official-1444",
-        "source_lineage": [
-          "natural_earth:admin1_states_provinces",
-          "era_geometry:we-1444-v1"
-        ],
-        "start_date": "1444-11-11",
-        "terrain_class": "plains",
-        "uncertain": false
-      },
-      "type": "Feature"
-    },
-    {
-      "geometry": {
-        "coordinates": [
-          [
-            [
               2.9,
               50.45
             ],
@@ -214,7 +66,8 @@
         "scenario_id": "official-1444",
         "source_lineage": [
           "natural_earth:admin1_states_provinces",
-          "era_geometry:we-1444-v1"
+          "era_geometry:we-1444-v1",
+          "era_geometry:ce-1444-v1"
         ],
         "start_date": "1444-11-11",
         "terrain_class": "plains",
@@ -227,68 +80,150 @@
         "coordinates": [
           [
             [
-              4.2,
-              52.0
+              14.8,
+              48.8
             ],
             [
-              5.2,
-              52.0
+              16.0,
+              48.8
             ],
             [
-              5.2,
-              52.8
+              16.0,
+              50.5
             ],
             [
-              4.2,
-              52.8
+              14.8,
+              50.5
             ],
             [
-              4.2,
-              52.0
+              14.8,
+              48.8
             ]
           ]
         ],
         "type": "Polygon"
       },
       "properties": {
-        "area_sq_km": 1200.0,
+        "area_sq_km": 600.0,
         "assignment_source": "country_rule",
         "claims": [],
-        "coastal": true,
-        "controller": "BUR",
-        "controller_color": "#3ac524",
+        "coastal": false,
+        "controller": "BOH",
+        "controller_color": "#4622ae",
         "cores": [
-          "BUR"
+          "BOH"
         ],
-        "culture": "dutch",
-        "culture_color": "#a626c6",
-        "display_name": "Holland",
+        "culture": "czech",
+        "culture_color": "#45b233",
+        "display_name": "Bohemia residual",
         "disputed": false,
         "end_date": null,
         "era": "1444",
-        "era_geometry_mode": "identity",
-        "era_geometry_pack_id": "we-1444-v1",
+        "era_geometry_mode": "hard_overrides",
+        "era_geometry_pack_id": "ce-1444-v1",
         "era_priority_region": true,
-        "estimated_population": 8000.0,
+        "era_split_parent_id": "sample_cz_bohemia",
+        "era_split_part_count": 2,
+        "era_split_part_index": 2,
+        "estimated_population": 4000.0,
         "geometry_quality_tier": "period-geometry",
         "island": false,
         "kind": "land",
         "license_lineage": [
           "Natural Earth public domain"
         ],
-        "notes": "Burgundian Netherlands",
-        "owner": "BUR",
-        "owner_color": "#3ac524",
-        "parent_country_id": "NLD",
-        "parent_region_id": "NL-NH",
-        "province_id": "sample_nl_holland",
+        "notes": "Lands of the Bohemian Crown",
+        "owner": "BOH",
+        "owner_color": "#4622ae",
+        "parent_country_id": "CZE",
+        "parent_region_id": "CZ-ST",
+        "province_id": "era_cz_bohemia_residual",
         "religion": "catholic",
         "religion_color": "#20c9dd",
-        "scaffold_province_id": "sample_nl_holland",
+        "scaffold_province_id": "sample_cz_bohemia",
         "scenario_id": "official-1444",
         "source_lineage": [
           "natural_earth:admin1_states_provinces",
-          "era_geometry:we-1444-v1"
+          "era_geometry:we-1444-v1",
+          "era_geometry:ce-1444-v1"
+        ],
+        "start_date": "1444-11-11",
+        "terrain_class": "plains",
+        "uncertain": false
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              14.0,
+              49.8
+            ],
+            [
+              14.8,
+              49.8
+            ],
+            [
+              14.8,
+              50.5
+            ],
+            [
+              14.0,
+              50.5
+            ],
+            [
+              14.0,
+              49.8
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "area_sq_km": 600.0,
+        "assignment_source": "country_rule",
+        "claims": [],
+        "coastal": false,
+        "controller": "BOH",
+        "controller_color": "#4622ae",
+        "cores": [
+          "BOH"
+        ],
+        "culture": "czech",
+        "culture_color": "#45b233",
+        "display_name": "Prague",
+        "disputed": false,
+        "end_date": null,
+        "era": "1444",
+        "era_geometry_mode": "hard_overrides",
+        "era_geometry_pack_id": "ce-1444-v1",
+        "era_priority_region": true,
+        "era_split_parent_id": "sample_cz_bohemia",
+        "era_split_part_count": 2,
+        "era_split_part_index": 1,
+        "estimated_population": 4000.0,
+        "geometry_quality_tier": "period-geometry",
+        "island": false,
+        "kind": "land",
+        "license_lineage": [
+          "Natural Earth public domain"
+        ],
+        "notes": "Lands of the Bohemian Crown",
+        "owner": "BOH",
+        "owner_color": "#4622ae",
+        "parent_country_id": "CZE",
+        "parent_region_id": "CZ-PR",
+        "province_id": "era_cz_prague",
+        "religion": "catholic",
+        "religion_color": "#20c9dd",
+        "scaffold_province_id": "sample_cz_bohemia",
+        "scenario_id": "official-1444",
+        "source_lineage": [
+          "natural_earth:admin1_states_provinces",
+          "era_geometry:we-1444-v1",
+          "era_geometry:ce-1444-v1"
         ],
         "start_date": "1444-11-11",
         "terrain_class": "plains",
@@ -353,7 +288,7 @@
         "license_lineage": [
           "Natural Earth public domain"
         ],
-        "notes": "North Rhine-Westphalia → Cologne sphere (scaffold)",
+        "notes": "North Rhine-Westphalia \u2192 Cologne sphere (scaffold)",
         "owner": "COL",
         "owner_color": "#53c8c7",
         "parent_country_id": "DEU",
@@ -365,7 +300,8 @@
         "scenario_id": "official-1444",
         "source_lineage": [
           "natural_earth:admin1_states_provinces",
-          "era_geometry:we-1444-v1"
+          "era_geometry:we-1444-v1",
+          "era_geometry:ce-1444-v1"
         ],
         "start_date": "1444-11-11",
         "terrain_class": "plains",
@@ -430,7 +366,7 @@
         "license_lineage": [
           "Natural Earth public domain"
         ],
-        "notes": "North Rhine-Westphalia → Cologne sphere (scaffold)",
+        "notes": "North Rhine-Westphalia \u2192 Cologne sphere (scaffold)",
         "owner": "COL",
         "owner_color": "#53c8c7",
         "parent_country_id": "DEU",
@@ -442,7 +378,83 @@
         "scenario_id": "official-1444",
         "source_lineage": [
           "natural_earth:admin1_states_provinces",
-          "era_geometry:we-1444-v1"
+          "era_geometry:we-1444-v1",
+          "era_geometry:ce-1444-v1"
+        ],
+        "start_date": "1444-11-11",
+        "terrain_class": "plains",
+        "uncertain": false
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              17.6,
+              47.05
+            ],
+            [
+              19.6,
+              47.05
+            ],
+            [
+              19.65,
+              47.85
+            ],
+            [
+              17.65,
+              47.85
+            ],
+            [
+              17.6,
+              47.05
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "area_sq_km": 1200.0,
+        "assignment_source": "country_rule",
+        "claims": [],
+        "coastal": false,
+        "controller": "HUN",
+        "controller_color": "#a2c42b",
+        "cores": [
+          "HUN"
+        ],
+        "culture": "hungarian",
+        "culture_color": "#5fda3e",
+        "display_name": "Pannonia (period)",
+        "disputed": false,
+        "end_date": null,
+        "era": "1444",
+        "era_geometry_mode": "hard_overrides",
+        "era_geometry_pack_id": "ce-1444-v1",
+        "era_priority_region": true,
+        "estimated_population": 8000.0,
+        "geometry_quality_tier": "period-geometry",
+        "island": false,
+        "kind": "land",
+        "license_lineage": [
+          "Natural Earth public domain"
+        ],
+        "notes": null,
+        "owner": "HUN",
+        "owner_color": "#a2c42b",
+        "parent_country_id": "HUN",
+        "parent_region_id": "HU-BU",
+        "province_id": "era_hu_pannon",
+        "religion": "catholic",
+        "religion_color": "#20c9dd",
+        "scaffold_province_id": "sample_hu_pannon",
+        "scenario_id": "official-1444",
+        "source_lineage": [
+          "natural_earth:admin1_states_provinces",
+          "era_geometry:we-1444-v1",
+          "era_geometry:ce-1444-v1"
         ],
         "start_date": "1444-11-11",
         "terrain_class": "plains",
@@ -516,7 +528,383 @@
         "scenario_id": "official-1444",
         "source_lineage": [
           "natural_earth:admin1_states_provinces",
-          "era_geometry:we-1444-v1"
+          "era_geometry:we-1444-v1",
+          "era_geometry:ce-1444-v1"
+        ],
+        "start_date": "1444-11-11",
+        "terrain_class": "plains",
+        "uncertain": false
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              15.5,
+              48.0
+            ],
+            [
+              16.8,
+              48.0
+            ],
+            [
+              16.8,
+              48.8
+            ],
+            [
+              15.5,
+              48.8
+            ],
+            [
+              15.5,
+              48.0
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "area_sq_km": 1200.0,
+        "assignment_source": "country_rule",
+        "claims": [],
+        "coastal": false,
+        "controller": "HAB",
+        "controller_color": "#be24df",
+        "cores": [
+          "HAB"
+        ],
+        "culture": "austrian",
+        "culture_color": "#d7254a",
+        "display_name": "Vienna basin",
+        "disputed": false,
+        "end_date": null,
+        "era": "1444",
+        "era_geometry_mode": "identity",
+        "era_geometry_pack_id": "ce-1444-v1",
+        "era_priority_region": true,
+        "estimated_population": 8000.0,
+        "geometry_quality_tier": "period-geometry",
+        "island": false,
+        "kind": "land",
+        "license_lineage": [
+          "Natural Earth public domain"
+        ],
+        "notes": null,
+        "owner": "HAB",
+        "owner_color": "#be24df",
+        "parent_country_id": "AUT",
+        "parent_region_id": "AT-9",
+        "province_id": "sample_at_vienna",
+        "religion": "catholic",
+        "religion_color": "#20c9dd",
+        "scaffold_province_id": "sample_at_vienna",
+        "scenario_id": "official-1444",
+        "source_lineage": [
+          "natural_earth:admin1_states_provinces",
+          "era_geometry:we-1444-v1",
+          "era_geometry:ce-1444-v1"
+        ],
+        "start_date": "1444-11-11",
+        "terrain_class": "plains",
+        "uncertain": false
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              0.0,
+              49.0
+            ],
+            [
+              1.5,
+              49.0
+            ],
+            [
+              1.5,
+              49.8
+            ],
+            [
+              0.0,
+              49.8
+            ],
+            [
+              0.0,
+              49.0
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "area_sq_km": 1200.0,
+        "assignment_source": "country_rule",
+        "claims": [],
+        "coastal": true,
+        "controller": "FRA",
+        "controller_color": "#2e5aa5",
+        "cores": [
+          "FRA"
+        ],
+        "culture": "french",
+        "culture_color": "#ba9822",
+        "display_name": "Normandy coast",
+        "disputed": false,
+        "end_date": null,
+        "era": "1444",
+        "era_geometry_mode": "identity",
+        "era_geometry_pack_id": "we-1444-v1",
+        "era_priority_region": true,
+        "estimated_population": 8000.0,
+        "geometry_quality_tier": "period-geometry",
+        "island": false,
+        "kind": "land",
+        "license_lineage": [
+          "Natural Earth public domain"
+        ],
+        "notes": "France; region rules peel Burgundy/Brittany/Provence",
+        "owner": "FRA",
+        "owner_color": "#2e5aa5",
+        "parent_country_id": "FRA",
+        "parent_region_id": "FR-NOR",
+        "province_id": "sample_fr_normandy",
+        "religion": "catholic",
+        "religion_color": "#20c9dd",
+        "scaffold_province_id": "sample_fr_normandy",
+        "scenario_id": "official-1444",
+        "source_lineage": [
+          "natural_earth:admin1_states_provinces",
+          "era_geometry:we-1444-v1",
+          "era_geometry:ce-1444-v1"
+        ],
+        "start_date": "1444-11-11",
+        "terrain_class": "plains",
+        "uncertain": false
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              2.0,
+              48.5
+            ],
+            [
+              2.8,
+              48.5
+            ],
+            [
+              2.8,
+              49.2
+            ],
+            [
+              2.0,
+              49.2
+            ],
+            [
+              2.0,
+              48.5
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "area_sq_km": 1200.0,
+        "assignment_source": "country_rule",
+        "claims": [],
+        "coastal": false,
+        "controller": "FRA",
+        "controller_color": "#2e5aa5",
+        "cores": [
+          "FRA"
+        ],
+        "culture": "french",
+        "culture_color": "#ba9822",
+        "display_name": "Paris basin",
+        "disputed": false,
+        "end_date": null,
+        "era": "1444",
+        "era_geometry_mode": "identity",
+        "era_geometry_pack_id": "we-1444-v1",
+        "era_priority_region": true,
+        "estimated_population": 8000.0,
+        "geometry_quality_tier": "period-geometry",
+        "island": false,
+        "kind": "land",
+        "license_lineage": [
+          "Natural Earth public domain"
+        ],
+        "notes": "France; region rules peel Burgundy/Brittany/Provence",
+        "owner": "FRA",
+        "owner_color": "#2e5aa5",
+        "parent_country_id": "FRA",
+        "parent_region_id": "FR-IDF",
+        "province_id": "sample_fr_paris",
+        "religion": "catholic",
+        "religion_color": "#20c9dd",
+        "scaffold_province_id": "sample_fr_paris",
+        "scenario_id": "official-1444",
+        "source_lineage": [
+          "natural_earth:admin1_states_provinces",
+          "era_geometry:we-1444-v1",
+          "era_geometry:ce-1444-v1"
+        ],
+        "start_date": "1444-11-11",
+        "terrain_class": "plains",
+        "uncertain": false
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              4.2,
+              52.0
+            ],
+            [
+              5.2,
+              52.0
+            ],
+            [
+              5.2,
+              52.8
+            ],
+            [
+              4.2,
+              52.8
+            ],
+            [
+              4.2,
+              52.0
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "area_sq_km": 1200.0,
+        "assignment_source": "country_rule",
+        "claims": [],
+        "coastal": true,
+        "controller": "BUR",
+        "controller_color": "#3ac524",
+        "cores": [
+          "BUR"
+        ],
+        "culture": "dutch",
+        "culture_color": "#a626c6",
+        "display_name": "Holland",
+        "disputed": false,
+        "end_date": null,
+        "era": "1444",
+        "era_geometry_mode": "identity",
+        "era_geometry_pack_id": "we-1444-v1",
+        "era_priority_region": true,
+        "estimated_population": 8000.0,
+        "geometry_quality_tier": "period-geometry",
+        "island": false,
+        "kind": "land",
+        "license_lineage": [
+          "Natural Earth public domain"
+        ],
+        "notes": "Burgundian Netherlands",
+        "owner": "BUR",
+        "owner_color": "#3ac524",
+        "parent_country_id": "NLD",
+        "parent_region_id": "NL-NH",
+        "province_id": "sample_nl_holland",
+        "religion": "catholic",
+        "religion_color": "#20c9dd",
+        "scaffold_province_id": "sample_nl_holland",
+        "scenario_id": "official-1444",
+        "source_lineage": [
+          "natural_earth:admin1_states_provinces",
+          "era_geometry:we-1444-v1",
+          "era_geometry:ce-1444-v1"
+        ],
+        "start_date": "1444-11-11",
+        "terrain_class": "plains",
+        "uncertain": false
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              20.0,
+              51.8
+            ],
+            [
+              21.5,
+              51.8
+            ],
+            [
+              21.5,
+              52.6
+            ],
+            [
+              20.0,
+              52.6
+            ],
+            [
+              20.0,
+              51.8
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "area_sq_km": 1200.0,
+        "assignment_source": "country_rule",
+        "claims": [],
+        "coastal": false,
+        "controller": "POL",
+        "controller_color": "#a93b8e",
+        "cores": [
+          "POL"
+        ],
+        "culture": "polish",
+        "culture_color": "#298bab",
+        "display_name": "Mazovia",
+        "disputed": false,
+        "end_date": null,
+        "era": "1444",
+        "era_geometry_mode": "identity",
+        "era_geometry_pack_id": "ce-1444-v1",
+        "era_priority_region": true,
+        "estimated_population": 8000.0,
+        "geometry_quality_tier": "period-geometry",
+        "island": false,
+        "kind": "land",
+        "license_lineage": [
+          "Natural Earth public domain"
+        ],
+        "notes": "Kingdom of Poland; Teutonic region rules on Baltic",
+        "owner": "POL",
+        "owner_color": "#a93b8e",
+        "parent_country_id": "POL",
+        "parent_region_id": "PL-MZ",
+        "province_id": "sample_pl_mazovia",
+        "religion": "catholic",
+        "religion_color": "#20c9dd",
+        "scaffold_province_id": "sample_pl_mazovia",
+        "scenario_id": "official-1444",
+        "source_lineage": [
+          "natural_earth:admin1_states_provinces",
+          "era_geometry:we-1444-v1",
+          "era_geometry:ce-1444-v1"
         ],
         "start_date": "1444-11-11",
         "terrain_class": "plains",
@@ -526,28 +914,20 @@
     }
   ],
   "gpm": {
-    "color_fields": {
-      "controller": "controller_color",
-      "culture": "culture_color",
-      "owner": "owner_color",
-      "religion": "religion_color"
-    },
-    "feature_count": 7,
+    "color_field": "owner_color",
+    "era": "1444",
+    "feature_count": 12,
+    "generated_at": "2026-07-11T06:16:54+00:00",
+    "generator_version": "0.1.0",
     "geometry_tier": "period-geometry",
-    "layer": "ownership_choropleth_period",
-    "milestone": "M15",
-    "note": "Period-aware WE sample shapes with official-1444 politics joined via scaffold lineage.",
-    "pack_id": "we-1444-v1",
-    "paint_fields": [
-      "owner",
-      "controller",
-      "culture",
-      "religion"
-    ],
-    "politics_tier": "curated-politics",
+    "layer": "ownership_choropleth",
+    "milestone": "M20",
+    "paint_field": "owner",
+    "period_geometry_pack": "europe-multi-era-v1",
+    "profile_id": "eu-like",
     "scenario_id": "official-1444",
     "schema_version": "0.1.0"
   },
-  "name": "official-1444-period-geometry",
+  "name": "official-1444-period",
   "type": "FeatureCollection"
 }

@@ -1,0 +1,66 @@
+{
+  "counts": {
+    "boundary_hints": 5,
+    "hard_overrides_applied": 4,
+    "hard_overrides_skipped": 0,
+    "lineage_rows": 11,
+    "priority_region_provinces": 4,
+    "provinces_in": 10,
+    "provinces_out": 11
+  },
+  "display_name": "Central Europe 1444 period geometry v1",
+  "do_not_claim": [
+    "period-correct province geometry worldwide",
+    "Paradox-grade HRE / Bohemian Crown / Jagiellon microborders",
+    "legal 1444 frontiers \u2014 hints are illustrative for the historical sniff test"
+  ],
+  "era": "1444",
+  "files": [
+    "provinces.geojson",
+    "boundary_hints.geojson",
+    "lineage.json",
+    "lineage.csv",
+    "quality_scope.json",
+    "era_geometry_manifest.json"
+  ],
+  "generated_at": "2026-07-11T06:13:49+00:00",
+  "generator_version": "0.1.0",
+  "geometry_modes": [
+    "boundary_hints",
+    "hard_overrides"
+  ],
+  "inputs": {
+    "pack_id": "ce-1444-v1",
+    "province_input": "samples/scaffold-we-ce/provinces.geojson"
+  },
+  "manifest_type": "era-geometry",
+  "milestone": "M15",
+  "pack_id": "ce-1444-v1",
+  "priority_region": {
+    "bbox": [
+      12.0,
+      45.5,
+      24.5,
+      55.0
+    ],
+    "id": "central-europe",
+    "label": "Central Europe",
+    "notes": "M20 second priority region. Habsburg / Bohemian Crown / Poland-Lithuania / Hungarian frontier readability for 1444. Outside these modern ISO parents, scaffold geometry is retained.",
+    "parent_country_ids": [
+      "AUT",
+      "CZE",
+      "POL",
+      "HUN"
+    ]
+  },
+  "quality_tier": "period-geometry",
+  "scenario_id": "official-1444",
+  "schema_version": "0.1.0",
+  "source_notes": [
+    "Curator-authored soft frontier bands and sample hard overrides for M20 broader period geometry.",
+    "Not derived from proprietary game maps. Not a full OpenHistoricalMap extract.",
+    "Hard overrides target sample_* province IDs (sample_at_*, sample_cz_*, sample_pl_*, sample_hu_*); they skip cleanly on full Natural Earth builds.",
+    "Soft boundary hints are geographic and apply on any scaffold that intersects the priority region."
+  ],
+  "start_date": "1444-11-11"
+}

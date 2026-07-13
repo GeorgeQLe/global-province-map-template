@@ -1,24 +1,28 @@
 {
   "color_field": "owner_color",
-  "count": 3,
+  "count": 7,
   "disputed_outline_color": "#c0392b",
   "end_date": null,
   "era": "1444",
   "fallback_color": "#b0b0b0",
-  "generated_at": "2026-07-11T02:37:28+00:00",
+  "generated_at": "2026-07-11T06:15:00+00:00",
   "generator_version": "0.1.0",
   "label": "Official 1444 (EU-leaning curated politics)",
-  "milestone": "M10",
+  "milestone": "M18",
   "paint_field": "owner",
-  "profile_id": "modern-small",
+  "profile_id": "eu-like",
   "scenario_id": "official-1444",
   "schema_version": "0.1.0",
   "start_date": "1444-11-11",
   "styles": {
     "css_custom_properties": {
+      "--tag-BOH": "#4622ae",
       "--tag-BUR": "#3ac524",
       "--tag-COL": "#53c8c7",
-      "--tag-FRA": "#2e5aa5"
+      "--tag-FRA": "#2e5aa5",
+      "--tag-HAB": "#be24df",
+      "--tag-HUN": "#a2c42b",
+      "--tag-POL": "#a93b8e"
     },
     "maplibre_fill_color": [
       "match",
@@ -28,10 +32,18 @@
       ],
       "BUR",
       "#3ac524",
-      "FRA",
-      "#2e5aa5",
+      "BOH",
+      "#4622ae",
       "COL",
       "#53c8c7",
+      "FRA",
+      "#2e5aa5",
+      "HAB",
+      "#be24df",
+      "HUN",
+      "#a2c42b",
+      "POL",
+      "#a93b8e",
       "#b0b0b0"
     ],
     "maplibre_fill_color_property": [
@@ -53,6 +65,30 @@
       "tag": "BUR"
     },
     {
+      "color": "#4622ae",
+      "controller_province_count": 2,
+      "display_name": "Bohemia",
+      "fill_color": "#4622ae",
+      "owner_province_count": 2,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "BOH"
+    },
+    {
+      "color": "#53c8c7",
+      "controller_province_count": 2,
+      "display_name": "Cologne",
+      "fill_color": "#53c8c7",
+      "owner_province_count": 2,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "COL"
+    },
+    {
       "color": "#2e5aa5",
       "controller_province_count": 2,
       "display_name": "France",
@@ -65,16 +101,40 @@
       "tag": "FRA"
     },
     {
-      "color": "#53c8c7",
+      "color": "#be24df",
       "controller_province_count": 1,
-      "display_name": "Cologne",
-      "fill_color": "#53c8c7",
+      "display_name": "Austria",
+      "fill_color": "#be24df",
       "owner_province_count": 1,
       "roles": [
         "owner",
         "controller"
       ],
-      "tag": "COL"
+      "tag": "HAB"
+    },
+    {
+      "color": "#a2c42b",
+      "controller_province_count": 1,
+      "display_name": "Hungary",
+      "fill_color": "#a2c42b",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "HUN"
+    },
+    {
+      "color": "#a93b8e",
+      "controller_province_count": 1,
+      "display_name": "Poland",
+      "fill_color": "#a93b8e",
+      "owner_province_count": 1,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "POL"
     }
   ]
 }

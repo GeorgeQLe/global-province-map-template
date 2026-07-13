@@ -8,6 +8,7 @@ See https://github.com/protomaps/PMTiles/blob/main/spec/v3/spec.md
 from __future__ import annotations
 
 import gzip
+import hashlib
 import io
 import json
 import tempfile
@@ -133,7 +134,8 @@ def serialize_directory(entries: list[DirectoryEntry]) -> bytes:
             write_varint(buf, 0)
         else:
             write_varint(buf, entry.offset + 1)
-    return gzip.compress(buf.getvalue())
+    # mtime=0 keeps archives byte-deterministic across runs.
+    return gzip.compress(buf.getvalue(), mtime=0)
 
 
 def deserialize_directory(data: bytes) -> list[DirectoryEntry]:
@@ -286,7 +288,7 @@ class PmtilesWriter:
         self.path = Path(path)
         self.path.parent.mkdir(parents=True, exist_ok=True)
         self._entries: list[DirectoryEntry] = []
-        self._hash_to_offset: dict[int, int] = {}
+        self._hash_to_offset: dict[bytes, int] = {}
         self._tile_tmp = tempfile.TemporaryFile()
         self._offset = 0
         self._addressed = 0
@@ -295,7 +297,9 @@ class PmtilesWriter:
     def write_tile(self, tile_id: int, data: bytes) -> None:
         if self._entries and tile_id < self._entries[-1].tile_id:
             self._clustered = False
-        digest = hash(data)
+        # Content digest (not builtin hash): collision-safe dedup keeps archives
+        # byte-deterministic across processes.
+        digest = hashlib.sha256(data).digest()
         if digest in self._hash_to_offset:
             found = self._hash_to_offset[digest]
             last = self._entries[-1]
@@ -336,7 +340,8 @@ class PmtilesWriter:
             self._entries, 16384 - 127
         )
         compressed_metadata = gzip.compress(
-            json.dumps(metadata, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+            json.dumps(metadata, ensure_ascii=False, separators=(",", ":")).encode("utf-8"),
+            mtime=0,
         )
 
         header: dict[str, Any] = {

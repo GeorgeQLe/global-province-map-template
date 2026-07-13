@@ -1,7 +1,7 @@
 {
-  "assigned_province_count": 6,
+  "assigned_province_count": 3124,
   "color_field": "religion_color",
-  "count": 1,
+  "count": 16,
   "end_date": null,
   "entries": [
     {
@@ -9,20 +9,143 @@
       "display_name": "catholic",
       "fill_color": "#20c9dd",
       "id": "catholic",
-      "province_count": 6
+      "province_count": 1289
+    },
+    {
+      "color": "#af4c3c",
+      "display_name": "sunni",
+      "fill_color": "#af4c3c",
+      "id": "sunni",
+      "province_count": 636
+    },
+    {
+      "color": "#27c954",
+      "display_name": "orthodox",
+      "fill_color": "#27c954",
+      "id": "orthodox",
+      "province_count": 367
+    },
+    {
+      "color": "#5d31cc",
+      "display_name": "theravada",
+      "fill_color": "#5d31cc",
+      "id": "theravada",
+      "province_count": 157
+    },
+    {
+      "color": "#ae3c4f",
+      "display_name": "animist",
+      "fill_color": "#ae3c4f",
+      "id": "animist",
+      "province_count": 140
+    },
+    {
+      "color": "#c9b130",
+      "display_name": "fetishist",
+      "fill_color": "#c9b130",
+      "id": "fetishist",
+      "province_count": 133
+    },
+    {
+      "color": "#6641ce",
+      "display_name": "shiite",
+      "fill_color": "#6641ce",
+      "id": "shiite",
+      "province_count": 109
+    },
+    {
+      "color": "#64d346",
+      "display_name": "confucian",
+      "fill_color": "#64d346",
+      "id": "confucian",
+      "province_count": 79
+    },
+    {
+      "color": "#5328e1",
+      "display_name": "mahayana",
+      "fill_color": "#5328e1",
+      "id": "mahayana",
+      "province_count": 63
+    },
+    {
+      "color": "#48d02e",
+      "display_name": "shinto",
+      "fill_color": "#48d02e",
+      "id": "shinto",
+      "province_count": 47
+    },
+    {
+      "color": "#ca1b71",
+      "display_name": "hindu",
+      "fill_color": "#ca1b71",
+      "id": "hindu",
+      "province_count": 22
+    },
+    {
+      "color": "#3db15b",
+      "display_name": "tengri",
+      "fill_color": "#3db15b",
+      "id": "tengri",
+      "province_count": 22
+    },
+    {
+      "color": "#98b429",
+      "display_name": "vajrayana",
+      "fill_color": "#98b429",
+      "id": "vajrayana",
+      "province_count": 21
+    },
+    {
+      "color": "#c5251d",
+      "display_name": "coptic",
+      "fill_color": "#c5251d",
+      "id": "coptic",
+      "province_count": 17
+    },
+    {
+      "color": "#3048a4",
+      "display_name": "apostolic",
+      "fill_color": "#3048a4",
+      "id": "apostolic",
+      "province_count": 11
+    },
+    {
+      "color": "#50c947",
+      "display_name": "ibadi",
+      "fill_color": "#50c947",
+      "id": "ibadi",
+      "province_count": 11
     }
   ],
   "era": "1444",
   "fallback_color": "#b0b0b0",
-  "label": "1444 · EU-leaning",
+  "generated_at": "2026-07-13T15:05:01+00:00",
+  "generator_version": "0.1.0",
+  "label": "Official 1444 (EU-leaning curated politics)",
   "milestone": "M18",
   "paint_field": "religion",
+  "profile_id": "modern-small",
   "scenario_id": "official-1444",
   "schema_version": "0.1.0",
   "start_date": "1444-11-11",
   "styles": {
     "css_custom_properties": {
-      "--religion-catholic": "#20c9dd"
+      "--religion-animist": "#ae3c4f",
+      "--religion-apostolic": "#3048a4",
+      "--religion-catholic": "#20c9dd",
+      "--religion-confucian": "#64d346",
+      "--religion-coptic": "#c5251d",
+      "--religion-fetishist": "#c9b130",
+      "--religion-hindu": "#ca1b71",
+      "--religion-ibadi": "#50c947",
+      "--religion-mahayana": "#5328e1",
+      "--religion-orthodox": "#27c954",
+      "--religion-shiite": "#6641ce",
+      "--religion-shinto": "#48d02e",
+      "--religion-sunni": "#af4c3c",
+      "--religion-tengri": "#3db15b",
+      "--religion-theravada": "#5d31cc",
+      "--religion-vajrayana": "#98b429"
     },
     "maplibre_fill_color": [
       "match",
@@ -32,6 +155,36 @@
       ],
       "catholic",
       "#20c9dd",
+      "sunni",
+      "#af4c3c",
+      "orthodox",
+      "#27c954",
+      "theravada",
+      "#5d31cc",
+      "animist",
+      "#ae3c4f",
+      "fetishist",
+      "#c9b130",
+      "shiite",
+      "#6641ce",
+      "confucian",
+      "#64d346",
+      "mahayana",
+      "#5328e1",
+      "shinto",
+      "#48d02e",
+      "hindu",
+      "#ca1b71",
+      "tengri",
+      "#3db15b",
+      "vajrayana",
+      "#98b429",
+      "coptic",
+      "#c5251d",
+      "apostolic",
+      "#3048a4",
+      "ibadi",
+      "#50c947",
       "#8a8a8a"
     ],
     "maplibre_fill_color_property": [
@@ -40,5 +193,5 @@
     ]
   },
   "unassigned_color": "#8a8a8a",
-  "unassigned_province_count": 0
+  "unassigned_province_count": 1479
 }

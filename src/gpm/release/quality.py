@@ -132,7 +132,7 @@ def accuracy_label(
         do_not_claim.append("era-aware borders for pre-modern or wartime maps")
     elif geometry_tier == QUALITY_TIER_PERIOD_GEOMETRY:
         do_not_claim.append(
-            "period-correct province geometry worldwide (priority region only)"
+            "period-correct province geometry worldwide (priority regions only)"
         )
 
     summary = (
@@ -154,15 +154,16 @@ def accuracy_label(
         honest_statements.insert(
             1,
             "Period-geometry tier is priority-region scoped (see era-geometry "
-            "pack quality_scope). Outside the pack region, scaffold shapes remain.",
+            "pack quality_scope; M20 may list multiple priority regions such as "
+            "Western and Central Europe). Outside those regions, scaffold shapes remain.",
         )
     if includes_official_eras:
         eras = ", ".join(includes_official_eras)
         if geometry_tier == QUALITY_TIER_PERIOD_GEOMETRY:
             honest_statements.insert(
                 2,
-                f"{eras}: curated-politics plus period-geometry in the pack "
-                "priority region (boundary hints and/or hard overrides); not "
+                f"{eras}: curated-politics plus period-geometry in pack "
+                "priority region(s) (boundary hints and/or hard overrides); not "
                 "global period-correct shapes.",
             )
         else:

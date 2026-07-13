@@ -58,6 +58,26 @@ The implementation should eventually generate:
 
 ## Status
 
+M22 global PMTiles-first demo is in place. `gpm demo build` regenerates
+`landing/demo/data/` from the processed **full global build** (4,603 Natural
+Earth admin-1 provinces): atlas exports and per-scenario ownership **PMTiles**
+(the only global polygon source — no full-world GeoJSON ships), simplified
+hierarchy border overlays with label points, precomputed adjacency centroid
+lines, hero owner dissolves for the landing page, and a programmatically
+regenerated `demo-manifest.json`, finishing with landing-site validation.
+See `landing/demo/README.md`.
+
+M21 four-level hierarchy is in place. `gpm build hierarchy` builds
+**province → area → region → superregion** as real entities with stable
+sha256 IDs: areas cluster admin-1 codes over the land-adjacency graph
+(deterministic greedy agglomeration, stable across future density splits),
+regions are per-country with micro-state coalescing and NE-attribute
+mega-country splits, superregions map to continents. Provinces gain
+`parent_area_id` / `parent_geo_region_id` / `parent_superregion_id`;
+`gpm export pack` prefers hierarchy entities when present. See
+[docs/m21-hierarchy.md](docs/m21-hierarchy.md); the game-density follow-up is
+sketched in [docs/m23-density-design-note.md](docs/m23-density-design-note.md).
+
 M19 PMTiles / vector tiles are in place. `gpm export tiles` compiles GeoJSON
 into single-file **PMTiles** (Mapbox Vector Tiles) with a pure-Python backend
 (tippecanoe used automatically when installed). `gpm export atlas --tiles`
@@ -78,15 +98,24 @@ checks now include max counts, required/forbidden owners, disputed flags, and
 `samples/curator-bundle-example/`. See
 [docs/m17-curation.md](docs/m17-curation.md).
 
+M20 broader period geometry is in place. Central Europe packs
+`ce-1444-v1` / `ce-1836-v1` / `ce-1936-v1` extend period shapes beyond Western
+Europe. Multi-era slots may list `era_geometry_pack_ids` for ordered
+multi-region composition; `europe-multi-era-v1` pairs WE + CE for
+**1444 / 1836 / 1936** with a multi-row region quality matrix. Scaffold sample
+`samples/scaffold-we-ce/`; samples `samples/era-geometry-ce-1444/` and
+`samples/multi-era-europe-v1/`. Demo uses the WE+CE scaffold and Europe period
+layers. See [docs/m20-broader-period-geometry.md](docs/m20-broader-period-geometry.md).
+
 M16 multi-era geometry + politics packs are in place. `gpm multi-era` lists,
 validates, builds, and emits **migration notes** for packs that pair era
 geometry with curated politics across multiple official eras, with a
 **region quality matrix** (geometry + politics tiers per region). Bundled pack
 `we-multi-era-v1` covers **1444 / 1836 / 1936** with geometry packs
-`we-1444-v1`, `we-1836-v1`, and `we-1936-v1`. Official HOI-leaning scenario
-`official-1936` ships curated-politics overlays, golden floors, and a
-`hoi-like` recipe. Sample: `samples/multi-era-we-v1/`. Demo: live 1936 tab +
-period geometry for all three eras. See
+`we-1444-v1`, `we-1836-v1`, and `we-1936-v1` (WE-only; see M20 for Europe-wide
+composition). Official HOI-leaning scenario `official-1936` ships
+curated-politics overlays, golden floors, and a `hoi-like` recipe. Sample:
+`samples/multi-era-we-v1/`. See
 [docs/m16-multi-era.md](docs/m16-multi-era.md).
 
 M15 era-aware geometry v1 is in place. `gpm era-geometry` lists, validates, and
@@ -98,9 +127,9 @@ Sample: `samples/era-geometry-we-1444/`. See
 
 M14.5 public landing page is in place. A static marketing site under `landing/`
 describes dual audiences, the pipeline, honest quality tiers, and license policy.
-An interactive MapLibre **demo** at `landing/demo/` loads the beta Western
-Europe sample (1444 / 1836 / 1936 / modern ownership, adjacency, inspector) plus
-multi-era period geometry / boundary hints. `gpm release site` validates the
+An interactive MapLibre **demo** at `landing/demo/` loads the WE+CE sample
+(1444 / 1836 / 1936 / modern ownership, adjacency, inspector) plus multi-region
+period geometry / boundary hints. `gpm release site` validates the
 page + demo assets and can ensure a GitHub remote (`gh`), commit/push, and
 deploy to Vercel. See [docs/m14.5-landing.md](docs/m14.5-landing.md).
 

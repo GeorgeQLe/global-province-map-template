@@ -1,0 +1,13 @@
+province_id,scenario_id,start_date,end_date,owner,controller,cores,claims,culture,religion,disputed,assignment_source,parent_country_id,parent_region_id,display_name,notes
+era_be_flanders,official-1444,1444-11-11,,BUR,BUR,"[""BUR""]",[],flemish,catholic,false,country_rule,BEL,BE-VLG,Flanders (period),Burgundian Low Countries
+era_cz_bohemia_residual,official-1444,1444-11-11,,BOH,BOH,"[""BOH""]",[],czech,catholic,false,country_rule,CZE,CZ-ST,Bohemia residual,Lands of the Bohemian Crown
+era_cz_prague,official-1444,1444-11-11,,BOH,BOH,"[""BOH""]",[],czech,catholic,false,country_rule,CZE,CZ-PR,Prague,Lands of the Bohemian Crown
+era_de_cologne,official-1444,1444-11-11,,COL,COL,"[""COL""]",[],rhenish,catholic,false,region_rule,DEU,DE-NW,Cologne,North Rhine-Westphalia → Cologne sphere (scaffold)
+era_de_rhineland_residual,official-1444,1444-11-11,,COL,COL,"[""COL""]",[],rhenish,catholic,false,region_rule,DEU,DE-NW,Rhineland residual,North Rhine-Westphalia → Cologne sphere (scaffold)
+era_hu_pannon,official-1444,1444-11-11,,HUN,HUN,"[""HUN""]",[],hungarian,catholic,false,country_rule,HUN,HU-BU,Pannonia (period),
+era_lu_luxembourg,official-1444,1444-11-11,,BUR,BUR,"[""BUR""]",[],luxembourgish,catholic,false,country_rule,LUX,LU-LU,Luxembourg (Burgundian),
+sample_at_vienna,official-1444,1444-11-11,,HAB,HAB,"[""HAB""]",[],austrian,catholic,false,country_rule,AUT,AT-9,Vienna basin,
+sample_fr_normandy,official-1444,1444-11-11,,FRA,FRA,"[""FRA""]",[],french,catholic,false,country_rule,FRA,FR-NOR,Normandy coast,France; region rules peel Burgundy/Brittany/Provence
+sample_fr_paris,official-1444,1444-11-11,,FRA,FRA,"[""FRA""]",[],french,catholic,false,country_rule,FRA,FR-IDF,Paris basin,France; region rules peel Burgundy/Brittany/Provence
+sample_nl_holland,official-1444,1444-11-11,,BUR,BUR,"[""BUR""]",[],dutch,catholic,false,country_rule,NLD,NL-NH,Holland,Burgundian Netherlands
+sample_pl_mazovia,official-1444,1444-11-11,,POL,POL,"[""POL""]",[],polish,catholic,false,country_rule,POL,PL-MZ,Mazovia,Kingdom of Poland; Teutonic region rules on Baltic

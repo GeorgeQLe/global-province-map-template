@@ -1,0 +1,150 @@
+{
+  "composed_pack_ids": [
+    "we-1936-v1",
+    "ce-1936-v1"
+  ],
+  "counts": {
+    "boundary_hints": 8,
+    "composed_steps": 2,
+    "hard_overrides_applied": 10,
+    "hard_overrides_skipped": 0,
+    "lineage_rows": 11,
+    "priority_region_provinces": 10,
+    "provinces_in": 10,
+    "provinces_out": 10
+  },
+  "display_name": "Composed: we-1936-v1 + ce-1936-v1",
+  "era": "1936",
+  "files": [
+    "provinces.geojson",
+    "boundary_hints.geojson",
+    "lineage.json",
+    "lineage.csv",
+    "quality_scope.json",
+    "era_geometry_manifest.json"
+  ],
+  "generated_at": "2026-07-11T06:16:54+00:00",
+  "generator_version": "0.1.0",
+  "geometry_modes": [
+    "boundary_hints",
+    "hard_overrides"
+  ],
+  "inputs": {
+    "pack_ids": [
+      "we-1936-v1",
+      "ce-1936-v1"
+    ],
+    "province_input": "samples/scaffold-we-ce/provinces.geojson"
+  },
+  "manifest_type": "era-geometry-composed",
+  "milestone": "M20",
+  "pack_id": "we-1936-v1+ce-1936-v1",
+  "priority_regions": [
+    {
+      "bbox": [
+        -5.5,
+        42.0,
+        12.0,
+        54.0
+      ],
+      "id": "western-europe",
+      "label": "Western Europe",
+      "notes": "M16 interwar era geometry pack. Maginot / Rhineland readability for the HOI-leaning 1936 start.",
+      "parent_country_ids": [
+        "FRA",
+        "BEL",
+        "NLD",
+        "LUX",
+        "DEU"
+      ]
+    },
+    {
+      "bbox": [
+        12.0,
+        45.5,
+        24.5,
+        55.0
+      ],
+      "id": "central-europe",
+      "label": "Central Europe",
+      "notes": "M20 interwar CE geometry. Sudeten / Anschluss / Polish corridor framing for the HOI-leaning 1936 start.",
+      "parent_country_ids": [
+        "AUT",
+        "CZE",
+        "POL",
+        "HUN"
+      ]
+    }
+  ],
+  "quality_tier": "period-geometry",
+  "scenario_id": "official-1936",
+  "schema_version": "0.1.0",
+  "step_results": [
+    {
+      "boundary_hint_count": 4,
+      "boundary_hints_output": "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_wyju_ead/00_we-1936-v1/boundary_hints.geojson",
+      "era": "1936",
+      "files_written": [
+        "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_wyju_ead/00_we-1936-v1/provinces.geojson",
+        "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_wyju_ead/00_we-1936-v1/boundary_hints.geojson",
+        "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_wyju_ead/00_we-1936-v1/lineage.json",
+        "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_wyju_ead/00_we-1936-v1/lineage.csv",
+        "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_wyju_ead/00_we-1936-v1/quality_scope.json",
+        "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_wyju_ead/00_we-1936-v1/era_geometry_manifest.json"
+      ],
+      "geometry_modes": [
+        "boundary_hints",
+        "hard_overrides"
+      ],
+      "hard_override_applied": 6,
+      "hard_override_skipped": 0,
+      "lineage_csv_output": "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_wyju_ead/00_we-1936-v1/lineage.csv",
+      "lineage_json_output": "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_wyju_ead/00_we-1936-v1/lineage.json",
+      "lineage_row_count": 10,
+      "manifest_output": "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_wyju_ead/00_we-1936-v1/era_geometry_manifest.json",
+      "output_dir": "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_wyju_ead/00_we-1936-v1",
+      "pack_id": "we-1936-v1",
+      "priority_region_count": 6,
+      "priority_region_id": "western-europe",
+      "province_count_in": 10,
+      "province_count_out": 10,
+      "province_input": "samples/scaffold-we-ce/provinces.geojson",
+      "provinces_output": "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_wyju_ead/00_we-1936-v1/provinces.geojson",
+      "quality_tier": "period-geometry",
+      "scenario_id": "official-1936"
+    },
+    {
+      "boundary_hint_count": 4,
+      "boundary_hints_output": "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_wyju_ead/01_ce-1936-v1/boundary_hints.geojson",
+      "era": "1936",
+      "files_written": [
+        "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_wyju_ead/01_ce-1936-v1/provinces.geojson",
+        "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_wyju_ead/01_ce-1936-v1/boundary_hints.geojson",
+        "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_wyju_ead/01_ce-1936-v1/lineage.json",
+        "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_wyju_ead/01_ce-1936-v1/lineage.csv",
+        "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_wyju_ead/01_ce-1936-v1/quality_scope.json",
+        "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_wyju_ead/01_ce-1936-v1/era_geometry_manifest.json"
+      ],
+      "geometry_modes": [
+        "boundary_hints",
+        "hard_overrides"
+      ],
+      "hard_override_applied": 4,
+      "hard_override_skipped": 0,
+      "lineage_csv_output": "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_wyju_ead/01_ce-1936-v1/lineage.csv",
+      "lineage_json_output": "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_wyju_ead/01_ce-1936-v1/lineage.json",
+      "lineage_row_count": 10,
+      "manifest_output": "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_wyju_ead/01_ce-1936-v1/era_geometry_manifest.json",
+      "output_dir": "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_wyju_ead/01_ce-1936-v1",
+      "pack_id": "ce-1936-v1",
+      "priority_region_count": 4,
+      "priority_region_id": "central-europe",
+      "province_count_in": 10,
+      "province_count_out": 10,
+      "province_input": "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_wyju_ead/00_we-1936-v1/provinces.geojson",
+      "provinces_output": "/var/folders/n1/z7dtyml50qvc5_v87cysddv80000gn/T/gpm_era_compose_wyju_ead/01_ce-1936-v1/provinces.geojson",
+      "quality_tier": "period-geometry",
+      "scenario_id": "official-1936"
+    }
+  ]
+}

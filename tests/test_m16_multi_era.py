@@ -335,7 +335,9 @@ def test_demo_manifest_ships_1936_and_multi_era():
         assert meta["supports_period_geometry"] is True
         assert meta.get("period_geojson")
         assert meta.get("boundary_hints")
-        assert Path("landing/demo/data", meta["geojson"]).is_file()
+        # PMTiles-first (M22): no full global GeoJSON ships per scenario.
+        assert meta["geojson"] is None
+        assert Path("landing/demo/data", meta["pmtiles"]).is_file()
         assert Path("landing/demo/data", meta["period_geojson"]).is_file()
 
 

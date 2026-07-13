@@ -70,6 +70,20 @@ def test_bundled_landing_site_validates():
             continue
         assert scenario.get("pmtiles"), f"missing pmtiles for {scenario.get('id')}"
         assert (Path(result.landing_dir) / "demo" / "data" / scenario["pmtiles"]).is_file()
+        assert scenario.get("geojson") is None
+
+    demo_js = Path(result.landing_dir, "demo", "demo.js").read_text(encoding="utf-8")
+    assert 'cache: "no-cache"' in demo_js
+
+    vercel = json.loads(Path(result.landing_dir, "vercel.json").read_text(encoding="utf-8"))
+    pmtiles_rules = [
+        rule for rule in vercel["headers"] if rule["source"] == "/demo/data/(.*)\\.pmtiles"
+    ]
+    assert len(pmtiles_rules) == 1
+    assert {
+        "key": "Cache-Control",
+        "value": "public, max-age=31536000, immutable",
+    } in pmtiles_rules[0]["headers"]
 
 
 def test_validate_landing_site_rejects_missing_files(tmp_path: Path):

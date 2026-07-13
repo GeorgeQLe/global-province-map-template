@@ -4,6 +4,7 @@ from gpm.era_geometry.apply import (
     EraGeometryApplyResult,
     EraGeometryError,
     apply_era_geometry_pack,
+    apply_era_geometry_packs,
 )
 from gpm.era_geometry.packs import (
     EraGeometryPackSummary,
@@ -17,6 +18,7 @@ __all__ = [
     "EraGeometryError",
     "EraGeometryPackSummary",
     "apply_era_geometry_pack",
+    "apply_era_geometry_packs",
     "list_era_geometry_packs",
     "load_era_geometry_pack",
     "validate_era_geometry_pack",

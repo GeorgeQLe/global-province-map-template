@@ -1,0 +1,228 @@
+{
+  "display_name": "Western + Central Europe multi-era geometry + politics v1",
+  "do_not_claim": [
+    "period-correct province geometry worldwide",
+    "Paradox-grade completeness for any single era or region",
+    "legal historical frontiers \u2014 soft hints are illustrative"
+  ],
+  "eras": [
+    {
+      "era": "1444",
+      "era_geometry_pack_id": "we-1444-v1",
+      "era_geometry_pack_ids": [
+        "we-1444-v1",
+        "ce-1444-v1"
+      ],
+      "geometry_quality_tier": "period-geometry",
+      "notes": "EU-leaning start: WE (Cologne split, Flanders) + CE (Prague split, Pannonia reshape, soft Habsburg/Ottoman/Polish bands).",
+      "politics_quality_tier": "curated-politics",
+      "recommended_profile": "eu-like",
+      "scenario_id": "official-1444"
+    },
+    {
+      "era": "1836",
+      "era_geometry_pack_id": "we-1836-v1",
+      "era_geometry_pack_ids": [
+        "we-1836-v1",
+        "ce-1836-v1"
+      ],
+      "geometry_quality_tier": "period-geometry",
+      "notes": "Victoria-leaning start: WE (Belgian independence) + CE (Austrian Empire / Galicia / Hungarian lands soft geometry).",
+      "politics_quality_tier": "curated-politics",
+      "recommended_profile": "victoria-like",
+      "scenario_id": "official-1836"
+    },
+    {
+      "era": "1936",
+      "era_geometry_pack_id": "we-1936-v1",
+      "era_geometry_pack_ids": [
+        "we-1936-v1",
+        "ce-1936-v1"
+      ],
+      "geometry_quality_tier": "period-geometry",
+      "notes": "HOI-leaning interwar start: WE (Maginot / Rhineland) + CE (Sudeten / Anschluss / Polish corridor soft geometry).",
+      "politics_quality_tier": "curated-politics",
+      "recommended_profile": "hoi-like",
+      "scenario_id": "official-1936"
+    }
+  ],
+  "migration_notes": {
+    "breaking_changes": [
+      "we-1444-v1 splits sample_de_rhineland into era_de_cologne + era_de_rhineland_residual.",
+      "ce-1444-v1 splits sample_cz_bohemia into era_cz_prague + era_cz_bohemia_residual.",
+      "we-1836-v1 replaces sample_be_flanders with era_be_flanders_1836.",
+      "ce-1836-v1 replaces sample_at_vienna with era_at_vienna_1836.",
+      "we-1936-v1 replaces sample_de_rhineland with era_de_rhineland_1936.",
+      "ce-1936-v1 replaces sample_cz_bohemia with era_cz_bohemia_1936."
+    ],
+    "consumer_guidance": [
+      "Pin game saves and mod data to era province IDs when consuming a period-geometry layer.",
+      "Use lineage.json / lineage.csv under eras/<era>/geometry/ to migrate scaffold-only packs.",
+      "Rebuild ownership tables after geometry revisions \u2014 politics do not rewrite polygons.",
+      "Read region_quality_matrix.json: period geometry covers Western Europe and Central Europe only.",
+      "Profile alignment: eu-like (1444), victoria-like (1836), hoi-like (1936)."
+    ],
+    "do_not_claim": [
+      "period-correct province geometry worldwide",
+      "identical province IDs across all three eras",
+      "Paradox-grade HRE / Bohemian Crown / Austrian Empire / interwar microborders"
+    ],
+    "lineage_strategy": "Composed packs emit a merged lineage map. Do not assume era IDs match across 1444/1836/1936 or across WE vs CE packs. Cross-era analytics should join on scaffold_province_id.",
+    "summary": "Scaffold province IDs are the stable cross-era join key. Each era composes WE + CE era-geometry packs (applied in that order); use lineage.json to migrate. Politics are scenario overlays rebuilt per era."
+  },
+  "pack_id": "europe-multi-era-v1",
+  "priority_region": {
+    "bbox": [
+      -5.5,
+      42.0,
+      24.5,
+      55.0
+    ],
+    "id": "western-and-central-europe",
+    "label": "Western and Central Europe",
+    "notes": "M20 multi-region pack: composes WE + CE era-geometry packs for 1444, 1836, and 1936.",
+    "parent_country_ids": [
+      "FRA",
+      "BEL",
+      "NLD",
+      "LUX",
+      "DEU",
+      "AUT",
+      "CZE",
+      "POL",
+      "HUN"
+    ]
+  },
+  "priority_regions": [
+    {
+      "bbox": [
+        -5.5,
+        42.0,
+        12.0,
+        54.0
+      ],
+      "id": "western-europe",
+      "label": "Western Europe",
+      "parent_country_ids": [
+        "FRA",
+        "BEL",
+        "NLD",
+        "LUX",
+        "DEU"
+      ]
+    },
+    {
+      "bbox": [
+        12.0,
+        45.5,
+        24.5,
+        55.0
+      ],
+      "id": "central-europe",
+      "label": "Central Europe",
+      "parent_country_ids": [
+        "AUT",
+        "CZE",
+        "POL",
+        "HUN"
+      ]
+    }
+  ],
+  "region_quality_matrix": [
+    {
+      "by_era": {
+        "1444": {
+          "geometry": "period-geometry",
+          "politics": "curated-politics"
+        },
+        "1836": {
+          "geometry": "period-geometry",
+          "politics": "curated-politics"
+        },
+        "1936": {
+          "geometry": "period-geometry",
+          "politics": "curated-politics"
+        }
+      },
+      "label": "Western Europe (priority region)",
+      "region_id": "western-europe"
+    },
+    {
+      "by_era": {
+        "1444": {
+          "geometry": "period-geometry",
+          "politics": "curated-politics"
+        },
+        "1836": {
+          "geometry": "period-geometry",
+          "politics": "curated-politics"
+        },
+        "1936": {
+          "geometry": "period-geometry",
+          "politics": "curated-politics"
+        }
+      },
+      "label": "Central Europe (priority region)",
+      "region_id": "central-europe"
+    },
+    {
+      "by_era": {
+        "1444": {
+          "geometry": "scaffold-baseline",
+          "politics": "curated-politics"
+        },
+        "1836": {
+          "geometry": "scaffold-baseline",
+          "politics": "curated-politics"
+        },
+        "1936": {
+          "geometry": "scaffold-baseline",
+          "politics": "curated-politics"
+        }
+      },
+      "label": "Europe elevated theaters (outside WE/CE hard overrides)",
+      "region_id": "europe-elevated"
+    },
+    {
+      "by_era": {
+        "1444": {
+          "geometry": "scaffold-baseline",
+          "politics": "curated-politics"
+        },
+        "1836": {
+          "geometry": "scaffold-baseline",
+          "politics": "curated-politics"
+        },
+        "1936": {
+          "geometry": "scaffold-baseline",
+          "politics": "curated-politics"
+        }
+      },
+      "label": "Global major-power tags",
+      "region_id": "global-majors"
+    },
+    {
+      "by_era": {
+        "1444": {
+          "geometry": "scaffold-baseline",
+          "politics": "scaffold-baseline"
+        },
+        "1836": {
+          "geometry": "scaffold-baseline",
+          "politics": "scaffold-baseline"
+        },
+        "1936": {
+          "geometry": "scaffold-baseline",
+          "politics": "scaffold-baseline"
+        }
+      },
+      "label": "Outside elevated theaters",
+      "region_id": "rest-of-world"
+    }
+  ],
+  "schema_version": "0.1.0",
+  "source_notes": [
+    "M20 multi-region packaging: composes M15/M16 WE packs with new CE era-geometry packs.",
+    "Geometry packs are priority-region scoped; politics remain curated overlays on open geodata."
+  ]
+}

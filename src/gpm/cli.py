@@ -7,6 +7,7 @@ from collections.abc import Sequence
 from pathlib import Path
 
 from .builders.adjacency import AdjacencyBuildError, build_land_adjacency
+from .builders.hierarchy import HierarchyBuildError, build_hierarchy
 from .builders.provinces import ProvinceBuildError, build_land_province_draft
 from .builders.seas import SeaBuildError, build_sea_zones
 from .config import DEFAULT_PROFILE_ID, ConfigError, load_profile
@@ -61,9 +62,12 @@ from .release import (
     DEFAULT_ALPHA_SCENARIOS,
     DEFAULT_BETA_SCENARIOS,
     DEFAULT_SAMPLE_COUNTRIES,
+    DEMO_SCENARIOS,
+    DemoBuildError,
     ReleaseError,
     build_alpha_release,
     build_beta_release,
+    build_demo,
     release_landing_site,
 )
 from .scenarios import (
@@ -246,6 +250,48 @@ def _build_parser() -> argparse.ArgumentParser:
         help="Output format for the build summary.",
     )
     adjacency.set_defaults(handler=_build_adjacency)
+
+    hierarchy = build_commands.add_parser(
+        "hierarchy",
+        help="Build the M21 area/region/superregion hierarchy and enrich provinces with parent fields.",
+    )
+    _add_profile_arg(hierarchy)
+    _add_raw_dir_arg(hierarchy)
+    hierarchy.add_argument(
+        "--province-input",
+        type=Path,
+        default=PROCESSED_DATA_DIR / "provinces.geojson",
+        help="Province GeoJSON input. Defaults to data/processed/provinces.geojson.",
+    )
+    hierarchy.add_argument(
+        "--adjacency-input",
+        type=Path,
+        default=PROCESSED_DATA_DIR / "adjacency.csv",
+        help="Adjacency CSV input. Defaults to data/processed/adjacency.csv.",
+    )
+    hierarchy.add_argument(
+        "--output",
+        type=Path,
+        default=PROCESSED_DATA_DIR / "hierarchy.geojson",
+        help="Hierarchy GeoJSON output. Defaults to data/processed/hierarchy.geojson.",
+    )
+    hierarchy.add_argument(
+        "--province-output",
+        type=Path,
+        help="Optional path for enriched provinces. Defaults to overwriting --province-input.",
+    )
+    hierarchy.add_argument(
+        "--no-update-provinces",
+        action="store_true",
+        help="Do not rewrite provinces with parent hierarchy fields.",
+    )
+    hierarchy.add_argument(
+        "--format",
+        choices=["text", "json"],
+        default="text",
+        help="Output format for the build summary.",
+    )
+    hierarchy.set_defaults(handler=_build_hierarchy)
 
     seas = build_commands.add_parser(
         "seas",
@@ -1379,6 +1425,83 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     curation_checklist.set_defaults(handler=_curation_checklist)
 
+    demo = subcommands.add_parser(
+        "demo",
+        help="Build and refresh the landing-page interactive demo data pack.",
+    )
+    demo_commands = demo.add_subparsers(dest="command")
+    demo_build = demo_commands.add_parser(
+        "build",
+        help=(
+            "Regenerate landing/demo/data from the processed global build: atlas exports, "
+            "per-scenario PMTiles, hierarchy overlays, adjacency lines, and the demo manifest."
+        ),
+    )
+    _add_profile_arg(demo_build)
+    demo_build.add_argument(
+        "--province-input",
+        type=Path,
+        default=PROCESSED_DATA_DIR / "provinces.geojson",
+        help="Province GeoJSON input. Defaults to data/processed/provinces.geojson.",
+    )
+    demo_build.add_argument(
+        "--adjacency-input",
+        type=Path,
+        default=PROCESSED_DATA_DIR / "adjacency.csv",
+        help="Adjacency CSV input. Defaults to data/processed/adjacency.csv.",
+    )
+    demo_build.add_argument(
+        "--hierarchy-input",
+        type=Path,
+        default=PROCESSED_DATA_DIR / "hierarchy.geojson",
+        help="Hierarchy GeoJSON input. Defaults to data/processed/hierarchy.geojson.",
+    )
+    demo_build.add_argument(
+        "--landing-dir",
+        type=Path,
+        help="Landing site directory. Defaults to <project>/landing.",
+    )
+    demo_build.add_argument(
+        "--work-dir",
+        type=Path,
+        help="Temporary build directory. Defaults to data/processed/demo_build.",
+    )
+    demo_build.add_argument(
+        "--scenario",
+        action="append",
+        default=[],
+        help="Scenario id to include; may be repeated. Defaults to the four demo eras.",
+    )
+    demo_build.add_argument(
+        "--tile-min-zoom",
+        type=int,
+        default=0,
+        help="Minimum PMTiles zoom. Defaults to 0.",
+    )
+    demo_build.add_argument(
+        "--tile-max-zoom",
+        type=int,
+        default=7,
+        help="Maximum PMTiles zoom. Defaults to 7 (native backend); use 10 with tippecanoe.",
+    )
+    demo_build.add_argument(
+        "--no-tippecanoe",
+        action="store_true",
+        help="Force the pure-Python tile backend even when tippecanoe is installed.",
+    )
+    demo_build.add_argument(
+        "--no-validate",
+        action="store_true",
+        help="Skip the landing-site validation step after the build.",
+    )
+    demo_build.add_argument(
+        "--format",
+        choices=["text", "json"],
+        default="text",
+        help="Output format for the build summary.",
+    )
+    demo_build.set_defaults(handler=_demo_build)
+
     return parser
 
 
@@ -1619,6 +1742,86 @@ def _build_adjacency(args: argparse.Namespace) -> int:
     print(f"Minimum shared border: {result.min_shared_border_km} km")
     if result.strait_max_distance_km is not None:
         print(f"Strait max distance: {result.strait_max_distance_km} km")
+    return 0
+
+
+def _build_hierarchy(args: argparse.Namespace) -> int:
+    try:
+        result = build_hierarchy(
+            args.profile,
+            province_input=args.province_input,
+            adjacency_input=args.adjacency_input,
+            raw_dir=args.raw_dir,
+            output=args.output,
+            update_provinces=not args.no_update_provinces,
+            province_output=args.province_output,
+        )
+    except (ConfigError, HierarchyBuildError) as error:
+        _print_error(error)
+        return 1
+    if args.format == "json":
+        print(json.dumps(result.to_dict(), indent=2, sort_keys=True))
+        return 0
+    print("gpm build hierarchy: generated M21 area/region/superregion hierarchy.")
+    print(f"Profile: {result.profile_id}")
+    print(f"Province input: {result.province_input}")
+    print(f"Adjacency input: {result.adjacency_input}")
+    print(f"Hierarchy output: {result.output}")
+    print(
+        f"Entities: {result.area_count} areas, {result.region_count} regions, "
+        f"{result.superregion_count} superregions over {result.province_count} land provinces"
+    )
+    if result.province_output:
+        print(f"Enriched provinces: {result.province_output} ({result.updated_province_count} updated)")
+    else:
+        print("Province enrichment skipped (--no-update-provinces).")
+    if not result.natural_earth_attributes:
+        print(
+            "Natural Earth attribute zips not found; used one-region-per-country and "
+            "a single fallback superregion."
+        )
+    return 0
+
+
+def _demo_build(args: argparse.Namespace) -> int:
+    scenarios = tuple(args.scenario) if args.scenario else DEMO_SCENARIOS
+    try:
+        result = build_demo(
+            args.profile,
+            province_input=args.province_input,
+            adjacency_input=args.adjacency_input,
+            hierarchy_input=args.hierarchy_input,
+            landing_dir=args.landing_dir,
+            work_dir=args.work_dir,
+            scenarios=scenarios,
+            tile_min_zoom=args.tile_min_zoom,
+            tile_max_zoom=args.tile_max_zoom,
+            prefer_tippecanoe=not args.no_tippecanoe,
+            validate=not args.no_validate,
+        )
+    except (ConfigError, DemoBuildError, ReleaseError) as error:
+        _print_error(error)
+        return 1
+    if args.format == "json":
+        print(json.dumps(result.to_dict(), indent=2, sort_keys=True))
+        return 0
+    print("gpm demo build: refreshed the landing demo data pack.")
+    print(f"Profile: {result.profile_id}")
+    print(f"Demo data: {result.landing_data_dir}")
+    print(f"Scenarios: {', '.join(result.scenario_ids)}")
+    print(
+        f"Tiles: backend {result.tile_backend}, zoom {result.tile_min_zoom}–{result.tile_max_zoom}"
+    )
+    print(
+        "Hierarchy overlays: "
+        f"{result.hierarchy_counts['areas']} areas, "
+        f"{result.hierarchy_counts['regions']} regions, "
+        f"{result.hierarchy_counts['superregions']} superregions"
+    )
+    print(f"Adjacency edges: {result.adjacency_edge_count}")
+    if result.dropped_files:
+        print(f"Dropped legacy demo files: {', '.join(result.dropped_files)}")
+    print(f"Landing-site validation: {'passed' if result.validated else 'skipped'}")
     return 0
 
 
@@ -2455,13 +2658,15 @@ def _multi_era_validate(args: argparse.Namespace) -> int:
     except (MultiEraError, MultiEraPackError) as error:
         _print_error(error)
         return 1
+    from gpm.multi_era.packs import resolve_era_geometry_pack_ids
+
     eras = [str(slot.get("era")) for slot in document.get("eras") or []]
     scenarios = [str(slot.get("scenario_id")) for slot in document.get("eras") or []]
-    geom_packs = [
-        str(slot["era_geometry_pack_id"])
-        for slot in document.get("eras") or []
-        if slot.get("era_geometry_pack_id")
-    ]
+    geom_packs: list[str] = []
+    for slot in document.get("eras") or []:
+        for pack_id in resolve_era_geometry_pack_ids(slot):
+            if pack_id not in geom_packs:
+                geom_packs.append(pack_id)
     payload = {
         "pack_id": document["pack_id"],
         "display_name": document["display_name"],

@@ -208,6 +208,23 @@ def _validate_era_slot(slot: Any, path: str, seen_eras: set[str]) -> None:
             f"{path}.era_geometry_pack_id must be a non-empty string when present"
         )
 
+    # M20: optional multi-region composition list (applied in order).
+    geom_packs = slot.get("era_geometry_pack_ids")
+    if geom_packs is not None:
+        if not isinstance(geom_packs, list) or not geom_packs:
+            raise MultiEraPackError(
+                f"{path}.era_geometry_pack_ids must be a non-empty list when present"
+            )
+        if not all(isinstance(item, str) and item.strip() for item in geom_packs):
+            raise MultiEraPackError(
+                f"{path}.era_geometry_pack_ids must be a list of non-empty strings"
+            )
+        if geom_pack is not None and geom_pack not in geom_packs:
+            raise MultiEraPackError(
+                f"{path}.era_geometry_pack_id must appear in era_geometry_pack_ids "
+                "when both are set"
+            )
+
     profile = slot.get("recommended_profile")
     if profile is not None and (not isinstance(profile, str) or not profile.strip()):
         raise MultiEraPackError(
@@ -251,15 +268,26 @@ def _validate_matrix_row(row: Any, path: str, known_eras: set[str]) -> None:
                 )
 
 
+def resolve_era_geometry_pack_ids(slot: dict[str, Any]) -> list[str]:
+    """Return ordered era-geometry pack ids for a multi-era era slot (M20)."""
+    multi = slot.get("era_geometry_pack_ids")
+    if isinstance(multi, list) and multi:
+        return [str(item).strip() for item in multi if str(item).strip()]
+    single = slot.get("era_geometry_pack_id")
+    if isinstance(single, str) and single.strip():
+        return [single.strip()]
+    return []
+
+
 def _summarize(document: dict[str, Any], path: Path) -> MultiEraPackSummary:
     eras = document.get("eras") or []
     era_ids = tuple(str(slot.get("era") or "") for slot in eras)
     scenario_ids = tuple(str(slot.get("scenario_id") or "") for slot in eras)
-    geom_ids = tuple(
-        str(slot["era_geometry_pack_id"])
-        for slot in eras
-        if slot.get("era_geometry_pack_id")
-    )
+    geom_ids: list[str] = []
+    for slot in eras:
+        for pack_id in resolve_era_geometry_pack_ids(slot):
+            if pack_id not in geom_ids:
+                geom_ids.append(pack_id)
     region = document.get("priority_region") or {}
     return MultiEraPackSummary(
         pack_id=str(document["pack_id"]),
@@ -269,6 +297,6 @@ def _summarize(document: dict[str, Any], path: Path) -> MultiEraPackSummary:
         era_count=len(eras),
         eras=era_ids,
         scenario_ids=scenario_ids,
-        era_geometry_pack_ids=geom_ids,
+        era_geometry_pack_ids=tuple(geom_ids),
         region_matrix_row_count=len(document.get("region_quality_matrix") or []),
     )

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Interactive demo of Global Province Map Template — multi-era ownership (1444 / 1836 / 1936), period geometry, adjacency, and reserved slots for curation tools."
+      content="Interactive demo of Global Province Map Template — global PMTiles province map with area/region/superregion hierarchy, multi-era ownership (1444 / 1836 / 1936), period geometry, and adjacency."
     />
     <meta name="theme-color" content="#0c1a24" />
     <title>Demo · Global Province Map Template</title>
@@ -21,7 +21,7 @@
     />
     <!-- Root-absolute paths: Vercel cleanUrls + trailingSlash:false serve this page at
          /demo (no trailing slash), which breaks sibling-relative URLs like demo.css. -->
-    <link rel="stylesheet" href="/demo/demo.css" />
+    <link rel="stylesheet" href="/demo/demo.css?v=m22" />
   </head>
   <body>
     <a class="skip-link" href="#demo-main">Skip to demo</a>
@@ -33,7 +33,7 @@
           <span class="brand-text">GPM</span>
         </a>
         <div class="header-title">
-          <p class="eyebrow">Interactive demo · beta sample</p>
+          <p class="eyebrow">Interactive demo · global build</p>
           <h1>What ships today — with room to grow</h1>
         </div>
         <div class="header-actions">
@@ -74,16 +74,17 @@
         <div id="map" role="application" aria-label="Ownership choropleth map"></div>
         <div id="status-banner" class="status-banner" hidden></div>
         <div class="map-footnote">
-          Western Europe beta sample · scaffold geometry by default · M16 multi-era
-          period geometry + boundary hints for 1444 / 1836 / 1936 · click a province
-          to inspect
+          Full global build (4,600+ Natural Earth provinces, pmtiles vector tiles) ·
+          M21 area / region / superregion hierarchy · M16/M20 period geometry +
+          boundary hints for 1444 / 1836 / 1936 (WE+CE sample) · click a province to
+          inspect
         </div>
       </section>
 
       <aside class="side-panel" aria-label="Demo controls and inspector">
         <section class="panel-block">
           <h2>Live layers</h2>
-          <p class="help">Built from the license-audited beta atlas sample.</p>
+          <p class="help">Built from the full global Natural Earth build (license-audited).</p>
           <div class="layer-list" id="live-layers">
             <label class="layer-row">
               <input type="checkbox" id="layer-ownership" checked />
@@ -100,10 +101,24 @@
               </span>
             </label>
             <label class="layer-row">
-              <input type="checkbox" id="layer-adjacency" checked />
+              <input type="checkbox" id="layer-hierarchy" checked />
+              <span>
+                <strong>Hierarchy borders + labels</strong>
+                <small>M21 area · region · superregion nesting</small>
+              </span>
+            </label>
+            <label class="layer-row">
+              <input type="checkbox" id="layer-hierarchy-paint" />
+              <span>
+                <strong>Hierarchy paint</strong>
+                <small>Deterministic color per area</small>
+              </span>
+            </label>
+            <label class="layer-row">
+              <input type="checkbox" id="layer-adjacency" />
               <span>
                 <strong>Adjacency graph</strong>
-                <small>Land · sea · port edges</small>
+                <small>Precomputed land · strait centroid lines (zoom ≥ 4)</small>
               </span>
             </label>
             <label class="layer-row">
@@ -131,30 +146,27 @@
               <input type="checkbox" id="layer-period-geometry" />
               <span>
                 <strong>Period geometry</strong>
-                <small>M16 multi-era · WE sample (1444 / 1836 / 1936)</small>
+                <small>M16/M20 multi-era · WE+CE sample (1444 / 1836 / 1936)</small>
               </span>
             </label>
             <label class="layer-row">
-              <input type="checkbox" id="layer-boundary-hints" checked />
+              <input type="checkbox" id="layer-boundary-hints" />
               <span>
                 <strong>Historical boundary hints</strong>
-                <small>M16 soft frontier bands per era</small>
-              </span>
-            </label>
-            <label class="layer-row">
-              <input type="checkbox" id="layer-pmtiles" />
-              <span>
-                <strong>PMTiles vector source</strong>
-                <small>M19 web delivery · GeoJSON still powers inspector</small>
+                <small>M16 soft frontier bands per era (with period geometry)</small>
               </span>
             </label>
           </div>
+          <p class="help">
+            Global polygons stream as pmtiles vector tiles (M19/M22); the
+            inspector reads rendered tile features at any zoom.
+          </p>
         </section>
 
         <section class="panel-block">
           <h2>Reserved for later</h2>
           <p class="help">
-            UI slots for roadmap work still ahead (broader period geometry).
+            UI slots for roadmap work still ahead (M23 game-like density).
           </p>
           <ul class="future-list" id="future-slots"></ul>
         </section>
@@ -190,16 +202,17 @@
         <section class="panel-block honesty">
           <h2>Honest quality bar</h2>
           <ul class="compact">
-            <li><code>scaffold-baseline</code> default geometry</li>
+            <li><code>scaffold-baseline</code> geometry: full global Natural Earth admin-1 build</li>
             <li><code>curated-politics</code> for official-1836 · official-1444 · official-1936</li>
-            <li><code>period-geometry</code> M16 WE priority region (period toggle)</li>
+            <li><code>period-geometry</code> M16/M20 WE+CE priority regions (period toggle)</li>
+            <li>M21 hierarchy (area / region / superregion) is generated, not hand-curated</li>
             <li>Culture / religion are curated scenario hints (M18); unassigned is gray</li>
-            <li>PMTiles (M19) optional vector delivery; sample remains WE-scoped</li>
           </ul>
           <p class="help">
-            Not Paradox-grade global accuracy. Period shapes are priority-region
-            scoped (Western Europe sample pack). Culture/religion synonyms may
-            differ by era. License-audited public channel only.
+            Not Paradox-grade global accuracy. Province density is modern admin-1;
+            game-like density (population-weighted splitting) is a future
+            milestone. Period shapes are priority-region scoped. License-audited
+            public channel only.
           </p>
         </section>
       </aside>
@@ -208,8 +221,9 @@
     <footer class="demo-footer">
       <div class="shell footer-row">
         <p>
-          Demo data from <code>samples/beta-license-audited/</code> + multi-era WE
-          packs · milestones through <strong>M19</strong> (PMTiles)
+          Demo data regenerated with <code>gpm demo build</code> from the global
+          Natural Earth build + multi-era WE/CE packs · milestones through
+          <strong>M22</strong> (global PMTiles demo)
         </p>
         <p>
           <a href="/#status">Project status</a>
@@ -225,6 +239,6 @@
 
     <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
     <script src="https://unpkg.com/pmtiles@3.2.1/dist/pmtiles.js"></script>
-    <script src="/demo/demo.js" defer></script>
+    <script src="/demo/demo.js?v=m22" defer></script>
   </body>
 </html>

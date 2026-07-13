@@ -466,6 +466,11 @@ a:hover {
   box-shadow: inset 0 0 0 1px rgba(235, 230, 216, 0.12);
 }
 
+.hero-map-legend .legend-more {
+  color: rgba(235, 230, 216, 0.55);
+  font-size: 0.66rem;
+}
+
 .hero-map figcaption {
   display: flex;
   flex-wrap: wrap;

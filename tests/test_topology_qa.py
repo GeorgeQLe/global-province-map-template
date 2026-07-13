@@ -130,9 +130,10 @@ def test_invalid_geometry_and_duplicate_ids_mark_dependent_analysis_incomplete(t
     assert "LAND_COVERAGE_GAP" not in codes
 
 
-def test_invalid_mask_geometry_is_reported_without_repair(tmp_path):
+def test_invalid_mask_geometry_is_repaired_on_load(tmp_path):
     province_input = tmp_path / "provinces.geojson"
     adjacency_input = tmp_path / "adjacency.csv"
+    # Bowtie ring: self-intersecting, repairable via make_valid.
     mask = _write_mask(
         tmp_path,
         [[0, 0], [2, 2], [0, 2], [2, 0], [0, 0]],
@@ -149,9 +150,10 @@ def test_invalid_mask_geometry_is_reported_without_repair(tmp_path):
     )
     report = json.loads((tmp_path / "report.json").read_text(encoding="utf-8"))
     codes = {finding["code"] for finding in report["findings"]}
-    assert result.status == "fail"
-    assert "INVALID_MASK_GEOMETRY" in codes
-    assert report["summary"]["analysis"] == {"coverage": "incomplete", "graph": "complete"}
+    assert "MASK_GEOMETRY_REPAIRED" in codes
+    assert "INVALID_MASK_GEOMETRY" not in codes
+    # Coverage analysis runs to completion against the repaired mask.
+    assert report["summary"]["analysis"] == {"coverage": "complete", "graph": "complete"}
 
 
 def test_qa_validates_adjacency_endpoints_semantics_pairs_and_measurements(tmp_path):

@@ -2,14 +2,25 @@
 
 ## Active
 
-- (none — M19 complete; pick next from roadmap)
+- (none — M22 complete; M23 is design-only pending implementation approval)
 
 ## Up next (from roadmap)
 
-- Broader period geometry beyond Western Europe priority region
+- M23 game-like province density (design note only; implementation not started)
 
 ## Completed
 
+- [x] M22 global PMTiles-first public demo: four native z0–7 scenario archives
+  over 4,603 provinces, hero owner dissolves, hierarchy and adjacency overlays,
+  generated manifest, PMTiles-only global polygons, cache-safe entrypoints, and
+  `gpm demo build` regeneration/validation.
+- [x] M21 province → area → region → superregion hierarchy: stable entities,
+  province parent fields, hierarchy export layers, CLI/docs/tests.
+- [x] M20 broader period geometry beyond Western Europe: Central Europe packs
+  (`ce-1444-v1` / `ce-1836-v1` / `ce-1936-v1`), multi-pack composition
+  (`era_geometry_pack_ids`, `apply_era_geometry_packs`), multi-era pack
+  `europe-multi-era-v1`, WE+CE scaffold sample, demo refresh, docs
+  `docs/m20-broader-period-geometry.md`, tests `tests/test_m20_broader_period_geometry.py`.
 - [x] M19 PMTiles / vector tiles: pure-Python MVT + PMTiles v3 writer,
   `gpm export tiles` (+ `--atlas-dir`), `gpm export atlas --tiles`, tippecanoe
   optional backend, tileset schema/manifest, demo PMTiles vector source + sample

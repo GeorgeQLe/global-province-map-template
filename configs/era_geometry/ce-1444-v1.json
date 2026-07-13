@@ -1,0 +1,202 @@
+{
+  "schema_version": "0.1.0",
+  "pack_id": "ce-1444-v1",
+  "era": "1444",
+  "start_date": "1444-11-11",
+  "scenario_id": "official-1444",
+  "display_name": "Central Europe 1444 period geometry v1",
+  "quality_tier": "period-geometry",
+  "priority_region": {
+    "id": "central-europe",
+    "label": "Central Europe",
+    "parent_country_ids": ["AUT", "CZE", "POL", "HUN"],
+    "bbox": [12.0, 45.5, 24.5, 55.0],
+    "notes": "M20 second priority region. Habsburg / Bohemian Crown / Poland-Lithuania / Hungarian frontier readability for 1444. Outside these modern ISO parents, scaffold geometry is retained."
+  },
+  "geometry_modes": ["boundary_hints", "hard_overrides"],
+  "period_true_scope": ["central-europe"],
+  "scaffold_backed_scope": ["outside priority_region", "seas", "rest of world"],
+  "source_notes": [
+    "Curator-authored soft frontier bands and sample hard overrides for M20 broader period geometry.",
+    "Not derived from proprietary game maps. Not a full OpenHistoricalMap extract.",
+    "Hard overrides target sample_* province IDs (sample_at_*, sample_cz_*, sample_pl_*, sample_hu_*); they skip cleanly on full Natural Earth builds.",
+    "Soft boundary hints are geographic and apply on any scaffold that intersects the priority region."
+  ],
+  "do_not_claim": [
+    "period-correct province geometry worldwide",
+    "Paradox-grade HRE / Bohemian Crown / Jagiellon microborders",
+    "legal 1444 frontiers — hints are illustrative for the historical sniff test"
+  ],
+  "boundary_hints": [
+    {
+      "hint_id": "ce1444-bohemian-crown",
+      "label": "Bohemian Crown core band",
+      "kind": "frontier",
+      "confidence": "illustrative",
+      "related_tags": ["BOH", "HAB"],
+      "notes": "Soft band around Bohemia / Moravia readability where modern CZE outlines mislead for 1444.",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [13.5, 50.5],
+          [14.5, 50.8],
+          [15.5, 50.6],
+          [16.2, 50.0],
+          [16.0, 49.2],
+          [15.0, 48.9],
+          [14.0, 49.2]
+        ]
+      }
+    },
+    {
+      "hint_id": "ce1444-ottoman-hungarian",
+      "label": "Ottoman–Hungarian frontier band",
+      "kind": "frontier",
+      "confidence": "illustrative",
+      "related_tags": ["HUN", "TUR"],
+      "notes": "Illustrative southern Hungarian frontier after Varna (1444) — soft only.",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [16.5, 45.8],
+          [18.0, 46.0],
+          [19.5, 46.2],
+          [21.0, 46.0],
+          [22.5, 45.8]
+        ]
+      }
+    },
+    {
+      "hint_id": "ce1444-habsburg-hungarian",
+      "label": "Habsburg–Hungarian corridor",
+      "kind": "frontier",
+      "confidence": "illustrative",
+      "related_tags": ["HAB", "HUN"],
+      "notes": "Soft band between Vienna basin and Hungarian plain for dual-monarchy-before-it-was-dual readability.",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [15.8, 48.3],
+          [16.5, 48.0],
+          [17.2, 47.7],
+          [18.0, 47.4]
+        ]
+      }
+    },
+    {
+      "hint_id": "ce1444-polish-lithuanian",
+      "label": "Polish–Lithuanian western approach",
+      "kind": "frontier",
+      "confidence": "illustrative",
+      "related_tags": ["POL", "LIT"],
+      "notes": "Illustrative western Polish / Mazovian band for Jagiellon-era framing.",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [18.5, 52.5],
+          [19.5, 52.3],
+          [20.5, 52.2],
+          [21.5, 52.0]
+        ]
+      }
+    },
+    {
+      "hint_id": "ce1444-silesia-band",
+      "label": "Silesian fringe band",
+      "kind": "disputed_band",
+      "confidence": "illustrative",
+      "related_tags": ["BOH", "POL"],
+      "notes": "Soft band for Bohemian Crown / Silesian story without a full redraw.",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [16.0, 50.0],
+            [17.5, 50.0],
+            [17.8, 50.8],
+            [16.2, 51.0],
+            [16.0, 50.0]
+          ]
+        ]
+      }
+    }
+  ],
+  "hard_overrides": [
+    {
+      "operation": "split",
+      "scaffold_province_id": "sample_cz_bohemia",
+      "reason": "Separate Prague core from residual Bohemia so 1444 politics are not painted as modern CZE-wide admin.",
+      "children": [
+        {
+          "era_province_id": "era_cz_prague",
+          "display_name": "Prague",
+          "parent_region_id": "CZ-PR",
+          "parent_country_id": "CZE",
+          "coastal": false,
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [14.0, 49.8],
+                [14.8, 49.8],
+                [14.8, 50.5],
+                [14.0, 50.5],
+                [14.0, 49.8]
+              ]
+            ]
+          }
+        },
+        {
+          "era_province_id": "era_cz_bohemia_residual",
+          "display_name": "Bohemia residual",
+          "parent_region_id": "CZ-ST",
+          "parent_country_id": "CZE",
+          "coastal": false,
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [14.8, 48.8],
+                [16.0, 48.8],
+                [16.0, 50.5],
+                [14.8, 50.5],
+                [14.8, 48.8]
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "operation": "replace",
+      "scaffold_province_id": "sample_hu_pannon",
+      "era_province_id": "era_hu_pannon",
+      "display_name": "Pannonia (period)",
+      "reason": "Slight reshape toward a denser Hungarian plain footprint for 1444 readability.",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [17.6, 47.05],
+            [19.6, 47.05],
+            [19.65, 47.85],
+            [17.65, 47.85],
+            [17.6, 47.05]
+          ]
+        ]
+      }
+    },
+    {
+      "operation": "identity",
+      "scaffold_province_id": "sample_at_vienna",
+      "era_province_id": "sample_at_vienna",
+      "reason": "Vienna basin retained as scaffold shape; Habsburg story via politics + corridor hint."
+    },
+    {
+      "operation": "identity",
+      "scaffold_province_id": "sample_pl_mazovia",
+      "era_province_id": "sample_pl_mazovia",
+      "reason": "Mazovia retained; Jagiellon story via politics + western approach band."
+    }
+  ]
+}

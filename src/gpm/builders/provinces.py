@@ -8,8 +8,8 @@ from datetime import UTC, datetime
 from pathlib import Path, PurePosixPath
 from typing import Any
 
-from shapely import normalize, to_wkb
-from shapely.geometry import shape
+from shapely import make_valid, normalize, to_wkb
+from shapely.geometry import MultiPolygon, mapping, shape
 from shapely.errors import ShapelyError
 
 from gpm import __version__
@@ -241,6 +241,36 @@ def _require_artifacts(artifacts: dict[str, Path]) -> None:
     )
 
 
+def _repaired_geometry(geometry: dict[str, Any]) -> tuple[dict[str, Any], bool]:
+    """Repair invalid source polygons with make_valid; keep valid input untouched."""
+    try:
+        geom = shape(geometry)
+    except (ShapelyError, TypeError, ValueError) as exc:
+        raise ProvinceBuildError(f"Cannot parse source geometry for repair: {exc}") from exc
+    if geom.is_valid:
+        return geometry, False
+    repaired = make_valid(geom)
+    polygons = [part for part in polygon_parts_of(repaired) if not part.is_empty]
+    if not polygons:
+        raise ProvinceBuildError("Geometry repair produced no polygonal area.")
+    canonical = normalize(polygons[0] if len(polygons) == 1 else MultiPolygon(polygons))
+    return mapping(canonical), True
+
+
+def polygon_parts_of(geom: Any) -> list[Any]:
+    """Flatten a geometry into its Polygon components."""
+    if geom.is_empty:
+        return []
+    if geom.geom_type == "Polygon":
+        return [geom]
+    if geom.geom_type in {"MultiPolygon", "GeometryCollection"}:
+        parts: list[Any] = []
+        for child in geom.geoms:
+            parts.extend(polygon_parts_of(child))
+        return parts
+    return []
+
+
 def _province_feature(
     geometry: dict[str, Any],
     source_properties: dict[str, Any],
@@ -250,6 +280,7 @@ def _province_feature(
     license_lineage: tuple[str, ...],
     index: int,
 ) -> dict[str, Any]:
+    geometry, geometry_repaired = _repaired_geometry(geometry)
     country_id = _country_id(source_properties)
     region_id = _region_id(source_properties, source_layer)
     display_name = _display_name(source_properties, source_layer, index)
@@ -260,24 +291,27 @@ def _province_feature(
         region_id=region_id,
     )
 
+    properties: dict[str, Any] = {
+        "province_id": province_id,
+        "display_name": display_name,
+        "kind": "land",
+        "parent_region_id": region_id,
+        "parent_country_id": country_id,
+        "area_sq_km": round(geometry_area_sq_km(geometry), 3),
+        "estimated_population": _estimated_population(source_properties),
+        "terrain_class": "unclassified",
+        "coastal": False,
+        "island": False,
+        "source_lineage": list(source_lineage),
+        "license_lineage": list(license_lineage),
+        "source_layer": source_layer,
+    }
+    if geometry_repaired:
+        properties["geometry_repaired"] = True
     return {
         "type": "Feature",
         "geometry": geometry,
-        "properties": {
-            "province_id": province_id,
-            "display_name": display_name,
-            "kind": "land",
-            "parent_region_id": region_id,
-            "parent_country_id": country_id,
-            "area_sq_km": round(geometry_area_sq_km(geometry), 3),
-            "estimated_population": _estimated_population(source_properties),
-            "terrain_class": "unclassified",
-            "coastal": False,
-            "island": False,
-            "source_lineage": list(source_lineage),
-            "license_lineage": list(license_lineage),
-            "source_layer": source_layer,
-        },
+        "properties": properties,
     }
 
 

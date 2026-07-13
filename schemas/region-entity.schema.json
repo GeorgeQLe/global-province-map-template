@@ -27,12 +27,35 @@
       "properties": {
         "region_id": { "type": "string", "minLength": 1 },
         "display_name": { "type": "string", "minLength": 1 },
-        "region_type": { "type": "string", "enum": ["state", "region", "strategic_region", "superregion"] },
+        "region_type": { "type": "string", "enum": ["area", "state", "region", "strategic_region", "superregion"] },
         "parent_country_id": { "type": ["string", "null"] },
+        "parent_region_id": {
+          "type": ["string", "null"],
+          "description": "M21 hierarchy: owning region when this entity is an area."
+        },
         "parent_superregion_id": { "type": ["string", "null"] },
         "province_ids": {
           "type": "array",
           "items": { "type": "string", "minLength": 1 }
+        },
+        "province_count": { "type": "integer", "minimum": 0 },
+        "member_region_ids": {
+          "type": "array",
+          "description": "M21 hierarchy: child entity IDs (areas for regions, regions for superregions).",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "admin1_codes": {
+          "type": "array",
+          "description": "M21 hierarchy: source admin-1 codes for area entities.",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "area_sq_km": { "type": "number", "minimum": 0 },
+        "label_point": {
+          "type": "array",
+          "description": "Precomputed [lon, lat] label anchor.",
+          "items": { "type": "number" },
+          "minItems": 2,
+          "maxItems": 2
         },
         "source_lineage": {
           "type": "array",

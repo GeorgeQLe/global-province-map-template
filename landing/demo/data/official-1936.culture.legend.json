@@ -1,60 +1,1015 @@
 {
-  "assigned_province_count": 6,
+  "assigned_province_count": 3902,
   "color_field": "culture_color",
-  "count": 5,
+  "count": 124,
   "end_date": null,
   "entries": [
+    {
+      "color": "#5837ad",
+      "display_name": "english",
+      "fill_color": "#5837ad",
+      "id": "english",
+      "province_count": 280
+    },
+    {
+      "color": "#a62833",
+      "display_name": "arab",
+      "fill_color": "#a62833",
+      "id": "arab",
+      "province_count": 229
+    },
+    {
+      "color": "#b0b521",
+      "display_name": "slovene",
+      "fill_color": "#b0b521",
+      "id": "slovene",
+      "province_count": 193
+    },
+    {
+      "color": "#54bb38",
+      "display_name": "italian",
+      "fill_color": "#54bb38",
+      "id": "italian",
+      "province_count": 120
+    },
+    {
+      "color": "#ae682a",
+      "display_name": "latvian",
+      "fill_color": "#ae682a",
+      "id": "latvian",
+      "province_count": 119
+    },
+    {
+      "color": "#40c332",
+      "display_name": "filipino",
+      "fill_color": "#40c332",
+      "id": "filipino",
+      "province_count": 118
+    },
+    {
+      "color": "#c55177",
+      "display_name": "ganda",
+      "fill_color": "#c55177",
+      "id": "ganda",
+      "province_count": 112
+    },
     {
       "color": "#ba9822",
       "display_name": "french",
       "fill_color": "#ba9822",
       "id": "french",
-      "province_count": 2
+      "province_count": 101
     },
     {
-      "color": "#a626c6",
-      "display_name": "dutch",
-      "fill_color": "#a626c6",
-      "id": "dutch",
-      "province_count": 1
+      "color": "#3535ae",
+      "display_name": "russian",
+      "fill_color": "#3535ae",
+      "id": "russian",
+      "province_count": 85
     },
     {
-      "color": "#a5c72e",
-      "display_name": "flemish",
-      "fill_color": "#a5c72e",
-      "id": "flemish",
-      "province_count": 1
+      "color": "#375c9e",
+      "display_name": "macedonian",
+      "fill_color": "#375c9e",
+      "id": "macedonian",
+      "province_count": 84
+    },
+    {
+      "color": "#995a33",
+      "display_name": "romanian",
+      "fill_color": "#995a33",
+      "id": "romanian",
+      "province_count": 82
+    },
+    {
+      "color": "#33a551",
+      "display_name": "turkish",
+      "fill_color": "#33a551",
+      "id": "turkish",
+      "province_count": 81
+    },
+    {
+      "color": "#c23e2d",
+      "display_name": "azerbaijani",
+      "fill_color": "#c23e2d",
+      "id": "azerbaijani",
+      "province_count": 78
+    },
+    {
+      "color": "#afd343",
+      "display_name": "thai",
+      "fill_color": "#afd343",
+      "id": "thai",
+      "province_count": 77
+    },
+    {
+      "color": "#4cc1c6",
+      "display_name": "maltese",
+      "fill_color": "#4cc1c6",
+      "id": "maltese",
+      "province_count": 68
+    },
+    {
+      "color": "#63e037",
+      "display_name": "vietnamese",
+      "fill_color": "#63e037",
+      "id": "vietnamese",
+      "province_count": 63
+    },
+    {
+      "color": "#803fb7",
+      "display_name": "han",
+      "fill_color": "#803fb7",
+      "id": "han",
+      "province_count": 53
+    },
+    {
+      "color": "#2451ad",
+      "display_name": "spanish",
+      "fill_color": "#2451ad",
+      "id": "spanish",
+      "province_count": 52
+    },
+    {
+      "color": "#dc2892",
+      "display_name": "american",
+      "fill_color": "#dc2892",
+      "id": "american",
+      "province_count": 51
+    },
+    {
+      "color": "#82df37",
+      "display_name": "japanese",
+      "fill_color": "#82df37",
+      "id": "japanese",
+      "province_count": 47
+    },
+    {
+      "color": "#ab9e32",
+      "display_name": "mossi",
+      "fill_color": "#ab9e32",
+      "id": "mossi",
+      "province_count": 45
+    },
+    {
+      "color": "#5fda3e",
+      "display_name": "hungarian",
+      "fill_color": "#5fda3e",
+      "id": "hungarian",
+      "province_count": 43
+    },
+    {
+      "color": "#4bab31",
+      "display_name": "hindi",
+      "fill_color": "#4bab31",
+      "id": "hindi",
+      "province_count": 36
+    },
+    {
+      "color": "#c52e83",
+      "display_name": "colombian",
+      "fill_color": "#c52e83",
+      "id": "colombian",
+      "province_count": 34
+    },
+    {
+      "color": "#1fd976",
+      "display_name": "fulani",
+      "fill_color": "#1fd976",
+      "id": "fulani",
+      "province_count": 34
+    },
+    {
+      "color": "#87e02f",
+      "display_name": "irish",
+      "fill_color": "#87e02f",
+      "id": "irish",
+      "province_count": 34
+    },
+    {
+      "color": "#c2a13c",
+      "display_name": "pashtun",
+      "fill_color": "#c2a13c",
+      "id": "pashtun",
+      "province_count": 34
+    },
+    {
+      "color": "#c08b4b",
+      "display_name": "javanese",
+      "fill_color": "#c08b4b",
+      "id": "javanese",
+      "province_count": 33
+    },
+    {
+      "color": "#af5423",
+      "display_name": "mexican",
+      "fill_color": "#af5423",
+      "id": "mexican",
+      "province_count": 33
+    },
+    {
+      "color": "#cb5527",
+      "display_name": "dominican",
+      "fill_color": "#cb5527",
+      "id": "dominican",
+      "province_count": 32
+    },
+    {
+      "color": "#30b3c7",
+      "display_name": "persian",
+      "fill_color": "#30b3c7",
+      "id": "persian",
+      "province_count": 31
+    },
+    {
+      "color": "#3fabbe",
+      "display_name": "swahili",
+      "fill_color": "#3fabbe",
+      "id": "swahili",
+      "province_count": 30
+    },
+    {
+      "color": "#b73547",
+      "display_name": "bulgarian",
+      "fill_color": "#b73547",
+      "id": "bulgarian",
+      "province_count": 28
+    },
+    {
+      "color": "#ba2aa4",
+      "display_name": "chewa",
+      "fill_color": "#ba2aa4",
+      "id": "chewa",
+      "province_count": 28
+    },
+    {
+      "color": "#cb3c9a",
+      "display_name": "korean",
+      "fill_color": "#cb3c9a",
+      "id": "korean",
+      "province_count": 28
+    },
+    {
+      "color": "#bd359c",
+      "display_name": "brazilian",
+      "fill_color": "#bd359c",
+      "id": "brazilian",
+      "province_count": 27
+    },
+    {
+      "color": "#5e41cd",
+      "display_name": "egyptian",
+      "fill_color": "#5e41cd",
+      "id": "egyptian",
+      "province_count": 27
     },
     {
       "color": "#a7a02d",
       "display_name": "german",
       "fill_color": "#a7a02d",
       "id": "german",
-      "province_count": 1
+      "province_count": 27
+    },
+    {
+      "color": "#bb26db",
+      "display_name": "peruvian",
+      "fill_color": "#bb26db",
+      "id": "peruvian",
+      "province_count": 26
+    },
+    {
+      "color": "#2eacd0",
+      "display_name": "swiss",
+      "fill_color": "#2eacd0",
+      "id": "swiss",
+      "province_count": 26
+    },
+    {
+      "color": "#db2a48",
+      "display_name": "venezuelan",
+      "fill_color": "#db2a48",
+      "id": "venezuelan",
+      "province_count": 26
+    },
+    {
+      "color": "#30ac96",
+      "display_name": "serbian",
+      "fill_color": "#30ac96",
+      "id": "serbian",
+      "province_count": 25
+    },
+    {
+      "color": "#b02e77",
+      "display_name": "sinhala",
+      "fill_color": "#b02e77",
+      "id": "sinhala",
+      "province_count": 25
+    },
+    {
+      "color": "#27bbdb",
+      "display_name": "ukrainian",
+      "fill_color": "#27bbdb",
+      "id": "ukrainian",
+      "province_count": 25
+    },
+    {
+      "color": "#8535ae",
+      "display_name": "argentine",
+      "fill_color": "#8535ae",
+      "id": "argentine",
+      "province_count": 24
+    },
+    {
+      "color": "#c42530",
+      "display_name": "ecuadorian",
+      "fill_color": "#c42530",
+      "id": "ecuadorian",
+      "province_count": 24
+    },
+    {
+      "color": "#c12231",
+      "display_name": "khmer",
+      "fill_color": "#c12231",
+      "id": "khmer",
+      "province_count": 24
+    },
+    {
+      "color": "#61ac2a",
+      "display_name": "kongo",
+      "fill_color": "#61ac2a",
+      "id": "kongo",
+      "province_count": 23
+    },
+    {
+      "color": "#39a8e2",
+      "display_name": "guatemalan",
+      "fill_color": "#39a8e2",
+      "id": "guatemalan",
+      "province_count": 22
+    },
+    {
+      "color": "#2c66d0",
+      "display_name": "malagasy",
+      "fill_color": "#2c66d0",
+      "id": "malagasy",
+      "province_count": 22
+    },
+    {
+      "color": "#41c91d",
+      "display_name": "mongol",
+      "fill_color": "#41c91d",
+      "id": "mongol",
+      "province_count": 22
+    },
+    {
+      "color": "#89bc2f",
+      "display_name": "sara",
+      "fill_color": "#89bc2f",
+      "id": "sara",
+      "province_count": 22
+    },
+    {
+      "color": "#ca2d82",
+      "display_name": "croatian",
+      "fill_color": "#ca2d82",
+      "id": "croatian",
+      "province_count": 21
+    },
+    {
+      "color": "#b08935",
+      "display_name": "montenegrin",
+      "fill_color": "#b08935",
+      "id": "montenegrin",
+      "province_count": 21
+    },
+    {
+      "color": "#42c63f",
+      "display_name": "norwegian",
+      "fill_color": "#42c63f",
+      "id": "norwegian",
+      "province_count": 21
+    },
+    {
+      "color": "#245bd7",
+      "display_name": "swedish",
+      "fill_color": "#245bd7",
+      "id": "swedish",
+      "province_count": 21
+    },
+    {
+      "color": "#205dd9",
+      "display_name": "papuan",
+      "fill_color": "#205dd9",
+      "id": "papuan",
+      "province_count": 20
+    },
+    {
+      "color": "#b03084",
+      "display_name": "portuguese",
+      "fill_color": "#b03084",
+      "id": "portuguese",
+      "province_count": 20
+    },
+    {
+      "color": "#3fc442",
+      "display_name": "akan",
+      "fill_color": "#3fc442",
+      "id": "akan",
+      "province_count": 19
+    },
+    {
+      "color": "#2a3ab3",
+      "display_name": "fang",
+      "fill_color": "#2a3ab3",
+      "id": "fang",
+      "province_count": 19
+    },
+    {
+      "color": "#267ec2",
+      "display_name": "greek",
+      "fill_color": "#267ec2",
+      "id": "greek",
+      "province_count": 19
+    },
+    {
+      "color": "#2aa154",
+      "display_name": "uruguayan",
+      "fill_color": "#2aa154",
+      "id": "uruguayan",
+      "province_count": 19
+    },
+    {
+      "color": "#cd4ba4",
+      "display_name": "bosniak",
+      "fill_color": "#cd4ba4",
+      "id": "bosniak",
+      "province_count": 18
+    },
+    {
+      "color": "#3483c0",
+      "display_name": "finnish",
+      "fill_color": "#3483c0",
+      "id": "finnish",
+      "province_count": 18
+    },
+    {
+      "color": "#af4c3c",
+      "display_name": "honduran",
+      "fill_color": "#af4c3c",
+      "id": "honduran",
+      "province_count": 18
+    },
+    {
+      "color": "#2178d9",
+      "display_name": "iraqi",
+      "fill_color": "#2178d9",
+      "id": "iraqi",
+      "province_count": 18
+    },
+    {
+      "color": "#729f2c",
+      "display_name": "ovimbundu",
+      "fill_color": "#729f2c",
+      "id": "ovimbundu",
+      "province_count": 18
+    },
+    {
+      "color": "#4733bd",
+      "display_name": "paraguayan",
+      "fill_color": "#4733bd",
+      "id": "paraguayan",
+      "province_count": 18
+    },
+    {
+      "color": "#c04278",
+      "display_name": "burundi",
+      "fill_color": "#c04278",
+      "id": "burundi",
+      "province_count": 17
+    },
+    {
+      "color": "#c951b4",
+      "display_name": "gbaya",
+      "fill_color": "#c951b4",
+      "id": "gbaya",
+      "province_count": 17
+    },
+    {
+      "color": "#44ba34",
+      "display_name": "lao",
+      "fill_color": "#44ba34",
+      "id": "lao",
+      "province_count": 17
+    },
+    {
+      "color": "#bb2aba",
+      "display_name": "nicaraguan",
+      "fill_color": "#bb2aba",
+      "id": "nicaraguan",
+      "province_count": 17
+    },
+    {
+      "color": "#6a34a1",
+      "display_name": "chilean",
+      "fill_color": "#6a34a1",
+      "id": "chilean",
+      "province_count": 16
+    },
+    {
+      "color": "#a83581",
+      "display_name": "cuban",
+      "fill_color": "#a83581",
+      "id": "cuban",
+      "province_count": 16
+    },
+    {
+      "color": "#4e77c2",
+      "display_name": "kazakh",
+      "fill_color": "#4e77c2",
+      "id": "kazakh",
+      "province_count": 16
+    },
+    {
+      "color": "#9ecb23",
+      "display_name": "malay",
+      "fill_color": "#9ecb23",
+      "id": "malay",
+      "province_count": 16
+    },
+    {
+      "color": "#a626c6",
+      "display_name": "dutch",
+      "fill_color": "#a626c6",
+      "id": "dutch",
+      "province_count": 15
+    },
+    {
+      "color": "#299ecf",
+      "display_name": "estonian",
+      "fill_color": "#299ecf",
+      "id": "estonian",
+      "province_count": 15
+    },
+    {
+      "color": "#298bab",
+      "display_name": "polish",
+      "fill_color": "#298bab",
+      "id": "polish",
+      "province_count": 15
+    },
+    {
+      "color": "#7b25ac",
+      "display_name": "syrian",
+      "fill_color": "#7b25ac",
+      "id": "syrian",
+      "province_count": 15
+    },
+    {
+      "color": "#28ba62",
+      "display_name": "tswana",
+      "fill_color": "#28ba62",
+      "id": "tswana",
+      "province_count": 15
+    },
+    {
+      "color": "#2d87d4",
+      "display_name": "burmese",
+      "fill_color": "#2d87d4",
+      "id": "burmese",
+      "province_count": 14
+    },
+    {
+      "color": "#45b233",
+      "display_name": "czech",
+      "fill_color": "#45b233",
+      "id": "czech",
+      "province_count": 14
+    },
+    {
+      "color": "#694dc6",
+      "display_name": "salvadoran",
+      "fill_color": "#694dc6",
+      "id": "salvadoran",
+      "province_count": 14
+    },
+    {
+      "color": "#634abf",
+      "display_name": "uzbek",
+      "fill_color": "#634abf",
+      "id": "uzbek",
+      "province_count": 14
+    },
+    {
+      "color": "#c6b544",
+      "display_name": "wolof",
+      "fill_color": "#c6b544",
+      "id": "wolof",
+      "province_count": 14
+    },
+    {
+      "color": "#b1971b",
+      "display_name": "herero",
+      "fill_color": "#b1971b",
+      "id": "herero",
+      "province_count": 13
+    },
+    {
+      "color": "#6a30b0",
+      "display_name": "somali",
+      "fill_color": "#6a30b0",
+      "id": "somali",
+      "province_count": 13
+    },
+    {
+      "color": "#bb8e3f",
+      "display_name": "albanian",
+      "fill_color": "#bb8e3f",
+      "id": "albanian",
+      "province_count": 12
+    },
+    {
+      "color": "#3a3ecf",
+      "display_name": "georgian",
+      "fill_color": "#3a3ecf",
+      "id": "georgian",
+      "province_count": 12
+    },
+    {
+      "color": "#3441a6",
+      "display_name": "panamanian",
+      "fill_color": "#3441a6",
+      "id": "panamanian",
+      "province_count": 12
+    },
+    {
+      "color": "#b41e4c",
+      "display_name": "amhara",
+      "fill_color": "#b41e4c",
+      "id": "amhara",
+      "province_count": 11
+    },
+    {
+      "color": "#37ac8f",
+      "display_name": "armenian",
+      "fill_color": "#37ac8f",
+      "id": "armenian",
+      "province_count": 11
+    },
+    {
+      "color": "#a5c72e",
+      "display_name": "flemish",
+      "fill_color": "#a5c72e",
+      "id": "flemish",
+      "province_count": 11
+    },
+    {
+      "color": "#aecb38",
+      "display_name": "makua",
+      "fill_color": "#aecb38",
+      "id": "makua",
+      "province_count": 11
+    },
+    {
+      "color": "#542daf",
+      "display_name": "bemba",
+      "fill_color": "#542daf",
+      "id": "bemba",
+      "province_count": 10
+    },
+    {
+      "color": "#a0c826",
+      "display_name": "haitian",
+      "fill_color": "#a0c826",
+      "id": "haitian",
+      "province_count": 10
+    },
+    {
+      "color": "#253bdf",
+      "display_name": "lithuanian",
+      "fill_color": "#253bdf",
+      "id": "lithuanian",
+      "province_count": 10
+    },
+    {
+      "color": "#7e9d34",
+      "display_name": "shona",
+      "fill_color": "#7e9d34",
+      "id": "shona",
+      "province_count": 10
+    },
+    {
+      "color": "#24b5c2",
+      "display_name": "afrikaans",
+      "fill_color": "#24b5c2",
+      "id": "afrikaans",
+      "province_count": 9
+    },
+    {
+      "color": "#b72cd0",
+      "display_name": "bambara",
+      "fill_color": "#b72cd0",
+      "id": "bambara",
+      "province_count": 9
+    },
+    {
+      "color": "#2eb778",
+      "display_name": "bolivian",
+      "fill_color": "#2eb778",
+      "id": "bolivian",
+      "province_count": 9
+    },
+    {
+      "color": "#6ec137",
+      "display_name": "icelandic",
+      "fill_color": "#6ec137",
+      "id": "icelandic",
+      "province_count": 9
+    },
+    {
+      "color": "#36df85",
+      "display_name": "hausa",
+      "fill_color": "#36df85",
+      "id": "hausa",
+      "province_count": 8
+    },
+    {
+      "color": "#274fa8",
+      "display_name": "kikuyu",
+      "fill_color": "#274fa8",
+      "id": "kikuyu",
+      "province_count": 8
+    },
+    {
+      "color": "#30bc22",
+      "display_name": "kyrgyz",
+      "fill_color": "#30bc22",
+      "id": "kyrgyz",
+      "province_count": 8
+    },
+    {
+      "color": "#4827c3",
+      "display_name": "punjabi",
+      "fill_color": "#4827c3",
+      "id": "punjabi",
+      "province_count": 8
+    },
+    {
+      "color": "#db35cd",
+      "display_name": "slovak",
+      "fill_color": "#db35cd",
+      "id": "slovak",
+      "province_count": 8
+    },
+    {
+      "color": "#2cc334",
+      "display_name": "belarusian",
+      "fill_color": "#2cc334",
+      "id": "belarusian",
+      "province_count": 7
+    },
+    {
+      "color": "#b02784",
+      "display_name": "bengali",
+      "fill_color": "#b02784",
+      "id": "bengali",
+      "province_count": 7
+    },
+    {
+      "color": "#2cac1f",
+      "display_name": "costa_rican",
+      "fill_color": "#2cac1f",
+      "id": "costa_rican",
+      "province_count": 7
+    },
+    {
+      "color": "#a39a37",
+      "display_name": "afar",
+      "fill_color": "#a39a37",
+      "id": "afar",
+      "province_count": 6
+    },
+    {
+      "color": "#bd8834",
+      "display_name": "greenlandic",
+      "fill_color": "#bd8834",
+      "id": "greenlandic",
+      "province_count": 6
+    },
+    {
+      "color": "#a3de25",
+      "display_name": "lebanese",
+      "fill_color": "#a3de25",
+      "id": "lebanese",
+      "province_count": 6
+    },
+    {
+      "color": "#68c02c",
+      "display_name": "tigrinya",
+      "fill_color": "#68c02c",
+      "id": "tigrinya",
+      "province_count": 6
+    },
+    {
+      "color": "#db2aa3",
+      "display_name": "chinese",
+      "fill_color": "#db2aa3",
+      "id": "chinese",
+      "province_count": 5
+    },
+    {
+      "color": "#4fca32",
+      "display_name": "danish",
+      "fill_color": "#4fca32",
+      "id": "danish",
+      "province_count": 5
+    },
+    {
+      "color": "#8d2eba",
+      "display_name": "fijian",
+      "fill_color": "#8d2eba",
+      "id": "fijian",
+      "province_count": 5
+    },
+    {
+      "color": "#532dc1",
+      "display_name": "rwanda",
+      "fill_color": "#532dc1",
+      "id": "rwanda",
+      "province_count": 5
+    },
+    {
+      "color": "#ae272d",
+      "display_name": "tajik",
+      "fill_color": "#ae272d",
+      "id": "tajik",
+      "province_count": 5
+    },
+    {
+      "color": "#21b99e",
+      "display_name": "turkmen",
+      "fill_color": "#21b99e",
+      "id": "turkmen",
+      "province_count": 5
+    },
+    {
+      "color": "#da2375",
+      "display_name": "kanak",
+      "fill_color": "#da2375",
+      "id": "kanak",
+      "province_count": 3
     },
     {
       "color": "#a13471",
       "display_name": "luxembourgish",
       "fill_color": "#a13471",
       "id": "luxembourgish",
+      "province_count": 3
+    },
+    {
+      "color": "#4238d0",
+      "display_name": "scottish",
+      "fill_color": "#4238d0",
+      "id": "scottish",
       "province_count": 1
     }
   ],
   "era": "1936",
   "fallback_color": "#b0b0b0",
-  "label": "1936 · HOI-leaning",
+  "generated_at": "2026-07-13T15:05:01+00:00",
+  "generator_version": "0.1.0",
+  "label": "Official 1936 (HOI-leaning curated politics)",
   "milestone": "M18",
   "paint_field": "culture",
+  "profile_id": "modern-small",
   "scenario_id": "official-1936",
   "schema_version": "0.1.0",
   "start_date": "1936-01-01",
   "styles": {
     "css_custom_properties": {
+      "--culture-afar": "#a39a37",
+      "--culture-afrikaans": "#24b5c2",
+      "--culture-akan": "#3fc442",
+      "--culture-albanian": "#bb8e3f",
+      "--culture-american": "#dc2892",
+      "--culture-amhara": "#b41e4c",
+      "--culture-arab": "#a62833",
+      "--culture-argentine": "#8535ae",
+      "--culture-armenian": "#37ac8f",
+      "--culture-azerbaijani": "#c23e2d",
+      "--culture-bambara": "#b72cd0",
+      "--culture-belarusian": "#2cc334",
+      "--culture-bemba": "#542daf",
+      "--culture-bengali": "#b02784",
+      "--culture-bolivian": "#2eb778",
+      "--culture-bosniak": "#cd4ba4",
+      "--culture-brazilian": "#bd359c",
+      "--culture-bulgarian": "#b73547",
+      "--culture-burmese": "#2d87d4",
+      "--culture-burundi": "#c04278",
+      "--culture-chewa": "#ba2aa4",
+      "--culture-chilean": "#6a34a1",
+      "--culture-chinese": "#db2aa3",
+      "--culture-colombian": "#c52e83",
+      "--culture-costa-rican": "#2cac1f",
+      "--culture-croatian": "#ca2d82",
+      "--culture-cuban": "#a83581",
+      "--culture-czech": "#45b233",
+      "--culture-danish": "#4fca32",
+      "--culture-dominican": "#cb5527",
       "--culture-dutch": "#a626c6",
+      "--culture-ecuadorian": "#c42530",
+      "--culture-egyptian": "#5e41cd",
+      "--culture-english": "#5837ad",
+      "--culture-estonian": "#299ecf",
+      "--culture-fang": "#2a3ab3",
+      "--culture-fijian": "#8d2eba",
+      "--culture-filipino": "#40c332",
+      "--culture-finnish": "#3483c0",
       "--culture-flemish": "#a5c72e",
       "--culture-french": "#ba9822",
+      "--culture-fulani": "#1fd976",
+      "--culture-ganda": "#c55177",
+      "--culture-gbaya": "#c951b4",
+      "--culture-georgian": "#3a3ecf",
       "--culture-german": "#a7a02d",
-      "--culture-luxembourgish": "#a13471"
+      "--culture-greek": "#267ec2",
+      "--culture-greenlandic": "#bd8834",
+      "--culture-guatemalan": "#39a8e2",
+      "--culture-haitian": "#a0c826",
+      "--culture-han": "#803fb7",
+      "--culture-hausa": "#36df85",
+      "--culture-herero": "#b1971b",
+      "--culture-hindi": "#4bab31",
+      "--culture-honduran": "#af4c3c",
+      "--culture-hungarian": "#5fda3e",
+      "--culture-icelandic": "#6ec137",
+      "--culture-iraqi": "#2178d9",
+      "--culture-irish": "#87e02f",
+      "--culture-italian": "#54bb38",
+      "--culture-japanese": "#82df37",
+      "--culture-javanese": "#c08b4b",
+      "--culture-kanak": "#da2375",
+      "--culture-kazakh": "#4e77c2",
+      "--culture-khmer": "#c12231",
+      "--culture-kikuyu": "#274fa8",
+      "--culture-kongo": "#61ac2a",
+      "--culture-korean": "#cb3c9a",
+      "--culture-kyrgyz": "#30bc22",
+      "--culture-lao": "#44ba34",
+      "--culture-latvian": "#ae682a",
+      "--culture-lebanese": "#a3de25",
+      "--culture-lithuanian": "#253bdf",
+      "--culture-luxembourgish": "#a13471",
+      "--culture-macedonian": "#375c9e",
+      "--culture-makua": "#aecb38",
+      "--culture-malagasy": "#2c66d0",
+      "--culture-malay": "#9ecb23",
+      "--culture-maltese": "#4cc1c6",
+      "--culture-mexican": "#af5423",
+      "--culture-mongol": "#41c91d",
+      "--culture-montenegrin": "#b08935",
+      "--culture-mossi": "#ab9e32",
+      "--culture-nicaraguan": "#bb2aba",
+      "--culture-norwegian": "#42c63f",
+      "--culture-ovimbundu": "#729f2c",
+      "--culture-panamanian": "#3441a6",
+      "--culture-papuan": "#205dd9",
+      "--culture-paraguayan": "#4733bd",
+      "--culture-pashtun": "#c2a13c",
+      "--culture-persian": "#30b3c7",
+      "--culture-peruvian": "#bb26db",
+      "--culture-polish": "#298bab",
+      "--culture-portuguese": "#b03084",
+      "--culture-punjabi": "#4827c3",
+      "--culture-romanian": "#995a33",
+      "--culture-russian": "#3535ae",
+      "--culture-rwanda": "#532dc1",
+      "--culture-salvadoran": "#694dc6",
+      "--culture-sara": "#89bc2f",
+      "--culture-scottish": "#4238d0",
+      "--culture-serbian": "#30ac96",
+      "--culture-shona": "#7e9d34",
+      "--culture-sinhala": "#b02e77",
+      "--culture-slovak": "#db35cd",
+      "--culture-slovene": "#b0b521",
+      "--culture-somali": "#6a30b0",
+      "--culture-spanish": "#2451ad",
+      "--culture-swahili": "#3fabbe",
+      "--culture-swedish": "#245bd7",
+      "--culture-swiss": "#2eacd0",
+      "--culture-syrian": "#7b25ac",
+      "--culture-tajik": "#ae272d",
+      "--culture-thai": "#afd343",
+      "--culture-tigrinya": "#68c02c",
+      "--culture-tswana": "#28ba62",
+      "--culture-turkish": "#33a551",
+      "--culture-turkmen": "#21b99e",
+      "--culture-ukrainian": "#27bbdb",
+      "--culture-uruguayan": "#2aa154",
+      "--culture-uzbek": "#634abf",
+      "--culture-venezuelan": "#db2a48",
+      "--culture-vietnamese": "#63e037",
+      "--culture-wolof": "#c6b544"
     },
     "maplibre_fill_color": [
       "match",
@@ -62,16 +1017,254 @@
         "get",
         "culture"
       ],
+      "english",
+      "#5837ad",
+      "arab",
+      "#a62833",
+      "slovene",
+      "#b0b521",
+      "italian",
+      "#54bb38",
+      "latvian",
+      "#ae682a",
+      "filipino",
+      "#40c332",
+      "ganda",
+      "#c55177",
       "french",
       "#ba9822",
-      "dutch",
-      "#a626c6",
-      "flemish",
-      "#a5c72e",
+      "russian",
+      "#3535ae",
+      "macedonian",
+      "#375c9e",
+      "romanian",
+      "#995a33",
+      "turkish",
+      "#33a551",
+      "azerbaijani",
+      "#c23e2d",
+      "thai",
+      "#afd343",
+      "maltese",
+      "#4cc1c6",
+      "vietnamese",
+      "#63e037",
+      "han",
+      "#803fb7",
+      "spanish",
+      "#2451ad",
+      "american",
+      "#dc2892",
+      "japanese",
+      "#82df37",
+      "mossi",
+      "#ab9e32",
+      "hungarian",
+      "#5fda3e",
+      "hindi",
+      "#4bab31",
+      "colombian",
+      "#c52e83",
+      "fulani",
+      "#1fd976",
+      "irish",
+      "#87e02f",
+      "pashtun",
+      "#c2a13c",
+      "javanese",
+      "#c08b4b",
+      "mexican",
+      "#af5423",
+      "dominican",
+      "#cb5527",
+      "persian",
+      "#30b3c7",
+      "swahili",
+      "#3fabbe",
+      "bulgarian",
+      "#b73547",
+      "chewa",
+      "#ba2aa4",
+      "korean",
+      "#cb3c9a",
+      "brazilian",
+      "#bd359c",
+      "egyptian",
+      "#5e41cd",
       "german",
       "#a7a02d",
+      "peruvian",
+      "#bb26db",
+      "swiss",
+      "#2eacd0",
+      "venezuelan",
+      "#db2a48",
+      "serbian",
+      "#30ac96",
+      "sinhala",
+      "#b02e77",
+      "ukrainian",
+      "#27bbdb",
+      "argentine",
+      "#8535ae",
+      "ecuadorian",
+      "#c42530",
+      "khmer",
+      "#c12231",
+      "kongo",
+      "#61ac2a",
+      "guatemalan",
+      "#39a8e2",
+      "malagasy",
+      "#2c66d0",
+      "mongol",
+      "#41c91d",
+      "sara",
+      "#89bc2f",
+      "croatian",
+      "#ca2d82",
+      "montenegrin",
+      "#b08935",
+      "norwegian",
+      "#42c63f",
+      "swedish",
+      "#245bd7",
+      "papuan",
+      "#205dd9",
+      "portuguese",
+      "#b03084",
+      "akan",
+      "#3fc442",
+      "fang",
+      "#2a3ab3",
+      "greek",
+      "#267ec2",
+      "uruguayan",
+      "#2aa154",
+      "bosniak",
+      "#cd4ba4",
+      "finnish",
+      "#3483c0",
+      "honduran",
+      "#af4c3c",
+      "iraqi",
+      "#2178d9",
+      "ovimbundu",
+      "#729f2c",
+      "paraguayan",
+      "#4733bd",
+      "burundi",
+      "#c04278",
+      "gbaya",
+      "#c951b4",
+      "lao",
+      "#44ba34",
+      "nicaraguan",
+      "#bb2aba",
+      "chilean",
+      "#6a34a1",
+      "cuban",
+      "#a83581",
+      "kazakh",
+      "#4e77c2",
+      "malay",
+      "#9ecb23",
+      "dutch",
+      "#a626c6",
+      "estonian",
+      "#299ecf",
+      "polish",
+      "#298bab",
+      "syrian",
+      "#7b25ac",
+      "tswana",
+      "#28ba62",
+      "burmese",
+      "#2d87d4",
+      "czech",
+      "#45b233",
+      "salvadoran",
+      "#694dc6",
+      "uzbek",
+      "#634abf",
+      "wolof",
+      "#c6b544",
+      "herero",
+      "#b1971b",
+      "somali",
+      "#6a30b0",
+      "albanian",
+      "#bb8e3f",
+      "georgian",
+      "#3a3ecf",
+      "panamanian",
+      "#3441a6",
+      "amhara",
+      "#b41e4c",
+      "armenian",
+      "#37ac8f",
+      "flemish",
+      "#a5c72e",
+      "makua",
+      "#aecb38",
+      "bemba",
+      "#542daf",
+      "haitian",
+      "#a0c826",
+      "lithuanian",
+      "#253bdf",
+      "shona",
+      "#7e9d34",
+      "afrikaans",
+      "#24b5c2",
+      "bambara",
+      "#b72cd0",
+      "bolivian",
+      "#2eb778",
+      "icelandic",
+      "#6ec137",
+      "hausa",
+      "#36df85",
+      "kikuyu",
+      "#274fa8",
+      "kyrgyz",
+      "#30bc22",
+      "punjabi",
+      "#4827c3",
+      "slovak",
+      "#db35cd",
+      "belarusian",
+      "#2cc334",
+      "bengali",
+      "#b02784",
+      "costa_rican",
+      "#2cac1f",
+      "afar",
+      "#a39a37",
+      "greenlandic",
+      "#bd8834",
+      "lebanese",
+      "#a3de25",
+      "tigrinya",
+      "#68c02c",
+      "chinese",
+      "#db2aa3",
+      "danish",
+      "#4fca32",
+      "fijian",
+      "#8d2eba",
+      "rwanda",
+      "#532dc1",
+      "tajik",
+      "#ae272d",
+      "turkmen",
+      "#21b99e",
+      "kanak",
+      "#da2375",
       "luxembourgish",
       "#a13471",
+      "scottish",
+      "#4238d0",
       "#8a8a8a"
     ],
     "maplibre_fill_color_property": [
@@ -80,5 +1273,5 @@
     ]
   },
   "unassigned_color": "#8a8a8a",
-  "unassigned_province_count": 0
+  "unassigned_province_count": 701
 }

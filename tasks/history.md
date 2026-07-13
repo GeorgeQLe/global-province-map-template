@@ -1,5 +1,30 @@
 # History
 
+## 2026-07-13 - M20–M22 Release Preparation
+
+- Reconciled M20 broader period geometry, M21 hierarchy, and M22 global
+  PMTiles-first demo as one release boundary; M23 remains design-only.
+- Hardened the public static interface with M22 query-string cache busting,
+  manifest revalidation on demo load, and a long-lived immutable PMTiles cache
+  rule compatible with byte-range delivery.
+- Regenerated and validated the canonical global demo build before preview
+  deployment; production promotion remains gated on explicit approval.
+- Next: review the Vercel preview evidence and approve or decline promotion.
+
+## 2026-07-11 - M20 Broader Period Geometry (Beyond Western Europe)
+
+- Central Europe era-geometry packs `ce-1444-v1`, `ce-1836-v1`, `ce-1936-v1`
+  (soft frontier bands + sample hard overrides for AUT/CZE/POL/HUN).
+- Multi-pack composition: `apply_era_geometry_packs`, multi-era
+  `era_geometry_pack_ids`, preserved scaffold lineage across steps.
+- Multi-era pack `europe-multi-era-v1` composes WE + CE for 1444 / 1836 / 1936
+  with multi-region quality matrix.
+- Samples: `scaffold-we-ce`, `era-geometry-ce-1444`, `multi-era-europe-v1`.
+- Demo refreshed to WE+CE scaffold and Europe period layers / merged hints.
+- Docs `docs/m20-broader-period-geometry.md`; tests
+  `tests/test_m20_broader_period_geometry.py`.
+- Next: further priority regions or denser hard overrides (post-M20).
+
 ## 2026-07-11 - Ship M19 PMTiles / Vector Tiles
 
 - Committed and pushed M19 PMTiles / vector tiles (encoder, CLI, atlas

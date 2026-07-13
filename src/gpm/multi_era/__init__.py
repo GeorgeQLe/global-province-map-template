@@ -14,6 +14,7 @@ from gpm.multi_era.packs import (
     MultiEraPackSummary,
     list_multi_era_packs,
     load_multi_era_pack,
+    resolve_era_geometry_pack_ids,
     validate_multi_era_pack,
 )
 
@@ -27,5 +28,6 @@ __all__ = [
     "list_multi_era_packs",
     "load_multi_era_pack",
     "migration_markdown",
+    "resolve_era_geometry_pack_ids",
     "validate_multi_era_pack",
 ]

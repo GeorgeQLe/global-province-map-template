@@ -303,7 +303,8 @@ def test_committed_sample_and_demo_assets_exist():
     assert "boundary-hints" not in future_ids
 
     period = json.loads((demo / "official-1444-period.geojson").read_text(encoding="utf-8"))
-    assert len(period["features"]) == 7
+    # M15 shipped 7 WE provinces; M20 expands to WE+CE (12 after Cologne + Prague splits).
+    assert len(period["features"]) >= 7
     assert period["gpm"]["geometry_tier"] == "period-geometry"
 
 

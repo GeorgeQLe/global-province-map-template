@@ -1,5 +1,5 @@
 {
-  "assigned_province_count": 6,
+  "assigned_province_count": 10,
   "color_field": "religion_color",
   "count": 2,
   "end_date": null,
@@ -9,7 +9,7 @@
       "display_name": "catholic",
       "fill_color": "#20c9dd",
       "id": "catholic",
-      "province_count": 5
+      "province_count": 9
     },
     {
       "color": "#d7ca37",
@@ -21,9 +21,12 @@
   ],
   "era": "1936",
   "fallback_color": "#b0b0b0",
-  "label": "1936 · HOI-leaning",
+  "generated_at": "2026-07-11T06:15:00+00:00",
+  "generator_version": "0.1.0",
+  "label": "Official 1936 (HOI-leaning curated politics)",
   "milestone": "M18",
   "paint_field": "religion",
+  "profile_id": "hoi-like",
   "scenario_id": "official-1936",
   "schema_version": "0.1.0",
   "start_date": "1936-01-01",

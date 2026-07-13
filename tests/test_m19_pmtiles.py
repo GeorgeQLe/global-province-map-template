@@ -18,9 +18,153 @@ from gpm.tiles import (
     read_pmtiles_header,
     read_pmtiles_tile,
 )
-from gpm.tiles.mvt import encode_tile
-from gpm.tiles.pmtiles_io import read_pmtiles_metadata, zxy_to_tileid, tileid_to_zxy
-from shapely.geometry import box
+from gpm.tiles.mvt import GEOM_POLYGON, GEOM_UNKNOWN, encode_tile, geometry_commands
+from gpm.tiles.pmtiles_io import (
+    PmtilesWriter,
+    read_pmtiles_header as read_header_direct,
+    read_pmtiles_metadata,
+    zxy_to_tileid,
+    tileid_to_zxy,
+)
+from shapely.geometry import MultiPolygon, Polygon, box
+
+
+def _unzigzag(value: int) -> int:
+    return (value >> 1) ^ (-(value & 1))
+
+
+def _decode_rings(commands: list[int]) -> list[list[tuple[int, int]]]:
+    """Decode an MVT polygon command stream into closed rings of tile coords."""
+    rings: list[list[tuple[int, int]]] = []
+    ring: list[tuple[int, int]] = []
+    x = y = 0
+    i = 0
+    while i < len(commands):
+        cmd = commands[i]
+        i += 1
+        cmd_id = cmd & 0x7
+        count = cmd >> 3
+        if cmd_id in (1, 2):  # MoveTo / LineTo
+            if cmd_id == 1:
+                ring = []
+            for _ in range(count):
+                x += _unzigzag(commands[i])
+                y += _unzigzag(commands[i + 1])
+                i += 2
+                ring.append((x, y))
+        elif cmd_id == 7:  # ClosePath
+            rings.append(ring)
+    return rings
+
+
+def _signed_area2(points: list[tuple[int, int]]) -> int:
+    total = 0
+    for index in range(len(points)):
+        x0, y0 = points[index]
+        x1, y1 = points[(index + 1) % len(points)]
+        total += x0 * y1 - x1 * y0
+    return total
+
+
+def test_tile_y_uses_web_mercator_projection():
+    from gpm.tiles.mvt import lonlat_to_tile_xy
+
+    # z0 world tile: the equator maps to the vertical midpoint under Mercator…
+    bounds = {"west": -180.0, "south": -85.05112878, "east": 180.0, "north": 85.05112878}
+    x, y = lonlat_to_tile_xy(0.0, 0.0, extent=4096, **bounds)
+    assert (x, y) == (2048, 2048)
+    # …but 60°N sits at ln(tan(75°))/π of the half-height, NOT at the linear
+    # position (~603). Linear latitude drifts whole countries at low zooms.
+    import math
+
+    _, y60 = lonlat_to_tile_xy(0.0, 60.0, extent=4096, **bounds)
+    expected = round((math.pi - math.log(math.tan(math.radians(75)))) / (2 * math.pi) * 4096)
+    assert y60 == expected
+    assert abs(y60 - 1190) <= 1
+
+
+def test_polygon_winding_enforced_for_exterior_and_hole():
+    # Exterior deliberately clockwise in lon/lat, hole counter-clockwise —
+    # the encoder must normalize both to MVT v2 winding regardless of input.
+    exterior = [(0.1, 0.1), (0.1, 0.9), (0.9, 0.9), (0.9, 0.1)]
+    hole = [(0.3, 0.3), (0.7, 0.3), (0.7, 0.7), (0.3, 0.7)]
+    for polygon in (Polygon(exterior, [hole]), Polygon(list(reversed(exterior)), [list(reversed(hole))])):
+        geom_type, commands = geometry_commands(polygon, west=0.0, south=0.0, east=1.0, north=1.0)
+        assert geom_type == GEOM_POLYGON
+        rings = _decode_rings(commands)
+        assert len(rings) == 2
+        assert _signed_area2(rings[0]) > 0, "exterior ring must have positive tile-space area"
+        assert _signed_area2(rings[1]) < 0, "interior ring must have negative tile-space area"
+
+
+def test_multipolygon_winding_and_ring_grouping():
+    poly_a = Polygon([(0.05, 0.05), (0.45, 0.05), (0.45, 0.45), (0.05, 0.45)])
+    poly_b = Polygon(
+        [(0.55, 0.55), (0.95, 0.55), (0.95, 0.95), (0.55, 0.95)],
+        [[(0.65, 0.65), (0.85, 0.65), (0.85, 0.85), (0.65, 0.85)]],
+    )
+    geom_type, commands = geometry_commands(
+        MultiPolygon([poly_a, poly_b]), west=0.0, south=0.0, east=1.0, north=1.0
+    )
+    assert geom_type == GEOM_POLYGON
+    rings = _decode_rings(commands)
+    assert len(rings) == 3
+    signs = [_signed_area2(ring) for ring in rings]
+    assert signs[0] > 0 and signs[1] > 0 and signs[2] < 0
+
+
+def test_degenerate_rings_dropped_after_quantization():
+    sliver = Polygon([(0.5, 0.5), (0.5 + 1e-9, 0.5), (0.5 + 1e-9, 0.5 + 1e-9)])
+    geom_type, commands = geometry_commands(sliver, west=0.0, south=0.0, east=1.0, north=1.0)
+    assert geom_type == GEOM_UNKNOWN
+    assert commands == []
+
+    # A degenerate hole is dropped but the exterior survives.
+    poly = Polygon(
+        [(0.1, 0.1), (0.9, 0.1), (0.9, 0.9), (0.1, 0.9)],
+        [[(0.5, 0.5), (0.5 + 1e-9, 0.5), (0.5 + 1e-9, 0.5 + 1e-9)]],
+    )
+    geom_type, commands = geometry_commands(poly, west=0.0, south=0.0, east=1.0, north=1.0)
+    assert geom_type == GEOM_POLYGON
+    assert len(_decode_rings(commands)) == 1
+
+
+def test_pmtiles_dedup_is_content_based(tmp_path):
+    out = tmp_path / "dedup.pmtiles"
+    writer = PmtilesWriter(out)
+    payload = b"identical-tile-bytes"
+    writer.write_tile(zxy_to_tileid(1, 0, 0), payload)
+    writer.write_tile(zxy_to_tileid(1, 1, 0), b"unique-tile-bytes")
+    writer.write_tile(zxy_to_tileid(1, 1, 1), payload)
+    writer.finalize(
+        metadata={"name": "dedup-test"},
+        min_zoom=1,
+        max_zoom=1,
+        bounds=(-180.0, -85.0, 180.0, 85.0),
+        tile_compression=1,  # Compression.NONE
+    )
+    header = read_header_direct(out)
+    assert header["addressed_tiles_count"] == 3
+    assert header["tile_contents_count"] == 2
+    assert read_pmtiles_tile(out, 1, 1, 1) == payload
+
+
+def test_pmtiles_archive_is_byte_deterministic(tmp_path):
+    features = [
+        {
+            "geometry": box(2.0, 48.0, 3.0, 49.0),
+            "properties": {"province_id": "land_a", "owner": "FRA", "owner_color": "#336699"},
+        },
+        {
+            "geometry": box(3.0, 48.0, 4.0, 49.0),
+            "properties": {"province_id": "land_b", "owner": "ENG", "owner_color": "#663399"},
+        },
+    ]
+    out_a = tmp_path / "a.pmtiles"
+    out_b = tmp_path / "b.pmtiles"
+    build_pmtiles_from_features(features, out_a, min_zoom=0, max_zoom=3, write_manifest=False)
+    build_pmtiles_from_features(features, out_b, min_zoom=0, max_zoom=3, write_manifest=False)
+    assert out_a.read_bytes() == out_b.read_bytes()
 
 
 def test_zxy_tileid_roundtrip():

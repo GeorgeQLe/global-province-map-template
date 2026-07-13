@@ -516,6 +516,12 @@ a:hover {
   word-break: break-word;
 }
 
+.hier-id {
+  font-size: 0.72rem;
+  color: var(--fog);
+  word-break: break-all;
+}
+
 .swatch {
   display: inline-block;
   width: 0.75rem;

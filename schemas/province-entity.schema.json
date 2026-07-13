@@ -34,6 +34,22 @@
         "kind": { "type": "string", "enum": ["land", "sea", "lake"] },
         "parent_region_id": { "type": ["string", "null"] },
         "parent_country_id": { "type": ["string", "null"] },
+        "parent_area_id": {
+          "type": ["string", "null"],
+          "description": "M21 hierarchy: owning area (clustered admin-1 group)."
+        },
+        "parent_geo_region_id": {
+          "type": ["string", "null"],
+          "description": "M21 hierarchy: owning geographic region (distinct from parent_region_id, which stays the source admin-1 code)."
+        },
+        "parent_superregion_id": {
+          "type": ["string", "null"],
+          "description": "M21 hierarchy: owning superregion (continent-level)."
+        },
+        "geometry_repaired": {
+          "type": "boolean",
+          "description": "True when the source geometry was invalid and repaired with make_valid on ingest."
+        },
         "area_sq_km": { "type": "number", "minimum": 0 },
         "estimated_population": { "type": ["number", "null"], "minimum": 0 },
         "terrain_class": { "type": ["string", "null"] },

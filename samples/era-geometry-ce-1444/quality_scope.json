@@ -1,0 +1,42 @@
+{
+  "do_not_claim": [
+    "period-correct province geometry worldwide",
+    "Paradox-grade HRE / Bohemian Crown / Jagiellon microborders",
+    "legal 1444 frontiers \u2014 hints are illustrative for the historical sniff test"
+  ],
+  "era": "1444",
+  "pack_id": "ce-1444-v1",
+  "period_true_scope": [
+    "central-europe"
+  ],
+  "priority_region": {
+    "bbox": [
+      12.0,
+      45.5,
+      24.5,
+      55.0
+    ],
+    "id": "central-europe",
+    "label": "Central Europe",
+    "notes": "M20 second priority region. Habsburg / Bohemian Crown / Poland-Lithuania / Hungarian frontier readability for 1444. Outside these modern ISO parents, scaffold geometry is retained.",
+    "parent_country_ids": [
+      "AUT",
+      "CZE",
+      "POL",
+      "HUN"
+    ]
+  },
+  "quality_tier": "period-geometry",
+  "scaffold_backed_scope": [
+    "outside priority_region",
+    "seas",
+    "rest of world"
+  ],
+  "schema_version": "0.1.0",
+  "source_notes": [
+    "Curator-authored soft frontier bands and sample hard overrides for M20 broader period geometry.",
+    "Not derived from proprietary game maps. Not a full OpenHistoricalMap extract.",
+    "Hard overrides target sample_* province IDs (sample_at_*, sample_cz_*, sample_pl_*, sample_hu_*); they skip cleanly on full Natural Earth builds.",
+    "Soft boundary hints are geographic and apply on any scaffold that intersects the priority region."
+  ]
+}

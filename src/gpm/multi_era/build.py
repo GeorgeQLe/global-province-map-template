@@ -10,11 +10,16 @@ from pathlib import Path
 from typing import Any
 
 from gpm import __version__
-from gpm.era_geometry import EraGeometryError, apply_era_geometry_pack
+from gpm.era_geometry import (
+    EraGeometryError,
+    apply_era_geometry_pack,
+    apply_era_geometry_packs,
+)
 from gpm.multi_era.migration import build_migration_document, migration_markdown
 from gpm.multi_era.packs import (
     MultiEraPackError,
     load_multi_era_pack,
+    resolve_era_geometry_pack_ids,
     validate_multi_era_pack,
 )
 from gpm.paths import PROCESSED_DATA_DIR
@@ -88,25 +93,38 @@ def build_multi_era_pack(
     for slot in pack["eras"]:
         era = str(slot["era"])
         scenario_id = str(slot["scenario_id"])
-        geom_pack_id = slot.get("era_geometry_pack_id")
+        geom_pack_ids = resolve_era_geometry_pack_ids(slot)
+        geom_pack_id = geom_pack_ids[0] if len(geom_pack_ids) == 1 else (
+            "+".join(geom_pack_ids) if geom_pack_ids else None
+        )
         era_out = eras_dir / era
         era_out.mkdir(parents=True, exist_ok=True)
 
         province_layer = province_input
         geom_result: dict[str, Any] | None = None
 
-        if apply_geometry and geom_pack_id:
+        if apply_geometry and geom_pack_ids:
             try:
-                applied = apply_era_geometry_pack(
-                    str(geom_pack_id),
-                    province_input=province_input,
-                    output_dir=era_out / "geometry",
-                    recompute_adjacency=recompute_adjacency,
-                    profile_id=profile_id or slot.get("recommended_profile"),
-                )
+                if len(geom_pack_ids) == 1:
+                    applied = apply_era_geometry_pack(
+                        geom_pack_ids[0],
+                        province_input=province_input,
+                        output_dir=era_out / "geometry",
+                        recompute_adjacency=recompute_adjacency,
+                        profile_id=profile_id or slot.get("recommended_profile"),
+                    )
+                else:
+                    applied = apply_era_geometry_packs(
+                        geom_pack_ids,
+                        province_input=province_input,
+                        output_dir=era_out / "geometry",
+                        recompute_adjacency=recompute_adjacency,
+                        profile_id=profile_id or slot.get("recommended_profile"),
+                    )
             except EraGeometryError as exc:
                 raise MultiEraError(
-                    f"Era {era}: failed to apply geometry pack {geom_pack_id}: {exc}"
+                    f"Era {era}: failed to apply geometry pack(s) "
+                    f"{geom_pack_ids}: {exc}"
                 ) from exc
             province_layer = Path(applied.provinces_output)
             geom_result = applied.to_dict()
@@ -130,7 +148,7 @@ def build_multi_era_pack(
                 "geometry_quality_tier": slot["geometry_quality_tier"],
                 "note": (
                     "No era-geometry pack linked; scaffold provinces used as-is."
-                    if not geom_pack_id
+                    if not geom_pack_ids
                     else "Geometry apply skipped by build flag."
                 ),
             }
@@ -166,6 +184,7 @@ def build_multi_era_pack(
             "era": era,
             "scenario_id": scenario_id,
             "era_geometry_pack_id": geom_pack_id,
+            "era_geometry_pack_ids": geom_pack_ids,
             "geometry_quality_tier": slot["geometry_quality_tier"],
             "politics_quality_tier": slot["politics_quality_tier"],
             "recommended_profile": slot.get("recommended_profile"),
@@ -185,6 +204,7 @@ def build_multi_era_pack(
                 "era": era,
                 "scenario_id": scenario_id,
                 "era_geometry_pack_id": geom_pack_id,
+                "era_geometry_pack_ids": geom_pack_ids,
                 "geometry_quality_tier": slot["geometry_quality_tier"],
                 "politics_quality_tier": slot["politics_quality_tier"],
                 "recommended_profile": slot.get("recommended_profile"),
@@ -203,6 +223,8 @@ def build_multi_era_pack(
         "document_type": "region-quality-matrix",
         "pack_id": pack["pack_id"],
         "priority_region": pack["priority_region"],
+        "priority_regions": pack.get("priority_regions")
+        or [pack["priority_region"]],
         "rows": pack["region_quality_matrix"],
         "generated_at": generated_at,
         "generator_version": __version__,
@@ -276,9 +298,12 @@ def build_multi_era_pack(
         eras=tuple(str(s["era"]) for s in era_summaries),
         scenario_ids=tuple(str(s["scenario_id"]) for s in era_summaries),
         era_geometry_pack_ids=tuple(
-            str(s["era_geometry_pack_id"])
+            pid
             for s in era_summaries
-            if s.get("era_geometry_pack_id")
+            for pid in (
+                s.get("era_geometry_pack_ids")
+                or ([s["era_geometry_pack_id"]] if s.get("era_geometry_pack_id") else [])
+            )
         ),
         region_matrix_row_count=len(pack["region_quality_matrix"]),
         migration_json=str(migration_json_path),
@@ -300,11 +325,16 @@ def _readme_body(pack: dict[str, Any], era_summaries: list[dict[str, Any]]) -> s
         "| --- | --- | --- | --- | --- |",
     ]
     for slot in era_summaries:
+        pack_ids = slot.get("era_geometry_pack_ids") or []
+        if pack_ids:
+            gp = " + ".join(pack_ids)
+        else:
+            gp = slot.get("era_geometry_pack_id") or "—"
         lines.append(
             "| {era} | `{sc}` | `{gp}` | `{gt}` | `{pt}` |".format(
                 era=slot["era"],
                 sc=slot["scenario_id"],
-                gp=slot.get("era_geometry_pack_id") or "—",
+                gp=gp,
                 gt=slot["geometry_quality_tier"],
                 pt=slot["politics_quality_tier"],
             )

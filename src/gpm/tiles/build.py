@@ -12,6 +12,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, Iterable, Sequence
 
+from shapely import make_valid
 from shapely.geometry import MultiPolygon, box, shape
 from shapely.geometry.base import BaseGeometry
 from shapely.strtree import STRtree
@@ -33,6 +34,16 @@ DEFAULT_MIN_ZOOM = 0
 DEFAULT_MAX_ZOOM = 8
 DEFAULT_LAYER_NAME = "provinces"
 
+# Native-backend per-zoom generalization: simplify to ~1 tile pixel and drop
+# polygons whose bounding box spans fewer than ~2 tile pixels in both axes.
+NATIVE_SIMPLIFY_PIXELS = 1.0
+NATIVE_DROP_FEATURE_PIXELS = 2.0
+# Clip buffer around each tile, as a fraction of the tile extent. Clipping
+# exactly at tile bounds puts polygon edges on the seam and outline layers
+# then draw a visible tile grid; buffered clips push those edges off-tile
+# (coordinates outside 0..extent are valid MVT geometry).
+NATIVE_CLIP_BUFFER_FRACTION = 64 / DEFAULT_EXTENT
+
 # Properties useful for MapLibre paint/inspect; keeps tile size bounded.
 DEFAULT_PROPERTY_KEYS = frozenset(
     {
@@ -50,8 +61,14 @@ DEFAULT_PROPERTY_KEYS = frozenset(
         "assignment_source",
         "disputed",
         "uncertain",
+        "cores",  # lists are comma-joined by the MVT encoder (values are scalar)
+        "claims",
         "parent_country_id",
         "parent_region_id",
+        "parent_area_id",
+        "parent_geo_region_id",
+        "parent_superregion_id",
+        "area_color",
         "scenario_id",
         "area_sq_km",
         "estimated_population",
@@ -210,6 +227,38 @@ def _tiles_covering_bounds(
             yield z, x, y
 
 
+def _prepare_zoom_geometries(
+    geoms: Sequence[BaseGeometry], z: int, *, extent: int = DEFAULT_EXTENT
+) -> list[BaseGeometry | None]:
+    """Per-zoom generalization for the native backend.
+
+    Returns one entry per input geometry: a simplified geometry, or ``None``
+    when the feature is too small to matter at this zoom. Simplification is
+    quantization-aware (~1 tile pixel), so low zooms stay fast and small.
+    """
+    pixel_deg = 360.0 / ((1 << z) * extent)
+    tolerance = pixel_deg * NATIVE_SIMPLIFY_PIXELS
+    min_span = pixel_deg * NATIVE_DROP_FEATURE_PIXELS
+    prepared: list[BaseGeometry | None] = []
+    for geom in geoms:
+        if geom.geom_type in {"Polygon", "MultiPolygon"}:
+            minx, miny, maxx, maxy = geom.bounds
+            if (maxx - minx) < min_span and (maxy - miny) < min_span:
+                prepared.append(None)
+                continue
+        simplified = geom.simplify(tolerance, preserve_topology=False)
+        if simplified.is_empty:
+            prepared.append(None)
+            continue
+        if not simplified.is_valid:
+            simplified = make_valid(simplified)
+            if simplified.is_empty:
+                prepared.append(None)
+                continue
+        prepared.append(simplified)
+    return prepared
+
+
 def _tippecanoe_available() -> bool:
     return shutil.which("tippecanoe") is not None
 
@@ -276,29 +325,35 @@ def build_pmtiles_from_features(
     bounds_list = [_feature_bounds(g) for g in geoms]
     bounds = _union_bounds(bounds_list)
 
-    tree = STRtree(geoms)
     writer = PmtilesWriter(output_path)
     tile_count = 0
 
     for z in range(min_zoom, max_zoom + 1):
+        zoom_geoms = _prepare_zoom_geometries(geoms, z)
+        kept_indices = [index for index, geom in enumerate(zoom_geoms) if geom is not None]
+        if not kept_indices:
+            continue
+        tree = STRtree([zoom_geoms[index] for index in kept_indices])
         for z_, x, y in _tiles_covering_bounds(bounds, z):
             west, south, east, north = tile_bounds(z_, x, y)
-            tile_poly = box(west, south, east, north)
+            pad_x = (east - west) * NATIVE_CLIP_BUFFER_FRACTION
+            pad_y = (north - south) * NATIVE_CLIP_BUFFER_FRACTION
+            tile_poly = box(west - pad_x, south - pad_y, east + pad_x, north + pad_y)
             hits = tree.query(tile_poly)
             if len(hits) == 0:
                 continue
             tile_features: list[dict[str, Any]] = []
-            for idx in hits:
-                index = int(idx)
+            for idx in sorted(int(item) for item in hits):
+                index = kept_indices[idx]
                 feature = features[index]
-                geom = feature["geometry"]
+                geom = zoom_geoms[index]
                 try:
                     clipped = geom.intersection(tile_poly)
                 except Exception:  # noqa: BLE001 — skip pathological clips
                     continue
                 if clipped.is_empty:
                     continue
-                clipped = _prefer_areal_geometry(clipped, source_type=geom.geom_type)
+                clipped = _prefer_areal_geometry(clipped, source_type=geoms[index].geom_type)
                 if clipped is None or clipped.is_empty:
                     continue
                 tile_features.append(
@@ -321,7 +376,7 @@ def build_pmtiles_from_features(
             )
             if not mvt:
                 continue
-            compressed = gzip.compress(mvt)
+            compressed = gzip.compress(mvt, mtime=0)
             writer.write_tile(zxy_to_tileid(z_, x, y), compressed)
             tile_count += 1
 
@@ -418,7 +473,8 @@ def build_pmtiles_from_features(
             "notes": [
                 "PMTiles v3 archive of Mapbox Vector Tiles (MVT).",
                 "Serve with HTTP range requests or open locally via the pmtiles protocol.",
-                "Native backend does not simplify geometry; use tippecanoe for large global sets.",
+                "Native backend simplifies per zoom (~1 tile px) and drops sub-pixel features.",
+                "tippecanoe is the recommended backend for global sets above zoom 7.",
             ],
         }
         manifest_path.write_text(

@@ -1,7 +1,7 @@
 {
-  "assigned_province_count": 6,
+  "assigned_province_count": 10,
   "color_field": "culture_color",
-  "count": 5,
+  "count": 9,
   "end_date": null,
   "entries": [
     {
@@ -10,6 +10,20 @@
       "fill_color": "#ba9822",
       "id": "french",
       "province_count": 2
+    },
+    {
+      "color": "#d7254a",
+      "display_name": "austrian",
+      "fill_color": "#d7254a",
+      "id": "austrian",
+      "province_count": 1
+    },
+    {
+      "color": "#45b233",
+      "display_name": "czech",
+      "fill_color": "#45b233",
+      "id": "czech",
+      "province_count": 1
     },
     {
       "color": "#a626c6",
@@ -33,28 +47,49 @@
       "province_count": 1
     },
     {
+      "color": "#5fda3e",
+      "display_name": "hungarian",
+      "fill_color": "#5fda3e",
+      "id": "hungarian",
+      "province_count": 1
+    },
+    {
       "color": "#a13471",
       "display_name": "luxembourgish",
       "fill_color": "#a13471",
       "id": "luxembourgish",
       "province_count": 1
+    },
+    {
+      "color": "#298bab",
+      "display_name": "polish",
+      "fill_color": "#298bab",
+      "id": "polish",
+      "province_count": 1
     }
   ],
   "era": "1836",
   "fallback_color": "#b0b0b0",
-  "label": "1836 · Victoria-leaning",
+  "generated_at": "2026-07-11T06:15:00+00:00",
+  "generator_version": "0.1.0",
+  "label": "Official 1836 (Victoria-leaning curated politics)",
   "milestone": "M18",
   "paint_field": "culture",
+  "profile_id": "victoria-like",
   "scenario_id": "official-1836",
   "schema_version": "0.1.0",
   "start_date": "1836-01-01",
   "styles": {
     "css_custom_properties": {
+      "--culture-austrian": "#d7254a",
+      "--culture-czech": "#45b233",
       "--culture-dutch": "#a626c6",
       "--culture-flemish": "#a5c72e",
       "--culture-french": "#ba9822",
       "--culture-german": "#a7a02d",
-      "--culture-luxembourgish": "#a13471"
+      "--culture-hungarian": "#5fda3e",
+      "--culture-luxembourgish": "#a13471",
+      "--culture-polish": "#298bab"
     },
     "maplibre_fill_color": [
       "match",
@@ -64,14 +99,22 @@
       ],
       "french",
       "#ba9822",
+      "austrian",
+      "#d7254a",
+      "czech",
+      "#45b233",
       "dutch",
       "#a626c6",
       "flemish",
       "#a5c72e",
       "german",
       "#a7a02d",
+      "hungarian",
+      "#5fda3e",
       "luxembourgish",
       "#a13471",
+      "polish",
+      "#298bab",
       "#8a8a8a"
     ],
     "maplibre_fill_color_property": [

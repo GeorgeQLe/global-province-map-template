@@ -1,19 +1,19 @@
 {
   "backend": "native",
   "bounds": {
-    "east": 7.5,
-    "north": 52.8,
-    "south": 48.5,
-    "west": 0.0
+    "east": 180.0,
+    "north": 83.63410065300008,
+    "south": -89.99999999999994,
+    "west": -179.99999999999991
   },
-  "feature_count": 6,
-  "generated_at": "2026-07-11T05:03:18Z",
+  "feature_count": 4603,
+  "generated_at": "2026-07-13T15:07:29Z",
   "generator_version": "0.1.0",
   "header": {
-    "addressed_tiles_count": 11,
+    "addressed_tiles_count": 11330,
     "tile_compression": "gzip",
-    "tile_contents_count": 11,
-    "tile_entries_count": 11,
+    "tile_contents_count": 6881,
+    "tile_entries_count": 10452,
     "tile_type": "mvt"
   },
   "layer_name": "ownership",
@@ -40,16 +40,17 @@
       "url": "pmtiles://official-1936.pmtiles"
     }
   },
-  "max_zoom": 6,
+  "max_zoom": 7,
   "milestone": "M19",
   "min_zoom": 0,
   "notes": [
     "PMTiles v3 archive of Mapbox Vector Tiles (MVT).",
     "Serve with HTTP range requests or open locally via the pmtiles protocol.",
-    "Native backend does not simplify geometry; use tippecanoe for large global sets."
+    "Native backend simplifies per zoom (~1 tile px) and drops sub-pixel features.",
+    "tippecanoe is the recommended backend for global sets above zoom 7."
   ],
   "pack_type": "tileset",
   "pmtiles": "official-1936.pmtiles",
   "schema_version": "0.1.0",
-  "tile_count": 11
+  "tile_count": 11330
 }

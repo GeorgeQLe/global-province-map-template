@@ -1,0 +1,12 @@
+era_province_id,scaffold_province_id,operation,display_name,part_index,part_count,in_priority_region,geometry_mode,reason
+sample_at_vienna,sample_at_vienna,identity,Vienna basin,,,true,hard_overrides,Vienna retained; Anschluss story via soft corridor + politics.
+sample_be_flanders,sample_be_flanders,identity,Flanders,,,true,hard_overrides,Flanders retained as scaffold identity.
+era_cz_bohemia_1936,sample_cz_bohemia,replace,Bohemia (1936),,,true,hard_overrides,Interwar Czechoslovakia core label + modest footprint for Sudeten-band readability on the CE sample.
+sample_cz_bohemia,sample_cz_bohemia,identity,Bohemia,,,false,scaffold,
+era_de_rhineland_1936,sample_de_rhineland,replace,Rhineland (1936),,,true,hard_overrides,Interwar Rhineland label + modest footprint for demilitarized zone readability on the WE sample.
+sample_fr_normandy,sample_fr_normandy,identity,Normandy coast,,,true,hard_overrides,Normandy retained; Channel story via soft hints.
+sample_fr_paris,sample_fr_paris,identity,Paris basin,,,true,hard_overrides,Third Republic core retained.
+sample_hu_pannon,sample_hu_pannon,identity,Pannonia plain,,,true,hard_overrides,Hungarian plain retained; revisionist fringe via soft frontier.
+sample_lu_core,sample_lu_core,identity,Luxembourg core,,,true,hard_overrides,Luxembourg retained.
+sample_nl_holland,sample_nl_holland,identity,Holland,,,true,hard_overrides,Holland retained.
+sample_pl_mazovia,sample_pl_mazovia,identity,Mazovia,,,true,hard_overrides,Mazovia retained; corridor story via soft northern band.

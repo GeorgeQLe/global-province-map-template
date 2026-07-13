@@ -9,6 +9,7 @@ relative to a 0–extent tile grid (default extent 4096).
 from __future__ import annotations
 
 import hashlib
+import math
 import struct
 from io import BytesIO
 from typing import Any
@@ -80,6 +81,14 @@ def command_integer(cmd_id: int, count: int) -> int:
     return (cmd_id & 0x7) | (count << 3)
 
 
+MERCATOR_MAX_LAT = 85.05112878
+
+
+def _mercator_y(lat: float) -> float:
+    lat = max(min(lat, MERCATOR_MAX_LAT), -MERCATOR_MAX_LAT)
+    return math.log(math.tan(math.pi / 4.0 + math.radians(lat) / 2.0))
+
+
 def lonlat_to_tile_xy(
     lon: float,
     lat: float,
@@ -90,12 +99,20 @@ def lonlat_to_tile_xy(
     north: float,
     extent: int = DEFAULT_EXTENT,
 ) -> tuple[int, int]:
-    """Project WGS84 lon/lat into MVT tile pixel coordinates (y down)."""
+    """Project WGS84 lon/lat into MVT tile pixel coordinates (y down).
+
+    Tile bounds come from Web Mercator tiles, and renderers interpret tile
+    y as a Mercator fraction — latitude must go through the Mercator
+    projection, not linear interpolation (linear y drifts by whole countries
+    at low zooms). Longitude → x is genuinely linear in Mercator.
+    """
     # Guard zero-size tiles.
     width = east - west or 1e-12
-    height = north - south or 1e-12
     x = int(round((lon - west) / width * extent))
-    y = int(round((north - lat) / height * extent))
+    y_top = _mercator_y(north)
+    y_bottom = _mercator_y(south)
+    height = y_top - y_bottom or 1e-12
+    y = int(round((y_top - _mercator_y(lat)) / height * extent))
     return x, y
 
 
@@ -145,6 +162,92 @@ def encode_ring_commands(
     return commands
 
 
+def quantize_ring(
+    coords: list[tuple[float, float]],
+    *,
+    west: float,
+    south: float,
+    east: float,
+    north: float,
+    extent: int,
+) -> list[tuple[int, int]]:
+    """Project a lon/lat ring into tile space, dropping consecutive duplicates."""
+    points: list[tuple[int, int]] = []
+    for lon, lat in coords:
+        xy = lonlat_to_tile_xy(lon, lat, west=west, south=south, east=east, north=north, extent=extent)
+        if not points or points[-1] != xy:
+            points.append(xy)
+    # Drop closing duplicate — ClosePath handles it.
+    if len(points) >= 2 and points[0] == points[-1]:
+        points.pop()
+    return points
+
+
+def ring_signed_area2(points: list[tuple[int, int]]) -> int:
+    """Twice the signed shoelace area of a closed tile-space ring (y down).
+
+    Per the MVT v2 spec's surveyor's formula, exterior rings must have positive
+    area and interior rings negative area in tile coordinates.
+    """
+    total = 0
+    count = len(points)
+    for index in range(count):
+        x0, y0 = points[index]
+        x1, y1 = points[(index + 1) % count]
+        total += x0 * y1 - x1 * y0
+    return total
+
+
+def _encode_quantized_ring(points: list[tuple[int, int]], cursor: list[int]) -> list[int]:
+    commands: list[int] = [command_integer(CMD_MOVE_TO, 1)]
+    x0, y0 = points[0]
+    commands.append(zigzag_encode(x0 - cursor[0]))
+    commands.append(zigzag_encode(y0 - cursor[1]))
+    cursor[0], cursor[1] = x0, y0
+    commands.append(command_integer(CMD_LINE_TO, len(points) - 1))
+    for x, y in points[1:]:
+        commands.append(zigzag_encode(x - cursor[0]))
+        commands.append(zigzag_encode(y - cursor[1]))
+        cursor[0], cursor[1] = x, y
+    commands.append(command_integer(CMD_CLOSE_PATH, 1))
+    return commands
+
+
+def _polygon_ring_commands(
+    rings: list[list[tuple[float, float]]],
+    *,
+    west: float,
+    south: float,
+    east: float,
+    north: float,
+    extent: int,
+    cursor: list[int],
+) -> list[int]:
+    """Encode one polygon (exterior + holes) with MVT v2 winding enforced.
+
+    Degenerate rings (collapsed to fewer than 3 distinct points or zero area
+    after quantization) are dropped; if the exterior collapses the whole
+    polygon is dropped, holes included.
+    """
+    commands: list[int] = []
+    for ring_index, ring in enumerate(rings):
+        points = quantize_ring(ring, west=west, south=south, east=east, north=north, extent=extent)
+        if len(points) < 3:
+            if ring_index == 0:
+                return []
+            continue
+        area2 = ring_signed_area2(points)
+        if area2 == 0:
+            if ring_index == 0:
+                return []
+            continue
+        want_positive = ring_index == 0
+        if (area2 > 0) != want_positive:
+            points = [points[0], *reversed(points[1:])]
+        commands.extend(_encode_quantized_ring(points, cursor))
+    return commands
+
+
 def geometry_commands(
     geom: BaseGeometry,
     *,
@@ -164,63 +267,33 @@ def geometry_commands(
 
     if gtype == "Polygon":
         mapping_doc = mapping(geom)
-        exterior = mapping_doc["coordinates"][0]
+        rings = [[(c[0], c[1]) for c in ring] for ring in mapping_doc["coordinates"]]
         commands.extend(
-            encode_ring_commands(
-                [(c[0], c[1]) for c in exterior],
-                west=west,
-                south=south,
-                east=east,
-                north=north,
-                extent=extent,
-                cursor=cursor,
-                close_ring=True,
+            _polygon_ring_commands(
+                rings, west=west, south=south, east=east, north=north, extent=extent, cursor=cursor
             )
         )
-        for hole in mapping_doc["coordinates"][1:]:
-            commands.extend(
-                encode_ring_commands(
-                    [(c[0], c[1]) for c in hole],
-                    west=west,
-                    south=south,
-                    east=east,
-                    north=north,
-                    extent=extent,
-                    cursor=cursor,
-                    close_ring=True,
-                )
-            )
+        if not commands:
+            return GEOM_UNKNOWN, []
         return GEOM_POLYGON, commands
 
     if gtype == "MultiPolygon":
         mapping_doc = mapping(geom)
         for polygon in mapping_doc["coordinates"]:
-            exterior = polygon[0]
+            rings = [[(c[0], c[1]) for c in ring] for ring in polygon]
             commands.extend(
-                encode_ring_commands(
-                    [(c[0], c[1]) for c in exterior],
+                _polygon_ring_commands(
+                    rings,
                     west=west,
                     south=south,
                     east=east,
                     north=north,
                     extent=extent,
                     cursor=cursor,
-                    close_ring=True,
                 )
             )
-            for hole in polygon[1:]:
-                commands.extend(
-                    encode_ring_commands(
-                        [(c[0], c[1]) for c in hole],
-                        west=west,
-                        south=south,
-                        east=east,
-                        north=north,
-                        extent=extent,
-                        cursor=cursor,
-                        close_ring=True,
-                    )
-                )
+        if not commands:
+            return GEOM_UNKNOWN, []
         return GEOM_POLYGON, commands
 
     if gtype == "LineString":
