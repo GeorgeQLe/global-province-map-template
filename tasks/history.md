@@ -9,6 +9,8 @@
   rule compatible with byte-range delivery.
 - Regenerated and validated the canonical global demo build before preview
   deployment; production promotion remains gated on explicit approval.
+- Visual QA removed stale landing “Next” copy and the obsolete M20 future card;
+  only the M23 density design remains labeled as future work.
 - Next: review the Vercel preview evidence and approve or decline promotion.
 
 ## 2026-07-11 - M20 Broader Period Geometry (Beyond Western Europe)

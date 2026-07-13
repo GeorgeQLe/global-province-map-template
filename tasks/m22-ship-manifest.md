@@ -72,6 +72,9 @@ explicit approval. M23 remains design-only.
   GitHub per-file size limit.
 - Confirmed `gpm demo build` preserves the curated M20 period-geometry assets
   rather than deriving them from the global M22 build.
+- Screenshot review caught stale landing status copy and an obsolete M20 future
+  card; both were corrected and the manifest test now enforces M23-only future
+  labeling.
 
 ## Residual risk
 

@@ -642,12 +642,6 @@ def _demo_manifest(
                     "(Paradox-style density; hierarchy area IDs stay stable)"
                 ),
             },
-            {
-                "id": "broader-period-geometry",
-                "label": "Broader period geometry",
-                "milestone": "M20+",
-                "desc": "Period shapes beyond the Western/Central Europe priority regions",
-            },
         ],
         "export_faces": [
             {"id": "pack", "command": "gpm export pack", "label": "Game template pack"},

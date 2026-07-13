@@ -78,7 +78,7 @@
               </div>
               <div>
                 <dt>Politics shipped</dt>
-                <dd>curated 1836 · 1444</dd>
+                <dd>curated 1444 · 1836 · 1936</dd>
               </div>
               <div>
                 <dt>Public channel</dt>
@@ -294,11 +294,11 @@
         <div class="shell">
           <header class="section-head">
             <p class="eyebrow">Project status</p>
-            <h2>Beta packs ship dual faces</h2>
+            <h2>M22 ships a global PMTiles-first demo</h2>
             <p>
-              Through M14 the pipeline packages license-audited public betas with
-              game and atlas faces, cleaned attribution, and restricted-path
-              isolation (GADM / ODbL stay out of public packs).
+              Through M22 the pipeline packages license-audited game and atlas
+              faces, multi-region period geometry, generated hierarchy, and a
+              global web demo while keeping restricted paths isolated.
             </p>
           </header>
           <div class="status-grid">
@@ -314,28 +314,31 @@
                 <li>M15 era-aware geometry (WE 1444 pack + lineage)</li>
                 <li>M16 multi-era packs (1444 / 1836 / 1936) + migration notes</li>
                 <li>M17 curation workflow (bundles, diffs, golden borders)</li>
+                <li>M18 culture / religion atlas paint layers</li>
+                <li>M19 native PMTiles / vector tile delivery</li>
+                <li>M20 Western + Central Europe period geometry</li>
+                <li>M21 area / region / superregion hierarchy</li>
+                <li>M22 global PMTiles-first public demo</li>
               </ul>
             </article>
             <article class="status-card">
               <h3>Next</h3>
               <ul class="compact-list">
-                <li>Culture / religion atlas paint layers</li>
-                <li>PMTiles / vector tiles for web-scale delivery (<code>gpm export tiles</code>)</li>
-                <li>Broader period geometry beyond the WE priority region</li>
+                <li>M23 game-like province density (design-only)</li>
+                <li>Deeper-than-z7 tile delivery after native M22</li>
               </ul>
             </article>
             <article class="status-card status-highlight">
               <h3>Try the interactive demo</h3>
               <p>
-                Live Western Europe beta sample with era switching (1444 / 1836 /
-                1936 / modern), adjacency, province inspector, and multi-era
-                period geometry / boundary hints — plus reserved slots for
-                curation diffs and tiles.
+                Full global build with era switching (1444 / 1836 / 1936 /
+                modern), hierarchy, adjacency, province inspector, culture /
+                religion paint, and WE+CE period geometry / boundary hints.
               </p>
               <div class="hero-ctas" style="margin-top: 1rem">
                 <a class="btn btn-ghost" href="/demo" style="border-color: rgba(235,230,216,0.35); color: var(--paper)">Open demo</a>
               </div>
-              <pre class="code-block"><code>uv run gpm release beta --sample-we</code></pre>
+              <pre class="code-block"><code>uv run gpm demo build --no-tippecanoe</code></pre>
             </article>
           </div>
         </div>

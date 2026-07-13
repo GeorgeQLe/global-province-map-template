@@ -117,12 +117,6 @@
       "label": "Game-like province density",
       "milestone": "M23+",
       "desc": "Population-weighted M4 splitting with iconic-location seeding (Paradox-style density; hierarchy area IDs stay stable)"
-    },
-    {
-      "id": "broader-period-geometry",
-      "label": "Broader period geometry",
-      "milestone": "M20+",
-      "desc": "Period shapes beyond the Western/Central Europe priority regions"
     }
   ],
   "export_faces": [

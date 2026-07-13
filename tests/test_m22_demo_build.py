@@ -113,6 +113,17 @@ def test_demo_manifest_is_regenerated_programmatically(fixture_build):
     assert "future_slots" in manifest
     live_ids = {layer["id"] for layer in manifest["live_layers"]}
     assert {"period-geometry", "boundary-hints", "multi-era-packs", "pmtiles", "hierarchy"} <= live_ids
+    assert manifest["future_slots"] == [
+        {
+            "id": "game-density-provinces",
+            "label": "Game-like province density",
+            "milestone": "M23+",
+            "desc": (
+                "Population-weighted M4 splitting with iconic-location seeding "
+                "(Paradox-style density; hierarchy area IDs stay stable)"
+            ),
+        }
+    ]
 
     by_id = {entry["id"]: entry for entry in manifest["scenarios"]}
     assert set(by_id) == set(DEMO_SCENARIOS)
