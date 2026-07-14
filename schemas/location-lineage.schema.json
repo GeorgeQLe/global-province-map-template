@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/global-province-map/location-lineage.schema.json",
+  "title": "M23 Location Lineage",
+  "type": "object",
+  "required": ["schema_version", "fabric_id", "fabric_revision", "source_fabric_revision", "output_fabric_revision", "events"],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "fabric_id": {"type": "string", "minLength": 1},
+    "fabric_revision": {"type": "string", "minLength": 1},
+    "source_fabric_revision": {"type": "string", "minLength": 1},
+    "output_fabric_revision": {"type": "string", "minLength": 1},
+    "events": {"type": "array", "items": {"type": "object"}}
+  },
+  "additionalProperties": true
+}

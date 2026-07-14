@@ -1,7 +1,7 @@
 {
   "assigned_province_count": 3902,
   "color_field": "culture_color",
-  "count": 124,
+  "count": 125,
   "end_date": null,
   "entries": [
     {
@@ -117,13 +117,6 @@
       "province_count": 63
     },
     {
-      "color": "#803fb7",
-      "display_name": "han",
-      "fill_color": "#803fb7",
-      "id": "han",
-      "province_count": 53
-    },
-    {
       "color": "#2451ad",
       "display_name": "spanish",
       "fill_color": "#2451ad",
@@ -136,6 +129,13 @@
       "fill_color": "#dc2892",
       "id": "american",
       "province_count": 51
+    },
+    {
+      "color": "#803fb7",
+      "display_name": "han",
+      "fill_color": "#803fb7",
+      "id": "han",
+      "province_count": 49
     },
     {
       "color": "#82df37",
@@ -341,6 +341,13 @@
       "province_count": 23
     },
     {
+      "color": "#41c91d",
+      "display_name": "mongol",
+      "fill_color": "#41c91d",
+      "id": "mongol",
+      "province_count": 23
+    },
+    {
       "color": "#39a8e2",
       "display_name": "guatemalan",
       "fill_color": "#39a8e2",
@@ -352,13 +359,6 @@
       "display_name": "malagasy",
       "fill_color": "#2c66d0",
       "id": "malagasy",
-      "province_count": 22
-    },
-    {
-      "color": "#41c91d",
-      "display_name": "mongol",
-      "fill_color": "#41c91d",
-      "id": "mongol",
       "province_count": 22
     },
     {
@@ -866,6 +866,13 @@
       "province_count": 3
     },
     {
+      "color": "#c63029",
+      "display_name": "manchu",
+      "fill_color": "#c63029",
+      "id": "manchu",
+      "province_count": 3
+    },
+    {
       "color": "#4238d0",
       "display_name": "scottish",
       "fill_color": "#4238d0",
@@ -875,7 +882,7 @@
   ],
   "era": "1936",
   "fallback_color": "#b0b0b0",
-  "generated_at": "2026-07-13T15:05:01+00:00",
+  "generated_at": "2026-07-14T02:27:14+00:00",
   "generator_version": "0.1.0",
   "label": "Official 1936 (HOI-leaning curated politics)",
   "milestone": "M18",
@@ -965,6 +972,7 @@
       "--culture-malagasy": "#2c66d0",
       "--culture-malay": "#9ecb23",
       "--culture-maltese": "#4cc1c6",
+      "--culture-manchu": "#c63029",
       "--culture-mexican": "#af5423",
       "--culture-mongol": "#41c91d",
       "--culture-montenegrin": "#b08935",
@@ -1049,12 +1057,12 @@
       "#4cc1c6",
       "vietnamese",
       "#63e037",
-      "han",
-      "#803fb7",
       "spanish",
       "#2451ad",
       "american",
       "#dc2892",
+      "han",
+      "#803fb7",
       "japanese",
       "#82df37",
       "mossi",
@@ -1113,12 +1121,12 @@
       "#c12231",
       "kongo",
       "#61ac2a",
+      "mongol",
+      "#41c91d",
       "guatemalan",
       "#39a8e2",
       "malagasy",
       "#2c66d0",
-      "mongol",
-      "#41c91d",
       "sara",
       "#89bc2f",
       "croatian",
@@ -1263,6 +1271,8 @@
       "#da2375",
       "luxembourgish",
       "#a13471",
+      "manchu",
+      "#c63029",
       "scottish",
       "#4238d0",
       "#8a8a8a"

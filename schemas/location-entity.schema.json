@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/global-province-map/location-entity.schema.json",
+  "title": "M23 Atomic Location",
+  "type": "object",
+  "required": ["type", "geometry", "properties"],
+  "properties": {
+    "type": {"const": "Feature"},
+    "geometry": {"type": "object"},
+    "properties": {
+      "type": "object",
+      "required": ["location_id", "h3_index", "h3_resolution", "fabric_id", "fabric_revision", "source_fabric_revision", "geometry_revision", "area_sq_km", "source_lineage", "license_lineage"],
+      "properties": {
+        "location_id": {"type": "string", "minLength": 1},
+        "h3_index": {"type": "string", "minLength": 1},
+        "h3_resolution": {"type": "integer", "minimum": 0, "maximum": 15},
+        "component_index": {"type": "integer", "minimum": 1},
+        "component_count": {"type": "integer", "minimum": 1},
+        "fabric_id": {"type": "string", "minLength": 1},
+        "fabric_revision": {"type": "string", "minLength": 1},
+        "source_fabric_revision": {"type": "string", "minLength": 1},
+        "geometry_revision": {"type": "string", "minLength": 1},
+        "area_sq_km": {"type": "number", "exclusiveMinimum": 0},
+        "lineage_parent_id": {"type": "string", "minLength": 1},
+        "source_lineage": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "license_lineage": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

@@ -13,7 +13,7 @@ from gpm.config import ConfigError, load_profile
 from gpm.exporters.atlas import export_atlas_pack
 from gpm.exporters.pack import ExportError, export_game_pack
 from gpm.paths import PROCESSED_DATA_DIR, PROJECT_ROOT
-from gpm.release.alpha import ReleaseError, _prepare_inputs, _write_json
+from gpm.release.alpha import ReleaseError, _copy_passing_topology_qa, _prepare_inputs, _write_json
 from gpm.release.license_audit import (
     LicenseAuditError,
     audit_public_release,
@@ -263,9 +263,7 @@ def build_beta_release(
 
         if include_topology_qa_copy:
             qa_src = topology_qa_input or (province_input.parent / "topology_qa.json")
-            if qa_src.is_file():
-                qa_dst = release_root / "topology_qa.json"
-                shutil.copy2(qa_src, qa_dst)
+            if _copy_passing_topology_qa(qa_src, release_root / "topology_qa.json"):
                 files_written.append("topology_qa.json")
 
         sample_geo_dir = release_root / "sample"

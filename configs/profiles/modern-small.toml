@@ -26,6 +26,10 @@ min_population = 1000.0
 max_split_parts = 64
 max_seed_candidates = 512
 
+[aggregation]
+modern_boundary_influence = "hard"
+aggregation_revision = "1"
+
 # Optional M6 overrides. Unset keys use the sea_zone_strategy preset.
 [sea]
 # coastal_buffer_km = 150.0

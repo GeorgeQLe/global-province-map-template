@@ -27,6 +27,12 @@ class TopologyQAError(RuntimeError):
     """Raised when topology QA cannot load inputs or complete its report."""
 
 
+# Boolean operations on lon/lat polygons can leave sub-square-metre rounding
+# residue. Treat less than one square metre as numeric noise, not source data
+# outside the declared land mask.
+NUMERICAL_AREA_EPSILON_SQ_KM = 1e-6
+
+
 @dataclass(frozen=True)
 class TopologyQAResult:
     profile_id: str
@@ -446,7 +452,7 @@ def _validate_coverage(
                     configured_limit_sq_km=limit,
                 )
         outside_area = geometry_area_sq_km(province.geometry.difference(land_mask))
-        if outside_area > 0:
+        if outside_area > NUMERICAL_AREA_EPSILON_SQ_KM:
             _add_finding(
                 findings,
                 "COVERAGE_OUTSIDE_MASK",

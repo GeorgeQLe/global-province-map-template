@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/global-province-map/province-membership-record.schema.json",
+  "title": "M23 Province Membership Record",
+  "type": "object",
+  "required": ["province_id", "location_id", "piece_id"],
+  "properties": {
+    "province_id": {"type": "string", "minLength": 1},
+    "location_id": {"type": "string", "minLength": 1},
+    "piece_id": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": false
+}

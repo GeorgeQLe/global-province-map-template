@@ -1,11 +1,21 @@
 import copy
 import json
+import tomllib
 
 import pytest
 
 from conftest import PROJECT_ROOT
 from gpm.manifest import build_planned_source_manifest
 from gpm.schemas import SchemaValidationError, load_schema, validate_source_manifest
+
+
+def test_wheel_data_declares_bundled_scenario_golden_checks():
+    with (PROJECT_ROOT / "pyproject.toml").open("rb") as file:
+        project = tomllib.load(file)
+    data_files = project["tool"]["setuptools"]["data-files"]
+    assert data_files["share/global-province-map-template/configs/scenarios/golden"] == [
+        "configs/scenarios/golden/*.json"
+    ]
 
 
 def test_schema_files_are_machine_readable_json_schema_documents():
@@ -19,9 +29,17 @@ def test_schema_files_are_machine_readable_json_schema_documents():
         "era-geometry-pack.schema.json",
         "golden-checks.schema.json",
         "license-audit-report.schema.json",
+        "location-admin-intersection.schema.json",
+        "location-adjacency-record.schema.json",
+        "location-entity.schema.json",
+        "location-fabric-manifest.schema.json",
+        "location-lineage.schema.json",
+        "location-split-request.schema.json",
         "multi-era-migration-notes.schema.json",
         "multi-era-pack.schema.json",
         "province-entity.schema.json",
+        "province-aggregation-manifest.schema.json",
+        "province-membership-record.schema.json",
         "region-entity.schema.json",
         "release-manifest.schema.json",
         "scenario-definition.schema.json",

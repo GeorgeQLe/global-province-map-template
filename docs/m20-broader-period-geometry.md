@@ -1,5 +1,9 @@
 # M20 Broader Period Geometry (Beyond Western Europe)
 
+Status: **prototype/infrastructure complete**. Composition and sample packs are
+shipped, but their hard overrides target sample IDs. They do not constitute
+production historical coverage or full-build `period-geometry` certification.
+
 M20 expands the **period-geometry** track past the M15/M16 Western Europe
 priority region by adding **Central Europe** packs for all three official eras
 and a **composed multi-region multi-era pack** that applies WE + CE geometry
@@ -38,7 +42,9 @@ Bohemian Crown, Polish, and Hungarian stories without a full-world redraw.
 
 Composite multi-era pack `europe-multi-era-v1` uses `priority_region`
 `western-and-central-europe` and a `priority_regions` list for both theaters.
-Region quality matrix marks **both** as `period-geometry` for 1444 / 1836 / 1936.
+The prototype region quality matrix labels both `period-geometry` for 1444 /
+1836 / 1936 inside the committed sample contract only. These labels are not
+production coverage claims.
 
 ## Central Europe geometry highlights
 

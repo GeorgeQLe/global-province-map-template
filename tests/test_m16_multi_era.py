@@ -130,7 +130,8 @@ def test_official_1936_bundled_metadata_and_schema():
     region_ids = {rule["match_parent_region_id"] for rule in scenario["region_rules"]}
     assert "DE-NW" in region_ids  # Rhineland
     assert "AT-9" in region_ids  # Vienna (pre-Anschluss Austria)
-    assert "CN-21" in region_ids  # Manchukuo
+    assert {"CN-LN", "CN-JL", "CN-HL"} <= region_ids  # Manchukuo
+    assert not any(region_id.startswith("CN-") and region_id[3:].isdigit() for region_id in region_ids)
     owners = {rule["owner"] for rule in scenario["country_rules"]}
     assert {"GER", "FRA", "ENG", "ITA", "SOV", "USA", "JAP", "CHI"} <= owners
     validate_scenario_document(scenario)
@@ -164,7 +165,7 @@ def test_interwar_theaters_resolve():
         _land("at_vienna", country="AUT", region="AT-9"),
         _land("cz_prague", country="CZE", region="CZ-10"),
         _land("cz_sudeten", country="CZE", region="CZ-42"),
-        _land("cn_liaoning", country="CHN", region="CN-21"),
+        _land("cn_liaoning", country="CHN", region="CN-LN"),
         _land("fr_paris", country="FRA", region="FR-IDF"),
         _land("eth_addis", country="ETH", region="ET-AA"),
         _land("pl_pomerania", country="POL", region="PL-PM"),

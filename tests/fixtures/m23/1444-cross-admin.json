@@ -1,0 +1,7 @@
+{
+  "fixture_id": "1444-cross-modern-admin",
+  "start_date": "1444-11-11",
+  "target_province_count": 1,
+  "required_modern_reference_ids": ["WEST", "EAST"],
+  "purpose": "Prove a dated location-derived province may contain atomic locations on both sides of a modern administrative boundary."
+}

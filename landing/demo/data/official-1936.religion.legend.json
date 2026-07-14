@@ -37,7 +37,7 @@
       "display_name": "buddhist",
       "fill_color": "#ae2535",
       "id": "buddhist",
-      "province_count": 268
+      "province_count": 272
     },
     {
       "color": "#ae3c4f",
@@ -58,7 +58,7 @@
       "display_name": "confucian",
       "fill_color": "#64d346",
       "id": "confucian",
-      "province_count": 60
+      "province_count": 56
     },
     {
       "color": "#48d02e",
@@ -84,7 +84,7 @@
   ],
   "era": "1936",
   "fallback_color": "#b0b0b0",
-  "generated_at": "2026-07-13T15:05:01+00:00",
+  "generated_at": "2026-07-14T02:27:14+00:00",
   "generator_version": "0.1.0",
   "label": "Official 1936 (HOI-leaning curated politics)",
   "milestone": "M18",

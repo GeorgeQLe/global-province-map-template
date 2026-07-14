@@ -93,6 +93,18 @@ def build_hierarchy(
     provinces = _land_provinces(document)
     if not provinces:
         raise HierarchyBuildError(f"Province input has no land provinces: {province_input}")
+    if (document.get("gpm") or {}).get("layer_kind") == "location_derived_provinces":
+        return _build_location_hierarchy(
+            profile_id,
+            document=document,
+            provinces=provinces,
+            settings=settings,
+            province_input=province_input,
+            adjacency_input=adjacency_input,
+            output=output,
+            update_provinces=update_provinces,
+            province_output=province_output,
+        )
 
     admin1_edges = _collapsed_admin1_edges(adjacency_input, provinces)
     country_attrs, admin1_attrs, ne_available = _natural_earth_attributes(raw_dir)
@@ -214,6 +226,218 @@ def build_hierarchy(
         updated_province_count=updated_count,
         natural_earth_attributes=ne_available,
     )
+
+
+def _build_location_hierarchy(
+    profile_id: str,
+    *,
+    document: dict[str, Any],
+    provinces: list[_LandProvince],
+    settings: dict[str, Any],
+    province_input: Path,
+    adjacency_input: Path,
+    output: Path,
+    update_provinces: bool,
+    province_output: Path | None,
+) -> HierarchyBuildResult:
+    """M23 hierarchy path: cluster the derived province graph, never admin codes."""
+    by_id = {province.province_id: province for province in provinces}
+    graph: dict[str, dict[str, float]] = {province_id: {} for province_id in by_id}
+    try:
+        with Path(adjacency_input).open("r", encoding="utf-8", newline="") as file:
+            for row in csv.DictReader(file):
+                if (row.get("adjacency_type") or "").strip() != "land":
+                    continue
+                left = (row.get("from_province_id") or "").strip()
+                right = (row.get("to_province_id") or "").strip()
+                if left not in graph or right not in graph:
+                    continue
+                try:
+                    weight = float(row.get("shared_border_km") or 0.0)
+                except ValueError:
+                    weight = 0.0
+                graph[left][right] = graph[left].get(right, 0.0) + weight
+                graph[right][left] = graph[right].get(left, 0.0) + weight
+    except (OSError, csv.Error) as exc:
+        raise HierarchyBuildError(f"Cannot read M23 province adjacency {adjacency_input}: {exc}") from exc
+
+    meta = document.get("gpm") or {}
+    era = str(meta.get("start_date") or "undated")
+    aggregation_revision = str(meta.get("aggregation_revision") or "1")
+    geometry_revision = str(meta.get("geometry_revision") or "1")
+
+    area_groups = _cluster_member_graph(
+        sorted(by_id), graph, target=max(1, int(settings["area_target_size"])),
+    )
+    area_records = [
+        _location_hierarchy_record(
+            "area", members, by_id, profile_id, era, aggregation_revision, geometry_revision
+        )
+        for members in area_groups
+    ]
+    area_by_id = {record["region_id"]: record for record in area_records}
+    province_to_area = {
+        province_id: record["region_id"]
+        for record in area_records for province_id in record["province_ids"]
+    }
+    area_graph = _collapse_member_graph(graph, province_to_area)
+    region_groups = _cluster_member_graph(
+        sorted(area_by_id), area_graph, target=max(1, int(settings["region_target_size"])),
+    )
+    region_records = [
+        _location_hierarchy_record_from_children(
+            "region", members, area_by_id, profile_id, era, aggregation_revision, geometry_revision
+        )
+        for members in region_groups
+    ]
+    region_by_id = {record["region_id"]: record for record in region_records}
+    area_to_region = {
+        area_id: record["region_id"]
+        for record in region_records for area_id in record["member_ids"]
+    }
+    region_graph = _collapse_member_graph(area_graph, area_to_region)
+    super_groups = _cluster_member_graph(
+        sorted(region_by_id), region_graph, target=max(1, int(settings["region_target_size"])),
+    )
+    super_records = [
+        _location_hierarchy_record_from_children(
+            "superregion", members, region_by_id, profile_id, era, aggregation_revision, geometry_revision
+        )
+        for members in super_groups
+    ]
+    region_to_super = {
+        region_id: record["region_id"]
+        for record in super_records for region_id in record["member_ids"]
+    }
+
+    features = []
+    for record in super_records:
+        features.append(_location_hierarchy_feature(record, None, None))
+    for record in region_records:
+        features.append(_location_hierarchy_feature(record, region_to_super[record["region_id"]], None))
+    for record in area_records:
+        parent = area_to_region[record["region_id"]]
+        features.append(_location_hierarchy_feature(record, parent, region_to_super[parent]))
+    features.sort(key=lambda feature: (LEVEL_ORDER[feature["properties"]["region_type"]], feature["properties"]["region_id"]))
+    hierarchy_document = {
+        "type": "FeatureCollection", "name": "hierarchy",
+        "gpm": {
+            "schema_version": HIERARCHY_SCHEMA_VERSION, "milestone": "M23",
+            "id_scheme": "location-membership-sha256-v1", "profile_id": profile_id,
+            "start_date": era, "aggregation_revision": aggregation_revision,
+            "geometry_revision": geometry_revision,
+            "generated_at": datetime.now(UTC).replace(microsecond=0).isoformat(),
+            "generator_version": __version__, "natural_earth_attributes": False,
+            "counts": {"areas": len(area_records), "regions": len(region_records), "superregions": len(super_records)},
+        },
+        "features": features,
+    }
+    _write_json(output, hierarchy_document)
+    updated = 0
+    resolved_output: Path | None = None
+    if update_provinces:
+        resolved_output = province_output or province_input
+        for feature in document["features"]:
+            props = feature.get("properties") or {}
+            province_id = props.get("province_id")
+            if province_id not in province_to_area:
+                continue
+            area_id = province_to_area[province_id]
+            region_id = area_to_region[area_id]
+            props["parent_area_id"] = area_id
+            props["parent_geo_region_id"] = region_id
+            props["parent_superregion_id"] = region_to_super[region_id]
+            updated += 1
+        _write_json(resolved_output, document)
+    return HierarchyBuildResult(
+        profile_id=profile_id, province_input=str(province_input), adjacency_input=str(adjacency_input),
+        output=str(output), province_output=str(resolved_output) if resolved_output else None,
+        province_count=len(provinces), area_count=len(area_records), region_count=len(region_records),
+        superregion_count=len(super_records), updated_province_count=updated,
+        natural_earth_attributes=False,
+    )
+
+
+def _cluster_member_graph(members: list[str], graph: dict[str, dict[str, float]], *, target: int) -> list[list[str]]:
+    remaining = set(members)
+    groups: list[list[str]] = []
+    while remaining:
+        seed = min(remaining)
+        group = [seed]
+        remaining.remove(seed)
+        while len(group) < target:
+            candidates = {
+                neighbor
+                for member in group
+                for neighbor in graph.get(member, {})
+                if neighbor in remaining
+            }
+            if not candidates:
+                break
+            chosen = min(candidates, key=lambda item: (-sum(graph.get(member, {}).get(item, 0.0) for member in group), item))
+            group.append(chosen)
+            remaining.remove(chosen)
+        groups.append(sorted(group))
+    return groups
+
+
+def _collapse_member_graph(graph: dict[str, dict[str, float]], mapping_by_member: dict[str, str]) -> dict[str, dict[str, float]]:
+    result: dict[str, dict[str, float]] = {group: {} for group in set(mapping_by_member.values())}
+    for left, neighbors in graph.items():
+        left_group = mapping_by_member[left]
+        for right, weight in neighbors.items():
+            right_group = mapping_by_member[right]
+            if left_group != right_group:
+                result[left_group][right_group] = result[left_group].get(right_group, 0.0) + weight
+    return result
+
+
+def _hierarchy_hash(level: str, members: list[str], profile_id: str, era: str,
+                    aggregation_revision: str, geometry_revision: str) -> str:
+    payload = json.dumps([level, sorted(members), profile_id, era, aggregation_revision, geometry_revision], separators=(",", ":"))
+    return f"{level}_{hashlib.sha256(payload.encode()).hexdigest()[:16]}"
+
+
+def _location_hierarchy_record(level: str, members: list[str], provinces: dict[str, _LandProvince],
+                               profile_id: str, era: str, aggregation_revision: str,
+                               geometry_revision: str) -> dict[str, Any]:
+    return {
+        "region_id": _hierarchy_hash(level, members, profile_id, era, aggregation_revision, geometry_revision),
+        "member_ids": sorted(members), "province_ids": sorted(members),
+        "geometry": unary_union([provinces[item].geometry for item in members]),
+        "source_lineage": sorted({value for item in members for value in provinces[item].source_lineage}),
+        "license_lineage": sorted({value for item in members for value in provinces[item].license_lineage}),
+        "region_type": level,
+    }
+
+
+def _location_hierarchy_record_from_children(level: str, members: list[str], children: dict[str, dict[str, Any]],
+                                             profile_id: str, era: str, aggregation_revision: str,
+                                             geometry_revision: str) -> dict[str, Any]:
+    province_ids = sorted({item for member in members for item in children[member]["province_ids"]})
+    return {
+        "region_id": _hierarchy_hash(level, members, profile_id, era, aggregation_revision, geometry_revision),
+        "member_ids": sorted(members), "province_ids": province_ids,
+        "geometry": unary_union([children[item]["geometry"] for item in members]),
+        "source_lineage": sorted({value for item in members for value in children[item]["source_lineage"]}),
+        "license_lineage": sorted({value for item in members for value in children[item]["license_lineage"]}),
+        "region_type": level,
+    }
+
+
+def _location_hierarchy_feature(record: dict[str, Any], parent_id: str | None,
+                                grandparent_id: str | None) -> dict[str, Any]:
+    return {
+        "type": "Feature", "geometry": mapping(record["geometry"]),
+        "properties": {
+            "region_id": record["region_id"], "display_name": record["region_id"],
+            "region_type": record["region_type"], "parent_region_id": parent_id,
+            "parent_superregion_id": grandparent_id,
+            "province_ids": record["province_ids"], "province_count": len(record["province_ids"]),
+            "member_ids": record["member_ids"], "source_lineage": record["source_lineage"],
+            "license_lineage": record["license_lineage"],
+        },
+    }
 
 
 # ---------------------------------------------------------------------------

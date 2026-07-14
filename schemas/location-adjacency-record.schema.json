@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/global-province-map/location-adjacency-record.schema.json",
+  "title": "M23 Location Adjacency Record",
+  "type": "object",
+  "required": ["from_location_id", "to_location_id", "shared_border_km", "adjacency_type"],
+  "properties": {
+    "from_location_id": {"type": "string", "minLength": 1},
+    "to_location_id": {"type": "string", "minLength": 1},
+    "shared_border_km": {"type": ["number", "string"]},
+    "adjacency_type": {"const": "land"}
+  },
+  "additionalProperties": false
+}

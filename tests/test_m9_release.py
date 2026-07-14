@@ -2,7 +2,10 @@ import csv
 import json
 from pathlib import Path
 
+import pytest
+
 from gpm.cli import main
+from gpm.release.alpha import ReleaseError
 from gpm.release import (
     ALPHA_GEOMETRY_TIER,
     ALPHA_POLITICS_TIER,
@@ -249,6 +252,25 @@ def test_build_alpha_release_full_input_without_country_filter(tmp_path):
     manifest = json.loads(Path(result.release_manifest).read_text(encoding="utf-8"))
     assert manifest["scenario_set"] == []
     assert manifest["is_sample"] is False
+
+
+def test_alpha_release_rejects_failing_topology_snapshot(tmp_path):
+    province_input = tmp_path / "provinces.geojson"
+    _write_provinces(
+        province_input,
+        [_land_feature("land_a", _polygon(0, 0, 1, 1), country="FRA")],
+    )
+    (tmp_path / "topology_qa.json").write_text(
+        json.dumps({"status": "fail", "summary": {"error_count": 1}}),
+        encoding="utf-8",
+    )
+    with pytest.raises(ReleaseError, match="must pass with zero errors"):
+        build_alpha_release(
+            province_input=province_input,
+            output_dir=tmp_path / "release",
+            release_tag="bad-topology",
+            scenarios=(),
+        )
 
 
 def test_release_alpha_cli_json(tmp_path, capsys):

@@ -9,6 +9,16 @@ draft 2020-12.
 - `attribution-record.schema.json` records notices required by generated
   datasets and exports.
 - `province-entity.schema.json` describes canonical province GeoJSON features.
+- `location-entity.schema.json` describes M23 atomic location GeoJSON features.
+- `location-fabric-manifest.schema.json`, `location-lineage.schema.json`, and
+  `location-split-request.schema.json` describe fabric revisions and targeted
+  paintability feedback.
+- `location-adjacency-record.schema.json` and
+  `location-admin-intersection.schema.json` describe the location graph and
+  many-to-many modern references.
+- `province-membership-record.schema.json` and
+  `province-aggregation-manifest.schema.json` describe deterministic derived
+  province membership and revisions.
 - `region-entity.schema.json` describes region/state GeoJSON features.
 - `adjacency-record.schema.json` describes land, sea, strait, river crossing,
   and port-to-sea adjacency rows.
@@ -28,7 +38,8 @@ draft 2020-12.
 - `scenario-politics-qa-report.schema.json` describes M11 politics QA reports
   (ownership coverage, tag/orphan checks, owner components, golden findings).
 
-`gpm.schemas` includes small built-in validators for source manifests,
+`gpm.schemas` includes small built-in validators for source manifests, M23
+location-fabric manifests and lineage,
 topology QA reports, scenario definitions, release manifests, atlas
 manifests, and scenario politics QA reports. The JSON Schema files remain the
 canonical machine-readable contracts.

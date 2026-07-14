@@ -183,9 +183,7 @@ def build_alpha_release(
 
         if include_topology_qa_copy:
             qa_src = topology_qa_input or (province_input.parent / "topology_qa.json")
-            if qa_src.is_file():
-                qa_dst = release_root / "topology_qa.json"
-                shutil.copy2(qa_src, qa_dst)
+            if _copy_passing_topology_qa(qa_src, release_root / "topology_qa.json"):
                 files_written.append("topology_qa.json")
 
         # Optional sample inputs for offline consumers who do not want the pack tree only.
@@ -486,3 +484,19 @@ def _write_json(path: Path, document: dict[str, Any]) -> None:
         json.dumps(document, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
     )
+
+
+def _copy_passing_topology_qa(source: Path, destination: Path) -> bool:
+    if not source.is_file():
+        return False
+    try:
+        report = json.loads(source.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        raise ReleaseError(f"Cannot read topology QA snapshot {source}: {exc}") from exc
+    error_count = (report.get("summary") or {}).get("error_count")
+    if report.get("status") != "pass" or error_count != 0:
+        raise ReleaseError(
+            f"Topology QA snapshot must pass with zero errors before release: {source}"
+        )
+    shutil.copy2(source, destination)
+    return True

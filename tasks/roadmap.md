@@ -1,11 +1,13 @@
 # Roadmap Progress
 
-Updated: 2026-07-11
+Updated: 2026-07-13
 
 Product direction (see root `ROADMAP.md`): dual audience for **strategy-game
 seeds** and **historical / SaaS maps**, with a **strong historical accuracy
-bar** for official eras. Modern scaffold is foundation; curated politics and
-later era-aware geometry are first-class tracks.
+bar** for official eras. The future production pipeline is source layers →
+neutral atomic locations → era/profile provinces → scenario politics and
+hierarchy → exports. Modern admin geometry is reference input and a hard
+constraint only for modern profiles.
 
 ## Completed
 
@@ -72,13 +74,17 @@ later era-aware geometry are first-class tracks.
   dual audiences, pipeline, quality tiers, and license policy.
   `gpm release site` validates and can ensure a GitHub remote, push, and deploy
   to Vercel.
-- M15 era-aware geometry v1: complete. Pack format + `gpm era-geometry` for soft
+- M15 era-aware geometry v1: **prototype/infrastructure complete**. Pack format
+  + `gpm era-geometry` for soft
   boundary hints and hard overrides; WE 1444 pack `we-1444-v1` with ID lineage
-  maps; sample and demo layers; docs `docs/m15-era-geometry.md`.
-- M16 multi-era geometry + politics packs: complete. `we-multi-era-v1` with
+  maps; sample and demo layers. Hard overrides are sample-scoped and do not
+  establish production coverage; docs `docs/m15-era-geometry.md`.
+- M16 multi-era geometry + politics packs: **prototype/infrastructure
+  complete**. `we-multi-era-v1` with
   region quality matrix and migration notes; era geometry packs for 1836 and
   1936; `official-1936` curated politics; `gpm multi-era`; sample + demo;
-  docs `docs/m16-multi-era.md`.
+  docs `docs/m16-multi-era.md`. Geometry labels remain illustrative until
+  full-build reconstruction passes certify named regions.
 - M17 curation workflow hardening: complete. External curator bundles,
   ownership diffs, expanded golden-border suites, contribution checklist;
   `gpm curation`; sample `samples/curator-bundle-example/`;
@@ -89,19 +95,31 @@ later era-aware geometry are first-class tracks.
 - M19 PMTiles / vector tiles: complete. Pure-Python MVT + PMTiles writer,
   `gpm export tiles`, atlas `--tiles`, demo vector source; docs
   `docs/m19-pmtiles.md`.
-- M20 broader period geometry: complete. Central Europe packs
+- M20 broader period geometry: **prototype/infrastructure complete**. Central
+  Europe packs
   `ce-1444-v1` / `ce-1836-v1` / `ce-1936-v1`; multi-pack composition via
   `era_geometry_pack_ids` and `apply_era_geometry_packs`; multi-era pack
   `europe-multi-era-v1`; scaffold `samples/scaffold-we-ce/`; samples + demo;
-  docs `docs/m20-broader-period-geometry.md`.
+  docs `docs/m20-broader-period-geometry.md`. Hard overrides are sample-scoped.
 - M21 four-level hierarchy: complete. Stable area, region, and superregion
   entities; enriched province parents; hierarchy exports and demo overlays;
   docs `docs/m21-hierarchy.md`.
 - M22 global PMTiles-first demo: complete. Four scenario archives over the
   4,603-province global build, hero dissolves, hierarchy and adjacency overlays,
   regenerated manifest, and cache-safe public entrypoints.
+- M23 historically paintable location fabric: complete. Neutral cross-admin
+  H3 cells, stable location IDs, configurable modern-boundary influence,
+  versioned aggregations, QA, and targeted split lineage ship through explicit
+  `gpm build locations` and neutral-default `gpm build provinces` commands.
+  Production acceptance: 30,003 locations, 52,142 adjacency rows, strict QA
+  with zero errors, deterministic duplicate build, and documented Natural
+  Earth incomplete-coverage warnings (31 admin-0 / 40 admin-1).
 
 ## Next
 
-- M23 game-like province density is design-only; see
-  `docs/m23-density-design-note.md`. Implementation has not started.
+- M24 start-date research framework: dossiers, dated boundary registry, polity/
+  dependency gazetteer, uncertainty, spatial golden borders, coverage matrices,
+  and changelogs. Contract: `docs/m24-start-date-research-framework.md`.
+- M25 1444 reconstruction (including mandatory Brussels/Nord negative-
+  anachronism regression), M26 1836, M27 official 1914 imperial-era, and M28
+  1936. Each pass is independently versioned/releasable with regional grades.

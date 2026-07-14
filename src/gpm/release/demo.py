@@ -99,6 +99,9 @@ def build_demo(
     province_input: Path = PROCESSED_DATA_DIR / "provinces.geojson",
     adjacency_input: Path = PROCESSED_DATA_DIR / "adjacency.csv",
     hierarchy_input: Path = PROCESSED_DATA_DIR / "hierarchy.geojson",
+    location_input: Path | None = None,
+    membership_input: Path | None = None,
+    aggregation_manifest_input: Path | None = None,
     landing_dir: Path | None = None,
     work_dir: Path | None = None,
     scenarios: tuple[str, ...] | list[str] = DEMO_SCENARIOS,
@@ -120,6 +123,11 @@ def build_demo(
         adjacency_input=adjacency_input,
         hierarchy_input=hierarchy_input,
         data_dir=data_dir,
+    )
+    m23_inputs = _m23_demo_inputs(
+        location_input=location_input,
+        membership_input=membership_input,
+        aggregation_manifest_input=aggregation_manifest_input,
     )
 
     work_dir.mkdir(parents=True, exist_ok=True)
@@ -226,6 +234,7 @@ def build_demo(
             "superregions": hierarchy_result.superregion_count,
         },
         adjacency_edge_count=edge_count,
+        m23_inputs=m23_inputs,
     )
     manifest_path = data_dir / "demo-manifest.json"
     manifest_path.write_text(
@@ -324,6 +333,37 @@ def _preflight(
             "demo can paint and label the area/region/superregion hierarchy."
         )
     return features
+
+
+def _m23_demo_inputs(*, location_input: Path | None, membership_input: Path | None,
+                     aggregation_manifest_input: Path | None) -> dict[str, Any] | None:
+    supplied = (location_input, membership_input, aggregation_manifest_input)
+    if not any(item is not None for item in supplied):
+        return None
+    if not all(item is not None for item in supplied):
+        raise DemoBuildError(
+            "M23 demo regeneration requires --location-input, --membership-input, "
+            "and --aggregation-manifest together."
+        )
+    missing = [str(path) for path in supplied if path is not None and not Path(path).is_file()]
+    if missing:
+        raise DemoBuildError(f"M23 demo input(s) missing: {', '.join(missing)}")
+    assert location_input is not None and membership_input is not None and aggregation_manifest_input is not None
+    try:
+        locations = json.loads(Path(location_input).read_text(encoding="utf-8"))
+        aggregation = json.loads(Path(aggregation_manifest_input).read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise DemoBuildError(f"Cannot read M23 demo metadata: {exc}") from exc
+    return {
+        "location_input": str(location_input),
+        "membership_input": str(membership_input),
+        "aggregation_manifest": str(aggregation_manifest_input),
+        "fabric_id": (locations.get("gpm") or {}).get("fabric_id"),
+        "fabric_revision": (locations.get("gpm") or {}).get("fabric_revision"),
+        "location_count": len(locations.get("features") or []),
+        "aggregation_revision": aggregation.get("aggregation_revision"),
+        "geometry_revision": aggregation.get("geometry_revision"),
+    }
 
 
 def _write_hero_geojson(owners_input: Path, output: Path) -> None:
@@ -470,6 +510,7 @@ def _demo_manifest(
     tile_max_zoom: int,
     hierarchy_counts: dict[str, int],
     adjacency_edge_count: int,
+    m23_inputs: dict[str, Any] | None,
 ) -> dict[str, Any]:
     generated_at = datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
     scenarios: list[dict[str, Any]] = []
@@ -532,8 +573,14 @@ def _demo_manifest(
             "generator_version": __version__,
             "profile_id": profile_id,
             "province_count": province_count,
-            "command": "uv run gpm demo build",
+            "command": (
+                "uv run gpm demo build --location-input data/processed/locations.geojson "
+                "--membership-input data/processed/province_membership.csv "
+                "--aggregation-manifest data/processed/province_aggregation_manifest.json"
+                if m23_inputs else "uv run gpm demo build"
+            ),
         },
+        "m23": m23_inputs,
         "pmtiles": {
             "enabled": True,
             "protocol": "pmtiles",
@@ -634,12 +681,12 @@ def _demo_manifest(
         ],
         "future_slots": [
             {
-                "id": "game-density-provinces",
-                "label": "Game-like province density",
-                "milestone": "M23+",
+                "id": "start-date-reconstructions",
+                "label": "Certified start-date reconstructions",
+                "milestone": "M24–M28",
                 "desc": (
-                    "Population-weighted M4 splitting with iconic-location seeding "
-                    "(Paradox-style density; hierarchy area IDs stay stable)"
+                    "Evidence dossiers and full-build regional certification for "
+                    "1444, 1836, 1914, and 1936 over the M23 neutral location fabric"
                 ),
             },
         ],

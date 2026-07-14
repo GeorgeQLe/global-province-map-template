@@ -1,0 +1,15 @@
+{
+  "fabric_id": "global-h3-v1",
+  "fabric_revision": "1",
+  "geometry_revision": "1",
+  "baseline_h3_resolution": 3,
+  "maximum_h3_resolution": 5,
+  "target_location_count": 30000,
+  "weights": {
+    "area": 1.0,
+    "population": 1.0,
+    "settlement": 0.7,
+    "terrain": 0.4,
+    "historical": 0.8
+  }
+}

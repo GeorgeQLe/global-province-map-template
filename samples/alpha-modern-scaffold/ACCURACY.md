@@ -41,4 +41,4 @@ Official product tiers (progressive fidelity):
 
 - `scaffold-baseline` — Modern open-geodata scaffold only. Politics project modern parent_country_id (or coarse demo remaps). Not a claim of historical accuracy for any pre-modern or wartime era.
 - `curated-politics` — Human-reviewed owner/controller/cores/claims for priority regions and/or global major tags. Geometry may still be modern scaffold.
-- `period-geometry` — Era-aware province shapes or boundary hints where modern admin outlines would fail a historian or Paradox-eye sniff test.
+- `period-geometry` — Full-build era-aware province shapes certified for named regions with spatial golden-border tests and a coverage mask. Boundary hints alone do not qualify.

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/global-province-map/location-fabric-manifest.schema.json",
+  "title": "M23 Location Fabric Manifest",
+  "type": "object",
+  "required": ["schema_version", "manifest_type", "fabric_id", "fabric_revision", "source_fabric_revision", "output_fabric_revision", "geometry_revision", "h3", "target_location_count", "actual_location_count", "signals", "inputs", "source_lineage", "license_lineage", "files", "counts"],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "manifest_type": {"const": "location_fabric"},
+    "fabric_id": {"type": "string", "minLength": 1},
+    "fabric_revision": {"type": "string", "minLength": 1},
+    "source_fabric_revision": {"type": "string", "minLength": 1},
+    "output_fabric_revision": {"type": "string", "minLength": 1},
+    "geometry_revision": {"type": "string", "minLength": 1},
+    "target_location_count": {"type": "integer", "minimum": 1},
+    "actual_location_count": {"type": "integer", "minimum": 1},
+    "h3": {"type": "object"},
+    "signals": {"type": "object"},
+    "inputs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["role", "path", "format", "license_lineage"],
+        "properties": {
+          "role": {"enum": ["land", "admin0", "admin1", "population", "settlement", "terrain", "historical"]},
+          "path": {"type": "string", "minLength": 1},
+          "format": {"enum": ["geojson", "natural-earth-zip"]},
+          "license_lineage": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+        },
+        "additionalProperties": true
+      }
+    },
+    "source_lineage": {"type": "array"},
+    "license_lineage": {"type": "array", "minItems": 1},
+    "files": {"type": "array", "items": {"type": "string"}},
+    "counts": {"type": "object"}
+  },
+  "additionalProperties": true
+}

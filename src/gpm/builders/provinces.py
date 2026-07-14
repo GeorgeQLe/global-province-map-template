@@ -8,9 +8,10 @@ from datetime import UTC, datetime
 from pathlib import Path, PurePosixPath
 from typing import Any
 
-from shapely import make_valid, normalize, to_wkb
+from shapely import STRtree, make_valid, normalize, to_wkb
 from shapely.geometry import MultiPolygon, mapping, shape
 from shapely.errors import ShapelyError
+from shapely.ops import unary_union
 
 from gpm import __version__
 from gpm.builders.refinement import (
@@ -132,6 +133,7 @@ def build_land_province_draft(
         [*admin1_provinces, *admin0_fallbacks],
         key=lambda item: item["properties"]["province_id"],
     )
+    provinces = _normalize_province_topology(provinces, admin0_features)
     _ensure_unique_province_ids(provinces)
     candidates = [_candidate_from_province(feature) for feature in provinces]
     refinement_requested = (
@@ -271,6 +273,89 @@ def polygon_parts_of(geom: Any) -> list[Any]:
     return []
 
 
+def _normalize_province_topology(
+    provinces: list[dict[str, Any]],
+    admin0_features: list[Any],
+) -> list[dict[str, Any]]:
+    """Clip and partition conflicting Natural Earth layers into one land coverage.
+
+    Natural Earth admin-1 and admin-0 encode several disputed territories with
+    overlapping or slightly divergent boundaries. A playable province layer
+    cannot preserve those positive-area conflicts. Resolve them deterministically
+    by province ID, then attach uncovered admin-0 mask components to the touching
+    province with the longest shared boundary (stable ID tie-break).
+    """
+    mask_parts = []
+    for feature in admin0_features:
+        repaired, _changed = _repaired_geometry(feature.geometry)
+        mask_parts.extend(polygon_parts_of(shape(repaired)))
+    if not mask_parts:
+        raise ProvinceBuildError("Natural Earth admin-0 input contains no land mask geometry.")
+    land_mask = unary_union(mask_parts)
+
+    ordered = sorted(provinces, key=lambda item: item["properties"]["province_id"])
+    geometries = [shape(item["geometry"]).intersection(land_mask) for item in ordered]
+    if any(geometry.is_empty for geometry in geometries):
+        raise ProvinceBuildError("Topology normalization removed an entire source province.")
+
+    tree = STRtree(geometries)
+    for index, geometry in enumerate(geometries):
+        for candidate_value in tree.query(geometry):
+            candidate_index = int(candidate_value)
+            if candidate_index <= index:
+                continue
+            overlap = geometries[candidate_index].intersection(geometry)
+            if not overlap.is_empty and overlap.area > 0:
+                geometries[candidate_index] = geometries[candidate_index].difference(geometry)
+                if geometries[candidate_index].is_empty:
+                    raise ProvinceBuildError(
+                        "Topology normalization removed an entire overlapping source province."
+                    )
+
+    covered = unary_union(geometries)
+    gaps = sorted(
+        polygon_parts_of(land_mask.difference(covered)),
+        key=lambda item: (-item.area, item.bounds),
+    )
+    if gaps:
+        tree = STRtree(geometries)
+        assignments: dict[int, list[Any]] = {}
+        for gap in gaps:
+            candidate_indexes = sorted({int(value) for value in tree.query(gap)})
+            if not candidate_indexes:
+                candidate_indexes = [int(tree.nearest(gap))]
+            selected = min(
+                candidate_indexes,
+                key=lambda candidate_index: (
+                    -geometries[candidate_index].boundary.intersection(gap.boundary).length,
+                    geometries[candidate_index].distance(gap),
+                    ordered[candidate_index]["properties"]["province_id"],
+                ),
+            )
+            assignments.setdefault(selected, []).append(gap)
+        for index, assigned in assignments.items():
+            geometries[index] = unary_union([geometries[index], *assigned])
+
+    normalized: list[dict[str, Any]] = []
+    for feature, geometry in zip(ordered, geometries, strict=True):
+        polygons = [part for part in polygon_parts_of(make_valid(geometry)) if not part.is_empty]
+        if not polygons:
+            raise ProvinceBuildError("Topology normalization produced no polygonal province geometry.")
+        canonical = normalize(polygons[0] if len(polygons) == 1 else MultiPolygon(polygons))
+        properties = dict(feature["properties"])
+        geometry_mapping = mapping(canonical)
+        properties["province_id"] = _province_id(
+            geometry_mapping,
+            source_layer=properties["source_layer"],
+            country_id=properties["parent_country_id"],
+            region_id=properties["parent_region_id"],
+        )
+        properties["area_sq_km"] = round(geometry_area_sq_km(geometry_mapping), 3)
+        properties["topology_normalized"] = True
+        normalized.append({"type": "Feature", "geometry": geometry_mapping, "properties": properties})
+    return sorted(normalized, key=lambda item: item["properties"]["province_id"])
+
+
 def _province_feature(
     geometry: dict[str, Any],
     source_properties: dict[str, Any],
@@ -339,6 +424,7 @@ def _feature_collection(
     draft_notes = [
         "M2 candidates are built from Natural Earth modern admin boundaries.",
         "Province IDs use normalized geometry hashes and do not depend on feature order.",
+        "Natural Earth admin-layer overlaps, outside-mask slivers, and mask gaps are deterministically partitioned.",
     ]
     if refinement is None:
         draft_notes.append("Coastal, island, terrain, and population classifications are placeholders.")

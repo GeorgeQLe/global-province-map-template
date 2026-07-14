@@ -6,7 +6,7 @@ Paradox-style nesting:
 | Level | Entity prefix | Scale (global admin-1 build) | Source of grouping |
 | --- | --- | --- | --- |
 | Province | `ne_` | 4,603 | Natural Earth admin-1 (admin-0 fallback) |
-| Area | `ar_` | ~660 | Deterministic greedy clustering of admin-1 codes over the land-adjacency graph |
+| Area | `ar_` | ~659 | Deterministic greedy clustering of admin-1 codes over the land-adjacency graph |
 | Region | `rg_` | ~170 | One per country; micro-states coalesced by NE admin-0 subregion; mega-countries split by the NE admin-1 `region` attribute |
 | Superregion | `sr_` | 8 | One per NE continent |
 

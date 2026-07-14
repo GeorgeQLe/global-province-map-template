@@ -2767,7 +2767,7 @@
       "notes": "Sardinia"
     },
     {
-      "match_parent_region_id": "CN-21",
+      "match_parent_region_id": "CN-LN",
       "owner": "MAN",
       "controller": "MAN",
       "cores": [
@@ -2778,7 +2778,7 @@
       "notes": "Liaoning \u2014 Manchukuo"
     },
     {
-      "match_parent_region_id": "CN-22",
+      "match_parent_region_id": "CN-JL",
       "owner": "MAN",
       "controller": "MAN",
       "cores": [
@@ -2789,7 +2789,7 @@
       "notes": "Jilin \u2014 Manchukuo"
     },
     {
-      "match_parent_region_id": "CN-23",
+      "match_parent_region_id": "CN-HL",
       "owner": "MAN",
       "controller": "MAN",
       "cores": [
@@ -2800,7 +2800,7 @@
       "notes": "Heilongjiang \u2014 Manchukuo"
     },
     {
-      "match_parent_region_id": "CN-15",
+      "match_parent_region_id": "CN-NM",
       "owner": "MEN",
       "controller": "MEN",
       "cores": [
@@ -2811,7 +2811,7 @@
       "notes": "Inner Mongolia fringe simplified"
     },
     {
-      "match_parent_region_id": "CN-11",
+      "match_parent_region_id": "CN-BJ",
       "owner": "CHI",
       "controller": "CHI",
       "cores": [
@@ -2822,7 +2822,7 @@
       "notes": "Beijing / ROC"
     },
     {
-      "match_parent_region_id": "CN-31",
+      "match_parent_region_id": "CN-SH",
       "owner": "CHI",
       "controller": "CHI",
       "cores": [
@@ -2833,7 +2833,7 @@
       "notes": "Shanghai"
     },
     {
-      "match_parent_region_id": "CN-32",
+      "match_parent_region_id": "CN-JS",
       "owner": "CHI",
       "controller": "CHI",
       "cores": [
@@ -2844,7 +2844,7 @@
       "notes": "Jiangsu"
     },
     {
-      "match_parent_region_id": "CN-33",
+      "match_parent_region_id": "CN-ZJ",
       "owner": "CHI",
       "controller": "CHI",
       "cores": [
@@ -2855,7 +2855,7 @@
       "notes": "Zhejiang"
     },
     {
-      "match_parent_region_id": "CN-44",
+      "match_parent_region_id": "CN-GD",
       "owner": "CHI",
       "controller": "CHI",
       "cores": [
@@ -2866,7 +2866,7 @@
       "notes": "Guangdong"
     },
     {
-      "match_parent_region_id": "CN-51",
+      "match_parent_region_id": "CN-SC",
       "owner": "CHI",
       "controller": "CHI",
       "cores": [
@@ -2877,7 +2877,7 @@
       "notes": "Sichuan"
     },
     {
-      "match_parent_region_id": "CN-61",
+      "match_parent_region_id": "CN-SN",
       "owner": "CHI",
       "controller": "CHI",
       "cores": [

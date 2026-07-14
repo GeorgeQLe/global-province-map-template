@@ -1,6 +1,11 @@
 # M15 Era-Aware Geometry v1 (Priority Region)
 
-M15 ships the first **period-geometry** track: soft historical **boundary
+Status: **prototype/infrastructure complete**. The shipped hard overrides are
+sample-scoped and do not constitute production historical coverage. Boundary
+hints alone are not sufficient for a `period-geometry` claim; certification
+requires full-build application and spatial QA in M25–M28.
+
+M15 ships the first period-geometry prototype track: soft historical **boundary
 hints**, optional **hard province overrides** for a priority region, and
 **ID lineage maps** so consumers can migrate data across geometry revisions.
 
@@ -25,7 +30,7 @@ full-world redraw every patch.
 | `schemas/era-geometry-lineage.schema.json` | Lineage map contract |
 | `samples/era-geometry-we-1444/` | Applied sample + README |
 | Demo toggles | Period geometry + boundary hints on 1444 |
-| Quality labeling | `period-geometry` tier is priority-region scoped |
+| Quality labeling | Illustrative priority-region sample; not full-build certification |
 
 ## Geometry modes
 
@@ -70,7 +75,7 @@ uv run gpm era-geometry apply \
 | --- | --- |
 | Era / scenario | `1444` / `official-1444` |
 | Priority region | Western Europe (`FRA`, `BEL`, `NLD`, `LUX`, `DEU`) |
-| Quality tier | `period-geometry` (region-scoped) |
+| Quality tier | `period-geometry` prototype label (sample-scoped) |
 | Soft hints | Burgundian Low Countries, Franco-Burgundian, Rhine corridor, Channel/Calais, Low Countries band |
 | Hard overrides (sample IDs) | Split Rhineland → Cologne + residual; reshape Flanders & Luxembourg; identity for Paris / Normandy / Holland |
 
@@ -111,7 +116,7 @@ is enabled.
 | M8–M13 | Politics overlays on modern scaffold |
 | M14 / M14.5 | Beta sample + public demo scaffolding |
 | **M15** | Era-aware geometry v1 for a priority region |
-| M16 | Multi-era geometry + politics packs (incl. 1936) — complete |
+| M16 | Multi-era geometry + politics packs (incl. 1936) — prototype/infrastructure complete |
 | M17 | Diffs, golden borders, external curator bundles |
 
 ## Honest limits

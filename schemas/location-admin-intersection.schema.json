@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/global-province-map/location-admin-intersection.schema.json",
+  "title": "M23 Modern Reference Intersection",
+  "type": "object",
+  "required": ["location_id", "reference_layer", "reference_id", "intersection_area_sq_km", "location_share"],
+  "properties": {
+    "location_id": {"type": "string", "minLength": 1},
+    "reference_layer": {"enum": ["admin0", "admin1"]},
+    "reference_id": {"type": "string", "minLength": 1},
+    "intersection_area_sq_km": {"type": ["number", "string"]},
+    "location_share": {"type": ["number", "string"]}
+  },
+  "additionalProperties": false
+}

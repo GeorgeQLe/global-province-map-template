@@ -143,7 +143,7 @@ country samples or GitHub Releases / object storage for distribution.
 | M10 | Atlas / SaaS export face (see [m10-atlas.md](m10-atlas.md)) |
 | M11 | Scenario politics QA + review authoring (**complete**) |
 | M12 | First official era `official-1836` (`curated-politics`) — complete |
-| M13 | Second official era (`official-1444`) |
+| M13 | Second official era (`official-1444`) — complete |
 | M14 | License-audited beta (complete; see [m14-beta-release.md](m14-beta-release.md)) |
-| M15–M16 | Period geometry and multi-era packs |
-| M17 | Curation workflow hardening |
+| M15–M16 | Prototype era-geometry and multi-era pack infrastructure — complete at prototype scope |
+| M17 | Curation workflow hardening — complete |

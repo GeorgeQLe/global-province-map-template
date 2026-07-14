@@ -1,19 +1,67 @@
 # History
 
+## 2026-07-13 - M0–M23 Comprehensive Acceptance Remediation
+
+- Re-audited every completed milestone with 238 local assertions, installed-wheel
+  smoke tests, duplicate global/fabric/demo builds, canonical release rebuilds,
+  and read-only GitHub/Vercel/browser checks.
+- Deterministically partitioned Natural Earth admin-layer conflicts so the
+  4,603-province legacy compatibility build passes strict topology QA with zero
+  errors; release packaging now rejects failing topology snapshots.
+- Fixed installed-wheel omission of official scenario golden checks and repaired
+  obsolete 1936 Chinese subdivision rules plus the Germany golden floor.
+- Regenerated the M22 demo at 10,779 edges and 659/169/8 hierarchy entities;
+  replaced the obsolete M23+ density future slot with M24–M28 reconstruction work.
+- Confirmed two byte-identical 30,003-location fabrics, 52,142 adjacency rows,
+  the documented 31/40 reference warnings, and a 22,000-province 1444 aggregation.
+- Full evidence and milestone verdicts: `tasks/m0-m23-acceptance-audit.md`.
+
+## 2026-07-13 - M23 Location-Fabric Acceptance
+
+- Made the neutral `locations.geojson` fabric the default province-build path;
+  retained the former builder behind `--legacy-modern-admin`.
+- Added explicit source/output fabric revisions for targeted split migrations,
+  actual-split-only parent/child lineage, unchanged-ID preservation, and a
+  dated 1444 cross-modern-admin fixture.
+- Replaced hard-coded Natural Earth attribution with structured actual-input
+  and license lineage for land, admin, and optional signal inputs.
+- Made adjacency, intersections, lineage, manifest, declared-file, revision,
+  and land coverage checks fail closed; closed the planar Antarctic cap gap.
+- Production acceptance built 30,003 locations and 52,142 adjacency rows twice
+  with byte-identical fixed-timestamp outputs, passed strict QA with zero
+  errors, retained stable upstream warnings for 31 admin-0 and 40 admin-1 gaps,
+  and aggregated the `eu-like` 1444 profile to 22,000 provinces.
+
+## 2026-07-13 - Historical Location-Fabric Roadmap Revision
+
+- Reframed the production pipeline as source layers → neutral atomic locations
+  → era/profile provinces → scenario politics and hierarchy → exports.
+- Preserved M15, M16, and M20 as **prototype/infrastructure complete** while
+  recording that their hard overrides are sample-scoped, not production
+  historical coverage.
+- Replaced the former parent-constrained M23 density milestone with a neutral
+  historically paintable location fabric and added the M24 repeatable
+  start-date research/certification framework.
+- Sequenced independent reconstruction releases: M25 1444, M26 1836, M27
+  official 1914 imperial era, and M28 1936, each with regional coverage grades.
+- Added mandatory full-build spatial golden-border tests and the 1444
+  Brussels/Nord negative-anachronism regression.
+
 ## 2026-07-13 - M20–M22 Release Preparation
 
-- Reconciled M20 broader period geometry, M21 hierarchy, and M22 global
-  PMTiles-first demo as one release boundary; M23 remains design-only.
+- Reconciled M20 prototype period-geometry infrastructure, M21 hierarchy, and
+  M22 global PMTiles-first demo as one release boundary; the later roadmap
+  revision superseded the original M23 design contract.
 - Hardened the public static interface with M22 query-string cache busting,
   manifest revalidation on demo load, and a long-lived immutable PMTiles cache
   rule compatible with byte-range delivery.
 - Regenerated and validated the canonical global demo build before preview
   deployment; production promotion remains gated on explicit approval.
 - Visual QA removed stale landing “Next” copy and the obsolete M20 future card;
-  only the M23 density design remains labeled as future work.
+  at that time, only the now-superseded M23 density design was future work.
 - Next: review the Vercel preview evidence and approve or decline promotion.
 
-## 2026-07-11 - M20 Broader Period Geometry (Beyond Western Europe)
+## 2026-07-11 - M20 Broader Period Geometry Prototype (Beyond Western Europe)
 
 - Central Europe era-geometry packs `ce-1444-v1`, `ce-1836-v1`, `ce-1936-v1`
   (soft frontier bands + sample hard overrides for AUT/CZE/POL/HUN).
@@ -25,6 +73,8 @@
 - Demo refreshed to WE+CE scaffold and Europe period layers / merged hints.
 - Docs `docs/m20-broader-period-geometry.md`; tests
   `tests/test_m20_broader_period_geometry.py`.
+- Prototype/infrastructure completion only: hard overrides target sample IDs and
+  do not constitute production historical coverage.
 - Next: further priority regions or denser hard overrides (post-M20).
 
 ## 2026-07-11 - Ship M19 PMTiles / Vector Tiles
@@ -97,6 +147,7 @@
 - Sample under `samples/multi-era-we-v1/`; demo ships live 1936 tab and period
   geometry / boundary hints for 1444 / 1836 / 1936.
 - Docs `docs/m16-multi-era.md`; tests `tests/test_m16_multi_era.py`.
+- Prototype/infrastructure completion only: hard geometry is sample-scoped.
 - Next project task was M17 curation workflow hardening (completed).
 
 ## 2026-07-10 - M15 Era-Aware Geometry v1 (Western Europe 1444)
@@ -109,6 +160,7 @@
   under `samples/era-geometry-we-1444/`; demo toggles for period geometry and
   boundary hints; quality labeling notes priority-region scope.
 - Docs `docs/m15-era-geometry.md`; tests `tests/test_m15_era_geometry.py`.
+- Prototype/infrastructure completion only: hard overrides target sample IDs.
 - Next project task was M16 multi-era geometry + politics packs (completed).
 
 ## 2026-07-10 - Demo label font fix + redeploy

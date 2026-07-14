@@ -1,11 +1,14 @@
-# M23 (design note) — Game-like province density
+# Supporting density and game-design research (former M23 proposal)
 
-Status: **not implemented**. This note fixes the contract and records the
-Paradox design-theory research so the density milestone can start from a
-settled brief. The M21 hierarchy and M22 demo were built with these hooks in
-mind.
+Status: **supporting research; not implemented**. This note preserves useful
+population, pacing, terrain, fragmentation, and iconic-location research. Its
+admin-parent-constrained contract is **superseded** by the canonical
+[M23 location-fabric design](m23-location-fabric.md).
 
-## Contract with the existing pipeline
+## Superseded implementation sketch
+
+The following records the earlier M4/M21 approach for historical context. It is
+not the settled M23 contract and must not constrain the neutral location fabric.
 
 1. **Split mechanism** is the existing M4 refinement
    (`gpm build provinces --refine …`): children inherit `parent_region_id`

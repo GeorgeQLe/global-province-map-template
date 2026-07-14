@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/global-province-map/province-aggregation-manifest.schema.json",
+  "title": "M23 Province Aggregation Manifest",
+  "type": "object",
+  "required": ["schema_version", "manifest_type", "profile_id", "start_date", "fabric_revision", "aggregation_revision", "geometry_revision", "modern_boundary_influence", "target_province_count", "actual_province_count", "files"],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "manifest_type": {"const": "province_aggregation"},
+    "profile_id": {"type": "string", "minLength": 1},
+    "start_date": {"type": "string", "minLength": 1},
+    "fabric_revision": {"type": "string", "minLength": 1},
+    "aggregation_revision": {"type": "string", "minLength": 1},
+    "geometry_revision": {"type": "string", "minLength": 1},
+    "modern_boundary_influence": {"enum": ["hard", "soft", "none"]},
+    "target_province_count": {"type": "integer", "minimum": 1},
+    "actual_province_count": {"type": "integer", "minimum": 1},
+    "files": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

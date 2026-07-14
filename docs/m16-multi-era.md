@@ -1,5 +1,10 @@
 # M16 Multi-Era Geometry + Politics Packs
 
+Status: **prototype/infrastructure complete**. Multi-era packaging, scenario
+pairing, and migration tooling are shipped. Hard geometry remains sample-scoped
+and does not constitute production historical coverage; M25–M28 must apply and
+test reconstructions against full builds before certifying `period-geometry`.
+
 M16 ships **paired geometry + politics** for at least two official eras (here:
 **three** — 1444, 1836, and 1936), with **documented quality tiers per region**
 and **migration notes** for consumers.

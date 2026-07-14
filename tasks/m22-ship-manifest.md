@@ -4,7 +4,8 @@
 
 Publish the complete M20–M22 implementation as one coherent `main` release,
 validate an exact Vercel preview, and leave production promotion gated on
-explicit approval. M23 remains design-only.
+explicit approval. At ship time, the former M23 density design was planning-only;
+it is now superseded by `docs/m23-location-fabric.md`.
 
 ## Changed files and per-file purpose
 
@@ -32,7 +33,8 @@ explicit approval. M23 remains design-only.
   Natural Earth mask before complete coverage analysis.
 - `README.md`, `ROADMAP.md`, `docs/{m14.5-landing,m20-broader-period-geometry,
   m23-density-design-note}.md`, and `tasks/{todo,roadmap,history}.md`: reconcile
-  M20–M22 as complete and M23 as design-only.
+  M20–M22 as shipped and the then-current M23 as design-only. Current roadmap
+  language classifies M20 geometry as prototype/infrastructure complete.
 - Remaining changed schemas, configs, samples, and tests are direct fixtures or
   contract coverage for the implementation groups above.
 
@@ -51,8 +53,9 @@ explicit approval. M23 remains design-only.
 - Canonical generation: provinces → adjacency → hierarchy →
   `uv run gpm demo build --no-tippecanoe`.
 - `uv run gpm release site --dry-run`: passed.
-- Manifest/header integrity: 4,603 provinces; 660/169/8 hierarchy entities;
-  10,781 edges; four native PMTiles archives at z0–7; no global scenario
+- Manifest/header integrity after the M0–M23 acceptance remediation: 4,603
+  provinces; 659/169/8 hierarchy entities; 10,779 edges; four native PMTiles
+  archives at z0–7; no global scenario
   GeoJSON.
 - Range-capable local browser smoke: 2 passed across desktop/mobile; four eras,
   paint/layer controls, modern disabling, period geometry, pan/zoom, and hero
@@ -73,18 +76,18 @@ explicit approval. M23 remains design-only.
 - Confirmed `gpm demo build` preserves the curated M20 period-geometry assets
   rather than deriving them from the global M22 build.
 - Screenshot review caught stale landing status copy and an obsolete M20 future
-  card; both were corrected and the manifest test now enforces M23-only future
-  labeling.
+  card; both were corrected and the manifest test then enforced the former
+  M23-only future labeling (superseded by the current M23–M28 sequence).
 
 ## Residual risk
 
-- Full topology QA completes but reports Natural Earth source conflicts: 577
-  admin-1/admin-0 mask mismatches, five disputed-territory overlaps, 271
-  islands/isolates, and fragmented global components. These are visible QA
-  findings, not test regressions; M22 does not repair or adjudicate source
-  borders.
-- Native tiles intentionally stop at z7. Game-like density and deeper tiles are
-  deferred to M23/future delivery work.
+- The M0–M23 acceptance remediation now deterministically partitions Natural
+  Earth admin-layer conflicts and fills the admin-0 mask, so strict topology QA
+  passes with zero errors. The remaining 376 warnings cover islands/components
+  and sub-threshold source artifacts; the two removed false adjacencies reduce
+  the hierarchy from 660 to 659 areas and the graph from 10,781 to 10,779 edges.
+- Native tiles intentionally stop at z7. Neutral location-fabric density is now
+  M23; deeper tiles remain future delivery work.
 
 ## Rollback note
 

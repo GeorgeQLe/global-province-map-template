@@ -91,6 +91,7 @@ class ReviewDataset:
     politics_qa_warning_count: int = 0
     authoring_enabled: bool = False
     land_province_ids: set[str] = field(default_factory=set)
+    m23_inputs: dict[str, Path] = field(default_factory=dict)
 
     def meta_payload(self) -> dict[str, Any]:
         endpoints = {
@@ -110,6 +111,8 @@ class ReviewDataset:
                     "override": "/api/scenario/override",
                 }
             )
+        for key in self.m23_inputs:
+            endpoints[key] = f"/api/m23/{key}"
         return {
             "profile_id": self.profile_id,
             "province_input": str(self.province_input),
@@ -128,6 +131,7 @@ class ReviewDataset:
             "politics_qa_warning_count": self.politics_qa_warning_count,
             "ownership_row_count": len(self.ownership_by_id),
             "gpm": self.gpm_meta,
+            "m23_inputs": {key: str(path) for key, path in self.m23_inputs.items()},
             "endpoints": endpoints,
         }
 
@@ -214,6 +218,11 @@ def prepare_review_dataset(
     province_input: Path = PROCESSED_DATA_DIR / "provinces.geojson",
     adjacency_input: Path | None = PROCESSED_DATA_DIR / "adjacency.csv",
     qa_report_input: Path | None = PROCESSED_DATA_DIR / "topology_qa.json",
+    location_input: Path | None = None,
+    modern_reference_input: Path | None = None,
+    lineage_input: Path | None = None,
+    paintability_input: Path | None = None,
+    aggregation_manifest_input: Path | None = None,
     scenario_id: str | None = None,
     scenario_path: Path | None = None,
     run_politics_qa: bool = True,
@@ -307,6 +316,17 @@ def prepare_review_dataset(
         findings_by_province=findings_by_province,
         land_province_ids=land_province_ids,
         politics_findings_by_province={province_id: [] for province_id in land_province_ids},
+        m23_inputs={
+            key: Path(value).resolve()
+            for key, value in {
+                "locations": location_input,
+                "modern_reference": modern_reference_input,
+                "lineage": lineage_input,
+                "paintability": paintability_input,
+                "province_aggregation": aggregation_manifest_input,
+            }.items()
+            if value is not None and Path(value).is_file()
+        },
     )
 
     if scenario_id or scenario_path:
@@ -545,6 +565,15 @@ class _ReviewRequestHandler(BaseHTTPRequestHandler):
             return
         if path == "/api/provinces.geojson":
             self._send_file(self.dataset.province_input, content_type="application/geo+json")
+            return
+        if path.startswith("/api/m23/"):
+            layer = path.removeprefix("/api/m23/")
+            source = self.dataset.m23_inputs.get(layer)
+            if source is None:
+                self._send_error_json(404, f"M23 review layer not available: {layer}")
+            else:
+                content_type = "application/geo+json" if source.suffix.lower() in {".geojson", ".json"} else "text/csv"
+                self._send_file(source, content_type=content_type)
             return
         if path == "/api/adjacency.json":
             self._send_json({"adjacency": self.dataset.adjacency_index})

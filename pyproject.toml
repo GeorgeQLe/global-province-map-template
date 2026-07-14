@@ -15,6 +15,7 @@ authors = [
 ]
 keywords = ["gis", "geodata", "strategy-games", "provinces", "maps"]
 dependencies = [
+    "h3>=4.5,<5",
     "rasterio>=1.4,<2",
     "shapely>=2.1,<3",
 ]
@@ -34,7 +35,9 @@ where = ["src"]
 [tool.setuptools.data-files]
 "share/global-province-map-template/configs" = ["configs/sources.toml"]
 "share/global-province-map-template/configs/profiles" = ["configs/profiles/*.toml"]
+"share/global-province-map-template/configs/fabrics" = ["configs/fabrics/*.json"]
 "share/global-province-map-template/configs/scenarios" = ["configs/scenarios/*.json"]
+"share/global-province-map-template/configs/scenarios/golden" = ["configs/scenarios/golden/*.json"]
 "share/global-province-map-template/configs/era_geometry" = ["configs/era_geometry/*.json"]
 "share/global-province-map-template/configs/multi_era" = ["configs/multi_era/*.json"]
 "share/global-province-map-template/configs/recipes" = ["configs/recipes/*.json"]

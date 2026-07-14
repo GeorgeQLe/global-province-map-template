@@ -8,8 +8,9 @@ that can:
 2. **Power historical explanation and SaaS maps** (era-keyed politics, credible
    choropleths, attribution, optional period-aware geometry).
 
-The modern open-geodata scaffold is the **engineering foundation**, not the final
-claim of historical truth. Paradox-adjacent audiences have a sharp eye for
+The shipped modern open-geodata scaffold is prototype infrastructure and a
+reference/attribution input, not the permanent geometry foundation or a claim
+of historical truth. Paradox-adjacent audiences have a sharp eye for
 anachronisms; historical accuracy is a **first-class quality goal** for every
 era the project officially supports.
 
@@ -21,16 +22,22 @@ era the project officially supports.
 | Historical explainers / education | Date-keyed “who controlled what,” disputed/uncertain flags, source notes, maps that do not look obviously wrong for the era |
 | SaaS / map products | Stable APIs of geometry + scenario tables, attribution, multi-era packaging, progressive fidelity by region |
 
-Shared pipeline:
+Canonical pipeline:
 
 ```text
-geographic scaffold → attributes & graph → scenario politics → optional era geometry
-        → export face (game pack | atlas / SaaS)
+source layers → neutral atomic locations → era/profile provinces
+              → scenario politics and hierarchy → exports
 ```
+
+Modern administrative geometry is a reference and attribution input, not the
+permanent partition of the historical map. It is a hard constraint only for a
+modern profile. A **location** is the smallest stable paintable cell; provinces,
+areas, regions, and superregions are versioned aggregations of locations and may
+change by profile, era, and start date.
 
 ## Historical accuracy quality bar
 
-For any **officially supported** era (e.g. 1444, 1836, 1936), aim for a **strong
+For any **officially supported** era (1444, 1836, 1914, or 1936), aim for a **strong
 balance**—not pure archival GIS on day one, and not “modern ISO with period skins.”
 
 | Layer | Target bar | Notes |
@@ -42,23 +49,34 @@ balance**—not pure archival GIS on day one, and not “modern ISO with period 
 | Microborders / every exclave | **Progressive** | Document uncertainty; improve by region |
 | Source honesty | **Always** | Lineage, disputed flags, curator notes, license |
 
-**Engineering bootstrap (done / in progress):** modern scaffold + overlay tooling
-(M2–M8).  
-**Product bar (future work):** curated politics, then era-aware geometry where
-overlays alone cannot pass a gamer or historian sniff test.
+An official coverage claim is always **region-, era-, and layer-specific**. In
+every priority region it also requires:
+
+- no known recent administrative outline surviving where it contradicts the
+  claimed date;
+- mandatory spatial golden-border tests, including negative-anachronism cases;
+- a published coverage mask and grade for geometry, politics, and hierarchy;
+- full-build application of historical geometry. Boundary hints or hard
+  overrides that work only against committed samples do not qualify as
+  `period-geometry`.
+
+**Engineering bootstrap (complete):** modern scaffold, overlays, packaging, and
+sample override tooling (M2–M22). M15, M16, and M20 are
+**prototype/infrastructure complete**; their shipped hard overrides are
+sample-scoped and are not production historical coverage.
 
 ## Guiding Principles
 
 - Build from open geodata with clear attribution and reproducible source manifests.
 - Keep generated data independent from proprietary game maps and engine formats.
 - Separate permissive core data from share-alike or restricted optional layers.
-- Generate stable IDs so games and SaaS products can attach history, economy,
-  diplomacy, and simulation data safely.
+- Assign stable identity primarily to neutral atomic locations so games and
+  SaaS products can attach history, economy, diplomacy, and simulation data.
 - Treat **geometry** and **historical politics** as separate layers that can
   evolve on different cadences—but both must serve accuracy goals for supported eras.
-- Prefer **one addressable province graph** with scenario overlays; add
-  **era-specific geometry** only where political overlays cannot credibly
-  represent the period.
+- Derive province IDs from ordered location membership plus profile, era, and
+  geometry revision. Treat modern administrative membership as intersection-
+  based or many-to-many, never as a mandatory single parent.
 - Ship **two export faces** from the same core: game template packs and
   atlas/SaaS-oriented map packages.
 - Optimize for **progressive fidelity**: global coverage first, depth by priority
@@ -69,8 +87,8 @@ overlays alone cannot pass a gamer or historian sniff test.
 ## Phase 0: Scope and Legal Baseline
 
 - Pick the first supported map mode: modern world baseline scaffold.
-- Define first-class historical eras for product support: **1836**, **1444**,
-  **1936**, plus custom eras.
+- Define first-class historical eras for product support: **1444**, **1836**,
+  **1914**, **1936**, plus custom eras.
 - Confirm default source licenses:
   - Natural Earth: public domain.
   - geoBoundaries: CC BY 4.0.
@@ -140,13 +158,11 @@ overlays alone cannot pass a gamer or historian sniff test.
   - `superregion`
   - `sea_zone`
   - `scenario` / ownership record
-- Define required province fields:
-  - stable ID
+- Define required location fields:
+  - stable location ID and fabric revision
   - display name
   - geometry
   - land/sea type
-  - parent region ID
-  - parent country ID for the modern baseline scaffold
   - area
   - estimated population
   - terrain class
@@ -154,8 +170,15 @@ overlays alone cannot pass a gamer or historian sniff test.
   - island flag
   - source lineage
   - license lineage
+- Define province fields as an aggregation contract:
+  - derived province ID
+  - ordered location membership
+  - profile, era/start date, and geometry revision
+  - versioned parent area/region/superregion relationships
+  - modern administrative intersections where applicable (many-to-many)
 - Define scenario politics fields:
-  - owner, controller, cores, claims
+  - sovereignty, owner, controller, occupation, vassalage, personal unions,
+    cores, and claims
   - culture / religion hints
   - disputed / uncertainty
   - validity dates
@@ -167,24 +190,31 @@ overlays alone cannot pass a gamer or historian sniff test.
   - river crossing hints
   - port-to-sea links
 
-## Phase 4: Province Generation
+## Phase 4: Location Fabric and Province Generation
 
 - Build a clean global land mask.
-- Clip administrative units to land and water boundaries.
-- Select candidate admin levels per country based on:
+- Build a neutral tessellation of stable atomic paintable locations. Allow
+  historical borders, terrain, coasts, settlements, population, and gameplay
+  needs to influence cells across modern administrative lines.
+- Use modern administrative units as reference/attribution layers. Their
+  influence is configurable and becomes a hard constraint only in modern
+  profiles.
+- Select location density based on:
   - total area
   - population density
   - available boundary quality
   - gameplay target province count
-- Split oversized candidates using:
+- Split oversized or historically unpaintable cells using:
   - population-weighted seeds
   - settlement clusters
   - rivers and mountain barriers
   - H3 or Voronoi partitioning
   - coast-aware boundaries
-- Merge undersized fragments using:
+- Merge undersized fragments without requiring a shared modern admin parent,
+  while preserving location lineage.
+- Aggregate locations into profile- and date-specific provinces using:
   - shared border length
-  - same parent admin unit
+  - optional modern-admin affinity for modern profiles
   - island grouping rules
   - population and area thresholds
 - Generate sea zones separately:
@@ -192,13 +222,17 @@ overlays alone cannot pass a gamer or historian sniff test.
   - ocean regions
   - chokepoints and straits
   - port access zones
-- Create deterministic IDs from source lineage and geometry hashes.
-- Keep IDs stable enough for multi-era scenarios and downstream save/mod data.
+- Create deterministic location IDs from fabric lineage and normalized geometry.
+- Create province IDs from location membership, profile, era, and geometry
+  revision. Failed start-date paintability tests may request targeted location
+  splits; publish each resulting fabric revision and parent/child lineage.
 
 ## Phase 5: Attributes and Gameplay Readiness
 
-- Estimate population per province from GHSL or WorldPop rasters.
-- Calculate area, coastline length, centroid, bounding box, and compactness.
+- Estimate population per location and aggregate it to provinces from GHSL or
+  WorldPop rasters.
+- Calculate area, coastline length, centroid, bounding box, and compactness for
+  locations and derived provinces.
 - Assign terrain classes from open land-cover or elevation sources after license review.
 - Add settlement features:
   - capital candidate
@@ -213,14 +247,15 @@ overlays alone cannot pass a gamer or historian sniff test.
 
 ## Phase 6: Historical Politics Layers
 
-Politics are curated tables over a geographic scaffold. Tooling precedes full
+Politics are curated tables over versioned location/province aggregations. Tooling precedes full
 historical completeness; **official eras must clear the accuracy bar above**.
 
-- Keep geometry and historical ownership as separate concerns in the data model.
-- Start with modern generated geography as the default scaffold.
+- Keep location geometry, province aggregation, and historical politics as
+  separate versioned concerns.
 - Scenario tables (ownership overlays):
-  - owner by date
-  - controller by date
+  - sovereignty and owner by date
+  - controller and occupation by date
+  - dependency/vassal status and personal-union relationships
   - culture/language hints
   - religion hints
   - claims and cores
@@ -234,11 +269,15 @@ historical completeness; **official eras must clear the accuracy bar above**.
 - Review historical data sources before use:
   - OpenHistoricalMap for hints where coverage and feature licenses allow
   - Historical atlas datasets only after per-source license review
-  - Manual curation for high-quality 1444, 1836, and 1936 scenarios
+  - Manual curation for high-quality 1444, 1836, 1914, and 1936 scenarios
+- Maintain a dated historical-boundary registry. Each feature records validity
+  dates, source and license lineage, confidence, related polities, boundary
+  semantics, and whether it is a hard constraint or soft evidence.
 - Quality tiers for each official scenario:
   - `scaffold-baseline` — modern parent projection only
   - `curated-politics` — human-reviewed tags for priority regions / global tags
-  - `period-geometry` — era-aware shapes where required (Phase 6b)
+  - `period-geometry` — full-build era-aware shapes certified for named
+    regions; boundary hints alone never satisfy this tier
 - Showcase path: pick **priority regions** (e.g. Western/Central Europe for
   EU/Vicky-style credibility) and deepen them before claiming global perfection.
 
@@ -250,15 +289,13 @@ nation-state outlines for 1444). This phase is a **real track**, not optional
 trivia.
 
 - Define when an era needs geometry changes vs political overlay only.
-- Support **era geometry modes** or **boundary-hint overlays** without forcing
-  a full world redraw every patch:
-  - soft: historical boundary hints / disputed frontier bands on modern scaffold
-  - hard: alternate province polygons for priority regions in a given era
+- Apply dated hard constraints and soft evidence to location aggregation;
+  retain boundary-hint overlays as research/debug aids rather than certification.
 - Prefer **lineage-preserving IDs** (split/merge maps, parent links) so game and
   SaaS consumers can migrate data across geometry revisions.
 - Ingest license-cleared historical boundary sources for priority eras/regions.
 - Recompute or subset adjacency for era geometry packs where shapes change.
-- Document quality: which continents/regions are period-true vs scaffold-backed.
+- Document quality with separate region/era/layer coverage masks and grades.
 - Do **not** hardcode proprietary Paradox province layouts.
 
 ## Phase 7: QA and Validation
@@ -286,19 +323,25 @@ trivia.
   - unknown tags flagged
   - orphan cores/claims
   - large contiguous owner components sanity checks
-  - optional golden checks for famous borders / capitals in priority regions
+  - mandatory spatial golden-border and negative-anachronism checks in every
+    claimed priority region
+  - semantic checks for sovereignty, control, occupation, dependencies,
+    personal unions, claims, and uncertainty
 - Add visual QA:
   - static render snapshots (modern + era ownership choropleths)
   - interactive map viewer
-  - layer toggles for source, province, region, adjacency, scenario, and errors
+  - layer toggles for neutral locations, aggregation boundaries, scenario,
+    coverage masks, uncertainty, adjacency, and errors
+  - separate modern-source debug layers that cannot be mistaken for historical
+    province geometry
 
 ## Phase 8: Interactive Review App
 
 - Build a MapLibre-based viewer.
 - Support loading generated vector tiles or GeoJSON samples.
 - Add inspector tools:
-  - province ID
-  - parent hierarchy
+  - stable location ID, derived province ID, and fabric/aggregation revisions
+  - versioned parent hierarchy and location membership
   - source lineage
   - license lineage
   - population and area
@@ -311,9 +354,11 @@ trivia.
   - missing names
   - suspicious coastal links
   - anachronistic modern-country paint under historical scenarios
+  - coverage masks and recent-administration-outline regressions
 - Add manual override authoring:
-  - split / merge / rename hints
-  - parent-region overrides
+  - targeted location split requests with lineage
+  - province aggregation / rename hints
+  - versioned hierarchy overrides
   - scenario province ownership edits
   - disputed / note fields for curator workflow
 
@@ -341,6 +386,9 @@ trivia.
 - Canonical geospatial formats: GeoJSON, FlatGeobuf, GeoParquet, TopoJSON, PMTiles
 - Document consumption for engines, mod tools, and map SaaS
 - Never ship proprietary Paradox map formats as first-party outputs
+- Export atomic locations separately from derived provinces and hierarchies.
+- Include profile/start-date aggregation manifests, coverage masks, dated
+  boundary lineage, and location-fabric migration maps.
 
 ## Phase 10: Release Process
 
@@ -349,8 +397,8 @@ trivia.
 - Publish small sample datasets in git (including a **credible era sample**, not
   only modern geometry).
 - Publish full generated datasets through GitHub Releases or object storage.
-- Tag releases by data vintage, generator version, **scenario set**, and
-  **quality tier**.
+- Tag releases by location-fabric revision, aggregation revision, data vintage,
+  generator version, **scenario set**, and **quality tier**.
 - Provide changelogs for:
   - source updates
   - geometry changes
@@ -358,10 +406,16 @@ trivia.
   - schema changes
   - attribution changes
 - Label accuracy honestly: scaffold vs curated-politics vs period-geometry.
+- Release each start-date pass independently with regional coverage grades;
+  never imply global period coverage from a regional pass.
 
 ## Phase 11: Official Era Programs
 
 Run era work as explicit programs with acceptance criteria, not one-off demos.
+
+Each program consumes the M24 research artifacts, is independently versioned
+and releasable, and publishes region/era/layer coverage rather than an implied
+global claim.
 
 ### 1836 (Victoria-leaning showcase)
 
@@ -376,6 +430,13 @@ Run era work as explicit programs with acceptance criteria, not one-off demos.
 - Address geometry failure modes (modern nation outlines that break the period)
 - Cores/claims/disputed density appropriate to the era’s storytelling
 - Game pack profile alignment with `eu-like`
+
+### 1914 (imperial-era showcase)
+
+- German, Austro-Hungarian, Russian, and Ottoman imperial structures
+- Sovereignty, dependencies, personal unions, colonial control, and uncertainty
+- Mandatory spatial tests for imperial and dependency boundaries
+- Game/atlas grouping suitable for a pre-First World War start date
 
 ### 1936 (HOI-leaning showcase)
 
@@ -418,16 +479,19 @@ Completed foundation:
 - M14.5: Public landing page + GitHub publish + Vercel deploy. Complete (2026-07-10).
 - M14.5 demo: Interactive MapLibre demo under `landing/demo/` with live beta
   sample eras and reserved UI slots for M15+ work. Complete (2026-07-10).
-- M15: Era-aware geometry v1 (Western Europe 1444 priority region, boundary
-  hints, hard overrides, ID lineage maps). Complete (2026-07-10).
-- M16: Multi-era geometry + politics packs (1444 / 1836 / 1936), region quality
-  matrix, migration notes, official-1936. Complete (2026-07-11).
+- M15: Era-aware geometry v1 tooling and Western Europe 1444 sample. **Prototype/
+  infrastructure complete** (2026-07-10); hard overrides are sample-scoped and
+  do not establish production historical coverage.
+- M16: Multi-era geometry + politics pack infrastructure for 1444 / 1836 / 1936.
+  **Prototype/infrastructure complete** (2026-07-11); region labels describe
+  illustrative samples, not full-build period-geometry certification.
 - M17: Curation workflow hardening (external bundles, diffs, golden borders,
   contribution path). Complete (2026-07-11).
 - M18: Culture / religion atlas paint layers. Complete (2026-07-11).
 - M19: PMTiles / vector tiles. Complete (2026-07-11).
-- M20: Broader period geometry beyond Western Europe (Central Europe packs +
-  europe-multi-era-v1 multi-region composition). Complete (2026-07-11).
+- M20: Central Europe sample packs and multi-region composition infrastructure.
+  **Prototype/infrastructure complete** (2026-07-11); sample-scoped hard
+  overrides do not establish production historical coverage.
 - M21: Four-level hierarchy — province → area → region → superregion as real
   entities with stable sha256 IDs (`gpm build hierarchy`). Complete
   (2026-07-11).
@@ -435,7 +499,7 @@ Completed foundation:
   (`gpm demo build`: atlas exports, per-scenario PMTiles, hierarchy overlays,
   adjacency lines, regenerated manifest + validation). Complete (2026-07-11).
 
-Near-term product path:
+Shipped prototype/infrastructure path:
 
 - **M9: Public alpha dataset release** — reproducible sample modern scaffold,
   docs, attribution, generator recipes; honest accuracy labeling. **Complete.**
@@ -455,13 +519,14 @@ Near-term product path:
 - **M14.5: Public landing page + deploy** — project marketing site under
   `landing/`, `gpm release site` for validation, optional GitHub ensure/push,
   and Vercel deploy. **Complete.**
-- **M15: Era-aware geometry v1 (priority region)** — period shapes or boundary
-  hints where modern scaffold fails the historical sniff test; ID lineage maps.
-  **Complete** (`we-1444-v1` pack, `gpm era-geometry`, sample + demo layers).
+- **M15: Era-aware geometry v1 (priority region)** — pack, override, hint, and
+  lineage tooling. **Prototype/infrastructure complete** (`we-1444-v1`, CLI,
+  sample + demo); hard geometry is sample-scoped, not production coverage.
 - **M16: Multi-era geometry + politics packs** — ship at least two official eras
   with documented quality tiers per region; migration notes for consumers.
-  **Complete** (`we-multi-era-v1`, `we-1836-v1` / `we-1936-v1`, `official-1936`,
-  `gpm multi-era`, sample + demo).
+  **Prototype/infrastructure complete** (`we-multi-era-v1`, `we-1836-v1` /
+  `we-1936-v1`, `official-1936`, CLI, sample + demo); geometry claims remain
+  illustrative until a full-build start-date pass certifies them.
 - **M17: Curation workflow hardening** — external scenario bundles, diffs,
   golden-border tests, community contribution path.
   **Complete** (`gpm curation`, golden-border suite, sample curator bundle).
@@ -473,8 +538,9 @@ Near-term product path:
   **Complete** (`gpm export tiles`, tileset schema, demo PMTiles).
 - **M20: Broader period geometry** — second priority region (Central Europe) and
   multi-region multi-era composition beyond Western Europe.
-  **Complete** (`ce-*-v1`, `europe-multi-era-v1`, `apply_era_geometry_packs`,
-  WE+CE scaffold + demo).
+  **Prototype/infrastructure complete** (`ce-*-v1`, `europe-multi-era-v1`,
+  `apply_era_geometry_packs`, WE+CE sample + demo); hard overrides are
+  sample-scoped.
 - **M21: Four-level hierarchy** — areas (clustered admin-1 groups), regions,
   and superregions as real entities with stable IDs; provinces enriched with
   `parent_area_id` / `parent_geo_region_id` / `parent_superregion_id`; pack
@@ -485,10 +551,37 @@ Near-term product path:
   source, `queryRenderedFeatures` inspector, nested hierarchy borders + paint
   mode, precomputed adjacency lines, hero owner dissolves, one-command
   regeneration. **Complete** (`gpm demo build`).
-- **M23: Game-like province density** — population-weighted M4 splitting with
-  pacing caps, historical-fragmentation priors, iconic-location forced seeds,
-  engineered wastelands/chokepoints; hierarchy re-run keeps area IDs stable.
-  **Design note ready** (`docs/m23-density-design-note.md`).
+
+Future start-date program:
+
+- **M23 — Historically Paintable Location Fabric** — **Complete.** Builds neutral cross-admin
+  atomic cells with stable location IDs; use population, terrain, settlements,
+  history, travel time, and gameplay weighting; make modern-boundary influence
+  configurable. Define aggregation revisions and allow targeted split feedback
+  from failed paintability tests. Canonical contract:
+  `docs/m23-location-fabric.md`; earlier density research remains supporting
+  context in `docs/m23-density-design-note.md`. Production acceptance built
+  30,003 locations twice with byte-identical fixed-timestamp artifacts, passed
+  strict QA with zero errors, and aggregated the `eu-like` 1444 profile to
+  22,000 derived provinces. Natural Earth incomplete coverage remains as
+  documented warnings for 31 admin-0 and 40 admin-1 location shares.
+- **M24 — Start-Date Research Framework** — standardize research dossiers,
+  source manifests, dated boundary registry, polity/dependency gazetteer,
+  uncertainty, reconstruction, spatial QA, coverage matrices, and changelogs.
+  Contract: `docs/m24-start-date-research-framework.md`.
+- **M25 — 1444 Research and Reconstruction Pass** — Low Countries, Burgundy,
+  France, HRE, and Central Europe first. Mandatory negative-anachronism
+  regression: Brussels must not inherit the modern Brussels-region outline and
+  Nord must not survive as a modern French administrative outline.
+- **M26 — 1836 Research and Reconstruction Pass** — post-Napoleonic Europe and
+  priority colonial theaters.
+- **M27 — Official 1914 Imperial-Era Pass** — German, Austro-Hungarian, Russian,
+  and Ottoman empires, including dependencies and control relationships.
+- **M28 — 1936 Research and Reconstruction Pass** — interwar borders, mandates,
+  colonies, occupations, and strategic groupings.
+
+Each M25–M28 pass is independently versioned and releasable. Acceptance is by
+published regional coverage grade for each layer, never an implied global claim.
 
 ## Open Questions
 
@@ -496,14 +589,15 @@ Near-term product path:
 - Should the default public dataset include generated geometry, or only the
   generator and reproducible recipes?
 - How much ODbL data, if any, should be allowed in official builds?
-- Order of full-depth eras after the first showcase: 1444 vs 1936 vs custom?
+- Which regions follow the priority regions in each independently released
+  start-date pass?
 - Which regions are mandatory for “official era” marketing claims?
 - Should sea zones be gameplay-first abstractions or derived from open maritime
   boundaries (and do atlas products want a different sea model)?
 - What is the right balance between admin-realistic and gameplay-readable
   provinces when historical fidelity rises?
-- Should stable IDs prioritize source lineage, geometry location, or
-  human-readable slugs—especially across era geometry revisions?
+- What location-fabric revision policy best balances paintability improvements
+  with downstream save/mod migration?
 - How should SaaS versioning work for scenario corrections without breaking game
   mods that pinned an older pack?
 - What minimum golden-border / golden-tag tests define “Paradox-eye” acceptance

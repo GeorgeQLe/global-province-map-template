@@ -13,6 +13,8 @@ const state = {
   bounds: null,
   authoringEnabled: false,
   scenarioId: null,
+  locations: null,
+  modernReference: null,
 };
 
 const REFINEMENT_COLORS = {
@@ -496,6 +498,13 @@ function renderInspector(feature) {
     ["refinement_part_index", props.refinement_part_index],
     ["refinement_part_count", props.refinement_part_count],
     ["refinement_skipped_reason", props.refinement_skipped_reason],
+    ["location_count", props.location_count],
+    ["piece_count", props.piece_count],
+    ["fabric_revision", props.fabric_revision],
+    ["aggregation_revision", props.aggregation_revision],
+    ["geometry_revision", props.geometry_revision],
+    ["start_date", props.start_date],
+    ["modern_boundary_influence", props.modern_boundary_influence],
     ["source_layer", props.source_layer],
   ];
   $("inspector").innerHTML = `
@@ -962,6 +971,19 @@ function wireControls() {
       state.map.setLayoutProperty("politics-warnings", "visibility", visibility);
     }
   });
+  for (const [controlId, layerIds] of [
+    ["toggle-locations", ["locations-fill", "locations-outline"]],
+    ["toggle-modern-reference", ["modern-reference-fill", "modern-reference-outline"]],
+  ]) {
+    $(controlId).addEventListener("change", (event) => {
+      const visibility = event.target.checked ? "visible" : "none";
+      layerIds.forEach((layerId) => {
+        if (state.map.getLayer(layerId)) {
+          state.map.setLayoutProperty(layerId, "visibility", visibility);
+        }
+      });
+    });
+  }
   $("search").addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
       searchProvinces(event.target.value);
@@ -1009,6 +1031,17 @@ async function main() {
 
     setStatus("Loading province geometries…");
     const collection = await fetchJson("/api/provinces.geojson");
+    if (state.meta.endpoints.locations) {
+      state.locations = await fetchJson(state.meta.endpoints.locations);
+    } else {
+      $("toggle-locations").disabled = true;
+      $("toggle-locations").checked = false;
+    }
+    if (state.meta.endpoints.modern_reference) {
+      state.modernReference = await fetchJson(state.meta.endpoints.modern_reference);
+    } else {
+      $("toggle-modern-reference").disabled = true;
+    }
     attachQaToFeatures(collection);
     computeNumericExtents(collection.features);
     state.bounds = buildBounds(collection);
@@ -1027,6 +1060,30 @@ async function main() {
         type: "geojson",
         data: collection,
       });
+      if (state.modernReference) {
+        state.map.addSource("modern-reference", { type: "geojson", data: state.modernReference });
+        state.map.addLayer({
+          id: "modern-reference-fill", type: "fill", source: "modern-reference",
+          layout: { visibility: $("toggle-modern-reference").checked ? "visible" : "none" },
+          paint: { "fill-color": "#f59e0b", "fill-opacity": 0.16 },
+        });
+        state.map.addLayer({
+          id: "modern-reference-outline", type: "line", source: "modern-reference",
+          layout: { visibility: $("toggle-modern-reference").checked ? "visible" : "none" },
+          paint: { "line-color": "#fbbf24", "line-width": 0.8 },
+        });
+      }
+      if (state.locations) {
+        state.map.addSource("locations", { type: "geojson", data: state.locations });
+        state.map.addLayer({
+          id: "locations-fill", type: "fill", source: "locations",
+          paint: { "fill-color": "#22d3ee", "fill-opacity": 0.035 },
+        });
+        state.map.addLayer({
+          id: "locations-outline", type: "line", source: "locations",
+          paint: { "line-color": "#67e8f9", "line-width": 0.45 },
+        });
+      }
       state.map.addLayer({
         id: "provinces-fill",
         type: "fill",
@@ -1096,6 +1153,13 @@ async function main() {
           "line-color": "#5eead4",
           "line-width": 2.8,
         },
+      });
+      // M23 comparison layers sit above derived province paint so reviewers can
+      // see atomic edges and modern-reference cuts simultaneously.
+      ["modern-reference-fill", "modern-reference-outline", "locations-fill", "locations-outline"].forEach((layerId) => {
+        if (state.map.getLayer(layerId)) {
+          state.map.moveLayer(layerId);
+        }
       });
 
       applyColors();

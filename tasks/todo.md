@@ -2,13 +2,26 @@
 
 ## Active
 
-- (none — M22 complete; M23 is design-only pending implementation approval)
+- M24 start-date research framework implementation.
 
 ## Up next (from roadmap)
 
-- M23 game-like province density (design note only; implementation not started)
+- M24 start-date research framework — contract complete in
+  `docs/m24-start-date-research-framework.md`; implementation not started.
+- M25 1444 reconstruction: Low Countries/Burgundy/France/HRE/Central Europe,
+  including the Brussels/Nord negative-anachronism regression.
+- M26 1836 reconstruction: post-Napoleonic Europe and priority colonial theaters.
+- M27 official 1914 imperial-era pass: German, Austro-Hungarian, Russian, and
+  Ottoman empires.
+- M28 1936 reconstruction: interwar borders, mandates, colonies, and strategic
+  groupings. M25–M28 release independently with regional coverage grades.
 
 ## Completed
+
+- [x] M23 historically paintable location fabric: neutral-default province
+  builds, versioned split migration, complete source/license lineage,
+  fail-closed fabric QA, dated cross-admin fixture, review/export wiring, and
+  deterministic 30,003-location production acceptance.
 
 - [x] M22 global PMTiles-first public demo: four native z0–7 scenario archives
   over 4,603 provinces, hero owner dissolves, hierarchy and adjacency overlays,
@@ -16,11 +29,12 @@
   `gpm demo build` regeneration/validation.
 - [x] M21 province → area → region → superregion hierarchy: stable entities,
   province parent fields, hierarchy export layers, CLI/docs/tests.
-- [x] M20 broader period geometry beyond Western Europe: Central Europe packs
+- [x] M20 broader period geometry prototype/infrastructure: Central Europe packs
   (`ce-1444-v1` / `ce-1836-v1` / `ce-1936-v1`), multi-pack composition
   (`era_geometry_pack_ids`, `apply_era_geometry_packs`), multi-era pack
   `europe-multi-era-v1`, WE+CE scaffold sample, demo refresh, docs
   `docs/m20-broader-period-geometry.md`, tests `tests/test_m20_broader_period_geometry.py`.
+  Hard overrides are sample-scoped and do not establish production coverage.
 - [x] M19 PMTiles / vector tiles: pure-Python MVT + PMTiles v3 writer,
   `gpm export tiles` (+ `--atlas-dir`), `gpm export atlas --tiles`, tippecanoe
   optional backend, tileset schema/manifest, demo PMTiles vector source + sample
@@ -34,14 +48,15 @@
   counts / contested provinces), expanded golden-border suite in
   `gpm qa scenario`, contribution checklist + deprecation policy, sample
   `samples/curator-bundle-example/`, docs `docs/m17-curation.md`.
-- [x] M16 multi-era geometry + politics packs: `we-multi-era-v1` with region
+- [x] M16 multi-era geometry + politics pack prototype/infrastructure: `we-multi-era-v1` with region
   quality matrix + migration notes, era geometry packs `we-1836-v1` /
   `we-1936-v1`, official-1936 curated politics + golden floors, `gpm multi-era`,
   sample `samples/multi-era-we-v1/`, demo 1936 + multi-era live layers, and
-  `docs/m16-multi-era.md`.
-- [x] M15 era-aware geometry v1: pack format, `gpm era-geometry`, WE 1444 pack
+  `docs/m16-multi-era.md`. Geometry coverage is illustrative/sample-scoped.
+- [x] M15 era-aware geometry v1 prototype/infrastructure: pack format, `gpm era-geometry`, WE 1444 pack
   (`we-1444-v1`) with boundary hints + hard overrides, ID lineage maps, sample
   `samples/era-geometry-we-1444/`, demo toggles, and `docs/m15-era-geometry.md`.
+  Hard overrides are sample-scoped and do not establish production coverage.
 - [x] M14.5 demo: interactive MapLibre demo under `landing/demo/` (beta WE sample
   eras, adjacency, inspector) plus hero choropleth on the marketing page;
   validation extended for demo assets; reserved UI slots for M15+.

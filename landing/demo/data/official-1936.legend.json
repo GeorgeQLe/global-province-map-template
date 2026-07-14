@@ -1,11 +1,11 @@
 {
   "color_field": "owner_color",
-  "count": 162,
+  "count": 164,
   "disputed_outline_color": "#c0392b",
   "end_date": null,
   "era": "1936",
   "fallback_color": "#b0b0b0",
-  "generated_at": "2026-07-13T15:05:01+00:00",
+  "generated_at": "2026-07-14T02:27:14+00:00",
   "generator_version": "0.1.0",
   "label": "Official 1936 (HOI-leaning curated politics)",
   "milestone": "M18",
@@ -107,6 +107,7 @@
       "--tag-LUX": "#a7253a",
       "--tag-MAC": "#bc9630",
       "--tag-MAF": "#af2664",
+      "--tag-MAN": "#a133c0",
       "--tag-MCO": "#c49b41",
       "--tag-MDV": "#b138d9",
       "--tag-MEN": "#aa2963",
@@ -130,6 +131,7 @@
       "--tag-PLW": "#3da3b2",
       "--tag-POL": "#a93b8e",
       "--tag-POR": "#a76036",
+      "--tag-PRC": "#c9903e",
       "--tag-PRI": "#e2bd2c",
       "--tag-PSX": "#b34c3e",
       "--tag-PYF": "#3e25d9",
@@ -231,8 +233,6 @@
       "#ce3762",
       "MEX",
       "#9422be",
-      "CHI",
-      "#2e35b3",
       "AST",
       "#20d72d",
       "PER",
@@ -243,6 +243,8 @@
       "#ce3082",
       "BUL",
       "#3abe84",
+      "CHI",
+      "#2e35b3",
       "BRZ",
       "#1d54c3",
       "EGY",
@@ -257,12 +259,12 @@
       "#c7a439",
       "NZL",
       "#cf2041",
+      "MEN",
+      "#aa2963",
       "CPV",
       "#39d35d",
       "CZE",
       "#9e325d",
-      "MEN",
-      "#aa2963",
       "SAF",
       "#b6ca45",
       "MDV",
@@ -403,6 +405,8 @@
       "#a33139",
       "LUX",
       "#a7253a",
+      "MAN",
+      "#a133c0",
       "MSR",
       "#bd632c",
       "SHN",
@@ -794,18 +798,6 @@
       "tag": "MEX"
     },
     {
-      "color": "#2e35b3",
-      "controller_province_count": 32,
-      "display_name": "Nationalist China",
-      "fill_color": "#2e35b3",
-      "owner_province_count": 32,
-      "roles": [
-        "owner",
-        "controller"
-      ],
-      "tag": "CHI"
-    },
-    {
       "color": "#20d72d",
       "controller_province_count": 31,
       "display_name": "Australia",
@@ -864,6 +856,18 @@
         "controller"
       ],
       "tag": "BUL"
+    },
+    {
+      "color": "#2e35b3",
+      "controller_province_count": 28,
+      "display_name": "Nationalist China",
+      "fill_color": "#2e35b3",
+      "owner_province_count": 28,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "CHI"
     },
     {
       "color": "#1d54c3",
@@ -950,6 +954,18 @@
       "tag": "NZL"
     },
     {
+      "color": "#aa2963",
+      "controller_province_count": 23,
+      "display_name": "Mongolia",
+      "fill_color": "#aa2963",
+      "owner_province_count": 23,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "MEN"
+    },
+    {
       "color": "#39d35d",
       "controller_province_count": 22,
       "display_name": "CPV",
@@ -972,18 +988,6 @@
         "controller"
       ],
       "tag": "CZE"
-    },
-    {
-      "color": "#aa2963",
-      "controller_province_count": 22,
-      "display_name": "Mongolia",
-      "fill_color": "#aa2963",
-      "owner_province_count": 22,
-      "roles": [
-        "owner",
-        "controller"
-      ],
-      "tag": "MEN"
     },
     {
       "color": "#b6ca45",
@@ -1826,6 +1830,18 @@
       "tag": "LUX"
     },
     {
+      "color": "#a133c0",
+      "controller_province_count": 3,
+      "display_name": "Manchukuo",
+      "fill_color": "#a133c0",
+      "owner_province_count": 3,
+      "roles": [
+        "owner",
+        "controller"
+      ],
+      "tag": "MAN"
+    },
+    {
       "color": "#bd632c",
       "controller_province_count": 3,
       "display_name": "MSR",
@@ -2460,6 +2476,17 @@
         "controller"
       ],
       "tag": "WSB"
+    },
+    {
+      "color": "#c9903e",
+      "controller_province_count": 0,
+      "display_name": "Chinese Communists",
+      "fill_color": "#c9903e",
+      "owner_province_count": 0,
+      "roles": [
+        "referenced"
+      ],
+      "tag": "PRC"
     }
   ]
 }

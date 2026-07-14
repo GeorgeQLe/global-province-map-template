@@ -88,6 +88,52 @@ def validate_source_manifest(manifest: dict[str, Any]) -> None:
         _validate_artifacts(source["artifacts"], path)
 
 
+def validate_location_fabric_manifest(manifest: dict[str, Any]) -> None:
+    """Validate the revision and input-lineage invariants of an M23 fabric manifest."""
+    schema = load_schema("location-fabric-manifest")
+    _require_object(manifest, "manifest")
+    _require_keys(manifest, schema["required"], "manifest")
+    if manifest["schema_version"] != "0.1.0" or manifest["manifest_type"] != "location_fabric":
+        raise SchemaValidationError("invalid M23 location fabric manifest type or version")
+    if manifest["fabric_revision"] != manifest["output_fabric_revision"]:
+        raise SchemaValidationError("manifest.fabric_revision must equal output_fabric_revision")
+    inputs = manifest["inputs"]
+    if not isinstance(inputs, list) or not inputs:
+        raise SchemaValidationError("manifest.inputs must be a non-empty list")
+    for index, item in enumerate(inputs):
+        path = f"manifest.inputs[{index}]"
+        _require_object(item, path)
+        _require_keys(item, ["role", "path", "format", "license_lineage"], path)
+        if item["role"] not in {"land", "admin0", "admin1", "population", "settlement", "terrain", "historical"}:
+            raise SchemaValidationError(f"{path}.role is unsupported")
+        if not isinstance(item["path"], str) or not item["path"]:
+            raise SchemaValidationError(f"{path}.path must be a non-empty string")
+        if not isinstance(item["license_lineage"], list) or not item["license_lineage"]:
+            raise SchemaValidationError(f"{path}.license_lineage must be non-empty")
+    if not any(item["role"] == "land" for item in inputs):
+        raise SchemaValidationError("manifest.inputs must declare the land source")
+    if not isinstance(manifest["files"], list) or not all(isinstance(item, str) and item for item in manifest["files"]):
+        raise SchemaValidationError("manifest.files must contain non-empty paths")
+
+
+def validate_location_lineage(lineage: dict[str, Any]) -> None:
+    """Validate source/output revisions and parent/child migration records."""
+    schema = load_schema("location-lineage")
+    _require_object(lineage, "lineage")
+    _require_keys(lineage, schema["required"], "lineage")
+    if lineage["fabric_revision"] != lineage["output_fabric_revision"]:
+        raise SchemaValidationError("lineage.fabric_revision must equal output_fabric_revision")
+    if not isinstance(lineage["events"], list):
+        raise SchemaValidationError("lineage.events must be a list")
+    for index, event in enumerate(lineage["events"]):
+        path = f"lineage.events[{index}]"
+        _require_object(event, path)
+        _require_keys(event, ["operation", "parent_location_ids", "child_location_ids"], path)
+        for key in ("parent_location_ids", "child_location_ids"):
+            if not isinstance(event[key], list) or not all(isinstance(item, str) and item for item in event[key]):
+                raise SchemaValidationError(f"{path}.{key} must contain location IDs")
+
+
 def validate_release_manifest(manifest: dict[str, Any]) -> None:
     """Validate core invariants of an M9 release manifest document."""
     schema = load_schema("release-manifest")

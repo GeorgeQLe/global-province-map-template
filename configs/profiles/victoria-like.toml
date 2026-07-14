@@ -26,6 +26,10 @@ min_population = 500.0
 max_split_parts = 64
 max_seed_candidates = 512
 
+[aggregation]
+modern_boundary_influence = "soft"
+aggregation_revision = "1"
+
 [export]
 layout = "victoria-like"
 region_type = "state"

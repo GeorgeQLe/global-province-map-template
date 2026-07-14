@@ -2,10 +2,16 @@ import json
 import struct
 import zipfile
 from pathlib import Path
+from types import SimpleNamespace
 
-from gpm.builders.provinces import _repaired_geometry, build_land_province_draft
+from gpm.builders.provinces import (
+    _normalize_province_topology,
+    _repaired_geometry,
+    build_land_province_draft,
+)
 from gpm.cli import main
 from shapely.geometry import shape
+from shapely.ops import unary_union
 
 
 def test_repaired_geometry_fixes_invalid_polygons_and_flags_them():
@@ -29,6 +35,30 @@ def test_repaired_geometry_leaves_valid_polygons_untouched():
     repaired, was_repaired = _repaired_geometry(square)
     assert was_repaired is False
     assert repaired is square
+
+
+def test_topology_normalization_partitions_overlaps_and_fills_admin0_gaps():
+    def feature(province_id, west, east):
+        return {
+            "type": "Feature",
+            "geometry": {"type": "Polygon", "coordinates": [[[west, 0], [east, 0], [east, 1], [west, 1], [west, 0]]]},
+            "properties": {
+                "province_id": province_id,
+                "source_layer": "admin1_states_provinces",
+                "parent_country_id": "AAA",
+                "parent_region_id": province_id,
+                "area_sq_km": 1.0,
+            },
+        }
+
+    provinces = [feature("b", 0.9, 1.7), feature("a", 0.0, 1.1)]
+    admin0 = [SimpleNamespace(geometry={"type": "Polygon", "coordinates": [[[0, 0], [2, 0], [2, 1], [0, 1], [0, 0]]]})]
+    normalized = _normalize_province_topology(provinces, admin0)
+    geometries = [shape(item["geometry"]) for item in normalized]
+    assert len(normalized) == 2
+    assert geometries[0].intersection(geometries[1]).area == 0
+    assert unary_union(geometries).symmetric_difference(shape(admin0[0].geometry)).area < 1e-12
+    assert all(item["properties"]["topology_normalized"] is True for item in normalized)
 
 
 def test_build_land_province_draft_creates_candidates_and_processed_provinces(tmp_path):
@@ -84,6 +114,7 @@ def test_build_provinces_cli_writes_json_summary(tmp_path, capsys):
             [
                 "build",
                 "provinces",
+                "--legacy-modern-admin",
                 "--raw-dir",
                 str(raw_dir),
                 "--candidate-output",
@@ -104,7 +135,7 @@ def test_build_provinces_cli_writes_json_summary(tmp_path, capsys):
 
 
 def test_build_provinces_cli_reports_missing_raw_artifacts(tmp_path, capsys):
-    assert main(["build", "provinces", "--raw-dir", str(tmp_path / "missing")]) == 1
+    assert main(["build", "provinces", "--legacy-modern-admin", "--raw-dir", str(tmp_path / "missing")]) == 1
     captured = capsys.readouterr()
 
     assert "requires downloaded Natural Earth admin boundary zips" in captured.err
@@ -148,6 +179,7 @@ def test_build_provinces_cli_applies_m4_population_refinement(tmp_path, capsys):
             [
                 "build",
                 "provinces",
+                "--legacy-modern-admin",
                 "--profile",
                 "victoria-like",
                 "--raw-dir",
@@ -188,6 +220,7 @@ def test_build_provinces_cli_rejects_refinement_target_below_candidates(tmp_path
             [
                 "build",
                 "provinces",
+                "--legacy-modern-admin",
                 "--raw-dir",
                 str(raw_dir),
                 "--target-province-count",

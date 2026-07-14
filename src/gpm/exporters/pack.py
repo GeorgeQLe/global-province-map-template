@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import json
 import math
+import shutil
 from collections import defaultdict
 from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
@@ -377,6 +378,29 @@ def export_game_pack(
         )
         files_written.append(_rel(readme_path, pack_root))
 
+    # M23 keeps atomic fabric and aggregation contracts separate from the derived
+    # province paint layer. Copy adjacent canonical artifacts without folding
+    # their fields into province definitions.
+    m23_artifacts = {
+        "locations.geojson": "atomic/locations.geojson",
+        "location_adjacency.csv": "atomic/location_adjacency.csv",
+        "location_admin_intersections.csv": "atomic/location_admin_intersections.csv",
+        "location_lineage.json": "atomic/location_lineage.json",
+        "location_fabric_manifest.json": "atomic/location_fabric_manifest.json",
+        "province_membership.csv": "tables/province_membership.csv",
+        "province_aggregation_manifest.json": "province_aggregation_manifest.json",
+    }
+    copied_m23: dict[str, str] = {}
+    for source_name, relative_target in m23_artifacts.items():
+        source = province_input.parent / source_name
+        if not source.is_file():
+            continue
+        target = pack_root / relative_target
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, target)
+        files_written.append(relative_target)
+        copied_m23[source_name] = relative_target
+
     files_written = sorted(set(files_written))
     manifest = {
         "schema_version": "0.1.0",
@@ -396,6 +420,7 @@ def export_game_pack(
             "provinces": str(province_input),
             "sea_zones": None if resolved_sea is None else str(resolved_sea),
             "adjacency": None if resolved_adjacency is None else str(resolved_adjacency),
+            "m23_artifacts": copied_m23,
         },
         "counts": {
             "provinces": len(land_features),

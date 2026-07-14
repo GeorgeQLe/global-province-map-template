@@ -12,16 +12,17 @@ from open geodata.
    credible choropleths, attribution, progressive period fidelity.
 
 Paradox-adjacent audiences have a sharp eye for anachronisms. Historical
-accuracy is a first-class quality goal for official eras: curated politics
-first, then era-aware geometry where modern shapes fail the sniff test. The
-modern scaffold is the engineering foundation, not the final claim of
-historical truth. See [ROADMAP.md](ROADMAP.md).
+accuracy is a first-class quality goal for official eras. The canonical pipeline
+is **source layers → neutral atomic locations → era/profile provinces →
+scenario politics and hierarchy → exports**. Modern administrative geometry is
+a reference/attribution input and a hard constraint only for modern profiles,
+not the permanent historical foundation. See [ROADMAP.md](ROADMAP.md).
 
 Hierarchy the pipeline targets:
 
-- locations: smallest addressable geographic units
-- provinces: playable/owned land or sea units
-- regions/states: province groupings for production, politics, or administration
+- locations: stable atomic paintable cells with versioned split lineage
+- provinces: versioned era/profile aggregations of locations
+- regions/states: versioned province groupings for production, politics, or administration
 - countries / tags: political owners (modern baseline or scenario-era)
 - superregions/continents: coarse map groupings
 
@@ -58,6 +59,20 @@ The implementation should eventually generate:
 
 ## Status
 
+M23 is implemented as the foundation of the M23–M28 production historical
+program. It builds a neutral,
+cross-admin [location fabric](docs/m23-location-fabric.md); M24 standardizes the
+[start-date research framework](docs/m24-start-date-research-framework.md).
+Independently versioned/releasable reconstruction passes then cover **1444
+(M25), 1836 (M26), official 1914 (M27), and 1936 (M28)** with regional coverage
+grades. Stable identity belongs primarily to locations; province IDs derive
+from location membership plus profile, era, and geometry revision.
+`gpm build provinces` now consumes `data/processed/locations.geojson` by
+default; the former Natural Earth scaffold is available only through the
+explicit `--legacy-modern-admin` compatibility flag. Targeted splits require a
+distinct `--output-fabric-revision`, preserving unchanged location IDs while
+recording source/output revision lineage.
+
 M22 global PMTiles-first demo is in place. `gpm demo build` regenerates
 `landing/demo/data/` from the processed **full global build** (4,603 Natural
 Earth admin-1 provinces): atlas exports and per-scenario ownership **PMTiles**
@@ -70,13 +85,15 @@ See `landing/demo/README.md`.
 M21 four-level hierarchy is in place. `gpm build hierarchy` builds
 **province → area → region → superregion** as real entities with stable
 sha256 IDs: areas cluster admin-1 codes over the land-adjacency graph
-(deterministic greedy agglomeration, stable across future density splits),
+(deterministic greedy agglomeration in the current modern scaffold),
 regions are per-country with micro-state coalescing and NE-attribute
 mega-country splits, superregions map to continents. Provinces gain
 `parent_area_id` / `parent_geo_region_id` / `parent_superregion_id`;
 `gpm export pack` prefers hierarchy entities when present. See
-[docs/m21-hierarchy.md](docs/m21-hierarchy.md); the game-density follow-up is
-sketched in [docs/m23-density-design-note.md](docs/m23-density-design-note.md).
+[docs/m21-hierarchy.md](docs/m21-hierarchy.md). This shipped hierarchy is
+prototype infrastructure; M23 replaces its single-admin-parent assumption for
+historical work. The older [density note](docs/m23-density-design-note.md) is
+supporting research, not the M23 contract.
 
 M19 PMTiles / vector tiles are in place. `gpm export tiles` compiles GeoJSON
 into single-file **PMTiles** (Mapbox Vector Tiles) with a pure-Python backend
@@ -98,31 +115,39 @@ checks now include max counts, required/forbidden owners, disputed flags, and
 `samples/curator-bundle-example/`. See
 [docs/m17-curation.md](docs/m17-curation.md).
 
-M20 broader period geometry is in place. Central Europe packs
+M20 multi-region composition infrastructure is **prototype/infrastructure
+complete**. Central Europe packs
 `ce-1444-v1` / `ce-1836-v1` / `ce-1936-v1` extend period shapes beyond Western
 Europe. Multi-era slots may list `era_geometry_pack_ids` for ordered
 multi-region composition; `europe-multi-era-v1` pairs WE + CE for
 **1444 / 1836 / 1936** with a multi-row region quality matrix. Scaffold sample
 `samples/scaffold-we-ce/`; samples `samples/era-geometry-ce-1444/` and
 `samples/multi-era-europe-v1/`. Demo uses the WE+CE scaffold and Europe period
-layers. See [docs/m20-broader-period-geometry.md](docs/m20-broader-period-geometry.md).
+layers. Their hard overrides target committed samples, so they do not establish
+production historical coverage or full-build `period-geometry`. See
+[docs/m20-broader-period-geometry.md](docs/m20-broader-period-geometry.md).
 
-M16 multi-era geometry + politics packs are in place. `gpm multi-era` lists,
+M16 multi-era geometry + politics pack infrastructure is **prototype/
+infrastructure complete**. `gpm multi-era` lists,
 validates, builds, and emits **migration notes** for packs that pair era
 geometry with curated politics across multiple official eras, with a
 **region quality matrix** (geometry + politics tiers per region). Bundled pack
 `we-multi-era-v1` covers **1444 / 1836 / 1936** with geometry packs
 `we-1444-v1`, `we-1836-v1`, and `we-1936-v1` (WE-only; see M20 for Europe-wide
-composition). Official HOI-leaning scenario `official-1936` ships
+composition). Geometry is illustrative/sample-scoped until M25–M28 full-build
+passes certify named regions. Official HOI-leaning scenario `official-1936` ships
 curated-politics overlays, golden floors, and a `hoi-like` recipe. Sample:
 `samples/multi-era-we-v1/`. See
 [docs/m16-multi-era.md](docs/m16-multi-era.md).
 
-M15 era-aware geometry v1 is in place. `gpm era-geometry` lists, validates, and
-applies **period-geometry** packs: soft historical boundary hints, optional hard
+M15 era-aware geometry v1 is **prototype/infrastructure complete**.
+`gpm era-geometry` lists, validates, and
+applies era-geometry prototype packs: soft historical boundary hints, optional hard
 province overrides/splits for a priority region, and scaffold↔era **ID lineage
 maps**. Bundled pack `we-1444-v1` targets Western Europe for `official-1444`.
-Sample: `samples/era-geometry-we-1444/`. See
+The bundled hard overrides are sample-scoped; boundary hints alone do not meet
+the production `period-geometry` bar. Sample:
+`samples/era-geometry-we-1444/`. See
 [docs/m15-era-geometry.md](docs/m15-era-geometry.md).
 
 M14.5 public landing page is in place. A static marketing site under `landing/`
@@ -250,7 +275,8 @@ Optional real source download:
 ```bash
 uv run gpm sources download --execute
 uv run gpm sources manifest --from-raw
-uv run gpm build provinces
+uv run gpm build locations --fabric global-h3-v1
+uv run gpm build provinces --location-input data/processed/locations.geojson
 uv run gpm build provinces \
   --population-input /path/to/population.tif \
   --population-license "WorldPop CC BY 4.0" \
@@ -270,7 +296,14 @@ uv run gpm release beta --sample-we --tag beta-0.1.0-sample-we
 uv run gpm review
 ```
 
-`gpm build provinces` uses Natural Earth admin-1 boundaries as land province
+`gpm build locations --fabric global-h3-v1` builds the canonical 30,000-cell
+neutral land fabric, adjacency, modern-reference intersections, split lineage,
+and manifest. `gpm build provinces --location-input ...` deterministically
+aggregates those locations for the selected profile/start date and writes the
+province membership and aggregation manifests.
+
+`gpm build provinces` without `--location-input` is the deprecated compatibility
+path. It uses Natural Earth admin-1 boundaries as land province
 candidates and Natural Earth admin-0 country polygons as fallbacks where
 admin-1 coverage is absent. It always writes the unchanged source candidates to
 `data/intermediate/land_province_candidates.geojson` and

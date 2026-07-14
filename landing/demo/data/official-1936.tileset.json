@@ -7,13 +7,13 @@
     "west": -179.99999999999991
   },
   "feature_count": 4603,
-  "generated_at": "2026-07-13T15:07:29Z",
+  "generated_at": "2026-07-14T02:28:34Z",
   "generator_version": "0.1.0",
   "header": {
-    "addressed_tiles_count": 11330,
+    "addressed_tiles_count": 11321,
     "tile_compression": "gzip",
-    "tile_contents_count": 6881,
-    "tile_entries_count": 10452,
+    "tile_contents_count": 6872,
+    "tile_entries_count": 10443,
     "tile_type": "mvt"
   },
   "layer_name": "ownership",
@@ -52,5 +52,5 @@
   "pack_type": "tileset",
   "pmtiles": "official-1936.pmtiles",
   "schema_version": "0.1.0",
-  "tile_count": 11330
+  "tile_count": 11321
 }

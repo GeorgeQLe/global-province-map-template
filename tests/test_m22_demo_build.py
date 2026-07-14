@@ -115,12 +115,12 @@ def test_demo_manifest_is_regenerated_programmatically(fixture_build):
     assert {"period-geometry", "boundary-hints", "multi-era-packs", "pmtiles", "hierarchy"} <= live_ids
     assert manifest["future_slots"] == [
         {
-            "id": "game-density-provinces",
-            "label": "Game-like province density",
-            "milestone": "M23+",
+            "id": "start-date-reconstructions",
+            "label": "Certified start-date reconstructions",
+            "milestone": "M24–M28",
             "desc": (
-                "Population-weighted M4 splitting with iconic-location seeding "
-                "(Paradox-style density; hierarchy area IDs stay stable)"
+                "Evidence dossiers and full-build regional certification for "
+                "1444, 1836, 1914, and 1936 over the M23 neutral location fabric"
             ),
         }
     ]

@@ -103,6 +103,24 @@ def test_topology_qa_applies_overlap_thresholds(tmp_path, overlap, expected_stat
     assert overlap_finding["severity"] == expected_severity
 
 
+def test_topology_qa_ignores_sub_square_metre_outside_mask_rounding(tmp_path):
+    province_input = tmp_path / "provinces.geojson"
+    adjacency_input = tmp_path / "adjacency.csv"
+    mask = _write_mask(tmp_path, _ring(0, 0, 1, 1))
+    _write_geojson(province_input, [_feature("p_a", _polygon(0, 0, 1 + 1e-13, 1))])
+    _write_adjacency(adjacency_input, [])
+    result = run_topology_qa(
+        "modern-small",
+        province_input=province_input,
+        adjacency_input=adjacency_input,
+        raw_data=mask,
+        report_output=tmp_path / "report.json",
+    )
+    report = json.loads((tmp_path / "report.json").read_text(encoding="utf-8"))
+    assert result.status == "pass"
+    assert "COVERAGE_OUTSIDE_MASK" not in {item["code"] for item in report["findings"]}
+
+
 def test_invalid_geometry_and_duplicate_ids_mark_dependent_analysis_incomplete(tmp_path):
     province_input = tmp_path / "provinces.geojson"
     adjacency_input = tmp_path / "adjacency.csv"

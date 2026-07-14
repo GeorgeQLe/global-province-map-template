@@ -8,6 +8,11 @@ from pathlib import Path
 
 from .builders.adjacency import AdjacencyBuildError, build_land_adjacency
 from .builders.hierarchy import HierarchyBuildError, build_hierarchy
+from .builders.aggregation import (
+    ProvinceAggregationError,
+    aggregate_location_provinces,
+)
+from .builders.locations import LocationBuildError, build_location_fabric
 from .builders.provinces import ProvinceBuildError, build_land_province_draft
 from .builders.seas import SeaBuildError, build_sea_zones
 from .config import DEFAULT_PROFILE_ID, ConfigError, load_profile
@@ -57,6 +62,7 @@ from .multi_era import (
 from .multi_era.packs import MultiEraPackError
 from .paths import EXPORT_DIR, INTERMEDIATE_DATA_DIR, PROCESSED_DATA_DIR, RAW_DATA_DIR, SAMPLE_DIR
 from .qa.scenario import ScenarioPoliticsQAError, run_scenario_politics_qa
+from .qa.fabric import FabricQAError, run_fabric_qa, run_paintability_qa
 from .qa.topology import TopologyQAError, run_topology_qa
 from .release import (
     DEFAULT_ALPHA_SCENARIOS,
@@ -150,12 +156,84 @@ def _build_parser() -> argparse.ArgumentParser:
 
     build = subcommands.add_parser("build", help="Build generated map layers.")
     build_commands = build.add_subparsers(dest="command")
+    locations = build_commands.add_parser(
+        "locations",
+        help="Build the M23 neutral, H3-backed atomic location fabric.",
+    )
+    locations.add_argument("--fabric", default="global-h3-v1", help="Fabric configuration id.")
+    _add_raw_dir_arg(locations)
+    locations.add_argument("--output-dir", type=Path, default=PROCESSED_DATA_DIR)
+    locations.add_argument("--land-input", type=Path, help="Optional GeoJSON land mask (fixture/migration builds).")
+    locations.add_argument("--admin0-input", type=Path, help="Optional modern admin-0 reference GeoJSON.")
+    locations.add_argument("--admin1-input", type=Path, help="Optional modern admin-1 reference GeoJSON.")
+    locations.add_argument("--target-location-count", type=int, help="Override the fabric target (fixtures/tests).")
+    locations.add_argument("--population-input", type=Path)
+    locations.add_argument("--settlement-input", type=Path)
+    locations.add_argument("--terrain-input", type=Path)
+    locations.add_argument("--historical-signal-input", type=Path)
+    locations.add_argument("--split-request-input", type=Path)
+    locations.add_argument(
+        "--output-fabric-revision",
+        help="New fabric revision produced by a split-request migration.",
+    )
+    for reference in ("land", "admin0", "admin1"):
+        locations.add_argument(
+            f"--{reference}-license",
+            action="append",
+            default=[],
+            help=f"License-lineage notice for a custom {reference} input; may be repeated.",
+        )
+    for signal in ("population", "settlement", "terrain", "historical"):
+        locations.add_argument(
+            f"--{signal}-license",
+            action="append",
+            default=[],
+            help=f"License-lineage notice for the optional {signal} input; may be repeated.",
+        )
+    locations.add_argument("--format", choices=["text", "json"], default="text")
+    locations.set_defaults(handler=_build_locations)
     provinces = build_commands.add_parser(
         "provinces",
         help="Build land province candidates and optional M4 population-weighted refinement.",
     )
     _add_profile_arg(provinces)
     _add_raw_dir_arg(provinces)
+    provinces.add_argument(
+        "--location-input",
+        type=Path,
+        help=(
+            "M23 locations.geojson input. Defaults to data/processed/locations.geojson "
+            "unless --legacy-modern-admin is selected."
+        ),
+    )
+    provinces.add_argument(
+        "--legacy-modern-admin",
+        action="store_true",
+        help="Use the deprecated modern-admin province builder compatibility path.",
+    )
+    provinces.add_argument(
+        "--modern-pieces-input",
+        type=Path,
+        help="Modern-reference pieces for hard-boundary aggregation.",
+    )
+    provinces.add_argument(
+        "--start-date",
+        help="Start date/era included in location-derived province IDs.",
+    )
+    provinces.add_argument(
+        "--aggregation-revision",
+        default="1",
+        help="Aggregation revision included in location-derived province IDs.",
+    )
+    provinces.add_argument(
+        "--geometry-revision",
+        help="Geometry revision override included in location-derived province IDs.",
+    )
+    provinces.add_argument(
+        "--modern-boundary-influence",
+        choices=["hard", "soft", "none"],
+        help="Override the profile's modern-boundary influence.",
+    )
     provinces.add_argument(
         "--intermediate-dir",
         type=Path,
@@ -649,6 +727,27 @@ def _build_parser() -> argparse.ArgumentParser:
         help="Output format for the QA summary.",
     )
     topology.set_defaults(handler=_qa_topology)
+    fabric_qa = qa_commands.add_parser("fabric", help="Validate M23 fabric topology, coverage, lineage, and manifests.")
+    fabric_qa.add_argument("--location-input", type=Path, default=PROCESSED_DATA_DIR / "locations.geojson")
+    fabric_qa.add_argument("--adjacency-input", type=Path)
+    fabric_qa.add_argument("--intersections-input", type=Path)
+    fabric_qa.add_argument("--lineage-input", type=Path)
+    fabric_qa.add_argument("--manifest-input", type=Path)
+    fabric_qa.add_argument("--land-input", type=Path)
+    fabric_qa.add_argument("--report-output", type=Path)
+    fabric_qa.add_argument("--format", choices=["text", "json"], default="text")
+    fabric_qa.set_defaults(handler=_qa_fabric)
+    paintability = qa_commands.add_parser("paintability", help="Test whether required borders follow M23 fabric edges.")
+    paintability.add_argument("--location-input", type=Path, default=PROCESSED_DATA_DIR / "locations.geojson")
+    paintability.add_argument("--boundary-input", type=Path, required=True)
+    paintability.add_argument("--affected-date", action="append", default=[])
+    paintability.add_argument("--source", action="append", default=[])
+    paintability.add_argument("--license", action="append", default=[])
+    paintability.add_argument("--confidence", default="review-required")
+    paintability.add_argument("--report-output", type=Path)
+    paintability.add_argument("--split-requests-output", type=Path)
+    paintability.add_argument("--format", choices=["text", "json"], default="text")
+    paintability.set_defaults(handler=_qa_paintability)
     scenario_qa = qa_commands.add_parser(
         "scenario",
         help=(
@@ -756,6 +855,11 @@ def _build_parser() -> argparse.ArgumentParser:
         default=PROCESSED_DATA_DIR / "adjacency.csv",
         help="Adjacency CSV input. Defaults to data/processed/adjacency.csv. Missing files are skipped.",
     )
+    review.add_argument("--location-input", type=Path, default=None, help="Optional M23 locations layer.")
+    review.add_argument("--modern-reference-input", type=Path, default=None, help="Optional M23 modern-reference pieces layer.")
+    review.add_argument("--lineage-input", type=Path, default=None, help="Optional M23 location lineage JSON.")
+    review.add_argument("--paintability-input", type=Path, default=None, help="Optional M23 paintability QA JSON.")
+    review.add_argument("--aggregation-manifest", type=Path, default=None, help="Optional M23 province aggregation manifest.")
     review.add_argument(
         "--qa-report",
         type=Path,
@@ -942,7 +1046,7 @@ def _build_parser() -> argparse.ArgumentParser:
         dest="scenarios",
         help=(
             "Scenario id to embed. May be repeated. "
-            "Defaults to modern-baseline, official-1836, and official-1444 when neither "
+            "Defaults to modern-baseline, official-1836, official-1444, and official-1936 when neither "
             "--scenario nor --no-scenarios is given."
         ),
     )
@@ -1456,6 +1560,9 @@ def _build_parser() -> argparse.ArgumentParser:
         default=PROCESSED_DATA_DIR / "hierarchy.geojson",
         help="Hierarchy GeoJSON input. Defaults to data/processed/hierarchy.geojson.",
     )
+    demo_build.add_argument("--location-input", type=Path, help="Explicit M23 atomic locations input.")
+    demo_build.add_argument("--membership-input", type=Path, help="Explicit M23 province membership input.")
+    demo_build.add_argument("--aggregation-manifest", type=Path, help="Explicit M23 aggregation manifest input.")
     demo_build.add_argument(
         "--landing-dir",
         type=Path,
@@ -1658,7 +1765,123 @@ def _sources_manifest(args: argparse.Namespace) -> int:
     return 0
 
 
+def _build_locations(args: argparse.Namespace) -> int:
+    try:
+        result = build_location_fabric(
+            args.fabric,
+            raw_dir=args.raw_dir,
+            output_dir=args.output_dir,
+            land_input=args.land_input,
+            admin0_input=args.admin0_input,
+            admin1_input=args.admin1_input,
+            population_input=args.population_input,
+            settlement_input=args.settlement_input,
+            terrain_input=args.terrain_input,
+            historical_signal_input=args.historical_signal_input,
+            split_request_input=args.split_request_input,
+            output_fabric_revision=args.output_fabric_revision,
+            land_license_lineage=tuple(args.land_license),
+            admin0_license_lineage=tuple(args.admin0_license),
+            admin1_license_lineage=tuple(args.admin1_license),
+            population_license_lineage=tuple(args.population_license),
+            settlement_license_lineage=tuple(args.settlement_license),
+            terrain_license_lineage=tuple(args.terrain_license),
+            historical_license_lineage=tuple(args.historical_license),
+            target_location_count=args.target_location_count,
+        )
+    except LocationBuildError as error:
+        _print_error(error)
+        return 1
+    if args.format == "json":
+        print(json.dumps(result.to_dict(), indent=2, sort_keys=True))
+        return 0
+    print("gpm build locations: generated the M23 neutral H3 location fabric.")
+    print(f"Fabric: {result.fabric_id} revision {result.fabric_revision}")
+    print(f"Locations: {result.location_count} (target {result.target_location_count})")
+    print(f"Baseline H3 cells: {result.baseline_cell_count}; refined parents: {result.refined_parent_count}")
+    print(f"Locations: {result.locations_output}")
+    print(f"Adjacency: {result.adjacency_output}")
+    print(f"Modern intersections: {result.intersections_output}")
+    if result.missing_signals:
+        print(f"Missing optional signals (weights renormalized): {', '.join(result.missing_signals)}")
+    return 0
+
+
 def _build_provinces(args: argparse.Namespace) -> int:
+    try:
+        load_profile(args.profile)
+    except ConfigError as error:
+        _print_error(error)
+        return 1
+    if args.legacy_modern_admin and args.location_input is not None:
+        _print_error(ProvinceAggregationError(
+            "--legacy-modern-admin cannot be combined with --location-input."
+        ))
+        return 1
+
+    if not args.legacy_modern_admin:
+        location_input = args.location_input or (PROCESSED_DATA_DIR / "locations.geojson")
+        conflicting = []
+        for enabled, flag in (
+            (args.refine, "--refine"),
+            (args.candidate_output is not None, "--candidate-output"),
+            (args.population_input is not None, "--population-input"),
+            (args.settlement_input is not None, "--settlement-input"),
+            (bool(args.population_license), "--population-license"),
+            (bool(args.settlement_license), "--settlement-license"),
+        ):
+            if enabled:
+                conflicting.append(flag)
+        if conflicting:
+            _print_error(ProvinceAggregationError(
+                "Legacy candidate/refinement flags require --legacy-modern-admin: "
+                + ", ".join(conflicting)
+            ))
+            return 1
+        if not Path(location_input).is_file():
+            _print_error(ProvinceAggregationError(
+                f"Neutral location fabric not found: {location_input}. Run `gpm build locations`, "
+                "pass --location-input, or select --legacy-modern-admin explicitly."
+            ))
+            return 1
+        try:
+            result = aggregate_location_provinces(
+                args.profile,
+                location_input=location_input,
+                output_dir=args.processed_dir,
+                province_output=args.province_output,
+                target_province_count=args.target_province_count,
+                start_date=args.start_date,
+                aggregation_revision=args.aggregation_revision,
+                geometry_revision=args.geometry_revision,
+                modern_boundary_influence=args.modern_boundary_influence,
+                modern_pieces_input=args.modern_pieces_input,
+            )
+        except (ConfigError, ProvinceAggregationError) as error:
+            _print_error(error)
+            return 1
+        if args.format == "json":
+            print(json.dumps(result.to_dict(), indent=2, sort_keys=True))
+            return 0
+        print("gpm build provinces: aggregated M23 atomic locations.")
+        print(f"Profile: {result.profile_id}; start date: {result.start_date}")
+        print(f"Provinces: {result.province_count} (target {result.target_province_count})")
+        print(f"Membership: {result.membership_output}")
+        print(f"Aggregation manifest: {result.manifest_output}")
+        return 0
+
+    for enabled, flag in (
+        (args.modern_pieces_input is not None, "--modern-pieces-input"),
+        (args.start_date is not None, "--start-date"),
+        (args.geometry_revision is not None, "--geometry-revision"),
+        (args.modern_boundary_influence is not None, "--modern-boundary-influence"),
+    ):
+        if enabled:
+            _print_error(ProvinceAggregationError(
+                f"{flag} is only valid for neutral location aggregation; remove "
+                "--legacy-modern-admin."
+            ))
+            return 1
     try:
         result = build_land_province_draft(
             args.profile,
@@ -1791,6 +2014,9 @@ def _demo_build(args: argparse.Namespace) -> int:
             province_input=args.province_input,
             adjacency_input=args.adjacency_input,
             hierarchy_input=args.hierarchy_input,
+            location_input=args.location_input,
+            membership_input=args.membership_input,
+            aggregation_manifest_input=args.aggregation_manifest,
             landing_dir=args.landing_dir,
             work_dir=args.work_dir,
             scenarios=scenarios,
@@ -2387,6 +2613,52 @@ def _qa_topology(args: argparse.Namespace) -> int:
     return 0 if result.passed else 1
 
 
+def _qa_fabric(args: argparse.Namespace) -> int:
+    try:
+        result = run_fabric_qa(
+            location_input=args.location_input,
+            adjacency_input=args.adjacency_input,
+            intersections_input=args.intersections_input,
+            lineage_input=args.lineage_input,
+            manifest_input=args.manifest_input,
+            land_input=args.land_input,
+            report_output=args.report_output,
+        )
+    except FabricQAError as error:
+        _print_error(error)
+        return 1
+    if args.format == "json":
+        print(json.dumps(result.to_dict(), indent=2, sort_keys=True))
+    else:
+        print(f"gpm qa fabric: {result.status}; {result.location_count} locations, {result.adjacency_count} adjacency rows")
+        print(f"Findings: {result.error_count} errors, {result.warning_count} warnings")
+        print(f"Report: {result.report_output}")
+    return 0 if result.status == "pass" else 1
+
+
+def _qa_paintability(args: argparse.Namespace) -> int:
+    try:
+        result = run_paintability_qa(
+            location_input=args.location_input,
+            boundary_input=args.boundary_input,
+            report_output=args.report_output,
+            split_requests_output=args.split_requests_output,
+            affected_dates=tuple(args.affected_date),
+            confidence=args.confidence,
+            source_lineage=tuple(args.source),
+            license_lineage=tuple(args.license),
+        )
+    except FabricQAError as error:
+        _print_error(error)
+        return 1
+    if args.format == "json":
+        print(json.dumps(result.to_dict(), indent=2, sort_keys=True))
+    else:
+        print(f"gpm qa paintability: {result.status}; {result.crossing_count} boundary crossings")
+        print(f"Split-request templates: {result.split_requests_output}")
+    return 0 if result.status == "pass" else 1
+
+
 def _qa_scenario(args: argparse.Namespace) -> int:
     try:
         result = run_scenario_politics_qa(
@@ -2440,6 +2712,11 @@ def _review(args: argparse.Namespace) -> int:
             province_input=args.province_input,
             adjacency_input=args.adjacency_input,
             qa_report_input=args.qa_report,
+            location_input=args.location_input,
+            modern_reference_input=args.modern_reference_input,
+            lineage_input=args.lineage_input,
+            paintability_input=args.paintability_input,
+            aggregation_manifest_input=args.aggregation_manifest,
             scenario_id=args.scenario,
             scenario_path=args.scenario_path,
         )
