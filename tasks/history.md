@@ -1,5 +1,16 @@
 # History
 
+## 2026-07-13 - Ship M23 and M0–M23 Acceptance Remediation
+
+- Committed and pushed the M23 neutral-fabric implementation plus comprehensive
+  M0–M23 acceptance remediation to `main` at `3421971`.
+- Redeployed `landing/` to Vercel production at
+  `https://landing-six-iota-32.vercel.app`.
+- Production smoke checks confirmed landing/demo HTTP 200, the accepted
+  4,603-province / 10,779-edge / 659-area manifest, and valid immutable PMTiles
+  byte-range delivery.
+- Next: implement the M24 start-date research framework contract.
+
 ## 2026-07-13 - M0–M23 Comprehensive Acceptance Remediation
 
 - Re-audited every completed milestone with 238 local assertions, installed-wheel

@@ -2,20 +2,19 @@
 
 Date: 2026-07-13 (America/New_York)
 
-Scope: the current worktree, including the M23 implementation. M15, M16, and
+Scope: the audited M23 implementation and remediation boundary. M15, M16, and
 M20 are assessed only as prototype/infrastructure milestones. M24–M28 remain
-future work. No push, release publication, Vercel deployment, or production
-promotion was performed.
+future work. The audit was completed without external writes; after explicit
+authorization, commit `3421971` was pushed and the accepted landing assets were
+promoted to Vercel production.
 
 ## Executive verdict
 
 Repository-local acceptance passes after remediation. There are no remaining
-local release-blocking test, schema, topology, scenario-politics, license,
-landing, hierarchy, demo-manifest, or fabric-QA errors. The only milestone
-warnings are public-surface lag: GitHub `main` and the Vercel production alias
-still expose the pre-remediation M22 commit because external writes were out of
-scope. The deployed demo remains functional, but its manifest and generated
-assets are older than this accepted worktree.
+release-blocking test, schema, topology, scenario-politics, license, landing,
+hierarchy, demo-manifest, fabric-QA, or deployed-public-surface errors. GitHub
+`main` and the Vercel production alias now expose the accepted remediation and
+regenerated demo assets.
 
 Final complete suite: **238 passed**. `git diff --check` and landing dry-run
 validation also passed.
@@ -27,7 +26,7 @@ validation also passed.
 | M0 | Planning, source policy, roadmap; `README.md`, `ROADMAP.md`, `DATA_SOURCES.md`, `tasks/*` | Source-policy/registry/schema tests; documentation contradiction audit | Files present on GitHub `main` | **pass** |
 | M1 | Natural Earth/geoBoundaries planning, downloads, checksums, manifests; `gpm sources`, `gpm.sources.*` | `test_source_artifacts`, `test_source_manifest_schema`, `test_source_registry`; installed-wheel `sources manifest` | Source/config files present on GitHub | **pass** |
 | M2 | Explicit legacy Natural Earth land draft; `gpm build provinces --legacy-modern-admin` | Two 4,603-feature builds; candidate/province hashes identical | Pre-remediation implementation on GitHub | **pass** |
-| M3 | Stable IDs, 10,779-edge adjacency, strict topology QA; builders and `gpm.qa.topology` | Duplicate hashes; complete QA, 0 errors/376 warnings; focused ID/adjacency/topology tests | Deployed demo still uses old 10,781-edge assets | **pass** |
+| M3 | Stable IDs, 10,779-edge adjacency, strict topology QA; builders and `gpm.qa.topology` | Duplicate hashes; complete QA, 0 errors/376 warnings; focused ID/adjacency/topology tests | Production demo exposes the accepted 10,779-edge assets | **pass** |
 | M4 | Deterministic refinement/split/merge with lineage; `gpm.builders.refinement` | `test_m4_refinement`, CLI error/fixture coverage | Not a public runtime surface | **pass** |
 | M5 | Packaged review server/UI and authoring surface; `gpm review`, `gpm.viewer` | `test_m5_review`; viewer static assets present in installed wheel | Not publicly claimed as hosted review API | **pass** |
 | M6 | Seas, ports, straits and mixed adjacency; `gpm build seas` | `test_m6_seas`, adjacency regression suite | Not separately hosted | **pass** |
@@ -39,16 +38,16 @@ validation also passed.
 | M12 | Official 1836 curated-politics contract | Golden QA: 4,603 rows, 188 owner tags, 0 errors | 1836 deployed tab loads | **pass** |
 | M13 | Official 1444 curated-politics contract | Golden QA: 4,603 rows, 198 owner tags, 0 errors | 1444 deployed tab loads | **pass** |
 | M14 | License-audited beta, isolated/restricted behavior, game + atlas faces | 105/105 files declared/present; license audit `passed=true`; topology pass | Beta sample/source present on GitHub | **pass** |
-| M14.5 | Static landing/demo validation and deploy tooling | Landing validator and tests pass; exact HTTP/range probes and browser smoke pass | Production is functional but behind accepted local assets | **warning** |
+| M14.5 | Static landing/demo validation and deploy tooling | Landing validator and tests pass; exact HTTP/range probes and browser smoke pass | Accepted landing/demo assets are live in production | **pass** |
 | M15 | Prototype era-geometry pack/apply/lineage, sample-scoped WE 1444 | `test_m15_era_geometry`; pack list/validate and samples | Period toggle works; not treated as certified coverage | **pass (prototype)** |
-| M16 | Prototype multi-era packaging and official-1936 politics | `test_m16_multi_era`; 1936 golden QA now 0 errors after subdivision-code repair | 1936 deployed tab loads, but deployed politics predate repair | **pass (prototype)** |
+| M16 | Prototype multi-era packaging and official-1936 politics | `test_m16_multi_era`; 1936 golden QA now 0 errors after subdivision-code repair | Repaired 1936 assets are deployed | **pass (prototype)** |
 | M17 | External curation bundles, diffs, checklist, golden borders | `test_m17_curation`; installed-wheel bundle validation | Example bundle present on GitHub | **pass** |
 | M18 | Culture/religion paint, legends, dissolves | `test_m18_culture_religion`; browser toggles succeed | Both deployed paint modes render | **pass** |
 | M19 | MVT/PMTiles v3 writer and range reads | `test_m19_pmtiles`; four deterministic archives; valid `PMTiles\x03` range response | Production returns HTTP 206 and immutable caching | **pass** |
 | M20 | Prototype CE packs and WE+CE composition | `test_m20_broader_period_geometry`; configs/samples/docs | Sample period assets deploy; no production-certification claim | **pass (prototype)** |
-| M21 | Stable province/area/region/superregion entities and exports | `test_m21_hierarchy`; normalized production rebuild: 659/169/8 | Old production has 660/169/8 until redeploy | **pass** |
-| M22 | Four-scenario global PMTiles-first demo and manifest | Two normalized demo builds match after removing generated timestamps; 4,603 provinces, 10,779 edges, z0–7; local validation passes | Functional but stale production manifest/assets | **warning** |
-| M23 | Neutral atomic fabric, split lineage, aggregation, review/export separation | Two byte-identical 30,003-location/52,142-edge builds; strict QA 0 errors; 31 admin-0 and 40 admin-1 warning members; 22,000-province 1444 aggregation | Current M23 source/docs are not yet pushed or deployed | **warning** |
+| M21 | Stable province/area/region/superregion entities and exports | `test_m21_hierarchy`; normalized production rebuild: 659/169/8 | Production exposes the accepted 659/169/8 overlays | **pass** |
+| M22 | Four-scenario global PMTiles-first demo and manifest | Two normalized demo builds match after removing generated timestamps; 4,603 provinces, 10,779 edges, z0–7; local validation passes | Accepted manifest and PMTiles are live | **pass** |
+| M23 | Neutral atomic fabric, split lineage, aggregation, review/export separation | Two byte-identical 30,003-location/52,142-edge builds; strict QA 0 errors; 31 admin-0 and 40 admin-1 warning members; 22,000-province 1444 aggregation | Source, schemas, fixtures, and documentation are on GitHub `main`; no separate hosted fabric surface is claimed | **pass** |
 
 ## Production-scale evidence
 
@@ -120,25 +119,26 @@ schemas, viewer static assets, and the curator sample. CLI help/error paths are
 covered by the complete suite; beta help now accurately lists the default 1936
 scenario.
 
-## Read-only public-surface evidence
+## Public-surface evidence
 
 - GitHub: `https://github.com/GeorgeQLe/global-province-map-template`, default
-  branch `main`, remote head `929445252c5efb29de82f14454efb45778450a74`
-  (`2026-07-13T15:22:10Z`). Root source, docs, landing, schemas, samples, and tests
-  are visible. The accepted M23/remediation work remains local by instruction.
-- Vercel project: `george-les-projects/landing`; production deployment
-  `landing-2nvbf5nwb-george-les-projects.vercel.app`; production alias checked:
+  branch `main`; accepted commit `3421971` was pushed successfully. Root source,
+  docs, landing, schemas, samples, and tests are published.
+- Vercel project: `george-les-projects/landing`; production deployment inspect
+  ID `5sU9ctbnui4CuMYLsc7PNxXrM1Sv`; production alias checked:
   `https://landing-six-iota-32.vercel.app`.
 - `/` returned HTTP 200; `/demo` loaded in a real headless browser; all four
   scenario tabs reached their expected labels/quality tiers; period geometry is
   enabled only for 1444/1836/1936; culture, religion, and hierarchy paint toggles
   all worked; a MapLibre canvas rendered.
-- PMTiles byte-range probe returned HTTP 206, `Content-Range: bytes
-  0-126/15723223`, `Cache-Control: public, max-age=31536000, immutable`, and a
-  valid PMTiles v3 header.
-- The deployed manifest was generated `2026-07-13T15:08:10Z` and still has the
-  old 660-area/10,781-edge counts and obsolete M23+ density slot. This is a
-  deployment-lag warning, not silently accepted as current evidence.
+- PMTiles byte-range probes returned HTTP 206 with immutable caching and valid
+  PMTiles v3 headers.
+- Production was redeployed after acceptance. The deployed manifest was
+  generated `2026-07-14T02:29:00Z` and reports four scenarios, 4,603 provinces,
+  10,779 edges, 659/169/8 hierarchy entities, and the M24–M28 reconstruction
+  future slot. Landing and redirected demo probes returned HTTP 200. The
+  official-1444 PMTiles probe returned HTTP 206, a valid `PMTiles\x03` header,
+  `Content-Range: bytes 0-126/15717075`, and immutable caching.
 
 ## Remediations made
 
@@ -184,10 +184,8 @@ curl -I <production alias>/
 curl -H "Range: bytes=0-126" <production alias>/demo/data/official-1444.pmtiles
 ```
 
-## Remaining warnings and external actions
+## Remaining warnings
 
-- The accepted local landing/demo build has not been deployed and the repository
-  has not been pushed. Publishing either requires separate authorization.
 - M15, M16, and M20 remain sample-scoped prototype infrastructure; no audit
   result upgrades them to production historical certification.
 - M23 does not certify 1444, 1836, 1914, or 1936. That evidence work remains
