@@ -16,6 +16,7 @@ authors = [
 keywords = ["gis", "geodata", "strategy-games", "provinces", "maps"]
 dependencies = [
     "h3>=4.5,<5",
+    "jsonschema>=4.23,<5",
     "rasterio>=1.4,<2",
     "shapely>=2.1,<3",
 ]

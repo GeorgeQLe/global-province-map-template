@@ -1,0 +1,213 @@
+{
+  "artifact_version": "1.0.0",
+  "document_type": "polity_gazetteer",
+  "pass_id": "official-1444-reconstruction-v1",
+  "polities": [
+    {
+      "aliases": [],
+      "capital_location_ids": [
+        "loc-brussels"
+      ],
+      "name": "Duchy of Brabant",
+      "polity_id": "bra",
+      "relationships": [
+        {
+          "confidence": "medium",
+          "notes": "Brabant was held by Philip the Good while remaining a constituent title.",
+          "relationship_id": "bra-union-bur",
+          "source_ids": [
+            "jacquerye-burgundian-netherlands-1477"
+          ],
+          "target_polity_id": "bur",
+          "type": "personal_union",
+          "valid_from": "1444",
+          "valid_to": "1444"
+        }
+      ],
+      "source_ids": [
+        "jacquerye-burgundian-netherlands-1477"
+      ],
+      "valid_from": "1183",
+      "valid_to": "1795"
+    },
+    {
+      "aliases": [],
+      "capital_location_ids": [
+        "loc-liege"
+      ],
+      "name": "Prince-Bishopric of Li\u00e8ge",
+      "polity_id": "lie",
+      "relationships": [],
+      "source_ids": [
+        "droysen-hre-1400"
+      ],
+      "valid_from": "0980",
+      "valid_to": "1795"
+    },
+    {
+      "aliases": [],
+      "capital_location_ids": [
+        "loc-dijon"
+      ],
+      "name": "Duchy of Burgundy",
+      "polity_id": "bur",
+      "relationships": [
+        {
+          "confidence": "medium",
+          "notes": "The pass records the contested crown\u2013ducal political relationship without conflating it with control.",
+          "relationship_id": "bur-claim-fra",
+          "source_ids": [
+            "shepherd-france-1453"
+          ],
+          "target_polity_id": "fra",
+          "type": "claim",
+          "valid_from": "1444",
+          "valid_to": "1444"
+        }
+      ],
+      "source_ids": [
+        "shepherd-france-1453",
+        "jacquerye-burgundian-netherlands-1477"
+      ],
+      "valid_from": "1032",
+      "valid_to": "1477"
+    },
+    {
+      "aliases": [],
+      "capital_location_ids": [
+        "loc-paris"
+      ],
+      "name": "Kingdom of France",
+      "polity_id": "fra",
+      "relationships": [],
+      "source_ids": [
+        "shepherd-france-1453"
+      ],
+      "valid_from": "0987",
+      "valid_to": null
+    },
+    {
+      "aliases": [],
+      "capital_location_ids": [],
+      "name": "Kingdom of England",
+      "polity_id": "eng",
+      "relationships": [],
+      "source_ids": [
+        "shepherd-france-1453"
+      ],
+      "valid_from": "0927",
+      "valid_to": "1707"
+    },
+    {
+      "aliases": [],
+      "capital_location_ids": [
+        "loc-cologne"
+      ],
+      "name": "Electorate of Cologne",
+      "polity_id": "col",
+      "relationships": [
+        {
+          "confidence": "medium",
+          "notes": "Imperial estate relationship; not direct territorial ownership by the Empire.",
+          "relationship_id": "col-estate-hre",
+          "source_ids": [
+            "droysen-hre-1400"
+          ],
+          "target_polity_id": "hre",
+          "type": "dependency",
+          "valid_from": "1444",
+          "valid_to": "1444"
+        }
+      ],
+      "source_ids": [
+        "droysen-hre-1400"
+      ],
+      "valid_from": "0953",
+      "valid_to": "1803"
+    },
+    {
+      "aliases": [],
+      "capital_location_ids": [
+        "loc-heidelberg"
+      ],
+      "name": "Electoral Palatinate",
+      "polity_id": "pal",
+      "relationships": [
+        {
+          "confidence": "medium",
+          "notes": "Imperial estate relationship.",
+          "relationship_id": "pal-estate-hre",
+          "source_ids": [
+            "droysen-hre-1400"
+          ],
+          "target_polity_id": "hre",
+          "type": "dependency",
+          "valid_from": "1444",
+          "valid_to": "1444"
+        }
+      ],
+      "source_ids": [
+        "droysen-hre-1400"
+      ],
+      "valid_from": "1085",
+      "valid_to": "1803"
+    },
+    {
+      "aliases": [],
+      "capital_location_ids": [],
+      "name": "Holy Roman Empire",
+      "polity_id": "hre",
+      "relationships": [],
+      "source_ids": [
+        "droysen-hre-1400"
+      ],
+      "valid_from": "0962",
+      "valid_to": "1806"
+    },
+    {
+      "aliases": [],
+      "capital_location_ids": [
+        "loc-prague"
+      ],
+      "name": "Kingdom of Bohemia",
+      "polity_id": "boh",
+      "relationships": [
+        {
+          "confidence": "medium",
+          "notes": "Electoral kingdom within the Empire.",
+          "relationship_id": "boh-estate-hre",
+          "source_ids": [
+            "droysen-hre-1400"
+          ],
+          "target_polity_id": "hre",
+          "type": "dependency",
+          "valid_from": "1444",
+          "valid_to": "1444"
+        }
+      ],
+      "source_ids": [
+        "droysen-hre-1400",
+        "nelson-europe-1430"
+      ],
+      "valid_from": "1198",
+      "valid_to": "1918"
+    },
+    {
+      "aliases": [],
+      "capital_location_ids": [
+        "loc-vienna"
+      ],
+      "name": "Habsburg Hereditary Lands",
+      "polity_id": "hab",
+      "relationships": [],
+      "source_ids": [
+        "droysen-hre-1400",
+        "nelson-europe-1430"
+      ],
+      "valid_from": "1278",
+      "valid_to": "1804"
+    }
+  ],
+  "schema_version": "0.1.0",
+  "start_date": "1444-11-11"
+}

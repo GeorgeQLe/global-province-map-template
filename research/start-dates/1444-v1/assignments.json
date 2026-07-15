@@ -1,0 +1,288 @@
+{
+  "aggregation_profile": "eu-like",
+  "aggregation_revision": "1444-r1",
+  "artifact_version": "1.0.0",
+  "assignments": [
+    {
+      "assignment_id": "a-brabant",
+      "location_ids": [
+        "loc-brussels"
+      ],
+      "notes": "Burgundian-held Brabant; Brussels is a targeted subcell.",
+      "polity_ids": [
+        "bra",
+        "bur"
+      ],
+      "province_id": "province-brabant",
+      "source_ids": [
+        "jacquerye-burgundian-netherlands-1477"
+      ],
+      "uncertainty": 0.25
+    },
+    {
+      "assignment_id": "a-liege",
+      "location_ids": [
+        "loc-liege"
+      ],
+      "notes": "Independent ecclesiastical polity.",
+      "polity_ids": [
+        "lie"
+      ],
+      "province_id": "province-liege",
+      "source_ids": [
+        "droysen-hre-1400"
+      ],
+      "uncertainty": 0.2
+    },
+    {
+      "assignment_id": "a-brussels-quarter",
+      "location_ids": [
+        "loc-brussels-quarter"
+      ],
+      "notes": "Accepted split used by the Brussels negative-control regression.",
+      "polity_ids": [
+        "bra",
+        "bur"
+      ],
+      "province_id": "province-brussels-quarter",
+      "source_ids": [
+        "jacquerye-burgundian-netherlands-1477"
+      ],
+      "uncertainty": 0.35
+    },
+    {
+      "assignment_id": "a-france-east",
+      "location_ids": [
+        "loc-france-east"
+      ],
+      "notes": "French crown side of the ducal frontier.",
+      "polity_ids": [
+        "fra"
+      ],
+      "province_id": "province-france-east",
+      "source_ids": [
+        "shepherd-france-1453"
+      ],
+      "uncertainty": 0.25
+    },
+    {
+      "assignment_id": "a-ducal-burgundy",
+      "location_ids": [
+        "loc-dijon"
+      ],
+      "notes": "Ducal Burgundy core.",
+      "polity_ids": [
+        "bur"
+      ],
+      "province_id": "province-ducal-burgundy",
+      "source_ids": [
+        "shepherd-france-1453"
+      ],
+      "uncertainty": 0.2
+    },
+    {
+      "assignment_id": "a-dijon-quarter",
+      "location_ids": [
+        "loc-dijon-quarter"
+      ],
+      "notes": "Small negative-control subject; not a modern regional outline.",
+      "polity_ids": [
+        "bur"
+      ],
+      "province_id": "province-dijon-quarter",
+      "source_ids": [
+        "shepherd-france-1453"
+      ],
+      "uncertainty": 0.35
+    },
+    {
+      "assignment_id": "a-france-north",
+      "location_ids": [
+        "loc-paris"
+      ],
+      "notes": "Generalized crown-land province containing the scoped Paris capital point.",
+      "polity_ids": [
+        "fra"
+      ],
+      "province_id": "province-france-north",
+      "source_ids": [
+        "shepherd-france-1453"
+      ],
+      "uncertainty": 0.3
+    },
+    {
+      "assignment_id": "a-calais",
+      "location_ids": [
+        "loc-calais"
+      ],
+      "notes": "English-held Calais enclave.",
+      "polity_ids": [
+        "eng"
+      ],
+      "province_id": "province-english-calais",
+      "source_ids": [
+        "shepherd-france-1453"
+      ],
+      "uncertainty": 0.2
+    },
+    {
+      "assignment_id": "a-lille-quarter",
+      "location_ids": [
+        "loc-lille-quarter"
+      ],
+      "notes": "Accepted split used by the Nord negative-control regression.",
+      "polity_ids": [
+        "bur"
+      ],
+      "province_id": "province-lille-quarter",
+      "source_ids": [
+        "shepherd-france-1453",
+        "jacquerye-burgundian-netherlands-1477"
+      ],
+      "uncertainty": 0.35
+    },
+    {
+      "assignment_id": "a-cologne",
+      "location_ids": [
+        "loc-cologne"
+      ],
+      "notes": "Generalized ecclesiastical territory.",
+      "polity_ids": [
+        "col"
+      ],
+      "province_id": "province-cologne",
+      "source_ids": [
+        "droysen-hre-1400"
+      ],
+      "uncertainty": 0.3
+    },
+    {
+      "assignment_id": "a-palatinate",
+      "location_ids": [
+        "loc-heidelberg"
+      ],
+      "notes": "Generalized electoral territory.",
+      "polity_ids": [
+        "pal"
+      ],
+      "province_id": "province-palatinate",
+      "source_ids": [
+        "droysen-hre-1400"
+      ],
+      "uncertainty": 0.35
+    },
+    {
+      "assignment_id": "a-cologne-quarter",
+      "location_ids": [
+        "loc-cologne-quarter"
+      ],
+      "notes": "Small negative-control subject.",
+      "polity_ids": [
+        "col"
+      ],
+      "province_id": "province-cologne-quarter",
+      "source_ids": [
+        "droysen-hre-1400"
+      ],
+      "uncertainty": 0.4
+    },
+    {
+      "assignment_id": "a-bohemia",
+      "location_ids": [
+        "loc-prague"
+      ],
+      "notes": "Generalized Bohemian core.",
+      "polity_ids": [
+        "boh"
+      ],
+      "province_id": "province-bohemia",
+      "source_ids": [
+        "droysen-hre-1400",
+        "nelson-europe-1430"
+      ],
+      "uncertainty": 0.25
+    },
+    {
+      "assignment_id": "a-habsburg",
+      "location_ids": [
+        "loc-vienna"
+      ],
+      "notes": "Generalized Habsburg core.",
+      "polity_ids": [
+        "hab"
+      ],
+      "province_id": "province-habsburg",
+      "source_ids": [
+        "droysen-hre-1400",
+        "nelson-europe-1430"
+      ],
+      "uncertainty": 0.3
+    },
+    {
+      "assignment_id": "a-prague-quarter",
+      "location_ids": [
+        "loc-prague-quarter"
+      ],
+      "notes": "Small negative-control subject.",
+      "polity_ids": [
+        "boh"
+      ],
+      "province_id": "province-prague-quarter",
+      "source_ids": [
+        "droysen-hre-1400"
+      ],
+      "uncertainty": 0.4
+    }
+  ],
+  "document_type": "start_date_location_assignments",
+  "expected_province_count": 22000,
+  "fabric_revision": "global-h3-v1-r1",
+  "fabric_sidecars": {
+    "fabric_manifest": {
+      "path": "fabric/location_fabric_manifest.json",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "lineage": {
+      "path": "fabric/location_lineage.json",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "locations": {
+      "path": "fabric/locations.geojson",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "province_membership": {
+      "path": "fabric/province_membership.csv",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  },
+  "geometry_revision": "1444-r1",
+  "pass_id": "official-1444-reconstruction-v1",
+  "schema_version": "0.1.0",
+  "start_date": "1444-11-11",
+  "targeted_split_requests": [
+    {
+      "location_ids": [
+        "loc-brussels-quarter"
+      ],
+      "reason": "Prevent a Burgundian/Brabant assignment from inheriting the modern Brussels-Capital Region outline.",
+      "request_id": "split-brussels-modern-outline",
+      "source_ids": [
+        "jacquerye-burgundian-netherlands-1477",
+        "geoboundaries-bel-adm1-2022"
+      ],
+      "status": "accepted"
+    },
+    {
+      "location_ids": [
+        "loc-lille-quarter"
+      ],
+      "reason": "Prevent modern Nord from surviving as one 1444 province across the French\u2013Burgundian story.",
+      "request_id": "split-nord-modern-outline",
+      "source_ids": [
+        "shepherd-france-1453",
+        "geoboundaries-fra-adm2-2022"
+      ],
+      "status": "accepted"
+    }
+  ]
+}

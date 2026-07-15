@@ -1,0 +1,599 @@
+{
+  "artifact_version": "1.0.0",
+  "document_type": "historical_boundary_registry",
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            5.1,
+            50.5
+          ],
+          [
+            5.1,
+            51.3
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "classification": "soft_evidence",
+        "confidence": "medium",
+        "date_precision": "year",
+        "feature_id": "frontier-brabant-liege",
+        "geographic_scope": "low-countries",
+        "geometry_revision": "1444-r1",
+        "license_lineage": [
+          "Public Domain Mark 1.0"
+        ],
+        "semantics": "Brabant\u2013Li\u00e8ge political frontier",
+        "side_polity_ids": {
+          "left": "bra",
+          "right": "lie"
+        },
+        "source_ids": [
+          "jacquerye-burgundian-netherlands-1477"
+        ],
+        "start_date_programs": [
+          "1444-11-11"
+        ],
+        "uncertainty_notes": "Generalized from a later map with pre-1444 acquisition dates.",
+        "valid_from": "1477",
+        "valid_to": "1477"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            4.0,
+            46.5
+          ],
+          [
+            4.0,
+            48.0
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "classification": "soft_evidence",
+        "confidence": "medium",
+        "date_precision": "year",
+        "feature_id": "frontier-france-ducal-burgundy",
+        "geographic_scope": "burgundy",
+        "geometry_revision": "1444-r1",
+        "license_lineage": [
+          "Public Domain Mark 1.0"
+        ],
+        "semantics": "French crown\u2013ducal Burgundy frontier",
+        "side_polity_ids": {
+          "left": "fra",
+          "right": "bur"
+        },
+        "source_ids": [
+          "shepherd-france-1453"
+        ],
+        "start_date_programs": [
+          "1444-11-11"
+        ],
+        "uncertainty_notes": "Generalized from the 1453 reference.",
+        "valid_from": "1453",
+        "valid_to": "1453"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            1.0,
+            50.5
+          ],
+          [
+            2.0,
+            50.5
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "classification": "soft_evidence",
+        "confidence": "medium",
+        "date_precision": "year",
+        "feature_id": "frontier-france-english-calais",
+        "geographic_scope": "france",
+        "geometry_revision": "1444-r1",
+        "license_lineage": [
+          "Public Domain Mark 1.0"
+        ],
+        "semantics": "French crown\u2013English Calais frontier",
+        "side_polity_ids": {
+          "left": "fra",
+          "right": "eng"
+        },
+        "source_ids": [
+          "shepherd-france-1453"
+        ],
+        "start_date_programs": [
+          "1444-11-11"
+        ],
+        "uncertainty_notes": "Generalized from the 1453 reference.",
+        "valid_from": "1453",
+        "valid_to": "1453"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            7.0,
+            50.0
+          ],
+          [
+            7.0,
+            51.0
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "classification": "soft_evidence",
+        "confidence": "medium",
+        "date_precision": "year",
+        "feature_id": "frontier-cologne-palatinate",
+        "geographic_scope": "hre",
+        "geometry_revision": "1444-r1",
+        "license_lineage": [
+          "Public Domain Mark 1.0"
+        ],
+        "semantics": "Cologne\u2013Palatinate imperial-estate frontier",
+        "side_polity_ids": {
+          "left": "col",
+          "right": "pal"
+        },
+        "source_ids": [
+          "droysen-hre-1400"
+        ],
+        "start_date_programs": [
+          "1444-11-11"
+        ],
+        "uncertainty_notes": "Microstates are intentionally omitted.",
+        "valid_from": "1400",
+        "valid_to": "1400"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            15.0,
+            49.0
+          ],
+          [
+            15.0,
+            51.0
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "classification": "soft_evidence",
+        "confidence": "medium",
+        "date_precision": "year",
+        "feature_id": "frontier-bohemia-habsburg",
+        "geographic_scope": "central-europe",
+        "geometry_revision": "1444-r1",
+        "license_lineage": [
+          "Public Domain Mark 1.0"
+        ],
+        "semantics": "Bohemian Crown\u2013Habsburg lands frontier",
+        "side_polity_ids": {
+          "left": "boh",
+          "right": "hab"
+        },
+        "source_ids": [
+          "droysen-hre-1400",
+          "nelson-europe-1430"
+        ],
+        "start_date_programs": [
+          "1444-11-11"
+        ],
+        "uncertainty_notes": "Generalized from two bracketing references.",
+        "valid_from": "1430",
+        "valid_to": "1430"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              4.283083477,
+              50.813608929
+            ],
+            [
+              4.384367978,
+              50.759743024
+            ],
+            [
+              4.485078704,
+              50.793103331
+            ],
+            [
+              4.434999261,
+              50.89895331
+            ],
+            [
+              4.288827063,
+              50.891802847
+            ],
+            [
+              4.283083477,
+              50.813608929
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "classification": "hard_constraint",
+        "confidence": "medium",
+        "date_precision": "year",
+        "feature_id": "forbidden-modern-brussels-capital-region",
+        "geographic_scope": "low-countries",
+        "geometry_revision": "1444-r1",
+        "license_lineage": [
+          "Open boundary data; see source record"
+        ],
+        "semantics": "Forbidden 2022 Brussels-Capital Region outline",
+        "side_polity_ids": {
+          "left": "bra",
+          "right": "lie"
+        },
+        "source_ids": [
+          "geoboundaries-bel-adm1-2022"
+        ],
+        "start_date_programs": [
+          "1444-11-11"
+        ],
+        "uncertainty_notes": "Modern negative-control geometry; not historical evidence.",
+        "valid_from": "2022",
+        "valid_to": "2022"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              2.8,
+              46.1
+            ],
+            [
+              7.2,
+              46.1
+            ],
+            [
+              7.2,
+              48.5
+            ],
+            [
+              2.8,
+              48.5
+            ],
+            [
+              2.8,
+              46.1
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "classification": "hard_constraint",
+        "confidence": "medium",
+        "date_precision": "year",
+        "feature_id": "forbidden-modern-bourgogne-franche-comte",
+        "geographic_scope": "burgundy",
+        "geometry_revision": "1444-r1",
+        "license_lineage": [
+          "Open boundary data; see source record"
+        ],
+        "semantics": "Forbidden modern Bourgogne-Franche-Comt\u00e9 envelope",
+        "side_polity_ids": {
+          "left": "bur",
+          "right": "fra"
+        },
+        "source_ids": [
+          "geoboundaries-fra-adm1-2022"
+        ],
+        "start_date_programs": [
+          "1444-11-11"
+        ],
+        "uncertainty_notes": "Generalized modern negative-control envelope.",
+        "valid_from": "2022",
+        "valid_to": "2022"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              4.141972344,
+              49.979019954
+            ],
+            [
+              4.231265637,
+              50.071382499
+            ],
+            [
+              4.127048505,
+              50.135579173
+            ],
+            [
+              4.208255732,
+              50.273015454
+            ],
+            [
+              4.024197591,
+              50.359180601
+            ],
+            [
+              3.709624178,
+              50.303318938
+            ],
+            [
+              3.607555321,
+              50.49721253
+            ],
+            [
+              3.288508144,
+              50.525818258
+            ],
+            [
+              3.261111484,
+              50.701339236
+            ],
+            [
+              3.150372217,
+              50.790101762
+            ],
+            [
+              2.951262988,
+              50.751948803
+            ],
+            [
+              2.79011943,
+              50.725757318
+            ],
+            [
+              2.599043235,
+              50.848935672
+            ],
+            [
+              2.545506839,
+              51.088989441
+            ],
+            [
+              2.091489336,
+              51.015670302
+            ],
+            [
+              2.213364426,
+              50.810602931
+            ],
+            [
+              2.411479766,
+              50.766665168
+            ],
+            [
+              2.37490244,
+              50.67173581
+            ],
+            [
+              2.74579865,
+              50.604746939
+            ],
+            [
+              2.800131071,
+              50.527527839
+            ],
+            [
+              3.028487633,
+              50.484044796
+            ],
+            [
+              2.979453079,
+              50.403818653
+            ],
+            [
+              3.084305656,
+              50.31118809
+            ],
+            [
+              3.010723794,
+              50.269004238
+            ],
+            [
+              3.18765267,
+              50.232948786
+            ],
+            [
+              3.092285365,
+              50.120974946
+            ],
+            [
+              3.118491454,
+              50.026092633
+            ],
+            [
+              3.490656218,
+              50.0188939
+            ],
+            [
+              3.715243658,
+              50.069498833
+            ],
+            [
+              3.887429324,
+              50.009552392
+            ],
+            [
+              4.141972344,
+              49.979019954
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "classification": "hard_constraint",
+        "confidence": "medium",
+        "date_precision": "year",
+        "feature_id": "forbidden-modern-nord-department",
+        "geographic_scope": "france",
+        "geometry_revision": "1444-r1",
+        "license_lineage": [
+          "Open boundary data; see source record"
+        ],
+        "semantics": "Forbidden 2022 French Nord department outline",
+        "side_polity_ids": {
+          "left": "fra",
+          "right": "bur"
+        },
+        "source_ids": [
+          "geoboundaries-fra-adm2-2022"
+        ],
+        "start_date_programs": [
+          "1444-11-11"
+        ],
+        "uncertainty_notes": "Simplified modern negative-control geometry; the tiny detached ring was omitted.",
+        "valid_from": "2022",
+        "valid_to": "2022"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              5.8,
+              50.3
+            ],
+            [
+              9.5,
+              50.3
+            ],
+            [
+              9.5,
+              52.5
+            ],
+            [
+              5.8,
+              52.5
+            ],
+            [
+              5.8,
+              50.3
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "classification": "hard_constraint",
+        "confidence": "medium",
+        "date_precision": "year",
+        "feature_id": "forbidden-modern-north-rhine-westphalia",
+        "geographic_scope": "hre",
+        "geometry_revision": "1444-r1",
+        "license_lineage": [
+          "Open boundary data; see source record"
+        ],
+        "semantics": "Forbidden modern North Rhine-Westphalia envelope",
+        "side_polity_ids": {
+          "left": "col",
+          "right": "pal"
+        },
+        "source_ids": [
+          "geoboundaries-deu-adm1-2022"
+        ],
+        "start_date_programs": [
+          "1444-11-11"
+        ],
+        "uncertainty_notes": "Generalized modern negative-control envelope.",
+        "valid_from": "2022",
+        "valid_to": "2022"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              12.0,
+              48.5
+            ],
+            [
+              18.9,
+              48.5
+            ],
+            [
+              18.9,
+              51.1
+            ],
+            [
+              12.0,
+              51.1
+            ],
+            [
+              12.0,
+              48.5
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "classification": "hard_constraint",
+        "confidence": "medium",
+        "date_precision": "year",
+        "feature_id": "forbidden-modern-czechia",
+        "geographic_scope": "central-europe",
+        "geometry_revision": "1444-r1",
+        "license_lineage": [
+          "Open boundary data; see source record"
+        ],
+        "semantics": "Forbidden modern Czechia envelope",
+        "side_polity_ids": {
+          "left": "boh",
+          "right": "hab"
+        },
+        "source_ids": [
+          "geoboundaries-cze-adm0-2022"
+        ],
+        "start_date_programs": [
+          "1444-11-11"
+        ],
+        "uncertainty_notes": "Generalized modern negative-control envelope.",
+        "valid_from": "2022",
+        "valid_to": "2022"
+      },
+      "type": "Feature"
+    }
+  ],
+  "pass_id": "official-1444-reconstruction-v1",
+  "schema_version": "0.1.0",
+  "start_date": "1444-11-11",
+  "type": "FeatureCollection"
+}

@@ -1,0 +1,81 @@
+{
+  "artifact_version": "1.0.0",
+  "artifacts": {
+    "boundary_registry": {
+      "path": "boundaries.geojson",
+      "sha256": "af79c31ce1701897033b834b76bdb2cd38c64a32fb531b160c359efede08aca6",
+      "version": "1.0.0"
+    },
+    "changelog": {
+      "path": "changelog.json",
+      "sha256": "872ad4d353b1273fb24639304c86a5d059e168ce0a3140714f0da0417b83f192",
+      "version": "1.0.0"
+    },
+    "coverage_matrix": {
+      "path": "coverage.json",
+      "sha256": "d013f0956d573b4dfbd8fc321f9047c1d95797e0b241a8e90d9693aacf103ed4",
+      "version": "1.0.0"
+    },
+    "dossier": {
+      "path": "dossier.md",
+      "sha256": "ab9188bf9b44a3f00a34a038694e994d1d328e2282b8002ee6a0f7bb07c97461",
+      "version": "1.0.0"
+    },
+    "full_build_geometry": {
+      "path": "build.geojson",
+      "sha256": "e640a6346acc1338afc3078f412635bf140f123565ddb9d922f70d83dbecdb8c",
+      "version": "1.0.0"
+    },
+    "golden_borders": {
+      "path": "golden.json",
+      "sha256": "4728e47c1773371230fb37b820e5dc0ac6bf413ee751e35e333b318b8430da9c",
+      "version": "1.0.0"
+    },
+    "location_assignments": {
+      "path": "assignments.json",
+      "sha256": "080d48f8dd90fa3c89310950d78c7c51bc1ef5a245f226309d7ffc198dbfce46",
+      "version": "1.0.0"
+    },
+    "polity_gazetteer": {
+      "path": "gazetteer.json",
+      "sha256": "562edac6db70779e0a71031d4a3e8414ab0c2ab9cda138a7e3452976d1132d28",
+      "version": "1.0.0"
+    },
+    "source_manifest": {
+      "path": "source_manifest.json",
+      "sha256": "ba62d39ea54e2261b70b5744ae54487aa7be6b50fb0e5c793e66b6f90f143b33",
+      "version": "1.0.0"
+    }
+  },
+  "document_type": "start_date_research_pass",
+  "era": "late-medieval",
+  "fabric_revision": "global-h3-v1-r1",
+  "generated_at": "2026-07-14T12:00:00Z",
+  "geometry_revision": "1444-r1",
+  "pass_id": "official-1444-reconstruction-v1",
+  "schema_version": "0.1.0",
+  "scope": {
+    "layers": [
+      "geometry",
+      "politics",
+      "hierarchy",
+      "gazetteer_relationships"
+    ],
+    "priority_regions": [
+      "low-countries",
+      "burgundy",
+      "france",
+      "hre",
+      "central-europe"
+    ],
+    "regions": [
+      "low-countries",
+      "burgundy",
+      "france",
+      "hre",
+      "central-europe"
+    ]
+  },
+  "start_date": "1444-11-11",
+  "version": "1.0.0"
+}

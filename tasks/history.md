@@ -1,5 +1,91 @@
 # History
 
+## 2026-07-15 - M25 v2 acceptance infrastructure
+
+- Added native Draft 2020-12 schema 0.2 validation while preserving the rejected
+  schema 0.1 `official-1444-reconstruction-v1` fixture and its exact 14-error
+  gate; v2 documents are no longer projected onto v1 contracts.
+- Added hashed derived-evidence, georeferencing/residual, independent-source,
+  kilometre golden-border, typed-politics, hierarchy, constraint-hash,
+  aggregation/adjacency, and independent-review checks.
+- Added historical-constraint-aware aggregation and deterministic five-region
+  SVG review-sheet generation via `gpm qa render`.
+- Added a complete passing miniature v2 pass and adversarial gates for missing
+  coverage masks, copied modern geometry, invalid lineage, hard-constraint
+  crossings, incomplete politics/hierarchy, bad adjacency, and tampered review
+  artifacts. The focused M23–M25 suite now has 50 passing tests and the complete
+  repository suite has 277.
+- Rechecked source availability and stopped before production r2: the surfaced
+  Burgundy scholarship, circa-1500/16th-century HRE datasets, and 1558 Brabant
+  raster do not provide date-valid, independently corroborated reconstruction
+  for every certified 1444 frontier in all five priority regions.
+- Kept M25 active: no v2 artifact or acceptance claim was created without the
+  missing B-grade research, real r1→r2 split lineage, and human reviewer.
+
+## 2026-07-15 - Comprehensive Roadmap and Runtime Review
+
+- Audited M0–M28 claims against implementation, tests, public artifacts, and
+  the M0–M23, M24, and M25 acceptance evidence. Retained M25 as **FAIL/active**
+  and preserved its withdrawn candidate as chronological rejection evidence.
+- Classified M15, M16, and M20 as prototype/infrastructure complete and marked
+  M7 exports and M19 PMTiles as foundations to reuse, not production historical
+  coverage or a game-runtime implementation.
+- Separated canonical research/authoring artifacts, compiled runtime assets,
+  and optional debug/evidence assets. Fixed the `eu-like` runtime target at
+  22,000 provinces with persistent stable IDs and pack-local dense indices.
+- Inserted planned M25.5 after M25: an engine-neutral runtime compiler,
+  reference pack/loader, deterministic compact tables and CSR graphs,
+  scenario deltas, LOD/tiled geometry, compatibility revisions, migrations,
+  debug symbols, and measurable size/startup/memory/tile-read gates.
+- Sequenced M26–M28 through the runtime contract and required both canonical
+  research acceptance and runtime-pack validation for official-era claims.
+  This review changed roadmap documentation only; runtime implementation remains
+  deferred to M25.5.
+
+## 2026-07-14 - M25 Independent Acceptance Audit
+
+- Rejected and withdrew the initial M25 candidate: its 15 synthetic `loc-*`
+  assignments and manually coupled rectangles were not the canonical M23
+  fabric or the required 22,000-province production aggregation.
+- Independently retrieved and hashed the four cited historical maps. Their
+  represented dates bracket 1444, but the pass had no georeferencing controls
+  or per-boundary traceability, so historical frontiers were downgraded to soft
+  evidence and coverage to C/U.
+- Hardened `gpm qa start-date` with transitive fabric sidecars, location and
+  split-lineage checks, membership-derived IDs and geometry unions, production
+  count enforcement, positive hard-evidence gating, and overlap rejection.
+- Rebuilt the 30,003-location M23 fabric and 22,000-province neutral aggregation
+  twice in temporary storage. This proved the production pipeline remains
+  available but does not convert the missing historical reconstruction into a
+  release. Final M25 audit verdict: **FAIL; milestone active**.
+
+## 2026-07-14 - M25 1444 Initial Candidate (superseded by audit)
+
+- Generated `official-1444-reconstruction-v1` as a deterministic nine-artifact
+  M24 research pass covering the Low Countries, Burgundy, France, the HRE, and
+  Central Europe.
+- Added reviewed historical-cartography lineage, pinned open modern negative
+  controls, a typed polity/dependency gazetteer, and accepted Brussels/Nord
+  targeted location splits.
+- Initially published B geometry/politics/relationship and C hierarchy grades;
+  the independent audit later found these grades unsupported and replaced them
+  with C/U.
+- Executed 15 full-build spatial gates with zero findings, including the named
+  Brussels-Capital Region and French Nord department negative regressions.
+
+## 2026-07-13 - M24 Start-Date Research Framework
+
+- Implemented the nine-artifact start-date pass manifest and machine-readable
+  schemas for research sources, dated boundaries, polity relationships,
+  location assignments/splits, golden definitions, pinned full-build geometry,
+  coverage, and changes.
+- Added fail-closed `gpm qa start-date` validation for checksums, containment,
+  cross-artifact IDs, source review, revision pins, executed priority-region
+  spatial assertions, mandatory coverage layers, A-grade certification, and
+  changelog versioning.
+- Added a complete miniature geometry pass plus adversarial schema, reference,
+  temporal, containment, checksum, grade, spatial, CLI, and packaging coverage.
+
 ## 2026-07-13 - Ship M23 and M0–M23 Acceptance Remediation
 
 - Committed and pushed the M23 neutral-fabric implementation plus comprehensive

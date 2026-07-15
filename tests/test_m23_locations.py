@@ -115,6 +115,13 @@ def test_hard_and_soft_aggregation_and_paintability(tmp_path: Path) -> None:
         modern_boundary_influence="soft", generated_at="2026-01-01T00:00:00+00:00",
     )
     assert soft.province_count == 5
+    soft_repeat = aggregate_location_provinces(
+        "eu-like", location_input=output / "locations.geojson",
+        output_dir=tmp_path / "soft-repeat", target_province_count=5,
+        modern_boundary_influence="soft", generated_at="2026-01-01T00:00:00+00:00",
+    )
+    for name in ("provinces.geojson", "province_membership.csv", "province_aggregation_manifest.json"):
+        assert (tmp_path / "soft" / name).read_bytes() == (tmp_path / "soft-repeat" / name).read_bytes()
     adjacency = build_land_adjacency(
         "eu-like", province_input=tmp_path / "soft" / "provinces.geojson",
         output=tmp_path / "soft" / "adjacency.csv",

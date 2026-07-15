@@ -1,0 +1,264 @@
+{
+  "artifact_version": "1.0.0",
+  "assertions": [
+    {
+      "assertion_id": "border-low-countries-1444",
+      "assertion_type": "border",
+      "boundary_feature_ids": [
+        "frontier-brabant-liege"
+      ],
+      "expectation": "positive",
+      "layer": "geometry",
+      "notes": "The reconstructed shared edge matches the dated generalized frontier.",
+      "region_id": "low-countries",
+      "spatial_relation": "border_matches_boundary_hausdorff_lte",
+      "subject_ids": [
+        "province-brabant",
+        "province-liege"
+      ],
+      "tolerance": 1e-06,
+      "unit": "coordinate_units"
+    },
+    {
+      "assertion_id": "capital-low-countries-1444",
+      "assertion_type": "capital",
+      "boundary_feature_ids": [],
+      "expectation": "positive",
+      "layer": "politics",
+      "notes": "The gazetteer capital is contained by its assigned province.",
+      "region_id": "low-countries",
+      "spatial_relation": "capital_within_subject",
+      "subject_ids": [
+        "loc-brussels",
+        "province-brabant"
+      ],
+      "tolerance": 1,
+      "unit": "boolean"
+    },
+    {
+      "assertion_id": "negative-modern-brussels-capital-region",
+      "assertion_type": "outline",
+      "boundary_feature_ids": [
+        "forbidden-modern-brussels-capital-region"
+      ],
+      "expectation": "negative_anachronism",
+      "layer": "geometry",
+      "notes": "The reconstructed targeted cell does not reproduce the forbidden modern administrative outline.",
+      "region_id": "low-countries",
+      "spatial_relation": "forbidden_outline_overlap_ratio_lte",
+      "subject_ids": [
+        "province-brussels-quarter"
+      ],
+      "tolerance": 0.12,
+      "unit": "ratio"
+    },
+    {
+      "assertion_id": "border-burgundy-1444",
+      "assertion_type": "border",
+      "boundary_feature_ids": [
+        "frontier-france-ducal-burgundy"
+      ],
+      "expectation": "positive",
+      "layer": "geometry",
+      "notes": "The reconstructed shared edge matches the dated generalized frontier.",
+      "region_id": "burgundy",
+      "spatial_relation": "border_matches_boundary_hausdorff_lte",
+      "subject_ids": [
+        "province-france-east",
+        "province-ducal-burgundy"
+      ],
+      "tolerance": 1e-06,
+      "unit": "coordinate_units"
+    },
+    {
+      "assertion_id": "capital-burgundy-1444",
+      "assertion_type": "capital",
+      "boundary_feature_ids": [],
+      "expectation": "positive",
+      "layer": "politics",
+      "notes": "The gazetteer capital is contained by its assigned province.",
+      "region_id": "burgundy",
+      "spatial_relation": "capital_within_subject",
+      "subject_ids": [
+        "loc-dijon",
+        "province-ducal-burgundy"
+      ],
+      "tolerance": 1,
+      "unit": "boolean"
+    },
+    {
+      "assertion_id": "negative-modern-burgundy",
+      "assertion_type": "outline",
+      "boundary_feature_ids": [
+        "forbidden-modern-bourgogne-franche-comte"
+      ],
+      "expectation": "negative_anachronism",
+      "layer": "geometry",
+      "notes": "The reconstructed targeted cell does not reproduce the forbidden modern administrative outline.",
+      "region_id": "burgundy",
+      "spatial_relation": "forbidden_outline_overlap_ratio_lte",
+      "subject_ids": [
+        "province-dijon-quarter"
+      ],
+      "tolerance": 0.01,
+      "unit": "ratio"
+    },
+    {
+      "assertion_id": "border-france-1444",
+      "assertion_type": "border",
+      "boundary_feature_ids": [
+        "frontier-france-english-calais"
+      ],
+      "expectation": "positive",
+      "layer": "geometry",
+      "notes": "The reconstructed shared edge matches the dated generalized frontier.",
+      "region_id": "france",
+      "spatial_relation": "border_matches_boundary_hausdorff_lte",
+      "subject_ids": [
+        "province-france-north",
+        "province-english-calais"
+      ],
+      "tolerance": 1e-06,
+      "unit": "coordinate_units"
+    },
+    {
+      "assertion_id": "capital-france-1444",
+      "assertion_type": "capital",
+      "boundary_feature_ids": [],
+      "expectation": "positive",
+      "layer": "politics",
+      "notes": "The gazetteer capital is contained by its assigned province.",
+      "region_id": "france",
+      "spatial_relation": "capital_within_subject",
+      "subject_ids": [
+        "loc-paris",
+        "province-france-north"
+      ],
+      "tolerance": 1,
+      "unit": "boolean"
+    },
+    {
+      "assertion_id": "negative-modern-nord-department",
+      "assertion_type": "outline",
+      "boundary_feature_ids": [
+        "forbidden-modern-nord-department"
+      ],
+      "expectation": "negative_anachronism",
+      "layer": "geometry",
+      "notes": "The reconstructed targeted cell does not reproduce the forbidden modern administrative outline.",
+      "region_id": "france",
+      "spatial_relation": "forbidden_outline_overlap_ratio_lte",
+      "subject_ids": [
+        "province-lille-quarter"
+      ],
+      "tolerance": 0.25,
+      "unit": "ratio"
+    },
+    {
+      "assertion_id": "border-hre-1444",
+      "assertion_type": "border",
+      "boundary_feature_ids": [
+        "frontier-cologne-palatinate"
+      ],
+      "expectation": "positive",
+      "layer": "geometry",
+      "notes": "The reconstructed shared edge matches the dated generalized frontier.",
+      "region_id": "hre",
+      "spatial_relation": "border_matches_boundary_hausdorff_lte",
+      "subject_ids": [
+        "province-cologne",
+        "province-palatinate"
+      ],
+      "tolerance": 1e-06,
+      "unit": "coordinate_units"
+    },
+    {
+      "assertion_id": "capital-hre-1444",
+      "assertion_type": "capital",
+      "boundary_feature_ids": [],
+      "expectation": "positive",
+      "layer": "politics",
+      "notes": "The gazetteer capital is contained by its assigned province.",
+      "region_id": "hre",
+      "spatial_relation": "capital_within_subject",
+      "subject_ids": [
+        "loc-cologne",
+        "province-cologne"
+      ],
+      "tolerance": 1,
+      "unit": "boolean"
+    },
+    {
+      "assertion_id": "negative-modern-hre",
+      "assertion_type": "outline",
+      "boundary_feature_ids": [
+        "forbidden-modern-north-rhine-westphalia"
+      ],
+      "expectation": "negative_anachronism",
+      "layer": "geometry",
+      "notes": "The reconstructed targeted cell does not reproduce the forbidden modern administrative outline.",
+      "region_id": "hre",
+      "spatial_relation": "forbidden_outline_overlap_ratio_lte",
+      "subject_ids": [
+        "province-cologne-quarter"
+      ],
+      "tolerance": 0.01,
+      "unit": "ratio"
+    },
+    {
+      "assertion_id": "border-central-europe-1444",
+      "assertion_type": "border",
+      "boundary_feature_ids": [
+        "frontier-bohemia-habsburg"
+      ],
+      "expectation": "positive",
+      "layer": "geometry",
+      "notes": "The reconstructed shared edge matches the dated generalized frontier.",
+      "region_id": "central-europe",
+      "spatial_relation": "border_matches_boundary_hausdorff_lte",
+      "subject_ids": [
+        "province-bohemia",
+        "province-habsburg"
+      ],
+      "tolerance": 1e-06,
+      "unit": "coordinate_units"
+    },
+    {
+      "assertion_id": "capital-central-europe-1444",
+      "assertion_type": "capital",
+      "boundary_feature_ids": [],
+      "expectation": "positive",
+      "layer": "politics",
+      "notes": "The gazetteer capital is contained by its assigned province.",
+      "region_id": "central-europe",
+      "spatial_relation": "capital_within_subject",
+      "subject_ids": [
+        "loc-prague",
+        "province-bohemia"
+      ],
+      "tolerance": 1,
+      "unit": "boolean"
+    },
+    {
+      "assertion_id": "negative-modern-central-europe",
+      "assertion_type": "outline",
+      "boundary_feature_ids": [
+        "forbidden-modern-czechia"
+      ],
+      "expectation": "negative_anachronism",
+      "layer": "geometry",
+      "notes": "The reconstructed targeted cell does not reproduce the forbidden modern administrative outline.",
+      "region_id": "central-europe",
+      "spatial_relation": "forbidden_outline_overlap_ratio_lte",
+      "subject_ids": [
+        "province-prague-quarter"
+      ],
+      "tolerance": 0.01,
+      "unit": "ratio"
+    }
+  ],
+  "document_type": "spatial_golden_borders",
+  "pass_id": "official-1444-reconstruction-v1",
+  "schema_version": "0.1.0",
+  "start_date": "1444-11-11"
+}

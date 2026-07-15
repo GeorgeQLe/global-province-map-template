@@ -2,21 +2,38 @@
 
 ## Active
 
-- M24 start-date research framework implementation.
+- M25 1444 fabric-backed research and reconstruction remediation.
 
 ## Up next (from roadmap)
 
-- M24 start-date research framework — contract complete in
-  `docs/m24-start-date-research-framework.md`; implementation not started.
-- M25 1444 reconstruction: Low Countries/Burgundy/France/HRE/Central Europe,
-  including the Brussels/Nord negative-anachronism regression.
-- M26 1836 reconstruction: post-Napoleonic Europe and priority colonial theaters.
+- M25: replace the withdrawn synthetic candidate with a pinned 30,003-location,
+  22,000-province build; reconstruct and review traceable dated boundaries;
+  accept Brussels/Nord splits through real parent/child lineage; restore B
+  geometry/politics/relationship and C hierarchy coverage across all five
+  priority regions; publish reproducible QA and visual-review evidence. No
+  release claim until the hardened start-date gate passes.
+  Schema 0.2, constrained aggregation, kilometre QA, typed politics/hierarchy,
+  sidecar validation, and deterministic SVG review infrastructure are complete;
+  evidence production, r1→r2 splits, assembly, and human review remain.
+- M25.5 game runtime compiler and reference pack: implement the proposed
+  `gpm export runtime` contract, dense indices, compact tables, CSR graphs,
+  scenario deltas, LOD/tiled geometry, compatibility/migration metadata,
+  debug symbols, reference loader, and benchmark harness. M7 and M19 are reused
+  foundations. Implementation follows an accepted M25 pass; design may proceed
+  in parallel.
+- M26 1836 reconstruction: post-Napoleonic Europe and priority colonial
+  theaters, reusing the runtime contract and publishing deltas or migrations.
 - M27 official 1914 imperial-era pass: German, Austro-Hungarian, Russian, and
-  Ottoman empires.
+  Ottoman empires, reusing the runtime contract.
 - M28 1936 reconstruction: interwar borders, mandates, colonies, and strategic
-  groupings. M25–M28 release independently with regional coverage grades.
+  groupings, reusing the runtime contract. Official-era claims require both
+  research acceptance and runtime-pack validation.
 
 ## Completed
+
+- [x] M24 start-date research framework: nine pinned pass artifacts, dated
+  boundary and polity contracts, typed uncertainty/relationships, full-build
+  spatial results, regional coverage gates, schemas, and fail-closed CLI QA.
 
 - [x] M23 historically paintable location fabric: neutral-default province
   builds, versioned split migration, complete source/license lineage,

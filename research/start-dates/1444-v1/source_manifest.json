@@ -1,0 +1,141 @@
+{
+  "artifact_version": "1.0.0",
+  "conflict_resolution_notes": [
+    "The 1444 start date controls; maps from adjacent dates are corroboration, not automatic truth.",
+    "The 1477 Burgundian map contributes only holdings whose legend dates acquisition to 1443 or earlier.",
+    "Modern administrative data is never positive historical evidence; it is used only to reject anachronistic outlines."
+  ],
+  "document_type": "start_date_source_manifest",
+  "pass_id": "official-1444-reconstruction-v1",
+  "schema_version": "0.1.0",
+  "sources": [
+    {
+      "access_date": "2026-07-14",
+      "checksum": "123742af7f7e8390d16ca01817e14b5cfc1e066233ea8be31ce2ccf72146008e",
+      "citation": "William R. Shepherd, Historical Atlas: France in 1453 (1923 scan).",
+      "license": "Public Domain Mark 1.0",
+      "review_status": "reviewed",
+      "source_id": "shepherd-france-1453",
+      "transformations": [
+        "visual georeferencing",
+        "manual generalization",
+        "topology normalization"
+      ],
+      "url": "https://commons.wikimedia.org/wiki/File:France_1453_shepherd.jpg",
+      "version": "Commons oldid 1226108342"
+    },
+    {
+      "access_date": "2026-07-14",
+      "checksum": "44bc2f48fc19a8ee00bb3b534387feeafdaca9597648948923b1ff4cf96d6cd4",
+      "citation": "Gustav Droysen, Allgemeiner historischer Handatlas: Holy Roman Empire circa 1400 (1886).",
+      "license": "Public domain",
+      "review_status": "reviewed",
+      "source_id": "droysen-hre-1400",
+      "transformations": [
+        "visual georeferencing",
+        "manual generalization",
+        "topology normalization"
+      ],
+      "url": "https://commons.wikimedia.org/wiki/File:Heiliges_R%C3%B6misches_Reich_1400.png",
+      "version": "Commons oldid 1102854700"
+    },
+    {
+      "access_date": "2026-07-14",
+      "checksum": "e75c37a522cfad805b66728f8e45b8a828d9ff6e0d137072d809456df6794d61",
+      "citation": "Lynn H. Nelson, Europe in 1430.",
+      "license": "Public domain dedication",
+      "review_status": "reviewed",
+      "source_id": "nelson-europe-1430",
+      "transformations": [
+        "cross-map polity review",
+        "manual generalization"
+      ],
+      "url": "https://commons.wikimedia.org/wiki/File:Europe_in_1430.PNG",
+      "version": "Commons page accessed 2026-07-14"
+    },
+    {
+      "access_date": "2026-07-14",
+      "checksum": "55be2e03be689ad12d964486e118466fb58d675866a4672f03c2fee7386d88d9",
+      "citation": "Denis Jacquerye, Burgundian Netherlands 1477, acquisition chronology.",
+      "license": "CC BY-SA 2.5",
+      "review_status": "reviewed",
+      "source_id": "jacquerye-burgundian-netherlands-1477",
+      "transformations": [
+        "retained only holdings with acquisition dates on or before 1444",
+        "manual generalization"
+      ],
+      "url": "https://commons.wikimedia.org/wiki/File:Map_Burgundian_Netherlands_1477-fr.svg",
+      "version": "Commons page accessed 2026-07-14"
+    },
+    {
+      "access_date": "2026-07-14",
+      "checksum": "7af87f5035779f0aefe5bf930288572979e490ab0441fd9b92942a519bea0974",
+      "citation": "geoBoundaries BEL ADM1, 2022 regions, Eurostat source.",
+      "license": "CC BY 4.0",
+      "review_status": "reviewed",
+      "source_id": "geoboundaries-bel-adm1-2022",
+      "transformations": [
+        "selected Brussels Hoofdstedelijk",
+        "simplified to tolerance 0.03 degrees"
+      ],
+      "url": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/BEL/ADM1/geoBoundaries-BEL-ADM1_simplified.geojson",
+      "version": "BEL-ADM1-27649430; commit 9469f09"
+    },
+    {
+      "access_date": "2026-07-14",
+      "checksum": "a14ed131c86c802e5d546c7cbeccbd4daebc94a66fea413f563935a53504f251",
+      "citation": "geoBoundaries FRA ADM2, 2022 departments, IGN source.",
+      "license": "Etalab Open License 2.0",
+      "review_status": "reviewed",
+      "source_id": "geoboundaries-fra-adm2-2022",
+      "transformations": [
+        "selected Nord",
+        "simplified to tolerance 0.03 degrees"
+      ],
+      "url": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/FRA/ADM2/geoBoundaries-FRA-ADM2_simplified.geojson",
+      "version": "FRA-ADM2-29444166; commit 9469f09"
+    },
+    {
+      "access_date": "2026-07-14",
+      "checksum": "26b876de5b03c99399ccec16a367deb8681c4953eecede32ac6f5d4fb581bf09",
+      "citation": "geoBoundaries FRA ADM1, 2022 regions, IGN source.",
+      "license": "Etalab Open License 2.0",
+      "review_status": "reviewed",
+      "source_id": "geoboundaries-fra-adm1-2022",
+      "transformations": [
+        "selected Bourgogne-Franche-Comte",
+        "reduced to a conservative envelope"
+      ],
+      "url": "https://www.geoboundaries.org/api/current/gbOpen/FRA/ADM1/",
+      "version": "2022 current release metadata accessed 2026-07-14"
+    },
+    {
+      "access_date": "2026-07-14",
+      "checksum": "65af06f80e837028997c396d2c67d74fb1e1752d884e9a0638d5c736ee8c345a",
+      "citation": "geoBoundaries DEU ADM1, 2022 states.",
+      "license": "Open boundary data; see API metadata",
+      "review_status": "reviewed",
+      "source_id": "geoboundaries-deu-adm1-2022",
+      "transformations": [
+        "selected North Rhine-Westphalia",
+        "reduced to a conservative envelope"
+      ],
+      "url": "https://www.geoboundaries.org/api/current/gbOpen/DEU/ADM1/",
+      "version": "2022 current release metadata accessed 2026-07-14"
+    },
+    {
+      "access_date": "2026-07-14",
+      "checksum": "26452c32c6013dabb946428b8b97e43c52982b7eb7112075237fc415262a3e28",
+      "citation": "geoBoundaries CZE ADM0, 2022 national boundary.",
+      "license": "Open boundary data; see API metadata",
+      "review_status": "reviewed",
+      "source_id": "geoboundaries-cze-adm0-2022",
+      "transformations": [
+        "reduced to a conservative envelope"
+      ],
+      "url": "https://www.geoboundaries.org/api/current/gbOpen/CZE/ADM0/",
+      "version": "2022 current release metadata accessed 2026-07-14"
+    }
+  ],
+  "start_date": "1444-11-11"
+}

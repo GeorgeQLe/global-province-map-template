@@ -55,18 +55,42 @@ The implementation should eventually generate:
 - `attribution.json`
 - optional `pmtiles` or vector tiles for review UIs
 - game template export packs (definitions, adjacency, localization, scenarios)
+- compact engine-neutral runtime packs (dense tables, CSR graphs, scenario
+  deltas, LOD/tiled geometry, compatibility and migration metadata)
 - atlas / SaaS packages (scenario-joined choropleths, legends, attribution)
 
 ## Status
 
-M23 is implemented as the foundation of the M23–M28 production historical
-program. It builds a neutral,
-cross-admin [location fabric](docs/m23-location-fabric.md); M24 standardizes the
-[start-date research framework](docs/m24-start-date-research-framework.md).
-Independently versioned/releasable reconstruction passes then cover **1444
-(M25), 1836 (M26), official 1914 (M27), and 1936 (M28)** with regional coverage
-grades. Stable identity belongs primarily to locations; province IDs derive
-from location membership plus profile, era, and geometry revision.
+M23 and M24 provide the authoring foundation of the production historical
+program. The execution order is **M25 → M25.5 → M26 → M27 → M28**. M25 remains
+active after its independent acceptance audit rejected the initial 1444
+candidate. M23 builds a neutral, cross-admin
+[location fabric](docs/m23-location-fabric.md); M24 standardizes the
+[start-date research framework](docs/m24-start-date-research-framework.md) with
+versioned schemas and fail-closed `gpm qa start-date` pass validation. The
+[M25 1444 candidate](docs/m25-1444-reconstruction.md) retains only C/U claims
+pending fabric-backed reconstruction and per-boundary evidence. Its
+Brussels/Nord measurements are regressions, not release certification.
+Schema 0.2 acceptance infrastructure now validates derived evidence,
+georeferencing error, typed politics/hierarchy, constrained aggregation,
+adjacency, and independent SVG review; it does not create or certify a v2 pass.
+
+After an accepted M25 canonical pass, planned **M25.5 — Game Runtime Compiler
+and Reference Pack** will introduce the proposed `gpm export runtime` contract:
+stable-ID↔dense-index mappings, compact tables and CSR graphs, scenario deltas,
+LOD/tiled geometry, a hashed compatibility manifest, migration metadata, an
+optional debug-symbol pack, and an engine-neutral reference loader/benchmark.
+M7 exports and M19 PMTiles are foundations for that work; they are not the
+runtime compiler. Later independent passes cover **1836 (M26), official 1914
+(M27), and 1936 (M28)** and reuse the runtime contract.
+
+Canonical research/authoring artifacts remain reproducible evidence inputs.
+Normal game-runtime packs exclude raw locations and research evidence, use
+precompiled LOD geometry or PMTiles/MVT rather than startup-parsed full GeoJSON,
+and treat stable IDs as public identity while dense indices remain pack-local.
+Official-era claims require both research acceptance and runtime-pack
+validation. Stable province IDs derive from location membership plus profile,
+era, and geometry revision.
 `gpm build provinces` now consumes `data/processed/locations.geojson` by
 default; the former Natural Earth scaffold is available only through the
 explicit `--legacy-modern-admin` compatibility flag. Targeted splits require a

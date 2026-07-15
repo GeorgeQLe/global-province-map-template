@@ -1,0 +1,819 @@
+{
+  "artifact_version": "1.0.0",
+  "document_type": "start_date_full_build_geometry",
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              4.0,
+              50.5
+            ],
+            [
+              5.1,
+              50.5
+            ],
+            [
+              5.1,
+              51.3
+            ],
+            [
+              4.0,
+              51.3
+            ],
+            [
+              4.0,
+              50.5
+            ]
+          ],
+          [
+            [
+              4.34,
+              50.82
+            ],
+            [
+              4.34,
+              50.87
+            ],
+            [
+              4.38,
+              50.87
+            ],
+            [
+              4.38,
+              50.82
+            ],
+            [
+              4.34,
+              50.82
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "feature_id": "province-brabant",
+        "feature_type": "province"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              5.1,
+              50.5
+            ],
+            [
+              5.8,
+              50.5
+            ],
+            [
+              5.8,
+              51.3
+            ],
+            [
+              5.1,
+              51.3
+            ],
+            [
+              5.1,
+              50.5
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "feature_id": "province-liege",
+        "feature_type": "province"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              4.34,
+              50.82
+            ],
+            [
+              4.38,
+              50.82
+            ],
+            [
+              4.38,
+              50.87
+            ],
+            [
+              4.34,
+              50.87
+            ],
+            [
+              4.34,
+              50.82
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "feature_id": "province-brussels-quarter",
+        "feature_type": "province"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              3.0,
+              46.5
+            ],
+            [
+              4.0,
+              46.5
+            ],
+            [
+              4.0,
+              48.0
+            ],
+            [
+              3.0,
+              48.0
+            ],
+            [
+              3.0,
+              46.5
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "feature_id": "province-france-east",
+        "feature_type": "province"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              4.0,
+              46.5
+            ],
+            [
+              5.2,
+              46.5
+            ],
+            [
+              5.2,
+              48.0
+            ],
+            [
+              4.0,
+              48.0
+            ],
+            [
+              4.0,
+              46.5
+            ]
+          ],
+          [
+            [
+              4.98,
+              47.28
+            ],
+            [
+              4.98,
+              47.38
+            ],
+            [
+              5.08,
+              47.38
+            ],
+            [
+              5.08,
+              47.28
+            ],
+            [
+              4.98,
+              47.28
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "feature_id": "province-ducal-burgundy",
+        "feature_type": "province"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              4.98,
+              47.28
+            ],
+            [
+              5.08,
+              47.28
+            ],
+            [
+              5.08,
+              47.38
+            ],
+            [
+              4.98,
+              47.38
+            ],
+            [
+              4.98,
+              47.28
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "feature_id": "province-dijon-quarter",
+        "feature_type": "province"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              1.0,
+              49.5
+            ],
+            [
+              2.0,
+              49.5
+            ],
+            [
+              2.0,
+              50.5
+            ],
+            [
+              1.0,
+              50.5
+            ],
+            [
+              1.0,
+              49.5
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "feature_id": "province-france-north",
+        "feature_type": "province"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              1.0,
+              50.5
+            ],
+            [
+              2.0,
+              50.5
+            ],
+            [
+              2.0,
+              51.2
+            ],
+            [
+              1.0,
+              51.2
+            ],
+            [
+              1.0,
+              50.5
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "feature_id": "province-english-calais",
+        "feature_type": "province"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              3.0,
+              50.7
+            ],
+            [
+              3.5,
+              50.7
+            ],
+            [
+              3.5,
+              50.95
+            ],
+            [
+              3.0,
+              50.95
+            ],
+            [
+              3.0,
+              50.7
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "feature_id": "province-lille-quarter",
+        "feature_type": "province"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              6.5,
+              50.0
+            ],
+            [
+              7.0,
+              50.0
+            ],
+            [
+              7.0,
+              51.0
+            ],
+            [
+              6.5,
+              51.0
+            ],
+            [
+              6.5,
+              50.0
+            ]
+          ],
+          [
+            [
+              6.7,
+              50.91
+            ],
+            [
+              6.7,
+              50.98
+            ],
+            [
+              6.78,
+              50.98
+            ],
+            [
+              6.78,
+              50.91
+            ],
+            [
+              6.7,
+              50.91
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "feature_id": "province-cologne",
+        "feature_type": "province"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              7.0,
+              50.0
+            ],
+            [
+              7.7,
+              50.0
+            ],
+            [
+              7.7,
+              51.0
+            ],
+            [
+              7.0,
+              51.0
+            ],
+            [
+              7.0,
+              50.0
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "feature_id": "province-palatinate",
+        "feature_type": "province"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              6.7,
+              50.91
+            ],
+            [
+              6.78,
+              50.91
+            ],
+            [
+              6.78,
+              50.98
+            ],
+            [
+              6.7,
+              50.98
+            ],
+            [
+              6.7,
+              50.91
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "feature_id": "province-cologne-quarter",
+        "feature_type": "province"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              13.0,
+              49.0
+            ],
+            [
+              15.0,
+              49.0
+            ],
+            [
+              15.0,
+              51.0
+            ],
+            [
+              13.0,
+              51.0
+            ],
+            [
+              13.0,
+              49.0
+            ]
+          ],
+          [
+            [
+              14.35,
+              49.98
+            ],
+            [
+              14.35,
+              50.15
+            ],
+            [
+              14.55,
+              50.15
+            ],
+            [
+              14.55,
+              49.98
+            ],
+            [
+              14.35,
+              49.98
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "feature_id": "province-bohemia",
+        "feature_type": "province"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              15.0,
+              49.0
+            ],
+            [
+              17.0,
+              49.0
+            ],
+            [
+              17.0,
+              51.0
+            ],
+            [
+              15.0,
+              51.0
+            ],
+            [
+              15.0,
+              49.0
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "feature_id": "province-habsburg",
+        "feature_type": "province"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              14.35,
+              49.98
+            ],
+            [
+              14.55,
+              49.98
+            ],
+            [
+              14.55,
+              50.15
+            ],
+            [
+              14.35,
+              50.15
+            ],
+            [
+              14.35,
+              49.98
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "feature_id": "province-prague-quarter",
+        "feature_type": "province"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          4.6,
+          50.9
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "feature_id": "loc-brussels",
+        "feature_type": "capital"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          5.4,
+          50.9
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "feature_id": "loc-liege",
+        "feature_type": "capital"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          4.36,
+          50.845
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "feature_id": "loc-brussels-quarter",
+        "feature_type": "capital"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          3.5,
+          47.2
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "feature_id": "loc-france-east",
+        "feature_type": "capital"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          4.8,
+          47.3
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "feature_id": "loc-dijon",
+        "feature_type": "capital"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          5.03,
+          47.33
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "feature_id": "loc-dijon-quarter",
+        "feature_type": "capital"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          1.5,
+          50.0
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "feature_id": "loc-paris",
+        "feature_type": "capital"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          1.5,
+          50.8
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "feature_id": "loc-calais",
+        "feature_type": "capital"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          3.25,
+          50.82
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "feature_id": "loc-lille-quarter",
+        "feature_type": "capital"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          6.8,
+          50.6
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "feature_id": "loc-cologne",
+        "feature_type": "capital"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          7.3,
+          50.5
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "feature_id": "loc-heidelberg",
+        "feature_type": "capital"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          6.74,
+          50.95
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "feature_id": "loc-cologne-quarter",
+        "feature_type": "capital"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          14.0,
+          50.0
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "feature_id": "loc-prague",
+        "feature_type": "capital"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          16.0,
+          50.0
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "feature_id": "loc-vienna",
+        "feature_type": "capital"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          14.45,
+          50.06
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "feature_id": "loc-prague-quarter",
+        "feature_type": "capital"
+      },
+      "type": "Feature"
+    }
+  ],
+  "geometry_revision": "1444-r1",
+  "pass_id": "official-1444-reconstruction-v1",
+  "schema_version": "0.1.0",
+  "start_date": "1444-11-11",
+  "type": "FeatureCollection"
+}

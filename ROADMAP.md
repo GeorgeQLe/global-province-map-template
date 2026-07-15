@@ -26,7 +26,8 @@ Canonical pipeline:
 
 ```text
 source layers → neutral atomic locations → era/profile provinces
-              → scenario politics and hierarchy → exports
+              → scenario politics and hierarchy → canonical pass
+              → runtime compiler → engine-neutral runtime pack
 ```
 
 Modern administrative geometry is a reference and attribution input, not the
@@ -34,6 +35,25 @@ permanent partition of the historical map. It is a hard constraint only for a
 modern profile. A **location** is the smallest stable paintable cell; provinces,
 areas, regions, and superregions are versioned aggregations of locations and may
 change by profile, era, and start date.
+
+## Authoring and runtime architecture
+
+The repository separates three artifact classes. A release claim must identify
+which class it covers; a valid authoring pass is not automatically a valid game
+runtime pack.
+
+| Class | Purpose | Normal game-runtime distribution |
+| --- | --- | --- |
+| **Canonical research and authoring artifacts** | Atomic locations, full-detail province geometry, membership and split lineage, source manifests, dated evidence, assignments, coverage, changelogs, and QA results | **No.** These remain reproducible release/evidence inputs. |
+| **Compiled runtime assets** | Dense province and hierarchy tables, CSR graphs, scenario state/deltas, LOD geometry or tiles, runtime manifest, hashes, compatibility revision, and migration metadata | **Yes.** This is the engine-neutral game-facing contract. |
+| **Optional debug and evidence assets** | Stable-ID symbols, lineage/source lookups, coverage and uncertainty overlays, review renders, and assertion diagnostics | Only as a separate debug-symbol/evidence pack. |
+
+Stable IDs are persistent public identity across compatible packs. Dense indices
+are deterministic, pack-local implementation details and must never replace
+stable IDs in saves, mods, evidence, or public APIs. Shipping geometry uses
+precompiled LOD geometry and/or PMTiles/MVT; game startup never parses the full
+canonical GeoJSON. Raw locations and research evidence are excluded from normal
+runtime packs.
 
 ## Historical accuracy quality bar
 
@@ -244,6 +264,21 @@ sample-scoped and are not production historical coverage.
   - Victoria-like states and population/economy emphasis
   - HOI-like states, supply regions, and strategic areas
   - generic globe / SaaS product regions
+- Compile stable IDs into deterministic dense, pack-local indices for
+  simulation arrays while retaining reversible stable-ID mappings.
+- Precompute compact province/hierarchy tables and CSR adjacency for land, sea,
+  straits, and port links; runtime code must not reconstruct topology.
+- Generate triangulated, progressively simplified LOD geometry plus tiled
+  PMTiles/MVT archives suitable for viewport streaming and picking.
+- Build spatial indexes for point/viewport province picking without scanning or
+  unioning full polygon collections.
+- Publish scenario base tables and deterministic deltas so unchanged geometry
+  membership does not force duplicate geometry archives.
+- Version save compatibility independently from pack content hashes and test
+  stable-ID migration whenever membership or identity changes.
+- Benchmark deterministic compilation, startup, memory, archive size, and local
+  viewport tile latency against a documented CI runner and the canonical
+  22,000-province `eu-like` profile.
 
 ## Phase 6: Historical Politics Layers
 
@@ -413,9 +448,11 @@ trivia.
 
 Run era work as explicit programs with acceptance criteria, not one-off demos.
 
-Each program consumes the M24 research artifacts, is independently versioned
-and releasable, and publishes region/era/layer coverage rather than an implied
-global claim.
+Each program consumes the M24 research artifacts and, after M25.5, the shared
+runtime contract. Its canonical pass is independently versioned and publishes
+region/era/layer coverage rather than an implied global claim. An official
+game-runtime release requires both canonical research acceptance and runtime-
+pack validation.
 
 ### 1836 (Victoria-leaning showcase)
 
@@ -552,7 +589,7 @@ Shipped prototype/infrastructure path:
   mode, precomputed adjacency lines, hero owner dissolves, one-command
   regeneration. **Complete** (`gpm demo build`).
 
-Future start-date program:
+Production authoring and runtime program:
 
 - **M23 — Historically Paintable Location Fabric** — **Complete.** Builds neutral cross-admin
   atomic cells with stable location IDs; use population, terrain, settlements,
@@ -568,37 +605,85 @@ Future start-date program:
 - **M24 — Start-Date Research Framework** — standardize research dossiers,
   source manifests, dated boundary registry, polity/dependency gazetteer,
   uncertainty, reconstruction, spatial QA, coverage matrices, and changelogs.
-  Contract: `docs/m24-start-date-research-framework.md`.
+  **Complete.** Versioned schemas plus fail-closed `gpm qa start-date` validate
+  complete passes, cross-artifact lineage/revisions, executed spatial results, and
+  regional release grades. Contract: `docs/m24-start-date-research-framework.md`.
 - **M25 — 1444 Research and Reconstruction Pass** — Low Countries, Burgundy,
   France, HRE, and Central Europe first. Mandatory negative-anachronism
   regression: Brussels must not inherit the modern Brussels-region outline and
   Nord must not survive as a modern French administrative outline.
+  **Active; initial candidate rejected.** The independent M25 audit found
+  synthetic locations, unproven split lineage, manually coupled frontier
+  geometry, and a 15-province fixture mislabeled as a full build. Claims are
+  downgraded to C/U until a fabric-backed 22,000-province reconstruction and
+  traceable historical constraints exist. Completion also requires real M23
+  location/split lineage, reproducible QA, and five-region visual review. No
+  release claim is allowed until the hardened start-date gate passes. Audit:
+  `tasks/m25-acceptance-audit.md`.
+- **M25.5 — Game Runtime Compiler and Reference Pack** — compile an accepted
+  canonical pass with the proposed `gpm export runtime` interface. The pack
+  contains stable-ID↔dense-index mappings, compact province/hierarchy tables,
+  CSR land/sea/strait/port adjacency, scenario base tables and deltas,
+  triangulated LOD geometry plus PMTiles/MVT, a hashed runtime manifest with a
+  compatibility revision, explicit migration metadata, and an optional
+  debug-symbol pack. Ship an engine-neutral reference loader and benchmark
+  harness; Unity, Godot, and web adapters remain future thin integrations.
+  M7 export contracts and M19 PMTiles are foundations reused by this milestone,
+  not superseded implementations. **Planned; implementation begins only after
+  an accepted M25 canonical pass, although schema/compiler design may proceed in
+  parallel.**
 - **M26 — 1836 Research and Reconstruction Pass** — post-Napoleonic Europe and
-  priority colonial theaters.
+  priority colonial theaters. Reuse the M25.5 runtime contract; publish
+  scenario-only deltas when location/province membership is unchanged, and
+  migration metadata when it changes.
 - **M27 — Official 1914 Imperial-Era Pass** — German, Austro-Hungarian, Russian,
-  and Ottoman empires, including dependencies and control relationships.
+  and Ottoman empires, including dependencies and control relationships. Reuse
+  the runtime contract and the same delta/migration rule.
 - **M28 — 1936 Research and Reconstruction Pass** — interwar borders, mandates,
-  colonies, occupations, and strategic groupings.
+  colonies, occupations, and strategic groupings. Reuse the runtime contract
+  and the same delta/migration rule.
 
-Each M25–M28 pass is independently versioned and releasable. Acceptance is by
-published regional coverage grade for each layer, never an implied global claim.
+Each M25–M28 canonical pass is independently versioned. A pass is officially
+releasable only when both its research acceptance gate and M25.5 runtime-pack
+validation pass. Acceptance is by published regional coverage grade for each
+layer, never an implied global claim.
 
-## Open Questions
+### M25.5 runtime acceptance
 
-- What should the default target province count be for game vs atlas products?
-- Should the default public dataset include generated geometry, or only the
-  generator and reproducible recipes?
+- Two compilations in separate clean directories produce byte-identical files.
+- Core simulation tables are at most 16 MiB uncompressed and 8 MiB compressed.
+- CSR adjacency is at most 2 MiB for the 22,000-province profile.
+- Initial metadata plus the lowest map LOD is at most 8 MiB compressed.
+- The complete high-detail geometry archive is at most 128 MiB compressed.
+- On the documented CI runner, the reference loader reads core tables in at
+  most one second with at most 128 MiB peak RSS.
+- Reported local viewport tile-read p95 is at most 25 ms.
+- Runtime code performs no polygon unions, topology reconstruction,
+  georeferencing, or historical-source processing.
+- Runtime IDs, memberships, ownership, hierarchy, and adjacency cross-validate
+  against the accepted canonical pass.
+- Save/load tests cover stable IDs, dense indices, pack revisions,
+  unchanged-pack compatibility, and explicit migration maps.
+
+## Resolved product defaults
+
+- The canonical `eu-like` build contains **22,000 provinces**.
+- Stable IDs are persistent public identity; dense indices are pack-local.
+- Normal runtime packs exclude raw locations and research evidence.
+- Shipping geometry is LOD/tile based and never startup-parsed full GeoJSON.
+- Save compatibility is revisioned and migration-tested.
+- Official-era claims require both research acceptance and runtime validation.
+
+## Engine- and program-specific questions
+
 - How much ODbL data, if any, should be allowed in official builds?
 - Which regions follow the priority regions in each independently released
   start-date pass?
-- Which regions are mandatory for “official era” marketing claims?
 - Should sea zones be gameplay-first abstractions or derived from open maritime
   boundaries (and do atlas products want a different sea model)?
 - What is the right balance between admin-realistic and gameplay-readable
   provinces when historical fidelity rises?
-- What location-fabric revision policy best balances paintability improvements
-  with downstream save/mod migration?
-- How should SaaS versioning work for scenario corrections without breaking game
-  mods that pinned an older pack?
 - What minimum golden-border / golden-tag tests define “Paradox-eye” acceptance
-  for an official era?
+  for each official era and region?
+- Which thin adapter conventions should Unity, Godot, and web integrations use
+  without changing the engine-neutral pack contract?

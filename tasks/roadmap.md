@@ -1,13 +1,55 @@
 # Roadmap Progress
 
-Updated: 2026-07-13
+Updated: 2026-07-15
 
 Product direction (see root `ROADMAP.md`): dual audience for **strategy-game
 seeds** and **historical / SaaS maps**, with a **strong historical accuracy
 bar** for official eras. The future production pipeline is source layers →
 neutral atomic locations → era/profile provinces → scenario politics and
-hierarchy → exports. Modern admin geometry is reference input and a hard
-constraint only for modern profiles.
+hierarchy → canonical pass → runtime compiler → engine-neutral runtime pack.
+Modern admin geometry is reference input and a hard constraint only for modern
+profiles.
+
+## Canonical claim matrix
+
+`ROADMAP.md` is canonical. This matrix maps every milestone to its current
+claim, implementation entry point, executable evidence, public artifact, and
+remaining gap. “Prototype” is intentionally not equivalent to production
+historical coverage.
+
+| Milestone | Status | Implementation | Executable evidence | Public artifact | Remaining gap |
+| --- | --- | --- | --- | --- | --- |
+| M0 | complete | `ROADMAP.md`, `DATA_SOURCES.md`, `tasks/` | policy/schema tests | repository docs | none in scope |
+| M1 | complete | `gpm sources`; `gpm.sources` | source artifact/manifest/registry tests | configs and schemas | live source availability varies |
+| M2 | complete | `gpm build provinces --legacy-modern-admin` | duplicate legacy build | modern scaffold samples | compatibility path only |
+| M3 | complete | IDs, adjacency, `gpm qa topology` | deterministic build and topology tests | demo adjacency | documented warnings |
+| M4 | complete | `gpm.builders.refinement` | `test_m4_refinement.py` | methodology docs | none in scope |
+| M5 | complete | `gpm review` | `test_m5_review.py` | packaged viewer | local authoring surface |
+| M6 | complete | `gpm build seas`; mixed adjacency | `test_m6_seas.py` | exportable sea data | gameplay policy varies |
+| M7 | complete | `gpm export pack/geojson` | `test_m7_export.py` | alpha/beta game packs | reused by M25.5; not runtime compiler |
+| M8 | complete | `gpm scenario` | `test_m8_scenarios.py` | scenario configs | overlay tooling, not era certification |
+| M9 | complete | `gpm release alpha` | `test_m9_release.py` | alpha sample | scaffold accuracy only |
+| M10 | complete | `gpm export atlas` | `test_m10_atlas.py` | beta atlas/demo | none in scope |
+| M11 | complete | `gpm qa scenario`; review authoring | `test_m11_scenario_qa.py` | review UI | not full research acceptance |
+| M12 | complete | `official-1836` politics | scenario golden QA | deployed scenario/sample | curated politics, not period geometry/runtime |
+| M13 | complete | `official-1444` politics | scenario golden QA | deployed scenario/sample | curated politics, not M25 reconstruction |
+| M14 | complete | `gpm release beta` | `test_m14_beta.py` | beta sample | scaffold geometry remains labeled |
+| M14.5 | complete | landing/demo and `gpm release site` | landing validator/browser audit | deployed landing/demo | none in scope |
+| M15 | prototype/infrastructure complete | `gpm era-geometry`; WE packs | `test_m15_era_geometry.py` | WE sample/demo | sample-scoped; reused, not certified |
+| M16 | prototype/infrastructure complete | `gpm multi-era`; era packs | `test_m16_multi_era.py` | multi-era sample/demo | sample-scoped geometry |
+| M17 | complete | `gpm curation` | `test_m17_curation.py` | curator bundle sample | continuing curation |
+| M18 | complete | culture/religion atlas paint | `test_m18_culture_religion.py` | demo paint modes | curated hints only |
+| M19 | complete | `gpm export tiles`; PMTiles writer | `test_m19_pmtiles.py` | PMTiles demo archives | reused by M25.5; not runtime compiler |
+| M20 | prototype/infrastructure complete | CE packs and pack composition | `test_m20_broader_period_geometry.py` | WE+CE samples/demo | sample-scoped; not certified coverage |
+| M21 | complete | `gpm build hierarchy` | `test_m21_hierarchy.py` | hierarchy overlays | historical memberships need accepted passes |
+| M22 | complete | `gpm demo build` | deterministic demo/landing validation | global PMTiles demo | 4,603-province scaffold surface |
+| M23 | complete | `gpm build locations/provinces`; fabric QA | duplicate 30,003-location and 22,000-province builds | source/docs; no hosted fabric claimed | documented reference warnings/build-drift audit note |
+| M24 | complete | schemas and `gpm qa start-date` | `test_m24_start_date_framework.py` | contract and rejected-pass evidence | framework only; does not certify an era |
+| M25 | active | rejected v1; schema 0.2, constrained aggregation, SVG renderer | intentional 14-error v1 gate; v2 contract/adversarial tests | withdrawn candidate/audit | real lineage, evidence, full build, human review |
+| M25.5 | planned | proposed `gpm export runtime` | acceptance budgets in `ROADMAP.md` | none yet | requires accepted M25 canonical pass |
+| M26 | planned | 1836 canonical pass + runtime delta/migration | future research and runtime validation | none yet | begins after M25.5 contract |
+| M27 | planned | 1914 canonical pass + runtime delta/migration | future research and runtime validation | none yet | begins after M26 |
+| M28 | planned | 1936 canonical pass + runtime delta/migration | future research and runtime validation | none yet | begins after M27 |
 
 ## Completed
 
@@ -117,9 +159,12 @@ constraint only for modern profiles.
 
 ## Next
 
-- M24 start-date research framework: dossiers, dated boundary registry, polity/
-  dependency gazetteer, uncertainty, spatial golden borders, coverage matrices,
-  and changelogs. Contract: `docs/m24-start-date-research-framework.md`.
-- M25 1444 reconstruction (including mandatory Brussels/Nord negative-
-  anachronism regression), M26 1836, M27 official 1914 imperial-era, and M28
-  1936. Each pass is independently versioned/releasable with regional grades.
+- M25 1444 reconstruction: active. Its initial candidate failed independent
+  acceptance and must restore five-region B geometry/politics/relationships and
+  C hierarchy on the pinned M23 fabric before release consideration.
+- M25.5 game runtime compiler and reference pack: next after accepted M25;
+  schema/compiler design may proceed in parallel. It reuses M7 exports and M19
+  PMTiles and adds the engine-neutral dense-table/CSR/LOD/save contract.
+- M26 1836, M27 official 1914 imperial-era, and M28 1936 reuse that runtime
+  contract. They publish scenario-only deltas when geometry membership is
+  unchanged and explicit migration metadata when it changes.

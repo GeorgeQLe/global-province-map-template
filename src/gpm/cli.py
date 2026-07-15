@@ -63,6 +63,8 @@ from .multi_era.packs import MultiEraPackError
 from .paths import EXPORT_DIR, INTERMEDIATE_DATA_DIR, PROCESSED_DATA_DIR, RAW_DATA_DIR, SAMPLE_DIR
 from .qa.scenario import ScenarioPoliticsQAError, run_scenario_politics_qa
 from .qa.fabric import FabricQAError, run_fabric_qa, run_paintability_qa
+from .qa.start_date import StartDateQAError, run_start_date_qa
+from .qa.render import StartDateRenderError, render_start_date_pass
 from .qa.topology import TopologyQAError, run_topology_qa
 from .release import (
     DEFAULT_ALPHA_SCENARIOS,
@@ -215,6 +217,11 @@ def _build_parser() -> argparse.ArgumentParser:
         "--modern-pieces-input",
         type=Path,
         help="Modern-reference pieces for hard-boundary aggregation.",
+    )
+    provinces.add_argument(
+        "--historical-constraints-input",
+        type=Path,
+        help="Pinned GeoJSON hard constraints and soft historical evidence for aggregation.",
     )
     provinces.add_argument(
         "--start-date",
@@ -748,6 +755,29 @@ def _build_parser() -> argparse.ArgumentParser:
     paintability.add_argument("--split-requests-output", type=Path)
     paintability.add_argument("--format", choices=["text", "json"], default="text")
     paintability.set_defaults(handler=_qa_paintability)
+    start_date_qa = qa_commands.add_parser(
+        "start-date",
+        aliases=["start-date-pass"],
+        help="Validate a complete M24 start-date research pass and its cross-artifact contract.",
+    )
+    start_date_qa.add_argument(
+        "--pass-dir",
+        type=Path,
+        required=True,
+        help="Pass root containing pass_manifest.json and all pinned artifacts.",
+    )
+    start_date_qa.add_argument(
+        "--manifest-input",
+        type=Path,
+        help="Optional explicit pass manifest; defaults to <pass-dir>/pass_manifest.json.",
+    )
+    start_date_qa.add_argument(
+        "--report-output",
+        type=Path,
+        help="Optional QA report path; defaults to <pass-dir>/start_date_qa.json.",
+    )
+    start_date_qa.add_argument("--format", choices=["text", "json"], default="text")
+    start_date_qa.set_defaults(handler=_qa_start_date)
     scenario_qa = qa_commands.add_parser(
         "scenario",
         help=(
@@ -834,8 +864,11 @@ def _build_parser() -> argparse.ArgumentParser:
         help="Output format for the QA summary.",
     )
     scenario_qa.set_defaults(handler=_qa_scenario)
-    render = qa_commands.add_parser("render", help="Placeholder for visual render QA.")
+    render = qa_commands.add_parser("render", help="Render deterministic SVG start-date review sheets.")
     _add_profile_arg(render)
+    render.add_argument("--pass-dir", type=Path)
+    render.add_argument("--output-dir", type=Path)
+    render.add_argument("--format", choices=["text", "json"], default="text")
     render.set_defaults(handler=_qa_render)
 
     review = subcommands.add_parser(
@@ -1856,6 +1889,7 @@ def _build_provinces(args: argparse.Namespace) -> int:
                 geometry_revision=args.geometry_revision,
                 modern_boundary_influence=args.modern_boundary_influence,
                 modern_pieces_input=args.modern_pieces_input,
+                historical_constraints_input=args.historical_constraints_input,
             )
         except (ConfigError, ProvinceAggregationError) as error:
             _print_error(error)
@@ -1872,6 +1906,7 @@ def _build_provinces(args: argparse.Namespace) -> int:
 
     for enabled, flag in (
         (args.modern_pieces_input is not None, "--modern-pieces-input"),
+        (args.historical_constraints_input is not None, "--historical-constraints-input"),
         (args.start_date is not None, "--start-date"),
         (args.geometry_revision is not None, "--geometry-revision"),
         (args.modern_boundary_influence is not None, "--modern-boundary-influence"),
@@ -2659,6 +2694,27 @@ def _qa_paintability(args: argparse.Namespace) -> int:
     return 0 if result.status == "pass" else 1
 
 
+def _qa_start_date(args: argparse.Namespace) -> int:
+    try:
+        result = run_start_date_qa(
+            pass_dir=args.pass_dir,
+            manifest_input=args.manifest_input,
+            report_output=args.report_output,
+        )
+    except StartDateQAError as error:
+        _print_error(error)
+        return 1
+    if args.format == "json":
+        print(json.dumps(result.to_dict(), indent=2, sort_keys=True))
+    else:
+        print(f"gpm qa start-date: {result.status}.")
+        print(f"Pass: {result.pass_id}; start date: {result.start_date}")
+        print(f"Artifacts: {result.artifact_count}")
+        print(f"Findings: {result.error_count} errors, {result.warning_count} warnings")
+        print(f"Report: {result.report_output}")
+    return 0 if result.passed else 1
+
+
 def _qa_scenario(args: argparse.Namespace) -> int:
     try:
         result = run_scenario_politics_qa(
@@ -2698,10 +2754,25 @@ def _qa_scenario(args: argparse.Namespace) -> int:
 def _qa_render(args: argparse.Namespace) -> int:
     if _load_profile_or_report(args.profile) is None:
         return 1
-    print("gpm qa render: Phase 1 placeholder; render snapshots are not implemented yet.")
-    print(f"Profile: {args.profile}")
-    print("Use `gpm review` for the interactive MapLibre review viewer.")
-    print("Use `gpm qa scenario --scenario <id>` for automated politics QA.")
+    if args.pass_dir is None and args.output_dir is None:
+        print("gpm qa render: Phase 1 placeholder; pass --pass-dir and --output-dir for M25 SVG review sheets.")
+        print(f"Profile: {args.profile}")
+        print("Use `gpm review` for the interactive MapLibre review viewer.")
+        return 0
+    if args.pass_dir is None or args.output_dir is None:
+        _print_error(StartDateRenderError("--pass-dir and --output-dir must be supplied together."))
+        return 1
+    try:
+        result = render_start_date_pass(pass_dir=args.pass_dir, output_dir=args.output_dir)
+    except StartDateRenderError as error:
+        _print_error(error)
+        return 1
+    if args.format == "json":
+        print(json.dumps(result.to_dict(), indent=2, sort_keys=True))
+    else:
+        print(f"gpm qa render: wrote {result.region_count} deterministic SVG review sheets.")
+        print(f"Pass: {result.pass_id}")
+        print(f"Manifest: {result.manifest_output}")
     return 0
 
 

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "https://example.invalid/global-province-map/start-date-qa-report.schema.json", "title": "M24 Start-Date Research QA Report", "type": "object",
+  "required": ["schema_version", "report_type", "milestone", "pass_id", "start_date", "status", "inputs", "summary", "assertion_results", "findings"],
+  "properties": {"schema_version": {"enum": ["0.1.0", "0.2.0"]}, "report_type": {"const": "start_date_research_qa"}, "milestone": {"enum": ["M24", "M25"]}, "pass_id": {"type": "string", "minLength": 1}, "start_date": {"type": "string", "format": "date"}, "status": {"enum": ["pass", "fail"]},
+    "inputs": {"type": "object", "required": ["pass_dir", "manifest"], "properties": {"pass_dir": {"type": "string", "minLength": 1}, "manifest": {"type": "string", "minLength": 1}}, "additionalProperties": false},
+    "summary": {"type": "object", "required": ["artifact_count", "error_count", "warning_count"], "properties": {"artifact_count": {"type": "integer", "minimum": 0}, "error_count": {"type": "integer", "minimum": 0}, "warning_count": {"type": "integer", "minimum": 0}}, "additionalProperties": false},
+    "assertion_results": {"type": "array", "items": {"type": "object", "required": ["assertion_id", "spatial_relation", "unit", "tolerance", "measurement", "status"], "properties": {"assertion_id": {"type": "string", "minLength": 1}, "spatial_relation": {"type": "string", "minLength": 1}, "unit": {"type": "string", "minLength": 1}, "tolerance": {"type": "number"}, "measurement": {"type": ["number", "null"]}, "status": {"enum": ["pass", "fail"]}}, "additionalProperties": false}},
+    "findings": {"type": "array", "items": {"type": "object", "required": ["code", "severity", "message", "affected_ids"], "properties": {"code": {"type": "string", "minLength": 1}, "severity": {"enum": ["error", "warning"]}, "message": {"type": "string", "minLength": 1}, "affected_ids": {"type": "array", "items": {"type": "string"}}}, "additionalProperties": false}}
+  }, "additionalProperties": false
+}

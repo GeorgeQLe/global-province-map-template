@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from typing import Any
 
@@ -515,6 +516,419 @@ def validate_scenario_politics_qa_report(report: dict[str, Any]) -> None:
     expected_status = "fail" if report["summary"]["error_count"] else "pass"
     if report["status"] != expected_status:
         raise SchemaValidationError("report.status does not match error findings")
+
+
+def validate_start_date_pass_manifest(document: dict[str, Any]) -> None:
+    """Validate the M24 independently releasable pass manifest."""
+    schema = load_schema("start-date-pass-manifest")
+    _m24_header(document, "manifest", "start_date_research_pass", schema)
+    _require_keys(document, ["version", "era", "fabric_revision", "geometry_revision", "generated_at", "scope", "artifacts"], "manifest")
+    if document["artifact_version"] != document["version"]:
+        raise SchemaValidationError("manifest.artifact_version must equal manifest.version")
+    scope = document["scope"]
+    _require_object(scope, "manifest.scope")
+    _require_keys(scope, ["regions", "priority_regions", "layers"], "manifest.scope")
+    for key in ("regions", "priority_regions", "layers"):
+        _string_list(scope[key], f"manifest.scope.{key}", nonempty=True)
+    if not set(scope["priority_regions"]).issubset(scope["regions"]):
+        raise SchemaValidationError("manifest.scope.priority_regions must be included in regions")
+    required_layers = {"geometry", "politics", "hierarchy", "gazetteer_relationships"}
+    if not required_layers.issubset(scope["layers"]):
+        raise SchemaValidationError(f"manifest.scope.layers must include {sorted(required_layers)}")
+    artifacts = document["artifacts"]
+    _require_object(artifacts, "manifest.artifacts")
+    required = ["dossier", "source_manifest", "boundary_registry", "polity_gazetteer", "location_assignments", "golden_borders", "full_build_geometry", "coverage_matrix", "changelog"]
+    _require_keys(artifacts, required, "manifest.artifacts")
+    for kind in required:
+        record = artifacts[kind]
+        _require_object(record, f"manifest.artifacts.{kind}")
+        _require_keys(record, ["path", "version", "sha256"], f"manifest.artifacts.{kind}")
+        _nonempty_string(record["path"], f"manifest.artifacts.{kind}.path")
+        _nonempty_string(record["version"], f"manifest.artifacts.{kind}.version")
+        if not isinstance(record["sha256"], str) or not re.fullmatch(r"[0-9a-fA-F]{64}", record["sha256"]):
+            raise SchemaValidationError(f"manifest.artifacts.{kind}.sha256 must be a 64-character hexadecimal digest")
+    if document["schema_version"] == "0.2.0":
+        _require_keys(document, ["review"], "manifest")
+        review = document["review"]
+        _require_object(review, "manifest.review")
+        _require_keys(review, ["manifest_path", "sha256", "generator", "reviewer", "status"], "manifest.review")
+        for key in ("manifest_path", "generator", "reviewer"):
+            _nonempty_string(review[key], f"manifest.review.{key}")
+        if review["generator"] == review["reviewer"]:
+            raise SchemaValidationError("manifest.review reviewer must be independent from generator")
+        if review["status"] != "accepted":
+            raise SchemaValidationError("manifest.review.status must be accepted")
+        if not isinstance(review["sha256"], str) or not re.fullmatch(r"[0-9a-fA-F]{64}", review["sha256"]):
+            raise SchemaValidationError("manifest.review.sha256 must be a SHA-256 digest")
+
+
+def validate_start_date_source_manifest(document: dict[str, Any]) -> None:
+    schema = load_schema("start-date-source-manifest")
+    _m24_header(document, "source manifest", "start_date_source_manifest", schema)
+    _require_keys(document, ["sources", "conflict_resolution_notes"], "source manifest")
+    sources = document["sources"]
+    if not isinstance(sources, list) or not sources:
+        raise SchemaValidationError("source manifest.sources must be non-empty")
+    seen: set[str] = set()
+    for index, source in enumerate(sources):
+        path = f"source manifest.sources[{index}]"
+        _require_object(source, path)
+        _require_keys(source, ["source_id", "citation", "url", "access_date", "version", "license", "checksum", "transformations", "review_status"], path)
+        source_id = _nonempty_string(source["source_id"], f"{path}.source_id")
+        if source_id in seen:
+            raise SchemaValidationError(f"{path}.source_id duplicates {source_id}")
+        seen.add(source_id)
+        for key in ("citation", "license"):
+            _nonempty_string(source[key], f"{path}.{key}")
+        for key in ("url", "access_date", "version", "checksum"):
+            _nullable_string(source[key], f"{path}.{key}")
+        _string_list(source["transformations"], f"{path}.transformations")
+        if source["review_status"] not in {"planned", "reviewed", "rejected"}:
+            raise SchemaValidationError(f"{path}.review_status is unsupported")
+        if document["schema_version"] == "0.2.0":
+            _require_keys(source, ["source_type", "valid_from", "valid_to", "independence_group", "derived_artifacts"], path)
+            if source["source_type"] not in {"academic", "primary", "corroborating", "soft_corroboration", "negative_control"}:
+                raise SchemaValidationError(f"{path}.source_type is unsupported")
+            for key in ("valid_from", "valid_to"):
+                _nullable_string(source[key], f"{path}.{key}")
+            _nonempty_string(source["independence_group"], f"{path}.independence_group")
+            if not isinstance(source["derived_artifacts"], list):
+                raise SchemaValidationError(f"{path}.derived_artifacts must be an array")
+            for ai, artifact in enumerate(source["derived_artifacts"]):
+                apath = f"{path}.derived_artifacts[{ai}]"
+                _require_object(artifact, apath)
+                _require_keys(artifact, ["artifact_id", "role", "path", "sha256", "media_type"], apath)
+                for key in ("artifact_id", "role", "path", "media_type"):
+                    _nonempty_string(artifact[key], f"{apath}.{key}")
+                if not isinstance(artifact["sha256"], str) or not re.fullmatch(r"[0-9a-fA-F]{64}", artifact["sha256"]):
+                    raise SchemaValidationError(f"{apath}.sha256 must be a SHA-256 digest")
+    _string_list(document["conflict_resolution_notes"], "source manifest.conflict_resolution_notes")
+
+
+def validate_historical_boundary_registry(document: dict[str, Any]) -> None:
+    schema = load_schema("historical-boundary-registry")
+    _m24_header(document, "boundary registry", "historical_boundary_registry", schema)
+    if document.get("type") != "FeatureCollection" or not isinstance(document.get("features"), list):
+        raise SchemaValidationError("boundary registry must be a GeoJSON FeatureCollection")
+    seen: set[str] = set()
+    for index, feature in enumerate(document["features"]):
+        path = f"boundary registry.features[{index}]"
+        _require_object(feature, path)
+        if feature.get("type") != "Feature" or not isinstance(feature.get("geometry"), dict):
+            raise SchemaValidationError(f"{path} must be a GeoJSON Feature with geometry")
+        try:
+            from shapely.geometry import shape
+            geometry = shape(feature["geometry"])
+        except Exception as exc:
+            raise SchemaValidationError(f"{path}.geometry is invalid: {exc}") from exc
+        if geometry.is_empty or not geometry.is_valid or geometry.geom_type not in {"LineString", "MultiLineString", "Polygon", "MultiPolygon"}:
+            raise SchemaValidationError(f"{path}.geometry must be a valid non-empty line or polygon")
+        props = feature.get("properties")
+        _require_object(props, f"{path}.properties")
+        required = ["feature_id", "geometry_revision", "valid_from", "valid_to", "date_precision", "semantics", "side_polity_ids", "source_ids", "license_lineage", "confidence", "uncertainty_notes", "classification", "geographic_scope", "start_date_programs"]
+        _require_keys(props, required, f"{path}.properties")
+        feature_id = _nonempty_string(props["feature_id"], f"{path}.properties.feature_id")
+        if feature_id in seen:
+            raise SchemaValidationError(f"duplicate boundary feature_id: {feature_id}")
+        seen.add(feature_id)
+        for key in ("geometry_revision", "semantics", "confidence", "uncertainty_notes", "geographic_scope"):
+            _nonempty_string(props[key], f"{path}.properties.{key}")
+        for key in ("valid_from", "valid_to"):
+            _nullable_string(props[key], f"{path}.properties.{key}")
+        if props["date_precision"] not in {"day", "month", "year", "decade", "circa", "unknown"}:
+            raise SchemaValidationError(f"{path}.properties.date_precision is unsupported")
+        if props["classification"] not in {"hard_constraint", "soft_evidence"}:
+            raise SchemaValidationError(f"{path}.properties.classification is unsupported")
+        sides = props["side_polity_ids"]
+        _require_object(sides, f"{path}.properties.side_polity_ids")
+        _require_keys(sides, ["left", "right"], f"{path}.properties.side_polity_ids")
+        if set(sides) != {"left", "right"} or sides["left"] == sides["right"]:
+            raise SchemaValidationError(f"{path}.properties.side_polity_ids must name distinct left/right polities")
+        for side in ("left", "right"):
+            _nonempty_string(sides[side], f"{path}.properties.side_polity_ids.{side}")
+        for key in ("source_ids", "license_lineage", "start_date_programs"):
+            _string_list(props[key], f"{path}.properties.{key}", nonempty=True)
+        if document["schema_version"] == "0.2.0" and props["classification"] == "hard_constraint":
+            _require_keys(props, ["derived_geometry_artifact_id", "georeferencing", "error_budget_km"], f"{path}.properties")
+            _nonempty_string(props["derived_geometry_artifact_id"], f"{path}.properties.derived_geometry_artifact_id")
+            if not isinstance(props["error_budget_km"], (int, float)) or props["error_budget_km"] < 0:
+                raise SchemaValidationError(f"{path}.properties.error_budget_km must be non-negative")
+            geo = props["georeferencing"]
+            _require_object(geo, f"{path}.properties.georeferencing")
+            _require_keys(geo, ["transform_method", "crs", "control_points", "residual_error_km", "digitizer", "reviewer", "source_feature_reference"], f"{path}.properties.georeferencing")
+            for key in ("transform_method", "crs", "digitizer", "reviewer", "source_feature_reference"):
+                _nonempty_string(geo[key], f"{path}.properties.georeferencing.{key}")
+            if geo["digitizer"] == geo["reviewer"]:
+                raise SchemaValidationError(f"{path}.properties.georeferencing reviewer must differ from digitizer")
+            if not isinstance(geo["control_points"], list) or len(geo["control_points"]) < 3:
+                raise SchemaValidationError(f"{path}.properties.georeferencing.control_points needs at least three points")
+            if not isinstance(geo["residual_error_km"], (int, float)) or geo["residual_error_km"] < 0:
+                raise SchemaValidationError(f"{path}.properties.georeferencing.residual_error_km must be non-negative")
+
+
+def validate_polity_gazetteer(document: dict[str, Any]) -> None:
+    schema = load_schema("polity-gazetteer")
+    _m24_header(document, "gazetteer", "polity_gazetteer", schema)
+    if not isinstance(document.get("polities"), list) or not document["polities"]:
+        raise SchemaValidationError("gazetteer.polities must be non-empty")
+    allowed = {"sovereignty", "control", "occupation", "vassalage", "dependency", "personal_union", "claim", "disputed"}
+    seen: set[str] = set()
+    for index, polity in enumerate(document["polities"]):
+        path = f"gazetteer.polities[{index}]"
+        _require_object(polity, path)
+        _require_keys(polity, ["polity_id", "name", "aliases", "valid_from", "valid_to", "capital_location_ids", "relationships", "source_ids"], path)
+        polity_id = _nonempty_string(polity["polity_id"], f"{path}.polity_id")
+        if polity_id in seen:
+            raise SchemaValidationError(f"duplicate polity_id: {polity_id}")
+        seen.add(polity_id)
+        _nonempty_string(polity["name"], f"{path}.name")
+        for key in ("aliases", "capital_location_ids", "source_ids"):
+            _string_list(polity[key], f"{path}.{key}")
+        for key in ("valid_from", "valid_to"):
+            _nullable_string(polity[key], f"{path}.{key}")
+        if not isinstance(polity["relationships"], list):
+            raise SchemaValidationError(f"{path}.relationships must be an array")
+        for ri, relation in enumerate(polity["relationships"]):
+            rpath = f"{path}.relationships[{ri}]"
+            _require_object(relation, rpath)
+            _require_keys(relation, ["relationship_id", "type", "target_polity_id", "valid_from", "valid_to", "source_ids", "confidence", "notes"], rpath)
+            if relation["type"] not in allowed:
+                raise SchemaValidationError(f"{rpath}.type is unsupported")
+            for key in ("relationship_id", "target_polity_id", "confidence", "notes"):
+                _nonempty_string(relation[key], f"{rpath}.{key}")
+            _string_list(relation["source_ids"], f"{rpath}.source_ids", nonempty=True)
+
+
+def validate_location_assignments(document: dict[str, Any]) -> None:
+    schema = load_schema("start-date-location-assignments")
+    _m24_header(document, "assignments", "start_date_location_assignments", schema)
+    _require_keys(document, ["fabric_revision", "aggregation_revision", "aggregation_profile", "geometry_revision", "expected_province_count", "fabric_sidecars", "assignments", "targeted_split_requests"], "assignments")
+    for key in ("fabric_revision", "aggregation_revision", "aggregation_profile", "geometry_revision"):
+        _nonempty_string(document[key], f"assignments.{key}")
+    if not isinstance(document["expected_province_count"], int) or document["expected_province_count"] < 1:
+        raise SchemaValidationError("assignments.expected_province_count must be a positive integer")
+    sidecars = document["fabric_sidecars"]
+    _require_object(sidecars, "assignments.fabric_sidecars")
+    _require_keys(sidecars, ["fabric_manifest", "locations", "lineage", "province_membership"], "assignments.fabric_sidecars")
+    for role, record in sidecars.items():
+        _require_object(record, f"assignments.fabric_sidecars.{role}")
+        _require_keys(record, ["path", "sha256"], f"assignments.fabric_sidecars.{role}")
+        _nonempty_string(record["path"], f"assignments.fabric_sidecars.{role}.path")
+        if not isinstance(record["sha256"], str) or not re.fullmatch(r"[0-9a-fA-F]{64}", record["sha256"]):
+            raise SchemaValidationError(f"assignments.fabric_sidecars.{role}.sha256 must be a SHA-256 digest")
+    if document["schema_version"] == "0.2.0":
+        _require_keys(document, ["constraint_sha256", "release_sidecars"], "assignments")
+        if not isinstance(document["constraint_sha256"], str) or not re.fullmatch(r"[0-9a-fA-F]{64}", document["constraint_sha256"]):
+            raise SchemaValidationError("assignments.constraint_sha256 must be a SHA-256 digest")
+        release_sidecars = document["release_sidecars"]
+        _require_object(release_sidecars, "assignments.release_sidecars")
+        _require_keys(release_sidecars, ["aggregation_manifest", "adjacency"], "assignments.release_sidecars")
+        for role, record in release_sidecars.items():
+            _require_object(record, f"assignments.release_sidecars.{role}")
+            _require_keys(record, ["path", "sha256"], f"assignments.release_sidecars.{role}")
+            _nonempty_string(record["path"], f"assignments.release_sidecars.{role}.path")
+            if not isinstance(record["sha256"], str) or not re.fullmatch(r"[0-9a-fA-F]{64}", record["sha256"]):
+                raise SchemaValidationError(f"assignments.release_sidecars.{role}.sha256 must be a SHA-256 digest")
+    if not isinstance(document["assignments"], list):
+        raise SchemaValidationError("assignments.assignments must be an array")
+    seen_locations: set[str] = set()
+    seen_assignments: set[str] = set()
+    for index, row in enumerate(document["assignments"]):
+        path = f"assignments.assignments[{index}]"
+        _require_object(row, path)
+        _require_keys(row, ["assignment_id", "location_ids", "province_id", "polity_ids", "uncertainty", "source_ids", "notes"], path)
+        assignment_id = _nonempty_string(row["assignment_id"], f"{path}.assignment_id")
+        if assignment_id in seen_assignments:
+            raise SchemaValidationError(f"duplicate assignment_id: {assignment_id}")
+        seen_assignments.add(assignment_id)
+        locations = _string_list(row["location_ids"], f"{path}.location_ids", nonempty=True)
+        duplicates = seen_locations.intersection(locations)
+        if duplicates:
+            raise SchemaValidationError(f"locations assigned more than once: {sorted(duplicates)}")
+        seen_locations.update(locations)
+        _nonempty_string(row["province_id"], f"{path}.province_id")
+        _string_list(row["polity_ids"], f"{path}.polity_ids", nonempty=True)
+        _string_list(row["source_ids"], f"{path}.source_ids", nonempty=True)
+        if not isinstance(row["uncertainty"], (int, float)) or not 0 <= row["uncertainty"] <= 1:
+            raise SchemaValidationError(f"{path}.uncertainty must be between 0 and 1")
+        if document["schema_version"] == "0.2.0":
+            _require_keys(row, ["region_id", "sovereign_polity_id", "owner_polity_id", "controller_polity_id", "core_polity_ids", "claim_polity_ids", "dispute_polity_ids", "hierarchy"], path)
+            for key in ("region_id", "sovereign_polity_id", "owner_polity_id", "controller_polity_id"):
+                _nonempty_string(row[key], f"{path}.{key}")
+            for key in ("core_polity_ids", "claim_polity_ids", "dispute_polity_ids"):
+                _string_list(row[key], f"{path}.{key}")
+            hierarchy = row["hierarchy"]
+            _require_object(hierarchy, f"{path}.hierarchy")
+            _require_keys(hierarchy, ["area_id", "region_id", "superregion_id", "method"], f"{path}.hierarchy")
+            for key in ("area_id", "region_id", "superregion_id", "method"):
+                _nonempty_string(hierarchy[key], f"{path}.hierarchy.{key}")
+    if not isinstance(document["targeted_split_requests"], list):
+        raise SchemaValidationError("assignments.targeted_split_requests must be an array")
+    seen_requests: set[str] = set()
+    for index, request in enumerate(document["targeted_split_requests"]):
+        path = f"assignments.targeted_split_requests[{index}]"
+        _require_object(request, path)
+        _require_keys(request, ["request_id", "location_ids", "reason", "status", "source_ids"], path)
+        request_id = _nonempty_string(request["request_id"], f"{path}.request_id")
+        if request_id in seen_requests:
+            raise SchemaValidationError(f"duplicate split request_id: {request_id}")
+        seen_requests.add(request_id)
+        _nonempty_string(request["reason"], f"{path}.reason")
+        for key in ("location_ids", "source_ids"):
+            _string_list(request[key], f"{path}.{key}", nonempty=True)
+        if request["status"] not in {"requested", "accepted", "rejected", "superseded"}:
+            raise SchemaValidationError(f"{path}.status is unsupported")
+
+
+def validate_spatial_golden_borders(document: dict[str, Any]) -> None:
+    schema = load_schema("spatial-golden-borders")
+    _m24_header(document, "golden suite", "spatial_golden_borders", schema)
+    if not isinstance(document.get("assertions"), list) or not document["assertions"]:
+        raise SchemaValidationError("golden suite.assertions must be non-empty")
+    seen: set[str] = set()
+    for index, assertion in enumerate(document["assertions"]):
+        path = f"golden suite.assertions[{index}]"
+        _require_object(assertion, path)
+        _require_keys(assertion, ["assertion_id", "region_id", "layer", "assertion_type", "expectation", "subject_ids", "boundary_feature_ids", "spatial_relation", "unit", "tolerance", "notes"], path)
+        for key in ("assertion_id", "region_id", "layer", "spatial_relation", "unit", "notes"):
+            _nonempty_string(assertion[key], f"{path}.{key}")
+        if assertion["assertion_id"] in seen:
+            raise SchemaValidationError(f"duplicate assertion_id: {assertion['assertion_id']}")
+        seen.add(assertion["assertion_id"])
+        if assertion["assertion_type"] not in {"border", "capital", "outline"}:
+            raise SchemaValidationError(f"{path}.assertion_type is unsupported")
+        if assertion["expectation"] not in {"positive", "negative_anachronism"}:
+            raise SchemaValidationError(f"{path}.expectation is unsupported")
+        _string_list(assertion["subject_ids"], f"{path}.subject_ids", nonempty=True)
+        _string_list(assertion["boundary_feature_ids"], f"{path}.boundary_feature_ids")
+        if not isinstance(assertion["tolerance"], (int, float)) or assertion["tolerance"] < 0:
+            raise SchemaValidationError(f"{path}.tolerance must be non-negative")
+        relation = assertion["spatial_relation"]
+        expected = {
+            "border_matches_boundary_hausdorff_lte": ("border", "positive", 2, 1, "coordinate_units"),
+            "border_matches_boundary_hausdorff_km_lte": ("border", "positive", 2, 1, "kilometres"),
+            "capital_within_subject": ("capital", "positive", 2, 0, "boolean"),
+            "forbidden_outline_overlap_ratio_lte": ("outline", "negative_anachronism", 1, 1, "ratio"),
+        }
+        if relation not in expected:
+            raise SchemaValidationError(f"{path}.spatial_relation is unsupported")
+        kind, expectation, subjects, boundaries, unit = expected[relation]
+        if (assertion["assertion_type"], assertion["expectation"], len(assertion["subject_ids"]), len(assertion["boundary_feature_ids"]), assertion["unit"]) != (kind, expectation, subjects, boundaries, unit):
+            raise SchemaValidationError(f"{path} does not match the {relation} contract")
+        if relation == "capital_within_subject" and assertion["tolerance"] != 1:
+            raise SchemaValidationError(f"{path}.tolerance must be 1 for capital containment")
+        if relation == "forbidden_outline_overlap_ratio_lte" and assertion["tolerance"] > 1:
+            raise SchemaValidationError(f"{path}.tolerance must be at most 1 for a ratio")
+
+
+def validate_start_date_coverage(document: dict[str, Any]) -> None:
+    schema = load_schema("start-date-coverage")
+    _m24_header(document, "coverage matrix", "start_date_coverage", schema)
+    _require_keys(document, ["coverage", "exclusions", "known_gaps"], "coverage matrix")
+    if not isinstance(document["coverage"], list) or not document["coverage"]:
+        raise SchemaValidationError("coverage matrix.coverage must be non-empty")
+    seen: set[tuple[str, str]] = set()
+    for index, row in enumerate(document["coverage"]):
+        path = f"coverage matrix.coverage[{index}]"
+        _require_object(row, path)
+        _require_keys(row, ["region_id", "layer", "grade", "source_ids", "assertion_ids", "evidence_summary", "exclusions", "known_gaps"], path)
+        key = (_nonempty_string(row["region_id"], f"{path}.region_id"), _nonempty_string(row["layer"], f"{path}.layer"))
+        if key in seen:
+            raise SchemaValidationError(f"duplicate coverage row: {key}")
+        seen.add(key)
+        if row["grade"] not in {"A", "B", "C", "U"}:
+            raise SchemaValidationError(f"{path}.grade is unsupported")
+        _nonempty_string(row["evidence_summary"], f"{path}.evidence_summary", allow_empty=row["grade"] == "U")
+        for field in ("source_ids", "assertion_ids", "exclusions", "known_gaps"):
+            _string_list(row[field], f"{path}.{field}")
+    for field in ("exclusions", "known_gaps"):
+        _string_list(document[field], f"coverage matrix.{field}")
+
+
+def validate_start_date_changelog(document: dict[str, Any]) -> None:
+    schema = load_schema("start-date-changelog")
+    _m24_header(document, "changelog", "start_date_changelog", schema)
+    _require_keys(document, ["version", "released_at", "changes", "migrations"], "changelog")
+    for field in ("version", "released_at"):
+        _nonempty_string(document[field], f"changelog.{field}")
+    if not isinstance(document["changes"], list) or not document["changes"]:
+        raise SchemaValidationError("changelog.changes must be non-empty")
+    for index, change in enumerate(document["changes"]):
+        path = f"changelog.changes[{index}]"
+        _require_object(change, path)
+        _require_keys(change, ["change_id", "category", "summary", "affected_ids"], path)
+        if change["category"] not in {"geometry", "politics", "hierarchy", "gazetteer", "research", "qa"}:
+            raise SchemaValidationError(f"{path}.category is unsupported")
+        for field in ("change_id", "summary"):
+            _nonempty_string(change[field], f"{path}.{field}")
+        _string_list(change["affected_ids"], f"{path}.affected_ids")
+    _string_list(document["migrations"], "changelog.migrations")
+
+
+def validate_start_date_qa_report(report: dict[str, Any]) -> None:
+    schema = load_schema("start-date-qa-report")
+    _require_object(report, "report")
+    _validate_json_schema(report, schema, "report")
+    _require_keys(report, schema["required"], "report")
+    if report["schema_version"] not in {"0.1.0", "0.2.0"} or report["report_type"] != "start_date_research_qa" or report["milestone"] not in {"M24", "M25"}:
+        raise SchemaValidationError("report has invalid M24 QA identity")
+    if report["status"] not in {"pass", "fail"}:
+        raise SchemaValidationError("report.status must be pass or fail")
+    _require_object(report["inputs"], "report.inputs")
+    _require_object(report["summary"], "report.summary")
+    _require_keys(report["summary"], ["artifact_count", "error_count", "warning_count"], "report.summary")
+    if not isinstance(report["findings"], list) or not isinstance(report["assertion_results"], list):
+        raise SchemaValidationError("report.findings must be an array")
+    errors = sum(isinstance(item, dict) and item.get("severity") == "error" for item in report["findings"])
+    warnings = sum(isinstance(item, dict) and item.get("severity") == "warning" for item in report["findings"])
+    if (errors, warnings) != (report["summary"]["error_count"], report["summary"]["warning_count"]):
+        raise SchemaValidationError("report summary counts do not match findings")
+    if report["status"] != ("fail" if errors else "pass"):
+        raise SchemaValidationError("report status does not match findings")
+
+
+def _m24_header(document: Any, path: str, document_type: str, schema: dict[str, Any]) -> None:
+    _require_object(document, path)
+    _validate_json_schema(document, schema, path)
+    _require_keys(document, schema["required"], path)
+    if document["schema_version"] not in {"0.1.0", "0.2.0"} or document["document_type"] != document_type:
+        raise SchemaValidationError(f"{path} has invalid M24 document type or schema version")
+    _nonempty_string(document["pass_id"], f"{path}.pass_id")
+    _nonempty_string(document["artifact_version"], f"{path}.artifact_version")
+    start_date = _nonempty_string(document["start_date"], f"{path}.start_date")
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", start_date):
+        raise SchemaValidationError(f"{path}.start_date must use YYYY-MM-DD")
+
+
+def _nonempty_string(value: Any, path: str, *, allow_empty: bool = False) -> str:
+    if not isinstance(value, str) or (not allow_empty and not value.strip()):
+        raise SchemaValidationError(f"{path} must be a {'string' if allow_empty else 'non-empty string'}")
+    return value
+
+
+def _nullable_string(value: Any, path: str) -> None:
+    if value is not None and not isinstance(value, str):
+        raise SchemaValidationError(f"{path} must be a string or null")
+
+
+def _string_list(value: Any, path: str, *, nonempty: bool = False) -> list[str]:
+    if not isinstance(value, list) or (nonempty and not value) or not all(isinstance(item, str) and item.strip() for item in value):
+        qualifier = "non-empty " if nonempty else ""
+        raise SchemaValidationError(f"{path} must be a {qualifier}array of non-empty strings")
+    return value
+
+
+def _validate_json_schema(document: Any, schema: dict[str, Any], path: str) -> None:
+    """Run the canonical Draft 2020-12 contract before semantic validation."""
+    try:
+        from jsonschema import Draft202012Validator, FormatChecker
+        errors = sorted(Draft202012Validator(schema, format_checker=FormatChecker()).iter_errors(document), key=lambda error: list(error.absolute_path))
+    except ImportError as exc:
+        raise SchemaValidationError("jsonschema is required for M24 validation") from exc
+    if errors:
+        error = errors[0]
+        location = ".".join(str(part) for part in error.absolute_path)
+        raise SchemaValidationError(f"{path}{'.' + location if location else ''}: {error.message}")
 
 
 def _validate_findings_list(findings: Any, summary: dict[str, Any], path: str) -> None:

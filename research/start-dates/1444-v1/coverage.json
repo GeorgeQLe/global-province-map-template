@@ -1,0 +1,376 @@
+{
+  "artifact_version": "1.0.0",
+  "coverage": [
+    {
+      "assertion_ids": [
+        "border-low-countries-1444",
+        "negative-modern-brussels-capital-region"
+      ],
+      "evidence_summary": "Adjacent-date cartography supports only a generalized scaffold pending traceable reconstruction.",
+      "exclusions": [
+        "Out-of-scope microterritories"
+      ],
+      "grade": "C",
+      "known_gaps": [
+        "Generalized modern-influenced scaffolding is not traceable to a fabric-backed dated boundary reconstruction."
+      ],
+      "layer": "geometry",
+      "region_id": "low-countries",
+      "source_ids": [
+        "jacquerye-burgundian-netherlands-1477",
+        "geoboundaries-bel-adm1-2022"
+      ]
+    },
+    {
+      "assertion_ids": [
+        "capital-low-countries-1444"
+      ],
+      "evidence_summary": "Adjacent-date cartography supports only a generalized scaffold pending traceable reconstruction.",
+      "exclusions": [
+        "Out-of-scope microterritories"
+      ],
+      "grade": "C",
+      "known_gaps": [
+        "Generalized modern-influenced scaffolding is not traceable to a fabric-backed dated boundary reconstruction."
+      ],
+      "layer": "politics",
+      "region_id": "low-countries",
+      "source_ids": [
+        "jacquerye-burgundian-netherlands-1477",
+        "geoboundaries-bel-adm1-2022"
+      ]
+    },
+    {
+      "assertion_ids": [],
+      "evidence_summary": "",
+      "exclusions": [
+        "Out-of-scope microterritories"
+      ],
+      "grade": "U",
+      "known_gaps": [
+        "No fabric-backed period hierarchy has been reconstructed."
+      ],
+      "layer": "hierarchy",
+      "region_id": "low-countries",
+      "source_ids": []
+    },
+    {
+      "assertion_ids": [],
+      "evidence_summary": "Adjacent-date cartography supports only a generalized scaffold pending traceable reconstruction.",
+      "exclusions": [
+        "Out-of-scope microterritories"
+      ],
+      "grade": "C",
+      "known_gaps": [
+        "Generalized modern-influenced scaffolding is not traceable to a fabric-backed dated boundary reconstruction."
+      ],
+      "layer": "gazetteer_relationships",
+      "region_id": "low-countries",
+      "source_ids": [
+        "jacquerye-burgundian-netherlands-1477",
+        "geoboundaries-bel-adm1-2022"
+      ]
+    },
+    {
+      "assertion_ids": [
+        "border-burgundy-1444",
+        "negative-modern-burgundy"
+      ],
+      "evidence_summary": "Adjacent-date cartography supports only a generalized scaffold pending traceable reconstruction.",
+      "exclusions": [
+        "Out-of-scope microterritories"
+      ],
+      "grade": "C",
+      "known_gaps": [
+        "Generalized modern-influenced scaffolding is not traceable to a fabric-backed dated boundary reconstruction."
+      ],
+      "layer": "geometry",
+      "region_id": "burgundy",
+      "source_ids": [
+        "shepherd-france-1453",
+        "nelson-europe-1430",
+        "geoboundaries-fra-adm1-2022"
+      ]
+    },
+    {
+      "assertion_ids": [
+        "capital-burgundy-1444"
+      ],
+      "evidence_summary": "Adjacent-date cartography supports only a generalized scaffold pending traceable reconstruction.",
+      "exclusions": [
+        "Out-of-scope microterritories"
+      ],
+      "grade": "C",
+      "known_gaps": [
+        "Generalized modern-influenced scaffolding is not traceable to a fabric-backed dated boundary reconstruction."
+      ],
+      "layer": "politics",
+      "region_id": "burgundy",
+      "source_ids": [
+        "shepherd-france-1453",
+        "nelson-europe-1430",
+        "geoboundaries-fra-adm1-2022"
+      ]
+    },
+    {
+      "assertion_ids": [],
+      "evidence_summary": "",
+      "exclusions": [
+        "Out-of-scope microterritories"
+      ],
+      "grade": "U",
+      "known_gaps": [
+        "No fabric-backed period hierarchy has been reconstructed."
+      ],
+      "layer": "hierarchy",
+      "region_id": "burgundy",
+      "source_ids": []
+    },
+    {
+      "assertion_ids": [],
+      "evidence_summary": "Adjacent-date cartography supports only a generalized scaffold pending traceable reconstruction.",
+      "exclusions": [
+        "Out-of-scope microterritories"
+      ],
+      "grade": "C",
+      "known_gaps": [
+        "Generalized modern-influenced scaffolding is not traceable to a fabric-backed dated boundary reconstruction."
+      ],
+      "layer": "gazetteer_relationships",
+      "region_id": "burgundy",
+      "source_ids": [
+        "shepherd-france-1453",
+        "nelson-europe-1430",
+        "geoboundaries-fra-adm1-2022"
+      ]
+    },
+    {
+      "assertion_ids": [
+        "border-france-1444",
+        "negative-modern-nord-department"
+      ],
+      "evidence_summary": "Adjacent-date cartography supports only a generalized scaffold pending traceable reconstruction.",
+      "exclusions": [
+        "Out-of-scope microterritories"
+      ],
+      "grade": "C",
+      "known_gaps": [
+        "Generalized modern-influenced scaffolding is not traceable to a fabric-backed dated boundary reconstruction."
+      ],
+      "layer": "geometry",
+      "region_id": "france",
+      "source_ids": [
+        "shepherd-france-1453",
+        "geoboundaries-fra-adm2-2022"
+      ]
+    },
+    {
+      "assertion_ids": [
+        "capital-france-1444"
+      ],
+      "evidence_summary": "Adjacent-date cartography supports only a generalized scaffold pending traceable reconstruction.",
+      "exclusions": [
+        "Out-of-scope microterritories"
+      ],
+      "grade": "C",
+      "known_gaps": [
+        "Generalized modern-influenced scaffolding is not traceable to a fabric-backed dated boundary reconstruction."
+      ],
+      "layer": "politics",
+      "region_id": "france",
+      "source_ids": [
+        "shepherd-france-1453",
+        "geoboundaries-fra-adm2-2022"
+      ]
+    },
+    {
+      "assertion_ids": [],
+      "evidence_summary": "",
+      "exclusions": [
+        "Out-of-scope microterritories"
+      ],
+      "grade": "U",
+      "known_gaps": [
+        "No fabric-backed period hierarchy has been reconstructed."
+      ],
+      "layer": "hierarchy",
+      "region_id": "france",
+      "source_ids": []
+    },
+    {
+      "assertion_ids": [],
+      "evidence_summary": "Adjacent-date cartography supports only a generalized scaffold pending traceable reconstruction.",
+      "exclusions": [
+        "Out-of-scope microterritories"
+      ],
+      "grade": "C",
+      "known_gaps": [
+        "Generalized modern-influenced scaffolding is not traceable to a fabric-backed dated boundary reconstruction."
+      ],
+      "layer": "gazetteer_relationships",
+      "region_id": "france",
+      "source_ids": [
+        "shepherd-france-1453",
+        "geoboundaries-fra-adm2-2022"
+      ]
+    },
+    {
+      "assertion_ids": [
+        "border-hre-1444",
+        "negative-modern-hre"
+      ],
+      "evidence_summary": "Adjacent-date cartography supports only a generalized scaffold pending traceable reconstruction.",
+      "exclusions": [
+        "Out-of-scope microterritories"
+      ],
+      "grade": "C",
+      "known_gaps": [
+        "Generalized modern-influenced scaffolding is not traceable to a fabric-backed dated boundary reconstruction."
+      ],
+      "layer": "geometry",
+      "region_id": "hre",
+      "source_ids": [
+        "droysen-hre-1400",
+        "nelson-europe-1430",
+        "geoboundaries-deu-adm1-2022"
+      ]
+    },
+    {
+      "assertion_ids": [
+        "capital-hre-1444"
+      ],
+      "evidence_summary": "Adjacent-date cartography supports only a generalized scaffold pending traceable reconstruction.",
+      "exclusions": [
+        "Out-of-scope microterritories"
+      ],
+      "grade": "C",
+      "known_gaps": [
+        "Generalized modern-influenced scaffolding is not traceable to a fabric-backed dated boundary reconstruction."
+      ],
+      "layer": "politics",
+      "region_id": "hre",
+      "source_ids": [
+        "droysen-hre-1400",
+        "nelson-europe-1430",
+        "geoboundaries-deu-adm1-2022"
+      ]
+    },
+    {
+      "assertion_ids": [],
+      "evidence_summary": "",
+      "exclusions": [
+        "Out-of-scope microterritories"
+      ],
+      "grade": "U",
+      "known_gaps": [
+        "No fabric-backed period hierarchy has been reconstructed."
+      ],
+      "layer": "hierarchy",
+      "region_id": "hre",
+      "source_ids": []
+    },
+    {
+      "assertion_ids": [],
+      "evidence_summary": "Adjacent-date cartography supports only a generalized scaffold pending traceable reconstruction.",
+      "exclusions": [
+        "Out-of-scope microterritories"
+      ],
+      "grade": "C",
+      "known_gaps": [
+        "Generalized modern-influenced scaffolding is not traceable to a fabric-backed dated boundary reconstruction."
+      ],
+      "layer": "gazetteer_relationships",
+      "region_id": "hre",
+      "source_ids": [
+        "droysen-hre-1400",
+        "nelson-europe-1430",
+        "geoboundaries-deu-adm1-2022"
+      ]
+    },
+    {
+      "assertion_ids": [
+        "border-central-europe-1444",
+        "negative-modern-central-europe"
+      ],
+      "evidence_summary": "Adjacent-date cartography supports only a generalized scaffold pending traceable reconstruction.",
+      "exclusions": [
+        "Out-of-scope microterritories"
+      ],
+      "grade": "C",
+      "known_gaps": [
+        "Generalized modern-influenced scaffolding is not traceable to a fabric-backed dated boundary reconstruction."
+      ],
+      "layer": "geometry",
+      "region_id": "central-europe",
+      "source_ids": [
+        "droysen-hre-1400",
+        "nelson-europe-1430",
+        "geoboundaries-cze-adm0-2022"
+      ]
+    },
+    {
+      "assertion_ids": [
+        "capital-central-europe-1444"
+      ],
+      "evidence_summary": "Adjacent-date cartography supports only a generalized scaffold pending traceable reconstruction.",
+      "exclusions": [
+        "Out-of-scope microterritories"
+      ],
+      "grade": "C",
+      "known_gaps": [
+        "Generalized modern-influenced scaffolding is not traceable to a fabric-backed dated boundary reconstruction."
+      ],
+      "layer": "politics",
+      "region_id": "central-europe",
+      "source_ids": [
+        "droysen-hre-1400",
+        "nelson-europe-1430",
+        "geoboundaries-cze-adm0-2022"
+      ]
+    },
+    {
+      "assertion_ids": [],
+      "evidence_summary": "",
+      "exclusions": [
+        "Out-of-scope microterritories"
+      ],
+      "grade": "U",
+      "known_gaps": [
+        "No fabric-backed period hierarchy has been reconstructed."
+      ],
+      "layer": "hierarchy",
+      "region_id": "central-europe",
+      "source_ids": []
+    },
+    {
+      "assertion_ids": [],
+      "evidence_summary": "Adjacent-date cartography supports only a generalized scaffold pending traceable reconstruction.",
+      "exclusions": [
+        "Out-of-scope microterritories"
+      ],
+      "grade": "C",
+      "known_gaps": [
+        "Generalized modern-influenced scaffolding is not traceable to a fabric-backed dated boundary reconstruction."
+      ],
+      "layer": "gazetteer_relationships",
+      "region_id": "central-europe",
+      "source_ids": [
+        "droysen-hre-1400",
+        "nelson-europe-1430",
+        "geoboundaries-cze-adm0-2022"
+      ]
+    }
+  ],
+  "document_type": "start_date_coverage",
+  "exclusions": [
+    "Regions outside the five M25 priority scopes",
+    "Parcel-level and seigneurial boundaries"
+  ],
+  "known_gaps": [
+    "Generalized boundary geometry",
+    "Incomplete imperial and appanage microstate hierarchy"
+  ],
+  "pass_id": "official-1444-reconstruction-v1",
+  "schema_version": "0.1.0",
+  "start_date": "1444-11-11"
+}

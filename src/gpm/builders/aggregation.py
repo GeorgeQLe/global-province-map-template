@@ -53,6 +53,7 @@ class _Node:
     historical: float
     reference_id: str | None
     neighbors: dict[int, float]
+    soft_barriers: dict[int, float]
     active: bool = True
     version: int = 0
 
@@ -75,6 +76,7 @@ def aggregate_location_provinces(
     geometry_revision: str | None = None,
     modern_boundary_influence: str | None = None,
     modern_pieces_input: Path | None = None,
+    historical_constraints_input: Path | None = None,
     generated_at: str | None = None,
 ) -> ProvinceAggregationResult:
     profile = load_profile(profile_id)
@@ -136,8 +138,9 @@ def aggregate_location_provinces(
         for feature in location_features
         if isinstance(feature.get("properties"), dict) and isinstance(feature["properties"].get("location_id"), str)
     }
+    constraints, constraint_hash = _load_historical_constraints(historical_constraints_input)
     nodes = _initial_nodes(piece_features, location_props)
-    _connect_nodes(nodes, influence=influence)
+    _connect_nodes(nodes, influence=influence, constraints=constraints)
     initial_count = len(nodes)
     merge_count = _merge_graph(nodes, target=target, influence=influence)
     active = sorted((node for node in nodes.values() if node.active), key=lambda node: node.members)
@@ -244,8 +247,14 @@ def aggregate_location_provinces(
         "input_piece_count": initial_count,
         "merge_count": merge_count,
         "inputs": {
-            "locations": str(location_path),
-            "modern_pieces": str(resolved_pieces_input) if resolved_pieces_input else None,
+            "locations": location_path.name,
+            "modern_pieces": resolved_pieces_input.name if resolved_pieces_input else None,
+            "historical_constraints": Path(historical_constraints_input).name if historical_constraints_input else None,
+        },
+        "historical_constraint_policy": {
+            "sha256": constraint_hash,
+            "hard_constraints": "remove_crossing_merge_edges",
+            "soft_evidence": "merge_score_penalty_only",
         },
         "files": [Path(province_output).name, Path(membership_output).name],
     }
@@ -314,11 +323,15 @@ def _initial_nodes(pieces: list[dict[str, Any]], location_props: dict[str, dict[
             historical=float(source.get("historical_signal") or 0.0),
             reference_id=str(props.get("reference_id")) if props.get("reference_id") is not None else None,
             neighbors={},
+            soft_barriers={},
         )
     return nodes
 
 
-def _connect_nodes(nodes: dict[int, _Node], *, influence: str) -> None:
+def _connect_nodes(
+    nodes: dict[int, _Node], *, influence: str,
+    constraints: list[tuple[str, Any]],
+) -> None:
     ordered = [nodes[index] for index in sorted(nodes)]
     geoms = [node.geometry for node in ordered]
     tree = STRtree(geoms)
@@ -333,8 +346,18 @@ def _connect_nodes(nodes: dict[int, _Node], *, influence: str) -> None:
             border = left.geometry.boundary.intersection(right.geometry.boundary).length
             if border <= 1e-12:
                 continue
+            shared = left.geometry.boundary.intersection(right.geometry.boundary)
+            classifications = {
+                classification for classification, geometry in constraints
+                if not shared.is_empty and shared.distance(geometry) <= 1e-9
+            }
+            if "hard_constraint" in classifications:
+                continue
             left.neighbors[right.key] = border
             right.neighbors[left.key] = border
+            if "soft_evidence" in classifications:
+                left.soft_barriers[right.key] = 1.0
+                right.soft_barriers[left.key] = 1.0
 
 
 def _merge_score(left: _Node, right: _Node, *, influence: str) -> float:
@@ -344,7 +367,8 @@ def _merge_score(left: _Node, right: _Node, *, influence: str) -> float:
     terrain_barrier = 1.0 if left.terrain and right.terrain and left.terrain.isdisjoint(right.terrain) else 0.0
     historical_barrier = abs(left.historical - right.historical)
     modern_penalty = 0.0 if influence in {"none", "hard"} or left.reference_id == right.reference_id else 2.0
-    return border * 1000.0 - balance - 0.2 * population_balance - terrain_barrier - historical_barrier - modern_penalty
+    constraint_penalty = 5.0 * left.soft_barriers.get(right.key, 0.0)
+    return border * 1000.0 - balance - 0.2 * population_balance - terrain_barrier - historical_barrier - modern_penalty - constraint_penalty
 
 
 def _merge_graph(nodes: dict[int, _Node], *, target: int, influence: str) -> int:
@@ -381,18 +405,29 @@ def _merge_graph(nodes: dict[int, _Node], *, target: int, influence: str) -> int
         right.active = False
         right.version += 1
         left.neighbors.pop(right.key, None)
+        left.soft_barriers.pop(right.key, None)
         combined: dict[int, float] = dict(left.neighbors)
+        combined_soft: dict[int, float] = dict(left.soft_barriers)
         for neighbor_key, border in right.neighbors.items():
             if neighbor_key != left.key and nodes[neighbor_key].active:
                 combined[neighbor_key] = combined.get(neighbor_key, 0.0) + border
+                combined_soft[neighbor_key] = max(
+                    combined_soft.get(neighbor_key, 0.0),
+                    right.soft_barriers.get(neighbor_key, 0.0),
+                )
             nodes[neighbor_key].neighbors.pop(right.key, None)
+            nodes[neighbor_key].soft_barriers.pop(right.key, None)
         left.neighbors = {}
+        left.soft_barriers = {}
         for neighbor_key, border in combined.items():
             neighbor = nodes[neighbor_key]
             if not neighbor.active:
                 continue
             left.neighbors[neighbor_key] = border
             neighbor.neighbors[left.key] = border
+            if combined_soft.get(neighbor_key, 0.0):
+                left.soft_barriers[neighbor_key] = combined_soft[neighbor_key]
+                neighbor.soft_barriers[left.key] = combined_soft[neighbor_key]
             push(left, neighbor)
         active_count -= 1
         merges += 1
@@ -420,6 +455,29 @@ def _load_intersection_rows(path: Path) -> list[dict[str, str]]:
         return []
     with path.open("r", encoding="utf-8", newline="") as file:
         return list(csv.DictReader(file))
+
+
+def _load_historical_constraints(path: Path | None) -> tuple[list[tuple[str, Any]], str | None]:
+    """Load pinned hard/soft historical boundaries for graph aggregation."""
+    if path is None:
+        return [], None
+    constraint_path = Path(path)
+    document = _read_collection(constraint_path, "Historical constraints")
+    constraints: list[tuple[str, Any]] = []
+    for index, feature in enumerate(document["features"]):
+        props = feature.get("properties") or {}
+        classification = props.get("classification")
+        if classification not in {"hard_constraint", "soft_evidence"}:
+            raise ProvinceAggregationError(
+                f"Historical constraint feature {index} has unsupported classification."
+            )
+        geometry = shape(feature.get("geometry"))
+        if geometry.is_empty or not geometry.is_valid:
+            raise ProvinceAggregationError(f"Historical constraint feature {index} has invalid geometry.")
+        if geometry.geom_type in {"Polygon", "MultiPolygon"}:
+            geometry = geometry.boundary
+        constraints.append((classification, geometry))
+    return constraints, hashlib.sha256(constraint_path.read_bytes()).hexdigest()
 
 
 def _dominant_reference(members: list[tuple[str, str]], rows: list[dict[str, str]], layer: str) -> str | None:

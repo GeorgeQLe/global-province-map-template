@@ -1,0 +1,54 @@
+{
+  "artifact_version": "1.0.0",
+  "changes": [
+    {
+      "affected_ids": [
+        "low-countries",
+        "burgundy",
+        "france",
+        "hre",
+        "central-europe"
+      ],
+      "category": "research",
+      "change_id": "m25-initial-research",
+      "summary": "Added reviewed 1400\u20131453 cartographic evidence and pinned modern negative controls."
+    },
+    {
+      "affected_ids": [
+        "1444-r1"
+      ],
+      "category": "geometry",
+      "change_id": "m25-reconstruction-r1",
+      "summary": "Built the first scoped five-region 1444 reconstruction."
+    },
+    {
+      "affected_ids": [
+        "negative-modern-brussels-capital-region",
+        "negative-modern-nord-department"
+      ],
+      "category": "qa",
+      "change_id": "m25-brussels-nord-regression",
+      "summary": "Added mandatory executed Brussels-Capital Region and Nord department negative-anachronism gates."
+    },
+    {
+      "affected_ids": [
+        "bra-union-bur",
+        "col-estate-hre",
+        "pal-estate-hre",
+        "boh-estate-hre"
+      ],
+      "category": "gazetteer",
+      "change_id": "m25-polity-relationships",
+      "summary": "Separated constituent polities, imperial dependencies, claims, and personal unions."
+    }
+  ],
+  "document_type": "start_date_changelog",
+  "migrations": [
+    "M15/M20 sample-only 1444 geometry packs are superseded for the five M25 coverage scopes by official-1444-reconstruction-v1."
+  ],
+  "pass_id": "official-1444-reconstruction-v1",
+  "released_at": "2026-07-14",
+  "schema_version": "0.1.0",
+  "start_date": "1444-11-11",
+  "version": "1.0.0"
+}
