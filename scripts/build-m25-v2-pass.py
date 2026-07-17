@@ -1214,6 +1214,7 @@ def stage_build_fabric() -> None:
         affected_dates=(START_DATE,),
         source_lineage=("m25 1444-v2 evidence record",),
         license_lineage=("see per-request license lineage",),
+        generated_at=GENERATED_AT,
     )
     if paintability.status != "fail":
         raise SystemExit("expected r1 paintability to fail for the required boundaries")

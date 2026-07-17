@@ -62,7 +62,7 @@
       "severity": "error"
     }
   ],
-  "generated_at": "2026-07-17T13:30:27+00:00",
+  "generated_at": "2026-07-16T00:00:00+00:00",
   "report_type": "paintability_qa",
   "schema_version": "0.1.0",
   "split_requests_output": "/Users/georgele/projects/games/global-province-map-template/data/processed/m25-v2-staging/r1-paintability-templates.json",

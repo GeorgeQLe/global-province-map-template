@@ -229,7 +229,7 @@ def run_paintability_qa(*, location_input: Path, boundary_input: Path,
                         report_output: Path | None = None, split_requests_output: Path | None = None,
                         affected_dates: tuple[str, ...] = (), confidence: str = "review-required",
                         source_lineage: tuple[str, ...] = (), license_lineage: tuple[str, ...] = (),
-                        tolerance: float = 1e-8) -> PaintabilityQAResult:
+                        tolerance: float = 1e-8, generated_at: str | None = None) -> PaintabilityQAResult:
     locations = _read_json(Path(location_input), "Location input")
     boundaries = _read_json(Path(boundary_input), "Boundary input")
     if locations.get("type") != "FeatureCollection" or boundaries.get("type") != "FeatureCollection":
@@ -279,7 +279,7 @@ def run_paintability_qa(*, location_input: Path, boundary_input: Path,
     requests_path = Path(split_requests_output or Path(location_input).with_name("paintability_split_requests.json"))
     report = {
         "schema_version": "0.1.0", "report_type": "paintability_qa", "status": status,
-        "generated_at": datetime.now(UTC).replace(microsecond=0).isoformat(),
+        "generated_at": generated_at or datetime.now(UTC).replace(microsecond=0).isoformat(),
         "boundary_count": len(boundaries.get("features") or []), "crossing_count": len(requests),
         "findings": findings, "split_requests_output": str(requests_path),
     }
