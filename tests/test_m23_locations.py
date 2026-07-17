@@ -252,6 +252,50 @@ def test_split_migration_requires_new_revision_and_preserves_unchanged_ids(tmp_p
     assert manifest["output_fabric_revision"] == "2"
 
 
+def test_refine_request_is_a_noop_when_the_grid_is_exhausted(tmp_path: Path) -> None:
+    """refine_h3 stops silently at maximum resolution; split_by_boundary stays strict."""
+    land, admin = _inputs(tmp_path)
+    source_dir = tmp_path / "source"
+    build_location_fabric(
+        land_input=land, admin0_input=admin, output_dir=source_dir,
+        target_location_count=24, generated_at="2026-01-01T00:00:00+00:00",
+    )
+    locations = json.loads((source_dir / "locations.geojson").read_text())
+    maximum = max(item["properties"]["h3_resolution"] for item in locations["features"])
+    target = next(
+        item for item in locations["features"]
+        if item["properties"]["h3_resolution"] == maximum
+    )
+    request = {
+        "request_id": "refine_exhausted", "operation": "refine_h3",
+        "failed_paintability_test": "fixture", "proposed_geometry": target["geometry"],
+        "sources": ["fixture research"], "license_lineage": ["fixture CC0"],
+        "confidence": "high", "affected_dates": ["1444-11-11"],
+        "target_fabric_revision": "1",
+    }
+    # Force every affected location to already sit at the configured maximum
+    # by refining twice: the second identical request must not raise.
+    requests = _write(tmp_path / "requests.json", {
+        "schema_version": "0.1.0",
+        "requests": [
+            {**request, "request_id": "refine_once"},
+            {**request, "request_id": "refine_again_a"},
+            {**request, "request_id": "refine_again_b"},
+        ],
+    })
+    migrated_dir = tmp_path / "migrated"
+    build_location_fabric(
+        land_input=land, admin0_input=admin, split_request_input=requests,
+        output_fabric_revision="2", output_dir=migrated_dir, target_location_count=24,
+        generated_at="2026-01-01T00:00:00+00:00",
+    )
+    lineage = json.loads((migrated_dir / "location_lineage.json").read_text())
+    recorded = {item.get("request_id") for item in lineage["events"]}
+    issued = {"refine_once", "refine_again_a", "refine_again_b"}
+    # at least one exhausted round produced no event instead of failing the build
+    assert recorded & issued != issued
+
+
 def test_fabric_qa_is_fail_closed_and_resolves_land_from_manifest(tmp_path: Path) -> None:
     land, admin = _inputs(tmp_path)
     output = tmp_path / "fabric"

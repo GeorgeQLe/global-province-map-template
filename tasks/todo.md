@@ -6,15 +6,15 @@
 
 ## Up next (from roadmap)
 
-- M25: replace the withdrawn synthetic candidate with a pinned 30,003-location,
-  22,000-province build; reconstruct and review traceable dated boundaries;
-  accept Brussels/Nord splits through real parent/child lineage; restore B
-  geometry/politics/relationship and C hierarchy coverage across all five
-  priority regions; publish reproducible QA and visual-review evidence. No
-  release claim until the hardened start-date gate passes.
-  Schema 0.2, constrained aggregation, kilometre QA, typed politics/hierarchy,
-  sidecar validation, and deterministic SVG review infrastructure are complete;
-  evidence production, r1→r2 splits, assembly, and human review remain.
+- M25: the 1444-v2 candidate is assembled and reproducible — pinned evidence,
+  real r1→r2 split lineage, constrained 22,000-province aggregation, measured
+  golden-border tolerances, executed Brussels/Nord negative regressions, and
+  two-run byte-identical determinism evidence. Remaining: an independent human
+  must inspect `research/start-dates/1444-v2/review/*.svg` and the
+  georeferencing blocks in `boundaries.geojson`, then run
+  `python scripts/build-m25-v2-pass.py sign-review --reviewer "<name>"` and
+  re-run `gpm qa start-date --pass-dir research/start-dates/1444-v2`. No
+  release or acceptance claim until that gate passes.
 - M25.5 game runtime compiler and reference pack: implement the proposed
   `gpm export runtime` contract, dense indices, compact tables, CSR graphs,
   scenario deltas, LOD/tiled geometry, compatibility/migration metadata,

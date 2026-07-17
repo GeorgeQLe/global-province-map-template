@@ -1,0 +1,344 @@
+{
+  "artifact_version": "2.0.0",
+  "assertions": [
+    {
+      "assertion_id": "border-low-countries-1444",
+      "assertion_type": "border",
+      "boundary_feature_ids": [
+        "frontier-scheldt-flanders-empire"
+      ],
+      "expectation": "positive",
+      "layer": "geometry",
+      "notes": "Measured 5.615 km on the full build against the oudenaarde..ghent certified sub-segment.",
+      "region_id": "low-countries",
+      "spatial_relation": "border_matches_boundary_hausdorff_km_lte",
+      "subject_ids": [
+        "prv_408061529042d3d5c90a",
+        "prv_8f287a8245c6356a267e"
+      ],
+      "tolerance": 8.0,
+      "unit": "kilometres"
+    },
+    {
+      "assertion_id": "capital-low-countries-politics-1444",
+      "assertion_type": "capital",
+      "boundary_feature_ids": [],
+      "expectation": "positive",
+      "layer": "politics",
+      "notes": "brussels must lie in its assigned full-build province.",
+      "region_id": "low-countries",
+      "spatial_relation": "capital_within_subject",
+      "subject_ids": [
+        "loc_851fa443fffffff_dae40dedf2",
+        "prv_e6d10700bb0f3bca58e8"
+      ],
+      "tolerance": 1,
+      "unit": "boolean"
+    },
+    {
+      "assertion_id": "capital-low-countries-relationships-1444",
+      "assertion_type": "capital",
+      "boundary_feature_ids": [],
+      "expectation": "positive",
+      "layer": "gazetteer_relationships",
+      "notes": "lille must lie in its assigned full-build province.",
+      "region_id": "low-countries",
+      "spatial_relation": "capital_within_subject",
+      "subject_ids": [
+        "loc_85194d2bfffffff_38bf75dbee",
+        "prv_e203941f5e999fe72ffa"
+      ],
+      "tolerance": 1,
+      "unit": "boolean"
+    },
+    {
+      "assertion_id": "negative-modern-brussels-capital-region",
+      "assertion_type": "outline",
+      "boundary_feature_ids": [
+        "forbidden-modern-brussels-capital-region"
+      ],
+      "expectation": "negative_anachronism",
+      "layer": "geometry",
+      "notes": "Measured overlap ratio 0.463603 on the full build.",
+      "region_id": "low-countries",
+      "spatial_relation": "forbidden_outline_overlap_ratio_lte",
+      "subject_ids": [
+        "prv_e6d10700bb0f3bca58e8"
+      ],
+      "tolerance": 0.564,
+      "unit": "ratio"
+    },
+    {
+      "assertion_id": "border-burgundy-1444",
+      "assertion_type": "border",
+      "boundary_feature_ids": [
+        "frontier-saone-france-empire"
+      ],
+      "expectation": "positive",
+      "layer": "geometry",
+      "notes": "Measured 9.267 km on the full build against the tournus..macon certified sub-segment.",
+      "region_id": "burgundy",
+      "spatial_relation": "border_matches_boundary_hausdorff_km_lte",
+      "subject_ids": [
+        "prv_fc2af91b8109520f0f64",
+        "prv_ad640a9b29a2d342283b"
+      ],
+      "tolerance": 12.0,
+      "unit": "kilometres"
+    },
+    {
+      "assertion_id": "capital-burgundy-politics-1444",
+      "assertion_type": "capital",
+      "boundary_feature_ids": [],
+      "expectation": "positive",
+      "layer": "politics",
+      "notes": "dijon must lie in its assigned full-build province.",
+      "region_id": "burgundy",
+      "spatial_relation": "capital_within_subject",
+      "subject_ids": [
+        "loc_831f86fffffffff_5523b03bb0",
+        "prv_bf2e256ea8867ee876ff"
+      ],
+      "tolerance": 1,
+      "unit": "boolean"
+    },
+    {
+      "assertion_id": "capital-burgundy-relationships-1444",
+      "assertion_type": "capital",
+      "boundary_feature_ids": [],
+      "expectation": "positive",
+      "layer": "gazetteer_relationships",
+      "notes": "dole must lie in its assigned full-build province.",
+      "region_id": "burgundy",
+      "spatial_relation": "capital_within_subject",
+      "subject_ids": [
+        "loc_831f82fffffffff_dad45ef0f3",
+        "prv_a69219561a3fc84e409a"
+      ],
+      "tolerance": 1,
+      "unit": "boolean"
+    },
+    {
+      "assertion_id": "negative-modern-burgundy",
+      "assertion_type": "outline",
+      "boundary_feature_ids": [
+        "forbidden-modern-bourgogne-franche-comte"
+      ],
+      "expectation": "negative_anachronism",
+      "layer": "geometry",
+      "notes": "Measured overlap ratio 0.127578 on the full build.",
+      "region_id": "burgundy",
+      "spatial_relation": "forbidden_outline_overlap_ratio_lte",
+      "subject_ids": [
+        "prv_bf2e256ea8867ee876ff"
+      ],
+      "tolerance": 0.228,
+      "unit": "ratio"
+    },
+    {
+      "assertion_id": "border-france-1444",
+      "assertion_type": "border",
+      "boundary_feature_ids": [
+        "frontier-rhone-languedoc-provence"
+      ],
+      "expectation": "positive",
+      "layer": "geometry",
+      "notes": "Measured 5.503 km on the full build against the beaucaire..tarascon certified sub-segment.",
+      "region_id": "france",
+      "spatial_relation": "border_matches_boundary_hausdorff_km_lte",
+      "subject_ids": [
+        "prv_29bb286d3668cebb7098",
+        "prv_dea819013cfffb8803ac"
+      ],
+      "tolerance": 8.0,
+      "unit": "kilometres"
+    },
+    {
+      "assertion_id": "capital-france-politics-1444",
+      "assertion_type": "capital",
+      "boundary_feature_ids": [],
+      "expectation": "positive",
+      "layer": "politics",
+      "notes": "paris must lie in its assigned full-build province.",
+      "region_id": "france",
+      "spatial_relation": "capital_within_subject",
+      "subject_ids": [
+        "loc_831fb4fffffffff_8064033bc3",
+        "prv_3afbc9f900a1b1fb77ce"
+      ],
+      "tolerance": 1,
+      "unit": "boolean"
+    },
+    {
+      "assertion_id": "capital-france-relationships-1444",
+      "assertion_type": "capital",
+      "boundary_feature_ids": [],
+      "expectation": "positive",
+      "layer": "gazetteer_relationships",
+      "notes": "aix-en-provence must lie in its assigned full-build province.",
+      "region_id": "france",
+      "spatial_relation": "capital_within_subject",
+      "subject_ids": [
+        "loc_833968fffffffff_da6601cf51",
+        "prv_ae5faaed835983b59731"
+      ],
+      "tolerance": 1,
+      "unit": "boolean"
+    },
+    {
+      "assertion_id": "negative-modern-nord-department",
+      "assertion_type": "outline",
+      "boundary_feature_ids": [
+        "forbidden-modern-nord-department"
+      ],
+      "expectation": "negative_anachronism",
+      "layer": "geometry",
+      "notes": "Measured overlap ratio 0.057685 on the full build.",
+      "region_id": "france",
+      "spatial_relation": "forbidden_outline_overlap_ratio_lte",
+      "subject_ids": [
+        "prv_e203941f5e999fe72ffa"
+      ],
+      "tolerance": 0.158,
+      "unit": "ratio"
+    },
+    {
+      "assertion_id": "border-hre-1444",
+      "assertion_type": "border",
+      "boundary_feature_ids": [
+        "frontier-eider-empire-denmark"
+      ],
+      "expectation": "positive",
+      "layer": "geometry",
+      "notes": "Measured 2.303 km on the full build against the tonning..suderstapel certified sub-segment.",
+      "region_id": "hre",
+      "spatial_relation": "border_matches_boundary_hausdorff_km_lte",
+      "subject_ids": [
+        "prv_e4ec60d4327f30ad088e",
+        "prv_59e4cf6865825e709c22"
+      ],
+      "tolerance": 6.0,
+      "unit": "kilometres"
+    },
+    {
+      "assertion_id": "capital-hre-politics-1444",
+      "assertion_type": "capital",
+      "boundary_feature_ids": [],
+      "expectation": "positive",
+      "layer": "politics",
+      "notes": "lubeck must lie in its assigned full-build province.",
+      "region_id": "hre",
+      "spatial_relation": "capital_within_subject",
+      "subject_ids": [
+        "loc_831f02fffffffff_ae16e5b2d1",
+        "prv_dc69f73badfc9cea9238"
+      ],
+      "tolerance": 1,
+      "unit": "boolean"
+    },
+    {
+      "assertion_id": "capital-hre-relationships-1444",
+      "assertion_type": "capital",
+      "boundary_feature_ids": [],
+      "expectation": "positive",
+      "layer": "gazetteer_relationships",
+      "notes": "schleswig must lie in its assigned full-build province.",
+      "region_id": "hre",
+      "spatial_relation": "capital_within_subject",
+      "subject_ids": [
+        "loc_831f06fffffffff_2859e87474",
+        "prv_adb53ea53c830dbe7ffb"
+      ],
+      "tolerance": 1,
+      "unit": "boolean"
+    },
+    {
+      "assertion_id": "negative-modern-hre",
+      "assertion_type": "outline",
+      "boundary_feature_ids": [
+        "forbidden-modern-schleswig-holstein"
+      ],
+      "expectation": "negative_anachronism",
+      "layer": "geometry",
+      "notes": "Measured overlap ratio 0.453203 on the full build.",
+      "region_id": "hre",
+      "spatial_relation": "forbidden_outline_overlap_ratio_lte",
+      "subject_ids": [
+        "prv_adb53ea53c830dbe7ffb"
+      ],
+      "tolerance": 0.553,
+      "unit": "ratio"
+    },
+    {
+      "assertion_id": "border-central-europe-1444",
+      "assertion_type": "border",
+      "boundary_feature_ids": [
+        "frontier-morava-moravia-hungary"
+      ],
+      "expectation": "positive",
+      "layer": "geometry",
+      "notes": "Measured 8.312 km on the full build against the rohatec..dyje-confluence certified sub-segment.",
+      "region_id": "central-europe",
+      "spatial_relation": "border_matches_boundary_hausdorff_km_lte",
+      "subject_ids": [
+        "prv_74165abf415d762b55a9",
+        "prv_301731996b852c951fe1"
+      ],
+      "tolerance": 11.0,
+      "unit": "kilometres"
+    },
+    {
+      "assertion_id": "capital-central-europe-politics-1444",
+      "assertion_type": "capital",
+      "boundary_feature_ids": [],
+      "expectation": "positive",
+      "layer": "politics",
+      "notes": "prague must lie in its assigned full-build province.",
+      "region_id": "central-europe",
+      "spatial_relation": "capital_within_subject",
+      "subject_ids": [
+        "loc_831e35fffffffff_2db856f298",
+        "prv_2d96de6e0dfd744b65b9"
+      ],
+      "tolerance": 1,
+      "unit": "boolean"
+    },
+    {
+      "assertion_id": "capital-central-europe-relationships-1444",
+      "assertion_type": "capital",
+      "boundary_feature_ids": [],
+      "expectation": "positive",
+      "layer": "gazetteer_relationships",
+      "notes": "brno must lie in its assigned full-build province.",
+      "region_id": "central-europe",
+      "spatial_relation": "capital_within_subject",
+      "subject_ids": [
+        "loc_841e069ffffffff_1f6da8d34c",
+        "prv_0f7705c25fd47b8a233c"
+      ],
+      "tolerance": 1,
+      "unit": "boolean"
+    },
+    {
+      "assertion_id": "negative-modern-central-europe",
+      "assertion_type": "outline",
+      "boundary_feature_ids": [
+        "forbidden-modern-czechia"
+      ],
+      "expectation": "negative_anachronism",
+      "layer": "geometry",
+      "notes": "Measured overlap ratio 0.021537 on the full build.",
+      "region_id": "central-europe",
+      "spatial_relation": "forbidden_outline_overlap_ratio_lte",
+      "subject_ids": [
+        "prv_0f7705c25fd47b8a233c"
+      ],
+      "tolerance": 0.122,
+      "unit": "ratio"
+    }
+  ],
+  "document_type": "spatial_golden_borders",
+  "pass_id": "official-1444-reconstruction-v2",
+  "schema_version": "0.2.0",
+  "start_date": "1444-11-11"
+}

@@ -1,0 +1,48 @@
+{
+  "derivation": {
+    "method": "verbatim-feature-extraction",
+    "shape_name": "Brussels Hoofdstedelijk",
+    "source_file": "geoBoundaries-BEL-ADM1_simplified.geojson"
+  },
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              4.283083477000048,
+              50.813608929000054
+            ],
+            [
+              4.384367978000057,
+              50.759743024000045
+            ],
+            [
+              4.485078704000045,
+              50.793103331000054
+            ],
+            [
+              4.43499926100003,
+              50.89895331000008
+            ],
+            [
+              4.288827063000042,
+              50.891802847000065
+            ],
+            [
+              4.283083477000048,
+              50.813608929000054
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "outline_id": "forbidden-modern-brussels-capital-region",
+        "shape_name": "Brussels Hoofdstedelijk"
+      },
+      "type": "Feature"
+    }
+  ],
+  "type": "FeatureCollection"
+}

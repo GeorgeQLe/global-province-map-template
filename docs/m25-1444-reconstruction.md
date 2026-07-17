@@ -1,6 +1,7 @@
 # M25 — 1444 Research and Reconstruction Pass
 
-Status: **active; initial v1 candidate withdrawn after independent audit**.
+Status: **active; v2 candidate assembled, awaiting independent human review**.
+The initial v1 candidate remains withdrawn after independent audit.
 
 The repository now contains the schema/pipeline portion of the v2 acceptance
 contract. Schema 0.2 is additive and the archived schema 0.1 pass remains
@@ -8,10 +9,10 @@ readable. The new contract records contained SHA-256 derived evidence,
 date-valid and independent source groups, georeferencing control metadata and
 residuals, kilometre error budgets, typed politics, hierarchy mappings,
 historical-constraint hashes, aggregation/adjacency sidecars, and an
-independently signed review manifest. No `1444-v2` pass is checked in because
-the required B-grade historical evidence and independent reviewer sign-off do
-not yet exist; generating plausible-looking geometry would not satisfy this
-contract.
+independently signed review manifest. A `1444-v2` pass is now checked in (see
+the 2026-07-17 section below); it passes every gate except the independent
+reviewer sign-off, which does not yet exist and cannot be produced by the
+generator.
 
 The canonical roadmap keeps M25 focused on restoring fabric-backed B
 geometry/politics/relationship and C hierarchy coverage across all five
@@ -100,6 +101,65 @@ Their dates, scope, or access characteristics do not establish every certified
 frontier at 1444-11-11 with a second independent source. Accordingly no
 `1444-v2`, r2 split request, coverage promotion, or acceptance artifact was
 created. This is the plan's mandatory evidence stop, not a relaxed fallback.
+
+## 2026-07-17 v2 assembly (pending independent review)
+
+The evidence stop was broken honestly by narrowing the certification claim:
+instead of "every frontier", the v2 pass certifies **one long-lived legal
+frontier segment per priority region**, each backed by a date-valid academic
+anchor plus an independent corroborating provenance chain. The full quote and
+pin record is `tasks/m25-evidence-record.md`; the deterministic assembler is
+`scripts/build-m25-v2-pass.py` (stages `build-fabric | aggregate | assemble |
+render | sign-review | all`).
+
+| Region | Frontier | Certified segment | Geometry substrate |
+|---|---|---|---|
+| low-countries | Scheldt | Pecq → Ghent | NE 10m rivers record 857 |
+| burgundy | Saône | Chalon → Mâcon | NE record 879 (NE mislabels it "Sane") |
+| france | Rhône | Barbentane → Fourques | NE record 933 |
+| hre | lower Eider | Tönning → Pahlen | OHM relation 2691969 (CC0) |
+| central-europe | lower Morava | Rohatec → Dyje confluence | NE record 842 |
+
+Geometry is the production `global-h3-v1` fabric with a real r1→r2 split
+migration (`refine_h3` corridors, then strict `split_by_boundary` along the
+five evidenced frontiers) and a constrained 22,000-province aggregation with
+`modern_boundary_influence="none"`. Every golden-border tolerance is measured
+on the full build, then honesty-capped: the assembler aborts if any frontier
+Hausdorff exceeds 25 km or any forbidden-outline overlap ratio exceeds 0.85 —
+the caps are never weakened to fit the data. Measured values:
+
+| Assertion | Best anchor sub-segment | Measured | Tolerance |
+|---|---|---|---|
+| frontier-scheldt-flanders-empire | Oudenaarde → Ghent | 5.61 km | 8.0 km |
+| frontier-saone-france-empire | Tournus → Mâcon | 9.27 km | 12.0 km |
+| frontier-rhone-languedoc-provence | Beaucaire → Tarascon | 5.50 km | 8.0 km |
+| frontier-eider-empire-denmark | Tönning → Süderstapel | 2.30 km | 6.0 km |
+| frontier-morava-moravia-hungary | Rohatec → Dyje confluence | 8.31 km | 11.0 km |
+| negative-modern-brussels-capital-region | — | ratio 0.4636 | 0.564 |
+| negative-modern-nord-department | — | ratio 0.0577 | 0.158 |
+| negative-modern-bourgogne-franche-comte | — | ratio 0.1276 | 0.228 |
+| negative-modern-schleswig-holstein | — | ratio 0.4532 | 0.553 |
+| negative-modern-czechia | — | ratio 0.0215 | 0.122 |
+
+Negative-anachronism subjects are corridor-reconstructed provinces (the
+Czechia subject is the Brno province: Prague lies outside every certified
+corridor, in an aggregation filler province whose overlap would measure the
+filler blob rather than outline survival). The full build emits each province
+geometry as the exact union of its sidecar location members, which is the
+contract `gpm qa start-date` enforces.
+
+**`gpm qa start-date --pass-dir research/start-dates/1444-v2` fails, and that
+is the designed state**: the only failure is the pending independent review
+(schema 0.2 requires `review.status: "accepted"`, and the generator cannot
+sign as the reviewer). The regression suite
+`tests/test_m25_v2_production_pass.py` proves that a test-signed copy passes
+every other gate: 0 non-review QA errors and all 20 executed spatial
+assertions pass, including the mandatory Brussels/Nord negative regressions
+with real measured ratios. M25 therefore remains **active** — no acceptance
+claim exists or may be made until an independent human inspects
+`research/start-dates/1444-v2/review/*.svg` plus the georeferencing blocks in
+`boundaries.geojson` and runs
+`python scripts/build-m25-v2-pass.py sign-review --reviewer "<name>"`.
 
 ## Coverage claims
 

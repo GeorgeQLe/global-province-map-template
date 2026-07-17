@@ -1,0 +1,95 @@
+{
+  "derivation": {
+    "anchors": [
+      {
+        "id": "rohatec",
+        "lat": 48.86,
+        "lon": 17.1,
+        "name": "Rohatec (land border meets the river)",
+        "residual_km": 3.017,
+        "role": "endpoint",
+        "side": "on-line"
+      },
+      {
+        "id": "hodonin",
+        "lat": 48.8489,
+        "lon": 17.1325,
+        "name": "Hodon\u00edn",
+        "residual_km": 2.153,
+        "role": "control",
+        "side": "kingdom-of-bohemia"
+      },
+      {
+        "id": "dyje-confluence",
+        "lat": 48.62,
+        "lon": 16.94,
+        "name": "Dyje (Thaya) confluence",
+        "residual_km": 0.485,
+        "role": "endpoint",
+        "side": "on-line"
+      }
+    ],
+    "method": "natural-earth-10m-river-centerline-substring",
+    "segment_length_km": 27.292,
+    "substrate": {
+      "kind": "ne-rivers",
+      "record_indexes": [
+        842
+      ]
+    }
+  },
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            17.113281,
+            48.834174
+          ],
+          [
+            17.104004,
+            48.824823
+          ],
+          [
+            17.098145,
+            48.806098
+          ],
+          [
+            17.083887,
+            48.793964
+          ],
+          [
+            17.049463,
+            48.774237
+          ],
+          [
+            17.024805,
+            48.746527
+          ],
+          [
+            16.974268,
+            48.650092
+          ],
+          [
+            16.962793,
+            48.636176
+          ],
+          [
+            16.947021,
+            48.623407
+          ],
+          [
+            16.946476,
+            48.619167
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "segment_id": "frontier-morava-moravia-hungary"
+      },
+      "type": "Feature"
+    }
+  ],
+  "type": "FeatureCollection"
+}

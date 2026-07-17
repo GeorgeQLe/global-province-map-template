@@ -1,0 +1,88 @@
+{
+  "artifact_version": "2.0.0",
+  "artifacts": {
+    "boundary_registry": {
+      "path": "boundaries.geojson",
+      "sha256": "5a23f459d756075698bc6d95c28b17bca6d212c89dd0a0e2f2b7f014c23a3f4d",
+      "version": "2.0.0"
+    },
+    "changelog": {
+      "path": "changelog.json",
+      "sha256": "e21862fbe440758945ea47419e8808701e12c70bb4b362c094c5700623c2cf81",
+      "version": "2.0.0"
+    },
+    "coverage_matrix": {
+      "path": "coverage.json",
+      "sha256": "ebd9ebb14c28afe29189adf01f42a85b73510a359948d0af8c86f261e50d297d",
+      "version": "2.0.0"
+    },
+    "dossier": {
+      "path": "dossier.md",
+      "sha256": "5864311d60fed692f5701a1075d7a89d4a6a1c925f757d6d821acc23878ecbf8",
+      "version": "2.0.0"
+    },
+    "full_build_geometry": {
+      "path": "build.geojson",
+      "sha256": "d506bc0b21ad014d26a5146489f770f3ba9fe0799beebf2e9a4807275da01439",
+      "version": "2.0.0"
+    },
+    "golden_borders": {
+      "path": "golden.json",
+      "sha256": "74c29902dd75b0c4da692932c7773b8a5a26200cbf519df9efb631b67f1bfa11",
+      "version": "2.0.0"
+    },
+    "location_assignments": {
+      "path": "assignments.json",
+      "sha256": "a3e9d32c6ceb42514dd0cd0d3dfc308a256940ece32783a71d3b7488ae884604",
+      "version": "2.0.0"
+    },
+    "polity_gazetteer": {
+      "path": "gazetteer.json",
+      "sha256": "2786678129a56737578926b3d349d0ae5773de6d4dd3cd8ba354a67cc9100c55",
+      "version": "2.0.0"
+    },
+    "source_manifest": {
+      "path": "source_manifest.json",
+      "sha256": "50231baae1388bca5134b8c951f30242ec7da71816d26abb50e4c90f3c633998",
+      "version": "2.0.0"
+    }
+  },
+  "document_type": "start_date_research_pass",
+  "era": "late-medieval",
+  "fabric_revision": "global-h3-v1-r2",
+  "generated_at": "2026-07-16T00:00:00Z",
+  "geometry_revision": "1444-r2",
+  "pass_id": "official-1444-reconstruction-v2",
+  "review": {
+    "generator": "gpm qa render",
+    "manifest_path": "review/review_manifest.json",
+    "reviewer": "pending-independent-review",
+    "sha256": "f43fd5f45c1949cd28acdffb92d51c5f4ea0ffb0625795bb2a4845a19824d076",
+    "status": "pending_independent_review"
+  },
+  "schema_version": "0.2.0",
+  "scope": {
+    "layers": [
+      "geometry",
+      "politics",
+      "hierarchy",
+      "gazetteer_relationships"
+    ],
+    "priority_regions": [
+      "low-countries",
+      "burgundy",
+      "france",
+      "hre",
+      "central-europe"
+    ],
+    "regions": [
+      "low-countries",
+      "burgundy",
+      "france",
+      "hre",
+      "central-europe"
+    ]
+  },
+  "start_date": "1444-11-11",
+  "version": "2.0.0"
+}

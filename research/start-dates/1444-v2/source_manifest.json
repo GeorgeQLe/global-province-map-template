@@ -1,0 +1,527 @@
+{
+  "artifact_version": "2.0.0",
+  "conflict_resolution_notes": [
+    "The Sa\u00f4ne-as-boundary was the royal legal doctrine; in 1444 ducal officers contested the reach upstream of Pontailler (Dumasy-Rabineau 2021). The certified Chalon-M\u00e2con segment lies downstream of the contested reach.",
+    "Imperial Flanders (Alost, Waas, Quatre-M\u00e9tiers) was count-of-Flanders territory on Empire soil east of the Scheldt (Lot 1910); the realm boundary is modeled on the river between Pecq and Ghent, and the Tournai royal enclave is excluded.",
+    "Shepherd's 1477 plate shows Moravia under Hungarian subjection (1469/1479-1490); the gazetteer models the 1444 status instead: Moravia a Bohemian Crown land under margrave Ladislaus Posthumous.",
+    "Wladyslaw III of Hungary died at Varna on 1444-11-10, one day before the start date; the news was unknown and the legal Morava boundary was unaffected.",
+    "All five frontiers were dynastically bridged in 1444 (Philip the Good, Adolf VIII, Habsburg minorities); they are modeled as de jure realm boundaries, which the cited scholarship supports."
+  ],
+  "document_type": "start_date_source_manifest",
+  "pass_id": "official-1444-reconstruction-v2",
+  "schema_version": "0.2.0",
+  "sources": [
+    {
+      "access_date": "2026-07-16",
+      "checksum": null,
+      "citation": "L\u00e9onard Dauphant, \u00ab Tracer et passer la fronti\u00e8re entre le royaume de France et l'Empire \u00e0 la fin du Moyen \u00c2ge \u00bb, Source(s). Arts, civilisation et histoire de l'Europe 17 (2020), p. 35-54. Names the \u00ab Quatre Rivi\u00e8res (Escaut, Meuse, Sa\u00f4ne et Rh\u00f4ne) \u00bb as the kingdom's eastern frontier facing the Holy Roman Empire in the 14th-15th centuries.",
+      "derived_artifacts": [],
+      "independence_group": "dauphant",
+      "license": "CC BY-NC-SA 4.0 (cited and pinned; text not redistributed here)",
+      "review_status": "reviewed",
+      "source_id": "dauphant-2020-sources",
+      "source_type": "academic",
+      "transformations": [],
+      "url": "https://doi.org/10.57086/sources.112",
+      "valid_from": "1300",
+      "valid_to": "1515",
+      "version": "Source(s) 17 (2020)"
+    },
+    {
+      "access_date": "2026-07-16",
+      "checksum": null,
+      "citation": "L\u00e9onard Dauphant, \u00ab Fronti\u00e8re id\u00e9elle et marqueurs territoriaux du royaume des Quatre rivi\u00e8res (France, 1258-1529) \u00bb, in Entre id\u00e9el et mat\u00e9riel, \u00c9ditions de la Sorbonne, 2018. Records 15th-century bronze boundary markers in the Sa\u00f4ne riverbed and a 1452 inquiry about them.",
+      "derived_artifacts": [],
+      "independence_group": "dauphant",
+      "license": "OpenEdition Books open HTML (cited; text not redistributed here)",
+      "review_status": "reviewed",
+      "source_id": "dauphant-2018-quatre-rivieres",
+      "source_type": "academic",
+      "transformations": [],
+      "url": "https://books.openedition.org/psorbonne/41103",
+      "valid_from": "1258",
+      "valid_to": "1529",
+      "version": "2018"
+    },
+    {
+      "access_date": "2026-07-16",
+      "checksum": null,
+      "citation": "Juliette Dumasy-Rabineau, \u00ab Les cartes perdues des fronti\u00e8res de Bourgogne au milieu du XVe si\u00e8cle \u00bb, in Fronti\u00e8res spatiales, fronti\u00e8res sociales au Moyen \u00c2ge, \u00c9ditions de la Sorbonne, 2021, p. 91-106. Documents the 11 May 1444 journ\u00e9e de Langres, a m\u00e9moire of the Burgundian council of 16 October 1444 with frontier \u00ab figures \u00bb, the royal position that \u00ab la fronti\u00e8re entre royaume et comt\u00e9 se situait sur la rivi\u00e8re \u00bb, and Auxonne/Heuilley as ducal territory \u00ab sis en terre d'Empire \u00bb.",
+      "derived_artifacts": [],
+      "independence_group": "sorbonne-dumasy",
+      "license": "OpenEdition Freemium open HTML (cited; text not redistributed here)",
+      "review_status": "reviewed",
+      "source_id": "dumasy-rabineau-2021",
+      "source_type": "academic",
+      "transformations": [],
+      "url": "https://books.openedition.org/psorbonne/128223",
+      "valid_from": "1444-01-01",
+      "valid_to": "1466-12-31",
+      "version": "2021"
+    },
+    {
+      "access_date": "2026-07-16",
+      "checksum": "546dd95fa196ac235338855d4996bf49b0bb561115314157e00822b423a4e3de",
+      "citation": "Henri Pirenne, Histoire de Belgique, t. II, 2e \u00e9d., Bruxelles, 1908, p. 171: the Burgundian dukes united \u00ab les fiefs fran\u00e7ais et les fiefs d'Empire que s\u00e9parait l'Escaut \u00bb; p. 245: Philip the Good's right-bank Scheldt acquisitions lay \u00ab dans l'Empire \u00bb.",
+      "derived_artifacts": [],
+      "independence_group": "pirenne",
+      "license": "Public domain (author died 1935; pre-1931 publication scan)",
+      "review_status": "reviewed",
+      "source_id": "pirenne-histoire-belgique-ii",
+      "source_type": "academic",
+      "transformations": [
+        "Internet Archive OCR text used for verbatim verification."
+      ],
+      "url": "https://archive.org/details/HistoireDeBelgique22ed",
+      "valid_from": "1384",
+      "valid_to": "1477",
+      "version": "2nd edition, 1908"
+    },
+    {
+      "access_date": "2026-07-16",
+      "checksum": "afdd26f28b61e7a57d3cc9684bc116ab19b72b0519b59bb89ff09999247b00ae",
+      "citation": "Henri Pirenne, Histoire de Belgique, t. III, 4e \u00e9d.: the 1529 Peace of Cambrai broke \u00ab pour toujours le lien qui rattachait \u00e0 la France, depuis cent ans, les r\u00e9gions de la rive gauche de l'Escaut \u00bb \u2014 the left-bank/kingdom attachment therefore held throughout 1444.",
+      "derived_artifacts": [],
+      "independence_group": "pirenne",
+      "license": "Public domain scan",
+      "review_status": "reviewed",
+      "source_id": "pirenne-histoire-belgique-iii",
+      "source_type": "academic",
+      "transformations": [
+        "Internet Archive OCR text used for verbatim verification."
+      ],
+      "url": "https://archive.org/details/HistoireDeBelgique34ed",
+      "valid_from": "1429",
+      "valid_to": "1529",
+      "version": "4th edition"
+    },
+    {
+      "access_date": "2026-07-16",
+      "checksum": null,
+      "citation": "Ferdinand Lot, \u00ab La fronti\u00e8re de la France et de l'Empire sur le cours inf\u00e9rieur de l'Escaut du IXe au XIIIe si\u00e8cle \u00bb, Biblioth\u00e8que de l'\u00c9cole des chartes 71 (1910), p. 5-32. Enumerates imperial Flanders (Alost, Waas, Quatre-M\u00e9tiers, Overschelde) east of the Scheldt.",
+      "derived_artifacts": [],
+      "independence_group": "lot",
+      "license": "Pers\u00e9e free consultation (cited; text not redistributed here)",
+      "review_status": "reviewed",
+      "source_id": "lot-1910-escaut",
+      "source_type": "corroborating",
+      "transformations": [],
+      "url": "https://www.persee.fr/doc/bec_0373-6237_1910_num_71_1_452488",
+      "valid_from": "0843",
+      "valid_to": "1300",
+      "version": "BEC 71 (1910)"
+    },
+    {
+      "access_date": "2026-07-16",
+      "checksum": null,
+      "citation": "Chantal Maigret, \u00ab \u00c9laboration d'une \u00ab fronti\u00e8re \u00bb du Languedoc. La fortification du Rh\u00f4ne gardois du Xe au XIVe si\u00e8cle \u00bb, CTHS 125-2 (2002), p. 127-141. The Rh\u00f4ne \u00ab devient une limite d'\u00e9tats, de l'Ard\u00e8che \u00e0 la M\u00e9diterran\u00e9e, au cours du XIIIe si\u00e8cle \u00bb.",
+      "derived_artifacts": [],
+      "independence_group": "maigret",
+      "license": "Pers\u00e9e free consultation (cited; text not redistributed here)",
+      "review_status": "reviewed",
+      "source_id": "maigret-2002-rhone",
+      "source_type": "academic",
+      "transformations": [],
+      "url": "https://www.persee.fr/doc/acths_0000-0001_2002_act_125_2_4792",
+      "valid_from": "1250",
+      "valid_to": "1481",
+      "version": "2002"
+    },
+    {
+      "access_date": "2026-07-16",
+      "checksum": null,
+      "citation": "Michel H\u00e9bert, \u00ab Aspects de la culture politique en Provence au XIVe si\u00e8cle \u00bb, Cahiers de Fanjeaux 35 (2000): \u00ab la Provence est une \u00ab terre d'Empire \u00bb \u00bb since the incorporation of the kingdom of Burgundy (1032).",
+      "derived_artifacts": [],
+      "independence_group": "hebert",
+      "license": "Pers\u00e9e free consultation (cited; text not redistributed here)",
+      "review_status": "reviewed",
+      "source_id": "hebert-2000-provence",
+      "source_type": "academic",
+      "transformations": [],
+      "url": "https://www.persee.fr/doc/cafan_0575-061x_2000_act_35_1_1766",
+      "valid_from": "1032",
+      "valid_to": "1481",
+      "version": "2000"
+    },
+    {
+      "access_date": "2026-07-16",
+      "checksum": null,
+      "citation": "Nordfriisk Instituut, Nordfriesland-Lexikon, art. \u00ab Eider \u00bb: \u00ab N\u00f6rdlich des Flusses bildete sich das Herzogtum Schleswig heraus, das als Lehen des d\u00e4nischen K\u00f6nigs behandelt wurde, s\u00fcdlich entstand die Grafschaft Holstein, ein Lehen des deutschen Kaisers. [\u2026] Die Eider blieb Grenze zwischen den Herzogt\u00fcmern Schleswig und Holstein. \u00bb",
+      "derived_artifacts": [],
+      "independence_group": "nordfriisk",
+      "license": "\u00a9 Nordfriisk Instituut (cited; text not redistributed here)",
+      "review_status": "reviewed",
+      "source_id": "nordfriisk-eider",
+      "source_type": "academic",
+      "transformations": [],
+      "url": "https://www.nordfriiskinstituut.eu/futuur/nordfrieslandlexikon/eider/",
+      "valid_from": "0811",
+      "valid_to": "1864",
+      "version": null
+    },
+    {
+      "access_date": "2026-07-16",
+      "checksum": null,
+      "citation": "Aarhus University, danmarkshistorien.dk, The Late Middle Ages 1340-1523, \u00a7 From mortgaged kingdom to regional great power: Schleswig a duchy \u00ab belonging to the Danish Crown as a fief \u00bb; Count Adolf of Holstein \u00ab recognised as duke of Schleswig since 1440 \u00bb.",
+      "derived_artifacts": [],
+      "independence_group": "aarhus",
+      "license": "\u00a9 Aarhus University (cited; text not redistributed here)",
+      "review_status": "reviewed",
+      "source_id": "danmarkshistorien-module-3-4",
+      "source_type": "academic",
+      "transformations": [],
+      "url": "https://cas.au.dk/en/danish-history/modules/module-3-the-late-middle-ages-1340-1523/4-from-mortgaged-kingdom-to-regional-great-power",
+      "valid_from": "1340",
+      "valid_to": "1523",
+      "version": null
+    },
+    {
+      "access_date": "2026-07-16",
+      "checksum": "265419c8e0ff9d2d7059693d0f0ea143cf676c35217e6c5a19d1eddbffa46c57",
+      "citation": "Martin \u0160tef\u00e1nik \u2013 J\u00e1n Luka\u010dka a kol., Lexikon stredovek\u00fdch miest na Slovensku, Historick\u00fd \u00fastav SAV, 2010, entry SKALICA (p. 424 of the PDF): 1217 charter \u00ab in confinio regni nostri versus Boemiam \u00bb with a perambulation along the Morava; \u00ab od konca 14. stor. dva d\u00f4le\u017eit\u00e9 prechody cez hranicu: na \u010diare K\u00e1tov \u2013 Hodon\u00edn a Skalica \u2013 Str\u00e1\u017enica \u00bb; Hussite occupation 1432-1435 and return to Hungarian royal hands.",
+      "derived_artifacts": [],
+      "independence_group": "sav",
+      "license": "\u00a9 Historick\u00fd \u00fastav SAV, free institutional PDF (cited + pinned)",
+      "review_status": "reviewed",
+      "source_id": "sav-lexikon-skalica-2010",
+      "source_type": "academic",
+      "transformations": [
+        "Quotes verified against page 424 of the pinned PDF."
+      ],
+      "url": "https://www.forumhistoriae.sk/sites/default/files/lexikon-stredovekych-miest.pdf",
+      "valid_from": "1217",
+      "valid_to": "1526",
+      "version": "2010, ISBN 978-80-89396-11-5"
+    },
+    {
+      "access_date": "2026-07-16",
+      "checksum": null,
+      "citation": "Michal Mudrik, Moravsko-uhersk\u00e1 hranice ve st\u0159edov\u011bku, bachelor thesis, Masaryk University, 2016 (spine: Metod\u011bj Zemek, Moravsko-uhersk\u00e1 hranice v 10. a\u017e 13. stolet\u00ed, Brno 1972): the border ran along the Ol\u0161ava to the Morava \u00ab a po jej\u00edm toku dol\u016f k \u0160a\u0161t\u00ednu \u00bb; the Rohatec-Javorina land section; Hol\u00ed\u010d-Bran\u010d Hungarian after 1331/1332.",
+      "derived_artifacts": [],
+      "independence_group": "muni-zemek",
+      "license": "Masaryk University thesis archive (cited; not redistributed here)",
+      "review_status": "reviewed",
+      "source_id": "mudrik-2016-moravsko-uherska",
+      "source_type": "academic",
+      "transformations": [],
+      "url": "https://is.muni.cz/th/vm3zg/Moravsko-uherska_hranice_ve_stredoveku_mqzhbspe_Archive.pdf",
+      "valid_from": "1000",
+      "valid_to": "1526",
+      "version": "2016"
+    },
+    {
+      "access_date": "2026-07-16",
+      "checksum": "d16c30a587f5b205119f6edac6299b996eb50f6a1e2724891be26b4ecc3b743f",
+      "citation": "William R. Shepherd, Historical Atlas (Henry Holt, 1911), plate \u00ab France in 1453 \u00bb. Kingdom boundary drawn along the Scheldt, Sa\u00f4ne and Rh\u00f4ne; Franche-Comt\u00e9, Bresse/Savoy and Provence outside the kingdom under the marginal lettering \u00ab THE EMPIRE \u00bb.",
+      "derived_artifacts": [
+        {
+          "artifact_id": "coverage-mask-burgundy",
+          "media_type": "application/geo+json",
+          "path": "derived/coverage-mask-burgundy.geojson",
+          "role": "coverage_mask",
+          "sha256": "9971a27a8e4a80feba41f8b29662f8ac03b844e5777ca8e51dcb80597019a675"
+        },
+        {
+          "artifact_id": "coverage-mask-france",
+          "media_type": "application/geo+json",
+          "path": "derived/coverage-mask-france.geojson",
+          "role": "coverage_mask",
+          "sha256": "864c3a07f68bdfdb4f44d45dda3bafdadc0a4285a12acf8792274af6ae9da60c"
+        }
+      ],
+      "independence_group": "shepherd",
+      "license": "Public domain (pre-1931 US publication)",
+      "review_status": "reviewed",
+      "source_id": "shepherd-1453-france",
+      "source_type": "corroborating",
+      "transformations": [],
+      "url": "https://commons.wikimedia.org/wiki/File:C._1453_France.jpg",
+      "valid_from": "1453",
+      "valid_to": "1453",
+      "version": "1911 plate scan"
+    },
+    {
+      "access_date": "2026-07-16",
+      "checksum": "070075310a68870a387945fad6cda13ce233e2e9c430d3ba25ee9a7a0ffbcfd1",
+      "citation": "William R. Shepherd, Historical Atlas (Henry Holt, 1911), plate \u00ab Central Europe c. 1477 \u00bb with the legend line \u00ab Boundary of the Empire \u00bb running along the labeled Scheldt, Sa\u00f4ne, Eider and March rivers; D. of Schleswig under the Kingdom of Denmark; Margravate of Moravia facing the Kingdom of Hungary on the March.",
+      "derived_artifacts": [
+        {
+          "artifact_id": "coverage-mask-central-europe",
+          "media_type": "application/geo+json",
+          "path": "derived/coverage-mask-central-europe.geojson",
+          "role": "coverage_mask",
+          "sha256": "f5151c4c823bd7136a2c9acf26bdc27055dae65115f5c6f2d37cb2b3b0afbf10"
+        },
+        {
+          "artifact_id": "coverage-mask-hre",
+          "media_type": "application/geo+json",
+          "path": "derived/coverage-mask-hre.geojson",
+          "role": "coverage_mask",
+          "sha256": "1cc2f7fda03def58b40c6adb6ded7fdaeec42f8c2eac34e68cd7c76465c1f9cc"
+        },
+        {
+          "artifact_id": "coverage-mask-low-countries",
+          "media_type": "application/geo+json",
+          "path": "derived/coverage-mask-low-countries.geojson",
+          "role": "coverage_mask",
+          "sha256": "89b0445a93ca41c69ddfb55e09ebc575b068b94ceb3cbbf083ec78c28189a12a"
+        }
+      ],
+      "independence_group": "shepherd",
+      "license": "Public domain (pre-1931 US publication)",
+      "review_status": "reviewed",
+      "source_id": "shepherd-1477-central-europe",
+      "source_type": "corroborating",
+      "transformations": [],
+      "url": "https://commons.wikimedia.org/wiki/File:C._1477_Central_Europe.jpg",
+      "valid_from": "1477",
+      "valid_to": "1477",
+      "version": "1911 plate scan"
+    },
+    {
+      "access_date": "2026-07-16",
+      "checksum": "87e46704171b4d5bc38a0eb82ae3886d542a91079565f0392c0dce83dc4eefaf",
+      "citation": "Gustav Droysen, Allgemeiner historischer Handatlas (1886), Burgundy/Bourbon/Savoy plate c. 1450: Duchy and Free County of Burgundy as distinct units with the Reich border band following the Sa\u00f4ne.",
+      "derived_artifacts": [],
+      "independence_group": "droysen",
+      "license": "Public domain (1886 publication)",
+      "review_status": "reviewed",
+      "source_id": "droysen-1450-burgundy",
+      "source_type": "corroborating",
+      "transformations": [],
+      "url": "https://commons.wikimedia.org/wiki/File:C._1450_Burgundy_Bourbon_and_Savoy.jpg",
+      "valid_from": "1450",
+      "valid_to": "1450",
+      "version": "1886 plate scan"
+    },
+    {
+      "access_date": "2026-07-16",
+      "checksum": "85f19756fde4c51148d9951152a62803902c013a984d60036b797d4b22414408",
+      "citation": "Gustav Droysen, Allgemeiner historischer Handatlas (1886), plate \u00ab Deutschland im XV. Jahrhundert \u00bb: Schleswig outside the red Empire boundary, which follows the Eider past Rendsburg with the Levensau continuation to the Baltic.",
+      "derived_artifacts": [],
+      "independence_group": "droysen",
+      "license": "Public domain (1886 publication)",
+      "review_status": "reviewed",
+      "source_id": "droysen-xv-deutschland",
+      "source_type": "corroborating",
+      "transformations": [],
+      "url": "https://commons.wikimedia.org/wiki/File:Deutschland_im_XV._Jahrhundert.jpg",
+      "valid_from": "1400",
+      "valid_to": "1500",
+      "version": "1886 plate scan"
+    },
+    {
+      "access_date": "2026-07-09",
+      "checksum": "ded71b01870855ccfe19b51f2ec14c9bb48fae23c0e9f3c11974d426433b5c38",
+      "citation": "Natural Earth 1:10m rivers and lake centerlines (ne_10m_rivers_lake_centerlines.zip); modern open hydrography used only as the digitization substrate for river courses that the cited scholarship identifies as the legal frontier.",
+      "derived_artifacts": [
+        {
+          "artifact_id": "derived-frontier-morava-moravia-hungary",
+          "media_type": "application/geo+json",
+          "path": "derived/frontier-morava-moravia-hungary.geojson",
+          "role": "boundary_geometry",
+          "sha256": "821bf0da918ef800893d056d7261d605f71324117c908c22ef811941553c0651"
+        },
+        {
+          "artifact_id": "derived-frontier-rhone-languedoc-provence",
+          "media_type": "application/geo+json",
+          "path": "derived/frontier-rhone-languedoc-provence.geojson",
+          "role": "boundary_geometry",
+          "sha256": "0bdebcf44f05df3b521dff7273bb41bfbcd17e6b731f1cd1cd281c35321e4b8e"
+        },
+        {
+          "artifact_id": "derived-frontier-saone-france-empire",
+          "media_type": "application/geo+json",
+          "path": "derived/frontier-saone-france-empire.geojson",
+          "role": "boundary_geometry",
+          "sha256": "a9e1da4b6e6faecdc8623024eb0c5a2783f49d2d1ec26ec4df256de2b15e41e4"
+        },
+        {
+          "artifact_id": "derived-frontier-scheldt-flanders-empire",
+          "media_type": "application/geo+json",
+          "path": "derived/frontier-scheldt-flanders-empire.geojson",
+          "role": "boundary_geometry",
+          "sha256": "f86b1dbf907b8e90c1f08711b74d87448b73c62c6dfb635339d34d0f731772d2"
+        }
+      ],
+      "independence_group": "natural-earth",
+      "license": "Public domain (Natural Earth)",
+      "review_status": "reviewed",
+      "source_id": "ne-10m-rivers",
+      "source_type": "soft_corroboration",
+      "transformations": [
+        "River main stems merged and clipped between anchor towns named by the cited scholarship (shapely substring).",
+        "Coordinates rounded to 1e-6 degrees."
+      ],
+      "url": "https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_rivers_lake_centerlines.zip",
+      "valid_from": null,
+      "valid_to": null,
+      "version": "Natural Earth 10m physical"
+    },
+    {
+      "access_date": "2026-07-16",
+      "checksum": "3a8373a0511bd62724bbb11ffdae92e55293b354fa41a06c8401cae39738294d",
+      "citation": "OpenHistoricalMap relation 2691969 \u00ab Herzogtum Schleswig \u00bb (1773-06-01 \u2013 1864-10-30), southern administrative boundary, which follows the lower Eider on the T\u00f6nning-Pahlen reach; used only as the river-course substrate for the medieval frontier.",
+      "derived_artifacts": [
+        {
+          "artifact_id": "derived-frontier-eider-empire-denmark",
+          "media_type": "application/geo+json",
+          "path": "derived/frontier-eider-empire-denmark.geojson",
+          "role": "boundary_geometry",
+          "sha256": "b1077e278daf280d806c1acd4a3ff0c70c0b431b026ad7555b0aef9e2bb6414b"
+        },
+        {
+          "artifact_id": "ohm-schleswig-capture",
+          "media_type": "application/json",
+          "path": "derived/sources/ohm-schleswig-2691969.json",
+          "role": "source_capture",
+          "sha256": "3a8373a0511bd62724bbb11ffdae92e55293b354fa41a06c8401cae39738294d"
+        }
+      ],
+      "independence_group": "openhistoricalmap",
+      "license": "CC0 (OpenHistoricalMap public-domain dedication)",
+      "review_status": "reviewed",
+      "source_id": "ohm-schleswig-2691969",
+      "source_type": "soft_corroboration",
+      "transformations": [
+        "Southern boundary ways stitched (linemerge) and clipped between T\u00f6nning and Pahlen.",
+        "Eastern (Eider Canal era, Rendsburg) and estuary reaches excluded."
+      ],
+      "url": "https://overpass-api.openhistoricalmap.org/api/interpreter?data=relation(2691969);out geom;",
+      "valid_from": null,
+      "valid_to": null,
+      "version": "retrieved 2026-07-16"
+    },
+    {
+      "access_date": "2026-07-16",
+      "checksum": "7af87f5035779f0aefe5bf930288572979e490ab0441fd9b92942a519bea0974",
+      "citation": "geoBoundaries gbOpen BEL ADM1 (Eurostat), commit 9469f09; modern negative control.",
+      "derived_artifacts": [
+        {
+          "artifact_id": "derived-forbidden-modern-brussels-capital-region",
+          "media_type": "application/geo+json",
+          "path": "derived/forbidden-modern-brussels-capital-region.geojson",
+          "role": "negative_control_outline",
+          "sha256": "3a15a540b22f636e6176ed601b6977f83ed0039ed140e244e9f6693969a91f8a"
+        }
+      ],
+      "independence_group": "geoboundaries",
+      "license": "CC BY 4.0 (geoBoundaries / Eurostat)",
+      "review_status": "reviewed",
+      "source_id": "geoboundaries-bel-adm1-2022",
+      "source_type": "negative_control",
+      "transformations": [
+        "Brussels-Capital Region feature extracted verbatim."
+      ],
+      "url": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/BEL/ADM1/geoBoundaries-BEL-ADM1_simplified.geojson",
+      "valid_from": "2022",
+      "valid_to": "2022",
+      "version": "commit 9469f09"
+    },
+    {
+      "access_date": "2026-07-16",
+      "checksum": "a14ed131c86c802e5d546c7cbeccbd4daebc94a66fea413f563935a53504f251",
+      "citation": "geoBoundaries gbOpen FRA ADM2 (IGN), commit 9469f09; modern negative control.",
+      "derived_artifacts": [
+        {
+          "artifact_id": "derived-forbidden-modern-nord-department",
+          "media_type": "application/geo+json",
+          "path": "derived/forbidden-modern-nord-department.geojson",
+          "role": "negative_control_outline",
+          "sha256": "8237a87c188cff49cc471de827a616f188f3f62777d43bd4d2b02fcda447667c"
+        }
+      ],
+      "independence_group": "geoboundaries",
+      "license": "Etalab Open License 2.0 (geoBoundaries / IGN)",
+      "review_status": "reviewed",
+      "source_id": "geoboundaries-fra-adm2-2022",
+      "source_type": "negative_control",
+      "transformations": [
+        "Nord department feature extracted verbatim."
+      ],
+      "url": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/FRA/ADM2/geoBoundaries-FRA-ADM2_simplified.geojson",
+      "valid_from": "2022",
+      "valid_to": "2022",
+      "version": "commit 9469f09"
+    },
+    {
+      "access_date": "2026-07-16",
+      "checksum": "7dc61e5c7e4c81f5fa10d339e6a5bc8428f1346f43f4426d9d165d2e44fc3a7e",
+      "citation": "geoBoundaries gbOpen FRA ADM1 (IGN), commit 9469f09; modern negative control (real outline file, replacing the withdrawn v1 API-envelope shortcut).",
+      "derived_artifacts": [
+        {
+          "artifact_id": "derived-forbidden-modern-bourgogne-franche-comte",
+          "media_type": "application/geo+json",
+          "path": "derived/forbidden-modern-bourgogne-franche-comte.geojson",
+          "role": "negative_control_outline",
+          "sha256": "ed5b354d1318cddd83ce4fc59b06c946a5e315d6f078fcc771c718a700035259"
+        }
+      ],
+      "independence_group": "geoboundaries",
+      "license": "Etalab Open License 2.0 (geoBoundaries / IGN)",
+      "review_status": "reviewed",
+      "source_id": "geoboundaries-fra-adm1-2022",
+      "source_type": "negative_control",
+      "transformations": [
+        "Bourgogne-Franche-Comt\u00e9 feature extracted verbatim."
+      ],
+      "url": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/FRA/ADM1/geoBoundaries-FRA-ADM1_simplified.geojson",
+      "valid_from": "2022",
+      "valid_to": "2022",
+      "version": "commit 9469f09"
+    },
+    {
+      "access_date": "2026-07-16",
+      "checksum": "511b3625ad4568d12a6bfcb1bdea4e877199e1923e502cb80224b8164128eb05",
+      "citation": "geoBoundaries gbOpen DEU ADM1, commit 9469f09; modern negative control (real outline file).",
+      "derived_artifacts": [
+        {
+          "artifact_id": "derived-forbidden-modern-schleswig-holstein",
+          "media_type": "application/geo+json",
+          "path": "derived/forbidden-modern-schleswig-holstein.geojson",
+          "role": "negative_control_outline",
+          "sha256": "8ebf670253d859a07622d7a21c26563edb1536f256f01a8a1b03f2e0c99f8b8f"
+        }
+      ],
+      "independence_group": "geoboundaries",
+      "license": "CC BY 4.0 (geoBoundaries)",
+      "review_status": "reviewed",
+      "source_id": "geoboundaries-deu-adm1-2022",
+      "source_type": "negative_control",
+      "transformations": [
+        "Schleswig-Holstein feature extracted verbatim."
+      ],
+      "url": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/DEU/ADM1/geoBoundaries-DEU-ADM1_simplified.geojson",
+      "valid_from": "2022",
+      "valid_to": "2022",
+      "version": "commit 9469f09"
+    },
+    {
+      "access_date": "2026-07-16",
+      "checksum": "562d073b86ea4c1368c45f853ba2aa61fb9e7cbd6f221c32ca975069cf861317",
+      "citation": "geoBoundaries gbOpen CZE ADM0, commit 9469f09; modern negative control (real outline file).",
+      "derived_artifacts": [
+        {
+          "artifact_id": "derived-forbidden-modern-czechia",
+          "media_type": "application/geo+json",
+          "path": "derived/forbidden-modern-czechia.geojson",
+          "role": "negative_control_outline",
+          "sha256": "fe7a73b69bbcfe15beb7f57eb470c82eceb3c98f5a88a0084aa5b2b94a4db2df"
+        }
+      ],
+      "independence_group": "geoboundaries",
+      "license": "CC BY 4.0 (geoBoundaries)",
+      "review_status": "reviewed",
+      "source_id": "geoboundaries-cze-adm0-2022",
+      "source_type": "negative_control",
+      "transformations": [
+        "Czechia ADM0 outline used verbatim."
+      ],
+      "url": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/CZE/ADM0/geoBoundaries-CZE-ADM0_simplified.geojson",
+      "valid_from": "2022",
+      "valid_to": "2022",
+      "version": "commit 9469f09"
+    }
+  ],
+  "start_date": "1444-11-11"
+}

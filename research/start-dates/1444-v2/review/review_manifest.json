@@ -1,0 +1,38 @@
+{
+  "document_type": "start_date_review_manifest",
+  "generated_at": "2026-07-16T00:00:00Z",
+  "generator": "gpm qa render",
+  "geometry_revision": "1444-r2",
+  "pass_id": "official-1444-reconstruction-v2",
+  "renders": [
+    {
+      "path": "low-countries.svg",
+      "region_id": "low-countries",
+      "sha256": "d53f113cb9d47d79225c4721ba7aec3013cead6e7153fbc9f0ee730baaca5e3d"
+    },
+    {
+      "path": "burgundy.svg",
+      "region_id": "burgundy",
+      "sha256": "c09c4d2b229424bcd8aa2bb18db2bb4091fc97932c117be22b7ca364d2ad6cc7"
+    },
+    {
+      "path": "france.svg",
+      "region_id": "france",
+      "sha256": "82202a8dab90f67ff712cb4c1604c8c0df9ede4638d092ade45c2a366f59d2f2"
+    },
+    {
+      "path": "hre.svg",
+      "region_id": "hre",
+      "sha256": "7171bf51f4d050e685f521a1f78ced8cd1d3aa43539da7e7607f8b97ec566497"
+    },
+    {
+      "path": "central-europe.svg",
+      "region_id": "central-europe",
+      "sha256": "4e4bb06bd5fac6d32848a2d1e07b186efeb5ff620ea821e296cf0bf7fa2faaf7"
+    }
+  ],
+  "reviewed_at": null,
+  "reviewer": null,
+  "schema_version": "0.2.0",
+  "status": "pending_independent_review"
+}

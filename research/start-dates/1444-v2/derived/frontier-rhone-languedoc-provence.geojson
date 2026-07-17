@@ -1,0 +1,100 @@
+{
+  "derivation": {
+    "anchors": [
+      {
+        "id": "barbentane",
+        "lat": 43.898,
+        "lon": 4.747,
+        "name": "Barbentane (Durance confluence)",
+        "residual_km": 2.791,
+        "role": "endpoint",
+        "side": "county-of-provence"
+      },
+      {
+        "id": "beaucaire",
+        "lat": 43.808,
+        "lon": 4.644,
+        "name": "Beaucaire",
+        "residual_km": 0.144,
+        "role": "control",
+        "side": "kingdom-of-france"
+      },
+      {
+        "id": "tarascon",
+        "lat": 43.806,
+        "lon": 4.66,
+        "name": "Tarascon",
+        "residual_km": 1.175,
+        "role": "control",
+        "side": "county-of-provence"
+      },
+      {
+        "id": "fourques",
+        "lat": 43.693,
+        "lon": 4.607,
+        "name": "Fourques (Petit Rh\u00f4ne diffluence)",
+        "residual_km": 0.569,
+        "role": "endpoint",
+        "side": "kingdom-of-france"
+      }
+    ],
+    "method": "natural-earth-10m-river-centerline-substring",
+    "segment_length_km": 30.023,
+    "substrate": {
+      "kind": "ne-rivers",
+      "record_indexes": [
+        933
+      ]
+    }
+  },
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            4.735214,
+            43.921747
+          ],
+          [
+            4.707666,
+            43.908075
+          ],
+          [
+            4.65542,
+            43.888861
+          ],
+          [
+            4.646729,
+            43.884149
+          ],
+          [
+            4.646729,
+            43.811835
+          ],
+          [
+            4.64126,
+            43.789252
+          ],
+          [
+            4.611475,
+            43.737323
+          ],
+          [
+            4.616357,
+            43.713568
+          ],
+          [
+            4.613983,
+            43.692223
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "segment_id": "frontier-rhone-languedoc-provence"
+      },
+      "type": "Feature"
+    }
+  ],
+  "type": "FeatureCollection"
+}

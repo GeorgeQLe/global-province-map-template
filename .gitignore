@@ -32,3 +32,8 @@ vite.config.ts.timestamp-*
 .DS_Store
 .idea/
 .vscode/
+
+# M25 1444-v2 pass: large generated sidecars live in local staging and release
+# archives; their SHA-256 pins are committed in the pass manifests.
+research/start-dates/1444-v2/build.geojson
+research/start-dates/1444-v2/sidecars/locations.geojson

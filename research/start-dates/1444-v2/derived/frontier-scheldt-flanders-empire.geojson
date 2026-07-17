@@ -1,0 +1,139 @@
+{
+  "derivation": {
+    "anchors": [
+      {
+        "id": "pecq",
+        "lat": 50.687,
+        "lon": 3.339,
+        "name": "Pecq (north edge of the Tournaisis)",
+        "residual_km": 0.851,
+        "role": "endpoint",
+        "side": "on-line"
+      },
+      {
+        "id": "oudenaarde",
+        "lat": 50.846,
+        "lon": 3.601,
+        "name": "Oudenaarde",
+        "residual_km": 0.577,
+        "role": "control",
+        "side": "kingdom-of-france"
+      },
+      {
+        "id": "ghent",
+        "lat": 51.053,
+        "lon": 3.722,
+        "name": "Ghent (Leie confluence)",
+        "residual_km": 2.59,
+        "role": "endpoint",
+        "side": "kingdom-of-france"
+      }
+    ],
+    "method": "natural-earth-10m-river-centerline-substring",
+    "segment_length_km": 52.924,
+    "substrate": {
+      "kind": "ne-rivers",
+      "record_indexes": [
+        857
+      ]
+    }
+  },
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            3.350244,
+            50.684198
+          ],
+          [
+            3.367334,
+            50.717353
+          ],
+          [
+            3.412744,
+            50.747382
+          ],
+          [
+            3.59292,
+            50.832221
+          ],
+          [
+            3.605957,
+            50.842353
+          ],
+          [
+            3.636865,
+            50.877948
+          ],
+          [
+            3.646484,
+            50.884296
+          ],
+          [
+            3.667236,
+            50.893012
+          ],
+          [
+            3.677148,
+            50.899604
+          ],
+          [
+            3.68335,
+            50.910663
+          ],
+          [
+            3.675928,
+            50.917304
+          ],
+          [
+            3.663721,
+            50.923456
+          ],
+          [
+            3.656006,
+            50.933051
+          ],
+          [
+            3.655273,
+            50.947382
+          ],
+          [
+            3.660547,
+            50.951361
+          ],
+          [
+            3.670068,
+            50.951923
+          ],
+          [
+            3.682129,
+            50.956073
+          ],
+          [
+            3.707666,
+            50.974237
+          ],
+          [
+            3.728027,
+            50.994208
+          ],
+          [
+            3.743799,
+            51.017353
+          ],
+          [
+            3.753141,
+            51.04035
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "segment_id": "frontier-scheldt-flanders-empire"
+      },
+      "type": "Feature"
+    }
+  ],
+  "type": "FeatureCollection"
+}

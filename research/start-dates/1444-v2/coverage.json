@@ -1,0 +1,378 @@
+{
+  "artifact_version": "2.0.0",
+  "coverage": [
+    {
+      "assertion_ids": [
+        "border-low-countries-1444",
+        "negative-modern-brussels-capital-region"
+      ],
+      "evidence_summary": "Full-build frontier reconstruction along frontier-scheldt-flanders-empire with measured Hausdorff 5.615 km against the dated river line; negative-anachronism gate executed against the pinned modern outline.",
+      "exclusions": [],
+      "grade": "B",
+      "known_gaps": [
+        "Certified geometry covers the named frontier segment only; other borders of the region remain neutral fabric.",
+        "Fabric granularity (H3 res 3-5) generalizes the frontier within the stated tolerance.",
+        "Modern hydrography generalizes the medieval river course within the 6 km error budget."
+      ],
+      "layer": "geometry",
+      "region_id": "low-countries",
+      "source_ids": [
+        "pirenne-histoire-belgique-ii",
+        "pirenne-histoire-belgique-iii",
+        "lot-1910-escaut",
+        "shepherd-1477-central-europe"
+      ]
+    },
+    {
+      "assertion_ids": [
+        "capital-low-countries-politics-1444"
+      ],
+      "evidence_summary": "Typed sovereign/owner/controller attribution for corridor and capital provinces from the cited scholarship; capital containment executed on the full build.",
+      "exclusions": [],
+      "grade": "B",
+      "known_gaps": [
+        "Politics are certified for the frontier corridor and capital provinces only.",
+        "Enclaves below fabric granularity (royal enclaves, Tournai, papal parcels, Vallabr\u00e8gues) are documented, not painted."
+      ],
+      "layer": "politics",
+      "region_id": "low-countries",
+      "source_ids": [
+        "pirenne-histoire-belgique-ii",
+        "pirenne-histoire-belgique-iii",
+        "lot-1910-escaut",
+        "shepherd-1477-central-europe"
+      ]
+    },
+    {
+      "assertion_ids": [],
+      "evidence_summary": "Deterministic owner-derived area grouping; no historical hierarchy sources.",
+      "exclusions": [],
+      "grade": "C",
+      "known_gaps": [
+        "Hierarchy is scaffolding: area/superregion grouping is derived from owners, not period administrative structure."
+      ],
+      "layer": "hierarchy",
+      "region_id": "low-countries",
+      "source_ids": []
+    },
+    {
+      "assertion_ids": [
+        "capital-low-countries-relationships-1444"
+      ],
+      "evidence_summary": "Typed vassalage/dependency/personal-union/claim relationships with per-relationship citations; second capital containment executed for the counterpart polity.",
+      "exclusions": [],
+      "grade": "B",
+      "known_gaps": [
+        "Relationship set covers the polities of the certified frontier story, not every regional polity."
+      ],
+      "layer": "gazetteer_relationships",
+      "region_id": "low-countries",
+      "source_ids": [
+        "pirenne-histoire-belgique-ii",
+        "pirenne-histoire-belgique-iii",
+        "lot-1910-escaut",
+        "shepherd-1477-central-europe"
+      ]
+    },
+    {
+      "assertion_ids": [
+        "border-burgundy-1444",
+        "negative-modern-burgundy"
+      ],
+      "evidence_summary": "Full-build frontier reconstruction along frontier-saone-france-empire with measured Hausdorff 9.267 km against the dated river line; negative-anachronism gate executed against the pinned modern outline.",
+      "exclusions": [],
+      "grade": "B",
+      "known_gaps": [
+        "Certified geometry covers the named frontier segment only; other borders of the region remain neutral fabric.",
+        "Fabric granularity (H3 res 3-5) generalizes the frontier within the stated tolerance.",
+        "Modern hydrography generalizes the medieval river course within the 6 km error budget."
+      ],
+      "layer": "geometry",
+      "region_id": "burgundy",
+      "source_ids": [
+        "dumasy-rabineau-2021",
+        "dauphant-2018-quatre-rivieres",
+        "shepherd-1453-france",
+        "droysen-1450-burgundy"
+      ]
+    },
+    {
+      "assertion_ids": [
+        "capital-burgundy-politics-1444"
+      ],
+      "evidence_summary": "Typed sovereign/owner/controller attribution for corridor and capital provinces from the cited scholarship; capital containment executed on the full build.",
+      "exclusions": [],
+      "grade": "B",
+      "known_gaps": [
+        "Politics are certified for the frontier corridor and capital provinces only.",
+        "Enclaves below fabric granularity (royal enclaves, Tournai, papal parcels, Vallabr\u00e8gues) are documented, not painted."
+      ],
+      "layer": "politics",
+      "region_id": "burgundy",
+      "source_ids": [
+        "dumasy-rabineau-2021",
+        "dauphant-2018-quatre-rivieres",
+        "shepherd-1453-france",
+        "droysen-1450-burgundy"
+      ]
+    },
+    {
+      "assertion_ids": [],
+      "evidence_summary": "Deterministic owner-derived area grouping; no historical hierarchy sources.",
+      "exclusions": [],
+      "grade": "C",
+      "known_gaps": [
+        "Hierarchy is scaffolding: area/superregion grouping is derived from owners, not period administrative structure."
+      ],
+      "layer": "hierarchy",
+      "region_id": "burgundy",
+      "source_ids": []
+    },
+    {
+      "assertion_ids": [
+        "capital-burgundy-relationships-1444"
+      ],
+      "evidence_summary": "Typed vassalage/dependency/personal-union/claim relationships with per-relationship citations; second capital containment executed for the counterpart polity.",
+      "exclusions": [],
+      "grade": "B",
+      "known_gaps": [
+        "Relationship set covers the polities of the certified frontier story, not every regional polity."
+      ],
+      "layer": "gazetteer_relationships",
+      "region_id": "burgundy",
+      "source_ids": [
+        "dumasy-rabineau-2021",
+        "dauphant-2018-quatre-rivieres",
+        "shepherd-1453-france",
+        "droysen-1450-burgundy"
+      ]
+    },
+    {
+      "assertion_ids": [
+        "border-france-1444",
+        "negative-modern-nord-department"
+      ],
+      "evidence_summary": "Full-build frontier reconstruction along frontier-rhone-languedoc-provence with measured Hausdorff 5.503 km against the dated river line; negative-anachronism gate executed against the pinned modern outline.",
+      "exclusions": [],
+      "grade": "B",
+      "known_gaps": [
+        "Certified geometry covers the named frontier segment only; other borders of the region remain neutral fabric.",
+        "Fabric granularity (H3 res 3-5) generalizes the frontier within the stated tolerance.",
+        "Modern hydrography generalizes the medieval river course within the 6 km error budget."
+      ],
+      "layer": "geometry",
+      "region_id": "france",
+      "source_ids": [
+        "dauphant-2020-sources",
+        "maigret-2002-rhone",
+        "hebert-2000-provence",
+        "shepherd-1453-france"
+      ]
+    },
+    {
+      "assertion_ids": [
+        "capital-france-politics-1444"
+      ],
+      "evidence_summary": "Typed sovereign/owner/controller attribution for corridor and capital provinces from the cited scholarship; capital containment executed on the full build.",
+      "exclusions": [],
+      "grade": "B",
+      "known_gaps": [
+        "Politics are certified for the frontier corridor and capital provinces only.",
+        "Enclaves below fabric granularity (royal enclaves, Tournai, papal parcels, Vallabr\u00e8gues) are documented, not painted."
+      ],
+      "layer": "politics",
+      "region_id": "france",
+      "source_ids": [
+        "dauphant-2020-sources",
+        "maigret-2002-rhone",
+        "hebert-2000-provence",
+        "shepherd-1453-france"
+      ]
+    },
+    {
+      "assertion_ids": [],
+      "evidence_summary": "Deterministic owner-derived area grouping; no historical hierarchy sources.",
+      "exclusions": [],
+      "grade": "C",
+      "known_gaps": [
+        "Hierarchy is scaffolding: area/superregion grouping is derived from owners, not period administrative structure."
+      ],
+      "layer": "hierarchy",
+      "region_id": "france",
+      "source_ids": []
+    },
+    {
+      "assertion_ids": [
+        "capital-france-relationships-1444"
+      ],
+      "evidence_summary": "Typed vassalage/dependency/personal-union/claim relationships with per-relationship citations; second capital containment executed for the counterpart polity.",
+      "exclusions": [],
+      "grade": "B",
+      "known_gaps": [
+        "Relationship set covers the polities of the certified frontier story, not every regional polity."
+      ],
+      "layer": "gazetteer_relationships",
+      "region_id": "france",
+      "source_ids": [
+        "dauphant-2020-sources",
+        "maigret-2002-rhone",
+        "hebert-2000-provence",
+        "shepherd-1453-france"
+      ]
+    },
+    {
+      "assertion_ids": [
+        "border-hre-1444",
+        "negative-modern-hre"
+      ],
+      "evidence_summary": "Full-build frontier reconstruction along frontier-eider-empire-denmark with measured Hausdorff 2.303 km against the dated river line; negative-anachronism gate executed against the pinned modern outline.",
+      "exclusions": [],
+      "grade": "B",
+      "known_gaps": [
+        "Certified geometry covers the named frontier segment only; other borders of the region remain neutral fabric.",
+        "Fabric granularity (H3 res 3-5) generalizes the frontier within the stated tolerance.",
+        "Modern hydrography generalizes the medieval river course within the 6 km error budget."
+      ],
+      "layer": "geometry",
+      "region_id": "hre",
+      "source_ids": [
+        "nordfriisk-eider",
+        "danmarkshistorien-module-3-4",
+        "shepherd-1477-central-europe",
+        "droysen-xv-deutschland"
+      ]
+    },
+    {
+      "assertion_ids": [
+        "capital-hre-politics-1444"
+      ],
+      "evidence_summary": "Typed sovereign/owner/controller attribution for corridor and capital provinces from the cited scholarship; capital containment executed on the full build.",
+      "exclusions": [],
+      "grade": "B",
+      "known_gaps": [
+        "Politics are certified for the frontier corridor and capital provinces only.",
+        "Enclaves below fabric granularity (royal enclaves, Tournai, papal parcels, Vallabr\u00e8gues) are documented, not painted."
+      ],
+      "layer": "politics",
+      "region_id": "hre",
+      "source_ids": [
+        "nordfriisk-eider",
+        "danmarkshistorien-module-3-4",
+        "shepherd-1477-central-europe",
+        "droysen-xv-deutschland"
+      ]
+    },
+    {
+      "assertion_ids": [],
+      "evidence_summary": "Deterministic owner-derived area grouping; no historical hierarchy sources.",
+      "exclusions": [],
+      "grade": "C",
+      "known_gaps": [
+        "Hierarchy is scaffolding: area/superregion grouping is derived from owners, not period administrative structure."
+      ],
+      "layer": "hierarchy",
+      "region_id": "hre",
+      "source_ids": []
+    },
+    {
+      "assertion_ids": [
+        "capital-hre-relationships-1444"
+      ],
+      "evidence_summary": "Typed vassalage/dependency/personal-union/claim relationships with per-relationship citations; second capital containment executed for the counterpart polity.",
+      "exclusions": [],
+      "grade": "B",
+      "known_gaps": [
+        "Relationship set covers the polities of the certified frontier story, not every regional polity."
+      ],
+      "layer": "gazetteer_relationships",
+      "region_id": "hre",
+      "source_ids": [
+        "nordfriisk-eider",
+        "danmarkshistorien-module-3-4",
+        "shepherd-1477-central-europe",
+        "droysen-xv-deutschland"
+      ]
+    },
+    {
+      "assertion_ids": [
+        "border-central-europe-1444",
+        "negative-modern-central-europe"
+      ],
+      "evidence_summary": "Full-build frontier reconstruction along frontier-morava-moravia-hungary with measured Hausdorff 8.312 km against the dated river line; negative-anachronism gate executed against the pinned modern outline.",
+      "exclusions": [],
+      "grade": "B",
+      "known_gaps": [
+        "Certified geometry covers the named frontier segment only; other borders of the region remain neutral fabric.",
+        "Fabric granularity (H3 res 3-5) generalizes the frontier within the stated tolerance.",
+        "Modern hydrography generalizes the medieval river course within the 6 km error budget."
+      ],
+      "layer": "geometry",
+      "region_id": "central-europe",
+      "source_ids": [
+        "sav-lexikon-skalica-2010",
+        "mudrik-2016-moravsko-uherska",
+        "shepherd-1477-central-europe"
+      ]
+    },
+    {
+      "assertion_ids": [
+        "capital-central-europe-politics-1444"
+      ],
+      "evidence_summary": "Typed sovereign/owner/controller attribution for corridor and capital provinces from the cited scholarship; capital containment executed on the full build.",
+      "exclusions": [],
+      "grade": "B",
+      "known_gaps": [
+        "Politics are certified for the frontier corridor and capital provinces only.",
+        "Enclaves below fabric granularity (royal enclaves, Tournai, papal parcels, Vallabr\u00e8gues) are documented, not painted."
+      ],
+      "layer": "politics",
+      "region_id": "central-europe",
+      "source_ids": [
+        "sav-lexikon-skalica-2010",
+        "mudrik-2016-moravsko-uherska",
+        "shepherd-1477-central-europe"
+      ]
+    },
+    {
+      "assertion_ids": [],
+      "evidence_summary": "Deterministic owner-derived area grouping; no historical hierarchy sources.",
+      "exclusions": [],
+      "grade": "C",
+      "known_gaps": [
+        "Hierarchy is scaffolding: area/superregion grouping is derived from owners, not period administrative structure."
+      ],
+      "layer": "hierarchy",
+      "region_id": "central-europe",
+      "source_ids": []
+    },
+    {
+      "assertion_ids": [
+        "capital-central-europe-relationships-1444"
+      ],
+      "evidence_summary": "Typed vassalage/dependency/personal-union/claim relationships with per-relationship citations; second capital containment executed for the counterpart polity.",
+      "exclusions": [],
+      "grade": "B",
+      "known_gaps": [
+        "Relationship set covers the polities of the certified frontier story, not every regional polity."
+      ],
+      "layer": "gazetteer_relationships",
+      "region_id": "central-europe",
+      "source_ids": [
+        "sav-lexikon-skalica-2010",
+        "mudrik-2016-moravsko-uherska",
+        "shepherd-1477-central-europe"
+      ]
+    }
+  ],
+  "document_type": "start_date_coverage",
+  "exclusions": [
+    "All regions outside the five priority scopes make no historical claim (neutral fabric).",
+    "Papal Avignon and the Comtat Venaissin, the Calais Pale, Dithmarschen, the Levensau/landwehr line, the Camargue delta channels, and the upper Sa\u00f4ne contested reach are excluded from certification."
+  ],
+  "known_gaps": [
+    "No global 1444 claim; certified evidence is scoped to five frontier segments, corridors, and capitals."
+  ],
+  "pass_id": "official-1444-reconstruction-v2",
+  "schema_version": "0.2.0",
+  "start_date": "1444-11-11"
+}

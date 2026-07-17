@@ -881,9 +881,25 @@ def _apply_split_requests(features: list[dict[str, Any]], requests: list[dict[st
                           config: dict[str, Any]) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     current = list(features)
     events: list[dict[str, Any]] = []
+    geometry_cache: dict[str, Any] = {}
+
+    def _cached_geometry(feature: dict[str, Any]) -> Any:
+        location_id = feature["properties"]["location_id"]
+        geometry = geometry_cache.get(location_id)
+        if geometry is None:
+            geometry = shape(feature["geometry"])
+            geometry_cache[location_id] = geometry
+        return geometry
+
+    from shapely.strtree import STRtree
+
     for request in requests:
         proposed = shape(request["proposed_geometry"])
-        affected = [feature for feature in current if shape(feature["geometry"]).intersects(proposed)]
+        tree = STRtree([_cached_geometry(feature) for feature in current])
+        affected = [
+            current[index]
+            for index in sorted(int(raw) for raw in tree.query(proposed, predicate="intersects"))
+        ]
         if not affected:
             raise LocationBuildError(f"Split request {request['request_id']} affects no locations.")
         children: list[dict[str, Any]] = []
@@ -921,6 +937,11 @@ def _apply_split_requests(features: list[dict[str, Any]], requests: list[dict[st
                 })
                 children.append({"type": "Feature", "geometry": mapping(normalize(geom)), "properties": props})
         if not parent_ids:
+            if request["operation"] == "refine_h3":
+                # The grid is exhausted for this geometry: every affected
+                # location is already at maximum resolution or occupies a
+                # single H3 child. Refinement is a benign no-op, not an error.
+                continue
             raise LocationBuildError(
                 f"Split request {request['request_id']} intersects locations but splits none."
             )

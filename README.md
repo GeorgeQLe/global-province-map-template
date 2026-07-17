@@ -63,17 +63,17 @@ The implementation should eventually generate:
 
 M23 and M24 provide the authoring foundation of the production historical
 program. The execution order is **M25 → M25.5 → M26 → M27 → M28**. M25 remains
-active after its independent acceptance audit rejected the initial 1444
-candidate. M23 builds a neutral, cross-admin
+active: after its independent acceptance audit rejected the initial 1444
+candidate, the evidence-backed
+[1444-v2 candidate](docs/m25-1444-reconstruction.md) has been assembled on the
+production fabric and passes every `gpm qa start-date` gate except the still
+pending independent human review; no acceptance claim exists until that review
+is signed. M23 builds a neutral, cross-admin
 [location fabric](docs/m23-location-fabric.md); M24 standardizes the
 [start-date research framework](docs/m24-start-date-research-framework.md) with
 versioned schemas and fail-closed `gpm qa start-date` pass validation. The
-[M25 1444 candidate](docs/m25-1444-reconstruction.md) retains only C/U claims
-pending fabric-backed reconstruction and per-boundary evidence. Its
-Brussels/Nord measurements are regressions, not release certification.
-Schema 0.2 acceptance infrastructure now validates derived evidence,
-georeferencing error, typed politics/hierarchy, constrained aggregation,
-adjacency, and independent SVG review; it does not create or certify a v2 pass.
+withdrawn v1 candidate retains only C/U claims, and its Brussels/Nord
+measurements are regressions, not release certification.
 
 After an accepted M25 canonical pass, planned **M25.5 — Game Runtime Compiler
 and Reference Pack** will introduce the proposed `gpm export runtime` contract:

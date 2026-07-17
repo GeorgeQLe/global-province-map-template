@@ -245,7 +245,12 @@ def run_paintability_qa(*, location_input: Path, boundary_input: Path,
         boundary_id = str((feature.get("properties") or {}).get("boundary_id") or f"boundary_{index:05d}")
         geom = shape(feature["geometry"])
         line = geom.boundary if geom.geom_type in {"Polygon", "MultiPolygon"} else geom
-        interior_crossing = line.difference(location_edges.buffer(tolerance))
+        # Only edges within the line's neighborhood can affect the difference:
+        # clip the global edge network before applying the tolerance buffer.
+        # The clip window must exceed the tolerance or nearby edges outside the
+        # envelope would be dropped and reported as false crossings.
+        local_edges = location_edges.intersection(line.envelope.buffer(max(0.01, 2.0 * tolerance)))
+        interior_crossing = line.difference(local_edges.buffer(tolerance))
         affected_ids = sorted({
             location_features[int(raw)]["properties"]["location_id"]
             for raw in tree.query(line, predicate="intersects")

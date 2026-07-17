@@ -612,14 +612,18 @@ Production authoring and runtime program:
   France, HRE, and Central Europe first. Mandatory negative-anachronism
   regression: Brussels must not inherit the modern Brussels-region outline and
   Nord must not survive as a modern French administrative outline.
-  **Active; initial candidate rejected.** The independent M25 audit found
-  synthetic locations, unproven split lineage, manually coupled frontier
-  geometry, and a 15-province fixture mislabeled as a full build. Claims are
-  downgraded to C/U until a fabric-backed 22,000-province reconstruction and
-  traceable historical constraints exist. Completion also requires real M23
-  location/split lineage, reproducible QA, and five-region visual review. No
-  release claim is allowed until the hardened start-date gate passes. Audit:
-  `tasks/m25-acceptance-audit.md`.
+  **Active; v2 candidate assembled, pending independent review.** The
+  independent M25 audit found synthetic locations, unproven split lineage,
+  manually coupled frontier geometry, and a 15-province fixture mislabeled as
+  a full build; that v1 candidate stays withdrawn with claims downgraded to
+  C/U (audit: `tasks/m25-acceptance-audit.md`). The 1444-v2 pass rebuilds on
+  the production fabric with real r1→r2 split lineage, a constrained
+  22,000-province aggregation, evidence-backed golden borders with measured
+  tolerances, and executed Brussels/Nord negative regressions
+  (`tasks/m25-evidence-record.md`, `docs/m25-1444-reconstruction.md`).
+  `gpm qa start-date` fails only on the pending independent human review; no
+  release or acceptance claim is allowed until that review is signed and the
+  gate passes.
 - **M25.5 — Game Runtime Compiler and Reference Pack** — compile an accepted
   canonical pass with the proposed `gpm export runtime` interface. The pack
   contains stable-ID↔dense-index mappings, compact province/hierarchy tables,

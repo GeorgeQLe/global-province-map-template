@@ -1,0 +1,531 @@
+{
+  "artifact_version": "2.0.0",
+  "document_type": "polity_gazetteer",
+  "pass_id": "official-1444-reconstruction-v2",
+  "polities": [
+    {
+      "aliases": [
+        "Franche-Comt\u00e9",
+        "Freigrafschaft"
+      ],
+      "capital_location_ids": [
+        "loc_831f82fffffffff_dad45ef0f3"
+      ],
+      "name": "County of Burgundy (Franche-Comt\u00e9)",
+      "polity_id": "county-of-burgundy",
+      "relationships": [
+        {
+          "confidence": "high",
+          "notes": "The Free County lay in the Empire; Auxonne/Heuilley were ducal possessions \u00ab sis en terre d'Empire \u00bb.",
+          "relationship_id": "rel-county-burgundy-imperial",
+          "source_ids": [
+            "dumasy-rabineau-2021",
+            "droysen-1450-burgundy"
+          ],
+          "target_polity_id": "hre",
+          "type": "vassalage",
+          "valid_from": "1032",
+          "valid_to": "1477"
+        },
+        {
+          "confidence": "high",
+          "notes": "Both Burgundies under Philip the Good in 1444; the realms remained legally distinct.",
+          "relationship_id": "rel-burgundy-personal-union",
+          "source_ids": [
+            "dumasy-rabineau-2021",
+            "shepherd-1477-central-europe"
+          ],
+          "target_polity_id": "duchy-of-burgundy",
+          "type": "personal_union",
+          "valid_from": "1384",
+          "valid_to": "1477"
+        }
+      ],
+      "source_ids": [
+        "dumasy-rabineau-2021",
+        "shepherd-1477-central-europe",
+        "droysen-1450-burgundy"
+      ],
+      "valid_from": "1330",
+      "valid_to": "1477"
+    },
+    {
+      "aliases": [
+        "Vlaanderen",
+        "Flandre"
+      ],
+      "capital_location_ids": [
+        "loc_85194d2bfffffff_38bf75dbee"
+      ],
+      "name": "County of Flanders",
+      "polity_id": "county-of-flanders",
+      "relationships": [
+        {
+          "confidence": "high",
+          "notes": "Crown Flanders west of the Scheldt held of the French crown until the Peace of Madrid/Cambrai.",
+          "relationship_id": "rel-flanders-french-fief",
+          "source_ids": [
+            "pirenne-histoire-belgique-ii",
+            "pirenne-histoire-belgique-iii"
+          ],
+          "target_polity_id": "kingdom-of-france",
+          "type": "vassalage",
+          "valid_from": "0864",
+          "valid_to": "1526"
+        },
+        {
+          "confidence": "high",
+          "notes": "Imperial Flanders (Alost, Waas, Quatre-M\u00e9tiers, Overschelde) east of the Scheldt was held of the Emperor.",
+          "relationship_id": "rel-flanders-imperial-fiefs",
+          "source_ids": [
+            "lot-1910-escaut",
+            "pirenne-histoire-belgique-ii"
+          ],
+          "target_polity_id": "hre",
+          "type": "dependency",
+          "valid_from": "1056",
+          "valid_to": "1526"
+        },
+        {
+          "confidence": "high",
+          "notes": "Flanders in the Burgundian composite state from 1384.",
+          "relationship_id": "rel-flanders-burgundian-union",
+          "source_ids": [
+            "pirenne-histoire-belgique-ii"
+          ],
+          "target_polity_id": "duchy-of-burgundy",
+          "type": "personal_union",
+          "valid_from": "1384",
+          "valid_to": "1477"
+        }
+      ],
+      "source_ids": [
+        "pirenne-histoire-belgique-ii",
+        "lot-1910-escaut",
+        "shepherd-1477-central-europe"
+      ],
+      "valid_from": "0864",
+      "valid_to": "1477"
+    },
+    {
+      "aliases": [
+        "Hainaut",
+        "Henegouwen"
+      ],
+      "capital_location_ids": [
+        "loc_851fa68bfffffff_868b6a5fd5"
+      ],
+      "name": "County of Hainaut",
+      "polity_id": "county-of-hainaut",
+      "relationships": [
+        {
+          "confidence": "high",
+          "notes": "Hainaut was an imperial fief on the right bank of the upper Scheldt.",
+          "relationship_id": "rel-hainaut-imperial",
+          "source_ids": [
+            "pirenne-histoire-belgique-ii",
+            "shepherd-1477-central-europe"
+          ],
+          "target_polity_id": "hre",
+          "type": "vassalage",
+          "valid_from": "1071",
+          "valid_to": "1477"
+        },
+        {
+          "confidence": "high",
+          "notes": "Philip the Good obtained Hainaut from Jacqueline of Bavaria in 1433.",
+          "relationship_id": "rel-hainaut-burgundian-union",
+          "source_ids": [
+            "pirenne-histoire-belgique-ii"
+          ],
+          "target_polity_id": "duchy-of-burgundy",
+          "type": "personal_union",
+          "valid_from": "1433",
+          "valid_to": "1477"
+        }
+      ],
+      "source_ids": [
+        "pirenne-histoire-belgique-ii",
+        "shepherd-1477-central-europe"
+      ],
+      "valid_from": "1071",
+      "valid_to": "1477"
+    },
+    {
+      "aliases": [
+        "Holstein"
+      ],
+      "capital_location_ids": [],
+      "name": "County of Holstein (Rendsburg line)",
+      "polity_id": "county-of-holstein",
+      "relationships": [
+        {
+          "confidence": "high",
+          "notes": "Holstein was \u00ab ein Lehen des deutschen Kaisers \u00bb; raised to a duchy only in 1474.",
+          "relationship_id": "rel-holstein-imperial",
+          "source_ids": [
+            "nordfriisk-eider",
+            "droysen-xv-deutschland"
+          ],
+          "target_polity_id": "hre",
+          "type": "vassalage",
+          "valid_from": "1111",
+          "valid_to": "1474"
+        }
+      ],
+      "source_ids": [
+        "nordfriisk-eider",
+        "danmarkshistorien-module-3-4",
+        "droysen-xv-deutschland"
+      ],
+      "valid_from": "1111",
+      "valid_to": "1474"
+    },
+    {
+      "aliases": [
+        "Provence"
+      ],
+      "capital_location_ids": [
+        "loc_833968fffffffff_da6601cf51"
+      ],
+      "name": "County of Provence",
+      "polity_id": "county-of-provence",
+      "relationships": [
+        {
+          "confidence": "medium",
+          "notes": "Provence was \u00ab terre d'Empire \u00bb (kingdom of Arles remnant); imperial suzerainty was nominal under Ren\u00e9 of Anjou.",
+          "relationship_id": "rel-provence-imperial",
+          "source_ids": [
+            "hebert-2000-provence"
+          ],
+          "target_polity_id": "hre",
+          "type": "dependency",
+          "valid_from": "1032",
+          "valid_to": "1481"
+        }
+      ],
+      "source_ids": [
+        "hebert-2000-provence",
+        "shepherd-1453-france"
+      ],
+      "valid_from": "0933",
+      "valid_to": "1481"
+    },
+    {
+      "aliases": [
+        "Brabant"
+      ],
+      "capital_location_ids": [
+        "loc_851fa443fffffff_dae40dedf2"
+      ],
+      "name": "Duchy of Brabant",
+      "polity_id": "duchy-of-brabant",
+      "relationships": [
+        {
+          "confidence": "high",
+          "notes": "Brabant was an imperial fief east of the Scheldt line.",
+          "relationship_id": "rel-brabant-imperial",
+          "source_ids": [
+            "pirenne-histoire-belgique-ii",
+            "shepherd-1477-central-europe"
+          ],
+          "target_polity_id": "hre",
+          "type": "vassalage",
+          "valid_from": "1183",
+          "valid_to": "1477"
+        },
+        {
+          "confidence": "high",
+          "notes": "Philip the Good succeeded in Brabant in 1430 with the assent of the estates.",
+          "relationship_id": "rel-brabant-burgundian-union",
+          "source_ids": [
+            "pirenne-histoire-belgique-ii"
+          ],
+          "target_polity_id": "duchy-of-burgundy",
+          "type": "personal_union",
+          "valid_from": "1430",
+          "valid_to": "1477"
+        }
+      ],
+      "source_ids": [
+        "pirenne-histoire-belgique-ii",
+        "shepherd-1477-central-europe"
+      ],
+      "valid_from": "1183",
+      "valid_to": "1477"
+    },
+    {
+      "aliases": [
+        "Bourgogne ducale"
+      ],
+      "capital_location_ids": [
+        "loc_831f86fffffffff_5523b03bb0"
+      ],
+      "name": "Duchy of Burgundy",
+      "polity_id": "duchy-of-burgundy",
+      "relationships": [
+        {
+          "confidence": "high",
+          "notes": "Ducal Burgundy was a French fief; the 1444 frontier dispute over the Sa\u00f4ne reach was argued in exactly these terms.",
+          "relationship_id": "rel-burgundy-french-fief",
+          "source_ids": [
+            "dumasy-rabineau-2021",
+            "dauphant-2018-quatre-rivieres"
+          ],
+          "target_polity_id": "kingdom-of-france",
+          "type": "vassalage",
+          "valid_from": "1363",
+          "valid_to": "1477"
+        }
+      ],
+      "source_ids": [
+        "dumasy-rabineau-2021",
+        "shepherd-1453-france",
+        "droysen-1450-burgundy"
+      ],
+      "valid_from": "1363",
+      "valid_to": "1477"
+    },
+    {
+      "aliases": [
+        "Savoie",
+        "Bresse"
+      ],
+      "capital_location_ids": [
+        "loc_831f91fffffffff_18caca5da8"
+      ],
+      "name": "Duchy of Savoy",
+      "polity_id": "duchy-of-savoy",
+      "relationships": [
+        {
+          "confidence": "high",
+          "notes": "Savoy (including Bresse east of the Sa\u00f4ne) was an imperial duchy from 1416.",
+          "relationship_id": "rel-savoy-imperial",
+          "source_ids": [
+            "shepherd-1477-central-europe"
+          ],
+          "target_polity_id": "hre",
+          "type": "vassalage",
+          "valid_from": "1416",
+          "valid_to": "1481"
+        }
+      ],
+      "source_ids": [
+        "shepherd-1453-france",
+        "shepherd-1477-central-europe"
+      ],
+      "valid_from": "1416",
+      "valid_to": null
+    },
+    {
+      "aliases": [
+        "Slesvig",
+        "S\u00f8nderjylland"
+      ],
+      "capital_location_ids": [
+        "loc_831f06fffffffff_2859e87474"
+      ],
+      "name": "Duchy of Schleswig",
+      "polity_id": "duchy-of-schleswig",
+      "relationships": [
+        {
+          "confidence": "high",
+          "notes": "Schleswig was a fief of the Danish crown; Adolf VIII recognised as duke since 1440.",
+          "relationship_id": "rel-schleswig-danish-fief",
+          "source_ids": [
+            "danmarkshistorien-module-3-4",
+            "nordfriisk-eider"
+          ],
+          "target_polity_id": "kingdom-of-denmark",
+          "type": "vassalage",
+          "valid_from": "1386",
+          "valid_to": "1460"
+        },
+        {
+          "confidence": "high",
+          "notes": "Adolf VIII held Schleswig (Danish fief) and Holstein (imperial fief) in personal union in 1444.",
+          "relationship_id": "rel-schleswig-holstein-union",
+          "source_ids": [
+            "danmarkshistorien-module-3-4"
+          ],
+          "target_polity_id": "county-of-holstein",
+          "type": "personal_union",
+          "valid_from": "1440",
+          "valid_to": "1459"
+        }
+      ],
+      "source_ids": [
+        "nordfriisk-eider",
+        "danmarkshistorien-module-3-4"
+      ],
+      "valid_from": "1058",
+      "valid_to": null
+    },
+    {
+      "aliases": [
+        "L\u00fcbeck"
+      ],
+      "capital_location_ids": [
+        "loc_831f02fffffffff_ae16e5b2d1"
+      ],
+      "name": "Free Imperial City of L\u00fcbeck",
+      "polity_id": "free-city-of-lubeck",
+      "relationships": [
+        {
+          "confidence": "high",
+          "notes": "Imperial free city within the hre region scope.",
+          "relationship_id": "rel-lubeck-imperial-immediacy",
+          "source_ids": [
+            "shepherd-1477-central-europe",
+            "droysen-xv-deutschland"
+          ],
+          "target_polity_id": "hre",
+          "type": "dependency",
+          "valid_from": "1226",
+          "valid_to": "1806"
+        }
+      ],
+      "source_ids": [
+        "shepherd-1477-central-europe",
+        "droysen-xv-deutschland"
+      ],
+      "valid_from": "1226",
+      "valid_to": null
+    },
+    {
+      "aliases": [
+        "the Empire",
+        "Saint-Empire"
+      ],
+      "capital_location_ids": [],
+      "name": "Holy Roman Empire",
+      "polity_id": "hre",
+      "relationships": [],
+      "source_ids": [
+        "dauphant-2020-sources",
+        "shepherd-1477-central-europe"
+      ],
+      "valid_from": "0962",
+      "valid_to": null
+    },
+    {
+      "aliases": [
+        "Bohemian Crown",
+        "Koruna \u010desk\u00e1"
+      ],
+      "capital_location_ids": [
+        "loc_831e35fffffffff_2db856f298"
+      ],
+      "name": "Kingdom of Bohemia (lands of the Bohemian Crown)",
+      "polity_id": "kingdom-of-bohemia",
+      "relationships": [],
+      "source_ids": [
+        "sav-lexikon-skalica-2010",
+        "shepherd-1477-central-europe"
+      ],
+      "valid_from": "1198",
+      "valid_to": null
+    },
+    {
+      "aliases": [
+        "Danmark"
+      ],
+      "capital_location_ids": [
+        "loc_831f05fffffffff_d6642fa6ab"
+      ],
+      "name": "Kingdom of Denmark",
+      "polity_id": "kingdom-of-denmark",
+      "relationships": [],
+      "source_ids": [
+        "danmarkshistorien-module-3-4",
+        "shepherd-1477-central-europe"
+      ],
+      "valid_from": "0958",
+      "valid_to": null
+    },
+    {
+      "aliases": [
+        "France",
+        "royaume de France"
+      ],
+      "capital_location_ids": [
+        "loc_831fb4fffffffff_8064033bc3"
+      ],
+      "name": "Kingdom of France",
+      "polity_id": "kingdom-of-france",
+      "relationships": [
+        {
+          "confidence": "medium",
+          "notes": "Royal officers asserted enclave rights west and east of the Sa\u00f4ne; the 1444-1466 dispute produced the lost frontier maps.",
+          "relationship_id": "rel-france-burgundy-saone-claim",
+          "source_ids": [
+            "dumasy-rabineau-2021"
+          ],
+          "target_polity_id": "county-of-burgundy",
+          "type": "claim",
+          "valid_from": "1435",
+          "valid_to": "1477"
+        }
+      ],
+      "source_ids": [
+        "dauphant-2020-sources",
+        "shepherd-1453-france"
+      ],
+      "valid_from": "0987",
+      "valid_to": null
+    },
+    {
+      "aliases": [
+        "Uhorsko",
+        "Magyar Kir\u00e1lys\u00e1g"
+      ],
+      "capital_location_ids": [
+        "loc_831e03fffffffff_ff20996753"
+      ],
+      "name": "Kingdom of Hungary",
+      "polity_id": "kingdom-of-hungary",
+      "relationships": [],
+      "source_ids": [
+        "sav-lexikon-skalica-2010",
+        "shepherd-1477-central-europe"
+      ],
+      "valid_from": "1000",
+      "valid_to": null
+    },
+    {
+      "aliases": [
+        "Morava",
+        "March"
+      ],
+      "capital_location_ids": [
+        "loc_841e069ffffffff_1f6da8d34c"
+      ],
+      "name": "Margraviate of Moravia",
+      "polity_id": "margraviate-of-moravia",
+      "relationships": [
+        {
+          "confidence": "high",
+          "notes": "Moravia was a land of the Bohemian Crown; margrave Ladislaus Posthumous (1440-1457) during the 1444 interregnum.",
+          "relationship_id": "rel-moravia-bohemian-crown",
+          "source_ids": [
+            "sav-lexikon-skalica-2010",
+            "mudrik-2016-moravsko-uherska"
+          ],
+          "target_polity_id": "kingdom-of-bohemia",
+          "type": "dependency",
+          "valid_from": "1348",
+          "valid_to": "1918"
+        }
+      ],
+      "source_ids": [
+        "sav-lexikon-skalica-2010",
+        "mudrik-2016-moravsko-uherska",
+        "shepherd-1477-central-europe"
+      ],
+      "valid_from": "1182",
+      "valid_to": null
+    }
+  ],
+  "schema_version": "0.2.0",
+  "start_date": "1444-11-11"
+}

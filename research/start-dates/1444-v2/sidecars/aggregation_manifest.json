@@ -1,0 +1,33 @@
+{
+  "actual_province_count": 22000,
+  "aggregation_revision": "1444-r2",
+  "algorithm": "deterministic-contiguous-best-adjacent-graph-merge",
+  "fabric_id": "global-h3-v1",
+  "fabric_revision": "2",
+  "files": [
+    "provinces.geojson",
+    "province_membership.csv"
+  ],
+  "generated_at": "2026-07-16T00:00:00+00:00",
+  "generator_version": "0.1.0",
+  "geometry_revision": "1444-r2",
+  "historical_constraint_policy": {
+    "hard_constraints": "remove_crossing_merge_edges",
+    "sha256": "36c103e6a2b10ff95964e66db059aa7e379544f13e05c096fc61dfc4db6e7be7",
+    "soft_evidence": "merge_score_penalty_only"
+  },
+  "input_location_count": 30216,
+  "input_piece_count": 30216,
+  "inputs": {
+    "historical_constraints": "constraints.geojson",
+    "locations": "locations.geojson",
+    "modern_pieces": null
+  },
+  "manifest_type": "province_aggregation",
+  "merge_count": 8216,
+  "modern_boundary_influence": "none",
+  "profile_id": "eu-like",
+  "schema_version": "0.1.0",
+  "start_date": "1444-11-11",
+  "target_province_count": 22000
+}

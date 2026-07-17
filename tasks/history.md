@@ -1,5 +1,48 @@
 # History
 
+## 2026-07-17 - M25 1444-v2 assembly pending independent review
+
+- Broke the 2026-07-15 evidence stop honestly by narrowing the certification
+  claim to one long-lived legal frontier segment per priority region (Scheldt,
+  Saône, Rhône, lower Eider, lower Morava), each backed by a date-valid
+  academic anchor plus an independent corroborating provenance chain; every
+  load-bearing quote was re-verified first-hand and every source pinned by
+  SHA-256 in `tasks/m25-evidence-record.md`.
+- Assembled the full `official-1444-reconstruction-v2` pass with the
+  deterministic `scripts/build-m25-v2-pass.py` (build-fabric, aggregate,
+  assemble, render): production `global-h3-v1` fabric with real r1→r2 split
+  lineage, constrained 22,000-province aggregation with modern boundary
+  influence disabled, measured golden-border tolerances under hard honesty
+  caps (25 km Hausdorff, 0.85 overlap ratio; the assembler aborts rather than
+  weaken them), corridor-side politics/hierarchy, adjacency sidecars, and
+  deterministic five-region SVG review sheets.
+- Executed all 20 spatial assertions on the full build, including the
+  mandatory Brussels/Nord negative regressions with real measured ratios
+  (0.4636 and 0.0577). The Czechia negative subject is the Brno corridor
+  province because Prague lies outside every certified corridor in an
+  aggregation filler province. Full-build province geometry is emitted as the
+  exact union of sidecar location members.
+- `gpm qa start-date --pass-dir research/start-dates/1444-v2` fails only on
+  the pending independent review, by design; a test-signed copy passes every
+  other gate with zero non-review errors
+  (`tests/test_m25_v2_production_pass.py`). Two fresh end-to-end runs produce
+  byte-identical artifacts (hash snapshots in
+  `data/processed/m25-v2-hashes-run{1,2}.txt`).
+- Ship validation on the assembled boundary: `uv run pytest` passed all 284
+  tests in 20.01 seconds with no warnings; the unsigned canonical QA command
+  exited 1 solely because `manifest.review.status` is not yet `accepted`, as
+  required by the fail-closed review contract. Diff whitespace and targeted
+  credential-pattern scans were clean.
+- Pipeline changes in `src/gpm`: `builders/locations.py` split-request
+  application now uses an STRtree with a geometry cache (25+ min → ~1 min) and
+  treats refine_h3 requests on an exhausted grid as benign no-ops while
+  split_by_boundary stays strict; `qa/fabric.py` paintability QA clips the
+  global edge network to the boundary envelope before buffering (~60 min →
+  seconds). Both are covered by the existing fabric tests plus a new
+  exhausted-grid regression test.
+- Next project task: independent human review of the v2 review sheets and
+  georeferencing records, then sign-review and the final QA gate.
+
 ## 2026-07-15 - M25 v2 acceptance infrastructure
 
 - Added native Draft 2020-12 schema 0.2 validation while preserving the rejected

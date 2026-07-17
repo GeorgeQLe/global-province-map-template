@@ -1,0 +1,60 @@
+{
+  "artifact_version": "2.0.0",
+  "changes": [
+    {
+      "affected_ids": [
+        "frontier-eider-empire-denmark",
+        "frontier-morava-moravia-hungary",
+        "frontier-rhone-languedoc-provence",
+        "frontier-saone-france-empire",
+        "frontier-scheldt-flanders-empire"
+      ],
+      "category": "research",
+      "change_id": "v2-evidence",
+      "summary": "Replaced the withdrawn synthetic candidate with pinned date-valid academic evidence, independent corroboration, and per-boundary georeferencing records."
+    },
+    {
+      "affected_ids": [
+        "global-h3-v1-r2"
+      ],
+      "category": "geometry",
+      "change_id": "v2-fabric",
+      "summary": "Rebuilt on the production global-h3-v1 fabric with a real r1->r2 split migration (refine_h3 corridors and split_by_boundary along the five evidenced frontiers)."
+    },
+    {
+      "affected_ids": [
+        "1444-r2"
+      ],
+      "category": "geometry",
+      "change_id": "v2-aggregation",
+      "summary": "Full 22,000-province eu-like aggregation with pinned hard historical constraints and modern boundary influence disabled."
+    },
+    {
+      "affected_ids": [],
+      "category": "politics",
+      "change_id": "v2-politics",
+      "summary": "Typed sovereign/owner/controller, cores and claims for corridor and capital provinces."
+    },
+    {
+      "affected_ids": [],
+      "category": "hierarchy",
+      "change_id": "v2-hierarchy",
+      "summary": "Deterministic owner-derived C-grade hierarchy scaffolding for priority-region provinces."
+    },
+    {
+      "affected_ids": [],
+      "category": "qa",
+      "change_id": "v2-qa",
+      "summary": "Executed kilometre golden borders, capital containment, and negative-anachronism gates on the full build; review sheets generated for independent sign-off."
+    }
+  ],
+  "document_type": "start_date_changelog",
+  "migrations": [
+    "Provinces are membership-derived over fabric global-h3-v1-r2; v1 synthetic province-* identifiers have no successor mapping (the v1 candidate was withdrawn, not migrated)."
+  ],
+  "pass_id": "official-1444-reconstruction-v2",
+  "released_at": "2026-07-16",
+  "schema_version": "0.2.0",
+  "start_date": "1444-11-11",
+  "version": "2.0.0"
+}
