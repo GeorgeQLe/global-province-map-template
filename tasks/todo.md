@@ -2,30 +2,18 @@
 
 ## Active
 
-- M25 1444 fabric-backed research and reconstruction remediation.
+- M25B game runtime compiler and reference pack.
 
 ## Up next (from roadmap)
 
-- M25: the 1444-v2 candidate is assembled and reproducible — pinned evidence,
-  real r1→r2 split lineage, constrained 22,000-province aggregation, measured
-  golden-border tolerances, executed Brussels/Nord negative regressions, and
-  two-run byte-identical determinism evidence. The review sheets now expose
-  per-frontier focus insets, scale bars, georeferencing controls/residuals, and
-  modern-outline negative controls; structured source references pin the exact
-  reproducible substrate substring. Remaining: an independent human must
-  inspect `research/start-dates/1444-v2/review/*.svg` and the georeferencing
-  blocks in `boundaries.geojson`, then run
-  `python scripts/build-m25-v2-pass.py sign-review --reviewer "<name>"` and
-  re-run `gpm qa start-date --pass-dir research/start-dates/1444-v2`. No
-  release or acceptance claim until that gate passes.
-- M25.5 game runtime compiler and reference pack: implement the proposed
+- M25B game runtime compiler and reference pack: implement the proposed
   `gpm export runtime` contract, dense indices, compact tables, CSR graphs,
   scenario deltas, LOD/tiled geometry, compatibility/migration metadata,
   debug symbols, reference loader, and benchmark harness. M7 and M19 are reused
-  foundations. Implementation follows an accepted M25 pass; design may proceed
-  in parallel.
-- M26 1836 reconstruction: post-Napoleonic Europe and priority colonial
-  theaters, reusing the runtime contract and publishing deltas or migrations.
+  foundations. Validate hard cases before worldwide scaling.
+- M25C global 1444 certification: preserve 1444-v2 as a five-region pilot, then
+  complete worldwide inventory, geometry, politics, status, and runtime gates.
+- M26 global 1836 certification, reusing the runtime contract and publishing deltas or migrations.
 - M27 official 1914 imperial-era pass: German, Austro-Hungarian, Russian, and
   Ottoman empires, reusing the runtime contract.
 - M28 1936 reconstruction: interwar borders, mandates, colonies, and strategic
@@ -33,6 +21,11 @@
   research acceptance and runtime-pack validation.
 
 ## Completed
+
+- [x] M25A historical hard-case casebook: all eight geometry/political classes
+  across the four target-era slots, canonical identity and typed-status
+  validation, and executable deterministic projection, visual, picking, LOD,
+  adjacency, and save/migration fixtures. Synthetic geometry is contract-only.
 
 - [x] M24 start-date research framework: nine pinned pass artifacts, dated
   boundary and polity contracts, typed uncertainty/relationships, full-build

@@ -1,0 +1,180 @@
+{
+  "assertion_results": [
+    {
+      "assertion_id": "border-burgundy-1444",
+      "measurement": 9.26653177600576,
+      "spatial_relation": "border_matches_boundary_hausdorff_km_lte",
+      "status": "pass",
+      "tolerance": 12.0,
+      "unit": "kilometres"
+    },
+    {
+      "assertion_id": "border-central-europe-1444",
+      "measurement": 8.31184521616251,
+      "spatial_relation": "border_matches_boundary_hausdorff_km_lte",
+      "status": "pass",
+      "tolerance": 11.0,
+      "unit": "kilometres"
+    },
+    {
+      "assertion_id": "border-france-1444",
+      "measurement": 5.503031361560505,
+      "spatial_relation": "border_matches_boundary_hausdorff_km_lte",
+      "status": "pass",
+      "tolerance": 8.0,
+      "unit": "kilometres"
+    },
+    {
+      "assertion_id": "border-hre-1444",
+      "measurement": 2.3034750649621594,
+      "spatial_relation": "border_matches_boundary_hausdorff_km_lte",
+      "status": "pass",
+      "tolerance": 6.0,
+      "unit": "kilometres"
+    },
+    {
+      "assertion_id": "border-low-countries-1444",
+      "measurement": 5.614524348325398,
+      "spatial_relation": "border_matches_boundary_hausdorff_km_lte",
+      "status": "pass",
+      "tolerance": 8.0,
+      "unit": "kilometres"
+    },
+    {
+      "assertion_id": "capital-burgundy-politics-1444",
+      "measurement": 1.0,
+      "spatial_relation": "capital_within_subject",
+      "status": "pass",
+      "tolerance": 1,
+      "unit": "boolean"
+    },
+    {
+      "assertion_id": "capital-burgundy-relationships-1444",
+      "measurement": 1.0,
+      "spatial_relation": "capital_within_subject",
+      "status": "pass",
+      "tolerance": 1,
+      "unit": "boolean"
+    },
+    {
+      "assertion_id": "capital-central-europe-politics-1444",
+      "measurement": 1.0,
+      "spatial_relation": "capital_within_subject",
+      "status": "pass",
+      "tolerance": 1,
+      "unit": "boolean"
+    },
+    {
+      "assertion_id": "capital-central-europe-relationships-1444",
+      "measurement": 1.0,
+      "spatial_relation": "capital_within_subject",
+      "status": "pass",
+      "tolerance": 1,
+      "unit": "boolean"
+    },
+    {
+      "assertion_id": "capital-france-politics-1444",
+      "measurement": 1.0,
+      "spatial_relation": "capital_within_subject",
+      "status": "pass",
+      "tolerance": 1,
+      "unit": "boolean"
+    },
+    {
+      "assertion_id": "capital-france-relationships-1444",
+      "measurement": 1.0,
+      "spatial_relation": "capital_within_subject",
+      "status": "pass",
+      "tolerance": 1,
+      "unit": "boolean"
+    },
+    {
+      "assertion_id": "capital-hre-politics-1444",
+      "measurement": 1.0,
+      "spatial_relation": "capital_within_subject",
+      "status": "pass",
+      "tolerance": 1,
+      "unit": "boolean"
+    },
+    {
+      "assertion_id": "capital-hre-relationships-1444",
+      "measurement": 1.0,
+      "spatial_relation": "capital_within_subject",
+      "status": "pass",
+      "tolerance": 1,
+      "unit": "boolean"
+    },
+    {
+      "assertion_id": "capital-low-countries-politics-1444",
+      "measurement": 1.0,
+      "spatial_relation": "capital_within_subject",
+      "status": "pass",
+      "tolerance": 1,
+      "unit": "boolean"
+    },
+    {
+      "assertion_id": "capital-low-countries-relationships-1444",
+      "measurement": 1.0,
+      "spatial_relation": "capital_within_subject",
+      "status": "pass",
+      "tolerance": 1,
+      "unit": "boolean"
+    },
+    {
+      "assertion_id": "negative-modern-brussels-capital-region",
+      "measurement": 0.4636026027957318,
+      "spatial_relation": "forbidden_outline_overlap_ratio_lte",
+      "status": "pass",
+      "tolerance": 0.564,
+      "unit": "ratio"
+    },
+    {
+      "assertion_id": "negative-modern-burgundy",
+      "measurement": 0.1275776226988944,
+      "spatial_relation": "forbidden_outline_overlap_ratio_lte",
+      "status": "pass",
+      "tolerance": 0.228,
+      "unit": "ratio"
+    },
+    {
+      "assertion_id": "negative-modern-central-europe",
+      "measurement": 0.02153698090865245,
+      "spatial_relation": "forbidden_outline_overlap_ratio_lte",
+      "status": "pass",
+      "tolerance": 0.122,
+      "unit": "ratio"
+    },
+    {
+      "assertion_id": "negative-modern-hre",
+      "measurement": 0.45320261783151927,
+      "spatial_relation": "forbidden_outline_overlap_ratio_lte",
+      "status": "pass",
+      "tolerance": 0.553,
+      "unit": "ratio"
+    },
+    {
+      "assertion_id": "negative-modern-nord-department",
+      "measurement": 0.057685423887792374,
+      "spatial_relation": "forbidden_outline_overlap_ratio_lte",
+      "status": "pass",
+      "tolerance": 0.158,
+      "unit": "ratio"
+    }
+  ],
+  "findings": [],
+  "inputs": {
+    "manifest": "/Users/georgele/projects/games/global-province-map-template/research/start-dates/1444-v2/pass_manifest.json",
+    "pass_dir": "/Users/georgele/projects/games/global-province-map-template/research/start-dates/1444-v2"
+  },
+  "milestone": "M25",
+  "pass_id": "official-1444-reconstruction-v2",
+  "report_type": "start_date_research_qa",
+  "schema_version": "0.2.0",
+  "start_date": "1444-11-11",
+  "status": "pass",
+  "summary": {
+    "artifact_count": 9,
+    "error_count": 0,
+    "warning_count": 0
+  }
+}

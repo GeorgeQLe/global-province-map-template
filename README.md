@@ -62,27 +62,27 @@ The implementation should eventually generate:
 ## Status
 
 M23 and M24 provide the authoring foundation of the production historical
-program. The execution order is **M25 → M25.5 → M26 → M27 → M28**. M25 remains
-active: after its independent acceptance audit rejected the initial 1444
-candidate, the evidence-backed
-[1444-v2 candidate](docs/m25-1444-reconstruction.md) has been assembled on the
-production fabric and passes every `gpm qa start-date` gate except the still
-pending independent human review; no acceptance claim exists until that review
-is signed. M23 builds a neutral, cross-admin
+program. The public release is now **Modern-only**: historical configs, packs,
+and the unsigned [1444-v2 candidate](docs/m25-1444-reconstruction.md) are
+internal research fixtures, not official-era products. The execution order is
+**M25A hard-case casebook → M25B runtime compiler → M25C global 1444 → M26
+global 1836 → M27 global 1914 → M28 global 1936**. M23 builds a neutral, cross-admin
 [location fabric](docs/m23-location-fabric.md); M24 standardizes the
 [start-date research framework](docs/m24-start-date-research-framework.md) with
 versioned schemas and fail-closed `gpm qa start-date` pass validation. The
 withdrawn v1 candidate retains only C/U claims, and its Brussels/Nord
 measurements are regressions, not release certification.
 
-After an accepted M25 canonical pass, planned **M25.5 — Game Runtime Compiler
-and Reference Pack** will introduce the proposed `gpm export runtime` contract:
+Planned **M25B — Game Runtime Compiler and Reference Pack** will validate the
+[historical hard-case contract](docs/m25-hard-case-casebook.md) and introduce
+the proposed `gpm export runtime` contract:
 stable-ID↔dense-index mappings, compact tables and CSR graphs, scenario deltas,
 LOD/tiled geometry, a hashed compatibility manifest, migration metadata, an
 optional debug-symbol pack, and an engine-neutral reference loader/benchmark.
 M7 exports and M19 PMTiles are foundations for that work; they are not the
-runtime compiler. Later independent passes cover **1836 (M26), official 1914
-(M27), and 1936 (M28)** and reuse the runtime contract.
+runtime compiler. Global certification then proceeds **1444, 1836, 1914,
+1936**, restoring each public tab only after its worldwide research and runtime
+gates pass.
 
 Canonical research/authoring artifacts remain reproducible evidence inputs.
 Normal game-runtime packs exclude raw locations and research evidence, use
@@ -97,7 +97,8 @@ explicit `--legacy-modern-admin` compatibility flag. Targeted splits require a
 distinct `--output-fabric-revision`, preserving unchanged location IDs while
 recording source/output revision lineage.
 
-M22 global PMTiles-first demo is in place. `gpm demo build` regenerates
+M22 global PMTiles-first demo is in place. `gpm demo build` now regenerates a
+**Modern-only** public bundle
 `landing/demo/data/` from the processed **full global build** (4,603 Natural
 Earth admin-1 provinces): atlas exports and per-scenario ownership **PMTiles**
 (the only global polygon source — no full-world GeoJSON ships), simplified

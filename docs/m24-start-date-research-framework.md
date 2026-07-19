@@ -4,8 +4,8 @@ Status: **accepted; canonical research and certification contract**.
 
 M24 defines the repeatable evidence, reconstruction, uncertainty, and spatial
 QA workflow used by the independently releasable 1444, 1836, 1914, and 1936
-passes. A start-date release makes only region-, era-, and layer-specific
-coverage claims.
+passes. Regional grades describe research progress only; an official start-date
+release is worldwide and indivisible.
 
 ## Required pass artifacts
 
@@ -143,11 +143,11 @@ politics, hierarchy, and gazetteer relationships. Suggested grades are:
 - **C — scaffolded:** usable assignments but known modern/reference influence;
 - **U — unassessed:** no historical claim.
 
-Each start-date pass pins all artifact versions and can be accepted and
-published independently as a canonical research/authoring artifact. An
-official game-runtime release additionally requires the M25.5 runtime-pack
-validation defined in `ROADMAP.md`. No regional grade may be promoted into an
-implicit global claim.
+Each start-date pass pins all artifact versions and may be published as a
+canonical research/authoring artifact. An official game-runtime release
+additionally requires worldwide A coverage with zero geometry-evidence gaps and
+the M25B runtime-pack validation defined in `ROADMAP.md`. No regional grade is
+an official-era claim.
 
 An A grade is rejected unless its `source_ids` resolve to reviewed sources and
 its `assertion_ids` resolve to passing executed full-build assertions for the
@@ -159,11 +159,10 @@ rows where no historical claim is made.
 
 ## Program order
 
-- M25: 1444 — Low Countries, Burgundy, France, HRE, Central Europe first.
-- M25.5: compile the accepted canonical pass into the engine-neutral runtime
-  contract; implementation follows accepted M25, while design may run in
-  parallel.
-- M26: 1836 — post-Napoleonic Europe and priority colonial theaters; reuse the
+- M25A: validate all historical geometry/political classes in the hard-case casebook.
+- M25B: compile canonical passes into the engine-neutral runtime contract.
+- M25C: expand the five-region 1444 pilot into a globally certified pass.
+- M26: global 1836 certification; reuse the
   runtime contract and publish scenario deltas or migration metadata.
-- M27: 1914 — German, Austro-Hungarian, Russian, and Ottoman empires.
-- M28: 1936 — interwar borders, mandates, colonies, and strategic groupings.
+- M27: global 1914 certification.
+- M28: global 1936 certification.

@@ -17,16 +17,6 @@
   if (!root || !svg || !provincesG || !buttons.length) return;
 
   const eras = {
-    "1444": {
-      scenario: "official-1444",
-      caption: "EU-leaning 1444 politics over modern admin geometry",
-      tier: "quality: curated-politics",
-    },
-    "1836": {
-      scenario: "official-1836",
-      caption: "Victoria-leaning 1836 major powers and elevated theaters",
-      tier: "quality: curated-politics",
-    },
     modern: {
       scenario: "modern-baseline",
       caption: "Modern baseline owners projected from parent countries",
@@ -273,7 +263,7 @@
   }
 
   async function setEra(era) {
-    const next = eras[era] ? era : "1444";
+    const next = eras[era] ? era : "modern";
     root.dataset.era = next;
     buttons.forEach((btn) => {
       const active = btn.dataset.era === next;
@@ -308,5 +298,5 @@
     btn.addEventListener("click", () => setEra(btn.dataset.era));
   });
 
-  setEra(root.dataset.era || "1444");
+  setEra(root.dataset.era || "modern");
 })();

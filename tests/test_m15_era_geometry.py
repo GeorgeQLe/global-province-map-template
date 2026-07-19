@@ -282,30 +282,20 @@ def test_committed_sample_and_demo_assets_exist():
         assert (sample_dir / name).is_file(), name
 
     demo = PROJECT_ROOT / "landing" / "demo" / "data"
+    assert (demo / "demo-manifest.json").is_file()
     for name in (
         "official-1444-period.geojson",
         "official-1444-period.legend.json",
         "boundary-hints-1444.geojson",
         "lineage-1444.json",
-        "demo-manifest.json",
     ):
-        assert (demo / name).is_file(), name
+        assert not (demo / name).exists(), name
 
     manifest = json.loads((demo / "demo-manifest.json").read_text(encoding="utf-8"))
-    s1444 = next(s for s in manifest["scenarios"] if s["id"] == "official-1444")
-    assert s1444["supports_period_geometry"] is True
-    assert s1444["period_geojson"] == "official-1444-period.geojson"
+    assert {s["id"] for s in manifest["scenarios"]} == {"modern-baseline"}
     live_ids = {layer["id"] for layer in manifest["live_layers"]}
-    assert "period-geometry" in live_ids
-    assert "boundary-hints" in live_ids
-    future_ids = {slot["id"] for slot in manifest["future_slots"]}
-    assert "period-geometry" not in future_ids
-    assert "boundary-hints" not in future_ids
-
-    period = json.loads((demo / "official-1444-period.geojson").read_text(encoding="utf-8"))
-    # M15 shipped 7 WE provinces; M20 expands to WE+CE (12 after Cologne + Prague splits).
-    assert len(period["features"]) >= 7
-    assert period["gpm"]["geometry_tier"] == "period-geometry"
+    assert "period-geometry" not in live_ids
+    assert "boundary-hints" not in live_ids
 
 
 def test_schema_lineage_validator_rejects_bad_count():

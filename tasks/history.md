@@ -1,5 +1,31 @@
 # History
 
+## 2026-07-19 - M25A hard-case contract and Modern-only public reset
+
+- Reset the public landing page and PMTiles demo to the Modern baseline. Removed
+  the 1444, 1836, and 1936 public controls and generated historical assets while
+  retaining their configs and packs as internal research fixtures. Release
+  validation now rejects a live historical scenario unless it names a present
+  worldwide certification artifact accepted by both research and runtime gates.
+- Reframed the official-era roadmap around M25A hard-case validation, M25B's
+  engine-neutral runtime compiler, and worldwide certification in M25C-M28.
+  The unsigned 1444-v2 work is preserved as a five-region research pilot rather
+  than an official release candidate.
+- Completed the M25A synthetic hard-case casebook for eight political/geometry
+  classes across 1444, 1836, 1914, and 1936. Added canonical component, polity,
+  province, typed-status, geometry, deterministic projection, visual, picking,
+  LOD, adjacency, and save/migration validation.
+- Made 1444-v2 review rendering adapt to extreme province outliers by centering
+  the main sheet on historical evidence while keeping modern negative controls
+  out of the frame. Rendering also resets stale review identity before repinning
+  generated hashes.
+- Quality gate: `uv run pytest` passed all 296 tests with no warnings;
+  `git diff --check` passed; credential-pattern scans of changed files were
+  clear. Headless visual inspection confirmed the Modern-only landing/demo and
+  legible adaptive Central Europe review framing. Chromium emitted only
+  software-renderer readback diagnostics during screenshot capture.
+- Next project task: implement the M25B game runtime compiler and reference pack.
+
 ## 2026-07-17 - M25 1444-v2 assembly pending independent review
 
 - Broke the 2026-07-15 evidence stop honestly by narrowing the certification

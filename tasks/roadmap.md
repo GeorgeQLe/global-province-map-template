@@ -1,6 +1,6 @@
 # Roadmap Progress
 
-Updated: 2026-07-18
+Updated: 2026-07-19
 
 Product direction (see root `ROADMAP.md`): dual audience for **strategy-game
 seeds** and **historical / SaaS maps**, with a **strong historical accuracy
@@ -26,7 +26,7 @@ historical coverage.
 | M4 | complete | `gpm.builders.refinement` | `test_m4_refinement.py` | methodology docs | none in scope |
 | M5 | complete | `gpm review` | `test_m5_review.py` | packaged viewer | local authoring surface |
 | M6 | complete | `gpm build seas`; mixed adjacency | `test_m6_seas.py` | exportable sea data | gameplay policy varies |
-| M7 | complete | `gpm export pack/geojson` | `test_m7_export.py` | alpha/beta game packs | reused by M25.5; not runtime compiler |
+| M7 | complete | `gpm export pack/geojson` | `test_m7_export.py` | alpha/beta game packs | reused by M25B; not runtime compiler |
 | M8 | complete | `gpm scenario` | `test_m8_scenarios.py` | scenario configs | overlay tooling, not era certification |
 | M9 | complete | `gpm release alpha` | `test_m9_release.py` | alpha sample | scaffold accuracy only |
 | M10 | complete | `gpm export atlas` | `test_m10_atlas.py` | beta atlas/demo | none in scope |
@@ -39,15 +39,16 @@ historical coverage.
 | M16 | prototype/infrastructure complete | `gpm multi-era`; era packs | `test_m16_multi_era.py` | multi-era sample/demo | sample-scoped geometry |
 | M17 | complete | `gpm curation` | `test_m17_curation.py` | curator bundle sample | continuing curation |
 | M18 | complete | culture/religion atlas paint | `test_m18_culture_religion.py` | demo paint modes | curated hints only |
-| M19 | complete | `gpm export tiles`; PMTiles writer | `test_m19_pmtiles.py` | PMTiles demo archives | reused by M25.5; not runtime compiler |
+| M19 | complete | `gpm export tiles`; PMTiles writer | `test_m19_pmtiles.py` | PMTiles demo archives | reused by M25B; not runtime compiler |
 | M20 | prototype/infrastructure complete | CE packs and pack composition | `test_m20_broader_period_geometry.py` | WE+CE samples/demo | sample-scoped; not certified coverage |
 | M21 | complete | `gpm build hierarchy` | `test_m21_hierarchy.py` | hierarchy overlays | historical memberships need accepted passes |
-| M22 | complete | `gpm demo build` | deterministic demo/landing validation | global PMTiles demo | 4,603-province scaffold surface |
+| M22 reset | complete | `gpm demo build`; release validator | Modern-only demo and uncertified-era rejection tests | global Modern PMTiles demo | historical tabs await global certification |
 | M23 | complete | `gpm build locations/provinces`; fabric QA | duplicate 30,003-location and 22,000-province builds | source/docs; no hosted fabric claimed | documented reference warnings/build-drift audit note |
 | M24 | complete | schemas and `gpm qa start-date` | `test_m24_start_date_framework.py` | contract and rejected-pass evidence | framework only; does not certify an era |
-| M25 | active; v2 pending review | rejected v1; schema 0.2 plus production-fabric v2 assembler, constrained aggregation, georeferenced inset SVG renderer | intentional v1 rejection; v2 contract tests, reproducible substrate substrings, full-build spatial assertions, two-run determinism | withdrawn v1 plus unsigned 1444-v2 candidate/evidence record | independent human review and signed final QA gate |
-| M25.5 | planned | proposed `gpm export runtime` | acceptance budgets in `ROADMAP.md` | none yet | requires accepted M25 canonical pass |
-| M26 | planned | 1836 canonical pass + runtime delta/migration | future research and runtime validation | none yet | begins after M25.5 contract |
+| M25A | complete | hard-case casebook + typed-status schema | eight executable per-class canonical/runtime/visual/picking/LOD/adjacency/save fixtures | research artifacts only | synthetic contract fixtures, not historical evidence |
+| M25B | planned | proposed `gpm export runtime` | acceptance budgets in `ROADMAP.md` | none yet | validate hard cases before scaling |
+| M25C | planned; v2 pilot preserved | global 1444 pass; v2 assembler/evidence | worldwide research and runtime validation | unsigned v2 research candidate only | complete worldwide inventory and geometry |
+| M26 | planned | global 1836 pass + runtime delta/migration | worldwide research and runtime validation | none yet | begins after M25C |
 | M27 | planned | 1914 canonical pass + runtime delta/migration | future research and runtime validation | none yet | begins after M26 |
 | M28 | planned | 1936 canonical pass + runtime delta/migration | future research and runtime validation | none yet | begins after M27 |
 
@@ -146,9 +147,9 @@ historical coverage.
 - M21 four-level hierarchy: complete. Stable area, region, and superregion
   entities; enriched province parents; hierarchy exports and demo overlays;
   docs `docs/m21-hierarchy.md`.
-- M22 global PMTiles-first demo: complete. Four scenario archives over the
-  4,603-province global build, hero dissolves, hierarchy and adjacency overlays,
-  regenerated manifest, and cache-safe public entrypoints.
+- M22 public reset: complete. One Modern baseline archive over the 4,603-province
+  global build, hero dissolve, hierarchy and adjacency overlays, regenerated
+  manifest, and fail-closed uncertified-era validation.
 - M23 historically paintable location fabric: complete. Neutral cross-admin
   H3 cells, stable location IDs, configurable modern-boundary influence,
   versioned aggregations, QA, and targeted split lineage ship through explicit
@@ -159,16 +160,10 @@ historical coverage.
 
 ## Next
 
-- M25 1444 reconstruction: active. Its initial candidate failed independent
-  acceptance. The replacement 1444-v2 candidate now carries pinned evidence,
-  real r1→r2 lineage, a constrained 22,000-province production build,
-  measured spatial assertions, exact substrate substring references, and
-  deterministic review sheets with georeferencing/control-point insets. It
-  remains unsigned and unaccepted until an independent human review and final
-  passing `gpm qa start-date` gate.
-- M25.5 game runtime compiler and reference pack: next after accepted M25;
-  schema/compiler design may proceed in parallel. It reuses M7 exports and M19
-  PMTiles and adds the engine-neutral dense-table/CSR/LOD/save contract.
+- M25A historical hard-case casebook, followed by M25B runtime compiler. The
+  compiler reuses M7/M19 and adds dense-table/CSR/LOD/save contracts.
+- M25C global 1444 certification. The 1444-v2 candidate remains an unsigned
+  five-region pilot and evidence set, not a release boundary.
 - M26 1836, M27 official 1914 imperial-era, and M28 1936 reuse that runtime
   contract. They publish scenario-only deltas when geometry membership is
   unchanged and explicit migration metadata when it changes.

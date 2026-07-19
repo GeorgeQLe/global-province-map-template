@@ -29,6 +29,7 @@ def test_schema_files_are_machine_readable_json_schema_documents():
         "era-geometry-pack.schema.json",
         "golden-checks.schema.json",
         "historical-boundary-registry.schema.json",
+        "historical-territory-status.schema.json",
         "license-audit-report.schema.json",
         "location-admin-intersection.schema.json",
         "location-adjacency-record.schema.json",

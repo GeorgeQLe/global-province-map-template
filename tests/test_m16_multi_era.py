@@ -319,27 +319,14 @@ def test_sample_multi_era_artifacts_exist():
     assert (sample / "eras" / "1936" / "era_manifest.json").is_file()
 
 
-def test_demo_manifest_ships_1936_and_multi_era():
+def test_demo_manifest_keeps_multi_era_research_out_of_public_release():
     manifest = json.loads(
         Path("landing/demo/data/demo-manifest.json").read_text(encoding="utf-8")
     )
     scenario_ids = {s["id"] for s in manifest["scenarios"]}
-    assert "official-1936" in scenario_ids
-    assert "official-1836" in scenario_ids
+    assert scenario_ids == {"modern-baseline"}
     live_ids = {s["id"] for s in manifest.get("live_layers") or []}
-    assert "multi-era-packs" in live_ids
-    future_ids = {s["id"] for s in manifest.get("future_slots") or []}
-    assert "multi-era-packs" not in future_ids
-    assert "era-1936" not in future_ids
-    for sid in ("official-1444", "official-1836", "official-1936"):
-        meta = next(s for s in manifest["scenarios"] if s["id"] == sid)
-        assert meta["supports_period_geometry"] is True
-        assert meta.get("period_geojson")
-        assert meta.get("boundary_hints")
-        # PMTiles-first (M22): no full global GeoJSON ships per scenario.
-        assert meta["geojson"] is None
-        assert Path("landing/demo/data", meta["pmtiles"]).is_file()
-        assert Path("landing/demo/data", meta["period_geojson"]).is_file()
+    assert "multi-era-packs" not in live_ids
 
 
 def test_scenario_definition_file_present():

@@ -36,12 +36,7 @@ from gpm.release.alpha import ReleaseError
 from gpm.scenarios import ScenarioError, load_scenario
 from gpm.tiles import TileBuildError, build_pmtiles_from_geojson
 
-DEMO_SCENARIOS: tuple[str, ...] = (
-    "official-1444",
-    "official-1836",
-    "official-1936",
-    "modern-baseline",
-)
+DEMO_SCENARIOS: tuple[str, ...] = ("modern-baseline",)
 DEMO_SCENARIO_LABELS = {
     "official-1444": "1444 · EU-leaning",
     "official-1836": "1836 · Victoria-leaning",
@@ -55,6 +50,27 @@ PERIOD_ASSETS = {
     "official-1836": "1836",
     "official-1936": "1936",
 }
+# Historical packs remain research fixtures, but none are public-demo inputs
+# until a worldwide artifact has passed the global certification gate.
+PUBLIC_HISTORICAL_ASSETS: tuple[str, ...] = tuple(
+    name
+    for era in ("1444", "1836", "1936")
+    for name in (
+        f"official-{era}.geojson",
+        f"hero-official-{era}.geojson",
+        f"official-{era}.legend.json",
+        f"official-{era}.culture.legend.json",
+        f"official-{era}.religion.legend.json",
+        f"official-{era}.pmtiles",
+        f"official-{era}.tileset.json",
+        f"official-{era}-period.geojson",
+        f"official-{era}-period.legend.json",
+        f"official-{era}-period.culture.legend.json",
+        f"official-{era}-period.religion.legend.json",
+        f"boundary-hints-{era}.geojson",
+        f"lineage-{era}.json",
+    )
+)
 HIERARCHY_LAYER_TARGETS = {
     "areas.geojson": "hierarchy-areas.geojson",
     "regions.geojson": "hierarchy-regions.geojson",
@@ -216,6 +232,11 @@ def build_demo(
     dropped: list[str] = []
     for scenario_id in scenario_ids:
         dropped.extend(_drop(data_dir / f"{scenario_id}.geojson"))
+    # A Modern-only regeneration also cleans older public bundles so research
+    # fixtures cannot survive as accidentally exposed historical products.
+    if scenario_ids == DEMO_SCENARIOS:
+        for name in PUBLIC_HISTORICAL_ASSETS:
+            dropped.extend(_drop(data_dir / name))
     dropped.extend(_drop(data_dir / "adjacency.json"))
     dropped.extend(_drop(data_dir / "adjacency.csv"))
 
@@ -245,7 +266,7 @@ def build_demo(
 
     validated = False
     if validate and not set(DEMO_SCENARIOS) <= set(scenario_ids):
-        # The landing validator requires the full default scenario set; a
+        # The landing validator requires the public scenario set; a
         # partial rebuild cannot satisfy it, so skip rather than fail on
         # files this run was never asked to produce.
         validate = False
@@ -556,17 +577,14 @@ def _demo_manifest(
 
     return {
         "title": "GPM interactive demo",
-        "sample": "Global Natural Earth build (M22) + europe-multi-era-v1 period geometry (M20)",
+        "sample": "Global Natural Earth modern baseline build (M22)",
         "geometry_tier": "scaffold-baseline",
-        "period_geometry_tier": "period-geometry",
-        "period_geometry_pack": "europe-multi-era-v1",
-        "multi_era_pack": "europe-multi-era-v1",
         "note": (
             "PMTiles-first global demo over the full Natural Earth admin-1 build "
             f"({province_count} provinces) with the M21 area/region/superregion "
-            "hierarchy. Politics are era overlays; culture/religion paint (M18) uses "
-            "curated scenario hints. Period geometry / boundary hints stay on the "
-            "curated Western/Central Europe sample packs (M20)."
+            "hierarchy. The public channel is Modern-only. Historical geometry "
+            "and politics remain internal research fixtures until an exact start "
+            "date passes worldwide research and runtime certification."
         ),
         "generated": {
             "generated_at": generated_at,
@@ -649,24 +667,6 @@ def _demo_manifest(
                 "desc": "Owner, controller, cores, claims, culture, religion, hierarchy fields",
             },
             {
-                "id": "period-geometry",
-                "label": "Period geometry",
-                "desc": "M16 multi-era hard overrides / soft shapes for WE+CE sample (1444 · 1836 · 1936)",
-                "milestone": "M16",
-            },
-            {
-                "id": "boundary-hints",
-                "label": "Historical boundary hints",
-                "desc": "M16 soft frontier bands per era without full world redraw",
-                "milestone": "M16",
-            },
-            {
-                "id": "multi-era-packs",
-                "label": "Multi-era geometry + politics packs",
-                "desc": "Paired geometry + politics for 1444/1836/1936 with region quality tiers and migration notes",
-                "milestone": "M16",
-            },
-            {
                 "id": "curation-diff",
                 "label": "Curation diffs & golden borders",
                 "desc": "M17: gpm curation diff/checklist, external bundles, expanded golden-border suites",
@@ -685,8 +685,8 @@ def _demo_manifest(
                 "label": "Certified start-date reconstructions",
                 "milestone": "M24–M28",
                 "desc": (
-                    "Evidence dossiers and full-build regional certification for "
-                    "1444, 1836, 1914, and 1936 over the M23 neutral location fabric"
+                    "Worldwide research and runtime certification for 1444, 1836, "
+                    "1914, and 1936 over the M23 neutral location fabric"
                 ),
             },
         ],

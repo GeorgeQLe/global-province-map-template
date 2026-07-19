@@ -58,6 +58,7 @@ def test_demo_build_writes_pmtiles_first_pack(fixture_build):
     data_dir = fixture_build["landing"] / "demo" / "data"
     # Pre-seed legacy assets that the PMTiles-first build must drop.
     (data_dir / "official-1444.geojson").write_text("{}", encoding="utf-8")
+    (data_dir / "official-1444.pmtiles").write_text("stale", encoding="utf-8")
     (data_dir / "adjacency.json").write_text("{}", encoding="utf-8")
 
     result = _run_build(fixture_build)
@@ -68,6 +69,7 @@ def test_demo_build_writes_pmtiles_first_pack(fixture_build):
     assert result.adjacency_edge_count > 0
     assert result.hierarchy_counts["superregions"] == 1
     assert "official-1444.geojson" in result.dropped_files
+    assert "official-1444.pmtiles" in result.dropped_files
     assert "adjacency.json" in result.dropped_files
 
     for scenario_id in DEMO_SCENARIOS:
@@ -112,15 +114,16 @@ def test_demo_manifest_is_regenerated_programmatically(fixture_build):
     assert manifest["generated"]["province_count"] == 13
     assert "future_slots" in manifest
     live_ids = {layer["id"] for layer in manifest["live_layers"]}
-    assert {"period-geometry", "boundary-hints", "multi-era-packs", "pmtiles", "hierarchy"} <= live_ids
+    assert {"pmtiles", "hierarchy"} <= live_ids
+    assert {"period-geometry", "boundary-hints", "multi-era-packs"}.isdisjoint(live_ids)
     assert manifest["future_slots"] == [
         {
             "id": "start-date-reconstructions",
             "label": "Certified start-date reconstructions",
             "milestone": "M24–M28",
             "desc": (
-                "Evidence dossiers and full-build regional certification for "
-                "1444, 1836, 1914, and 1936 over the M23 neutral location fabric"
+                "Worldwide research and runtime certification for 1444, 1836, "
+                "1914, and 1936 over the M23 neutral location fabric"
             ),
         }
     ]
@@ -130,9 +133,6 @@ def test_demo_manifest_is_regenerated_programmatically(fixture_build):
     for scenario_id, entry in by_id.items():
         assert entry["geojson"] is None  # PMTiles-first: no global GeoJSON
         assert entry["pmtiles"] == f"{scenario_id}.pmtiles"
-    assert by_id["official-1444"]["supports_period_geometry"] is True
-    assert by_id["official-1444"]["period_geojson"] == "official-1444-period.geojson"
-    assert by_id["official-1444"]["boundary_hints"] == "boundary-hints-1444.geojson"
     assert by_id["modern-baseline"]["supports_period_geometry"] is False
     assert "period_geojson" not in by_id["modern-baseline"]
 
@@ -167,15 +167,15 @@ def test_demo_build_partial_scenario_set_skips_validation(fixture_build):
         hierarchy_input=fixture_build["hierarchy"],
         landing_dir=fixture_build["landing"],
         work_dir=fixture_build["work"],
-        scenarios=("modern-baseline",),
+        scenarios=("demo-1444",),
         tile_max_zoom=2,
         prefer_tippecanoe=False,
         validate=True,
     )
-    assert result.scenario_ids == ("modern-baseline",)
+    assert result.scenario_ids == ("demo-1444",)
     assert result.validated is False
     data_dir = fixture_build["landing"] / "demo" / "data"
-    assert (data_dir / "modern-baseline.pmtiles").is_file()
+    assert (data_dir / "demo-1444.pmtiles").is_file()
     assert not (data_dir / "official-1444.pmtiles").exists()
 
 

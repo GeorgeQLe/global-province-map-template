@@ -34,49 +34,12 @@ REQUIRED_DEMO_FILES: tuple[str, ...] = (
     "demo/data/hierarchy-regions.geojson",
     "demo/data/hierarchy-superregions.geojson",
     # M22 landing hero owner dissolves (replace the dropped global GeoJSON)
-    "demo/data/hero-official-1444.geojson",
-    "demo/data/hero-official-1836.geojson",
-    "demo/data/hero-official-1936.geojson",
     "demo/data/hero-modern-baseline.geojson",
-    "demo/data/official-1444.legend.json",
-    "demo/data/official-1836.legend.json",
-    "demo/data/official-1936.legend.json",
     "demo/data/modern-baseline.legend.json",
     # M18 culture / religion identity legends
-    "demo/data/official-1444.culture.legend.json",
-    "demo/data/official-1444.religion.legend.json",
-    "demo/data/official-1836.culture.legend.json",
-    "demo/data/official-1836.religion.legend.json",
-    "demo/data/official-1936.culture.legend.json",
-    "demo/data/official-1936.religion.legend.json",
     "demo/data/modern-baseline.culture.legend.json",
     "demo/data/modern-baseline.religion.legend.json",
-    # Multi-era period geometry demo assets (M15–M16)
-    "demo/data/official-1444-period.geojson",
-    "demo/data/official-1444-period.legend.json",
-    "demo/data/official-1444-period.culture.legend.json",
-    "demo/data/official-1444-period.religion.legend.json",
-    "demo/data/boundary-hints-1444.geojson",
-    "demo/data/lineage-1444.json",
-    "demo/data/official-1836-period.geojson",
-    "demo/data/official-1836-period.legend.json",
-    "demo/data/official-1836-period.culture.legend.json",
-    "demo/data/official-1836-period.religion.legend.json",
-    "demo/data/boundary-hints-1836.geojson",
-    "demo/data/lineage-1836.json",
-    "demo/data/official-1936-period.geojson",
-    "demo/data/official-1936-period.legend.json",
-    "demo/data/official-1936-period.culture.legend.json",
-    "demo/data/official-1936-period.religion.legend.json",
-    "demo/data/boundary-hints-1936.geojson",
-    "demo/data/lineage-1936.json",
     # M19 PMTiles / vector tiles (ownership layer per scenario)
-    "demo/data/official-1444.pmtiles",
-    "demo/data/official-1444.tileset.json",
-    "demo/data/official-1836.pmtiles",
-    "demo/data/official-1836.tileset.json",
-    "demo/data/official-1936.pmtiles",
-    "demo/data/official-1936.tileset.json",
     "demo/data/modern-baseline.pmtiles",
     "demo/data/modern-baseline.tileset.json",
 )
@@ -85,12 +48,10 @@ REQUIRED_DEMO_FILES: tuple[str, ...] = (
 REQUIRED_HTML_SNIPPETS: tuple[str, ...] = (
     "Global Province Map",
     "scaffold-baseline",
-    "curated-politics",
     "gpm export pack",
     "gpm export atlas",
-    "official-1836",
-    "official-1444",
-    "official-1936",
+    "Modern-only",
+    "global certification",
     "license-audited",
     "Natural Earth",
     "geoBoundaries",
@@ -102,14 +63,7 @@ REQUIRED_HTML_SNIPPETS: tuple[str, ...] = (
 
 REQUIRED_DEMO_HTML_SNIPPETS: tuple[str, ...] = (
     "Interactive demo",
-    "official-1444",
-    "official-1836",
-    "official-1936",
     "modern-baseline",
-    "period-geometry",
-    "boundary hints",
-    "layer-period-geometry",
-    "layer-boundary-hints",
     "layer-culture",
     "layer-religion",
     "layer-hierarchy",
@@ -118,7 +72,7 @@ REQUIRED_DEMO_HTML_SNIPPETS: tuple[str, ...] = (
     "gpm export pack",
     "gpm export atlas",
     "scaffold-baseline",
-    "curated-politics",
+    "global certification",
     "Reserved for later",
     # Root-absolute assets: required under Vercel cleanUrls + trailingSlash:false
     # where the page is served as /demo (no trailing slash).
@@ -213,8 +167,37 @@ def validate_landing_site(landing_dir: Path | None = None) -> LandingValidationR
         for snippet in REQUIRED_DEMO_HTML_SNIPPETS:
             if snippet not in demo_html_text:
                 missing_demo_snippets.append(snippet)
+        if 'data-era="official-' in demo_html_text:
+            missing_demo_snippets.append("historical era controls must remain hidden")
     else:
         missing_demo_snippets = list(REQUIRED_DEMO_HTML_SNIPPETS)
+
+    manifest_path = path / "demo" / "data" / "demo-manifest.json"
+    if manifest_path.is_file():
+        try:
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        except (OSError, UnicodeError, json.JSONDecodeError):
+            missing_demo_snippets.append("valid demo manifest")
+        else:
+            for scenario in manifest.get("scenarios") or []:
+                if scenario.get("status") != "live" or scenario.get("id") == "modern-baseline":
+                    continue
+                certification = scenario.get("global_certification") or {}
+                artifact = certification.get("artifact")
+                artifact_present = (
+                    isinstance(artifact, str)
+                    and bool(artifact)
+                    and (manifest_path.parent / artifact).is_file()
+                )
+                if not (
+                    certification.get("scope") == "worldwide"
+                    and certification.get("research_status") == "accepted"
+                    and certification.get("runtime_status") == "accepted"
+                    and artifact_present
+                ):
+                    missing_demo_snippets.append(
+                        f"uncertified public era: {scenario.get('id') or 'unknown'}"
+                    )
 
     valid = (
         not missing

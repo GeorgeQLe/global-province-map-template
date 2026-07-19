@@ -29,7 +29,7 @@
 
   const state = {
     manifest: null,
-    scenarioId: "official-1444",
+    scenarioId: "modern-baseline",
     cache: new Map(),
     map: null,
     selectedId: null,
@@ -888,7 +888,7 @@
       btn.addEventListener("click", () => {
         if (btn.classList.contains("is-future") || btn.getAttribute("aria-disabled") === "true") {
           setStatus(
-            "That era slot is reserved for a later milestone. Live eras: official-1444, official-1836, official-1936, modern-baseline.",
+            "That era slot is reserved pending worldwide research and runtime certification. Live eras: modern-baseline.",
             false,
           );
           return;

@@ -6,7 +6,7 @@ import pytest
 
 from gpm.builders.aggregation import ProvinceAggregationError, aggregate_location_provinces
 from gpm.cli import main
-from gpm.qa.render import render_start_date_pass
+from gpm.qa.render import _historical_evidence_bounds, _main_frame, render_start_date_pass
 from gpm.qa.start_date import run_start_date_qa
 from gpm.schemas import (
     SchemaValidationError,
@@ -301,3 +301,38 @@ def test_render_is_deterministic_and_cli_writes_region_sheets(tmp_path):
     assert "negative control: modern outline vs 1444 provinces" in svg
     assert first.region_count == second.region_count == 1
     assert main(["qa", "render", "--pass-dir", str(pass_dir), "--output-dir", str(tmp_path / "cli"), "--format", "json"]) == 0
+
+
+def test_review_main_frame_retains_ordinary_regional_extent():
+    frame = _main_frame([(0, 0, 10, 8)], [(4, 3, 5, 4)], [(4, 3, 5, 4)])
+    assert frame == pytest.approx((-0.5, -0.5, 10.5, 8.5))
+
+
+def test_review_main_frame_adapts_to_distant_valid_province_cluster():
+    frame = _main_frame([(-70, -20, 80, 60)], [(4, 43, 6, 45)], [(4, 43, 6, 45)])
+    assert frame == pytest.approx((1, 40, 9, 48))
+
+
+def test_review_main_frame_adapts_to_antimeridian_spanning_outlier():
+    frame = _main_frame([(-179, 47, 179, 51)], [(16, 48, 17, 49)], [(16, 48, 17, 49)])
+    assert frame == pytest.approx((14.5, 46.5, 18.5, 50.5))
+
+
+def test_forbidden_modern_geometry_does_not_affect_review_main_frame():
+    records = [
+        {
+            "css": "hard-constraint",
+            "bounds": (0.5, 0.5, 1.5, 1.5),
+            "props": {"georeferencing": {"control_points": [{"lon": 1, "lat": 2}]}},
+        },
+        {
+            "css": "forbidden-modern",
+            "bounds": (100, 100, 140, 140),
+            "props": {"georeferencing": {"control_points": [{"lon": 120, "lat": 120}]}},
+        },
+    ]
+    evidence = _historical_evidence_bounds(records)
+    assert evidence == [(0.5, 0.5, 1.5, 1.5), (1.0, 2.0, 1.0, 2.0)]
+    assert _main_frame([(0, 0, 2, 2)], [records[0]["bounds"]], evidence) == pytest.approx(
+        (-0.1, -0.1, 2.1, 2.1)
+    )

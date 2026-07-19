@@ -20,7 +20,7 @@ era the project officially supports.
 | --- | --- |
 | Game teams / modders | Reproducible province IDs, graphs, terrain/pop hooks, start-date politics, portable packs—not proprietary engine formats |
 | Historical explainers / education | Date-keyed “who controlled what,” disputed/uncertain flags, source notes, maps that do not look obviously wrong for the era |
-| SaaS / map products | Stable APIs of geometry + scenario tables, attribution, multi-era packaging, progressive fidelity by region |
+| SaaS / map products | Stable APIs of geometry + scenario tables, attribution, multi-era packaging, and globally certified exact-date releases |
 
 Canonical pipeline:
 
@@ -57,25 +57,27 @@ runtime packs.
 
 ## Historical accuracy quality bar
 
-For any **officially supported** era (1444, 1836, 1914, or 1936), aim for a **strong
-balance**—not pure archival GIS on day one, and not “modern ISO with period skins.”
+For any **officially supported** era (1444, 1836, 1914, or 1936), require
+globally researched, near-cadastral political geometry for the exact start date.
 
 | Layer | Target bar | Notes |
 | --- | --- | --- |
 | Owner / controller / cores / claims | **High** | What Paradox-style players notice first |
 | Major tags, unions, occupations | **High** for supported start dates | Showcase regions first if global depth lags |
 | Culture / religion hints | **Medium–high** where used by games or atlas products | Can be coarser outside priority regions |
-| Province shapes (playable) | **Medium+, rising over time** | Must not break the political story in key regions |
-| Microborders / every exclave | **Progressive** | Document uncertainty; improve by region |
+| Province shapes (playable) | **Near-cadastral worldwide** | Must preserve every evidenced political component |
+| Microborders / every exclave | **Required** | Never omit, merge away, or replace polygon geometry with a symbol |
 | Source honesty | **Always** | Lineage, disputed flags, curator notes, license |
 
-An official coverage claim is always **region-, era-, and layer-specific**. In
-every priority region it also requires:
+An official-era claim is **global, exact-date, and layer-complete**. Regional
+passes may be published only as clearly labeled research artifacts. Certification
+requires:
 
 - no known recent administrative outline surviving where it contradicts the
   claimed date;
 - mandatory spatial golden-border tests, including negative-anachronism cases;
-- a published coverage mask and grade for geometry, politics, and hierarchy;
+- a complete worldwide polity and territorial-anomaly inventory;
+- a published worldwide coverage mask for geometry, politics, status, and hierarchy;
 - full-build application of historical geometry. Boundary hints or hard
   overrides that work only against committed samples do not qualify as
   `period-geometry`.
@@ -99,9 +101,8 @@ sample-scoped and are not production historical coverage.
   based or many-to-many, never as a mandatory single parent.
 - Ship **two export faces** from the same core: game template packs and
   atlas/SaaS-oriented map packages.
-- Optimize for **progressive fidelity**: global coverage first, depth by priority
-  region and era, with explicit quality tiers (scaffold / curated politics /
-  period geometry).
+- Permit progressive research internally, but expose no historical tab until
+  the entire start date passes global research and runtime certification.
 - Never claim Paradox-grade accuracy for demo remaps or uncurated baselines.
 
 ## Phase 0: Scope and Legal Baseline
@@ -441,41 +442,39 @@ trivia.
   - schema changes
   - attribution changes
 - Label accuracy honestly: scaffold vs curated-politics vs period-geometry.
-- Release each start-date pass independently with regional coverage grades;
-  never imply global period coverage from a regional pass.
+- Publish regional passes only as non-release research artifacts. Restore a
+  public historical tab only from a globally certified artifact.
 
 ## Phase 11: Official Era Programs
 
 Run era work as explicit programs with acceptance criteria, not one-off demos.
 
-Each program consumes the M24 research artifacts and, after M25.5, the shared
-runtime contract. Its canonical pass is independently versioned and publishes
-region/era/layer coverage rather than an implied global claim. An official
-game-runtime release requires both canonical research acceptance and runtime-
-pack validation.
+Each program consumes the M24 research artifacts and the M25B runtime contract.
+Its canonical pass is independently versioned. An official game-runtime release
+requires worldwide canonical research acceptance and runtime-pack validation;
+regional showcases are research artifacts, never official eras.
 
-### 1836 (Victoria-leaning showcase)
+### 1836 (global certification)
 
-- Global scaffold + curated politics for major powers
-- Priority depth: Europe, North America, key colonial theaters
+- Worldwide near-cadastral geometry, politics, and territorial-anomaly inventory
 - Population-era notes where open data allows; mark estimates clearly
 - Game pack profile alignment with `victoria-like`
 
-### 1444 (EU-leaning showcase)
+### 1444 (global certification)
 
-- Curated politics for Europe first; expand outward
+- Research may stage by region, but certification is worldwide and indivisible
 - Address geometry failure modes (modern nation outlines that break the period)
 - Cores/claims/disputed density appropriate to the era’s storytelling
 - Game pack profile alignment with `eu-like`
 
-### 1914 (imperial-era showcase)
+### 1914 (global certification)
 
 - German, Austro-Hungarian, Russian, and Ottoman imperial structures
 - Sovereignty, dependencies, personal unions, colonial control, and uncertainty
 - Mandatory spatial tests for imperial and dependency boundaries
 - Game/atlas grouping suitable for a pre-First World War start date
 
-### 1936 (HOI-leaning showcase)
+### 1936 (global certification)
 
 - Interwar ownership and contested areas
 - Strategic regions / supply-oriented grouping compatibility with `hoi-like`
@@ -608,24 +607,26 @@ Production authoring and runtime program:
   **Complete.** Versioned schemas plus fail-closed `gpm qa start-date` validate
   complete passes, cross-artifact lineage/revisions, executed spatial results, and
   regional release grades. Contract: `docs/m24-start-date-research-framework.md`.
-- **M25 — 1444 Research and Reconstruction Pass** — Low Countries, Burgundy,
-  France, HRE, and Central Europe first. Mandatory negative-anachronism
-  regression: Brussels must not inherit the modern Brussels-region outline and
-  Nord must not survive as a modern French administrative outline.
-  **Active; v2 candidate assembled, pending independent review.** The
-  independent M25 audit found synthetic locations, unproven split lineage,
-  manually coupled frontier geometry, and a 15-province fixture mislabeled as
-  a full build; that v1 candidate stays withdrawn with claims downgraded to
-  C/U (audit: `tasks/m25-acceptance-audit.md`). The 1444-v2 pass rebuilds on
-  the production fabric with real r1→r2 split lineage, a constrained
-  22,000-province aggregation, evidence-backed golden borders with measured
-  tolerances, and executed Brussels/Nord negative regressions
-  (`tasks/m25-evidence-record.md`, `docs/m25-1444-reconstruction.md`).
-  `gpm qa start-date` fails only on the pending independent human review; no
-  release or acceptance claim is allowed until that review is signed and the
-  gate passes.
-- **M25.5 — Game Runtime Compiler and Reference Pack** — compile an accepted
-  canonical pass with the proposed `gpm export runtime` interface. The pack
+- **Immediate public-claim reset — Modern-only release.** Remove the 1444,
+  1836, and 1936 controls and historical choropleths from the landing page and
+  public demo. `gpm demo build` and release validation require only
+  `modern-baseline`. Historical configs and packs remain internal research
+  fixtures. Release validation fails if any historical era is live without a
+  worldwide certification artifact accepted by both research and runtime gates.
+- **M25A — Historical Hard-Case Casebook** — **Complete.** Research representative geometry
+  and political-status cases across all four target eras before worldwide
+  scaling. The casebook covers sovereign microstates; detached sovereign
+  territory; foreign enclaves/exclaves; free/protected cities;
+  condominiums/international zones; composite/dynastic territory;
+  dependencies, mandates, and concessions; and disputed territory. Contract:
+  `docs/m25-hard-case-casebook.md` and
+  `schemas/historical-territory-status.schema.json`.
+  Eight synthetic executable fixtures cover all four target-era slots and run
+  schema, canonical projection, deterministic test-runtime projection, visual,
+  picking, LOD, adjacency, and save/migration assertions. They are contract
+  tests, not historical evidence or releasable era artifacts.
+- **M25B — Game Runtime Compiler and Reference Pack** — validate every hard
+  case, then compile canonical passes through `gpm export runtime`. The pack
   contains stable-ID↔dense-index mappings, compact province/hierarchy tables,
   CSR land/sea/strait/port adjacency, scenario base tables and deltas,
   triangulated LOD geometry plus PMTiles/MVT, a hashed runtime manifest with a
@@ -633,26 +634,29 @@ Production authoring and runtime program:
   debug-symbol pack. Ship an engine-neutral reference loader and benchmark
   harness; Unity, Godot, and web adapters remain future thin integrations.
   M7 export contracts and M19 PMTiles are foundations reused by this milestone,
-  not superseded implementations. **Planned; implementation begins only after
-  an accepted M25 canonical pass, although schema/compiler design may proceed in
-  parallel.**
-- **M26 — 1836 Research and Reconstruction Pass** — post-Napoleonic Europe and
-  priority colonial theaters. Reuse the M25.5 runtime contract; publish
+  not superseded implementations. Two compilations must be byte-identical and
+  preserve component, political-unit, province, status, and migration mappings.
+- **M25C — Global 1444 Certification** — expand the existing five-region
+  candidate worldwide. The unsigned 1444-v2 remains a valuable pilot and
+  evidence set, not a release boundary. Brussels and Nord remain mandatory
+  negative-anachronism regressions. Restore the 1444 public tab only after all
+  global research and M25B runtime gates pass.
+- **M26 — Global 1836 Certification** — worldwide post-Napoleonic geometry,
+  politics, status, and anomaly coverage. Reuse the M25B runtime contract; publish
   scenario-only deltas when location/province membership is unchanged, and
   migration metadata when it changes.
-- **M27 — Official 1914 Imperial-Era Pass** — German, Austro-Hungarian, Russian,
+- **M27 — Global 1914 Certification** — German, Austro-Hungarian, Russian,
   and Ottoman empires, including dependencies and control relationships. Reuse
   the runtime contract and the same delta/migration rule.
-- **M28 — 1936 Research and Reconstruction Pass** — interwar borders, mandates,
+- **M28 — Global 1936 Certification** — interwar borders, mandates,
   colonies, occupations, and strategic groupings. Reuse the runtime contract
   and the same delta/migration rule.
 
-Each M25–M28 canonical pass is independently versioned. A pass is officially
-releasable only when both its research acceptance gate and M25.5 runtime-pack
-validation pass. Acceptance is by published regional coverage grade for each
-layer, never an implied global claim.
+Each M25C–M28 canonical pass is independently versioned and officially releasable
+only when the complete world passes its research gate and M25B runtime-pack
+validation. Certification order is 1444 → 1836 → 1914 → 1936.
 
-### M25.5 runtime acceptance
+### M25B runtime acceptance
 
 - Two compilations in separate clean directories produce byte-identical files.
 - Core simulation tables are at most 16 MiB uncompressed and 8 MiB compressed.
@@ -664,8 +668,9 @@ layer, never an implied global claim.
 - Reported local viewport tile-read p95 is at most 25 ms.
 - Runtime code performs no polygon unions, topology reconstruction,
   georeferencing, or historical-source processing.
-- Runtime IDs, memberships, ownership, hierarchy, and adjacency cross-validate
-  against the accepted canonical pass.
+- Runtime component, political-unit, province, status, membership, ownership,
+  hierarchy, adjacency, and migration mappings cross-validate against the
+  accepted canonical pass.
 - Save/load tests cover stable IDs, dense indices, pack revisions,
   unchanged-pack compatibility, and explicit migration maps.
 
@@ -677,6 +682,7 @@ layer, never an implied global claim.
 - Shipping geometry is LOD/tile based and never startup-parsed full GeoJSON.
 - Save compatibility is revisioned and migration-tested.
 - Official-era claims require both research acceptance and runtime validation.
+- Official-era claims are worldwide; regional passes are research artifacts.
 
 ## Engine- and program-specific questions
 

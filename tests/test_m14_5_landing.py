@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import shutil
 from pathlib import Path
 
 import pytest
@@ -52,19 +53,15 @@ def test_bundled_landing_site_validates():
         )
     )
     assert "future_slots" in manifest
-    # M15–M16: period geometry / multi-era packs are live layers, not reserved slots.
     live_ids = {s.get("id") for s in manifest.get("live_layers") or []}
-    assert "period-geometry" in live_ids
-    assert "boundary-hints" in live_ids
-    assert "multi-era-packs" in live_ids
     assert "pmtiles" in live_ids
+    assert {"period-geometry", "boundary-hints", "multi-era-packs"}.isdisjoint(live_ids)
     future_ids = {s.get("id") for s in manifest.get("future_slots") or []}
     assert "period-geometry" not in future_ids
     assert "multi-era-packs" not in future_ids
     assert "pmtiles" not in future_ids
     scenario_ids = {s.get("id") for s in manifest.get("scenarios") or []}
-    assert "official-1936" in scenario_ids
-    assert len(manifest.get("scenarios", [])) >= 4
+    assert scenario_ids == {"modern-baseline"}
     for scenario in manifest.get("scenarios") or []:
         if scenario.get("status") != "live":
             continue
@@ -74,6 +71,7 @@ def test_bundled_landing_site_validates():
 
     demo_js = Path(result.landing_dir, "demo", "demo.js").read_text(encoding="utf-8")
     assert 'cache: "no-cache"' in demo_js
+    assert 'data-era="official-' not in demo_html
 
     vercel = json.loads(Path(result.landing_dir, "vercel.json").read_text(encoding="utf-8"))
     pmtiles_rules = [
@@ -111,6 +109,22 @@ def test_validate_landing_site_rejects_missing_snippets(tmp_path: Path):
     result = validate_landing_site(landing)
     assert result.valid is False
     assert len(result.missing_snippets) == len(REQUIRED_HTML_SNIPPETS)
+
+
+def test_validate_landing_site_rejects_uncertified_public_era(tmp_path: Path):
+    landing = tmp_path / "landing"
+    shutil.copytree(PROJECT_ROOT / "landing", landing)
+    manifest_path = landing / "demo" / "data" / "demo-manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest["scenarios"].append(
+        {"id": "official-1444", "status": "live", "pmtiles": "candidate.pmtiles"}
+    )
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+
+    result = validate_landing_site(landing)
+
+    assert result.valid is False
+    assert "uncertified public era: official-1444" in result.missing_demo_snippets
 
 
 def test_release_landing_site_dry_run_on_bundled():

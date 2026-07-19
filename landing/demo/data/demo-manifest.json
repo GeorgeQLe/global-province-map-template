@@ -1,11 +1,8 @@
 {
   "title": "GPM interactive demo",
-  "sample": "Global Natural Earth build (M22) + europe-multi-era-v1 period geometry (M20)",
+  "sample": "Global Natural Earth modern baseline build (M22)",
   "geometry_tier": "scaffold-baseline",
-  "period_geometry_tier": "period-geometry",
-  "period_geometry_pack": "europe-multi-era-v1",
-  "multi_era_pack": "europe-multi-era-v1",
-  "note": "PMTiles-first global demo over the full Natural Earth admin-1 build (4603 provinces) with the M21 area/region/superregion hierarchy. Politics are era overlays; culture/religion paint (M18) uses curated scenario hints. Period geometry / boundary hints stay on the curated Western/Central Europe sample packs (M20).",
+  "note": "PMTiles-first global demo over the full Natural Earth admin-1 build (4603 provinces) with the M21 area/region/superregion hierarchy. The public channel is Modern-only. Historical geometry and politics remain internal research fixtures until an exact start date passes worldwide research and runtime certification.",
   "generated": {
     "generated_at": "2026-07-14T02:29:00Z",
     "generator_version": "0.1.0",
@@ -82,24 +79,6 @@
       "desc": "Owner, controller, cores, claims, culture, religion, hierarchy fields"
     },
     {
-      "id": "period-geometry",
-      "label": "Period geometry",
-      "desc": "M16 multi-era hard overrides / soft shapes for WE+CE sample (1444 · 1836 · 1936)",
-      "milestone": "M16"
-    },
-    {
-      "id": "boundary-hints",
-      "label": "Historical boundary hints",
-      "desc": "M16 soft frontier bands per era without full world redraw",
-      "milestone": "M16"
-    },
-    {
-      "id": "multi-era-packs",
-      "label": "Multi-era geometry + politics packs",
-      "desc": "Paired geometry + politics for 1444/1836/1936 with region quality tiers and migration notes",
-      "milestone": "M16"
-    },
-    {
       "id": "curation-diff",
       "label": "Curation diffs & golden borders",
       "desc": "M17: gpm curation diff/checklist, external bundles, expanded golden-border suites",
@@ -117,7 +96,7 @@
       "id": "start-date-reconstructions",
       "label": "Certified start-date reconstructions",
       "milestone": "M24–M28",
-      "desc": "Evidence dossiers and full-build regional certification for 1444, 1836, 1914, and 1936 over the M23 neutral location fabric"
+      "desc": "Worldwide research and runtime certification for 1444, 1836, 1914, and 1936 over the M23 neutral location fabric"
     }
   ],
   "export_faces": [
@@ -138,78 +117,6 @@
     }
   ],
   "scenarios": [
-    {
-      "id": "official-1444",
-      "era": "1444",
-      "label": "1444 · EU-leaning",
-      "politics_tier": "curated-politics",
-      "start_date": "1444-11-11",
-      "geojson": null,
-      "hero": "hero-official-1444.geojson",
-      "pmtiles": "official-1444.pmtiles",
-      "tileset": "official-1444.tileset.json",
-      "legend": "official-1444.legend.json",
-      "culture_legend": "official-1444.culture.legend.json",
-      "religion_legend": "official-1444.religion.legend.json",
-      "status": "live",
-      "supports_period_geometry": true,
-      "period_geojson": "official-1444-period.geojson",
-      "period_legend": "official-1444-period.legend.json",
-      "period_culture_legend": "official-1444-period.culture.legend.json",
-      "period_religion_legend": "official-1444-period.religion.legend.json",
-      "boundary_hints": "boundary-hints-1444.geojson",
-      "lineage": "lineage-1444.json",
-      "tile_backend": "native",
-      "tile_count": 11321
-    },
-    {
-      "id": "official-1836",
-      "era": "1836",
-      "label": "1836 · Victoria-leaning",
-      "politics_tier": "curated-politics",
-      "start_date": "1836-01-01",
-      "geojson": null,
-      "hero": "hero-official-1836.geojson",
-      "pmtiles": "official-1836.pmtiles",
-      "tileset": "official-1836.tileset.json",
-      "legend": "official-1836.legend.json",
-      "culture_legend": "official-1836.culture.legend.json",
-      "religion_legend": "official-1836.religion.legend.json",
-      "status": "live",
-      "supports_period_geometry": true,
-      "period_geojson": "official-1836-period.geojson",
-      "period_legend": "official-1836-period.legend.json",
-      "period_culture_legend": "official-1836-period.culture.legend.json",
-      "period_religion_legend": "official-1836-period.religion.legend.json",
-      "boundary_hints": "boundary-hints-1836.geojson",
-      "lineage": "lineage-1836.json",
-      "tile_backend": "native",
-      "tile_count": 11321
-    },
-    {
-      "id": "official-1936",
-      "era": "1936",
-      "label": "1936 · HOI-leaning",
-      "politics_tier": "curated-politics",
-      "start_date": "1936-01-01",
-      "geojson": null,
-      "hero": "hero-official-1936.geojson",
-      "pmtiles": "official-1936.pmtiles",
-      "tileset": "official-1936.tileset.json",
-      "legend": "official-1936.legend.json",
-      "culture_legend": "official-1936.culture.legend.json",
-      "religion_legend": "official-1936.religion.legend.json",
-      "status": "live",
-      "supports_period_geometry": true,
-      "period_geojson": "official-1936-period.geojson",
-      "period_legend": "official-1936-period.legend.json",
-      "period_culture_legend": "official-1936-period.culture.legend.json",
-      "period_religion_legend": "official-1936-period.religion.legend.json",
-      "boundary_hints": "boundary-hints-1936.geojson",
-      "lineage": "lineage-1936.json",
-      "tile_backend": "native",
-      "tile_count": 11321
-    },
     {
       "id": "modern-baseline",
       "era": "modern",

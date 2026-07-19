@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Interactive demo of Global Province Map Template — global PMTiles province map with area/region/superregion hierarchy, multi-era ownership (1444 / 1836 / 1936), period geometry, and adjacency."
+      content="Interactive Modern-only demo of Global Province Map Template — global PMTiles province map with area/region/superregion hierarchy and adjacency."
     />
     <meta name="theme-color" content="#0c1a24" />
     <title>Demo · Global Province Map Template</title>
@@ -52,16 +52,7 @@
       <section class="map-stage" aria-label="Province map">
         <div class="map-toolbar">
           <div class="era-switch" role="tablist" aria-label="Scenario era">
-            <button type="button" class="era-btn is-active" data-era="official-1444" role="tab" aria-selected="true">
-              1444
-            </button>
-            <button type="button" class="era-btn" data-era="official-1836" role="tab" aria-selected="false">
-              1836
-            </button>
-            <button type="button" class="era-btn" data-era="official-1936" role="tab" aria-selected="false">
-              1936
-            </button>
-            <button type="button" class="era-btn" data-era="modern-baseline" role="tab" aria-selected="false">
+            <button type="button" class="era-btn is-active" data-era="modern-baseline" role="tab" aria-selected="true">
               Modern
             </button>
           </div>
@@ -75,9 +66,8 @@
         <div id="status-banner" class="status-banner" hidden></div>
         <div class="map-footnote">
           Full global build (4,600+ Natural Earth provinces, pmtiles vector tiles) ·
-          M21 area / region / superregion hierarchy · M16/M20 period geometry +
-          boundary hints for 1444 / 1836 / 1936 (WE+CE sample) · click a province to
-          inspect
+          M21 area / region / superregion hierarchy · Modern-only public release ·
+          click a province to inspect
         </div>
       </section>
 
@@ -142,20 +132,6 @@
                 <small>Atlas paint · curated hints</small>
               </span>
             </label>
-            <label class="layer-row">
-              <input type="checkbox" id="layer-period-geometry" />
-              <span>
-                <strong>Period geometry</strong>
-                <small>M16/M20 multi-era · WE+CE sample (1444 / 1836 / 1936)</small>
-              </span>
-            </label>
-            <label class="layer-row">
-              <input type="checkbox" id="layer-boundary-hints" />
-              <span>
-                <strong>Historical boundary hints</strong>
-                <small>M16 soft frontier bands per era (with period geometry)</small>
-              </span>
-            </label>
           </div>
           <p class="help">
             Global polygons stream as pmtiles vector tiles (M19/M22); the
@@ -166,7 +142,7 @@
         <section class="panel-block">
           <h2>Reserved for later</h2>
           <p class="help">
-            UI slots for roadmap work still ahead (M23 game-like density).
+            Historical tabs return one at a time only after global certification.
           </p>
           <ul class="future-list" id="future-slots"></ul>
         </section>
@@ -203,16 +179,15 @@
           <h2>Honest quality bar</h2>
           <ul class="compact">
             <li><code>scaffold-baseline</code> geometry: full global Natural Earth admin-1 build</li>
-            <li><code>curated-politics</code> for official-1836 · official-1444 · official-1936</li>
-            <li><code>period-geometry</code> M16/M20 WE+CE priority regions (period toggle)</li>
+            <li>Modern is the only public era while historical candidates undergo global certification</li>
             <li>M21 hierarchy (area / region / superregion) is generated, not hand-curated</li>
             <li>Culture / religion are curated scenario hints (M18); unassigned is gray</li>
           </ul>
           <p class="help">
             Not Paradox-grade global accuracy. Province density is modern admin-1;
             game-like density (population-weighted splitting) is a future
-            milestone. Period shapes are priority-region scoped. License-audited
-            public channel only.
+            milestone. Regional historical passes are research artifacts, never
+            official-era releases. License-audited public channel only.
           </p>
         </section>
       </aside>
@@ -222,7 +197,7 @@
       <div class="shell footer-row">
         <p>
           Demo data regenerated with <code>gpm demo build</code> from the global
-          Natural Earth build + multi-era WE/CE packs · milestones through
+          Natural Earth modern baseline build · milestones through
           <strong>M22</strong> (global PMTiles demo)
         </p>
         <p>

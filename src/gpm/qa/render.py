@@ -34,6 +34,9 @@ COLUMN_X = MAIN_W + 10.0
 CANVAS_W = MAIN_W + 10.0 + COLUMN_W
 INSET_W, INSET_H = COLUMN_W - 20.0, 210.0
 KM_PER_DEGREE = 111.32
+ADAPTIVE_FRAME_TRIGGER_RATIO = 12.0
+ADAPTIVE_FRAME_PADDING_RATIO = 1.5
+ADAPTIVE_FRAME_MINIMUM_SPAN = 0.25
 
 
 def render_start_date_pass(*, pass_dir: Path, output_dir: Path) -> StartDateRenderResult:
@@ -151,6 +154,48 @@ def _merge_bounds(all_bounds: list[tuple[float, float, float, float]]) -> tuple[
     )
 
 
+def _maximum_span(bounds: tuple[float, float, float, float]) -> float:
+    return max(bounds[2] - bounds[0], bounds[3] - bounds[1])
+
+
+def _main_frame(
+    province_bounds: list[tuple[float, float, float, float]],
+    constraint_bounds: list[tuple[float, float, float, float]],
+    evidence_bounds: list[tuple[float, float, float, float]],
+) -> tuple[float, float, float, float]:
+    """Choose the main review frame without allowing modern controls to affect it.
+
+    The ordinary frame preserves the historical behaviour: it covers assigned
+    provinces and historical evidence with five percent padding. When assigned
+    province geometry is an extreme outlier relative to the evidence footprint,
+    use a broader evidence-centred square instead.
+    """
+    if not province_bounds and not constraint_bounds:
+        raise StartDateRenderError("Cannot frame a region without provinces or historical evidence.")
+
+    if province_bounds and evidence_bounds:
+        province_span = _maximum_span(_merge_bounds(province_bounds))
+        evidence_envelope = _merge_bounds(evidence_bounds)
+        evidence_span = max(_maximum_span(evidence_envelope), 1e-12)
+        if province_span > ADAPTIVE_FRAME_TRIGGER_RATIO * evidence_span:
+            return _pad_frame(
+                evidence_envelope,
+                ADAPTIVE_FRAME_PADDING_RATIO,
+                ADAPTIVE_FRAME_MINIMUM_SPAN,
+            )
+
+    # Control points belong to the trigger envelope, but keeping them out of
+    # the ordinary frame preserves the renderer's historical framing exactly.
+    ordinary_bounds = _merge_bounds([*province_bounds, *constraint_bounds])
+    pad = max(_maximum_span(ordinary_bounds), 1e-9) * 0.05
+    return (
+        ordinary_bounds[0] - pad,
+        ordinary_bounds[1] - pad,
+        ordinary_bounds[2] + pad,
+        ordinary_bounds[3] + pad,
+    )
+
+
 def _feature_css(props: dict[str, Any]) -> str:
     if str(props.get("feature_id", "")).startswith("forbidden-modern-"):
         return "forbidden-modern"
@@ -169,6 +214,22 @@ def _control_points(props: dict[str, Any]) -> list[dict[str, Any]]:
         if isinstance(point, dict)
         and isinstance(point.get("lon"), (int, float)) and isinstance(point.get("lat"), (int, float))
     ]
+
+
+def _historical_evidence_bounds(
+    boundary_records: list[dict[str, Any]],
+) -> list[tuple[float, float, float, float]]:
+    """Return constraint and control-point bounds, excluding modern controls."""
+    bounds: list[tuple[float, float, float, float]] = []
+    for record in boundary_records:
+        if record["css"] == "forbidden-modern":
+            continue
+        bounds.append(record["bounds"])
+        bounds.extend(
+            (float(point["lon"]), float(point["lat"]), float(point["lon"]), float(point["lat"]))
+            for point in _control_points(record["props"])
+        )
+    return bounds
 
 
 def _draw_provinces(body: list[str], panel: _Panel, province_records: list[dict[str, Any]], *, with_ids: bool) -> None:
@@ -309,15 +370,17 @@ def _render_svg(
     if not province_records and not boundary_records:
         raise StartDateRenderError(f"Region {region} has no renderable geometry.")
 
-    # Main frame fits provinces and historical constraints; forbidden modern
-    # outlines are negative controls and must not distort the framing.
-    framing_bounds = [record["bounds"] for record in province_records]
-    framing_bounds += [record["bounds"] for record in boundary_records if record["css"] != "forbidden-modern"]
-    if not framing_bounds:
-        framing_bounds = [record["bounds"] for record in boundary_records]
-    frame = _merge_bounds(framing_bounds)
-    pad = max(frame[2] - frame[0], frame[3] - frame[1], 1e-9) * 0.05
-    frame = (frame[0] - pad, frame[1] - pad, frame[2] + pad, frame[3] + pad)
+    # Main framing normally covers all assigned provinces and historical
+    # evidence. If province geometry is an extreme outlier, frame a padded
+    # evidence envelope instead. Forbidden-modern negative controls never
+    # contribute to either calculation.
+    province_bounds = [record["bounds"] for record in province_records]
+    constraint_bounds = [
+        record["bounds"] for record in boundary_records
+        if record["css"] != "forbidden-modern"
+    ]
+    evidence_bounds = _historical_evidence_bounds(boundary_records)
+    frame = _main_frame(province_bounds, constraint_bounds, evidence_bounds)
     main = _Panel(frame, (0.0, 0.0, MAIN_W, MAIN_H))
 
     # One focus inset per historical constraint (framed on the constraint and

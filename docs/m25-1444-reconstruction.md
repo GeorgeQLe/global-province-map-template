@@ -1,6 +1,6 @@
-# M25 — 1444 Research and Reconstruction Pass
+# 1444-v2 Regional Research Pilot
 
-Status: **active; v2 candidate assembled, awaiting independent human review**.
+Status: **internal five-region pilot; not a global certification candidate**.
 The initial v1 candidate remains withdrawn after independent audit.
 
 The repository now contains the schema/pipeline portion of the v2 acceptance
@@ -14,10 +14,11 @@ the 2026-07-17 section below); it passes every gate except the independent
 reviewer sign-off, which does not yet exist and cannot be produced by the
 generator.
 
-The canonical roadmap keeps M25 focused on restoring fabric-backed B
-geometry/politics/relationship and C hierarchy coverage across all five
-priority regions. Planned M25.5 compiles an accepted M25 pass for game runtime;
-it does not relax or replace this milestone's research gate. See
+The canonical roadmap preserves this work as evidence for M25C, which must
+expand it worldwide before 1444 can become an official era. M25A first validates
+the historical hard-case casebook, and M25B supplies the runtime compiler. A
+signed regional review would improve this pilot but would not cross the global
+release boundary. See
 [`ROADMAP.md`](../ROADMAP.md) and the
 [`M25 acceptance audit`](../tasks/m25-acceptance-audit.md).
 

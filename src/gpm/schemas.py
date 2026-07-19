@@ -734,6 +734,102 @@ def validate_polity_gazetteer(document: dict[str, Any]) -> None:
             _string_list(relation["source_ids"], f"{rpath}.source_ids", nonempty=True)
 
 
+def validate_historical_territory_status(document: dict[str, Any]) -> None:
+    """Validate M25A identities, references, geometry, and typed status dates."""
+    schema = load_schema("historical-territory-status")
+    _require_object(document, "historical territory status")
+    _validate_json_schema(document, schema, "historical territory status")
+    start_date = document["start_date"]
+
+    component_ids: set[str] = set()
+    component_units: dict[str, str] = {}
+    component_provinces: dict[str, str] = {}
+    component_geometries: dict[str, Any] = {}
+    try:
+        from shapely.geometry import shape
+    except ImportError as exc:
+        raise SchemaValidationError("shapely is required for M25A validation") from exc
+    for index, component in enumerate(document["components"]):
+        path = f"historical territory status.components[{index}]"
+        _require_keys(component, ["province_id", "historically_required", "minimum_area_merge_exempt", "evidence_ids"], path)
+        component_id = component["territory_component_id"]
+        if component_id in component_ids:
+            raise SchemaValidationError(f"duplicate territory_component_id: {component_id}")
+        component_ids.add(component_id)
+        component_units[component_id] = component["political_unit_id"]
+        component_provinces[component_id] = component["province_id"]
+        if component["historically_required"] is not True or component["minimum_area_merge_exempt"] is not True:
+            raise SchemaValidationError(f"{path} must preserve the historically required polygon")
+        geometry = shape(component["geometry"])
+        if geometry.is_empty or not geometry.is_valid or geometry.area <= 0:
+            raise SchemaValidationError(f"{path}.geometry must be a valid non-empty polygon")
+        component_geometries[component_id] = geometry
+
+    unit_ids: set[str] = set()
+    unit_members: set[str] = set()
+    for unit in document["political_units"]:
+        unit_id = unit["political_unit_id"]
+        if unit_id in unit_ids:
+            raise SchemaValidationError(f"duplicate political_unit_id: {unit_id}")
+        unit_ids.add(unit_id)
+        for component_id in unit["territory_component_ids"]:
+            if component_id not in component_ids:
+                raise SchemaValidationError(f"political unit {unit_id} references unknown component {component_id}")
+            if component_units[component_id] != unit_id:
+                raise SchemaValidationError(f"component {component_id} disagrees with political unit {unit_id}")
+            if component_id in unit_members:
+                raise SchemaValidationError(f"component {component_id} belongs to multiple political units")
+            unit_members.add(component_id)
+    if unit_members != component_ids:
+        raise SchemaValidationError("every component must belong to exactly one political unit")
+
+    province_ids: set[str] = set()
+    province_members: set[str] = set()
+    for province in document["provinces"]:
+        province_id = province["province_id"]
+        if province_id in province_ids:
+            raise SchemaValidationError(f"duplicate province_id: {province_id}")
+        province_ids.add(province_id)
+        members = province["territory_component_ids"]
+        for component_id in members:
+            if component_id not in component_ids:
+                raise SchemaValidationError(f"province {province_id} references unknown component {component_id}")
+            if component_provinces[component_id] != province_id:
+                raise SchemaValidationError(f"component {component_id} disagrees with province {province_id}")
+            if component_id in province_members:
+                raise SchemaValidationError(f"component {component_id} belongs to multiple provinces")
+            province_members.add(component_id)
+        if len(members) > 1:
+            from shapely import unary_union
+
+            union = unary_union([component_geometries[component_id] for component_id in members])
+            disconnected = union.geom_type == "MultiPolygon" and len(union.geoms) > 1
+            if disconnected and (
+                not province.get("shared_administrative_unit_evidence_ids")
+                or province.get("full_status_match") is not True
+            ):
+                raise SchemaValidationError(
+                    f"disconnected province {province_id} requires shared evidence and full_status_match"
+                )
+    if province_members != component_ids:
+        raise SchemaValidationError("every component must belong to exactly one province")
+
+    actor_ids = set(document.get("external_actor_ids") or []) | unit_ids
+    subjects = component_ids | unit_ids | province_ids
+    seen_statuses: set[tuple[str, str, str]] = set()
+    for status in document["statuses"]:
+        key = (status["subject_id"], status["relationship"], status["actor_political_unit_id"])
+        if key in seen_statuses:
+            raise SchemaValidationError(f"duplicate typed status: {key}")
+        seen_statuses.add(key)
+        if status["subject_id"] not in subjects:
+            raise SchemaValidationError(f"status references unknown subject {status['subject_id']}")
+        if status["actor_political_unit_id"] not in actor_ids:
+            raise SchemaValidationError(f"status references unknown actor {status['actor_political_unit_id']}")
+        if not status["valid_from"] <= start_date <= status["valid_to"]:
+            raise SchemaValidationError(f"status {key} is not valid on {start_date}")
+
+
 def validate_location_assignments(document: dict[str, Any]) -> None:
     schema = load_schema("start-date-location-assignments")
     _m24_header(document, "assignments", "start_date_location_assignments", schema)

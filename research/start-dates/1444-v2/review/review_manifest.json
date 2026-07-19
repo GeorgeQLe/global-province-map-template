@@ -18,7 +18,7 @@
     {
       "path": "france.svg",
       "region_id": "france",
-      "sha256": "01831af6c9b227eee7532bb0ee49277ff50de1c3e72fd9909fd6808fc2d1ce87"
+      "sha256": "68ac40205472f4f676d5d3d704d155c2b0191fe2e429b859b2665e1ad37b5570"
     },
     {
       "path": "hre.svg",
@@ -28,7 +28,7 @@
     {
       "path": "central-europe.svg",
       "region_id": "central-europe",
-      "sha256": "d1aa3359ea612a1500337c79e4fa07000b8d274b5ab943039660338ff4b8143f"
+      "sha256": "f4e23c3bb403ecd45e9a37fd9982d8848acc5663cdbf2a1c3428e0c6bb7d80ad"
     }
   ],
   "reviewed_at": null,

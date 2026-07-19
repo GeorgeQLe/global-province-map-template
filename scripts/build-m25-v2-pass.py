@@ -2145,12 +2145,31 @@ def _emit_pass_manifest() -> None:
 
 def stage_render() -> None:
     from gpm.qa.render import render_start_date_pass
+
+    # A new set of visual evidence invalidates any prior acceptance. Reset the
+    # pass and boundary-review identities before rendering and repinning hashes.
+    manifest_path = PASS_DIR / "pass_manifest.json"
+    manifest = json.loads(manifest_path.read_text())
+    manifest["review"].update({
+        "reviewer": PENDING_REVIEWER,
+        "status": "pending_independent_review",
+    })
+    boundaries_path = PASS_DIR / "boundaries.geojson"
+    boundaries = json.loads(boundaries_path.read_text())
+    for feature in boundaries["features"]:
+        georeferencing = feature["properties"].get("georeferencing")
+        if georeferencing:
+            georeferencing["reviewer"] = PENDING_REVIEWER
+    _write_json(boundaries_path, boundaries)
+    manifest["artifacts"]["boundary_registry"]["sha256"] = _sha256(boundaries_path)
+    _write_json(manifest_path, manifest)
+
     result = render_start_date_pass(pass_dir=PASS_DIR, output_dir=REVIEW_DIR)
     print(f"[render] {result.region_count} region sheets -> {result.output_dir}")
     # re-pin the (pending) review manifest hash in the pass manifest
-    manifest = json.loads((PASS_DIR / "pass_manifest.json").read_text())
+    manifest = json.loads(manifest_path.read_text())
     manifest["review"]["sha256"] = _sha256(REVIEW_DIR / "review_manifest.json")
-    _write_json(PASS_DIR / "pass_manifest.json", manifest)
+    _write_json(manifest_path, manifest)
 
 
 def stage_sign_review(reviewer: str) -> None:

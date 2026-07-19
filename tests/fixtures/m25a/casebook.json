@@ -1,0 +1,225 @@
+{
+  "schema_version": "0.1.0",
+  "fixture_type": "historical-hard-case-casebook",
+  "research_status": "synthetic-contract-fixture",
+  "notice": "Synthetic unit geometry tests representation semantics only; it is not historical boundary evidence or a releasable era.",
+  "cases": [
+    {
+      "fixture_id": "microstate-san-marino-1444",
+      "case_class": "sovereign_microstate",
+      "era": "1444",
+      "canonical": {
+        "schema_version": "0.1.0",
+        "start_date": "1444-11-11",
+        "components": [
+          {
+            "territory_component_id": "tc-san-marino",
+            "political_unit_id": "pu-san-marino",
+            "province_id": "prv-san-marino",
+            "geometry": {"type": "Polygon", "coordinates": [[[0, 0], [0.2, 0], [0.2, 0.2], [0, 0.2], [0, 0]]]},
+            "historically_required": true,
+            "minimum_area_merge_exempt": true,
+            "evidence_ids": ["fixture-semantics-san-marino"]
+          }
+        ],
+        "political_units": [
+          {"political_unit_id": "pu-san-marino", "territory_component_ids": ["tc-san-marino"], "documented_status": "sovereign microstate"}
+        ],
+        "provinces": [
+          {"province_id": "prv-san-marino", "territory_component_ids": ["tc-san-marino"]}
+        ],
+        "statuses": [
+          {"subject_id": "pu-san-marino", "relationship": "sovereign", "actor_political_unit_id": "pu-san-marino", "valid_from": "1400-01-01", "valid_to": "1500-12-31", "evidence_ids": ["fixture-semantics-san-marino"], "certainty": "documented"},
+          {"subject_id": "tc-san-marino", "relationship": "owner", "actor_political_unit_id": "pu-san-marino", "valid_from": "1400-01-01", "valid_to": "1500-12-31", "evidence_ids": ["fixture-semantics-san-marino"], "certainty": "documented"},
+          {"subject_id": "tc-san-marino", "relationship": "controller", "actor_political_unit_id": "pu-san-marino", "valid_from": "1400-01-01", "valid_to": "1500-12-31", "evidence_ids": ["fixture-semantics-san-marino"], "certainty": "documented"}
+        ]
+      },
+      "expectations": {
+        "surfaces": ["schema", "canonical_build", "runtime_pack", "visual", "picking", "lod", "adjacency", "save_migration"],
+        "component_order": ["tc-san-marino"],
+        "picks": [{"point": [0.1, 0.1], "territory_component_id": "tc-san-marino", "province_id": "prv-san-marino"}],
+        "lod_tolerances": [0, 0.05],
+        "supplementary_symbol_component_ids": ["tc-san-marino"],
+        "adjacent_component_pairs": [],
+        "save_migration": {"saved_province_ids": ["legacy-san-marino"], "province_id_map": {"legacy-san-marino": "prv-san-marino"}}
+      }
+    },
+    {
+      "fixture_id": "detached-papal-avignon-1444",
+      "case_class": "detached_sovereign_territory",
+      "era": "1444",
+      "canonical": {
+        "schema_version": "0.1.0",
+        "start_date": "1444-11-11",
+        "components": [
+          {"territory_component_id": "tc-papal-avignon", "political_unit_id": "pu-papal-states", "province_id": "prv-papal-avignon", "geometry": {"type": "Polygon", "coordinates": [[[0, 0], [1, 0], [1, 1], [0, 1], [0, 0]]]}, "historically_required": true, "minimum_area_merge_exempt": true, "evidence_ids": ["fixture-semantics-avignon"]},
+          {"territory_component_id": "tc-papal-rome", "political_unit_id": "pu-papal-states", "province_id": "prv-papal-rome", "geometry": {"type": "Polygon", "coordinates": [[[3, 0], [4, 0], [4, 1], [3, 1], [3, 0]]]}, "historically_required": true, "minimum_area_merge_exempt": true, "evidence_ids": ["fixture-semantics-avignon"]}
+        ],
+        "political_units": [{"political_unit_id": "pu-papal-states", "territory_component_ids": ["tc-papal-avignon", "tc-papal-rome"], "documented_status": "sovereign territory with detached component"}],
+        "provinces": [
+          {"province_id": "prv-papal-avignon", "territory_component_ids": ["tc-papal-avignon"]},
+          {"province_id": "prv-papal-rome", "territory_component_ids": ["tc-papal-rome"]}
+        ],
+        "statuses": [
+          {"subject_id": "pu-papal-states", "relationship": "sovereign", "actor_political_unit_id": "pu-papal-states", "valid_from": "1400-01-01", "valid_to": "1500-12-31", "evidence_ids": ["fixture-semantics-avignon"], "certainty": "documented"},
+          {"subject_id": "tc-papal-avignon", "relationship": "owner", "actor_political_unit_id": "pu-papal-states", "valid_from": "1400-01-01", "valid_to": "1500-12-31", "evidence_ids": ["fixture-semantics-avignon"], "certainty": "documented"},
+          {"subject_id": "tc-papal-avignon", "relationship": "controller", "actor_political_unit_id": "pu-papal-states", "valid_from": "1400-01-01", "valid_to": "1500-12-31", "evidence_ids": ["fixture-semantics-avignon"], "certainty": "documented"}
+        ]
+      },
+      "expectations": {
+        "surfaces": ["schema", "canonical_build", "runtime_pack", "visual", "picking", "lod", "adjacency", "save_migration"],
+        "component_order": ["tc-papal-avignon", "tc-papal-rome"],
+        "picks": [{"point": [0.5, 0.5], "territory_component_id": "tc-papal-avignon", "province_id": "prv-papal-avignon"}],
+        "lod_tolerances": [0, 0.1], "supplementary_symbol_component_ids": [], "adjacent_component_pairs": [],
+        "save_migration": {"saved_province_ids": ["legacy-avignon", "prv-papal-rome"], "province_id_map": {"legacy-avignon": "prv-papal-avignon"}}
+      }
+    },
+    {
+      "fixture_id": "foreign-exclave-calais-1444",
+      "case_class": "foreign_enclave_exclave",
+      "era": "1444",
+      "canonical": {
+        "schema_version": "0.1.0", "start_date": "1444-11-11",
+        "components": [
+          {"territory_component_id": "tc-calais-core", "political_unit_id": "pu-english-calais", "province_id": "prv-pale-of-calais", "geometry": {"type": "Polygon", "coordinates": [[[0, 0], [1, 0], [1, 1], [0, 1], [0, 0]]]}, "historically_required": true, "minimum_area_merge_exempt": true, "evidence_ids": ["fixture-semantics-calais"]},
+          {"territory_component_id": "tc-calais-fragment", "political_unit_id": "pu-english-calais", "province_id": "prv-pale-of-calais", "geometry": {"type": "Polygon", "coordinates": [[[2, 0], [2.3, 0], [2.3, 0.3], [2, 0.3], [2, 0]]]}, "historically_required": true, "minimum_area_merge_exempt": true, "evidence_ids": ["fixture-semantics-calais"]}
+        ],
+        "political_units": [{"political_unit_id": "pu-english-calais", "territory_component_ids": ["tc-calais-core", "tc-calais-fragment"], "documented_status": "foreign exclave with retained fragments"}],
+        "provinces": [{"province_id": "prv-pale-of-calais", "territory_component_ids": ["tc-calais-core", "tc-calais-fragment"], "shared_administrative_unit_evidence_ids": ["fixture-semantics-calais"], "full_status_match": true}],
+        "external_actor_ids": ["pu-kingdom-england"],
+        "statuses": [
+          {"subject_id": "pu-english-calais", "relationship": "sovereign", "actor_political_unit_id": "pu-kingdom-england", "valid_from": "1400-01-01", "valid_to": "1500-12-31", "evidence_ids": ["fixture-semantics-calais"], "certainty": "documented"},
+          {"subject_id": "prv-pale-of-calais", "relationship": "owner", "actor_political_unit_id": "pu-kingdom-england", "valid_from": "1400-01-01", "valid_to": "1500-12-31", "evidence_ids": ["fixture-semantics-calais"], "certainty": "documented"},
+          {"subject_id": "prv-pale-of-calais", "relationship": "controller", "actor_political_unit_id": "pu-kingdom-england", "valid_from": "1400-01-01", "valid_to": "1500-12-31", "evidence_ids": ["fixture-semantics-calais"], "certainty": "documented"}
+        ]
+      },
+      "expectations": {
+        "surfaces": ["schema", "canonical_build", "runtime_pack", "visual", "picking", "lod", "adjacency", "save_migration"],
+        "component_order": ["tc-calais-core", "tc-calais-fragment"],
+        "picks": [{"point": [2.1, 0.1], "territory_component_id": "tc-calais-fragment", "province_id": "prv-pale-of-calais"}],
+        "lod_tolerances": [0, 0.05], "supplementary_symbol_component_ids": ["tc-calais-fragment"], "adjacent_component_pairs": [],
+        "save_migration": {"saved_province_ids": ["legacy-calais"], "province_id_map": {"legacy-calais": "prv-pale-of-calais"}}
+      }
+    },
+    {
+      "fixture_id": "protected-free-city-krakow-1836",
+      "case_class": "free_protected_city",
+      "era": "1836",
+      "canonical": {
+        "schema_version": "0.1.0", "start_date": "1836-01-01",
+        "components": [{"territory_component_id": "tc-free-city-krakow", "political_unit_id": "pu-free-city-krakow", "province_id": "prv-free-city-krakow", "geometry": {"type": "Polygon", "coordinates": [[[0, 0], [0.8, 0], [0.8, 0.8], [0, 0.8], [0, 0]]]}, "historically_required": true, "minimum_area_merge_exempt": true, "evidence_ids": ["fixture-semantics-krakow"]}],
+        "political_units": [{"political_unit_id": "pu-free-city-krakow", "territory_component_ids": ["tc-free-city-krakow"], "documented_status": "free city under plural protection"}],
+        "provinces": [{"province_id": "prv-free-city-krakow", "territory_component_ids": ["tc-free-city-krakow"]}],
+        "external_actor_ids": ["pu-austria", "pu-prussia", "pu-russia"],
+        "statuses": [
+          {"subject_id": "pu-free-city-krakow", "relationship": "sovereign", "actor_political_unit_id": "pu-free-city-krakow", "valid_from": "1815-01-01", "valid_to": "1846-12-31", "evidence_ids": ["fixture-semantics-krakow"], "certainty": "documented"},
+          {"subject_id": "pu-free-city-krakow", "relationship": "protector", "actor_political_unit_id": "pu-austria", "valid_from": "1815-01-01", "valid_to": "1846-12-31", "evidence_ids": ["fixture-semantics-krakow"], "certainty": "documented"},
+          {"subject_id": "pu-free-city-krakow", "relationship": "protector", "actor_political_unit_id": "pu-prussia", "valid_from": "1815-01-01", "valid_to": "1846-12-31", "evidence_ids": ["fixture-semantics-krakow"], "certainty": "documented"},
+          {"subject_id": "pu-free-city-krakow", "relationship": "protector", "actor_political_unit_id": "pu-russia", "valid_from": "1815-01-01", "valid_to": "1846-12-31", "evidence_ids": ["fixture-semantics-krakow"], "certainty": "documented"}
+        ]
+      },
+      "expectations": {
+        "surfaces": ["schema", "canonical_build", "runtime_pack", "visual", "picking", "lod", "adjacency", "save_migration"], "component_order": ["tc-free-city-krakow"],
+        "picks": [{"point": [0.4, 0.4], "territory_component_id": "tc-free-city-krakow", "province_id": "prv-free-city-krakow"}], "lod_tolerances": [0, 0.1], "supplementary_symbol_component_ids": ["tc-free-city-krakow"], "adjacent_component_pairs": [],
+        "save_migration": {"saved_province_ids": ["legacy-krakow"], "province_id_map": {"legacy-krakow": "prv-free-city-krakow"}}
+      }
+    },
+    {
+      "fixture_id": "condominium-neutral-moresnet-1836",
+      "case_class": "condominium_international_zone",
+      "era": "1836",
+      "canonical": {
+        "schema_version": "0.1.0", "start_date": "1836-01-01",
+        "components": [{"territory_component_id": "tc-neutral-moresnet", "political_unit_id": "pu-neutral-moresnet", "province_id": "prv-neutral-moresnet", "geometry": {"type": "Polygon", "coordinates": [[[0, 0], [0.3, 0], [0.15, 0.7], [0, 0]]]}, "historically_required": true, "minimum_area_merge_exempt": true, "evidence_ids": ["fixture-semantics-moresnet"]}],
+        "political_units": [{"political_unit_id": "pu-neutral-moresnet", "territory_component_ids": ["tc-neutral-moresnet"], "documented_status": "condominium with plural administrators"}],
+        "provinces": [{"province_id": "prv-neutral-moresnet", "territory_component_ids": ["tc-neutral-moresnet"]}],
+        "external_actor_ids": ["pu-belgium", "pu-prussia"],
+        "statuses": [
+          {"subject_id": "tc-neutral-moresnet", "relationship": "co-administrator", "actor_political_unit_id": "pu-belgium", "valid_from": "1830-01-01", "valid_to": "1919-12-31", "evidence_ids": ["fixture-semantics-moresnet"], "certainty": "documented"},
+          {"subject_id": "tc-neutral-moresnet", "relationship": "co-administrator", "actor_political_unit_id": "pu-prussia", "valid_from": "1816-01-01", "valid_to": "1919-12-31", "evidence_ids": ["fixture-semantics-moresnet"], "certainty": "documented"}
+        ]
+      },
+      "expectations": {
+        "surfaces": ["schema", "canonical_build", "runtime_pack", "visual", "picking", "lod", "adjacency", "save_migration"], "component_order": ["tc-neutral-moresnet"],
+        "picks": [{"point": [0.15, 0.2], "territory_component_id": "tc-neutral-moresnet", "province_id": "prv-neutral-moresnet"}], "lod_tolerances": [0, 0.02], "supplementary_symbol_component_ids": ["tc-neutral-moresnet"], "adjacent_component_pairs": [],
+        "save_migration": {"saved_province_ids": ["legacy-moresnet"], "province_id_map": {"legacy-moresnet": "prv-neutral-moresnet"}}
+      }
+    },
+    {
+      "fixture_id": "composite-burgundian-possessions-1444",
+      "case_class": "composite_dynastic_territory",
+      "era": "1444",
+      "canonical": {
+        "schema_version": "0.1.0", "start_date": "1444-11-11",
+        "components": [
+          {"territory_component_id": "tc-burgundy-duchy", "political_unit_id": "pu-burgundy-duchy", "province_id": "prv-burgundy-duchy", "geometry": {"type": "Polygon", "coordinates": [[[0, 0], [1, 0], [1, 1], [0, 1], [0, 0]]]}, "historically_required": true, "minimum_area_merge_exempt": true, "evidence_ids": ["fixture-semantics-burgundy"]},
+          {"territory_component_id": "tc-burgundy-low-countries", "political_unit_id": "pu-burgundy-low-countries", "province_id": "prv-burgundy-low-countries", "geometry": {"type": "Polygon", "coordinates": [[[1, 0], [2, 0], [2, 1], [1, 1], [1, 0]]]}, "historically_required": true, "minimum_area_merge_exempt": true, "evidence_ids": ["fixture-semantics-burgundy"]}
+        ],
+        "political_units": [
+          {"political_unit_id": "pu-burgundy-duchy", "territory_component_ids": ["tc-burgundy-duchy"], "documented_status": "territorial polity in a composite union"},
+          {"political_unit_id": "pu-burgundy-low-countries", "territory_component_ids": ["tc-burgundy-low-countries"], "documented_status": "distinct territorial polity under the same dynasty"}
+        ],
+        "provinces": [
+          {"province_id": "prv-burgundy-duchy", "territory_component_ids": ["tc-burgundy-duchy"]},
+          {"province_id": "prv-burgundy-low-countries", "territory_component_ids": ["tc-burgundy-low-countries"]}
+        ],
+        "external_actor_ids": ["pu-duke-of-burgundy"],
+        "union_relationships": [{"relationship": "personal_union", "actor_political_unit_id": "pu-duke-of-burgundy", "member_political_unit_ids": ["pu-burgundy-duchy", "pu-burgundy-low-countries"], "evidence_ids": ["fixture-semantics-burgundy"]}],
+        "statuses": [
+          {"subject_id": "pu-burgundy-duchy", "relationship": "sovereign", "actor_political_unit_id": "pu-duke-of-burgundy", "valid_from": "1400-01-01", "valid_to": "1500-12-31", "evidence_ids": ["fixture-semantics-burgundy"], "certainty": "documented"},
+          {"subject_id": "pu-burgundy-low-countries", "relationship": "sovereign", "actor_political_unit_id": "pu-duke-of-burgundy", "valid_from": "1400-01-01", "valid_to": "1500-12-31", "evidence_ids": ["fixture-semantics-burgundy"], "certainty": "documented"}
+        ]
+      },
+      "expectations": {
+        "surfaces": ["schema", "canonical_build", "runtime_pack", "visual", "picking", "lod", "adjacency", "save_migration"], "component_order": ["tc-burgundy-duchy", "tc-burgundy-low-countries"],
+        "picks": [{"point": [1.5, 0.5], "territory_component_id": "tc-burgundy-low-countries", "province_id": "prv-burgundy-low-countries"}], "lod_tolerances": [0, 0.1], "supplementary_symbol_component_ids": [], "adjacent_component_pairs": [["tc-burgundy-duchy", "tc-burgundy-low-countries"]],
+        "save_migration": {"saved_province_ids": ["legacy-burgundy", "prv-burgundy-low-countries"], "province_id_map": {"legacy-burgundy": "prv-burgundy-duchy"}}
+      }
+    },
+    {
+      "fixture_id": "leased-concession-jiaozhou-1914",
+      "case_class": "dependency_mandate_concession",
+      "era": "1914",
+      "canonical": {
+        "schema_version": "0.1.0", "start_date": "1914-07-28",
+        "components": [{"territory_component_id": "tc-jiaozhou-concession", "political_unit_id": "pu-jiaozhou-concession", "province_id": "prv-jiaozhou-concession", "geometry": {"type": "Polygon", "coordinates": [[[0, 0], [1, 0], [0.8, 0.8], [0.2, 0.8], [0, 0]]]}, "historically_required": true, "minimum_area_merge_exempt": true, "evidence_ids": ["fixture-semantics-jiaozhou"]}],
+        "political_units": [{"political_unit_id": "pu-jiaozhou-concession", "territory_component_ids": ["tc-jiaozhou-concession"], "documented_status": "leased concession distinct from sovereignty"}],
+        "provinces": [{"province_id": "prv-jiaozhou-concession", "territory_component_ids": ["tc-jiaozhou-concession"]}],
+        "external_actor_ids": ["pu-china", "pu-german-empire"],
+        "statuses": [
+          {"subject_id": "tc-jiaozhou-concession", "relationship": "sovereign", "actor_political_unit_id": "pu-china", "valid_from": "1898-01-01", "valid_to": "1914-12-31", "evidence_ids": ["fixture-semantics-jiaozhou"], "certainty": "documented"},
+          {"subject_id": "tc-jiaozhou-concession", "relationship": "owner", "actor_political_unit_id": "pu-china", "valid_from": "1898-01-01", "valid_to": "1914-12-31", "evidence_ids": ["fixture-semantics-jiaozhou"], "certainty": "documented"},
+          {"subject_id": "tc-jiaozhou-concession", "relationship": "controller", "actor_political_unit_id": "pu-german-empire", "valid_from": "1898-01-01", "valid_to": "1914-12-31", "evidence_ids": ["fixture-semantics-jiaozhou"], "certainty": "documented"},
+          {"subject_id": "tc-jiaozhou-concession", "relationship": "lessee", "actor_political_unit_id": "pu-german-empire", "valid_from": "1898-01-01", "valid_to": "1914-12-31", "evidence_ids": ["fixture-semantics-jiaozhou"], "certainty": "documented"}
+        ]
+      },
+      "expectations": {
+        "surfaces": ["schema", "canonical_build", "runtime_pack", "visual", "picking", "lod", "adjacency", "save_migration"], "component_order": ["tc-jiaozhou-concession"],
+        "picks": [{"point": [0.5, 0.4], "territory_component_id": "tc-jiaozhou-concession", "province_id": "prv-jiaozhou-concession"}], "lod_tolerances": [0, 0.1], "supplementary_symbol_component_ids": [], "adjacent_component_pairs": [],
+        "save_migration": {"saved_province_ids": ["legacy-jiaozhou"], "province_id_map": {"legacy-jiaozhou": "prv-jiaozhou-concession"}}
+      }
+    },
+    {
+      "fixture_id": "disputed-vilnius-region-1936",
+      "case_class": "disputed_territory",
+      "era": "1936",
+      "canonical": {
+        "schema_version": "0.1.0", "start_date": "1936-01-01",
+        "components": [{"territory_component_id": "tc-vilnius-region", "political_unit_id": "pu-vilnius-dispute", "province_id": "prv-vilnius-region", "geometry": {"type": "Polygon", "coordinates": [[[0, 0], [1, 0], [1.2, 0.7], [0.5, 1.1], [0, 0.7], [0, 0]]]}, "historically_required": true, "minimum_area_merge_exempt": true, "evidence_ids": ["fixture-semantics-vilnius"]}],
+        "political_units": [{"political_unit_id": "pu-vilnius-dispute", "territory_component_ids": ["tc-vilnius-region"], "documented_status": "controlled territory with competing claim"}],
+        "provinces": [{"province_id": "prv-vilnius-region", "territory_component_ids": ["tc-vilnius-region"]}],
+        "external_actor_ids": ["pu-lithuania", "pu-poland"],
+        "statuses": [
+          {"subject_id": "tc-vilnius-region", "relationship": "sovereign", "actor_political_unit_id": "pu-poland", "valid_from": "1922-01-01", "valid_to": "1939-12-31", "evidence_ids": ["fixture-semantics-vilnius"], "certainty": "disputed"},
+          {"subject_id": "tc-vilnius-region", "relationship": "controller", "actor_political_unit_id": "pu-poland", "valid_from": "1922-01-01", "valid_to": "1939-12-31", "evidence_ids": ["fixture-semantics-vilnius"], "certainty": "documented"},
+          {"subject_id": "tc-vilnius-region", "relationship": "claimant", "actor_political_unit_id": "pu-lithuania", "valid_from": "1922-01-01", "valid_to": "1939-12-31", "evidence_ids": ["fixture-semantics-vilnius"], "certainty": "documented"}
+        ]
+      },
+      "expectations": {
+        "surfaces": ["schema", "canonical_build", "runtime_pack", "visual", "picking", "lod", "adjacency", "save_migration"], "component_order": ["tc-vilnius-region"],
+        "picks": [{"point": [0.5, 0.5], "territory_component_id": "tc-vilnius-region", "province_id": "prv-vilnius-region"}], "lod_tolerances": [0, 0.1], "supplementary_symbol_component_ids": [], "adjacent_component_pairs": [],
+        "save_migration": {"saved_province_ids": ["legacy-vilnius"], "province_id_map": {"legacy-vilnius": "prv-vilnius-region"}}
+      }
+    }
+  ]
+}
