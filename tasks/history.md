@@ -1,5 +1,28 @@
 # History
 
+## 2026-07-19 - M25B game runtime compiler and reference pack
+
+- Implemented deterministic `gpm export runtime` compilation from canonical
+  historical status documents and the M25A casebook into stable-ID/dense-index
+  maps, fixed-width core and membership tables, four typed CSR graphs, scenario
+  base/deltas, pre-triangulated LOD meshes, and PMTiles/MVT geometry.
+- Added a SHA-256-pinned runtime manifest, compatibility revisions, explicit
+  province save migrations, hierarchy index slots, optional debug symbols, and
+  fail-closed stable-identity validation across scenarios.
+- Shipped the engine-neutral `RuntimePack` reference loader with asset
+  verification, stable/dense resolution, CSR reads, scenario-delta application,
+  save migration, core-load and viewport tile-read benchmarks, plus the
+  reproducible eight-case synthetic reference pack. It is contract data, not
+  historical evidence or an official-era release.
+- Hardened loader input boundaries against negative dense/scenario indices and
+  graph-path traversal, and made the reference-pack generator runnable from a
+  fresh checkout with an optional isolated output directory.
+- Quality gate: duplicate compilations were byte-identical; the M25B fixture met
+  all roadmap size/loader/tile budgets; the full suite passed 304 tests; and
+  `git diff --check` passed.
+- Next project task: M25C worldwide 1444 certification, preserving 1444-v2 as a
+  five-region research pilot.
+
 ## 2026-07-19 - M25A hard-case contract and Modern-only public reset
 
 - Reset the public landing page and PMTiles demo to the Modern baseline. Removed

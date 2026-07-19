@@ -36,6 +36,7 @@ from .exporters import (
     export_tiles_from_atlas,
     export_tiles_pack,
 )
+from .runtime import RuntimeCompileError, RuntimeLoadError, RuntimePack, compile_runtime_pack
 from .tiles import TileBuildError
 from .manifest import (
     build_downloaded_source_manifest,
@@ -539,6 +540,32 @@ def _build_parser() -> argparse.ArgumentParser:
         help="Output format for the export summary.",
     )
     atlas.set_defaults(handler=_export_atlas)
+
+    runtime = export_commands.add_parser(
+        "runtime",
+        help="Compile a canonical historical pass into an M25B engine-neutral runtime pack.",
+    )
+    runtime.add_argument(
+        "--canonical-input",
+        type=Path,
+        required=True,
+        help="Historical territory-status JSON or M25A hard-case casebook.",
+    )
+    runtime.add_argument(
+        "--output-dir",
+        type=Path,
+        required=True,
+        help="Empty output directory for the runtime pack.",
+    )
+    runtime.add_argument("--pack-id", help="Public pack identifier; defaults to the input filename stem.")
+    runtime.add_argument("--compatibility-revision", default="1", help="Save compatibility revision (default: 1).")
+    runtime.add_argument("--previous-revision", help="Revision accepted by the emitted migration map.")
+    runtime.add_argument("--debug-symbols", action="store_true", help="Emit the separate optional canonical debug-symbol file.")
+    runtime.add_argument("--min-zoom", type=int, default=0, help="PMTiles minimum zoom (default: 0).")
+    runtime.add_argument("--max-zoom", type=int, default=4, help="PMTiles maximum zoom (default: 4).")
+    runtime.add_argument("--benchmark", action="store_true", help="Run the reference-loader benchmark after compilation.")
+    runtime.add_argument("--format", choices=["text", "json"], default="text", help="Output summary format.")
+    runtime.set_defaults(handler=_export_runtime)
 
     tiles = export_commands.add_parser(
         "tiles",
@@ -2176,6 +2203,44 @@ def _export_atlas(args: argparse.Namespace) -> int:
         _print_error(error)
         return 1
     return _print_atlas_result(result, args.format)
+
+
+def _export_runtime(args: argparse.Namespace) -> int:
+    try:
+        result = compile_runtime_pack(
+            args.canonical_input,
+            args.output_dir,
+            pack_id=args.pack_id,
+            compatibility_revision=args.compatibility_revision,
+            previous_revision=args.previous_revision,
+            include_debug_symbols=bool(args.debug_symbols),
+            min_zoom=int(args.min_zoom),
+            max_zoom=int(args.max_zoom),
+        )
+        benchmark = RuntimePack.benchmark(args.output_dir) if args.benchmark else None
+    except (RuntimeCompileError, RuntimeLoadError, OSError) as error:
+        _print_error(error)
+        return 1
+    if args.format == "json":
+        payload = result.to_dict()
+        if benchmark is not None:
+            payload["benchmark"] = benchmark
+        print(json.dumps(payload, indent=2, sort_keys=True))
+        return 0
+    print("gpm export runtime: wrote an M25B engine-neutral runtime pack.")
+    print(f"Pack: {result.pack_id}; compatibility revision: {result.compatibility_revision}")
+    print(f"Output: {result.output_dir}")
+    print(
+        f"Counts: {result.province_count} provinces, {result.component_count} components, "
+        f"{result.political_unit_count} political units, {result.scenario_count} scenarios"
+    )
+    print(f"Sizes: {result.core_bytes} core bytes; {result.geometry_bytes} geometry bytes")
+    if benchmark is not None:
+        print(
+            f"Reference loader p95: {benchmark['load_ms']['p95']:.3f} ms; "
+            f"peak allocation: {benchmark['peak_rss_proxy_bytes']} bytes"
+        )
+    return 0
 
 
 def _export_tiles(args: argparse.Namespace) -> int:

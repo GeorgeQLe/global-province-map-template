@@ -2,15 +2,10 @@
 
 ## Active
 
-- M25B game runtime compiler and reference pack.
+- M25C global 1444 certification.
 
 ## Up next (from roadmap)
 
-- M25B game runtime compiler and reference pack: implement the proposed
-  `gpm export runtime` contract, dense indices, compact tables, CSR graphs,
-  scenario deltas, LOD/tiled geometry, compatibility/migration metadata,
-  debug symbols, reference loader, and benchmark harness. M7 and M19 are reused
-  foundations. Validate hard cases before worldwide scaling.
 - M25C global 1444 certification: preserve 1444-v2 as a five-region pilot, then
   complete worldwide inventory, geometry, politics, status, and runtime gates.
 - M26 global 1836 certification, reusing the runtime contract and publishing deltas or migrations.
@@ -21,6 +16,12 @@
   research acceptance and runtime-pack validation.
 
 ## Completed
+
+- [x] M25B game runtime compiler and reference pack: deterministic
+  `gpm export runtime`, stable/dense mappings, fixed-width core tables, typed
+  CSR graphs, scenario base/deltas, triangulated LOD plus PMTiles geometry,
+  hashed revision/migration contract, optional debug symbols, reference loader,
+  benchmark harness, and the eight-case synthetic conformance pack.
 
 - [x] M25A historical hard-case casebook: all eight geometry/political classes
   across the four target-era slots, canonical identity and typed-status

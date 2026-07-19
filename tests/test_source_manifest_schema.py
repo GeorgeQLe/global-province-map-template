@@ -45,6 +45,7 @@ def test_schema_files_are_machine_readable_json_schema_documents():
         "polity-gazetteer.schema.json",
         "region-entity.schema.json",
         "release-manifest.schema.json",
+        "runtime-pack.schema.json",
         "scenario-definition.schema.json",
         "scenario-diff-report.schema.json",
         "scenario-ownership-record.schema.json",

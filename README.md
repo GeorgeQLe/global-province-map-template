@@ -73,14 +73,16 @@ versioned schemas and fail-closed `gpm qa start-date` pass validation. The
 withdrawn v1 candidate retains only C/U claims, and its Brussels/Nord
 measurements are regressions, not release certification.
 
-Planned **M25B — Game Runtime Compiler and Reference Pack** will validate the
-[historical hard-case contract](docs/m25-hard-case-casebook.md) and introduce
-the proposed `gpm export runtime` contract:
+Completed **M25B — Game Runtime Compiler and Reference Pack** validates the
+[historical hard-case contract](docs/m25-hard-case-casebook.md) and ships the
+documented [`gpm export runtime` contract](docs/m25b-runtime.md):
 stable-ID↔dense-index mappings, compact tables and CSR graphs, scenario deltas,
 LOD/tiled geometry, a hashed compatibility manifest, migration metadata, an
 optional debug-symbol pack, and an engine-neutral reference loader/benchmark.
-M7 exports and M19 PMTiles are foundations for that work; they are not the
-runtime compiler. Global certification then proceeds **1444, 1836, 1914,
+The synthetic [reference pack](samples/m25b-runtime-reference/) exercises all
+eight hard-case classes but is not historical evidence. M7 exports and M19
+PMTiles remain foundations rather than duplicate runtime implementations.
+Global certification now proceeds **1444, 1836, 1914,
 1936**, restoring each public tab only after its worldwide research and runtime
 gates pass.
 

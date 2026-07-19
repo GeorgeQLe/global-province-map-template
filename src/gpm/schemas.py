@@ -12,6 +12,46 @@ class SchemaValidationError(ValueError):
     """Raised when a document does not satisfy a project schema check."""
 
 
+def validate_runtime_pack_manifest(manifest: dict[str, Any]) -> None:
+    """Validate M25B manifest identity, dense counts, and hashed file inventory."""
+    _require_object(manifest, "runtime manifest")
+    _require_keys(
+        manifest,
+        ["schema_version", "pack_type", "pack_id", "compatibility_revision", "generator",
+         "canonical_input_kind", "deterministic", "counts", "entrypoints",
+         "debug_symbols_included", "size_metrics", "files"],
+        "runtime manifest",
+    )
+    if manifest["schema_version"] != "1.0.0" or manifest["pack_type"] != "gpm-game-runtime":
+        raise SchemaValidationError("invalid M25B runtime manifest type or version")
+    if not isinstance(manifest["pack_id"], str) or not manifest["pack_id"]:
+        raise SchemaValidationError("runtime manifest.pack_id must be non-empty")
+    if not isinstance(manifest["compatibility_revision"], str) or not manifest["compatibility_revision"]:
+        raise SchemaValidationError("runtime manifest.compatibility_revision must be non-empty")
+    if manifest["deterministic"] is not True:
+        raise SchemaValidationError("runtime manifest.deterministic must be true")
+    counts = manifest["counts"]
+    _require_object(counts, "runtime manifest.counts")
+    for key in ("components", "provinces", "political_units", "scenarios"):
+        if not isinstance(counts.get(key), int) or counts[key] < 1:
+            raise SchemaValidationError(f"runtime manifest.counts.{key} must be positive")
+    files = manifest["files"]
+    if not isinstance(files, list) or not files:
+        raise SchemaValidationError("runtime manifest.files must be non-empty")
+    seen: set[str] = set()
+    for index, record in enumerate(files):
+        path = f"runtime manifest.files[{index}]"
+        _require_object(record, path)
+        _require_keys(record, ["path", "bytes", "sha256"], path)
+        if record["path"] in seen or not isinstance(record["path"], str) or not record["path"]:
+            raise SchemaValidationError(f"{path}.path must be unique and non-empty")
+        seen.add(record["path"])
+        if not isinstance(record["bytes"], int) or record["bytes"] < 0:
+            raise SchemaValidationError(f"{path}.bytes must be non-negative")
+        if not isinstance(record["sha256"], str) or not re.fullmatch(r"[0-9a-f]{64}", record["sha256"]):
+            raise SchemaValidationError(f"{path}.sha256 must be lowercase SHA-256")
+
+
 def load_schema(name: str) -> dict[str, Any]:
     filename = name if name.endswith(".json") else f"{name}.schema.json"
     path = SCHEMA_DIR / filename

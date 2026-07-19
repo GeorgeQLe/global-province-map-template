@@ -9,6 +9,7 @@ from gpm.tiles import (
     export_tiles_from_atlas,
     export_tiles_pack,
 )
+from gpm.runtime import RuntimeCompileError, RuntimeCompileResult, compile_runtime_pack
 
 __all__ = [
     "AtlasExportResult",
@@ -17,10 +18,13 @@ __all__ = [
     "HierarchyLayersResult",
     "TileBuildError",
     "TileBuildResult",
+    "RuntimeCompileError",
+    "RuntimeCompileResult",
     "export_atlas_pack",
     "export_game_pack",
     "export_geojson_pack",
     "export_hierarchy_layers",
     "export_tiles_from_atlas",
     "export_tiles_pack",
+    "compile_runtime_pack",
 ]

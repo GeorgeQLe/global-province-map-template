@@ -625,7 +625,7 @@ Production authoring and runtime program:
   schema, canonical projection, deterministic test-runtime projection, visual,
   picking, LOD, adjacency, and save/migration assertions. They are contract
   tests, not historical evidence or releasable era artifacts.
-- **M25B — Game Runtime Compiler and Reference Pack** — validate every hard
+- **M25B — Game Runtime Compiler and Reference Pack (complete)** — validate every hard
   case, then compile canonical passes through `gpm export runtime`. The pack
   contains stable-ID↔dense-index mappings, compact province/hierarchy tables,
   CSR land/sea/strait/port adjacency, scenario base tables and deltas,

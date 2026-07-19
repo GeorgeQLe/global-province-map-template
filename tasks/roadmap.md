@@ -46,7 +46,7 @@ historical coverage.
 | M23 | complete | `gpm build locations/provinces`; fabric QA | duplicate 30,003-location and 22,000-province builds | source/docs; no hosted fabric claimed | documented reference warnings/build-drift audit note |
 | M24 | complete | schemas and `gpm qa start-date` | `test_m24_start_date_framework.py` | contract and rejected-pass evidence | framework only; does not certify an era |
 | M25A | complete | hard-case casebook + typed-status schema | eight executable per-class canonical/runtime/visual/picking/LOD/adjacency/save fixtures | research artifacts only | synthetic contract fixtures, not historical evidence |
-| M25B | planned | proposed `gpm export runtime` | acceptance budgets in `ROADMAP.md` | none yet | validate hard cases before scaling |
+| M25B | complete | `gpm export runtime`; `gpm.runtime` | `test_m25b_runtime.py`; duplicate-build/budget benchmarks | synthetic runtime reference pack | global-scale budgets re-run per certified era |
 | M25C | planned; v2 pilot preserved | global 1444 pass; v2 assembler/evidence | worldwide research and runtime validation | unsigned v2 research candidate only | complete worldwide inventory and geometry |
 | M26 | planned | global 1836 pass + runtime delta/migration | worldwide research and runtime validation | none yet | begins after M25C |
 | M27 | planned | 1914 canonical pass + runtime delta/migration | future research and runtime validation | none yet | begins after M26 |
@@ -160,8 +160,6 @@ historical coverage.
 
 ## Next
 
-- M25A historical hard-case casebook, followed by M25B runtime compiler. The
-  compiler reuses M7/M19 and adds dense-table/CSR/LOD/save contracts.
 - M25C global 1444 certification. The 1444-v2 candidate remains an unsigned
   five-region pilot and evidence set, not a release boundary.
 - M26 1836, M27 official 1914 imperial-era, and M28 1936 reuse that runtime
