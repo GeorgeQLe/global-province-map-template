@@ -8,6 +8,7 @@ from .scenario import (
 from .topology import TopologyQAError, TopologyQAResult, run_topology_qa
 from .start_date import StartDateQAError, StartDateQAResult, run_start_date_qa
 from .render import StartDateRenderError, StartDateRenderResult, render_start_date_pass
+from .certification import EraCertificationError, EraCertificationResult, certify_era, validate_certification_bundle
 
 __all__ = [
     "ScenarioPoliticsQAError",
@@ -18,6 +19,10 @@ __all__ = [
     "StartDateRenderResult",
     "TopologyQAError",
     "TopologyQAResult",
+    "EraCertificationError",
+    "EraCertificationResult",
+    "certify_era",
+    "validate_certification_bundle",
     "run_scenario_politics_qa",
     "run_start_date_qa",
     "render_start_date_pass",

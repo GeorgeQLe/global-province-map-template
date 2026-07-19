@@ -5,18 +5,22 @@
   "type": "object",
   "required": ["schema_version", "document_type", "artifact_version", "pass_id", "start_date", "version", "era", "fabric_revision", "geometry_revision", "generated_at", "scope", "artifacts"],
   "properties": {
-    "schema_version": {"enum": ["0.1.0", "0.2.0"]}, "document_type": {"const": "start_date_research_pass"},
+    "schema_version": {"enum": ["0.1.0", "0.2.0", "0.3.0"]}, "document_type": {"const": "start_date_research_pass"},
     "artifact_version": {"type": "string", "minLength": 1}, "pass_id": {"type": "string", "minLength": 1},
     "start_date": {"type": "string", "format": "date"}, "version": {"type": "string", "minLength": 1},
     "era": {"type": "string", "minLength": 1}, "fabric_revision": {"type": "string", "minLength": 1},
     "geometry_revision": {"type": "string", "minLength": 1}, "generated_at": {"type": "string", "format": "date-time"},
     "scope": {"type": "object", "required": ["regions", "priority_regions", "layers"], "properties": {
-      "regions": {"$ref": "#/$defs/nonemptyStrings"}, "priority_regions": {"$ref": "#/$defs/nonemptyStrings"}, "layers": {"$ref": "#/$defs/nonemptyStrings"}
+      "regions": {"$ref": "#/$defs/nonemptyStrings"}, "priority_regions": {"$ref": "#/$defs/nonemptyStrings"}, "layers": {"$ref": "#/$defs/nonemptyStrings"},
+      "kind": {"const": "worldwide"}, "partition": {"$ref": "#/$defs/worldPartition"},
+      "world_coverage_mask_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
     }, "additionalProperties": false},
     "artifacts": {"type": "object", "required": ["dossier", "source_manifest", "boundary_registry", "polity_gazetteer", "location_assignments", "golden_borders", "full_build_geometry", "coverage_matrix", "changelog"], "properties": {
       "dossier": {"$ref": "#/$defs/artifact"}, "source_manifest": {"$ref": "#/$defs/artifact"}, "boundary_registry": {"$ref": "#/$defs/artifact"},
       "polity_gazetteer": {"$ref": "#/$defs/artifact"}, "location_assignments": {"$ref": "#/$defs/artifact"}, "golden_borders": {"$ref": "#/$defs/artifact"},
-      "full_build_geometry": {"$ref": "#/$defs/artifact"}, "coverage_matrix": {"$ref": "#/$defs/artifact"}, "changelog": {"$ref": "#/$defs/artifact"}
+      "full_build_geometry": {"$ref": "#/$defs/artifact"}, "coverage_matrix": {"$ref": "#/$defs/artifact"}, "changelog": {"$ref": "#/$defs/artifact"},
+      "canonical_historical_status": {"$ref": "#/$defs/artifact"}, "world_coverage_mask": {"$ref": "#/$defs/artifact"},
+      "anomaly_inventory": {"$ref": "#/$defs/artifact"}
     }, "additionalProperties": false},
     "review": {"$ref": "#/$defs/review"}
   },
@@ -28,8 +32,20 @@
     "review": {"type": "object", "required": ["manifest_path", "sha256", "generator", "reviewer", "status"], "properties": {
       "manifest_path": {"type": "string", "minLength": 1}, "sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"},
       "generator": {"type": "string", "minLength": 1}, "reviewer": {"type": "string", "minLength": 1}, "status": {"const": "accepted"}
+    }, "additionalProperties": false},
+    "worldPartition": {"type": "object", "required": ["standard", "revision", "antarctica", "subregions"], "properties": {
+      "standard": {"const": "UN M49"}, "revision": {"type": "string", "minLength": 1},
+      "antarctica": {"const": "excluded-not-in-playable-fabric"}, "subregions": {"$ref": "#/$defs/nonemptyStrings"}
     }, "additionalProperties": false}
   },
-  "allOf": [{"if": {"properties": {"schema_version": {"const": "0.2.0"}}, "required": ["schema_version"]}, "then": {"required": ["review"]}}],
+  "allOf": [
+    {"if": {"properties": {"schema_version": {"enum": ["0.2.0", "0.3.0"]}}, "required": ["schema_version"]}, "then": {"required": ["review"]}},
+    {"if": {"properties": {"schema_version": {"const": "0.3.0"}}, "required": ["schema_version"]}, "then": {
+      "properties": {
+        "scope": {"required": ["kind", "partition", "world_coverage_mask_sha256"]},
+        "artifacts": {"required": ["canonical_historical_status", "world_coverage_mask", "anomaly_inventory"]}
+      }
+    }}
+  ],
   "additionalProperties": false
 }

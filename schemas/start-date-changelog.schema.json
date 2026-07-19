@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "https://example.invalid/global-province-map/start-date-changelog.schema.json", "title": "M24 Start-Date Changelog", "type": "object",
   "required": ["schema_version", "document_type", "artifact_version", "pass_id", "start_date", "version", "released_at", "changes", "migrations"],
-  "properties": {"schema_version": {"enum": ["0.1.0", "0.2.0"]}, "document_type": {"const": "start_date_changelog"}, "artifact_version": {"type": "string", "minLength": 1}, "pass_id": {"type": "string", "minLength": 1}, "start_date": {"type": "string", "format": "date"}, "version": {"type": "string", "minLength": 1}, "released_at": {"type": "string", "format": "date"},
+  "properties": {"schema_version": {"enum": ["0.1.0", "0.2.0", "0.3.0"]}, "document_type": {"const": "start_date_changelog"}, "artifact_version": {"type": "string", "minLength": 1}, "pass_id": {"type": "string", "minLength": 1}, "start_date": {"type": "string", "format": "date"}, "version": {"type": "string", "minLength": 1}, "released_at": {"type": "string", "format": "date"},
     "changes": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["change_id", "category", "summary", "affected_ids"], "properties": {"change_id": {"type": "string", "minLength": 1}, "category": {"enum": ["geometry", "politics", "hierarchy", "gazetteer", "research", "qa"]}, "summary": {"type": "string", "minLength": 1}, "affected_ids": {"$ref": "#/$defs/strings"}}, "additionalProperties": false}}, "migrations": {"$ref": "#/$defs/strings"}
   }, "$defs": {"strings": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}}}, "additionalProperties": false
 }

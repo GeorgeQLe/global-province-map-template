@@ -34,8 +34,11 @@ def test_historical_status_schema_is_valid_and_requires_canonical_identities():
     assert relationships == {
         "sovereign",
         "owner",
-        "controller",
-        "protector",
+            "controller",
+            "core",
+            "claim",
+            "dispute",
+            "protector",
         "co-administrator",
         "occupier",
         "mandate-authority",

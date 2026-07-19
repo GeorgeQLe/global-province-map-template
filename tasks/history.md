@@ -1,5 +1,29 @@
 # History
 
+## 2026-07-19 - M25C worldwide certification boundary
+
+- Added additive schema 0.3 contracts for the exact 22-part UN M49 playable
+  world, source-locked spatial tolerances, complete hierarchy/status fields,
+  worldwide anomaly inventory, and canonical historical-status artifacts.
+- Added a deterministic staged M25C builder that hash-pins every byte of the
+  unsigned 1444-v2 pilot, emits an explicitly non-public pending global-v1
+  lineage, and fails closed until worldwide evidence, fabric assignments,
+  research QA, and independent review are complete.
+- Added `gpm qa certify-era` and a hashed global certification envelope covering
+  research, world partition, coverage, canonical/runtime parity, deterministic
+  compilation, performance budgets, and independent review. Hardened bundle
+  validation so artifact paths cannot escape the certification directory.
+- Wired certified canonical geometry, politics, hierarchy, adjacency, PMTiles,
+  and certification artifacts into demo generation. The public 1444 tab can be
+  generated only from an accepted, intact certification bundle; the current
+  checked-in candidate remains blocked and unpublishable.
+- Quality gate: the full suite passed 310 tests with no warnings; the targeted
+  M25C suite passed 6 tests after the bundle-containment review fix; and
+  `git diff --check` plus changed-file credential-pattern scans were clean.
+- Next project task: source and resolve the worldwide anomaly inventory, apply
+  the accepted M23 fabric across all 22 M49 subregions, and obtain independent
+  review.
+
 ## 2026-07-19 - M25B game runtime compiler and reference pack
 
 - Implemented deterministic `gpm export runtime` compilation from canonical

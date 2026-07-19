@@ -59,8 +59,18 @@ def render_start_date_pass(*, pass_dir: Path, output_dir: Path) -> StartDateRend
         path = out / name
         path.write_text(payload, encoding="utf-8")
         rendered.append({"region_id": region, "path": name, "sha256": _sha256(path)})
+    if manifest.get("schema_version") == "0.3.0":
+        inventory = _artifact_json(root, artifacts, "anomaly_inventory")
+        by_type: dict[str, list[dict[str, Any]]] = {}
+        for anomaly in inventory.get("anomalies") or []:
+            by_type.setdefault(str(anomaly.get("type")), []).append(anomaly)
+        for anomaly_type, anomalies in sorted(by_type.items()):
+            name = f"anomaly-{anomaly_type}.svg"
+            path = out / name
+            path.write_text(_render_anomaly_svg(manifest, anomaly_type, anomalies), encoding="utf-8")
+            rendered.append({"region_id": f"anomaly:{anomaly_type}", "sheet_type": "anomaly", "path": name, "sha256": _sha256(path)})
     review_manifest = {
-        "schema_version": "0.2.0",
+        "schema_version": manifest.get("schema_version", "0.2.0"),
         "document_type": "start_date_review_manifest",
         "pass_id": manifest["pass_id"],
         "geometry_revision": manifest["geometry_revision"],
@@ -74,6 +84,21 @@ def render_start_date_pass(*, pass_dir: Path, output_dir: Path) -> StartDateRend
     manifest_path = out / "review_manifest.json"
     manifest_path.write_text(json.dumps(review_manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return StartDateRenderResult(manifest["pass_id"], len(rendered), str(out), str(manifest_path))
+
+
+def _render_anomaly_svg(manifest: dict[str, Any], anomaly_type: str, anomalies: list[dict[str, Any]]) -> str:
+    rows = "".join(
+        f'<text x="36" y="{112 + index * 24}">{html.escape(str(item["anomaly_id"]))} · {html.escape(str(item["resolution"]))}</text>'
+        for index, item in enumerate(anomalies)
+    )
+    height = max(180, 140 + len(anomalies) * 24)
+    return (
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="900" height="{height}" viewBox="0 0 900 {height}">'
+        '<rect width="100%" height="100%" fill="#fff"/>'
+        f'<text x="36" y="48" font-size="24">M25C anomaly review · {html.escape(anomaly_type)}</text>'
+        f'<text x="36" y="78">{html.escape(manifest["pass_id"])} · {html.escape(manifest["start_date"])}</text>'
+        f'{rows}</svg>\n'
+    )
 
 
 class _Panel:

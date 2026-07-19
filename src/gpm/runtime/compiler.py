@@ -33,7 +33,7 @@ from gpm.tiles.build import build_pmtiles_from_features
 FORMAT_VERSION = "1.0.0"
 UINT32_MAX = 0xFFFFFFFF
 RELATIONSHIPS = (
-    "sovereign", "owner", "controller", "protector", "co-administrator",
+    "sovereign", "owner", "controller", "core", "claim", "dispute", "protector", "co-administrator",
     "occupier", "mandate-authority", "lessee", "claimant",
 )
 SUBJECT_KINDS = {"component": 0, "province": 1, "political_unit": 2}

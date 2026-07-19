@@ -18,6 +18,7 @@ Pipeline (temp work under data/processed/demo_build/ by default):
 from __future__ import annotations
 
 import csv
+import hashlib
 import json
 import shutil
 from dataclasses import asdict, dataclass
@@ -27,6 +28,7 @@ from typing import Any
 
 from shapely.errors import ShapelyError
 from shapely.geometry import mapping, shape
+from shapely.ops import unary_union
 
 from gpm import __version__
 from gpm.exporters import export_atlas_pack, export_hierarchy_layers
@@ -35,6 +37,7 @@ from gpm.paths import PROCESSED_DATA_DIR, PROJECT_ROOT
 from gpm.release.alpha import ReleaseError
 from gpm.scenarios import ScenarioError, load_scenario
 from gpm.tiles import TileBuildError, build_pmtiles_from_geojson
+from gpm.qa.certification import EraCertificationError, validate_certification_bundle
 
 DEMO_SCENARIOS: tuple[str, ...] = ("modern-baseline",)
 DEMO_SCENARIO_LABELS = {
@@ -125,6 +128,7 @@ def build_demo(
     tile_max_zoom: int = DEFAULT_TILE_MAX_ZOOM,
     prefer_tippecanoe: bool = True,
     validate: bool = True,
+    certification_input: Path | None = None,
 ) -> DemoBuildResult:
     """Regenerate the landing demo data pack from the processed global build."""
     landing_dir = (landing_dir or (PROJECT_ROOT / "landing")).resolve()
@@ -133,6 +137,18 @@ def build_demo(
     scenario_ids = tuple(dict.fromkeys(str(item).strip() for item in scenarios if str(item).strip()))
     if not scenario_ids:
         raise DemoBuildError("Demo build requires at least one scenario.")
+    certification: dict[str, Any] | None = None
+    certification_path: Path | None = None
+    if certification_input is not None:
+        certification_path = Path(certification_input).resolve()
+        try:
+            certification = validate_certification_bundle(certification_path)
+        except EraCertificationError as exc:
+            raise DemoBuildError(f"Invalid global certification: {exc}") from exc
+        if certification["public_scenario_id"] not in scenario_ids:
+            raise DemoBuildError("Certification input requires its public scenario in --scenario")
+    elif "official-1444" in scenario_ids:
+        raise DemoBuildError("official-1444 requires --certification-input")
 
     provinces = _preflight(
         province_input=province_input,
@@ -140,6 +156,8 @@ def build_demo(
         hierarchy_input=hierarchy_input,
         data_dir=data_dir,
     )
+    hierarchy_source = hierarchy_input
+    adjacency_source = adjacency_input
     m23_inputs = _m23_demo_inputs(
         location_input=location_input,
         membership_input=membership_input,
@@ -151,21 +169,27 @@ def build_demo(
 
     # --- atlas export (choropleth + legends per scenario) ----------------------
     atlas_dir = work_dir / "atlas"
+    atlas_scenarios = tuple(item for item in scenario_ids if item != "official-1444")
     try:
-        export_atlas_pack(
-            profile_id,
-            province_input=province_input,
-            output_dir=atlas_dir,
-            scenarios=scenario_ids,
-            include_base_geometry=False,
-            # Owner dissolve feeds the landing hero choropleth (hero-<id>.geojson).
-            include_owner_dissolve=True,
-            include_identity_paint=True,
-            include_identity_dissolve=False,
-            include_tiles=False,
-        )
+        if atlas_scenarios:
+            export_atlas_pack(
+                profile_id,
+                province_input=province_input,
+                output_dir=atlas_dir,
+                scenarios=atlas_scenarios,
+                include_base_geometry=False,
+                # Owner dissolve feeds the landing hero choropleth (hero-<id>.geojson).
+                include_owner_dissolve=True,
+                include_identity_paint=True,
+                include_identity_dissolve=False,
+                include_tiles=False,
+            )
     except ExportError as exc:
         raise DemoBuildError(f"Atlas export failed: {exc}") from exc
+    if certification is not None and certification_path is not None:
+        provinces, hierarchy_source, adjacency_source = _write_certified_atlas(
+            certification_path, certification, atlas_dir / "scenarios" / "official-1444", profile_id,
+        )
 
     # --- PMTiles per scenario ---------------------------------------------------
     tiles_dir = work_dir / "tiles"
@@ -194,12 +218,12 @@ def build_demo(
 
     # --- hierarchy overlays + adjacency lines -----------------------------------
     try:
-        hierarchy_result = export_hierarchy_layers(hierarchy_input, work_dir / "hierarchy_layers")
+        hierarchy_result = export_hierarchy_layers(hierarchy_source, work_dir / "hierarchy_layers")
     except ExportError as exc:
         raise DemoBuildError(f"Hierarchy layer export failed: {exc}") from exc
 
     adjacency_lines_path = work_dir / "adjacency-lines.geojson"
-    edge_count = _write_adjacency_lines(provinces, adjacency_input, adjacency_lines_path)
+    edge_count = _write_adjacency_lines(provinces, adjacency_source, adjacency_lines_path)
 
     # --- copy into landing/demo/data ---------------------------------------------
     data_dir.mkdir(parents=True, exist_ok=True)
@@ -237,6 +261,15 @@ def build_demo(
     if scenario_ids == DEMO_SCENARIOS:
         for name in PUBLIC_HISTORICAL_ASSETS:
             dropped.extend(_drop(data_dir / name))
+    elif certification is not None:
+        current_1444 = {
+            "hero-official-1444.geojson", "official-1444.legend.json",
+            "official-1444.culture.legend.json", "official-1444.religion.legend.json",
+            "official-1444.pmtiles", "official-1444.tileset.json",
+        }
+        for name in PUBLIC_HISTORICAL_ASSETS:
+            if name not in current_1444:
+                dropped.extend(_drop(data_dir / name))
     dropped.extend(_drop(data_dir / "adjacency.json"))
     dropped.extend(_drop(data_dir / "adjacency.csv"))
 
@@ -256,7 +289,16 @@ def build_demo(
         },
         adjacency_edge_count=edge_count,
         m23_inputs=m23_inputs,
+        certification=certification,
     )
+    if certification is not None and certification_path is not None:
+        public_certification = data_dir / "official-1444.certification.json"
+        _copy_certification_bundle(certification_path, certification, public_certification)
+        files_written.append(public_certification.name)
+        public_hash = hashlib.sha256(public_certification.read_bytes()).hexdigest()
+        for entry in manifest["scenarios"]:
+            if entry["id"] == certification["public_scenario_id"]:
+                entry["global_certification"]["sha256"] = public_hash
     manifest_path = data_dir / "demo-manifest.json"
     manifest_path.write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=False) + "\n",
@@ -306,6 +348,126 @@ def build_demo(
         files_written=tuple(sorted(set(files_written))),
         validated=validated,
     )
+
+
+def _write_certified_atlas(
+    certification_path: Path, certification: dict[str, Any], scenario_dir: Path, profile_id: str,
+) -> tuple[list[dict[str, Any]], Path, Path]:
+    """Project canonical components directly into the public ownership layers."""
+    record = certification["artifacts"]["canonical_historical_status"]
+    canonical_path = (certification_path.parent / record["path"]).resolve()
+    try:
+        canonical = json.loads(canonical_path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        raise DemoBuildError(f"Cannot read certified canonical status: {exc}") from exc
+    scenario_dir.mkdir(parents=True, exist_ok=True)
+    statuses: dict[tuple[str, str], str] = {
+        (row["subject_id"], row["relationship"]): row["actor_political_unit_id"]
+        for row in canonical["statuses"]
+    }
+    features: list[dict[str, Any]] = []
+    by_owner: dict[str, list[Any]] = {}
+    for component in sorted(canonical["components"], key=lambda row: row["territory_component_id"]):
+        component_id, province_id = component["territory_component_id"], component["province_id"]
+        owner = statuses.get((component_id, "owner")) or statuses.get((province_id, "owner")) or component["political_unit_id"]
+        controller = statuses.get((component_id, "controller")) or statuses.get((province_id, "controller")) or owner
+        color = _stable_color(owner)
+        geometry = component["geometry"]
+        by_owner.setdefault(owner, []).append(shape(geometry))
+        features.append({
+            "type": "Feature", "geometry": geometry,
+            "properties": {
+                "province_id": province_id, "component_id": component_id, "kind": "land",
+                "display_name": province_id, "owner": owner, "owner_color": color,
+                "controller": controller, "controller_color": _stable_color(controller),
+                "cores": sorted({row["actor_political_unit_id"] for row in canonical["statuses"] if row["subject_id"] in {component_id, province_id} and row["relationship"] == "core"}),
+                "claims": sorted({row["actor_political_unit_id"] for row in canonical["statuses"] if row["subject_id"] in {component_id, province_id} and row["relationship"] in {"claim", "claimant"}}),
+                "disputed": any(row["subject_id"] in {component_id, province_id} and row["relationship"] == "dispute" for row in canonical["statuses"]),
+                "culture": None, "culture_color": "#8a8a8a", "religion": None,
+                "religion_color": "#8a8a8a", "scenario_id": "official-1444",
+                "start_date": canonical["start_date"], "assignment_source": "certified-canonical",
+            },
+        })
+    choropleth = {"type": "FeatureCollection", "name": "certified_official_1444", "features": features}
+    (scenario_dir / "ownership_choropleth.geojson").write_text(json.dumps(choropleth, separators=(",", ":")) + "\n", encoding="utf-8")
+    owners = {
+        "type": "FeatureCollection", "features": [
+            {"type": "Feature", "geometry": mapping(unary_union(geometries)),
+             "properties": {"owner": owner, "owner_color": _stable_color(owner), "display_name": owner, "province_count": sum(feature["properties"]["owner"] == owner for feature in features)}}
+            for owner, geometries in sorted(by_owner.items())
+        ],
+    }
+    (scenario_dir / "owners.geojson").write_text(json.dumps(owners, separators=(",", ":")) + "\n", encoding="utf-8")
+    tags = [{"tag": owner, "display_name": owner, "color": _stable_color(owner), "fill_color": _stable_color(owner), "roles": ["owner"]} for owner in sorted(by_owner)]
+    legend = {"schema_version": "0.1.0", "scenario_id": "official-1444", "profile_id": profile_id, "start_date": canonical["start_date"], "paint_field": "owner", "color_field": "owner_color", "fallback_color": "#b0b0b0", "count": len(tags), "tags": tags}
+    (scenario_dir / "legend.json").write_text(json.dumps(legend, sort_keys=True) + "\n", encoding="utf-8")
+    for identity in ("culture", "religion"):
+        identity_legend = {"schema_version": "0.1.0", "scenario_id": "official-1444", "start_date": canonical["start_date"], "paint_field": identity, "color_field": f"{identity}_color", "count": 0, "entries": [], "unassigned_color": "#8a8a8a"}
+        (scenario_dir / f"{identity}_legend.json").write_text(json.dumps(identity_legend, sort_keys=True) + "\n", encoding="utf-8")
+    province_geometries: dict[str, Any] = {}
+    for province in canonical["provinces"]:
+        member_geometries = [shape(component["geometry"]) for component in canonical["components"] if component["territory_component_id"] in province["territory_component_ids"]]
+        province_geometries[province["province_id"]] = unary_union(member_geometries)
+    canonical_provinces: list[dict[str, Any]] = []
+    hierarchy_features: list[dict[str, Any]] = []
+    levels = (("area", "area_id"), ("region", "region_id"), ("superregion", "superregion_id"))
+    for province in canonical["provinces"]:
+        hierarchy = province.get("hierarchy") or province
+        canonical_provinces.append({
+            "type": "Feature", "geometry": mapping(province_geometries[province["province_id"]]),
+            "properties": {"kind": "land", "province_id": province["province_id"],
+                           "parent_area_id": hierarchy.get("area_id"),
+                           "parent_geo_region_id": hierarchy.get("region_id"),
+                           "parent_superregion_id": hierarchy.get("superregion_id")},
+        })
+    for level, key in levels:
+        grouped: dict[str, list[Any]] = {}
+        for province in canonical["provinces"]:
+            hierarchy = province.get("hierarchy") or province
+            value = hierarchy.get(key)
+            if value:
+                grouped.setdefault(value, []).append(province_geometries[province["province_id"]])
+        for stable_id, geometries in sorted(grouped.items()):
+            geom = unary_union(geometries)
+            point = geom.representative_point()
+            hierarchy_features.append({
+                "type": "Feature", "geometry": mapping(geom),
+                "properties": {"region_id": stable_id, "display_name": stable_id,
+                               "region_type": level, "province_count": len(geometries),
+                               "label_point": [point.x, point.y]},
+            })
+    hierarchy_path = scenario_dir / "certified-hierarchy.geojson"
+    hierarchy_path.write_text(json.dumps({"type": "FeatureCollection", "features": hierarchy_features}, separators=(",", ":")) + "\n", encoding="utf-8")
+    adjacency_path = scenario_dir / "certified-adjacency.csv"
+    with adjacency_path.open("w", encoding="utf-8", newline="") as file:
+        writer = csv.DictWriter(file, fieldnames=("from_province_id", "to_province_id", "adjacency_type"))
+        writer.writeheader()
+        for row in sorted(canonical.get("adjacency") or [], key=lambda item: (str(item.get("from_province_id") or item.get("from")), str(item.get("to_province_id") or item.get("to")))):
+            writer.writerow({"from_province_id": row.get("from_province_id") or row.get("from"),
+                             "to_province_id": row.get("to_province_id") or row.get("to"),
+                             "adjacency_type": row.get("type", "land")})
+    return canonical_provinces, hierarchy_path, adjacency_path
+
+
+def _copy_certification_bundle(source_path: Path, certification: dict[str, Any], output_path: Path) -> None:
+    bundle_dir = output_path.parent / "official-1444-certification"
+    bundle_dir.mkdir(parents=True, exist_ok=True)
+    public = json.loads(json.dumps(certification))
+    for role, record in certification["artifacts"].items():
+        source = (source_path.parent / record["path"]).resolve()
+        suffix = "".join(source.suffixes) or ".bin"
+        target = bundle_dir / f"{role}{suffix}"
+        shutil.copyfile(source, target)
+        public["artifacts"][role] = {
+            "path": target.relative_to(output_path.parent).as_posix(),
+            "sha256": hashlib.sha256(target.read_bytes()).hexdigest(),
+        }
+    output_path.write_text(json.dumps(public, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def _stable_color(value: str) -> str:
+    digest = hashlib.sha256(value.encode("utf-8")).digest()
+    return f"#{64 + digest[0] % 160:02x}{64 + digest[1] % 160:02x}{64 + digest[2] % 160:02x}"
 
 
 def _preflight(
@@ -532,6 +694,7 @@ def _demo_manifest(
     hierarchy_counts: dict[str, int],
     adjacency_edge_count: int,
     m23_inputs: dict[str, Any] | None,
+    certification: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     generated_at = datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
     scenarios: list[dict[str, Any]] = []
@@ -540,7 +703,7 @@ def _demo_manifest(
             definition = load_scenario(scenario_id)
         except ScenarioError as exc:
             raise DemoBuildError(str(exc)) from exc
-        era = PERIOD_ASSETS.get(scenario_id)
+        era = None if certification is not None and scenario_id == certification["public_scenario_id"] else PERIOD_ASSETS.get(scenario_id)
         entry: dict[str, Any] = {
             "id": scenario_id,
             "era": definition.get("era"),
@@ -558,6 +721,17 @@ def _demo_manifest(
             "status": "live",
             "supports_period_geometry": era is not None,
         }
+        if certification is not None and scenario_id == certification["public_scenario_id"]:
+            entry["politics_tier"] = "certified-canonical"
+            entry["source"] = "canonical-historical-status-and-m25b-runtime"
+            entry["global_certification"] = {
+                "scope": "worldwide",
+                "research_status": "accepted",
+                "runtime_status": "accepted",
+                "artifact": "official-1444.certification.json",
+                "certification_id": certification["certification_id"],
+                "sha256": None,
+            }
         if era is not None:
             entry.update(
                 {

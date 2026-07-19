@@ -2,7 +2,9 @@
 
 ## Active
 
-- M25C global 1444 certification.
+- M25C worldwide historical evidence and reviewed fabric assignment: replace
+  the fail-closed pending anomaly inventory with sourced, resolved records,
+  assemble the 22-part M49 pass, and obtain independent acceptance.
 
 ## Up next (from roadmap)
 
@@ -16,6 +18,11 @@
   research acceptance and runtime-pack validation.
 
 ## Completed
+
+- [x] M25C certification boundary and pending worldwide lineage: additive
+  schema 0.3 contracts, exact 22-part M49 scope, source-locked tolerance rules,
+  deterministic pilot provenance, canonical/runtime certification gates,
+  bundle integrity validation, and certification-gated 1444 demo promotion.
 
 - [x] M25B game runtime compiler and reference pack: deterministic
   `gpm export runtime`, stable/dense mappings, fixed-width core tables, typed

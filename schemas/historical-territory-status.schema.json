@@ -59,7 +59,7 @@
         "properties": {
           "subject_id": {"type": "string", "minLength": 1},
           "relationship": {
-            "enum": ["sovereign", "owner", "controller", "protector", "co-administrator", "occupier", "mandate-authority", "lessee", "claimant"]
+            "enum": ["sovereign", "owner", "controller", "core", "claim", "dispute", "protector", "co-administrator", "occupier", "mandate-authority", "lessee", "claimant"]
           },
           "actor_political_unit_id": {"type": "string", "minLength": 1},
           "valid_from": {"type": "string", "format": "date"},

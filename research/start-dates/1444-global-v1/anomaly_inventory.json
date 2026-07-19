@@ -1,0 +1,130 @@
+{
+  "anomalies": [
+    {
+      "anomaly_id": "pending-microstate",
+      "resolution": "pending_evidence",
+      "source_ids": [
+        "pending"
+      ],
+      "subject_ids": [
+        "pending"
+      ],
+      "type": "microstate"
+    },
+    {
+      "anomaly_id": "pending-detached-territory",
+      "resolution": "pending_evidence",
+      "source_ids": [
+        "pending"
+      ],
+      "subject_ids": [
+        "pending"
+      ],
+      "type": "detached-territory"
+    },
+    {
+      "anomaly_id": "pending-enclave-exclave",
+      "resolution": "pending_evidence",
+      "source_ids": [
+        "pending"
+      ],
+      "subject_ids": [
+        "pending"
+      ],
+      "type": "enclave-exclave"
+    },
+    {
+      "anomaly_id": "pending-free-protected-city",
+      "resolution": "pending_evidence",
+      "source_ids": [
+        "pending"
+      ],
+      "subject_ids": [
+        "pending"
+      ],
+      "type": "free-protected-city"
+    },
+    {
+      "anomaly_id": "pending-composite-realm",
+      "resolution": "pending_evidence",
+      "source_ids": [
+        "pending"
+      ],
+      "subject_ids": [
+        "pending"
+      ],
+      "type": "composite-realm"
+    },
+    {
+      "anomaly_id": "pending-dependency",
+      "resolution": "pending_evidence",
+      "source_ids": [
+        "pending"
+      ],
+      "subject_ids": [
+        "pending"
+      ],
+      "type": "dependency"
+    },
+    {
+      "anomaly_id": "pending-condominium",
+      "resolution": "pending_evidence",
+      "source_ids": [
+        "pending"
+      ],
+      "subject_ids": [
+        "pending"
+      ],
+      "type": "condominium"
+    },
+    {
+      "anomaly_id": "pending-concession",
+      "resolution": "pending_evidence",
+      "source_ids": [
+        "pending"
+      ],
+      "subject_ids": [
+        "pending"
+      ],
+      "type": "concession"
+    },
+    {
+      "anomaly_id": "pending-claim",
+      "resolution": "pending_evidence",
+      "source_ids": [
+        "pending"
+      ],
+      "subject_ids": [
+        "pending"
+      ],
+      "type": "claim"
+    },
+    {
+      "anomaly_id": "pending-disputed-area",
+      "resolution": "pending_evidence",
+      "source_ids": [
+        "pending"
+      ],
+      "subject_ids": [
+        "pending"
+      ],
+      "type": "disputed-area"
+    },
+    {
+      "anomaly_id": "pending-non-state-territory",
+      "resolution": "pending_evidence",
+      "source_ids": [
+        "pending"
+      ],
+      "subject_ids": [
+        "pending"
+      ],
+      "type": "non-state-territory"
+    }
+  ],
+  "artifact_version": "1.0.0",
+  "document_type": "historical_anomaly_inventory",
+  "pass_id": "official-1444-global-v1",
+  "schema_version": "0.3.0",
+  "start_date": "1444-11-11"
+}

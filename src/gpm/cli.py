@@ -65,6 +65,7 @@ from .paths import EXPORT_DIR, INTERMEDIATE_DATA_DIR, PROCESSED_DATA_DIR, RAW_DA
 from .qa.scenario import ScenarioPoliticsQAError, run_scenario_politics_qa
 from .qa.fabric import FabricQAError, run_fabric_qa, run_paintability_qa
 from .qa.start_date import StartDateQAError, run_start_date_qa
+from .qa.certification import EraCertificationError, certify_era
 from .qa.render import StartDateRenderError, render_start_date_pass
 from .qa.topology import TopologyQAError, run_topology_qa
 from .release import (
@@ -805,6 +806,15 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     start_date_qa.add_argument("--format", choices=["text", "json"], default="text")
     start_date_qa.set_defaults(handler=_qa_start_date)
+    certify = qa_commands.add_parser(
+        "certify-era",
+        help="Certify a schema 0.3.0 worldwide research pass and its M25B runtime pack.",
+    )
+    certify.add_argument("--pass-dir", type=Path, required=True)
+    certify.add_argument("--runtime-dir", type=Path, required=True)
+    certify.add_argument("--output", type=Path, required=True)
+    certify.add_argument("--format", choices=["text", "json"], default="text")
+    certify.set_defaults(handler=_qa_certify_era)
     scenario_qa = qa_commands.add_parser(
         "scenario",
         help=(
@@ -1662,6 +1672,11 @@ def _build_parser() -> argparse.ArgumentParser:
         help="Skip the landing-site validation step after the build.",
     )
     demo_build.add_argument(
+        "--certification-input",
+        type=Path,
+        help="Accepted M25C manifest required to publish official-1444 from canonical/runtime artifacts.",
+    )
+    demo_build.add_argument(
         "--format",
         choices=["text", "json"],
         default="text",
@@ -2086,6 +2101,7 @@ def _demo_build(args: argparse.Namespace) -> int:
             tile_max_zoom=args.tile_max_zoom,
             prefer_tippecanoe=not args.no_tippecanoe,
             validate=not args.no_validate,
+            certification_input=args.certification_input,
         )
     except (ConfigError, DemoBuildError, ReleaseError) as error:
         _print_error(error)
@@ -2778,6 +2794,21 @@ def _qa_start_date(args: argparse.Namespace) -> int:
         print(f"Findings: {result.error_count} errors, {result.warning_count} warnings")
         print(f"Report: {result.report_output}")
     return 0 if result.passed else 1
+
+
+def _qa_certify_era(args: argparse.Namespace) -> int:
+    try:
+        result = certify_era(pass_dir=args.pass_dir, runtime_dir=args.runtime_dir, output=args.output)
+    except EraCertificationError as error:
+        _print_error(error)
+        return 1
+    if args.format == "json":
+        print(json.dumps(result.to_dict(), indent=2, sort_keys=True))
+    else:
+        print(f"gpm qa certify-era: {result.status}.")
+        print(f"Pass: {result.pass_id}; certification: {result.output}")
+        print(f"Runtime: {result.province_count} provinces, {result.component_count} components")
+    return 0
 
 
 def _qa_scenario(args: argparse.Namespace) -> int:

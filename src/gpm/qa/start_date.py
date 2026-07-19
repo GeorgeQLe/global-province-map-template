@@ -20,6 +20,7 @@ from shapely.strtree import STRtree
 from gpm.schemas import (
     SchemaValidationError,
     validate_historical_boundary_registry,
+    validate_historical_territory_status,
     validate_location_assignments,
     validate_polity_gazetteer,
     validate_spatial_golden_borders,
@@ -61,6 +62,9 @@ _ARTIFACT_VALIDATORS: dict[str, Callable[[dict[str, Any]], None]] = {
     "golden_borders": validate_spatial_golden_borders,
     "coverage_matrix": validate_start_date_coverage,
     "changelog": validate_start_date_changelog,
+    "canonical_historical_status": validate_historical_territory_status,
+    "world_coverage_mask": lambda document: _validate_world_coverage_mask(document),
+    "anomaly_inventory": lambda document: _validate_anomaly_inventory(document),
 }
 _DOSSIER_SECTIONS = (
     "scope", "research questions", "citations", "transformations and conflicts",
@@ -121,12 +125,15 @@ def run_start_date_qa(
             _finding(findings, "DUPLICATE_ARTIFACT_PATH", "error", "Multiple artifact roles use the same file.", sorted(owners))
 
     assertion_results: list[dict[str, Any]] = []
-    if len(documents) == len(_ARTIFACT_VALIDATORS) and geometry is not None:
-        if manifest["schema_version"] == "0.2.0":
+    expected_documents = set(manifest["artifacts"]).intersection(_ARTIFACT_VALIDATORS)
+    if set(documents) == expected_documents and geometry is not None:
+        if manifest["schema_version"] in {"0.2.0", "0.3.0"}:
             _check_derived_source_artifacts(root, documents["source_manifest"], findings)
             _check_release_sidecars(root, manifest, documents["location_assignments"], geometry, findings)
         _check_fabric_sidecars(root, manifest, documents["location_assignments"], geometry, findings)
         assertion_results = _check_cross_artifact_contract(manifest, documents, geometry, findings)
+        if manifest["schema_version"] == "0.3.0":
+            _check_global_contract(root, manifest, documents, geometry, findings)
 
     findings.sort(key=lambda item: (item["severity"] != "error", item["code"], item["affected_ids"]))
     assertion_results.sort(key=lambda item: item["assertion_id"])
@@ -136,7 +143,7 @@ def run_start_date_qa(
     out_path = Path(report_output) if report_output else root / "start_date_qa.json"
     report = {
         "schema_version": manifest["schema_version"], "report_type": "start_date_research_qa",
-        "milestone": "M25" if manifest["schema_version"] == "0.2.0" else "M24",
+        "milestone": "M25C" if manifest["schema_version"] == "0.3.0" else ("M25" if manifest["schema_version"] in {"0.2.0", "0.3.0"} else "M24"),
         "pass_id": manifest["pass_id"], "start_date": manifest["start_date"], "status": status,
         "inputs": {"pass_dir": str(root), "manifest": str(manifest_path)},
         "summary": {"artifact_count": len(artifact_paths), "error_count": errors, "warning_count": warnings},
@@ -186,9 +193,9 @@ def _check_cross_artifact_contract(
             unreviewed = [s for s in props["source_ids"] if s in source_records and source_records[s]["review_status"] != "reviewed"]
             if unreviewed:
                 _finding(findings, "UNREVIEWED_HARD_CONSTRAINT", "error", f"Hard constraint {owner} uses unreviewed sources.", [owner, *unreviewed])
-            if manifest["schema_version"] == "0.2.0" and owner not in negative_reference_ids:
+            if manifest["schema_version"] in {"0.2.0", "0.3.0"} and owner not in negative_reference_ids:
                 _check_v2_hard_boundary(findings, owner, props, source_records, manifest["start_date"])
-    if manifest["schema_version"] == "0.2.0":
+    if manifest["schema_version"] in {"0.2.0", "0.3.0"}:
         negative_geometries = [
             shape(boundary_records[feature_id]["geometry"])
             for feature_id in negative_reference_ids if feature_id in boundary_records
@@ -227,7 +234,7 @@ def _check_cross_artifact_contract(
         province_to_polities.setdefault(row["province_id"], set()).update(row["polity_ids"])
         _unknown_refs(findings, "UNKNOWN_ASSIGNMENT_POLITY", row["polity_ids"], polities, row["assignment_id"])
         _unknown_refs(findings, "UNKNOWN_ASSIGNMENT_SOURCE", row["source_ids"], sources, row["assignment_id"])
-        if manifest["schema_version"] == "0.2.0":
+        if manifest["schema_version"] in {"0.2.0", "0.3.0"}:
             typed = [row["sovereign_polity_id"], row["owner_polity_id"], row["controller_polity_id"], *row["core_polity_ids"], *row["claim_polity_ids"], *row["dispute_polity_ids"]]
             _unknown_refs(findings, "UNKNOWN_TYPED_POLITICS_POLITY", typed, polities, row["assignment_id"])
             if row["region_id"] in set(manifest["scope"]["priority_regions"]) and not row.get("hierarchy"):
@@ -249,6 +256,11 @@ def _check_cross_artifact_contract(
     assertions = documents["golden_borders"]["assertions"]
     capital_locations = {location for polity in polity_records.values() for location in polity["capital_location_ids"]}
     for assertion in assertions:
+        if manifest["schema_version"] == "0.3.0":
+            _unknown_refs(
+                findings, "UNKNOWN_TOLERANCE_SOURCE",
+                assertion["tolerance_policy"]["source_ids"], sources, assertion["assertion_id"],
+            )
         if assertion["expectation"] == "positive":
             soft = [
                 boundary_id for boundary_id in assertion["boundary_feature_ids"]
@@ -256,7 +268,7 @@ def _check_cross_artifact_contract(
             ]
             if soft:
                 _finding(findings, "POSITIVE_ASSERTION_USES_SOFT_EVIDENCE", "error", f"{assertion['assertion_id']} relies on non-constraint evidence.", [assertion["assertion_id"], *soft])
-            if manifest["schema_version"] == "0.2.0" and assertion["spatial_relation"] == "border_matches_boundary_hausdorff_km_lte":
+            if manifest["schema_version"] in {"0.2.0", "0.3.0"} and assertion["spatial_relation"] == "border_matches_boundary_hausdorff_km_lte":
                 minimum = max(boundary_records[boundary_id]["properties"].get("error_budget_km", 0.0) for boundary_id in assertion["boundary_feature_ids"])
                 if assertion["tolerance"] < minimum:
                     _finding(findings, "GOLDEN_TOLERANCE_BELOW_ERROR_BUDGET", "error", f"{assertion['assertion_id']} tolerance is below its measured error budget.", [assertion["assertion_id"]])
@@ -380,6 +392,12 @@ def _check_fabric_sidecars(
         locations[location_id] = location_geometry
     assigned_ids = {location for row in assignments["assignments"] for location in row["location_ids"]}
     _unknown_refs(findings, "UNKNOWN_FABRIC_LOCATION", sorted(assigned_ids), set(locations), "assignments")
+    if manifest["schema_version"] == "0.3.0" and assigned_ids != set(locations):
+        _finding(
+            findings, "INCOMPLETE_WORLD_LAND_MASK", "error",
+            "Worldwide assignments must include every playable fabric location exactly once.",
+            sorted(set(locations) - assigned_ids),
+        )
 
     lineage_by_request = {
         event.get("request_id"): event for event in lineage.get("events", [])
@@ -478,9 +496,108 @@ def _execute_assertions(golden: dict[str, Any], build: dict[str, BaseGeometry], 
     return results
 
 
+def _validate_world_coverage_mask(document: dict[str, Any]) -> None:
+    required = {"schema_version", "document_type", "artifact_version", "pass_id", "start_date", "fabric_revision", "type", "features"}
+    if set(document) != required or document.get("schema_version") != "0.3.0" or document.get("document_type") != "world_coverage_mask" or document.get("type") != "FeatureCollection":
+        raise SchemaValidationError("world coverage mask has invalid or unexpected top-level fields")
+    seen: set[str] = set()
+    for index, feature in enumerate(document["features"]):
+        props = feature.get("properties") if isinstance(feature, dict) else None
+        if feature.get("type") != "Feature" or not isinstance(props, dict):
+            raise SchemaValidationError(f"world coverage mask feature {index} is invalid")
+        location_id, region_id = props.get("location_id"), props.get("region_id")
+        if not isinstance(location_id, str) or not location_id or location_id in seen:
+            raise SchemaValidationError("world coverage mask location IDs must be unique and non-empty")
+        if not isinstance(region_id, str) or not region_id:
+            raise SchemaValidationError(f"world coverage mask {location_id} lacks region_id")
+        geometry = shape(feature.get("geometry"))
+        if geometry.is_empty or not geometry.is_valid or geometry.geom_type not in {"Polygon", "MultiPolygon"}:
+            raise SchemaValidationError(f"world coverage mask {location_id} has invalid geometry")
+        seen.add(location_id)
+    if not seen:
+        raise SchemaValidationError("world coverage mask must contain playable land")
+
+
+def _validate_anomaly_inventory(document: dict[str, Any]) -> None:
+    required = {"schema_version", "document_type", "artifact_version", "pass_id", "start_date", "anomalies"}
+    if set(document) != required or document.get("schema_version") != "0.3.0" or document.get("document_type") != "historical_anomaly_inventory":
+        raise SchemaValidationError("anomaly inventory has invalid or unexpected top-level fields")
+    allowed = {"microstate", "detached-territory", "enclave-exclave", "free-protected-city", "composite-realm", "dependency", "condominium", "concession", "claim", "disputed-area", "non-state-territory"}
+    seen: set[str] = set()
+    if not isinstance(document["anomalies"], list):
+        raise SchemaValidationError("anomaly inventory.anomalies must be an array")
+    for index, item in enumerate(document["anomalies"]):
+        path = f"anomaly inventory.anomalies[{index}]"
+        _require = ("anomaly_id", "type", "subject_ids", "source_ids", "resolution")
+        if not isinstance(item, dict) or any(key not in item for key in _require):
+            raise SchemaValidationError(f"{path} is incomplete")
+        anomaly_id = item["anomaly_id"]
+        if not isinstance(anomaly_id, str) or not anomaly_id or anomaly_id in seen:
+            raise SchemaValidationError(f"{path}.anomaly_id must be unique and non-empty")
+        if item["type"] not in allowed or item["resolution"] != "resolved":
+            raise SchemaValidationError(f"{path} has unsupported type or unresolved status")
+        for field in ("subject_ids", "source_ids"):
+            if not isinstance(item[field], list) or not item[field] or not all(isinstance(value, str) and value for value in item[field]):
+                raise SchemaValidationError(f"{path}.{field} must be non-empty IDs")
+        seen.add(anomaly_id)
+
+
+def _check_global_contract(
+    root: Path, manifest: dict[str, Any], documents: dict[str, dict[str, Any]],
+    geometry: dict[str, Any], findings: list[dict[str, Any]],
+) -> None:
+    scope = manifest["scope"]
+    partition = set(scope["partition"]["subregions"])
+    assignments = documents["location_assignments"]
+    mask = documents["world_coverage_mask"]
+    canonical = documents["canonical_historical_status"]
+    mask_record = manifest["artifacts"]["world_coverage_mask"]
+    if scope["world_coverage_mask_sha256"] != mask_record["sha256"]:
+        _finding(findings, "WORLD_MASK_HASH_MISMATCH", "error", "Scope and artifact table pin different world masks.", [])
+    if mask["fabric_revision"] != manifest["fabric_revision"]:
+        _finding(findings, "WORLD_MASK_FABRIC_MISMATCH", "error", "World mask does not use the pinned fabric revision.", [])
+    mask_locations = {feature["properties"]["location_id"] for feature in mask["features"]}
+    mask_regions = {feature["properties"]["region_id"] for feature in mask["features"]}
+    assigned_locations = {location for row in assignments["assignments"] for location in row["location_ids"]}
+    assignment_regions = {row["region_id"] for row in assignments["assignments"]}
+    if mask_locations != assigned_locations:
+        missing, extra = sorted(mask_locations - assigned_locations), sorted(assigned_locations - mask_locations)
+        _finding(findings, "INCOMPLETE_WORLD_ASSIGNMENT", "error", "Assignments must cover the world mask exactly once.", [*missing, *extra])
+    if mask_regions != partition or assignment_regions != partition:
+        _finding(findings, "INVALID_WORLD_PARTITION", "error", "Mask and assignments must use every and only pinned certification region.", sorted((mask_regions | assignment_regions) ^ partition))
+    coverage = documents["coverage_matrix"]
+    rows = {(row["region_id"], row["layer"]): row for row in coverage["coverage"]}
+    for region in sorted(partition):
+        for layer in ("geometry", "politics", "hierarchy", "gazetteer_relationships"):
+            row = rows.get((region, layer))
+            if row is None or row["grade"] != "A" or row["exclusions"] or row["known_gaps"]:
+                _finding(findings, "GLOBAL_COVERAGE_NOT_A", "error", f"{region}/{layer} must be gap-free grade A.", [region, layer])
+    if coverage["exclusions"] or coverage["known_gaps"]:
+        _finding(findings, "GLOBAL_COVERAGE_GAPS", "error", "Worldwide coverage may not declare exclusions or known gaps.", [])
+    if canonical["start_date"] != manifest["start_date"]:
+        _finding(findings, "CANONICAL_DATE_MISMATCH", "error", "Canonical status uses a different start date.", [])
+    build_geometry = {feature["properties"]["feature_id"]: shape(feature["geometry"]) for feature in geometry["features"] if feature["properties"]["feature_type"] == "province"}
+    build_provinces = set(build_geometry)
+    canonical_provinces = {row["province_id"] for row in canonical["provinces"]}
+    if build_provinces != canonical_provinces:
+        _finding(findings, "CANONICAL_PROVINCE_MISMATCH", "error", "Canonical and research build province IDs differ.", sorted(build_provinces ^ canonical_provinces))
+    components = {row["territory_component_id"]: shape(row["geometry"]) for row in canonical["components"]}
+    for province in canonical["provinces"]:
+        province_id = province["province_id"]
+        if province_id in build_geometry:
+            canonical_geometry = unary_union([components[item] for item in province["territory_component_ids"]])
+            if not canonical_geometry.equals(build_geometry[province_id]):
+                _finding(findings, "CANONICAL_GEOMETRY_MISMATCH", "error", "Canonical component union differs from research geometry.", [province_id])
+    statuses = {(row["subject_id"], row["relationship"]) for row in canonical["statuses"]}
+    for component_id in components:
+        missing = [relation for relation in ("sovereign", "owner", "controller") if (component_id, relation) not in statuses]
+        if missing:
+            _finding(findings, "MISSING_TYPED_COMPONENT_STATUS", "error", "Every component needs sovereign, owner, and controller status.", [component_id, *missing])
+
+
 def _validate_full_build(document: dict[str, Any]) -> None:
     required = {"schema_version", "document_type", "artifact_version", "pass_id", "start_date", "geometry_revision", "type", "features"}
-    if not isinstance(document, dict) or set(document) != required or document.get("schema_version") not in {"0.1.0", "0.2.0"} or document.get("document_type") != "start_date_full_build_geometry" or document.get("type") != "FeatureCollection":
+    if not isinstance(document, dict) or set(document) != required or document.get("schema_version") not in {"0.1.0", "0.2.0", "0.3.0"} or document.get("document_type") != "start_date_full_build_geometry" or document.get("type") != "FeatureCollection":
         raise SchemaValidationError("full build has invalid or unexpected top-level fields")
     if not isinstance(document["features"], list) or not document["features"]:
         raise SchemaValidationError("full build features must be non-empty")
@@ -623,10 +740,23 @@ def _check_release_sidecars(
     review = _load_json(review_path, "Review manifest")
     if review.get("reviewer") != review_record["reviewer"] or review.get("generator") != review_record["generator"] or review.get("status") != "accepted":
         _finding(findings, "INVALID_INDEPENDENT_REVIEW", "error", "Review signature/status does not match the pass manifest.", [])
-    rendered_regions = {str(render.get("region_id", "")) for render in review.get("renders", [])}
+    rendered_regions = {
+        str(render.get("region_id", "")) for render in review.get("renders", [])
+        if render.get("sheet_type", "region") == "region"
+    }
     expected_regions = set(manifest["scope"]["priority_regions"])
     if rendered_regions != expected_regions:
         _finding(findings, "INCOMPLETE_REVIEW_COVERAGE", "error", "Review renders do not exactly cover the priority regions.", sorted(expected_regions - rendered_regions))
+    if manifest["schema_version"] == "0.3.0":
+        inventory_path = _contained_path(root, manifest["artifacts"]["anomaly_inventory"]["path"], "anomaly_inventory", findings)
+        inventory = _load_json(inventory_path, "Anomaly inventory") if inventory_path and inventory_path.is_file() else {"anomalies": []}
+        expected_anomalies = {f"anomaly:{item['type']}" for item in inventory["anomalies"]}
+        rendered_anomalies = {
+            str(render.get("region_id", "")) for render in review.get("renders", [])
+            if render.get("sheet_type") == "anomaly"
+        }
+        if rendered_anomalies != expected_anomalies:
+            _finding(findings, "INCOMPLETE_ANOMALY_REVIEW", "error", "Review renders do not cover every anomaly class.", sorted(expected_anomalies - rendered_anomalies))
     review_parent = Path(review_record["manifest_path"]).parent
     for render in review.get("renders", []):
         relative = review_parent / str(render.get("path", ""))

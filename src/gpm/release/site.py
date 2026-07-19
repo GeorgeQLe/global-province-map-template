@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import os
 import re
 import shutil
@@ -189,11 +190,22 @@ def validate_landing_site(landing_dir: Path | None = None) -> LandingValidationR
                     and bool(artifact)
                     and (manifest_path.parent / artifact).is_file()
                 )
+                artifact_valid = False
+                if artifact_present:
+                    try:
+                        from gpm.qa.certification import validate_certification_bundle
+                        validate_certification_bundle(manifest_path.parent / artifact)
+                        artifact_valid = (
+                            certification.get("sha256")
+                            == hashlib.sha256((manifest_path.parent / artifact).read_bytes()).hexdigest()
+                        )
+                    except Exception:  # noqa: BLE001 - public validation is fail closed
+                        artifact_valid = False
                 if not (
                     certification.get("scope") == "worldwide"
                     and certification.get("research_status") == "accepted"
                     and certification.get("runtime_status") == "accepted"
-                    and artifact_present
+                    and artifact_valid
                 ):
                     missing_demo_snippets.append(
                         f"uncertified public era: {scenario.get('id') or 'unknown'}"

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "https://example.invalid/global-province-map/start-date-coverage.schema.json", "title": "M24 Start-Date Coverage Matrix", "type": "object",
   "required": ["schema_version", "document_type", "artifact_version", "pass_id", "start_date", "coverage", "exclusions", "known_gaps"],
-  "properties": {"schema_version": {"enum": ["0.1.0", "0.2.0"]}, "document_type": {"const": "start_date_coverage"}, "artifact_version": {"type": "string", "minLength": 1}, "pass_id": {"type": "string", "minLength": 1}, "start_date": {"type": "string", "format": "date"},
+  "properties": {"schema_version": {"enum": ["0.1.0", "0.2.0", "0.3.0"]}, "document_type": {"const": "start_date_coverage"}, "artifact_version": {"type": "string", "minLength": 1}, "pass_id": {"type": "string", "minLength": 1}, "start_date": {"type": "string", "format": "date"},
     "coverage": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["region_id", "layer", "grade", "source_ids", "assertion_ids", "evidence_summary", "exclusions", "known_gaps"], "properties": {"region_id": {"type": "string", "minLength": 1}, "layer": {"enum": ["geometry", "politics", "hierarchy", "gazetteer_relationships"]}, "grade": {"enum": ["A", "B", "C", "U"]}, "source_ids": {"$ref": "#/$defs/strings"}, "assertion_ids": {"$ref": "#/$defs/strings"}, "evidence_summary": {"type": "string"}, "exclusions": {"$ref": "#/$defs/strings"}, "known_gaps": {"$ref": "#/$defs/strings"}}, "additionalProperties": false}}, "exclusions": {"$ref": "#/$defs/strings"}, "known_gaps": {"$ref": "#/$defs/strings"}
   }, "$defs": {"strings": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}}}, "additionalProperties": false
 }

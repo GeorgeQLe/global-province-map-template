@@ -12,6 +12,21 @@ class SchemaValidationError(ValueError):
     """Raised when a document does not satisfy a project schema check."""
 
 
+WORLDWIDE_M49_SUBREGIONS = frozenset({
+    "011", "014", "015", "017", "018", "005", "013", "021", "029",
+    "030", "034", "035", "143", "145", "039", "151", "154", "155",
+    "053", "054", "057", "061",
+})
+
+
+def validate_global_certification_manifest(document: dict[str, Any]) -> None:
+    """Validate the public M25C worldwide-certification envelope."""
+    schema = load_schema("global-certification-manifest")
+    _require_object(document, "global certification")
+    _validate_json_schema(document, schema, "global certification")
+    _require_keys(document, schema["required"], "global certification")
+
+
 def validate_runtime_pack_manifest(manifest: dict[str, Any]) -> None:
     """Validate M25B manifest identity, dense counts, and hashed file inventory."""
     _require_object(manifest, "runtime manifest")
@@ -587,7 +602,7 @@ def validate_start_date_pass_manifest(document: dict[str, Any]) -> None:
         _nonempty_string(record["version"], f"manifest.artifacts.{kind}.version")
         if not isinstance(record["sha256"], str) or not re.fullmatch(r"[0-9a-fA-F]{64}", record["sha256"]):
             raise SchemaValidationError(f"manifest.artifacts.{kind}.sha256 must be a 64-character hexadecimal digest")
-    if document["schema_version"] == "0.2.0":
+    if document["schema_version"] in {"0.2.0", "0.3.0"}:
         _require_keys(document, ["review"], "manifest")
         review = document["review"]
         _require_object(review, "manifest.review")
@@ -600,6 +615,25 @@ def validate_start_date_pass_manifest(document: dict[str, Any]) -> None:
             raise SchemaValidationError("manifest.review.status must be accepted")
         if not isinstance(review["sha256"], str) or not re.fullmatch(r"[0-9a-fA-F]{64}", review["sha256"]):
             raise SchemaValidationError("manifest.review.sha256 must be a SHA-256 digest")
+    if document["schema_version"] == "0.3.0":
+        _require_keys(scope, ["kind", "partition", "world_coverage_mask_sha256"], "manifest.scope")
+        if scope["kind"] != "worldwide":
+            raise SchemaValidationError("manifest.scope.kind must be worldwide for schema 0.3.0")
+        partition = scope["partition"]
+        _require_object(partition, "manifest.scope.partition")
+        _require_keys(partition, ["standard", "revision", "antarctica", "subregions"], "manifest.scope.partition")
+        if partition["standard"] != "UN M49" or partition["antarctica"] != "excluded-not-in-playable-fabric":
+            raise SchemaValidationError("manifest.scope.partition must use non-Antarctic UN M49")
+        subregions = _string_list(partition["subregions"], "manifest.scope.partition.subregions", nonempty=True)
+        if set(subregions) != WORLDWIDE_M49_SUBREGIONS:
+            raise SchemaValidationError("manifest.scope.partition.subregions must be the pinned 22-part non-Antarctic M49 partition")
+        if set(subregions) != set(scope["regions"]):
+            raise SchemaValidationError("manifest.scope.regions must exactly match the worldwide partition")
+        if set(scope["priority_regions"]) != set(scope["regions"]):
+            raise SchemaValidationError("every worldwide certification region must be a priority region")
+        if not re.fullmatch(r"[0-9a-f]{64}", str(scope["world_coverage_mask_sha256"])):
+            raise SchemaValidationError("manifest.scope.world_coverage_mask_sha256 must be lowercase SHA-256")
+        _require_keys(artifacts, ["canonical_historical_status", "world_coverage_mask", "anomaly_inventory"], "manifest.artifacts")
 
 
 def validate_start_date_source_manifest(document: dict[str, Any]) -> None:
@@ -625,7 +659,7 @@ def validate_start_date_source_manifest(document: dict[str, Any]) -> None:
         _string_list(source["transformations"], f"{path}.transformations")
         if source["review_status"] not in {"planned", "reviewed", "rejected"}:
             raise SchemaValidationError(f"{path}.review_status is unsupported")
-        if document["schema_version"] == "0.2.0":
+        if document["schema_version"] in {"0.2.0", "0.3.0"}:
             _require_keys(source, ["source_type", "valid_from", "valid_to", "independence_group", "derived_artifacts"], path)
             if source["source_type"] not in {"academic", "primary", "corroborating", "soft_corroboration", "negative_control"}:
                 raise SchemaValidationError(f"{path}.source_type is unsupported")
@@ -688,7 +722,7 @@ def validate_historical_boundary_registry(document: dict[str, Any]) -> None:
             _nonempty_string(sides[side], f"{path}.properties.side_polity_ids.{side}")
         for key in ("source_ids", "license_lineage", "start_date_programs"):
             _string_list(props[key], f"{path}.properties.{key}", nonempty=True)
-        if document["schema_version"] == "0.2.0" and props["classification"] == "hard_constraint":
+        if document["schema_version"] in {"0.2.0", "0.3.0"} and props["classification"] == "hard_constraint":
             _require_keys(props, ["derived_geometry_artifact_id", "georeferencing", "error_budget_km"], f"{path}.properties")
             _nonempty_string(props["derived_geometry_artifact_id"], f"{path}.properties.derived_geometry_artifact_id")
             if not isinstance(props["error_budget_km"], (int, float)) or props["error_budget_km"] < 0:
@@ -887,7 +921,7 @@ def validate_location_assignments(document: dict[str, Any]) -> None:
         _nonempty_string(record["path"], f"assignments.fabric_sidecars.{role}.path")
         if not isinstance(record["sha256"], str) or not re.fullmatch(r"[0-9a-fA-F]{64}", record["sha256"]):
             raise SchemaValidationError(f"assignments.fabric_sidecars.{role}.sha256 must be a SHA-256 digest")
-    if document["schema_version"] == "0.2.0":
+    if document["schema_version"] in {"0.2.0", "0.3.0"}:
         _require_keys(document, ["constraint_sha256", "release_sidecars"], "assignments")
         if not isinstance(document["constraint_sha256"], str) or not re.fullmatch(r"[0-9a-fA-F]{64}", document["constraint_sha256"]):
             raise SchemaValidationError("assignments.constraint_sha256 must be a SHA-256 digest")
@@ -922,7 +956,7 @@ def validate_location_assignments(document: dict[str, Any]) -> None:
         _string_list(row["source_ids"], f"{path}.source_ids", nonempty=True)
         if not isinstance(row["uncertainty"], (int, float)) or not 0 <= row["uncertainty"] <= 1:
             raise SchemaValidationError(f"{path}.uncertainty must be between 0 and 1")
-        if document["schema_version"] == "0.2.0":
+        if document["schema_version"] in {"0.2.0", "0.3.0"}:
             _require_keys(row, ["region_id", "sovereign_polity_id", "owner_polity_id", "controller_polity_id", "core_polity_ids", "claim_polity_ids", "dispute_polity_ids", "hierarchy"], path)
             for key in ("region_id", "sovereign_polity_id", "owner_polity_id", "controller_polity_id"):
                 _nonempty_string(row[key], f"{path}.{key}")
@@ -990,6 +1024,13 @@ def validate_spatial_golden_borders(document: dict[str, Any]) -> None:
             raise SchemaValidationError(f"{path}.tolerance must be 1 for capital containment")
         if relation == "forbidden_outline_overlap_ratio_lte" and assertion["tolerance"] > 1:
             raise SchemaValidationError(f"{path}.tolerance must be at most 1 for a ratio")
+        if document["schema_version"] == "0.3.0":
+            policy = assertion.get("tolerance_policy")
+            _require_object(policy, f"{path}.tolerance_policy")
+            _require_keys(policy, ["fixed_before_measurement", "source_derived_tolerance", "source_ids"], f"{path}.tolerance_policy")
+            if policy["fixed_before_measurement"] is not True or policy["source_derived_tolerance"] != assertion["tolerance"]:
+                raise SchemaValidationError(f"{path}.tolerance was not fixed from sources before measurement")
+            _string_list(policy["source_ids"], f"{path}.tolerance_policy.source_ids", nonempty=True)
 
 
 def validate_start_date_coverage(document: dict[str, Any]) -> None:
@@ -1041,7 +1082,7 @@ def validate_start_date_qa_report(report: dict[str, Any]) -> None:
     _require_object(report, "report")
     _validate_json_schema(report, schema, "report")
     _require_keys(report, schema["required"], "report")
-    if report["schema_version"] not in {"0.1.0", "0.2.0"} or report["report_type"] != "start_date_research_qa" or report["milestone"] not in {"M24", "M25"}:
+    if report["schema_version"] not in {"0.1.0", "0.2.0", "0.3.0"} or report["report_type"] != "start_date_research_qa" or report["milestone"] not in {"M24", "M25", "M25C"}:
         raise SchemaValidationError("report has invalid M24 QA identity")
     if report["status"] not in {"pass", "fail"}:
         raise SchemaValidationError("report.status must be pass or fail")
@@ -1062,7 +1103,7 @@ def _m24_header(document: Any, path: str, document_type: str, schema: dict[str, 
     _require_object(document, path)
     _validate_json_schema(document, schema, path)
     _require_keys(document, schema["required"], path)
-    if document["schema_version"] not in {"0.1.0", "0.2.0"} or document["document_type"] != document_type:
+    if document["schema_version"] not in {"0.1.0", "0.2.0", "0.3.0"} or document["document_type"] != document_type:
         raise SchemaValidationError(f"{path} has invalid M24 document type or schema version")
     _nonempty_string(document["pass_id"], f"{path}.pass_id")
     _nonempty_string(document["artifact_version"], f"{path}.artifact_version")

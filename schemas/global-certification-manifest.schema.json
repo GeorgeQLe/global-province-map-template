@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/gpm/global-certification-manifest.schema.json",
+  "title": "M25C worldwide era certification",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "certification_type", "status", "certification_id", "pass_id", "start_date", "scope", "public_scenario_id", "compatibility_revision", "artifacts", "gates"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "certification_type": {"const": "gpm-global-era-certification"},
+    "status": {"const": "accepted"},
+    "certification_id": {"type": "string", "minLength": 1},
+    "pass_id": {"type": "string", "minLength": 1},
+    "start_date": {"type": "string", "format": "date"},
+    "scope": {"const": "worldwide"},
+    "public_scenario_id": {"const": "official-1444"},
+    "compatibility_revision": {"type": "string", "minLength": 1},
+    "artifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["research_pass", "research_qa", "canonical_historical_status", "independent_review", "runtime_manifest", "runtime_benchmark"],
+      "properties": {
+        "research_pass": {"$ref": "#/$defs/artifact"},
+        "research_qa": {"$ref": "#/$defs/artifact"},
+        "canonical_historical_status": {"$ref": "#/$defs/artifact"},
+        "independent_review": {"$ref": "#/$defs/artifact"},
+        "runtime_manifest": {"$ref": "#/$defs/artifact"},
+        "runtime_benchmark": {"$ref": "#/$defs/artifact"}
+      }
+    },
+    "gates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["research", "world_partition", "coverage", "canonical_runtime_parity", "runtime_determinism", "runtime_performance", "independent_review"],
+      "properties": {
+        "research": {"const": "pass"},
+        "world_partition": {"const": "pass"},
+        "coverage": {"const": "pass"},
+        "canonical_runtime_parity": {"const": "pass"},
+        "runtime_determinism": {"const": "pass"},
+        "runtime_performance": {"const": "pass"},
+        "independent_review": {"const": "pass"}
+      }
+    }
+  },
+  "$defs": {
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  }
+}

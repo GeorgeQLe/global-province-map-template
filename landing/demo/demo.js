@@ -958,6 +958,22 @@
     });
   }
 
+  function renderScenarioTabs() {
+    const switcher = document.querySelector(".era-switch");
+    const scenarios = (state.manifest?.scenarios || []).filter((item) => item.status === "live");
+    if (!switcher || !scenarios.length) return;
+    if (!scenarios.some((item) => item.id === state.scenarioId)) {
+      state.scenarioId = scenarios[0].id;
+    }
+    switcher.innerHTML = scenarios
+      .map((item) => {
+        const active = item.id === state.scenarioId;
+        const label = item.id === "modern-baseline" ? "Modern" : (item.start_date || item.label || item.id).slice(0, 4);
+        return `<button type="button" class="era-btn${active ? " is-active" : ""}" data-era="${escapeHtml(item.id)}" role="tab" aria-selected="${active}">${escapeHtml(label)}</button>`;
+      })
+      .join("");
+  }
+
   function indexHierarchyNames() {
     ["areas", "regions", "superregions"].forEach((key) => {
       (state.hierarchy[key]?.features || []).forEach((feature) => {
@@ -970,7 +986,6 @@
   }
 
   async function boot() {
-    bindControls();
     try {
       // Revalidate the release contract on every page load so a promoted M22
       // deployment cannot be paired with a stale pre-M22 manifest from cache.
@@ -978,6 +993,8 @@
         cache: "no-cache",
       });
       state.manifest = manifest;
+      renderScenarioTabs();
+      bindControls();
       renderFutureSlots();
 
       const hierarchyFiles = manifest.hierarchy || {};
