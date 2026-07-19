@@ -656,8 +656,43 @@ def validate_historical_boundary_registry(document: dict[str, Any]) -> None:
             geo = props["georeferencing"]
             _require_object(geo, f"{path}.properties.georeferencing")
             _require_keys(geo, ["transform_method", "crs", "control_points", "residual_error_km", "digitizer", "reviewer", "source_feature_reference"], f"{path}.properties.georeferencing")
-            for key in ("transform_method", "crs", "digitizer", "reviewer", "source_feature_reference"):
+            for key in ("transform_method", "crs", "digitizer", "reviewer"):
                 _nonempty_string(geo[key], f"{path}.properties.georeferencing.{key}")
+            reference = geo["source_feature_reference"]
+            if isinstance(reference, dict):
+                _nonempty_string(reference.get("kind"), f"{path}.properties.georeferencing.source_feature_reference.kind")
+                substring = reference.get("substring")
+                _require_object(substring, f"{path}.properties.georeferencing.source_feature_reference.substring")
+                _require_keys(
+                    substring,
+                    ["measure_units", "start_measure", "end_measure", "substrate_merge_rule"],
+                    f"{path}.properties.georeferencing.source_feature_reference.substring",
+                )
+                _nonempty_string(
+                    substring["measure_units"],
+                    f"{path}.properties.georeferencing.source_feature_reference.substring.measure_units",
+                )
+                _nonempty_string(
+                    substring["substrate_merge_rule"],
+                    f"{path}.properties.georeferencing.source_feature_reference.substring.substrate_merge_rule",
+                )
+                start_measure = substring["start_measure"]
+                end_measure = substring["end_measure"]
+                if (
+                    isinstance(start_measure, bool) or not isinstance(start_measure, (int, float))
+                    or isinstance(end_measure, bool) or not isinstance(end_measure, (int, float))
+                ):
+                    raise SchemaValidationError(
+                        f"{path}.properties.georeferencing.source_feature_reference.substring "
+                        "start_measure and end_measure must be numbers"
+                    )
+                if start_measure < 0 or end_measure <= start_measure:
+                    raise SchemaValidationError(
+                        f"{path}.properties.georeferencing.source_feature_reference.substring "
+                        "must satisfy 0 <= start_measure < end_measure"
+                    )
+            else:
+                _nonempty_string(reference, f"{path}.properties.georeferencing.source_feature_reference")
             if geo["digitizer"] == geo["reviewer"]:
                 raise SchemaValidationError(f"{path}.properties.georeferencing reviewer must differ from digitizer")
             if not isinstance(geo["control_points"], list) or len(geo["control_points"]) < 3:

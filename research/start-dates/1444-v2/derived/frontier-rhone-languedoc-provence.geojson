@@ -45,6 +45,12 @@
       "record_indexes": [
         933
       ]
+    },
+    "substring": {
+      "end_measure": 4.517659,
+      "measure_units": "substrate-line-planar-degrees",
+      "start_measure": 4.220208,
+      "substrate_merge_rule": "shapely-linemerge-longest-component"
     }
   },
   "features": [

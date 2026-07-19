@@ -247,10 +247,43 @@ def test_v2_schema_rejects_incomplete_politics_hierarchy_and_nonindependent_digi
         validate_historical_boundary_registry(boundary)
 
 
+def test_v2_schema_accepts_reproducible_structured_feature_reference():
+    header = {"schema_version": "0.2.0", "artifact_version": "2", "pass_id": "v2", "start_date": "1444-11-11"}
+    properties = {
+        "feature_id": "b", "geometry_revision": "1444-r2", "valid_from": "1444", "valid_to": "1444", "date_precision": "year",
+        "semantics": "frontier", "side_polity_ids": {"left": "a", "right": "b"}, "source_ids": ["s"], "license_lineage": ["PD"],
+        "confidence": "high", "uncertainty_notes": "n", "classification": "hard_constraint", "geographic_scope": "r",
+        "start_date_programs": ["1444-11-11"], "derived_geometry_artifact_id": "d", "error_budget_km": 1,
+        "georeferencing": {
+            "transform_method": "substring", "crs": "EPSG:4326", "control_points": [{}, {}, {}], "residual_error_km": 1,
+            "digitizer": "fixture-digitizer", "reviewer": "fixture-reviewer", "source_feature_reference": {
+                "kind": "ne-rivers", "record_indexes": [42], "substring": {
+                    "measure_units": "substrate-line-planar-degrees", "start_measure": 0.25, "end_measure": 0.75,
+                    "substrate_merge_rule": "shapely-linemerge-longest-component",
+                },
+            },
+        },
+    }
+    boundary = {**header, "document_type": "historical_boundary_registry", "type": "FeatureCollection", "features": [{
+        "type": "Feature", "geometry": {"type": "LineString", "coordinates": [[0, 0], [1, 1]]}, "properties": properties,
+    }]}
+    validate_historical_boundary_registry(boundary)
+    properties["georeferencing"]["source_feature_reference"]["substring"]["end_measure"] = 0.1
+    with pytest.raises(SchemaValidationError, match="start_measure < end_measure"):
+        validate_historical_boundary_registry(boundary)
+
+
 def test_render_is_deterministic_and_cli_writes_region_sheets(tmp_path):
     pass_dir = tmp_path / "pass"; pass_dir.mkdir()
     build = {"type": "FeatureCollection", "features": [{"type": "Feature", "properties": {"feature_id": "p", "feature_type": "province"}, "geometry": _polygon(0, 0, 1, 1)}]}
-    boundaries = {"type": "FeatureCollection", "features": [{"type": "Feature", "properties": {"feature_id": "frontier", "geographic_scope": "france", "classification": "hard_constraint"}, "geometry": {"type": "LineString", "coordinates": [[1, 0], [1, 1]]}}]}
+    boundaries = {"type": "FeatureCollection", "features": [
+        {"type": "Feature", "properties": {"feature_id": "frontier", "geographic_scope": "france", "classification": "hard_constraint", "error_budget_km": 2,
+         "georeferencing": {"transform_method": "substring", "crs": "EPSG:4326", "residual_error_km": 1.5,
+                             "control_points": [{"name": "anchor", "lon": 1, "lat": 0.5, "residual_km": 1.5}]}},
+         "geometry": {"type": "LineString", "coordinates": [[1, 0], [1, 1]]}},
+        {"type": "Feature", "properties": {"feature_id": "forbidden-modern-france", "geographic_scope": "france", "classification": "soft_evidence"},
+         "geometry": {"type": "LineString", "coordinates": [[0.75, 0], [0.75, 1]]}},
+    ]}
     assignments = {"assignments": [{"province_id": "p", "region_id": "france", "owner_polity_id": "fra", "uncertainty": 0.2, "hierarchy": {"area_id": "a"}}]}
     for name, value in (("build.json", build), ("boundaries.json", boundaries), ("assignments.json", assignments)): _write(pass_dir / name, value)
     manifest = {"pass_id": "v2", "geometry_revision": "1444-r2", "generated_at": "2026-07-15T00:00:00Z", "scope": {"priority_regions": ["france"]}, "artifacts": {
@@ -260,5 +293,11 @@ def test_render_is_deterministic_and_cli_writes_region_sheets(tmp_path):
     second = render_start_date_pass(pass_dir=pass_dir, output_dir=tmp_path / "two")
     assert (tmp_path / "one/france.svg").read_bytes() == (tmp_path / "two/france.svg").read_bytes()
     assert (tmp_path / "one/review_manifest.json").read_bytes() == (tmp_path / "two/review_manifest.json").read_bytes()
+    svg = (tmp_path / "one/france.svg").read_text()
+    assert "Inset A — frontier (hard constraint)" in svg
+    assert "max residual 1.5 km ≤ budget 2 km" in svg
+    assert "anchor (1.5 km)" in svg
+    assert "Inset B — forbidden-modern-france" in svg
+    assert "negative control: modern outline vs 1444 provinces" in svg
     assert first.region_count == second.region_count == 1
     assert main(["qa", "render", "--pass-dir", str(pass_dir), "--output-dir", str(tmp_path / "cli"), "--format", "json"]) == 0

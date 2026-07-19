@@ -8,27 +8,27 @@
     {
       "path": "low-countries.svg",
       "region_id": "low-countries",
-      "sha256": "d53f113cb9d47d79225c4721ba7aec3013cead6e7153fbc9f0ee730baaca5e3d"
+      "sha256": "ad6071650e19b265ed0d8d121acad47be0ea365a1eeba0c9d0878eb807b0b6ab"
     },
     {
       "path": "burgundy.svg",
       "region_id": "burgundy",
-      "sha256": "c09c4d2b229424bcd8aa2bb18db2bb4091fc97932c117be22b7ca364d2ad6cc7"
+      "sha256": "52fb910020c9dedf0e1f3e044c19e028f97e6eafe2b96c493c9ecc7dbe4d04ef"
     },
     {
       "path": "france.svg",
       "region_id": "france",
-      "sha256": "82202a8dab90f67ff712cb4c1604c8c0df9ede4638d092ade45c2a366f59d2f2"
+      "sha256": "01831af6c9b227eee7532bb0ee49277ff50de1c3e72fd9909fd6808fc2d1ce87"
     },
     {
       "path": "hre.svg",
       "region_id": "hre",
-      "sha256": "7171bf51f4d050e685f521a1f78ced8cd1d3aa43539da7e7607f8b97ec566497"
+      "sha256": "f3a7dd95a8d660bd184d0194049674114288baaba90e8868b34c88399470ed29"
     },
     {
       "path": "central-europe.svg",
       "region_id": "central-europe",
-      "sha256": "4e4bb06bd5fac6d32848a2d1e07b186efeb5ff620ea821e296cf0bf7fa2faaf7"
+      "sha256": "d1aa3359ea612a1500337c79e4fa07000b8d274b5ab943039660338ff4b8143f"
     }
   ],
   "reviewed_at": null,

@@ -1068,6 +1068,12 @@ def derive_frontier(name: str) -> dict:
                 else "openhistoricalmap-relation-2691969-southern-boundary-substring"
             ),
             "substrate": spec["substrate"],
+            "substring": {
+                "measure_units": "substrate-line-planar-degrees",
+                "start_measure": round(lo, 6),
+                "end_measure": round(hi, 6),
+                "substrate_merge_rule": "shapely-linemerge-longest-component",
+            },
             "anchors": anchors,
             "segment_length_km": round(length, 3),
         },
@@ -1701,7 +1707,10 @@ def _emit_artifacts(
                 "confidence": spec["confidence"],
                 "uncertainty_notes": spec["uncertainty_notes"] + (
                     f" Certified sub-segment {result['variant_id']} of the derived artifact;"
-                    f" measured full-build shared-border Hausdorff {result['measured_km']} km."
+                    f" georeferencing residual {residual} km within the {spec['error_budget_km']} km error budget,"
+                    " which bounds the certified sub-segment's georeferencing residual only."
+                    f" Measured full-build shared-border Hausdorff {result['measured_km']} km, governed by the"
+                    f" measured golden tolerance of {result['tolerance_km']} km, not by the error budget."
                 ),
                 "classification": "hard_constraint",
                 "geographic_scope": spec["region"],
@@ -1715,7 +1724,10 @@ def _emit_artifacts(
                     "residual_error_km": residual,
                     "digitizer": DIGITIZER,
                     "reviewer": PENDING_REVIEWER,
-                    "source_feature_reference": json.dumps(spec["substrate"], sort_keys=True),
+                    "source_feature_reference": {
+                        **spec["substrate"],
+                        "substring": derived["derivation"]["substring"],
+                    },
                 },
             },
         })
@@ -2015,10 +2027,14 @@ tasks/m25-evidence-record.md).
 
 Frontier geometry is derived by clipping open river centerlines (Natural Earth
 10m, public domain; OpenHistoricalMap CC0 for the Eider) between anchor towns
-named by the cited scholarship; per-segment control-point residuals are
-recorded in `derived/*.geojson` and each registry feature carries its
-georeferencing block and a 6 km error budget. Golden tolerances were set from
-measured full-build values and are capped at {HAUSDORFF_CAP_KM} km. Conflicts
+named by the cited scholarship; per-segment control-point residuals and the
+substring measure interval over the pinned substrate (making each clip
+independently reproducible) are recorded in `derived/*.geojson`, and each
+registry feature carries its georeferencing block and a 6 km error budget.
+The error budget bounds the certified sub-segment's georeferencing residual
+only; the full-build shared-border Hausdorff distances reported in each
+feature's notes are governed instead by the golden tolerances, which were set
+from measured full-build values and are capped at {HAUSDORFF_CAP_KM} km. Conflicts
 and their resolutions are listed in `source_manifest.json`
 `conflict_resolution_notes`.
 

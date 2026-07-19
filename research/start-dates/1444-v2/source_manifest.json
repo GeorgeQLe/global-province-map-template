@@ -320,28 +320,28 @@
           "media_type": "application/geo+json",
           "path": "derived/frontier-morava-moravia-hungary.geojson",
           "role": "boundary_geometry",
-          "sha256": "821bf0da918ef800893d056d7261d605f71324117c908c22ef811941553c0651"
+          "sha256": "1f592b6082f516d4c1ff73d7a68639f4f70a76c19bfd70cd108aa906f8fe48ae"
         },
         {
           "artifact_id": "derived-frontier-rhone-languedoc-provence",
           "media_type": "application/geo+json",
           "path": "derived/frontier-rhone-languedoc-provence.geojson",
           "role": "boundary_geometry",
-          "sha256": "0bdebcf44f05df3b521dff7273bb41bfbcd17e6b731f1cd1cd281c35321e4b8e"
+          "sha256": "ec74ef92e7293e5f3523a39f2c683e483c5973a564b8a976d84cd46952d01e10"
         },
         {
           "artifact_id": "derived-frontier-saone-france-empire",
           "media_type": "application/geo+json",
           "path": "derived/frontier-saone-france-empire.geojson",
           "role": "boundary_geometry",
-          "sha256": "a9e1da4b6e6faecdc8623024eb0c5a2783f49d2d1ec26ec4df256de2b15e41e4"
+          "sha256": "fb9ce50e70799c52620f44482551198997fa32ded3b109352a3251a3cdaaf03b"
         },
         {
           "artifact_id": "derived-frontier-scheldt-flanders-empire",
           "media_type": "application/geo+json",
           "path": "derived/frontier-scheldt-flanders-empire.geojson",
           "role": "boundary_geometry",
-          "sha256": "f86b1dbf907b8e90c1f08711b74d87448b73c62c6dfb635339d34d0f731772d2"
+          "sha256": "a0bfb45708f46a03b32979e0eb894b56d3782156065bbbb636e896409595f9a1"
         }
       ],
       "independence_group": "natural-earth",
@@ -368,7 +368,7 @@
           "media_type": "application/geo+json",
           "path": "derived/frontier-eider-empire-denmark.geojson",
           "role": "boundary_geometry",
-          "sha256": "b1077e278daf280d806c1acd4a3ff0c70c0b431b026ad7555b0aef9e2bb6414b"
+          "sha256": "589066bfd2da10c386a4f3f31a7feb130f37686c2b82dd3db5b5a21fc2249b9b"
         },
         {
           "artifact_id": "ohm-schleswig-capture",

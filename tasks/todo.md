@@ -9,9 +9,12 @@
 - M25: the 1444-v2 candidate is assembled and reproducible — pinned evidence,
   real r1→r2 split lineage, constrained 22,000-province aggregation, measured
   golden-border tolerances, executed Brussels/Nord negative regressions, and
-  two-run byte-identical determinism evidence. Remaining: an independent human
-  must inspect `research/start-dates/1444-v2/review/*.svg` and the
-  georeferencing blocks in `boundaries.geojson`, then run
+  two-run byte-identical determinism evidence. The review sheets now expose
+  per-frontier focus insets, scale bars, georeferencing controls/residuals, and
+  modern-outline negative controls; structured source references pin the exact
+  reproducible substrate substring. Remaining: an independent human must
+  inspect `research/start-dates/1444-v2/review/*.svg` and the georeferencing
+  blocks in `boundaries.geojson`, then run
   `python scripts/build-m25-v2-pass.py sign-review --reviewer "<name>"` and
   re-run `gpm qa start-date --pass-dir research/start-dates/1444-v2`. No
   release or acceptance claim until that gate passes.

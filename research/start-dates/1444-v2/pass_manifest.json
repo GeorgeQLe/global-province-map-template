@@ -3,7 +3,7 @@
   "artifacts": {
     "boundary_registry": {
       "path": "boundaries.geojson",
-      "sha256": "5a23f459d756075698bc6d95c28b17bca6d212c89dd0a0e2f2b7f014c23a3f4d",
+      "sha256": "2b508e1f739dc7f23678e85d91273647f68c579c87d4ee863ea6e0c1429b67be",
       "version": "2.0.0"
     },
     "changelog": {
@@ -18,7 +18,7 @@
     },
     "dossier": {
       "path": "dossier.md",
-      "sha256": "5864311d60fed692f5701a1075d7a89d4a6a1c925f757d6d821acc23878ecbf8",
+      "sha256": "08359b38e2eb98dc8e865909841f041f9f486b43385028e073b6b4162c6d583f",
       "version": "2.0.0"
     },
     "full_build_geometry": {
@@ -43,7 +43,7 @@
     },
     "source_manifest": {
       "path": "source_manifest.json",
-      "sha256": "50231baae1388bca5134b8c951f30242ec7da71816d26abb50e4c90f3c633998",
+      "sha256": "9722822cfaf73fa8bcfce2085d3d6833c5ee13990d471ed4e33fe8ad818ccf31",
       "version": "2.0.0"
     }
   },
@@ -57,7 +57,7 @@
     "generator": "gpm qa render",
     "manifest_path": "review/review_manifest.json",
     "reviewer": "pending-independent-review",
-    "sha256": "f43fd5f45c1949cd28acdffb92d51c5f4ea0ffb0625795bb2a4845a19824d076",
+    "sha256": "48ffb1bf924a21b3ec48ca8080c61409987afb9d4532591a5a6bdb514bdb3e7e",
     "status": "pending_independent_review"
   },
   "schema_version": "0.2.0",

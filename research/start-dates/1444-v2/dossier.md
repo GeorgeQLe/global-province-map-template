@@ -33,10 +33,14 @@ tasks/m25-evidence-record.md).
 
 Frontier geometry is derived by clipping open river centerlines (Natural Earth
 10m, public domain; OpenHistoricalMap CC0 for the Eider) between anchor towns
-named by the cited scholarship; per-segment control-point residuals are
-recorded in `derived/*.geojson` and each registry feature carries its
-georeferencing block and a 6 km error budget. Golden tolerances were set from
-measured full-build values and are capped at 25.0 km. Conflicts
+named by the cited scholarship; per-segment control-point residuals and the
+substring measure interval over the pinned substrate (making each clip
+independently reproducible) are recorded in `derived/*.geojson`, and each
+registry feature carries its georeferencing block and a 6 km error budget.
+The error budget bounds the certified sub-segment's georeferencing residual
+only; the full-build shared-border Hausdorff distances reported in each
+feature's notes are governed instead by the golden tolerances, which were set
+from measured full-build values and are capped at 25.0 km. Conflicts
 and their resolutions are listed in `source_manifest.json`
 `conflict_resolution_notes`.
 

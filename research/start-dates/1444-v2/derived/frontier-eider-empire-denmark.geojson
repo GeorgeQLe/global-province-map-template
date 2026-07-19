@@ -34,6 +34,12 @@
     "substrate": {
       "capture": "derived/sources/ohm-schleswig-2691969.json",
       "kind": "ohm-schleswig"
+    },
+    "substring": {
+      "end_measure": 1.098694,
+      "measure_units": "substrate-line-planar-degrees",
+      "start_measure": 0.453236,
+      "substrate_merge_rule": "shapely-linemerge-longest-component"
     }
   },
   "features": [

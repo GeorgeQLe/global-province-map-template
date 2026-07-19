@@ -435,7 +435,16 @@
           "digitizer": "gpm-m25-v2-generator",
           "residual_error_km": 1.509,
           "reviewer": "pending-independent-review",
-          "source_feature_reference": "{\"capture\": \"derived/sources/ohm-schleswig-2691969.json\", \"kind\": \"ohm-schleswig\"}",
+          "source_feature_reference": {
+            "capture": "derived/sources/ohm-schleswig-2691969.json",
+            "kind": "ohm-schleswig",
+            "substring": {
+              "end_measure": 1.098694,
+              "measure_units": "substrate-line-planar-degrees",
+              "start_measure": 0.453236,
+              "substrate_merge_rule": "shapely-linemerge-longest-component"
+            }
+          },
           "transform_method": "vector-substring-wgs84"
         },
         "license_lineage": [
@@ -457,7 +466,7 @@
         "start_date_programs": [
           "1444-11-11"
         ],
-        "uncertainty_notes": "North bank Schleswig (Danish fief), south bank Holstein with the Dithmarschen marches west of the Gieselau (imperial ambit, de facto free). Adolf VIII held both duchies in personal union in 1444. The disputed Rendsburg island, the Levensau/landwehr eastern continuation and the storm-flood-altered estuary are excluded from the segment. Certified sub-segment tonning..suderstapel of the derived artifact; measured full-build shared-border Hausdorff 2.303 km.",
+        "uncertainty_notes": "North bank Schleswig (Danish fief), south bank Holstein with the Dithmarschen marches west of the Gieselau (imperial ambit, de facto free). Adolf VIII held both duchies in personal union in 1444. The disputed Rendsburg island, the Levensau/landwehr eastern continuation and the storm-flood-altered estuary are excluded from the segment. Certified sub-segment tonning..suderstapel of the derived artifact; georeferencing residual 1.509 km within the 6.0 km error budget, which bounds the certified sub-segment's georeferencing residual only. Measured full-build shared-border Hausdorff 2.303 km, governed by the measured golden tolerance of 6.0 km, not by the error budget.",
         "valid_from": "1111",
         "valid_to": "1864"
       },
@@ -552,7 +561,18 @@
           "digitizer": "gpm-m25-v2-generator",
           "residual_error_km": 3.017,
           "reviewer": "pending-independent-review",
-          "source_feature_reference": "{\"kind\": \"ne-rivers\", \"record_indexes\": [842]}",
+          "source_feature_reference": {
+            "kind": "ne-rivers",
+            "record_indexes": [
+              842
+            ],
+            "substring": {
+              "end_measure": 2.372391,
+              "measure_units": "substrate-line-planar-degrees",
+              "start_measure": 2.092628,
+              "substrate_merge_rule": "shapely-linemerge-longest-component"
+            }
+          },
           "transform_method": "vector-substring-wgs84"
         },
         "license_lineage": [
@@ -573,7 +593,7 @@
         "start_date_programs": [
           "1444-11-11"
         ],
-        "uncertainty_notes": "valid_from reflects the 1331/1332 Hol\u00ed\u010d-Bran\u010d settlement; the line as such is older. North of Rohatec the border leaves the river for the White Carpathians; south of the Dyje confluence the west bank passes to Austria. The medieval river was a braided floodplain corridor of 1-3 km; Skalica's town core lies 5 km east of the river. Certified sub-segment rohatec..dyje-confluence of the derived artifact; measured full-build shared-border Hausdorff 8.312 km.",
+        "uncertainty_notes": "valid_from reflects the 1331/1332 Hol\u00ed\u010d-Bran\u010d settlement; the line as such is older. North of Rohatec the border leaves the river for the White Carpathians; south of the Dyje confluence the west bank passes to Austria. The medieval river was a braided floodplain corridor of 1-3 km; Skalica's town core lies 5 km east of the river. Certified sub-segment rohatec..dyje-confluence of the derived artifact; georeferencing residual 3.017 km within the 6.0 km error budget, which bounds the certified sub-segment's georeferencing residual only. Measured full-build shared-border Hausdorff 8.312 km, governed by the measured golden tolerance of 11.0 km, not by the error budget.",
         "valid_from": "1332",
         "valid_to": "1918"
       },
@@ -645,7 +665,18 @@
           "digitizer": "gpm-m25-v2-generator",
           "residual_error_km": 2.791,
           "reviewer": "pending-independent-review",
-          "source_feature_reference": "{\"kind\": \"ne-rivers\", \"record_indexes\": [933]}",
+          "source_feature_reference": {
+            "kind": "ne-rivers",
+            "record_indexes": [
+              933
+            ],
+            "substring": {
+              "end_measure": 4.517659,
+              "measure_units": "substrate-line-planar-degrees",
+              "start_measure": 4.220208,
+              "substrate_merge_rule": "shapely-linemerge-longest-component"
+            }
+          },
           "transform_method": "vector-substring-wgs84"
         },
         "license_lineage": [
@@ -667,7 +698,7 @@
         "start_date_programs": [
           "1444-11-11"
         ],
-        "uncertainty_notes": "Cleanly Languedoc-vs-Provence between the Durance confluence and the Petit Rh\u00f4ne diffluence. The French crown claimed the whole river, not a thalweg split; Vallabr\u00e8gues was French on the left bank. The papal Avignon/Comtat and the Camargue delta reach are excluded. Certified sub-segment beaucaire..tarascon of the derived artifact; measured full-build shared-border Hausdorff 5.503 km.",
+        "uncertainty_notes": "Cleanly Languedoc-vs-Provence between the Durance confluence and the Petit Rh\u00f4ne diffluence. The French crown claimed the whole river, not a thalweg split; Vallabr\u00e8gues was French on the left bank. The papal Avignon/Comtat and the Camargue delta reach are excluded. Certified sub-segment beaucaire..tarascon of the derived artifact; georeferencing residual 2.791 km within the 6.0 km error budget, which bounds the certified sub-segment's georeferencing residual only. Measured full-build shared-border Hausdorff 5.503 km, governed by the measured golden tolerance of 8.0 km, not by the error budget.",
         "valid_from": "1290",
         "valid_to": "1481"
       },
@@ -770,7 +801,18 @@
           "digitizer": "gpm-m25-v2-generator",
           "residual_error_km": 2.106,
           "reviewer": "pending-independent-review",
-          "source_feature_reference": "{\"kind\": \"ne-rivers\", \"record_indexes\": [879]}",
+          "source_feature_reference": {
+            "kind": "ne-rivers",
+            "record_indexes": [
+              879
+            ],
+            "substring": {
+              "end_measure": 1.203071,
+              "measure_units": "substrate-line-planar-degrees",
+              "start_measure": 0.625881,
+              "substrate_merge_rule": "shapely-linemerge-longest-component"
+            }
+          },
           "transform_method": "vector-substring-wgs84"
         },
         "license_lineage": [
@@ -792,7 +834,7 @@
         "start_date_programs": [
           "1444-11-11"
         ],
-        "uncertainty_notes": "Segment downstream of the reach contested in the 1444-1466 dispute (upstream of Pontailler). West bank ducal Burgundy (French fief); east bank ducal trans-Sa\u00f4ne dependencies on Empire soil, then Savoyard Bresse south of Tournus. Bronze realm markers stood in the riverbed (1452 inquiry, Dauphant 2018). Certified sub-segment tournus..macon of the derived artifact; measured full-build shared-border Hausdorff 9.267 km.",
+        "uncertainty_notes": "Segment downstream of the reach contested in the 1444-1466 dispute (upstream of Pontailler). West bank ducal Burgundy (French fief); east bank ducal trans-Sa\u00f4ne dependencies on Empire soil, then Savoyard Bresse south of Tournus. Bronze realm markers stood in the riverbed (1452 inquiry, Dauphant 2018). Certified sub-segment tournus..macon of the derived artifact; georeferencing residual 2.106 km within the 6.0 km error budget, which bounds the certified sub-segment's georeferencing residual only. Measured full-build shared-border Hausdorff 9.267 km, governed by the measured golden tolerance of 12.0 km, not by the error budget.",
         "valid_from": "1361",
         "valid_to": "1477"
       },
@@ -919,7 +961,18 @@
           "digitizer": "gpm-m25-v2-generator",
           "residual_error_km": 2.59,
           "reviewer": "pending-independent-review",
-          "source_feature_reference": "{\"kind\": \"ne-rivers\", \"record_indexes\": [857]}",
+          "source_feature_reference": {
+            "kind": "ne-rivers",
+            "record_indexes": [
+              857
+            ],
+            "substring": {
+              "end_measure": 1.755117,
+              "measure_units": "substrate-line-planar-degrees",
+              "start_measure": 1.150078,
+              "substrate_merge_rule": "shapely-linemerge-longest-component"
+            }
+          },
           "transform_method": "vector-substring-wgs84"
         },
         "license_lineage": [
@@ -943,7 +996,7 @@
         "start_date_programs": [
           "1444-11-11"
         ],
-        "uncertainty_notes": "De jure realm line; both banks Burgundian-held in 1444. Right bank is Hainaut then the Land van Aalst (imperial soil in Flemish hands). The Tournai royal enclave lies south of the segment; below Ghent the line leaves the river (Waas is imperial on the left bank). The modern canalized course generalizes medieval meanders within the error budget. Certified sub-segment oudenaarde..ghent of the derived artifact; measured full-build shared-border Hausdorff 5.615 km.",
+        "uncertainty_notes": "De jure realm line; both banks Burgundian-held in 1444. Right bank is Hainaut then the Land van Aalst (imperial soil in Flemish hands). The Tournai royal enclave lies south of the segment; below Ghent the line leaves the river (Waas is imperial on the left bank). The modern canalized course generalizes medieval meanders within the error budget. Certified sub-segment oudenaarde..ghent of the derived artifact; georeferencing residual 2.59 km within the 6.0 km error budget, which bounds the certified sub-segment's georeferencing residual only. Measured full-build shared-border Hausdorff 5.615 km, governed by the measured golden tolerance of 8.0 km, not by the error budget.",
         "valid_from": "1384",
         "valid_to": "1526"
       },

@@ -28,8 +28,18 @@
   (`tests/test_m25_v2_production_pass.py`). Two fresh end-to-end runs produce
   byte-identical artifacts (hash snapshots in
   `data/processed/m25-v2-hashes-run{1,2}.txt`).
-- Ship validation on the assembled boundary: `uv run pytest` passed all 284
-  tests in 20.01 seconds with no warnings; the unsigned canonical QA command
+- Made every certified frontier clip independently reproducible by recording
+  its exact measure interval and merge rule over the pinned source substrate;
+  the structured schema and runtime validator now reject missing, nonnumeric,
+  or reversed substring measures.
+- Reworked the five deterministic SVG review sheets around a stable main map
+  plus one focus inset per historical frontier and modern negative control,
+  including legends, scale bars, georeferencing control labels, residuals,
+  error budgets, and main-map focus boxes. Targeted tests pin the structured
+  reference contract, inset content, negative-control labeling, and byte
+  determinism.
+- Ship validation on the assembled boundary: the full suite passed all 285
+  tests with no warnings; the unsigned canonical QA command
   exited 1 solely because `manifest.review.status` is not yet `accepted`, as
   required by the fail-closed review contract. Diff whitespace and targeted
   credential-pattern scans were clean.

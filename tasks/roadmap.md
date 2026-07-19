@@ -1,6 +1,6 @@
 # Roadmap Progress
 
-Updated: 2026-07-17
+Updated: 2026-07-18
 
 Product direction (see root `ROADMAP.md`): dual audience for **strategy-game
 seeds** and **historical / SaaS maps**, with a **strong historical accuracy
@@ -45,7 +45,7 @@ historical coverage.
 | M22 | complete | `gpm demo build` | deterministic demo/landing validation | global PMTiles demo | 4,603-province scaffold surface |
 | M23 | complete | `gpm build locations/provinces`; fabric QA | duplicate 30,003-location and 22,000-province builds | source/docs; no hosted fabric claimed | documented reference warnings/build-drift audit note |
 | M24 | complete | schemas and `gpm qa start-date` | `test_m24_start_date_framework.py` | contract and rejected-pass evidence | framework only; does not certify an era |
-| M25 | active; v2 pending review | rejected v1; schema 0.2 plus production-fabric v2 assembler, constrained aggregation, SVG renderer | intentional v1 rejection; v2 contract tests, full-build spatial assertions, two-run determinism | withdrawn v1 plus unsigned 1444-v2 candidate/evidence record | independent human review and signed final QA gate |
+| M25 | active; v2 pending review | rejected v1; schema 0.2 plus production-fabric v2 assembler, constrained aggregation, georeferenced inset SVG renderer | intentional v1 rejection; v2 contract tests, reproducible substrate substrings, full-build spatial assertions, two-run determinism | withdrawn v1 plus unsigned 1444-v2 candidate/evidence record | independent human review and signed final QA gate |
 | M25.5 | planned | proposed `gpm export runtime` | acceptance budgets in `ROADMAP.md` | none yet | requires accepted M25 canonical pass |
 | M26 | planned | 1836 canonical pass + runtime delta/migration | future research and runtime validation | none yet | begins after M25.5 contract |
 | M27 | planned | 1914 canonical pass + runtime delta/migration | future research and runtime validation | none yet | begins after M26 |
@@ -162,9 +162,10 @@ historical coverage.
 - M25 1444 reconstruction: active. Its initial candidate failed independent
   acceptance. The replacement 1444-v2 candidate now carries pinned evidence,
   real r1→r2 lineage, a constrained 22,000-province production build,
-  measured spatial assertions, and deterministic review sheets. It remains
-  unsigned and unaccepted until an independent human review and final passing
-  `gpm qa start-date` gate.
+  measured spatial assertions, exact substrate substring references, and
+  deterministic review sheets with georeferencing/control-point insets. It
+  remains unsigned and unaccepted until an independent human review and final
+  passing `gpm qa start-date` gate.
 - M25.5 game runtime compiler and reference pack: next after accepted M25;
   schema/compiler design may proceed in parallel. It reuses M7 exports and M19
   PMTiles and adds the engine-neutral dense-table/CSR/LOD/save contract.
