@@ -611,7 +611,9 @@ def validate_start_date_pass_manifest(document: dict[str, Any]) -> None:
             _nonempty_string(review[key], f"manifest.review.{key}")
         if review["generator"] == review["reviewer"]:
             raise SchemaValidationError("manifest.review reviewer must be independent from generator")
-        if review["status"] != "accepted":
+        if review["status"] not in {"accepted", "pending_independent_review"}:
+            raise SchemaValidationError("manifest.review.status is unsupported")
+        if review["status"] != "accepted" and document["schema_version"] != "0.3.0":
             raise SchemaValidationError("manifest.review.status must be accepted")
         if not isinstance(review["sha256"], str) or not re.fullmatch(r"[0-9a-fA-F]{64}", review["sha256"]):
             raise SchemaValidationError("manifest.review.sha256 must be a SHA-256 digest")

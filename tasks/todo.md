@@ -2,9 +2,10 @@
 
 ## Active
 
-- M25C worldwide historical evidence and reviewed fabric assignment: replace
-  the fail-closed pending anomaly inventory with sourced, resolved records,
-  assemble the 22-part M49 pass, and obtain independent acceptance.
+- M25C worldwide historical research inputs and independent acceptance: supply
+  the sourced, resolved anomaly inventory; reviewed schema-0.3 evidence bundle;
+  and accepted M23 fabric sidecars, then inspect all 22 regional and 11 anomaly
+  sheets and record acceptance with an independent human reviewer.
 
 ## Up next (from roadmap)
 
@@ -18,6 +19,11 @@
   research acceptance and runtime-pack validation.
 
 ## Completed
+
+- [x] M25C worldwide research assembly workflow: deterministic inventory,
+  M49 fabric enrichment, evidence import, reviewed-split gating, exact 22,000-
+  province aggregation checks, pass assembly, 22-region plus anomaly-class
+  rendering, pending-review preflight, and fail-closed human acceptance.
 
 - [x] M25C certification boundary and pending worldwide lineage: additive
   schema 0.3 contracts, exact 22-part M49 scope, source-locked tolerance rules,

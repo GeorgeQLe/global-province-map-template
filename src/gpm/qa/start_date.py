@@ -74,6 +74,7 @@ _DOSSIER_SECTIONS = (
 
 def run_start_date_qa(
     *, pass_dir: Path, manifest_input: Path | None = None, report_output: Path | None = None,
+    pending_review: bool = False,
 ) -> StartDateQAResult:
     """Validate one independently releasable M24 research pass, fail closed."""
     root = Path(pass_dir).resolve()
@@ -135,6 +136,14 @@ def run_start_date_qa(
         if manifest["schema_version"] == "0.3.0":
             _check_global_contract(root, manifest, documents, geometry, findings)
 
+    if pending_review:
+        if manifest.get("schema_version") != "0.3.0":
+            raise StartDateQAError("Pending-review preflight is restricted to schema 0.3.0 worldwide passes")
+        review_codes = {"INVALID_INDEPENDENT_REVIEW"}
+        for finding in findings:
+            if finding["severity"] == "error" and finding["code"] in review_codes:
+                finding["severity"] = "warning"
+                finding["message"] = "Pending independent review gate: " + finding["message"]
     findings.sort(key=lambda item: (item["severity"] != "error", item["code"], item["affected_ids"]))
     assertion_results.sort(key=lambda item: item["assertion_id"])
     errors = sum(item["severity"] == "error" for item in findings)
@@ -540,6 +549,12 @@ def _validate_anomaly_inventory(document: dict[str, Any]) -> None:
             if not isinstance(item[field], list) or not item[field] or not all(isinstance(value, str) and value for value in item[field]):
                 raise SchemaValidationError(f"{path}.{field} must be non-empty IDs")
         seen.add(anomaly_id)
+    present = {item["type"] for item in document["anomalies"]}
+    if present != allowed:
+        raise SchemaValidationError(
+            "anomaly inventory must cover every required class exactly by type; "
+            f"missing={sorted(allowed - present)}"
+        )
 
 
 def _check_global_contract(
@@ -551,6 +566,26 @@ def _check_global_contract(
     assignments = documents["location_assignments"]
     mask = documents["world_coverage_mask"]
     canonical = documents["canonical_historical_status"]
+    inventory = documents["anomaly_inventory"]
+    source_records = {row["source_id"]: row for row in documents["source_manifest"]["sources"]}
+    source_ids = set(source_records)
+    reviewed_source_ids = {source_id for source_id, row in source_records.items() if row["review_status"] == "reviewed"}
+    polity_ids = {row["polity_id"] for row in documents["polity_gazetteer"]["polities"]}
+    for anomaly in inventory["anomalies"]:
+        _unknown_refs(findings, "UNKNOWN_ANOMALY_SOURCE", anomaly["source_ids"], source_ids, anomaly["anomaly_id"])
+        _unknown_refs(findings, "UNKNOWN_ANOMALY_SUBJECT", anomaly["subject_ids"], polity_ids, anomaly["anomaly_id"])
+        _unknown_refs(findings, "UNREVIEWED_ANOMALY_SOURCE", anomaly["source_ids"], reviewed_source_ids, anomaly["anomaly_id"])
+    for polity in documents["polity_gazetteer"]["polities"]:
+        _unknown_refs(findings, "UNREVIEWED_GLOBAL_POLITY_SOURCE", polity["source_ids"], reviewed_source_ids, polity["polity_id"])
+        for relationship in polity["relationships"]:
+            _unknown_refs(findings, "UNREVIEWED_GLOBAL_RELATIONSHIP_SOURCE", relationship["source_ids"], reviewed_source_ids, relationship["relationship_id"])
+    for assignment in assignments["assignments"]:
+        _unknown_refs(findings, "UNREVIEWED_GLOBAL_ASSIGNMENT_SOURCE", assignment["source_ids"], reviewed_source_ids, assignment["assignment_id"])
+    for kind in ("components", "political_units", "provinces", "statuses"):
+        for index, row in enumerate(canonical[kind]):
+            evidence = row.get("evidence_ids") or row.get("shared_administrative_unit_evidence_ids") or []
+            if evidence:
+                _unknown_refs(findings, "UNREVIEWED_CANONICAL_EVIDENCE", evidence, reviewed_source_ids, f"{kind}:{index}")
     mask_record = manifest["artifacts"]["world_coverage_mask"]
     if scope["world_coverage_mask_sha256"] != mask_record["sha256"]:
         _finding(findings, "WORLD_MASK_HASH_MISMATCH", "error", "Scope and artifact table pin different world masks.", [])
@@ -578,6 +613,8 @@ def _check_global_contract(
         _finding(findings, "CANONICAL_DATE_MISMATCH", "error", "Canonical status uses a different start date.", [])
     build_geometry = {feature["properties"]["feature_id"]: shape(feature["geometry"]) for feature in geometry["features"] if feature["properties"]["feature_type"] == "province"}
     build_provinces = set(build_geometry)
+    if assignments["expected_province_count"] != 22_000 or len(build_provinces) != 22_000:
+        _finding(findings, "INVALID_GLOBAL_PROVINCE_COUNT", "error", "Worldwide eu-like aggregation must contain exactly 22,000 provinces.", [])
     canonical_provinces = {row["province_id"] for row in canonical["provinces"]}
     if build_provinces != canonical_provinces:
         _finding(findings, "CANONICAL_PROVINCE_MISMATCH", "error", "Canonical and research build province IDs differ.", sorted(build_provinces ^ canonical_provinces))

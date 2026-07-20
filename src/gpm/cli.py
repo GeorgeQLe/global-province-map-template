@@ -804,6 +804,11 @@ def _build_parser() -> argparse.ArgumentParser:
         type=Path,
         help="Optional QA report path; defaults to <pass-dir>/start_date_qa.json.",
     )
+    start_date_qa.add_argument(
+        "--pending-review",
+        action="store_true",
+        help="Run every schema 0.3 automated gate while allowing independent review as the sole outstanding gate.",
+    )
     start_date_qa.add_argument("--format", choices=["text", "json"], default="text")
     start_date_qa.set_defaults(handler=_qa_start_date)
     certify = qa_commands.add_parser(
@@ -2781,6 +2786,7 @@ def _qa_start_date(args: argparse.Namespace) -> int:
             pass_dir=args.pass_dir,
             manifest_input=args.manifest_input,
             report_output=args.report_output,
+            pending_review=args.pending_review,
         )
     except StartDateQAError as error:
         _print_error(error)
@@ -2788,7 +2794,8 @@ def _qa_start_date(args: argparse.Namespace) -> int:
     if args.format == "json":
         print(json.dumps(result.to_dict(), indent=2, sort_keys=True))
     else:
-        print(f"gpm qa start-date: {result.status}.")
+        label = "preflight" if args.pending_review else "start-date"
+        print(f"gpm qa {label}: {result.status}.")
         print(f"Pass: {result.pass_id}; start date: {result.start_date}")
         print(f"Artifacts: {result.artifact_count}")
         print(f"Findings: {result.error_count} errors, {result.warning_count} warnings")

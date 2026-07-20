@@ -47,7 +47,7 @@ historical coverage.
 | M24 | complete | schemas and `gpm qa start-date` | `test_m24_start_date_framework.py` | contract and rejected-pass evidence | framework only; does not certify an era |
 | M25A | complete | hard-case casebook + typed-status schema | eight executable per-class canonical/runtime/visual/picking/LOD/adjacency/save fixtures | research artifacts only | synthetic contract fixtures, not historical evidence |
 | M25B | complete | `gpm export runtime`; `gpm.runtime` | `test_m25b_runtime.py`; duplicate-build/budget benchmarks | synthetic runtime reference pack | global-scale budgets re-run per certified era |
-| M25C | in progress; certification boundary complete | `build-m25c-global-pass.py`; schema 0.3 QA/certification; v2 pinned provenance | certification and demo-promotion contract tests | unsigned pending global-v1 lineage; v2 pilot remains research-only | source and resolve worldwide inventory, assign accepted fabric, and obtain independent review |
+| M25C | in progress; research workflow and certification boundary complete | `build-m25c-global-pass.py`; schema 0.3 QA/certification; v2 pinned provenance | research-pipeline, preflight, acceptance, certification, and demo-promotion contract tests | unsigned pending global-v1 lineage; v2 pilot remains research-only | supply reviewed worldwide inputs, assemble the real pass, and obtain independent review |
 | M26 | planned | global 1836 pass + runtime delta/migration | worldwide research and runtime validation | none yet | begins after M25C |
 | M27 | planned | 1914 canonical pass + runtime delta/migration | future research and runtime validation | none yet | begins after M26 |
 | M28 | planned | 1936 canonical pass + runtime delta/migration | future research and runtime validation | none yet | begins after M27 |
@@ -161,9 +161,11 @@ historical coverage.
 ## Next
 
 - M25C worldwide historical evidence and reviewed fabric assignment. The
-  schema 0.3 certification boundary and pending global-v1 lineage are now in
-  place; the 1444-v2 candidate remains an unsigned five-region pilot and
-  evidence set, not a release boundary.
+  deterministic research pipeline and schema 0.3 certification boundary are
+  now in place; reviewed worldwide inputs, the assembled real pass, and
+  independent human acceptance remain outstanding. The 1444-v2 candidate
+  remains an unsigned five-region pilot and evidence set, not a release
+  boundary.
 - M26 1836, M27 official 1914 imperial-era, and M28 1936 reuse that runtime
   contract. They publish scenario-only deltas when geometry membership is
   unchanged and explicit migration metadata when it changes.

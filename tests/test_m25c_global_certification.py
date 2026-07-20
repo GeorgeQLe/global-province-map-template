@@ -3,11 +3,14 @@
 from __future__ import annotations
 
 import hashlib
+import importlib.util
 import json
 from pathlib import Path
 
 import pytest
+from shapely.geometry import box, mapping
 
+from gpm.geo.shapefile import ShapeFeature
 from gpm.qa.certification import EraCertificationError, validate_certification_bundle
 from gpm.release.demo import DemoBuildError, build_demo
 from gpm.schemas import (
@@ -19,6 +22,15 @@ from gpm.schemas import (
 ROOT = Path(__file__).resolve().parents[1]
 GLOBAL = ROOT / "research" / "start-dates" / "1444-global-v1"
 PILOT = ROOT / "research" / "start-dates" / "1444-v2"
+
+
+def _builder_module():
+    path = ROOT / "scripts" / "build-m25c-global-pass.py"
+    spec = importlib.util.spec_from_file_location("m25c_builder", path)
+    assert spec and spec.loader
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
 def _artifact(path: str = "artifact.json") -> dict[str, str]:
@@ -61,6 +73,36 @@ def test_global_schema_is_additive_and_pins_the_exact_world_partition():
     invalid["scope"]["priority_regions"] = invalid["scope"]["regions"]
     with pytest.raises(SchemaValidationError, match="pinned 22-part"):
         validate_start_date_pass_manifest(invalid)
+
+
+def test_global_manifest_may_encode_pending_review_for_preflight_only():
+    manifest = _global_manifest()
+    manifest["review"].update({
+        "reviewer": "pending-independent-review",
+        "status": "pending_independent_review",
+    })
+    validate_start_date_pass_manifest(manifest)
+    manifest["schema_version"] = "0.2.0"
+    with pytest.raises(SchemaValidationError, match="must be accepted"):
+        validate_start_date_pass_manifest(manifest)
+
+
+def test_m49_enrichment_is_deterministic_and_marks_antarctica(monkeypatch):
+    builder = _builder_module()
+    countries = [
+        ShapeFeature(mapping(box(0, 0, 2, 2)), {"SUBREGION": "Western Europe"}),
+        ShapeFeature(mapping(box(2, 0, 4, 2)), {"SUBREGION": "Eastern Europe"}),
+        ShapeFeature(mapping(box(0, -80, 4, -60)), {"SUBREGION": "Antarctica"}),
+    ]
+    monkeypatch.setattr(builder, "read_zipped_shapefile", lambda _path: countries)
+    fabric = {"type": "FeatureCollection", "features": [
+        {"type": "Feature", "properties": {"location_id": "west"}, "geometry": mapping(box(0, 0, 1, 1))},
+        {"type": "Feature", "properties": {"location_id": "east"}, "geometry": mapping(box(3, 0, 4, 1))},
+        {"type": "Feature", "properties": {"location_id": "south"}, "geometry": mapping(box(1, -70, 2, -69))},
+    ]}
+    result = builder.enrich_m49(fabric, Path("unused.zip"))
+    assert [row["properties"]["m49_subregion"] for row in result["features"]] == ["151", "Antarctica", "155"]
+    assert all("m49_subregion" not in row["properties"] for row in fabric["features"])
 
 
 def test_pending_lineage_hash_pins_the_unchanged_pilot():

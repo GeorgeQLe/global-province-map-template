@@ -31,7 +31,7 @@
     }, "additionalProperties": false},
     "review": {"type": "object", "required": ["manifest_path", "sha256", "generator", "reviewer", "status"], "properties": {
       "manifest_path": {"type": "string", "minLength": 1}, "sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"},
-      "generator": {"type": "string", "minLength": 1}, "reviewer": {"type": "string", "minLength": 1}, "status": {"const": "accepted"}
+      "generator": {"type": "string", "minLength": 1}, "reviewer": {"type": "string", "minLength": 1}, "status": {"enum": ["accepted", "pending_independent_review"]}
     }, "additionalProperties": false},
     "worldPartition": {"type": "object", "required": ["standard", "revision", "antarctica", "subregions"], "properties": {
       "standard": {"const": "UN M49"}, "revision": {"type": "string", "minLength": 1},

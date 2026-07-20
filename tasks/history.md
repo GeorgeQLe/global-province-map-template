@@ -1,5 +1,25 @@
 # History
 
+## 2026-07-19 - M25C worldwide research assembly workflow
+
+- Replaced the placeholder-producing M25C builder with a deterministic,
+  input-driven research pipeline for resolved anomaly inventory, exact UN M49
+  fabric enrichment, reviewed evidence import, optional lineage-checked r3
+  splits, and hard-gated 22,000-province aggregation.
+- Added schema-0.3 pending-review preflight without weakening ordinary
+  fail-closed QA, plus 22 regional and 11 anomaly-class review sheets whose
+  hashes must remain intact before an independent human can accept the pass.
+- Hardened worldwide QA around exact province count and reviewed source
+  references for anomalies, polities, relationships, assignments, and
+  canonical evidence. The research builder deliberately has no runtime,
+  certification, or public-promotion stage.
+- Quality gate: the full suite passed 312 tests with no warnings; the diff
+  whitespace check and changed-file credential-pattern scan were clean. Adversarial
+  review confirmed pending-review mode cannot produce an accepted research
+  pass or public release.
+- Next project task: supply the real reviewed worldwide inputs, run the
+  research pipeline, and obtain independent human acceptance.
+
 ## 2026-07-19 - M25C worldwide certification boundary
 
 - Added additive schema 0.3 contracts for the exact 22-part UN M49 playable

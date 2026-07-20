@@ -88,10 +88,11 @@ def render_start_date_pass(*, pass_dir: Path, output_dir: Path) -> StartDateRend
 
 def _render_anomaly_svg(manifest: dict[str, Any], anomaly_type: str, anomalies: list[dict[str, Any]]) -> str:
     rows = "".join(
-        f'<text x="36" y="{112 + index * 24}">{html.escape(str(item["anomaly_id"]))} · {html.escape(str(item["resolution"]))}</text>'
+        f'<text x="36" y="{112 + index * 44}">{html.escape(str(item["anomaly_id"]))} · {html.escape(str(item["resolution"]))}</text>'
+        f'<text x="52" y="{132 + index * 44}" font-size="13">subjects: {html.escape(", ".join(item["subject_ids"]))} · sources: {html.escape(", ".join(item["source_ids"]))}</text>'
         for index, item in enumerate(anomalies)
     )
-    height = max(180, 140 + len(anomalies) * 24)
+    height = max(180, 150 + len(anomalies) * 44)
     return (
         f'<svg xmlns="http://www.w3.org/2000/svg" width="900" height="{height}" viewBox="0 0 900 {height}">'
         '<rect width="100%" height="100%" fill="#fff"/>'

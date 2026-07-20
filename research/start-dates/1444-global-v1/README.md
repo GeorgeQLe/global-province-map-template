@@ -4,19 +4,45 @@ This is the M25C worldwide lineage for **1444-11-11**. Its permanent pass and
 runtime identity is `official-1444-global-v1`; the eventual public scenario ID
 is `official-1444`.
 
-The checked-in candidate is intentionally **not certified**. The deterministic
-inventory stage records every byte of the unsigned five-region `1444-v2` pilot
-as read-only provenance and opens the required anomaly classes, but it leaves
-them pending. Worldwide historical evidence, complete M23 fabric assignment,
-gap-free grade-A regional coverage, and independent review are hard gates. The
-builder and `gpm qa certify-era` do not manufacture or waive those inputs.
+The checked-in candidate is intentionally **not accepted**. It is the preserved
+pre-research seed: its placeholder anomaly rows document missing curator input
+and are not accepted by the M25C builder or QA. Worldwide historical evidence,
+complete M23 fabric assignment, gap-free grade-A regional coverage, and
+independent review remain hard gates. The builder never manufactures or waives
+those inputs, and this research task deliberately stops before runtime or
+global certification.
 
-Regenerate this pending boundary with:
+The deterministic research pipeline is:
 
 ```sh
-python scripts/build-m25c-global-pass.py inventory
+python scripts/build-m25c-global-pass.py inventory --inventory-input <reviewed-anomalies.json>
+python scripts/build-m25c-global-pass.py fabric \
+  --fabric-input <accepted-m23-r2/locations.geojson> \
+  --fabric-sidecars-dir <accepted-m23-r2>
+python scripts/build-m25c-global-pass.py evidence --evidence-dir <reviewed-schema-0.3-bundle>
+python scripts/build-m25c-global-pass.py splits
+python scripts/build-m25c-global-pass.py aggregation
+python scripts/build-m25c-global-pass.py assembly
+python scripts/build-m25c-global-pass.py render
+gpm qa start-date --pass-dir research/start-dates/1444-global-v1 --pending-review
 ```
 
-Later stages require curated, reviewed inputs. Only an accepted certification
-manifest may be passed to `gpm demo build --certification-input ...` to expose
-`official-1444`.
+`fabric` assigns exact UN M49 subregion codes from Natural Earth metadata and
+excludes Antarctica from the playable world mask. `splits` preserves revision
+2 by default; revision 3 additionally requires a failed paintability report,
+reviewed split requests, and complete parent/child lineage. `aggregation`
+requires exactly 22,000 provinces, exact-once world-mask assignment, no modern
+boundary influence, and merge-blocking historical hard constraints.
+
+After inspecting all 22 regional sheets and every anomaly-class sheet, an
+independent human records acceptance explicitly:
+
+```sh
+python scripts/build-m25c-global-pass.py accept-review \
+  --reviewer "<human identity>" --review-date YYYY-MM-DD
+```
+
+The command rejects generator identities, missing sheets, and changed render
+hashes; repins the accepted review; runs ordinary fail-closed start-date QA;
+and keeps `public_release_allowed: false`. Runtime compilation, certification,
+and demo promotion belong to the subsequent M25C task.
