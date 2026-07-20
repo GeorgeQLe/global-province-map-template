@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import importlib.util
 import json
+from argparse import Namespace
 from pathlib import Path
 
 import pytest
@@ -103,6 +104,106 @@ def test_m49_enrichment_is_deterministic_and_marks_antarctica(monkeypatch):
     result = builder.enrich_m49(fabric, Path("unused.zip"))
     assert [row["properties"]["m49_subregion"] for row in result["features"]] == ["151", "Antarctica", "155"]
     assert all("m49_subregion" not in row["properties"] for row in fabric["features"])
+
+
+def test_resolved_inventory_rejects_placeholder_subjects_and_sources():
+    builder = _builder_module()
+    inventory = json.loads((GLOBAL / "anomaly_inventory.json").read_text())
+    for row in inventory["anomalies"]:
+        row["resolution"] = "resolved"
+    with pytest.raises(SystemExit, match="placeholders="):
+        builder._validate_inventory(inventory)
+    for index, row in enumerate(inventory["anomalies"]):
+        row["subject_ids"] = [f"polity-{index}"]
+        row["source_ids"] = [f"source-{index}"]
+    builder._validate_inventory(inventory)
+
+
+def test_evidence_rejection_is_aggregated_and_copies_no_invalid_inputs(tmp_path):
+    builder = _builder_module()
+    evidence = tmp_path / "evidence"
+    output = tmp_path / "output"
+    evidence.mkdir()
+    (evidence / "source_manifest.json").write_text(json.dumps({
+        "schema_version": "0.2.0", "pass_id": "wrong-pass", "start_date": "1444-11-12",
+    }) + "\n")
+    args = Namespace(evidence_dir=evidence, output_dir=output)
+    with pytest.raises(SystemExit, match="reviewed evidence bundle rejected"):
+        builder.stage_evidence(args)
+    report = json.loads((output / builder.REJECTION_REPORT).read_text())
+    assert report["status"] == "reject"
+    assert report["finding_count"] > 3
+    assert {"artifact", "rule", "affected_ids", "remediation_owner"}.issubset(report["findings"][0])
+    assert not (output / "source_manifest.json").exists()
+
+
+def test_handoff_reports_all_missing_input_owners(tmp_path):
+    builder = _builder_module()
+    args = Namespace(
+        inventory_input=None, fabric_input=None, fabric_sidecars_dir=None,
+        natural_earth_input=tmp_path / "missing-ne.zip", evidence_dir=None,
+    )
+    findings = builder._validate_curator_handoff(args)
+    assert {(row["artifact"], row["remediation_owner"]) for row in findings} == {
+        ("anomaly_inventory", "historical-curator"),
+        ("evidence_bundle", "historical-curator"),
+        ("fabric", "fabric-curator"),
+        ("fabric_sidecars", "fabric-curator"),
+        ("natural_earth", "pipeline-operator"),
+    }
+
+
+def test_evidence_sidecar_paths_and_hashes_fail_closed(tmp_path):
+    builder = _builder_module()
+    evidence = tmp_path / "evidence"
+    evidence.mkdir()
+    assignments = {
+        "fabric_sidecars": {
+            "lineage": {"path": "../lineage.json", "sha256": "0" * 64},
+            "locations": {"path": "sidecars/locations.geojson", "sha256": "0" * 64},
+        },
+        "release_sidecars": {},
+    }
+    (evidence / "assignments.json").write_text(json.dumps(assignments) + "\n")
+    sidecars = evidence / "sidecars"
+    sidecars.mkdir()
+    (sidecars / "locations.geojson").write_text("{}\n")
+    findings = builder._validate_evidence_bundle(evidence)
+    by_rule = {(row["artifact"], row["rule"]) for row in findings}
+    assert ("fabric_sidecars:lineage", "PATH_ESCAPE") in by_rule
+    assert ("fabric_sidecars:locations", "CHECKSUM_MISMATCH") in by_rule
+
+
+def test_render_and_preflight_report_missing_manifest_without_traceback(tmp_path):
+    builder = _builder_module()
+    args = Namespace(output_dir=tmp_path)
+    with pytest.raises(SystemExit, match="render rejected: Cannot read"):
+        builder.stage_render(args)
+    with pytest.raises(SystemExit, match="preflight rejected: Pass manifest does not exist"):
+        builder.stage_preflight(args)
+
+
+def test_handoff_contract_reports_count_partition_review_and_coverage_defects():
+    builder = _builder_module()
+    documents = {
+        "source_manifest.json": {"sources": [{"source_id": "draft", "review_status": "pending"}]},
+        "assignments.json": {
+            "expected_province_count": 22_000,
+            "assignments": [{
+                "assignment_id": "a1", "province_id": "p1", "region_id": "155",
+                "location_ids": ["loc1", "loc1"], "source_ids": ["draft"],
+            }],
+        },
+        "coverage.json": {"coverage": [], "known_gaps": ["gap"], "exclusions": []},
+    }
+    findings = []
+    builder._validate_evidence_contract(documents, findings)
+    rules = {row["rule"] for row in findings}
+    assert {
+        "INVALID_GLOBAL_PROVINCE_COUNT", "DUPLICATE_LOCATION_ASSIGNMENT",
+        "INVALID_WORLD_PARTITION", "UNREVIEWED_SOURCE_REFERENCE",
+        "GLOBAL_COVERAGE_NOT_A", "GLOBAL_COVERAGE_GAPS",
+    }.issubset(rules)
 
 
 def test_pending_lineage_hash_pins_the_unchanged_pilot():

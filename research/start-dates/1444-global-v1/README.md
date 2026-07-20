@@ -27,6 +27,15 @@ python scripts/build-m25c-global-pass.py render
 gpm qa start-date --pass-dir research/start-dates/1444-global-v1 --pending-review
 ```
 
+The combined `research-pipeline` stage validates the complete curator handoff
+before writing any supplied artifact. It emits `m25c_rejection_report.json`,
+grouped by artifact, rule, affected IDs, and remediation owner, and stops if
+any inventory, accepted-fabric sidecar, schema identity, contained path, or
+checksum requirement fails. The individual stages remain available for
+diagnosis. The accepted M23 handoff must include its fabric manifest, lineage,
+province membership, and location adjacency sidecars; the schema-0.3 evidence
+bundle must carry and hash-pin the aggregation and release sidecars.
+
 `fabric` assigns exact UN M49 subregion codes from Natural Earth metadata and
 excludes Antarctica from the playable world mask. `splits` preserves revision
 2 by default; revision 3 additionally requires a failed paintability report,

@@ -1,0 +1,50 @@
+{
+  "finding_count": 4,
+  "findings": [
+    {
+      "affected_ids": [
+        "pending-claim",
+        "pending-composite-realm",
+        "pending-concession",
+        "pending-condominium",
+        "pending-dependency",
+        "pending-detached-territory",
+        "pending-disputed-area",
+        "pending-enclave-exclave",
+        "pending-free-protected-city",
+        "pending-microstate",
+        "pending-non-state-territory"
+      ],
+      "artifact": "anomaly_inventory",
+      "message": "anomaly inventory must resolve every required class; missing=[], unresolved=['pending-microstate', 'pending-detached-territory', 'pending-enclave-exclave', 'pending-free-protected-city', 'pending-composite-realm', 'pending-dependency', 'pending-condominium', 'pending-concession', 'pending-claim', 'pending-disputed-area', 'pending-non-state-territory'], incomplete=[], placeholders=['pending-microstate', 'pending-detached-territory', 'pending-enclave-exclave', 'pending-free-protected-city', 'pending-composite-realm', 'pending-dependency', 'pending-condominium', 'pending-concession', 'pending-claim', 'pending-disputed-area', 'pending-non-state-territory']",
+      "remediation_owner": "historical-curator",
+      "rule": "INVALID_INVENTORY"
+    },
+    {
+      "affected_ids": [],
+      "artifact": "evidence_bundle",
+      "message": "--evidence-dir is required",
+      "remediation_owner": "historical-curator",
+      "rule": "MISSING_INPUT"
+    },
+    {
+      "affected_ids": [],
+      "artifact": "fabric",
+      "message": "--fabric-input is required",
+      "remediation_owner": "fabric-curator",
+      "rule": "MISSING_INPUT"
+    },
+    {
+      "affected_ids": [],
+      "artifact": "fabric_sidecars",
+      "message": "--fabric-sidecars-dir is required",
+      "remediation_owner": "fabric-curator",
+      "rule": "MISSING_INPUT"
+    }
+  ],
+  "pass_id": "official-1444-global-v1",
+  "report_type": "m25c_curator_handoff_rejection",
+  "schema_version": "1.0.0",
+  "start_date": "1444-11-11",
+  "status": "reject"
+}

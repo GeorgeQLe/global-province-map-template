@@ -10,10 +10,12 @@ own output, and it intentionally contains no runtime/certification stage.
 from __future__ import annotations
 
 import argparse
+import csv
 import hashlib
 import json
 import shutil
 import sys
+from collections import Counter
 from datetime import date
 from pathlib import Path
 from typing import Any
@@ -26,9 +28,22 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from gpm.geo.shapefile import read_zipped_shapefile  # noqa: E402
-from gpm.qa.render import render_start_date_pass  # noqa: E402
-from gpm.qa.start_date import run_start_date_qa  # noqa: E402
-from gpm.schemas import WORLDWIDE_M49_SUBREGIONS  # noqa: E402
+from gpm.qa.render import StartDateRenderError, render_start_date_pass  # noqa: E402
+from gpm.qa.start_date import StartDateQAError, run_start_date_qa  # noqa: E402
+from gpm.schemas import (  # noqa: E402
+    SchemaValidationError,
+    WORLDWIDE_M49_SUBREGIONS,
+    validate_historical_boundary_registry,
+    validate_historical_territory_status,
+    validate_location_assignments,
+    validate_location_fabric_manifest,
+    validate_location_lineage,
+    validate_polity_gazetteer,
+    validate_spatial_golden_borders,
+    validate_start_date_changelog,
+    validate_start_date_coverage,
+    validate_start_date_source_manifest,
+)
 
 PASS_ID = "official-1444-global-v1"
 START_DATE = "1444-11-11"
@@ -68,6 +83,23 @@ ARTIFACT_FILES = {
     "anomaly_inventory": "anomaly_inventory.json",
 }
 CURATED_FILES = tuple(name for role, name in ARTIFACT_FILES.items() if role not in {"world_coverage_mask"})
+REJECTION_REPORT = "m25c_rejection_report.json"
+REQUIRED_FABRIC_SIDECARS = {
+    "fabric_manifest": "location_fabric_manifest.json",
+    "lineage": "location_lineage.json",
+    "province_membership": "province_membership.csv",
+    "adjacency": "location_adjacency.csv",
+}
+EVIDENCE_VALIDATORS = {
+    "source_manifest.json": validate_start_date_source_manifest,
+    "boundaries.geojson": validate_historical_boundary_registry,
+    "gazetteer.json": validate_polity_gazetteer,
+    "assignments.json": validate_location_assignments,
+    "golden.json": validate_spatial_golden_borders,
+    "coverage.json": validate_start_date_coverage,
+    "changelog.json": validate_start_date_changelog,
+    "historical-territory-status.json": validate_historical_territory_status,
+}
 
 
 def main() -> int:
@@ -88,6 +120,14 @@ def main() -> int:
     parser.add_argument("--reviewer")
     parser.add_argument("--review-date")
     args = parser.parse_args()
+    if args.stage == "research-pipeline":
+        findings = _validate_curator_handoff(args)
+        _write_rejection_report(args.output_dir, findings)
+        if findings:
+            raise SystemExit(
+                f"curator handoff rejected with {len(findings)} finding(s); "
+                f"see {args.output_dir.resolve() / REJECTION_REPORT}"
+            )
     stages = (
         "inventory", "fabric", "evidence", "splits", "aggregation", "assembly",
         "render", "preflight",
@@ -122,17 +162,14 @@ def stage_fabric(args: argparse.Namespace) -> None:
     """Enrich accepted M23 locations with exact non-Antarctic M49 codes."""
     if args.fabric_input is None:
         raise SystemExit("fabric stage requires --fabric-input from the accepted M23 playable land fabric")
+    if args.fabric_sidecars_dir is None:
+        raise SystemExit("fabric stage requires --fabric-sidecars-dir with the accepted M23 manifest, lineage, membership, and adjacency")
+    _validate_fabric_sidecars(args.fabric_sidecars_dir)
     locations = _load(args.fabric_input)
     features = locations.get("features") or []
     if not features:
         raise SystemExit("fabric input contains no playable locations")
     enriched = enrich_m49(locations, args.natural_earth_input)
-    output = args.output_dir.resolve()
-    sidecars = output / "sidecars"
-    sidecars.mkdir(parents=True, exist_ok=True)
-    if args.fabric_sidecars_dir:
-        _copy_sidecars(args.fabric_sidecars_dir, sidecars)
-    _write(sidecars / "locations.geojson", enriched)
     revision = _fabric_revision(enriched)
     mask_features = [
         {"type": "Feature", "geometry": feature["geometry"], "properties": {
@@ -150,6 +187,11 @@ def stage_fabric(args: argparse.Namespace) -> None:
     regions = {feature["properties"]["region_id"] for feature in mask_features}
     if regions != WORLDWIDE_M49_SUBREGIONS:
         raise SystemExit(f"enriched fabric does not span the exact 22-part M49 partition: {sorted(regions)}")
+    output = args.output_dir.resolve()
+    sidecars = output / "sidecars"
+    sidecars.mkdir(parents=True, exist_ok=True)
+    _copy_sidecars(args.fabric_sidecars_dir, sidecars)
+    _write(sidecars / "locations.geojson", enriched)
     _write(output / "world_coverage_mask.geojson", mask)
 
 
@@ -204,6 +246,13 @@ def stage_evidence(args: argparse.Namespace) -> None:
         raise SystemExit("evidence stage requires --evidence-dir containing reviewed schema-0.3 artifacts")
     source = args.evidence_dir.resolve()
     output = args.output_dir.resolve()
+    findings = _validate_evidence_bundle(source)
+    if findings:
+        _write_rejection_report(output, findings)
+        raise SystemExit(
+            f"reviewed evidence bundle rejected with {len(findings)} finding(s); "
+            f"see {output / REJECTION_REPORT}"
+        )
     for name in CURATED_FILES:
         if name == "anomaly_inventory.json":
             continue
@@ -219,7 +268,7 @@ def stage_evidence(args: argparse.Namespace) -> None:
     }
     for path in sorted(source.rglob("*")):
         relative = path.relative_to(source)
-        if not path.is_file() or relative.parts[0] in {"review", "provenance"} or relative.as_posix() in generated:
+        if path.is_symlink() or not path.is_file() or relative.parts[0] in {"review", "provenance"} or relative.as_posix() in generated:
             continue
         target = output / relative
         if target.name == "locations.geojson" and target.parent.name == "sidecars":
@@ -328,7 +377,10 @@ def stage_assembly(args: argparse.Namespace) -> None:
 
 def stage_render(args: argparse.Namespace) -> None:
     output = args.output_dir.resolve()
-    result = render_start_date_pass(pass_dir=output, output_dir=output / "review")
+    try:
+        result = render_start_date_pass(pass_dir=output, output_dir=output / "review")
+    except StartDateRenderError as exc:
+        raise SystemExit(f"render rejected: {exc}") from exc
     manifest = _load(output / "pass_manifest.json")
     manifest["review"]["sha256"] = _sha256(Path(result.manifest_output))
     manifest["review"]["reviewer"] = "pending-independent-review"
@@ -338,10 +390,13 @@ def stage_render(args: argparse.Namespace) -> None:
 
 
 def stage_preflight(args: argparse.Namespace) -> None:
-    result = run_start_date_qa(
-        pass_dir=args.output_dir, report_output=args.output_dir / "start_date_preflight.json",
-        pending_review=True,
-    )
+    try:
+        result = run_start_date_qa(
+            pass_dir=args.output_dir, report_output=args.output_dir / "start_date_preflight.json",
+            pending_review=True,
+        )
+    except StartDateQAError as exc:
+        raise SystemExit(f"preflight rejected: {exc}") from exc
     print(json.dumps(result.to_dict(), sort_keys=True))
     if not result.passed:
         raise SystemExit(f"preflight failed with {result.error_count} non-review error(s)")
@@ -405,10 +460,14 @@ def _validate_inventory(inventory: dict[str, Any]) -> None:
     classes = {row.get("type") for row in rows}
     unresolved = [str(row.get("anomaly_id")) for row in rows if row.get("resolution") != "resolved"]
     incomplete = [str(row.get("anomaly_id")) for row in rows if not row.get("source_ids") or not row.get("subject_ids")]
-    if classes != ANOMALY_TYPES or unresolved or incomplete:
+    placeholders = [
+        str(row.get("anomaly_id")) for row in rows
+        if any(_is_placeholder_id(value) for field in ("source_ids", "subject_ids") for value in row.get(field) or [])
+    ]
+    if classes != ANOMALY_TYPES or unresolved or incomplete or placeholders:
         raise SystemExit(
             f"anomaly inventory must resolve every required class; missing={sorted(ANOMALY_TYPES - classes)}, "
-            f"unresolved={unresolved}, incomplete={incomplete}"
+            f"unresolved={unresolved}, incomplete={incomplete}, placeholders={placeholders}"
         )
 
 
@@ -422,8 +481,218 @@ def _require_resolved_inventory(output: Path) -> None:
 def _copy_sidecars(source: Path, target: Path) -> None:
     target.mkdir(parents=True, exist_ok=True)
     for path in sorted(Path(source).iterdir()):
-        if path.is_file():
+        if path.is_file() and not path.is_symlink():
             shutil.copyfile(path, target / path.name)
+
+
+def _validate_curator_handoff(args: argparse.Namespace) -> list[dict[str, Any]]:
+    """Report every independently detectable handoff defect before assembly."""
+    findings: list[dict[str, Any]] = []
+    if args.inventory_input is None:
+        _reject(findings, "anomaly_inventory", "MISSING_INPUT", [], "historical-curator", "--inventory-input is required")
+    else:
+        inventory: dict[str, Any] = {}
+        try:
+            inventory = _load(args.inventory_input)
+            _validate_inventory(inventory)
+        except SystemExit as exc:
+            affected = [
+                str(row.get("anomaly_id")) for row in inventory.get("anomalies", [])
+                if isinstance(row, dict) and (
+                    row.get("resolution") != "resolved"
+                    or not row.get("source_ids") or not row.get("subject_ids")
+                    or any(_is_placeholder_id(value) for field in ("source_ids", "subject_ids") for value in row.get(field) or [])
+                )
+            ]
+            _reject(findings, "anomaly_inventory", "INVALID_INVENTORY", affected, "historical-curator", str(exc))
+    if args.fabric_input is None:
+        _reject(findings, "fabric", "MISSING_INPUT", [], "fabric-curator", "--fabric-input is required")
+    elif not args.fabric_input.is_file():
+        _reject(findings, "fabric", "MISSING_INPUT", [str(args.fabric_input)], "fabric-curator", "fabric input does not exist")
+    if args.fabric_sidecars_dir is None:
+        _reject(findings, "fabric_sidecars", "MISSING_INPUT", [], "fabric-curator", "--fabric-sidecars-dir is required")
+    else:
+        findings.extend(_fabric_sidecar_findings(args.fabric_sidecars_dir))
+    if not args.natural_earth_input.is_file():
+        _reject(findings, "natural_earth", "MISSING_INPUT", [str(args.natural_earth_input)], "pipeline-operator", "Natural Earth admin-0 input does not exist")
+    if args.evidence_dir is None:
+        _reject(findings, "evidence_bundle", "MISSING_INPUT", [], "historical-curator", "--evidence-dir is required")
+    else:
+        findings.extend(_validate_evidence_bundle(args.evidence_dir.resolve()))
+    return sorted(findings, key=lambda row: (row["artifact"], row["rule"], row["affected_ids"]))
+
+
+def _validate_evidence_bundle(source: Path) -> list[dict[str, Any]]:
+    findings: list[dict[str, Any]] = []
+    documents: dict[str, dict[str, Any]] = {}
+    if not source.is_dir():
+        _reject(findings, "evidence_bundle", "MISSING_INPUT", [str(source)], "historical-curator", "evidence directory does not exist")
+        return findings
+    for name in CURATED_FILES:
+        if name == "anomaly_inventory.json":
+            continue
+        path = source / name
+        if path.is_symlink():
+            _reject(findings, name, "SYMLINK_INPUT", [name], "historical-curator", "curated artifacts may not be symlinks")
+            continue
+        if not path.is_file():
+            _reject(findings, name, "MISSING_ARTIFACT", [name], "historical-curator", "required reviewed artifact is missing")
+            continue
+        if name == "dossier.md":
+            continue
+        try:
+            document = _load(path)
+        except SystemExit as exc:
+            _reject(findings, name, "MALFORMED_JSON", [name], "historical-curator", str(exc))
+            continue
+        documents[name] = document
+        validator = EVIDENCE_VALIDATORS.get(name)
+        if validator:
+            try:
+                validator(document)
+            except SchemaValidationError as exc:
+                _reject(findings, name, "SCHEMA_REJECTION", [name], "historical-curator", str(exc))
+        if (document.get("pass_id"), document.get("start_date")) != (PASS_ID, START_DATE):
+            _reject(findings, name, "PASS_IDENTITY_MISMATCH", [name], "historical-curator", f"expected {PASS_ID}/{START_DATE}")
+        if document.get("schema_version") != "0.3.0":
+            _reject(findings, name, "SCHEMA_VERSION_MISMATCH", [name], "historical-curator", "expected schema 0.3.0")
+    _validate_evidence_contract(documents, findings)
+    inventory_path = source / "anomaly_inventory.json"
+    if inventory_path.is_file() and not inventory_path.is_symlink():
+        try:
+            _validate_inventory(_load(inventory_path))
+        except SystemExit as exc:
+            _reject(findings, "anomaly_inventory.json", "INVALID_INVENTORY", [], "historical-curator", str(exc))
+    assignments_path = source / "assignments.json"
+    if assignments_path.is_file() and not assignments_path.is_symlink():
+        try:
+            assignments = _load(assignments_path)
+        except SystemExit:
+            assignments = {}
+        for group in ("fabric_sidecars", "release_sidecars"):
+            records = assignments.get(group)
+            if not isinstance(records, dict):
+                continue
+            for role, record in records.items():
+                if not isinstance(record, dict):
+                    continue
+                relative = Path(str(record.get("path") or ""))
+                artifact = f"{group}:{role}"
+                if relative.is_absolute() or ".." in relative.parts:
+                    _reject(findings, artifact, "PATH_ESCAPE", [str(relative)], "historical-curator", "sidecar path escapes the evidence bundle")
+                    continue
+                path = source / relative
+                if path.is_symlink() or not path.is_file():
+                    _reject(findings, artifact, "MISSING_OR_SYMLINK_SIDECAR", [str(relative)], "historical-curator", "hash-pinned sidecar is missing or symlinked")
+                elif _sha256(path) != str(record.get("sha256") or "").lower():
+                    _reject(findings, artifact, "CHECKSUM_MISMATCH", [str(relative)], "historical-curator", "sidecar does not match its assignment hash")
+    for path in source.rglob("*"):
+        if path.is_symlink():
+            _reject(findings, path.relative_to(source).as_posix(), "SYMLINK_INPUT", [], "historical-curator", "bundle entries may not be symlinks")
+    return findings
+
+
+def _validate_evidence_contract(documents: dict[str, dict[str, Any]], findings: list[dict[str, Any]]) -> None:
+    """Check worldwide invariants that do not depend on staged/generated files."""
+    sources = documents.get("source_manifest.json", {}).get("sources") or []
+    reviewed = {row.get("source_id") for row in sources if row.get("review_status") == "reviewed"}
+    all_sources = {row.get("source_id") for row in sources}
+    assignments = documents.get("assignments.json", {})
+    rows = assignments.get("assignments") or []
+    provinces = {row.get("province_id") for row in rows}
+    locations = [location for row in rows for location in row.get("location_ids") or []]
+    regions = {row.get("region_id") for row in rows}
+    if assignments and (assignments.get("expected_province_count") != 22_000 or len(provinces) != 22_000):
+        _reject(findings, "assignments.json", "INVALID_GLOBAL_PROVINCE_COUNT", [], "aggregation-curator", f"found {len(provinces)} unique provinces; expected 22000")
+    if len(locations) != len(set(locations)):
+        duplicates = sorted(value for value, count in Counter(locations).items() if count > 1)
+        _reject(findings, "assignments.json", "DUPLICATE_LOCATION_ASSIGNMENT", duplicates[:100], "aggregation-curator", "locations must be assigned exactly once")
+    if rows and regions != WORLDWIDE_M49_SUBREGIONS:
+        _reject(findings, "assignments.json", "INVALID_WORLD_PARTITION", sorted(str(value) for value in regions ^ WORLDWIDE_M49_SUBREGIONS), "aggregation-curator", "assignments must span the exact 22-part M49 partition")
+    for row in rows:
+        unknown = sorted(set(row.get("source_ids") or []) - all_sources)
+        unreviewed = sorted(set(row.get("source_ids") or []) - reviewed)
+        if unknown:
+            _reject(findings, "assignments.json", "UNKNOWN_SOURCE_REFERENCE", [str(row.get("assignment_id")), *unknown], "historical-curator", "assignment references unknown sources")
+        elif unreviewed:
+            _reject(findings, "assignments.json", "UNREVIEWED_SOURCE_REFERENCE", [str(row.get("assignment_id")), *unreviewed], "historical-curator", "worldwide assignments require reviewed sources")
+    coverage = documents.get("coverage.json", {})
+    coverage_rows = coverage.get("coverage") or []
+    indexed = {(row.get("region_id"), row.get("layer")): row for row in coverage_rows}
+    if coverage:
+        for region in sorted(WORLDWIDE_M49_SUBREGIONS):
+            for layer in ("geometry", "politics", "hierarchy", "gazetteer_relationships"):
+                row = indexed.get((region, layer))
+                if row is None or row.get("grade") != "A" or row.get("known_gaps") or row.get("exclusions"):
+                    _reject(findings, "coverage.json", "GLOBAL_COVERAGE_NOT_A", [region, layer], "historical-curator", "worldwide coverage must be gap-free grade A")
+    if coverage and (coverage.get("known_gaps") or coverage.get("exclusions")):
+        _reject(findings, "coverage.json", "GLOBAL_COVERAGE_GAPS", [], "historical-curator", "worldwide coverage may not declare gaps or exclusions")
+
+
+def _validate_fabric_sidecars(source: Path) -> None:
+    findings = _fabric_sidecar_findings(source)
+    if findings:
+        details = "; ".join(f"{row['rule']}:{row['artifact']}" for row in findings)
+        raise SystemExit(f"accepted M23 fabric sidecars are invalid: {details}")
+
+
+def _fabric_sidecar_findings(source: Path) -> list[dict[str, Any]]:
+    findings: list[dict[str, Any]] = []
+    source = Path(source)
+    if not source.is_dir():
+        _reject(findings, "fabric_sidecars", "MISSING_INPUT", [str(source)], "fabric-curator", "sidecar directory does not exist")
+        return findings
+    for role, name in REQUIRED_FABRIC_SIDECARS.items():
+        path = source / name
+        if path.is_symlink():
+            _reject(findings, role, "SYMLINK_INPUT", [name], "fabric-curator", "sidecars may not be symlinks")
+        elif not path.is_file():
+            _reject(findings, role, "MISSING_SIDECAR", [name], "fabric-curator", "required M23 sidecar is missing")
+    for role, name, validator in (
+        ("fabric_manifest", "location_fabric_manifest.json", validate_location_fabric_manifest),
+        ("lineage", "location_lineage.json", validate_location_lineage),
+    ):
+        path = source / name
+        if path.is_file() and not path.is_symlink():
+            try:
+                validator(_load(path))
+            except (SchemaValidationError, SystemExit) as exc:
+                _reject(findings, role, "SCHEMA_REJECTION", [name], "fabric-curator", str(exc))
+    for role, name, required in (
+        ("province_membership", "province_membership.csv", {"province_id", "location_id", "piece_id"}),
+        ("adjacency", "location_adjacency.csv", {"from_location_id", "to_location_id"}),
+    ):
+        path = source / name
+        if path.is_file() and not path.is_symlink():
+            try:
+                with path.open(encoding="utf-8", newline="") as handle:
+                    header = set(next(csv.reader(handle), []))
+                if not required.issubset(header):
+                    raise ValueError(f"expected columns {sorted(required)}")
+            except (OSError, UnicodeError, csv.Error, ValueError) as exc:
+                _reject(findings, role, "INVALID_CSV", [name], "fabric-curator", str(exc))
+    return findings
+
+
+def _write_rejection_report(output: Path, findings: list[dict[str, Any]]) -> None:
+    _write(Path(output).resolve() / REJECTION_REPORT, {
+        "schema_version": "1.0.0", "report_type": "m25c_curator_handoff_rejection",
+        "pass_id": PASS_ID, "start_date": START_DATE,
+        "status": "reject" if findings else "pass", "finding_count": len(findings),
+        "findings": findings,
+    })
+
+
+def _reject(findings: list[dict[str, Any]], artifact: str, rule: str, affected_ids: list[str], owner: str, message: str) -> None:
+    findings.append({
+        "artifact": artifact, "rule": rule, "affected_ids": sorted(str(value) for value in affected_ids),
+        "remediation_owner": owner, "message": message,
+    })
+
+
+def _is_placeholder_id(value: Any) -> bool:
+    normalized = str(value).strip().casefold()
+    return normalized in {"pending", "placeholder", "todo", "tbd", "unknown"} or normalized.startswith("pending-")
 
 
 def _fabric_revision(document: dict[str, Any]) -> str:
