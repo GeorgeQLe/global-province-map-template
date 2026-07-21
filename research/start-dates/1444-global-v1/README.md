@@ -36,6 +36,18 @@ diagnosis. The accepted M23 handoff must include its fabric manifest, lineage,
 province membership, and location adjacency sidecars; the schema-0.3 evidence
 bundle must carry and hash-pin the aggregation and release sidecars.
 
+A promotable schema-0.3 anomaly inventory is a closed census, not merely a list
+of examples. Its `census.region_ids` is the exact 22-subregion non-Antarctic UN
+M49 partition, `census.types` contains all 11 anomaly classes, and
+`census.cells` contains each of the 242 region/class pairs exactly once. Every
+cell is either `resolved_cases`, with matching anomaly links, or
+`reviewed_none_found`, with reviewed survey-source links and an explanatory
+note. The named researcher and human reviewer must differ. Every anomaly and
+census source must resolve to a reviewed schema-0.3 source-manifest record, and
+every anomaly subject must resolve to a sourced gazetteer polity. The combined
+handoff canonical-compares an inventory duplicated in the evidence bundle with
+`--inventory-input`; disagreement is rejected before copying.
+
 `fabric` assigns exact UN M49 subregion codes from Natural Earth metadata and
 excludes Antarctica from the playable world mask. `splits` preserves revision
 2 by default; revision 3 additionally requires a failed paintability report,

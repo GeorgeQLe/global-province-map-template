@@ -2,6 +2,7 @@
   "files": {
     "assignments.json": "a3e9d32c6ceb42514dd0cd0d3dfc308a256940ece32783a71d3b7488ae884604",
     "boundaries.geojson": "2b508e1f739dc7f23678e85d91273647f68c579c87d4ee863ea6e0c1429b67be",
+    "build.geojson": "d506bc0b21ad014d26a5146489f770f3ba9fe0799beebf2e9a4807275da01439",
     "changelog.json": "e21862fbe440758945ea47419e8808701e12c70bb4b362c094c5700623c2cf81",
     "constraints.geojson": "36c103e6a2b10ff95964e66db059aa7e379544f13e05c096fc61dfc4db6e7be7",
     "coverage.json": "ebd9ebb14c28afe29189adf01f42a85b73510a359948d0af8c86f261e50d297d",
@@ -42,6 +43,7 @@
     "sidecars/aggregation_manifest.json": "8c8c0d320fda684cbdc77303660e4e54427a8f7e8ec0edb604b8c719b22e8402",
     "sidecars/location_fabric_manifest.json": "057d35a2ba95c52bcfa139719efa5dd012d66d127c25ecbde8947e8d1a3636de",
     "sidecars/location_lineage.json": "c0c4c6bfef568df1519096f964f16077c7dc1871fd3b604e1fc96232410a6233",
+    "sidecars/locations.geojson": "6e0f22860a729e14e858066d410ec59769719be524841dc5596c8d397c499e20",
     "sidecars/province_membership.csv": "f25c67657e8ef41d2ad064221312c9da47058b44fcd51394382081ca90447e68",
     "source_manifest.json": "9722822cfaf73fa8bcfce2085d3d6833c5ee13990d471ed4e33fe8ad818ccf31",
     "start_date_qa.json": "f0ab305853058a03e4aaceb590e6ed062f2d0064bf88a013352bd96c6c4ecd7c"

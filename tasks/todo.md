@@ -2,10 +2,11 @@
 
 ## Active
 
-- M25C worldwide historical research inputs and independent acceptance: supply
-  the sourced, resolved anomaly inventory; reviewed schema-0.3 evidence bundle;
-  and accepted M23 fabric sidecars, then inspect all 22 regional and 11 anomaly
-  sheets and record acceptance with an independent human reviewer.
+- M25C worldwide historical research inputs and independent acceptance: inspect
+  the generated 242-cell anomaly census and its source/gazetteer packet, record
+  acceptance with a distinct human reviewer and ISO review date, then combine
+  it with the accepted M23 fabric sidecars and remaining worldwide evidence for
+  the 22-region plus 11-class pass review.
 
 ## Up next (from roadmap)
 

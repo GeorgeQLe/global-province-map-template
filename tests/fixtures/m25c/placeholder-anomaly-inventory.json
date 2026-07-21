@@ -1,0 +1,20 @@
+{
+  "schema_version": "0.3.0",
+  "document_type": "historical_anomaly_inventory",
+  "artifact_version": "1.0.0",
+  "pass_id": "official-1444-global-v1",
+  "start_date": "1444-11-11",
+  "anomalies": [
+    {"anomaly_id": "pending-microstate", "type": "microstate", "subject_ids": ["pending"], "source_ids": ["pending"], "resolution": "pending_evidence"},
+    {"anomaly_id": "pending-detached-territory", "type": "detached-territory", "subject_ids": ["pending"], "source_ids": ["pending"], "resolution": "pending_evidence"},
+    {"anomaly_id": "pending-enclave-exclave", "type": "enclave-exclave", "subject_ids": ["pending"], "source_ids": ["pending"], "resolution": "pending_evidence"},
+    {"anomaly_id": "pending-free-protected-city", "type": "free-protected-city", "subject_ids": ["pending"], "source_ids": ["pending"], "resolution": "pending_evidence"},
+    {"anomaly_id": "pending-composite-realm", "type": "composite-realm", "subject_ids": ["pending"], "source_ids": ["pending"], "resolution": "pending_evidence"},
+    {"anomaly_id": "pending-dependency", "type": "dependency", "subject_ids": ["pending"], "source_ids": ["pending"], "resolution": "pending_evidence"},
+    {"anomaly_id": "pending-condominium", "type": "condominium", "subject_ids": ["pending"], "source_ids": ["pending"], "resolution": "pending_evidence"},
+    {"anomaly_id": "pending-concession", "type": "concession", "subject_ids": ["pending"], "source_ids": ["pending"], "resolution": "pending_evidence"},
+    {"anomaly_id": "pending-claim", "type": "claim", "subject_ids": ["pending"], "source_ids": ["pending"], "resolution": "pending_evidence"},
+    {"anomaly_id": "pending-disputed-area", "type": "disputed-area", "subject_ids": ["pending"], "source_ids": ["pending"], "resolution": "pending_evidence"},
+    {"anomaly_id": "pending-non-state-territory", "type": "non-state-territory", "subject_ids": ["pending"], "source_ids": ["pending"], "resolution": "pending_evidence"}
+  ]
+}

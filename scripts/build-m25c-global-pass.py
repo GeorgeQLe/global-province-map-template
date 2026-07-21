@@ -29,7 +29,12 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from gpm.geo.shapefile import read_zipped_shapefile  # noqa: E402
 from gpm.qa.render import StartDateRenderError, render_start_date_pass  # noqa: E402
-from gpm.qa.start_date import StartDateQAError, run_start_date_qa  # noqa: E402
+from gpm.qa.start_date import (  # noqa: E402
+    HISTORICAL_ANOMALY_TYPES,
+    StartDateQAError,
+    validate_anomaly_inventory,
+    run_start_date_qa,
+)
 from gpm.schemas import (  # noqa: E402
     SchemaValidationError,
     WORLDWIDE_M49_SUBREGIONS,
@@ -52,11 +57,7 @@ GENERATED_AT = "2026-07-19T00:00:00Z"
 DEFAULT_OUTPUT = ROOT / "research" / "start-dates" / "1444-global-v1"
 PILOT = ROOT / "research" / "start-dates" / "1444-v2"
 DEFAULT_NATURAL_EARTH = ROOT / "data" / "raw" / "natural_earth" / "ne_10m_admin_0_countries.zip"
-ANOMALY_TYPES = frozenset({
-    "microstate", "detached-territory", "enclave-exclave", "free-protected-city",
-    "composite-realm", "dependency", "condominium", "concession", "claim",
-    "disputed-area", "non-state-territory",
-})
+ANOMALY_TYPES = HISTORICAL_ANOMALY_TYPES
 M49_BY_NATURAL_EARTH_SUBREGION = {
     "Antarctica": "Antarctica",
     "Western Africa": "011", "Eastern Africa": "014", "Northern Africa": "015",
@@ -154,7 +155,7 @@ def stage_inventory(args: argparse.Namespace) -> None:
         raise SystemExit("inventory stage requires --inventory-input with reviewed, resolved worldwide anomalies")
     inventory = _load(args.inventory_input)
     _validate_inventory(inventory)
-    _write(output / "anomaly_inventory.json", inventory)
+    _write(output / "anomaly_inventory.json", _canonicalize_inventory(inventory))
     _write_candidate_status(output, "research_inputs_assembled_pending_independent_review")
 
 
@@ -279,7 +280,7 @@ def stage_evidence(args: argparse.Namespace) -> None:
     if inventory_source.is_file():
         inventory = _load(inventory_source)
         _validate_inventory(inventory)
-        _write(output / "anomaly_inventory.json", inventory)
+        _write(output / "anomaly_inventory.json", _canonicalize_inventory(inventory))
     _require_resolved_inventory(output)
 
 
@@ -456,19 +457,10 @@ def _verify_review_bundle(output: Path, manifest: dict[str, Any], review: dict[s
 def _validate_inventory(inventory: dict[str, Any]) -> None:
     if inventory.get("schema_version") != "0.3.0" or inventory.get("pass_id") != PASS_ID or inventory.get("start_date") != START_DATE:
         raise SystemExit("anomaly inventory has the wrong schema/pass/date identity")
-    rows = inventory.get("anomalies") or []
-    classes = {row.get("type") for row in rows}
-    unresolved = [str(row.get("anomaly_id")) for row in rows if row.get("resolution") != "resolved"]
-    incomplete = [str(row.get("anomaly_id")) for row in rows if not row.get("source_ids") or not row.get("subject_ids")]
-    placeholders = [
-        str(row.get("anomaly_id")) for row in rows
-        if any(_is_placeholder_id(value) for field in ("source_ids", "subject_ids") for value in row.get(field) or [])
-    ]
-    if classes != ANOMALY_TYPES or unresolved or incomplete or placeholders:
-        raise SystemExit(
-            f"anomaly inventory must resolve every required class; missing={sorted(ANOMALY_TYPES - classes)}, "
-            f"unresolved={unresolved}, incomplete={incomplete}, placeholders={placeholders}"
-        )
+    try:
+        validate_anomaly_inventory(inventory)
+    except SchemaValidationError as exc:
+        raise SystemExit(str(exc)) from exc
 
 
 def _require_resolved_inventory(output: Path) -> None:
@@ -476,6 +468,23 @@ def _require_resolved_inventory(output: Path) -> None:
     if not path.is_file():
         raise SystemExit("resolved worldwide anomaly inventory is missing")
     _validate_inventory(_load(path))
+
+
+def _canonicalize_inventory(inventory: dict[str, Any]) -> dict[str, Any]:
+    """Return the canonical byte-stable ordering for a validated inventory."""
+    result = json.loads(json.dumps(inventory))
+    for row in result["anomalies"]:
+        for field in ("region_ids", "subject_ids", "source_ids"):
+            row[field] = sorted(row[field])
+    result["anomalies"].sort(key=lambda row: row["anomaly_id"])
+    census = result["census"]
+    census["region_ids"] = sorted(census["region_ids"])
+    census["types"] = sorted(census["types"])
+    for cell in census["cells"]:
+        cell["anomaly_ids"] = sorted(cell["anomaly_ids"])
+        cell["source_ids"] = sorted(cell["source_ids"])
+    census["cells"].sort(key=lambda cell: (cell["region_id"], cell["type"]))
+    return result
 
 
 def _copy_sidecars(source: Path, target: Path) -> None:
@@ -488,23 +497,16 @@ def _copy_sidecars(source: Path, target: Path) -> None:
 def _validate_curator_handoff(args: argparse.Namespace) -> list[dict[str, Any]]:
     """Report every independently detectable handoff defect before assembly."""
     findings: list[dict[str, Any]] = []
+    inventory: dict[str, Any] | None = None
     if args.inventory_input is None:
         _reject(findings, "anomaly_inventory", "MISSING_INPUT", [], "historical-curator", "--inventory-input is required")
     else:
-        inventory: dict[str, Any] = {}
         try:
             inventory = _load(args.inventory_input)
             _validate_inventory(inventory)
         except SystemExit as exc:
-            affected = [
-                str(row.get("anomaly_id")) for row in inventory.get("anomalies", [])
-                if isinstance(row, dict) and (
-                    row.get("resolution") != "resolved"
-                    or not row.get("source_ids") or not row.get("subject_ids")
-                    or any(_is_placeholder_id(value) for field in ("source_ids", "subject_ids") for value in row.get(field) or [])
-                )
-            ]
-            _reject(findings, "anomaly_inventory", "INVALID_INVENTORY", affected, "historical-curator", str(exc))
+            affected = _inventory_affected_ids(inventory or {})
+            _reject(findings, "anomaly_inventory", _inventory_rejection_rule(str(exc)), affected, "historical-curator", str(exc))
     if args.fabric_input is None:
         _reject(findings, "fabric", "MISSING_INPUT", [], "fabric-curator", "--fabric-input is required")
     elif not args.fabric_input.is_file():
@@ -518,11 +520,11 @@ def _validate_curator_handoff(args: argparse.Namespace) -> list[dict[str, Any]]:
     if args.evidence_dir is None:
         _reject(findings, "evidence_bundle", "MISSING_INPUT", [], "historical-curator", "--evidence-dir is required")
     else:
-        findings.extend(_validate_evidence_bundle(args.evidence_dir.resolve()))
+        findings.extend(_validate_evidence_bundle(args.evidence_dir.resolve(), inventory=inventory))
     return sorted(findings, key=lambda row: (row["artifact"], row["rule"], row["affected_ids"]))
 
 
-def _validate_evidence_bundle(source: Path) -> list[dict[str, Any]]:
+def _validate_evidence_bundle(source: Path, *, inventory: dict[str, Any] | None = None) -> list[dict[str, Any]]:
     findings: list[dict[str, Any]] = []
     documents: dict[str, dict[str, Any]] = {}
     if not source.is_dir():
@@ -558,11 +560,24 @@ def _validate_evidence_bundle(source: Path) -> list[dict[str, Any]]:
             _reject(findings, name, "SCHEMA_VERSION_MISMATCH", [name], "historical-curator", "expected schema 0.3.0")
     _validate_evidence_contract(documents, findings)
     inventory_path = source / "anomaly_inventory.json"
+    bundle_inventory: dict[str, Any] | None = None
     if inventory_path.is_file() and not inventory_path.is_symlink():
         try:
-            _validate_inventory(_load(inventory_path))
+            bundle_inventory = _load(inventory_path)
+            _validate_inventory(bundle_inventory)
         except SystemExit as exc:
             _reject(findings, "anomaly_inventory.json", "INVALID_INVENTORY", [], "historical-curator", str(exc))
+            bundle_inventory = None
+    effective_inventory = inventory if inventory is not None else bundle_inventory
+    if effective_inventory is not None:
+        _validate_anomaly_handoff(effective_inventory, documents, findings)
+    if inventory is not None and bundle_inventory is not None:
+        if _canonicalize_inventory(inventory) != _canonicalize_inventory(bundle_inventory):
+            _reject(
+                findings, "anomaly_inventory.json", "INVALID_CENSUS_LINK", [],
+                "historical-curator",
+                "--inventory-input and evidence/anomaly_inventory.json must be the same canonical census",
+            )
     assignments_path = source / "assignments.json"
     if assignments_path.is_file() and not assignments_path.is_symlink():
         try:
@@ -627,6 +642,135 @@ def _validate_evidence_contract(documents: dict[str, dict[str, Any]], findings: 
                     _reject(findings, "coverage.json", "GLOBAL_COVERAGE_NOT_A", [region, layer], "historical-curator", "worldwide coverage must be gap-free grade A")
     if coverage and (coverage.get("known_gaps") or coverage.get("exclusions")):
         _reject(findings, "coverage.json", "GLOBAL_COVERAGE_GAPS", [], "historical-curator", "worldwide coverage may not declare gaps or exclusions")
+
+
+def _validate_anomaly_handoff(
+    inventory: dict[str, Any], documents: dict[str, dict[str, Any]], findings: list[dict[str, Any]],
+) -> None:
+    """Cross-check every anomaly and census survey link against reviewed evidence."""
+    sources = documents.get("source_manifest.json", {}).get("sources") or []
+    source_ids = {row.get("source_id") for row in sources if isinstance(row, dict)}
+    reviewed_ids = {
+        row.get("source_id") for row in sources
+        if isinstance(row, dict) and row.get("review_status") == "reviewed"
+    }
+    source_index = {
+        row.get("source_id"): row for row in sources
+        if isinstance(row, dict) and isinstance(row.get("source_id"), str)
+    }
+    polities = documents.get("gazetteer.json", {}).get("polities") or []
+    polity_ids = {row.get("polity_id") for row in polities if isinstance(row, dict)}
+    polity_index = {
+        row.get("polity_id"): row for row in polities
+        if isinstance(row, dict) and isinstance(row.get("polity_id"), str)
+    }
+    referenced_polities: set[str] = set()
+
+    for row in inventory.get("anomalies") or []:
+        if not isinstance(row, dict):
+            continue
+        anomaly_id = str(row.get("anomaly_id") or "<missing-anomaly-id>")
+        _reject_unknown_anomaly_refs(
+            findings, anomaly_id, row.get("source_ids"), source_ids, reviewed_ids,
+        )
+        evidence = [source_index[source_id] for source_id in row.get("source_ids") or [] if source_id in source_index]
+        has_anchor = any(source.get("source_type") in {"academic", "primary"} for source in evidence)
+        independence_groups = {
+            source.get("independence_group") for source in evidence
+            if isinstance(source.get("independence_group"), str) and source.get("independence_group")
+        }
+        if not has_anchor or len(independence_groups) < 2:
+            _reject(
+                findings, "anomaly_inventory", "UNREVIEWED_ANOMALY_SOURCE", [anomaly_id],
+                "historical-curator",
+                "resolved anomaly requires an academic/primary anchor and two independent provenance groups",
+            )
+        unknown_subjects = sorted(set(row.get("subject_ids") or []) - polity_ids)
+        referenced_polities.update(set(row.get("subject_ids") or []) & polity_ids)
+        if unknown_subjects:
+            _reject(
+                findings, "anomaly_inventory", "UNKNOWN_ANOMALY_SUBJECT",
+                [anomaly_id, *unknown_subjects], "historical-curator",
+                "anomaly references polity IDs absent from gazetteer.json",
+            )
+
+    for polity_id in sorted(referenced_polities):
+        polity = polity_index[polity_id]
+        polity_sources = polity.get("source_ids")
+        if not polity_sources:
+            _reject(
+                findings, "gazetteer.json", "UNREVIEWED_ANOMALY_SOURCE", [polity_id],
+                "historical-curator", "an anomaly subject polity must cite reviewed sources",
+            )
+        else:
+            _reject_unknown_anomaly_refs(
+                findings, polity_id, polity_sources, source_ids, reviewed_ids,
+            )
+
+    census = inventory.get("census")
+    if not isinstance(census, dict):
+        return
+    for cell in census.get("cells") or []:
+        if not isinstance(cell, dict):
+            continue
+        identity = f"{cell.get('region_id')}/{cell.get('type')}"
+        _reject_unknown_anomaly_refs(
+            findings, identity, cell.get("source_ids"), source_ids, reviewed_ids,
+        )
+
+
+def _reject_unknown_anomaly_refs(
+    findings: list[dict[str, Any]], identity: str, values: Any,
+    source_ids: set[Any], reviewed_ids: set[Any],
+) -> None:
+    refs = set(values) if isinstance(values, list) else set()
+    unknown = sorted(refs - source_ids)
+    if unknown:
+        _reject(
+            findings, "anomaly_inventory", "UNKNOWN_ANOMALY_SOURCE",
+            [identity, *unknown], "historical-curator",
+            "anomaly or census cell references source IDs absent from source_manifest.json",
+        )
+    unreviewed = sorted((refs & source_ids) - reviewed_ids)
+    if unreviewed:
+        _reject(
+            findings, "anomaly_inventory", "UNREVIEWED_ANOMALY_SOURCE",
+            [identity, *unreviewed], "historical-curator",
+            "anomaly and census survey sources must have review_status reviewed",
+        )
+
+
+def _inventory_rejection_rule(message: str) -> str:
+    normalized = message.casefold()
+    if "review requires" in normalized or "review_date" in normalized:
+        return "INVALID_CENSUS_REVIEW"
+    if "orphan anomaly" in normalized:
+        return "ORPHAN_ANOMALY"
+    if "link" in normalized:
+        return "INVALID_CENSUS_LINK"
+    if "census" in normalized:
+        return "INCOMPLETE_ANOMALY_CENSUS"
+    return "INVALID_INVENTORY"
+
+
+def _inventory_affected_ids(inventory: dict[str, Any]) -> list[str]:
+    affected: set[str] = set()
+    for row in inventory.get("anomalies") or []:
+        if not isinstance(row, dict):
+            continue
+        anomaly_id = str(row.get("anomaly_id") or "<missing-anomaly-id>")
+        if (
+            row.get("resolution") != "resolved" or not row.get("region_ids")
+            or not row.get("source_ids") or not row.get("subject_ids")
+            or _is_placeholder_id(anomaly_id)
+            or any(
+                _is_placeholder_id(value)
+                for field in ("source_ids", "subject_ids")
+                for value in row.get(field) or []
+            )
+        ):
+            affected.add(anomaly_id)
+    return sorted(affected)
 
 
 def _validate_fabric_sidecars(source: Path) -> None:

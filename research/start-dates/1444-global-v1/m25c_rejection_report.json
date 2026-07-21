@@ -16,9 +16,9 @@
         "pending-non-state-territory"
       ],
       "artifact": "anomaly_inventory",
-      "message": "anomaly inventory must resolve every required class; missing=[], unresolved=['pending-microstate', 'pending-detached-territory', 'pending-enclave-exclave', 'pending-free-protected-city', 'pending-composite-realm', 'pending-dependency', 'pending-condominium', 'pending-concession', 'pending-claim', 'pending-disputed-area', 'pending-non-state-territory'], incomplete=[], placeholders=['pending-microstate', 'pending-detached-territory', 'pending-enclave-exclave', 'pending-free-protected-city', 'pending-composite-realm', 'pending-dependency', 'pending-condominium', 'pending-concession', 'pending-claim', 'pending-disputed-area', 'pending-non-state-territory']",
+      "message": "placeholder seed lacks the required closed 242-cell census and contains unresolved placeholder anomaly, subject, and source IDs",
       "remediation_owner": "historical-curator",
-      "rule": "INVALID_INVENTORY"
+      "rule": "INCOMPLETE_ANOMALY_CENSUS"
     },
     {
       "affected_ids": [],

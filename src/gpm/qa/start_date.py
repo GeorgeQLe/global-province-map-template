@@ -19,6 +19,7 @@ from shapely.strtree import STRtree
 
 from gpm.schemas import (
     SchemaValidationError,
+    WORLDWIDE_M49_SUBREGIONS,
     validate_historical_boundary_registry,
     validate_historical_territory_status,
     validate_location_assignments,
@@ -64,12 +65,18 @@ _ARTIFACT_VALIDATORS: dict[str, Callable[[dict[str, Any]], None]] = {
     "changelog": validate_start_date_changelog,
     "canonical_historical_status": validate_historical_territory_status,
     "world_coverage_mask": lambda document: _validate_world_coverage_mask(document),
-    "anomaly_inventory": lambda document: _validate_anomaly_inventory(document),
+    "anomaly_inventory": lambda document: validate_anomaly_inventory(document),
 }
 _DOSSIER_SECTIONS = (
     "scope", "research questions", "citations", "transformations and conflicts",
     "exclusions", "uncertainty",
 )
+HISTORICAL_ANOMALY_TYPES = frozenset({
+    "microstate", "detached-territory", "enclave-exclave", "free-protected-city",
+    "composite-realm", "dependency", "condominium", "concession", "claim",
+    "disputed-area", "non-state-territory",
+})
+ANOMALY_CENSUS_STATUSES = frozenset({"resolved_cases", "reviewed_none_found"})
 
 
 def run_start_date_qa(
@@ -527,34 +534,145 @@ def _validate_world_coverage_mask(document: dict[str, Any]) -> None:
         raise SchemaValidationError("world coverage mask must contain playable land")
 
 
-def _validate_anomaly_inventory(document: dict[str, Any]) -> None:
-    required = {"schema_version", "document_type", "artifact_version", "pass_id", "start_date", "anomalies"}
+def validate_anomaly_inventory(document: dict[str, Any]) -> None:
+    """Validate a closed, independently reviewed worldwide anomaly census."""
+    required = {
+        "schema_version", "document_type", "artifact_version", "pass_id",
+        "start_date", "anomalies", "census",
+    }
     if set(document) != required or document.get("schema_version") != "0.3.0" or document.get("document_type") != "historical_anomaly_inventory":
         raise SchemaValidationError("anomaly inventory has invalid or unexpected top-level fields")
-    allowed = {"microstate", "detached-territory", "enclave-exclave", "free-protected-city", "composite-realm", "dependency", "condominium", "concession", "claim", "disputed-area", "non-state-territory"}
+    allowed = HISTORICAL_ANOMALY_TYPES
     seen: set[str] = set()
     if not isinstance(document["anomalies"], list):
         raise SchemaValidationError("anomaly inventory.anomalies must be an array")
+    anomaly_index: dict[str, dict[str, Any]] = {}
     for index, item in enumerate(document["anomalies"]):
         path = f"anomaly inventory.anomalies[{index}]"
-        _require = ("anomaly_id", "type", "subject_ids", "source_ids", "resolution")
+        _require = ("anomaly_id", "type", "region_ids", "subject_ids", "source_ids", "resolution")
         if not isinstance(item, dict) or any(key not in item for key in _require):
             raise SchemaValidationError(f"{path} is incomplete")
         anomaly_id = item["anomaly_id"]
-        if not isinstance(anomaly_id, str) or not anomaly_id or anomaly_id in seen:
-            raise SchemaValidationError(f"{path}.anomaly_id must be unique and non-empty")
-        if item["type"] not in allowed or item["resolution"] != "resolved":
+        if not isinstance(anomaly_id, str) or not anomaly_id or anomaly_id in seen or _is_placeholder_identifier(anomaly_id):
+            raise SchemaValidationError(f"{path}.anomaly_id must be unique and non-placeholder")
+        if not isinstance(item["type"], str) or item["type"] not in allowed or item["resolution"] != "resolved":
             raise SchemaValidationError(f"{path} has unsupported type or unresolved status")
-        for field in ("subject_ids", "source_ids"):
-            if not isinstance(item[field], list) or not item[field] or not all(isinstance(value, str) and value for value in item[field]):
-                raise SchemaValidationError(f"{path}.{field} must be non-empty IDs")
+        for field in ("region_ids", "subject_ids", "source_ids"):
+            values = item[field]
+            if (
+                not isinstance(values, list) or not values
+                or not all(isinstance(value, str) and value and not _is_placeholder_identifier(value) for value in values)
+                or len(values) != len(set(values))
+            ):
+                raise SchemaValidationError(f"{path}.{field} must contain unique, non-placeholder IDs")
+        invalid_regions = set(item["region_ids"]) - WORLDWIDE_M49_SUBREGIONS
+        if invalid_regions:
+            raise SchemaValidationError(f"{path}.region_ids contains invalid M49 subregions: {sorted(invalid_regions)}")
         seen.add(anomaly_id)
+        anomaly_index[anomaly_id] = item
     present = {item["type"] for item in document["anomalies"]}
     if present != allowed:
         raise SchemaValidationError(
-            "anomaly inventory must cover every required class exactly by type; "
+            "anomaly inventory must represent every required class; "
             f"missing={sorted(allowed - present)}"
         )
+
+    census = document["census"]
+    census_required = {"region_ids", "types", "researcher", "reviewer", "review_date", "cells"}
+    if not isinstance(census, dict) or set(census) != census_required:
+        raise SchemaValidationError("anomaly inventory.census has invalid or unexpected fields")
+    if (
+        not isinstance(census["region_ids"], list)
+        or not all(isinstance(value, str) for value in census["region_ids"])
+        or set(census["region_ids"]) != WORLDWIDE_M49_SUBREGIONS or len(census["region_ids"]) != 22
+    ):
+        raise SchemaValidationError("anomaly inventory.census.region_ids must be the exact 22-subregion M49 partition")
+    if (
+        not isinstance(census["types"], list)
+        or not all(isinstance(value, str) for value in census["types"])
+        or set(census["types"]) != allowed or len(census["types"]) != 11
+    ):
+        raise SchemaValidationError("anomaly inventory.census.types must contain all 11 anomaly classes exactly once")
+    researcher, reviewer = census["researcher"], census["reviewer"]
+    if (
+        not isinstance(researcher, str) or not researcher.strip()
+        or not isinstance(reviewer, str) or not reviewer.strip()
+        or researcher.strip().casefold() == reviewer.strip().casefold()
+        or _is_placeholder_identifier(researcher) or _is_placeholder_identifier(reviewer)
+    ):
+        raise SchemaValidationError("anomaly inventory.census review requires distinct, named researcher and reviewer identities")
+    try:
+        date.fromisoformat(census["review_date"])
+    except (TypeError, ValueError):
+        raise SchemaValidationError("anomaly inventory.census.review_date must be an ISO date") from None
+
+    cells = census["cells"]
+    if not isinstance(cells, list) or len(cells) != 242:
+        raise SchemaValidationError("anomaly inventory.census.cells must contain exactly 242 cells")
+    cell_index: dict[tuple[str, str], dict[str, Any]] = {}
+    linked: dict[str, set[tuple[str, str]]] = {anomaly_id: set() for anomaly_id in anomaly_index}
+    for index, cell in enumerate(cells):
+        path = f"anomaly inventory.census.cells[{index}]"
+        fields = {"region_id", "type", "status", "anomaly_ids", "source_ids", "notes"}
+        if not isinstance(cell, dict) or set(cell) != fields:
+            raise SchemaValidationError(f"{path} has invalid or unexpected fields")
+        region_id, anomaly_type = cell["region_id"], cell["type"]
+        key = (region_id, anomaly_type)
+        if (
+            not isinstance(region_id, str) or not isinstance(anomaly_type, str)
+            or region_id not in WORLDWIDE_M49_SUBREGIONS or anomaly_type not in allowed
+        ):
+            raise SchemaValidationError(f"{path} has an invalid region or anomaly class")
+        if key in cell_index:
+            raise SchemaValidationError(f"anomaly inventory.census has duplicate cell {region_id}/{anomaly_type}")
+        cell_index[key] = cell
+        if cell["status"] not in ANOMALY_CENSUS_STATUSES:
+            raise SchemaValidationError(f"{path}.status must close the census without pending or unknown states")
+        if not isinstance(cell["notes"], str) or not cell["notes"].strip():
+            raise SchemaValidationError(f"{path}.notes must explain the reviewed conclusion")
+        for field in ("anomaly_ids", "source_ids"):
+            values = cell[field]
+            if not isinstance(values, list) or not all(
+                isinstance(value, str) and value and not _is_placeholder_identifier(value) for value in values
+            ) or len(values) != len(set(values)):
+                raise SchemaValidationError(f"{path}.{field} must contain unique, non-placeholder IDs")
+        if not cell["source_ids"]:
+            raise SchemaValidationError(f"{path}.source_ids must identify reviewed survey sources")
+        if cell["status"] == "reviewed_none_found":
+            if cell["anomaly_ids"]:
+                raise SchemaValidationError(f"{path} reviewed_none_found may not link anomaly IDs")
+        elif not cell["anomaly_ids"]:
+            raise SchemaValidationError(f"{path} resolved_cases must link matching anomaly IDs")
+        for anomaly_id in cell["anomaly_ids"]:
+            anomaly = anomaly_index.get(anomaly_id)
+            if anomaly is None:
+                raise SchemaValidationError(f"{path} links unknown anomaly {anomaly_id}")
+            if anomaly["type"] != anomaly_type or region_id not in anomaly["region_ids"]:
+                raise SchemaValidationError(f"{path} link does not match anomaly {anomaly_id} class/region")
+            linked[anomaly_id].add(key)
+
+    expected_cells = {
+        (region_id, anomaly_type)
+        for region_id in WORLDWIDE_M49_SUBREGIONS
+        for anomaly_type in allowed
+    }
+    if set(cell_index) != expected_cells:
+        missing = sorted(expected_cells - set(cell_index))
+        raise SchemaValidationError(f"anomaly inventory.census is incomplete; missing={missing}")
+    for anomaly_id, anomaly in anomaly_index.items():
+        expected_links = {(region_id, anomaly["type"]) for region_id in anomaly["region_ids"]}
+        if not linked[anomaly_id]:
+            raise SchemaValidationError(f"orphan anomaly {anomaly_id} is not linked by a census cell")
+        if linked[anomaly_id] != expected_links:
+            raise SchemaValidationError(
+                f"anomaly {anomaly_id} census links do not match its declared regions; "
+                f"missing={sorted(expected_links - linked[anomaly_id])}"
+            )
+
+
+def _is_placeholder_identifier(value: Any) -> bool:
+    normalized = str(value).strip().casefold()
+    return normalized in {"pending", "placeholder", "todo", "tbd", "unknown"} or normalized.startswith("pending-")
 
 
 def _check_global_contract(
@@ -575,6 +693,10 @@ def _check_global_contract(
         _unknown_refs(findings, "UNKNOWN_ANOMALY_SOURCE", anomaly["source_ids"], source_ids, anomaly["anomaly_id"])
         _unknown_refs(findings, "UNKNOWN_ANOMALY_SUBJECT", anomaly["subject_ids"], polity_ids, anomaly["anomaly_id"])
         _unknown_refs(findings, "UNREVIEWED_ANOMALY_SOURCE", anomaly["source_ids"], reviewed_source_ids, anomaly["anomaly_id"])
+    for cell in inventory["census"]["cells"]:
+        identity = f"{cell['region_id']}/{cell['type']}"
+        _unknown_refs(findings, "UNKNOWN_ANOMALY_SOURCE", cell["source_ids"], source_ids, identity)
+        _unknown_refs(findings, "UNREVIEWED_ANOMALY_SOURCE", cell["source_ids"], reviewed_source_ids, identity)
     for polity in documents["polity_gazetteer"]["polities"]:
         _unknown_refs(findings, "UNREVIEWED_GLOBAL_POLITY_SOURCE", polity["source_ids"], reviewed_source_ids, polity["polity_id"])
         for relationship in polity["relationships"]:

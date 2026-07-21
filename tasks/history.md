@@ -1,5 +1,31 @@
 # History
 
+## 2026-07-21 - M25C closed worldwide anomaly-census packet
+
+- Replaced example-based anomaly coverage with a fail-closed schema-0.3 census
+  contract covering every combination of the 22 non-Antarctic UN M49
+  subregions and 11 fixed anomaly classes. Each cell now carries a resolved
+  anomaly link or a sourced, explained negative conclusion, and researcher and
+  reviewer identities must be distinct.
+- Added deterministic generation and verification for an ignored pre-review
+  research packet: eleven resolved cases, sourced subject gazetteer, reviewed
+  source manifest, 242-cell ledger, regional notes, rejection controls, hashes,
+  and explicit human-review instructions. The persisted candidate intentionally
+  has no reviewer/date and cannot be promoted or released.
+- Hardened combined handoff validation for unknown or unreviewed sources,
+  unknown or unsourced anomaly subjects, provenance independence, orphan and
+  mismatched census links, and disagreement between the inventory input and
+  evidence-bundle copy. Canonical output is byte-stable under input reordering.
+- Repaired the pinned 1444-v2 seed provenance to include its previously ignored
+  build geometry and location sidecar, keeping the global handoff reproducible.
+- Quality gate: the full suite passed 340 tests with no warnings; the dedicated
+  verifier passed source/gazetteer schemas, joint link audit, and duplicate
+  canonical builds; `git diff --check` and the changed-file credential-pattern
+  scan were clean. Adversarial review confirmed incomplete human review stays
+  an expected fail-closed finding and no public-release state is emitted.
+- Next project task: independent human review of the frozen anomaly packet,
+  followed by the accepted fabric and remaining worldwide pass inputs.
+
 ## 2026-07-19 - M25C worldwide research assembly workflow
 
 - Replaced the placeholder-producing M25C builder with a deterministic,

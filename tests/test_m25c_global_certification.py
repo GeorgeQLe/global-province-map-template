@@ -108,15 +108,9 @@ def test_m49_enrichment_is_deterministic_and_marks_antarctica(monkeypatch):
 
 def test_resolved_inventory_rejects_placeholder_subjects_and_sources():
     builder = _builder_module()
-    inventory = json.loads((GLOBAL / "anomaly_inventory.json").read_text())
-    for row in inventory["anomalies"]:
-        row["resolution"] = "resolved"
-    with pytest.raises(SystemExit, match="placeholders="):
+    inventory = json.loads((ROOT / "tests/fixtures/m25c/placeholder-anomaly-inventory.json").read_text())
+    with pytest.raises(SystemExit, match="top-level fields"):
         builder._validate_inventory(inventory)
-    for index, row in enumerate(inventory["anomalies"]):
-        row["subject_ids"] = [f"polity-{index}"]
-        row["source_ids"] = [f"source-{index}"]
-    builder._validate_inventory(inventory)
 
 
 def test_evidence_rejection_is_aggregated_and_copies_no_invalid_inputs(tmp_path):
