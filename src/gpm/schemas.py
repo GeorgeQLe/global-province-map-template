@@ -635,7 +635,16 @@ def validate_start_date_pass_manifest(document: dict[str, Any]) -> None:
             raise SchemaValidationError("every worldwide certification region must be a priority region")
         if not re.fullmatch(r"[0-9a-f]{64}", str(scope["world_coverage_mask_sha256"])):
             raise SchemaValidationError("manifest.scope.world_coverage_mask_sha256 must be lowercase SHA-256")
-        _require_keys(artifacts, ["canonical_historical_status", "world_coverage_mask", "anomaly_inventory"], "manifest.artifacts")
+        _require_keys(
+            artifacts,
+            [
+                "canonical_historical_status",
+                "world_coverage_mask",
+                "anomaly_inventory",
+                "anomaly_review_ledger",
+            ],
+            "manifest.artifacts",
+        )
 
 
 def validate_start_date_source_manifest(document: dict[str, Any]) -> None:
@@ -663,7 +672,7 @@ def validate_start_date_source_manifest(document: dict[str, Any]) -> None:
             raise SchemaValidationError(f"{path}.review_status is unsupported")
         if document["schema_version"] in {"0.2.0", "0.3.0"}:
             _require_keys(source, ["source_type", "valid_from", "valid_to", "independence_group", "derived_artifacts"], path)
-            if source["source_type"] not in {"academic", "primary", "corroborating", "soft_corroboration", "negative_control"}:
+            if source["source_type"] not in {"academic", "archival", "institutional", "primary", "corroborating", "soft_corroboration", "negative_control"}:
                 raise SchemaValidationError(f"{path}.source_type is unsupported")
             for key in ("valid_from", "valid_to"):
                 _nullable_string(source[key], f"{path}.{key}")

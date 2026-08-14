@@ -20,7 +20,8 @@
       "polity_gazetteer": {"$ref": "#/$defs/artifact"}, "location_assignments": {"$ref": "#/$defs/artifact"}, "golden_borders": {"$ref": "#/$defs/artifact"},
       "full_build_geometry": {"$ref": "#/$defs/artifact"}, "coverage_matrix": {"$ref": "#/$defs/artifact"}, "changelog": {"$ref": "#/$defs/artifact"},
       "canonical_historical_status": {"$ref": "#/$defs/artifact"}, "world_coverage_mask": {"$ref": "#/$defs/artifact"},
-      "anomaly_inventory": {"$ref": "#/$defs/artifact"}
+      "anomaly_inventory": {"$ref": "#/$defs/artifact"},
+      "anomaly_review_ledger": {"$ref": "#/$defs/artifact"}
     }, "additionalProperties": false},
     "review": {"$ref": "#/$defs/review"}
   },
@@ -43,7 +44,7 @@
     {"if": {"properties": {"schema_version": {"const": "0.3.0"}}, "required": ["schema_version"]}, "then": {
       "properties": {
         "scope": {"required": ["kind", "partition", "world_coverage_mask_sha256"]},
-        "artifacts": {"required": ["canonical_historical_status", "world_coverage_mask", "anomaly_inventory"]}
+        "artifacts": {"required": ["canonical_historical_status", "world_coverage_mask", "anomaly_inventory", "anomaly_review_ledger"]}
       }
     }}
   ],

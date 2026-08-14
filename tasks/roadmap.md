@@ -1,6 +1,6 @@
 # Roadmap Progress
 
-Updated: 2026-07-21
+Updated: 2026-08-14
 
 Product direction (see root `ROADMAP.md`): dual audience for **strategy-game
 seeds** and **historical / SaaS maps**, with a **strong historical accuracy
@@ -47,7 +47,7 @@ historical coverage.
 | M24 | complete | schemas and `gpm qa start-date` | `test_m24_start_date_framework.py` | contract and rejected-pass evidence | framework only; does not certify an era |
 | M25A | complete | hard-case casebook + typed-status schema | eight executable per-class canonical/runtime/visual/picking/LOD/adjacency/save fixtures | research artifacts only | synthetic contract fixtures, not historical evidence |
 | M25B | complete | `gpm export runtime`; `gpm.runtime` | `test_m25b_runtime.py`; duplicate-build/budget benchmarks | synthetic runtime reference pack | global-scale budgets re-run per certified era |
-| M25C | in progress; research workflow, closed anomaly-census packet, and certification boundary complete | `build-m25c-global-pass.py`; anomaly census generator/verifier; schema 0.3 QA/certification; v2 pinned provenance | census schema/link/determinism tests; research-pipeline, preflight, acceptance, certification, and demo-promotion contract tests | unsigned pending anomaly packet and global-v1 lineage; v2 pilot remains research-only | obtain independent human census review, supply fabric and remaining worldwide evidence, assemble the real pass, and obtain pass review |
+| M25C | in progress; evidence-audited and human-accepted census plus certification boundary complete | tracked `census-research.json` and source-access audit; deterministic census generator; packet verifier/signer; `build-m25c-global-pass.py`; schema 0.3 QA/certification | exact 22×11 ledger, adversarial query/source/locator/signature tests, pending/sign/accepted/downstream-overlay tests, research-pipeline and certification tests | hash-locked anomaly packet accepted by George Le via local sidecar; global-v1 lineage remains non-public; v2 pilot remains research-only | supply remaining worldwide evidence, assemble the real pass, obtain pass review, and certify runtime |
 | M26 | planned | global 1836 pass + runtime delta/migration | worldwide research and runtime validation | none yet | begins after M25C |
 | M27 | planned | 1914 canonical pass + runtime delta/migration | future research and runtime validation | none yet | begins after M26 |
 | M28 | planned | 1936 canonical pass + runtime delta/migration | future research and runtime validation | none yet | begins after M27 |
@@ -160,13 +160,13 @@ historical coverage.
 
 ## Next
 
-- M25C worldwide historical evidence and reviewed fabric assignment. The
-  deterministic research pipeline, closed 242-cell anomaly-census packet, and
-  schema 0.3 certification boundary are now in place. A distinct human must
-  review and sign the census before it can join the accepted fabric and
-  remaining worldwide inputs; the assembled real pass and pass-level review
-  remain outstanding. The 1444-v2 candidate remains an unsigned five-region
-  pilot and evidence set, not a release boundary.
+- M25C worldwide historical evidence and reviewed pass assembly. The repaired
+  242-cell packet is reproducible, hash-locked, ledger-backed, and approved by
+  George Le through the packet-only acceptance sidecar. The frozen candidate
+  status and public-release flag remain false by design. Remaining worldwide
+  evidence, real-pass assembly, assembled-pass review, runtime certification,
+  and release remain outstanding. The 1444-v2 candidate remains a five-region
+  research pilot, not a release boundary.
 - M26 1836, M27 official 1914 imperial-era, and M28 1936 reuse that runtime
   contract. They publish scenario-only deltas when geometry membership is
   unchanged and explicit migration metadata when it changes.

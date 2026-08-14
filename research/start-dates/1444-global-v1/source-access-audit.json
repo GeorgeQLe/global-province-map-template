@@ -1,0 +1,413 @@
+{
+  "schema_version": "1.0.0",
+  "document_type": "m25c_source_access_audit",
+  "pass_id": "official-1444-global-v1",
+  "checked_on": "2026-08-14",
+  "records": [
+    {
+      "source_id": "bnf-troyes-manuscript",
+      "url": "https://portail.biblissima.fr/fr/ark:/43093/mdata9bc9fd32015896d0a0d2a659e9fbbc3fa39c2dae",
+      "checked_on": "2026-08-14",
+      "method": "automated_get",
+      "result": "reachable",
+      "http_status": 200,
+      "notes": "HTTP GET followed redirects and returned 200."
+    },
+    {
+      "source_id": "cambridge-athos-ottomans",
+      "url": "https://www.cambridge.org/core/books/abs/cambridge-history-of-christianity/mount-athos-and-the-ottomans-c-13501550/9D293C2B48374784AE9D5CFABEF9101C",
+      "checked_on": "2026-08-14",
+      "method": "automated_get",
+      "result": "reachable",
+      "http_status": 200,
+      "notes": "HTTP GET followed redirects and returned 200."
+    },
+    {
+      "source_id": "cambridge-avignon-comtat",
+      "url": "https://www.cambridge.org/core/product/76CF6EE6475321916671CAFFF1A56719",
+      "checked_on": "2026-08-14",
+      "method": "automated_get",
+      "result": "reachable",
+      "http_status": 200,
+      "notes": "HTTP GET followed redirects and returned 200."
+    },
+    {
+      "source_id": "cambridge-calais-pale",
+      "url": "https://www.cambridge.org/core/journals/archaeologia/article/xvcalais-and-the-pale/E7FD917F82CBB317B98CC3C7EEE400BA",
+      "checked_on": "2026-08-14",
+      "method": "automated_get",
+      "result": "reachable",
+      "http_status": 200,
+      "notes": "HTTP GET followed redirects and returned 200."
+    },
+    {
+      "source_id": "cambridge-franciscans-ceuta",
+      "url": "https://www.cambridge.org/core/journals/americas/article/franciscans-and-portuguese-colonization-in-africa-and-the-atlantic-islands-14151499/7C545749CFC93BB4983CE83E096D8047",
+      "checked_on": "2026-08-14",
+      "method": "automated_get",
+      "result": "reachable",
+      "http_status": 200,
+      "notes": "HTTP GET followed redirects and returned 200."
+    },
+    {
+      "source_id": "cambridge-galata-1453",
+      "url": "https://www.cambridge.org/core/journals/international-journal-of-middle-east-studies/article/abs/genoese-in-galata-14531682/2FD7C9288E65958658C05D0A40DD89D2",
+      "checked_on": "2026-08-14",
+      "method": "automated_get",
+      "result": "reachable",
+      "http_status": 200,
+      "notes": "HTTP GET followed redirects and returned 200."
+    },
+    {
+      "source_id": "cambridge-galata-privileges",
+      "url": "https://www.cambridge.org/core/journals/new-perspectives-on-turkey/article/abs/byzantines-and-italians-in-fifteenthcentury-constantinople-commercial-cooperation-and-conflict/5315402ED6B5AC896FEE225DA6AD4D1E",
+      "checked_on": "2026-08-14",
+      "method": "automated_get",
+      "result": "reachable",
+      "http_status": 200,
+      "notes": "HTTP GET followed redirects and returned 200."
+    },
+    {
+      "source_id": "cambridge-lubeck",
+      "url": "https://www.cambridge.org/core/books/studies-in-numismatic-method/finds-of-english-medieval-coins-in-schleswigholstein/962AFCDD17F7171DCA3035A2DDEE4405",
+      "checked_on": "2026-08-14",
+      "method": "automated_get",
+      "result": "reachable",
+      "http_status": 200,
+      "notes": "HTTP GET followed redirects and returned 200."
+    },
+    {
+      "source_id": "cambridge-madeira-captaincies",
+      "url": "https://www.cambridge.org/core/journals/european-review/article/wine-and-portugal-a-brief-history/1D8A780317C586A218C446F31FBCE780",
+      "checked_on": "2026-08-14",
+      "method": "automated_get",
+      "result": "reachable",
+      "http_status": 200,
+      "notes": "HTTP GET followed redirects and returned 200."
+    },
+    {
+      "source_id": "cambridge-portugal-ceuta",
+      "url": "https://assets.cambridge.org/97805214/09087/excerpt/9780521409087_excerpt.htm",
+      "checked_on": "2026-08-14",
+      "method": "browser_search",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser search retrieved the cited scholarly or institutional record after direct automated access failed."
+    },
+    {
+      "source_id": "cambridge-portuguese-islands",
+      "url": "https://www.cambridge.org/core/books/abs/history-of-portugal-and-the-portuguese-empire/atlantic-islands-and-fisheries/14C4DA41C697DD1EF23A4090D8F27F33",
+      "checked_on": "2026-08-14",
+      "method": "automated_get",
+      "result": "reachable",
+      "http_status": 200,
+      "notes": "HTTP GET followed redirects and returned 200."
+    },
+    {
+      "source_id": "dumasy-burgundy-1444",
+      "url": "https://books.openedition.org/psorbonne/128223",
+      "checked_on": "2026-08-14",
+      "method": "automated_get",
+      "result": "reachable",
+      "http_status": 200,
+      "notes": "HTTP GET followed redirects and returned 200."
+    },
+    {
+      "source_id": "echr-andorra-pareage",
+      "url": "https://hudoc.echr.coe.int/app/conversion/docx/pdf?filename=CEDH.pdf&id=001-24752&library=ECHR",
+      "checked_on": "2026-08-14",
+      "method": "automated_get",
+      "result": "reachable",
+      "http_status": 200,
+      "notes": "HTTP GET followed redirects and returned 200."
+    },
+    {
+      "source_id": "oxford-demilitarized-states",
+      "url": "https://academic.oup.com/book/61886/chapter/547923267",
+      "checked_on": "2026-08-14",
+      "method": "browser_open",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser retrieval confirmed the cited page after automated rate-limit or access rejection."
+    },
+    {
+      "source_id": "pace-andorra-coregency",
+      "url": "https://assembly.coe.int/nw/xml/XRef/X2H-Xref-ViewHTML.asp?FileID=22023&lang=EN",
+      "checked_on": "2026-08-14",
+      "method": "browser_search",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser search retrieved the cited scholarly or institutional record after direct automated access failed."
+    },
+    {
+      "source_id": "regional-survey-005",
+      "url": "https://www.metmuseum.org/toah/ht/08/sanc.html",
+      "checked_on": "2026-08-14",
+      "method": "browser_open",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser retrieval confirmed the cited page after automated rate-limit or access rejection."
+    },
+    {
+      "source_id": "regional-survey-011",
+      "url": "https://www.metmuseum.org/toah/ht/08/afu.html",
+      "checked_on": "2026-08-14",
+      "method": "browser_open",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser retrieval confirmed the cited page after automated rate-limit or access rejection."
+    },
+    {
+      "source_id": "regional-survey-013",
+      "url": "https://www.metmuseum.org/toah/ht/08/cana.html",
+      "checked_on": "2026-08-14",
+      "method": "browser_open",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser retrieval confirmed the cited page after automated rate-limit or access rejection."
+    },
+    {
+      "source_id": "regional-survey-014",
+      "url": "https://www.metmuseum.org/toah/ht/08/afa.html",
+      "checked_on": "2026-08-14",
+      "method": "browser_open",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser retrieval confirmed the cited page after automated rate-limit or access rejection."
+    },
+    {
+      "source_id": "regional-survey-015",
+      "url": "https://www.metmuseum.org/toah/ht/08/afw.html",
+      "checked_on": "2026-08-14",
+      "method": "browser_open",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser retrieval confirmed the cited page after automated rate-limit or access rejection."
+    },
+    {
+      "source_id": "regional-survey-017",
+      "url": "https://www.metmuseum.org/toah/ht/08/afc.html",
+      "checked_on": "2026-08-14",
+      "method": "browser_open",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser retrieval confirmed the cited page after automated rate-limit or access rejection."
+    },
+    {
+      "source_id": "regional-survey-018",
+      "url": "https://www.metmuseum.org/toah/ht/08/afa.html",
+      "checked_on": "2026-08-14",
+      "method": "browser_open",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser retrieval confirmed the cited page after automated rate-limit or access rejection."
+    },
+    {
+      "source_id": "regional-survey-021",
+      "url": "https://www.metmuseum.org/toah/ht/08/na.html",
+      "checked_on": "2026-08-14",
+      "method": "browser_open",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser retrieval confirmed the cited page after automated rate-limit or access rejection."
+    },
+    {
+      "source_id": "regional-survey-029",
+      "url": "https://www.metmuseum.org/toah/ht/08/canc.html",
+      "checked_on": "2026-08-14",
+      "method": "browser_open",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser retrieval confirmed the cited page after automated rate-limit or access rejection."
+    },
+    {
+      "source_id": "regional-survey-030",
+      "url": "https://www.metmuseum.org/toah/ht/08/eac.html",
+      "checked_on": "2026-08-14",
+      "method": "browser_open",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser retrieval confirmed the cited page after automated rate-limit or access rejection."
+    },
+    {
+      "source_id": "regional-survey-034",
+      "url": "https://www.metmuseum.org/toah/ht/08/ssa.html",
+      "checked_on": "2026-08-14",
+      "method": "browser_open",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser retrieval confirmed the cited page after automated rate-limit or access rejection."
+    },
+    {
+      "source_id": "regional-survey-035",
+      "url": "https://www.metmuseum.org/toah/ht/08/sse.html",
+      "checked_on": "2026-08-14",
+      "method": "browser_open",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser retrieval confirmed the cited page after automated rate-limit or access rejection."
+    },
+    {
+      "source_id": "regional-survey-039",
+      "url": "https://www.metmuseum.org/toah/ht/08/eusts.html",
+      "checked_on": "2026-08-14",
+      "method": "browser_open",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser retrieval confirmed the cited page after automated rate-limit or access rejection."
+    },
+    {
+      "source_id": "regional-survey-053",
+      "url": "https://www.metmuseum.org/toah/ht/08/oc.html",
+      "checked_on": "2026-08-14",
+      "method": "browser_open",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser retrieval confirmed the cited page after automated rate-limit or access rejection."
+    },
+    {
+      "source_id": "regional-survey-054",
+      "url": "https://www.metmuseum.org/toah/ht/08/oc.html",
+      "checked_on": "2026-08-14",
+      "method": "browser_open",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser retrieval confirmed the cited page after automated rate-limit or access rejection."
+    },
+    {
+      "source_id": "regional-survey-057",
+      "url": "https://www.metmuseum.org/toah/ht/08/oc.html",
+      "checked_on": "2026-08-14",
+      "method": "browser_open",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser retrieval confirmed the cited page after automated rate-limit or access rejection."
+    },
+    {
+      "source_id": "regional-survey-061",
+      "url": "https://www.metmuseum.org/toah/ht/08/oc.html",
+      "checked_on": "2026-08-14",
+      "method": "browser_open",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser retrieval confirmed the cited page after automated rate-limit or access rejection."
+    },
+    {
+      "source_id": "regional-survey-143",
+      "url": "https://www.metmuseum.org/toah/ht/08/nc.html",
+      "checked_on": "2026-08-14",
+      "method": "browser_open",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser retrieval confirmed the cited page after automated rate-limit or access rejection."
+    },
+    {
+      "source_id": "regional-survey-145",
+      "url": "https://www.metmuseum.org/toah/ht/08/waa.html",
+      "checked_on": "2026-08-14",
+      "method": "browser_open",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser retrieval confirmed the cited page after automated rate-limit or access rejection."
+    },
+    {
+      "source_id": "regional-survey-151",
+      "url": "https://www.metmuseum.org/toah/ht/08/eue.html",
+      "checked_on": "2026-08-14",
+      "method": "browser_open",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser retrieval confirmed the cited page after automated rate-limit or access rejection."
+    },
+    {
+      "source_id": "regional-survey-154",
+      "url": "https://www.metmuseum.org/toah/ht/08/eue.html",
+      "checked_on": "2026-08-14",
+      "method": "browser_open",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser retrieval confirmed the cited page after automated rate-limit or access rejection."
+    },
+    {
+      "source_id": "regional-survey-155",
+      "url": "https://www.metmuseum.org/toah/ht/08/euwf.html",
+      "checked_on": "2026-08-14",
+      "method": "browser_open",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser retrieval confirmed the cited page after automated rate-limit or access rejection."
+    },
+    {
+      "source_id": "shepherd-historical-atlas",
+      "url": "https://archive.org/details/historicalatlas00shep",
+      "checked_on": "2026-08-14",
+      "method": "automated_get",
+      "result": "reachable",
+      "http_status": 200,
+      "notes": "HTTP GET followed redirects and returned 200."
+    },
+    {
+      "source_id": "stein-burgundian-composite",
+      "url": "https://academic.oup.com/book/8817/chapter-abstract/155002797",
+      "checked_on": "2026-08-14",
+      "method": "browser_search",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser search retrieved the cited scholarly or institutional record after direct automated access failed."
+    },
+    {
+      "source_id": "treaty-troyes-fordham",
+      "url": "https://sourcebooks.web.fordham.edu/source/1420troyes.asp",
+      "checked_on": "2026-08-14",
+      "method": "automated_get",
+      "result": "reachable",
+      "http_status": 200,
+      "notes": "HTTP GET followed redirects and returned 200."
+    },
+    {
+      "source_id": "uk-national-archives-calais",
+      "url": "https://www.nationalarchives.gov.uk/help-with-your-research/research-guides/french-lands-english-kings/",
+      "checked_on": "2026-08-14",
+      "method": "automated_get",
+      "result": "reachable",
+      "http_status": 200,
+      "notes": "HTTP GET followed redirects and returned 200."
+    },
+    {
+      "source_id": "unesco-athos",
+      "url": "https://whc.unesco.org/en/list/454/",
+      "checked_on": "2026-08-14",
+      "method": "browser_open",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser retrieval confirmed the cited page after automated rate-limit or access rejection."
+    },
+    {
+      "source_id": "unesco-avignon",
+      "url": "https://whc.unesco.org/en/list/228",
+      "checked_on": "2026-08-14",
+      "method": "browser_search",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser search retrieved the cited scholarly or institutional record after direct automated access failed."
+    },
+    {
+      "source_id": "unesco-lubeck",
+      "url": "https://whc.unesco.org/en/list/272/",
+      "checked_on": "2026-08-14",
+      "method": "browser_open",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser retrieval confirmed the cited page after automated rate-limit or access rejection."
+    },
+    {
+      "source_id": "unesco-san-marino",
+      "url": "https://whc.unesco.org/en/list/1245/",
+      "checked_on": "2026-08-14",
+      "method": "browser_open",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser retrieval confirmed the cited page after automated rate-limit or access rejection."
+    }
+  ]
+}

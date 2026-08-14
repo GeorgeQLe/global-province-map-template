@@ -29,6 +29,11 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from gpm.geo.shapefile import read_zipped_shapefile  # noqa: E402
 from gpm.qa.render import StartDateRenderError, render_start_date_pass  # noqa: E402
+from gpm.qa.m25c_census import (  # noqa: E402
+    acceptance_findings,
+    overlay_acceptance,
+    review_ledger_findings,
+)
 from gpm.qa.start_date import (  # noqa: E402
     HISTORICAL_ANOMALY_TYPES,
     StartDateQAError,
@@ -82,6 +87,7 @@ ARTIFACT_FILES = {
     "canonical_historical_status": "historical-territory-status.json",
     "world_coverage_mask": "world_coverage_mask.geojson",
     "anomaly_inventory": "anomaly_inventory.json",
+    "anomaly_review_ledger": "anomaly_census_review_ledger.json",
 }
 CURATED_FILES = tuple(name for role, name in ARTIFACT_FILES.items() if role not in {"world_coverage_mask"})
 REJECTION_REPORT = "m25c_rejection_report.json"
@@ -111,6 +117,7 @@ def main() -> int:
     ))
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--inventory-input", type=Path)
+    parser.add_argument("--acceptance-input", type=Path)
     parser.add_argument("--fabric-input", type=Path)
     parser.add_argument("--fabric-sidecars-dir", type=Path)
     parser.add_argument("--natural-earth-input", type=Path, default=DEFAULT_NATURAL_EARTH)
@@ -153,7 +160,10 @@ def stage_inventory(args: argparse.Namespace) -> None:
     })
     if args.inventory_input is None:
         raise SystemExit("inventory stage requires --inventory-input with reviewed, resolved worldwide anomalies")
-    inventory = _load(args.inventory_input)
+    inventory = _load_accepted_inventory(
+        args.inventory_input,
+        args.acceptance_input,
+    )
     _validate_inventory(inventory)
     _write(output / "anomaly_inventory.json", _canonicalize_inventory(inventory))
     _write_candidate_status(output, "research_inputs_assembled_pending_independent_review")
@@ -276,11 +286,6 @@ def stage_evidence(args: argparse.Namespace) -> None:
             continue
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(path, target)
-    inventory_source = source / "anomaly_inventory.json"
-    if inventory_source.is_file():
-        inventory = _load(inventory_source)
-        _validate_inventory(inventory)
-        _write(output / "anomaly_inventory.json", _canonicalize_inventory(inventory))
     _require_resolved_inventory(output)
 
 
@@ -463,6 +468,44 @@ def _validate_inventory(inventory: dict[str, Any]) -> None:
         raise SystemExit(str(exc)) from exc
 
 
+def _load_accepted_inventory(
+    inventory_path: Path,
+    acceptance_path: Path | None,
+) -> dict[str, Any]:
+    """Validate the frozen signature sidecar and return an in-memory overlay."""
+    inventory_path = Path(inventory_path).resolve()
+    packet = inventory_path.parent
+    acceptance_path = (
+        Path(acceptance_path).resolve()
+        if acceptance_path is not None
+        else packet / "review_acceptance.json"
+    )
+    sums_path = packet / "SHA256SUMS"
+    if not acceptance_path.is_file() or acceptance_path.is_symlink():
+        raise SystemExit("inventory stage requires a regular M25C review_acceptance.json")
+    if not sums_path.is_file() or sums_path.is_symlink():
+        raise SystemExit("inventory stage requires the frozen packet SHA256SUMS")
+    inventory = _load(inventory_path)
+    acceptance = _load(acceptance_path)
+    findings = acceptance_findings(
+        acceptance,
+        frozen_sha256sums_sha256=_sha256(sums_path),
+        inventory=inventory,
+    )
+    expected_hash: str | None = None
+    relative = inventory_path.relative_to(packet).as_posix()
+    for line in sums_path.read_text(encoding="utf-8").splitlines():
+        parts = line.split("  ", 1)
+        if len(parts) == 2 and parts[1] == relative:
+            expected_hash = parts[0]
+            break
+    if expected_hash is None or expected_hash != _sha256(inventory_path):
+        findings.append("frozen anomaly_inventory.json does not match SHA256SUMS")
+    if findings:
+        raise SystemExit("M25C acceptance sidecar rejected: " + "; ".join(findings))
+    return overlay_acceptance(inventory, acceptance)
+
+
 def _require_resolved_inventory(output: Path) -> None:
     path = Path(output) / "anomaly_inventory.json"
     if not path.is_file():
@@ -502,7 +545,10 @@ def _validate_curator_handoff(args: argparse.Namespace) -> list[dict[str, Any]]:
         _reject(findings, "anomaly_inventory", "MISSING_INPUT", [], "historical-curator", "--inventory-input is required")
     else:
         try:
-            inventory = _load(args.inventory_input)
+            inventory = _load_accepted_inventory(
+                args.inventory_input,
+                args.acceptance_input,
+            )
             _validate_inventory(inventory)
         except SystemExit as exc:
             affected = _inventory_affected_ids(inventory or {})
@@ -563,7 +609,10 @@ def _validate_evidence_bundle(source: Path, *, inventory: dict[str, Any] | None 
     bundle_inventory: dict[str, Any] | None = None
     if inventory_path.is_file() and not inventory_path.is_symlink():
         try:
-            bundle_inventory = _load(inventory_path)
+            bundle_inventory = _load_accepted_inventory(
+                inventory_path,
+                source / "review_acceptance.json",
+            )
             _validate_inventory(bundle_inventory)
         except SystemExit as exc:
             _reject(findings, "anomaly_inventory.json", "INVALID_INVENTORY", [], "historical-curator", str(exc))
@@ -716,6 +765,30 @@ def _validate_anomaly_handoff(
         identity = f"{cell.get('region_id')}/{cell.get('type')}"
         _reject_unknown_anomaly_refs(
             findings, identity, cell.get("source_ids"), source_ids, reviewed_ids,
+        )
+    ledger = documents.get("anomaly_census_review_ledger.json")
+    if not isinstance(ledger, dict):
+        _reject(
+            findings,
+            "anomaly_census_review_ledger.json",
+            "MISSING_REVIEW_LEDGER",
+            [],
+            "historical-curator",
+            "M25C evidence requires the 242-cell anomaly review ledger",
+        )
+        return
+    for issue in review_ledger_findings(
+        inventory,
+        ledger,
+        documents.get("source_manifest.json", {}),
+    ):
+        _reject(
+            findings,
+            "anomaly_census_review_ledger.json",
+            issue["code"],
+            issue["affected_ids"],
+            "historical-curator",
+            issue["message"],
         )
 
 

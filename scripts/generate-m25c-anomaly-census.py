@@ -1,327 +1,496 @@
 #!/usr/bin/env python3
-"""Generate the ignored, review-ready M25C anomaly census research packet."""
+"""Render a deterministic frozen M25C anomaly packet from tracked research."""
 
 from __future__ import annotations
 
-import csv
+import argparse
 import hashlib
 import json
+import sys
 from pathlib import Path
+from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
-LEDGER_ROOT = ROOT / "data" / "intermediate" / "m25c-anomaly-census"
-EVIDENCE_ROOT = ROOT / "data" / "processed" / "m25c-global-staging" / "evidence"
-ACCESS_DATE = "2026-07-21"
-PASS_ID = "official-1444-global-v1"
-START_DATE = "1444-11-11"
-REGIONS = {
-    "005": "South America", "011": "Western Africa", "013": "Central America",
-    "014": "Eastern Africa", "015": "Northern Africa", "017": "Middle Africa",
-    "018": "Southern Africa", "021": "Northern America", "029": "Caribbean",
-    "030": "Eastern Asia", "034": "Southern Asia", "035": "South-Eastern Asia",
-    "039": "Southern Europe", "053": "Australia and New Zealand", "054": "Melanesia",
-    "057": "Micronesia", "061": "Polynesia", "143": "Central Asia",
-    "145": "Western Asia", "151": "Eastern Europe", "154": "Northern Europe",
-    "155": "Western Europe",
-}
-CLASSES = {
-    "microstate": "A territorially very small self-governing polity represented separately because size would otherwise erase it.",
-    "detached-territory": "Territory governed by a polity but geographically separated from its principal contiguous lands.",
-    "enclave-exclave": "A territory wholly or almost wholly surrounded by another polity, recorded from the enclave or governing-polity perspective.",
-    "free-protected-city": "A city polity with legally evidenced civic autonomy, imperial immediacy, protection, or comparable protected status.",
-    "composite-realm": "Distinct constitutional territories united under one ruler while retaining separate laws or institutions.",
-    "dependency": "A governed possession subordinate to another polity and not merely a normal contiguous administrative division.",
-    "condominium": "Territory subject to formally shared superior authority by two or more rulers.",
-    "concession": "Territory or jurisdiction granted to an external commercial or political community by a host ruler.",
-    "claim": "A formally asserted sovereignty or title unsupported by effective control over the claimed whole on the start date.",
-    "disputed-area": "Territory whose sovereignty or required return was actively contested by identifiable political authorities on the start date.",
-    "non-state-territory": "Territory administered by a durable organized community that was neither a conventional dynastic state nor an ordinary subdivision.",
+sys.path.insert(0, str(ROOT / "src"))
+
+from gpm.qa.m25c_census import review_ledger_findings  # noqa: E402
+DEFAULT_RESEARCH = ROOT / "research" / "start-dates" / "1444-global-v1" / "census-research.json"
+DEFAULT_OUTPUT = ROOT / "data" / "processed" / "m25c-global-staging" / "evidence"
+EXCLUDED_FROM_HASHES = {"SHA256SUMS", "review_acceptance.json"}
+SOURCE_MANIFEST_FIELDS = {
+    "source_id",
+    "citation",
+    "url",
+    "access_date",
+    "version",
+    "license",
+    "checksum",
+    "transformations",
+    "review_status",
+    "source_type",
+    "valid_from",
+    "valid_to",
+    "independence_group",
+    "derived_artifacts",
 }
 
 
-def source(source_id: str, citation: str, url: str, source_type: str, group: str,
-           valid_from: str | None, valid_to: str | None, license_text: str = "Citation/link only; no source text redistributed") -> dict:
-    return {
-        "source_id": source_id, "citation": citation, "url": url,
-        "access_date": ACCESS_DATE, "version": "web edition reviewed 2026-07-21",
-        "license": license_text, "checksum": None, "transformations": [],
-        "review_status": "reviewed", "source_type": source_type,
-        "valid_from": valid_from, "valid_to": valid_to,
-        "independence_group": group, "derived_artifacts": [],
-    }
+def _load(path: Path) -> dict[str, Any]:
+    try:
+        document = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        raise SystemExit(f"cannot load tracked census research {path}: {exc}") from exc
+    if not isinstance(document, dict):
+        raise SystemExit("tracked census research must be a JSON object")
+    return document
 
 
-SOURCES = [
-    source("shepherd-historical-atlas", "William R. Shepherd, Historical Atlas (Henry Holt, 1911/1923), world and regional historical plates used as the common geographic survey anchor.", "https://archive.org/details/historicalatlas00shep", "academic", "shepherd-holt", "1400", "1500", "Public-domain scan; citation and link only"),
-    source("unesco-san-marino", "UNESCO World Heritage Centre, San Marino Historic Centre and Mount Titano: continuity of an independent free republic and city-state since the thirteenth century.", "https://whc.unesco.org/en/list/1245/", "academic", "unesco-san-marino", "1200", None, "CC BY-SA IGO 3.0 description; citation/link only"),
-    source("oxford-demilitarized-states", "M. Handelman, States without Armies (Oxford University Press), chapter treating Andorra and San Marino as European mini-states and tracing Andorra's 1278 settlement.", "https://academic.oup.com/book/61886/chapter/547923267", "academic", "oxford-handelman", "1278", None),
-    source("cambridge-calais-pale", "W. H. St John Hope, 'Calais and the Pale', Archaeologia; documents English Calais and specifically records works in 1444.", "https://www.cambridge.org/core/journals/archaeologia/article/xvcalais-and-the-pale/E7FD917F82CBB317B98CC3C7EEE400BA", "academic", "cambridge-calais", "1347", "1558"),
-    source("calais-chronicle", "J. G. Nichols (ed.), The Chronicle of Calais (Camden Society, 1846), documentary compilation for English Calais.", "https://archive.org/details/chronicleofcalai00nichrich", "primary", "camden-calais", "1347", "1558", "Public-domain documentary edition"),
-    source("cambridge-avignon-comtat", "Valerie Theis, 'A New Seat for the Papacy: Benedict XII, Avignon, and the Comtat Venaissin', Cambridge University Press.", "https://www.cambridge.org/core/product/76CF6EE6475321916671CAFFF1A56719", "academic", "cambridge-theis", "1274", "1791"),
-    source("britannica-avignon", "Encyclopaedia Britannica, 'Avignon', history of the city's papal purchase and papal possession.", "https://www.britannica.com/place/Avignon-France", "corroborating", "britannica-avignon", "1348", "1791"),
-    source("cambridge-lubeck", "G. Hatz, 'Finds of English medieval coins in Schleswig-Holstein', Studies in Numismatic Method; records Lübeck's imperial-city status from 1226.", "https://www.cambridge.org/core/books/studies-in-numismatic-method/finds-of-english-medieval-coins-in-schleswigholstein/962AFCDD17F7171DCA3035A2DDEE4405", "academic", "cambridge-hatz", "1226", "1806"),
-    source("unesco-lubeck", "UNESCO World Heritage Centre, Hanseatic City of Lübeck, institutional history of the autonomous Hanseatic city.", "https://whc.unesco.org/en/list/272/", "corroborating", "unesco-lubeck", "1226", "1806", "CC BY-SA IGO 3.0 description; citation/link only"),
-    source("stein-burgundian-composite", "Robert Stein, 'Towards a New Structure of Government', Magnanimous Dukes and Rising States (OUP, 2017): the Burgundian union was a composite monarchy of semi-autonomous principalities.", "https://academic.oup.com/book/8817/chapter-abstract/155002797", "academic", "oxford-stein", "1380", "1480"),
-    source("dumasy-burgundy-1444", "Juliette Dumasy-Rabineau, 'Les cartes perdues des frontières de Bourgogne au milieu du XVe siècle' (Éditions de la Sorbonne, 2021), including Burgundian council evidence from October 1444.", "https://books.openedition.org/psorbonne/128223", "academic", "sorbonne-dumasy", "1444-01-01", "1466-12-31", "OpenEdition citation/link only"),
-    source("cambridge-portuguese-islands", "A. R. Disney, 'The Atlantic Islands and Fisheries', A History of Portugal and the Portuguese Empire; crown-sanctioned annexation and colonization of Madeira from the 1420s.", "https://www.cambridge.org/core/books/abs/history-of-portugal-and-the-portuguese-empire/atlantic-islands-and-fisheries/14C4DA41C697DD1EF23A4090D8F27F33", "academic", "cambridge-disney", "1420", "1500"),
-    source("cambridge-madeira-captaincies", "'Wine and Portugal: A Brief History', European Review; describes Madeira's donatary captaincies subordinate to Prince Henry.", "https://www.cambridge.org/core/journals/european-review/article/wine-and-portugal-a-brief-history/1D8A780317C586A218C446F31FBCE780", "academic", "cambridge-european-review", "1419", "1501"),
-    source("echr-andorra-pareage", "European Court of Human Rights, Andorran historical background: the 1278/1288 paréages and co-suzerainty from 1346.", "https://hudoc.echr.coe.int/app/conversion/docx/pdf?filename=CEDH.pdf&id=001-24752&library=ECHR", "primary", "echr-andorra", "1278", None, "Council of Europe public judicial record; citation/link only"),
-    source("pace-andorra-coregency", "Council of Europe Parliamentary Assembly, periodic review of Andorra: shared sovereignty/Coregency originating in the 1278 treaty.", "https://assembly.coe.int/nw/xml/XRef/X2H-Xref-ViewHTML.asp?FileID=22023&lang=EN", "corroborating", "pace-andorra", "1278", None),
-    source("cambridge-galata-privileges", "K. Fleet, 'Byzantines and Italians in Fifteenth-Century Constantinople', New Perspectives on Turkey: autonomous Italian colonies and commercial privileges through 1453.", "https://www.cambridge.org/core/journals/new-perspectives-on-turkey/article/abs/byzantines-and-italians-in-fifteenthcentury-constantinople-commercial-cooperation-and-conflict/5315402ED6B5AC896FEE225DA6AD4D1E", "academic", "cambridge-fleet", "1261", "1453"),
-    source("cambridge-galata-1453", "Louis Mitler, 'The Genoese in Galata: 1453–1682', International Journal of Middle East Studies; Genoese domination ended 29 May 1453.", "https://www.cambridge.org/core/journals/international-journal-of-middle-east-studies/article/abs/genoese-in-galata-14531682/2FD7C9288E65958658C05D0A40DD89D2", "academic", "cambridge-mitler", "1267", "1453-05-29"),
-    source("treaty-troyes-fordham", "Treaty of Troyes (1420), Internet Medieval Sourcebook transcription: the French crown was to vest in Henry V and his heirs.", "https://sourcebooks.web.fordham.edu/source/1420troyes.asp", "primary", "fordham-troyes", "1420-05-21", "1453"),
-    source("bnf-troyes-manuscript", "Bibliothèque nationale de France/Biblissima, Français 17293, manuscript witness of the Treaty of Troyes.", "https://portail.biblissima.fr/fr/ark:/43093/mdata9bc9fd32015896d0a0d2a659e9fbbc3fa39c2dae", "primary", "bnf-troyes", "1420-05-21", "1453", "BnF manuscript metadata; citation/link only"),
-    source("cambridge-portugal-ceuta", "A. R. Disney, A History of Portugal and the Portuguese Empire, excerpt: Portugal retained Ceuta after the Marinid counter-attack of 1419–20.", "https://assets.cambridge.org/97805214/09087/excerpt/9780521409087_excerpt.htm", "academic", "cambridge-disney-ceuta", "1415", "1458"),
-    source("cambridge-franciscans-ceuta", "'The Franciscans and Portuguese Colonization in Africa and the Atlantic Islands, 1415–1499', The Americas; contextualizes Ceuta within Portuguese colonization.", "https://www.cambridge.org/core/journals/americas/article/franciscans-and-portuguese-colonization-in-africa-and-the-atlantic-islands-14151499/7C545749CFC93BB4983CE83E096D8047", "academic", "cambridge-franciscans", "1415", "1499"),
-    source("cambridge-athos-ottomans", "Elizabeth Zachariadou, 'Mount Athos and the Ottomans c. 1350–1550', Cambridge History of Christianity.", "https://www.cambridge.org/core/books/abs/cambridge-history-of-christianity/mount-athos-and-the-ottomans-c-13501550/9D293C2B48374784AE9D5CFABEF9101C", "academic", "cambridge-zachariadou", "1350", "1550"),
-    source("unesco-athos", "UNESCO World Heritage Centre, Mount Athos: a self-administered monastic community with autonomous status since Byzantine times.", "https://whc.unesco.org/en/list/454/", "corroborating", "unesco-athos", "0972", None, "CC BY-SA IGO 3.0 description; citation/link only"),
-]
-
-REGIONAL_URLS = {
-    region_id: "https://openstax.org/books/world-history-volume-2/pages/1-introduction"
-    for region_id in REGIONS
-}
-for region_id, name in REGIONS.items():
-    SOURCES.append(source(
-        f"regional-survey-{region_id}",
-        f"OpenStax (Rice University), World History Volume 2: From 1400, contents and regional chapters relevant to {name}; peer-reviewed open textbook used as an independent targeted survey and lead/rejection control, not as the sole anchor.",
-        REGIONAL_URLS[region_id], "academic", "openstax-world-history", "1400", "1500",
-        "CC BY-NC-SA 4.0; citation/link only",
-    ))
-
-
-ANOMALIES = [
-    ("san-marino-microstate", "microstate", ["039"], ["san-marino"], ["unesco-san-marino", "oxford-demilitarized-states"]),
-    ("calais-english-detached", "detached-territory", ["155"], ["pale-of-calais"], ["cambridge-calais-pale", "calais-chronicle"]),
-    ("avignon-papal-enclave", "enclave-exclave", ["155"], ["papal-avignon"], ["cambridge-avignon-comtat", "britannica-avignon"]),
-    ("lubeck-free-imperial-city", "free-protected-city", ["154"], ["free-city-lubeck"], ["cambridge-lubeck", "unesco-lubeck"]),
-    ("burgundian-composite-realm", "composite-realm", ["155"], ["burgundian-polities"], ["stein-burgundian-composite", "dumasy-burgundy-1444"]),
-    ("madeira-portuguese-dependency", "dependency", ["039"], ["madeira-captaincies"], ["cambridge-portuguese-islands", "cambridge-madeira-captaincies"]),
-    ("andorra-condominium", "condominium", ["039"], ["andorra"], ["echr-andorra-pareage", "pace-andorra-coregency"]),
-    ("galata-genoese-concession", "concession", ["145"], ["genoese-galata"], ["cambridge-galata-privileges", "cambridge-galata-1453"]),
-    ("lancastrian-french-crown-claim", "claim", ["154", "155"], ["lancastrian-england", "kingdom-of-france"], ["treaty-troyes-fordham", "bnf-troyes-manuscript"]),
-    ("ceuta-portuguese-marinid-dispute", "disputed-area", ["015"], ["portuguese-ceuta", "marinid-morocco"], ["cambridge-portugal-ceuta", "cambridge-madeira-captaincies"]),
-    ("athos-monastic-territory", "non-state-territory", ["039"], ["mount-athos-community"], ["cambridge-athos-ottomans", "unesco-athos"]),
-]
-
-POLITIES = [
-    ("san-marino", "Republic of San Marino", ["San Marino"], "1200", None, ["unesco-san-marino", "oxford-demilitarized-states"]),
-    ("pale-of-calais", "English Pale of Calais", ["Calais Pale"], "1347", "1558", ["cambridge-calais-pale", "calais-chronicle"]),
-    ("papal-avignon", "Papal Avignon", ["Avignon"], "1348", "1791", ["cambridge-avignon-comtat", "britannica-avignon"]),
-    ("free-city-lubeck", "Free Imperial City of Lübeck", ["Lübeck", "Lubeck"], "1226", "1806", ["cambridge-lubeck", "unesco-lubeck"]),
-    ("burgundian-polities", "Burgundian composite monarchy", ["Burgundian State", "Valois Burgundy"], "1384", "1477", ["stein-burgundian-composite", "dumasy-burgundy-1444"]),
-    ("madeira-captaincies", "Madeira donatary captaincies", ["Madeira"], "1420", None, ["cambridge-portuguese-islands", "cambridge-madeira-captaincies"]),
-    ("andorra", "Valleys of Andorra", ["Principality of Andorra"], "1278", None, ["echr-andorra-pareage", "pace-andorra-coregency"]),
-    ("genoese-galata", "Genoese colony of Galata/Pera", ["Pera", "Galata"], "1267", "1453-05-29", ["cambridge-galata-privileges", "cambridge-galata-1453"]),
-    ("lancastrian-england", "Kingdom of England under Henry VI", ["Lancastrian England"], "1422", "1461", ["treaty-troyes-fordham", "bnf-troyes-manuscript"]),
-    ("kingdom-of-france", "Kingdom of France under Charles VII", ["Valois France"], "1422", "1461", ["treaty-troyes-fordham", "bnf-troyes-manuscript"]),
-    ("portuguese-ceuta", "Portuguese Ceuta", ["Ceuta"], "1415", "1641", ["cambridge-portugal-ceuta", "cambridge-madeira-captaincies"]),
-    ("marinid-morocco", "Marinid Sultanate of Morocco", ["Sultanate of Fez"], "1244", "1465", ["cambridge-portugal-ceuta", "cambridge-madeira-captaincies"]),
-    ("mount-athos-community", "Athonite monastic community", ["Holy Mountain", "Mount Athos"], "0972", None, ["cambridge-athos-ottomans", "unesco-athos"]),
-]
-
-
-def write_json(path: Path, value: object) -> None:
+def _write_json(path: Path, value: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(value, indent=2, sort_keys=True, ensure_ascii=False) + "\n", encoding="utf-8")
+    path.write_text(
+        json.dumps(value, indent=2, sort_keys=True, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
 
 
-def build_inventory(reviewer: str, review_date: str | None) -> dict:
-    rows = [{
-        "anomaly_id": anomaly_id, "type": kind, "region_ids": regions,
-        "subject_ids": subjects, "source_ids": sources, "resolution": "resolved",
-    } for anomaly_id, kind, regions, subjects, sources in ANOMALIES]
-    linked = {(region_id, kind): [] for region_id in REGIONS for kind in CLASSES}
+def _sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _validate_research(research: dict[str, Any]) -> None:
+    required = {
+        "schema_version",
+        "document_type",
+        "pass_id",
+        "start_date",
+        "researcher",
+        "access_date",
+        "rejected_baseline",
+        "regions",
+        "classes",
+        "sources",
+        "anomalies",
+        "polities",
+        "reviews",
+        "conflicts",
+        "cross_regional_cases",
+        "rejected_leads",
+    }
+    if (
+        set(research) != required
+        or research.get("schema_version") != "1.0.0"
+        or research.get("document_type") != "m25c_anomaly_census_research"
+        or research.get("pass_id") != "official-1444-global-v1"
+        or research.get("start_date") != "1444-11-11"
+    ):
+        raise SystemExit("tracked census research has invalid fields or identity")
+    regions = research["regions"]
+    classes = research["classes"]
+    reviews = research["reviews"]
+    if not isinstance(regions, dict) or len(regions) != 22:
+        raise SystemExit("tracked census research must define exactly 22 regions")
+    if not isinstance(classes, dict) or len(classes) != 11:
+        raise SystemExit("tracked census research must define exactly 11 classes")
+    if not isinstance(reviews, list) or len(reviews) != 242:
+        raise SystemExit("tracked census research must contain exactly 242 reviews")
+    expected = {
+        (region_id, anomaly_type)
+        for region_id in regions
+        for anomaly_type in classes
+    }
+    actual = {
+        (row.get("region_id"), row.get("anomaly_type"))
+        for row in reviews
+        if isinstance(row, dict)
+    }
+    if actual != expected or len(actual) != len(reviews):
+        raise SystemExit("tracked census reviews must exactly cover the 22 × 11 matrix")
+    negative_cells = {
+        (row.get("region_id"), row.get("anomaly_type"))
+        for row in reviews
+        if isinstance(row, dict) and row.get("status") == "reviewed_none_found"
+    }
+    rejected_leads = research["rejected_leads"]
+    if not isinstance(rejected_leads, list):
+        raise SystemExit("tracked rejected leads must be an array")
+    rejected_cells = {
+        (row.get("region_id"), row.get("anomaly_type"))
+        for row in rejected_leads
+        if isinstance(row, dict)
+    }
+    if (
+        len(rejected_cells) != len(rejected_leads)
+        or rejected_cells != negative_cells
+    ):
+        raise SystemExit(
+            "tracked rejected leads must exactly match reviewed-none-found cells"
+        )
+    source_ids = {
+        row.get("source_id")
+        for row in research["sources"]
+        if isinstance(row, dict)
+    }
+    if len(source_ids) != len(research["sources"]) or None in source_ids:
+        raise SystemExit("tracked census source IDs must be unique and nonempty")
+    for review in reviews:
+        identity = review["review_id"]
+        references = set(review.get("supporting_source_ids") or [])
+        references.update(review.get("regional_survey_source_ids") or [])
+        if references - source_ids:
+            raise SystemExit(
+                f"tracked review {identity} references unknown sources: "
+                f"{sorted(references - source_ids)}"
+            )
+    for anomaly in research["anomalies"]:
+        if not isinstance(anomaly.get("canonical_model"), dict) or not anomaly["canonical_model"]:
+            raise SystemExit(
+                f"tracked anomaly {anomaly.get('anomaly_id')} requires a canonical_model"
+            )
+        groups = {
+            next(row for row in research["sources"] if row["source_id"] == source_id)["independence_group"]
+            for source_id in anomaly.get("source_ids") or []
+        }
+        if len(groups) < 2:
+            raise SystemExit(
+                f"tracked anomaly {anomaly.get('anomaly_id')} requires two independent provenance groups"
+            )
+
+
+def _validate_source_access_audit(research: dict[str, Any], audit: dict[str, Any]) -> None:
+    if (
+        set(audit) != {"schema_version", "document_type", "pass_id", "checked_on", "records"}
+        or audit.get("schema_version") != "1.0.0"
+        or audit.get("document_type") != "m25c_source_access_audit"
+        or audit.get("pass_id") != research.get("pass_id")
+    ):
+        raise SystemExit("tracked source-access audit has invalid fields or identity")
+    expected = {row["source_id"]: row["url"] for row in research["sources"]}
+    rows = audit.get("records")
+    actual = {
+        row.get("source_id"): row.get("url")
+        for row in rows if isinstance(row, dict)
+    } if isinstance(rows, list) else {}
+    if len(actual) != len(rows or []) or actual != expected:
+        raise SystemExit("tracked source-access audit must exactly cover census sources and URLs")
     for row in rows:
-        for region_id in row["region_ids"]:
-            linked[(region_id, row["type"])].append(row["anomaly_id"])
-    cells = []
-    for region_id in sorted(REGIONS):
-        for kind in sorted(CLASSES):
-            anomaly_ids = sorted(linked[(region_id, kind)])
-            survey_sources = ["shepherd-historical-atlas", f"regional-survey-{region_id}"]
-            if anomaly_ids:
-                survey_sources = sorted(set(survey_sources + [s for aid in anomaly_ids for s in next(a[4] for a in ANOMALIES if a[0] == aid)]))
-            cells.append({
-                "region_id": region_id, "type": kind,
-                "status": "resolved_cases" if anomaly_ids else "reviewed_none_found",
-                "anomaly_ids": anomaly_ids, "source_ids": survey_sources,
-                "notes": (
-                    f"Reviewed the {REGIONS[region_id]} geographic scope and the fixed {kind} semantic scope against Shepherd's 1400–1500 atlas plates and an independent regional survey. "
-                    + (f"Resolved: {', '.join(anomaly_ids)}." if anomaly_ids else "Rejected modern, post-1444, ordinary-subdivision, and semantically mismatched leads; no date-valid case meeting the two-provenance acceptance rule was found.")
-                ),
-            })
+        if (
+            set(row) != {"source_id", "url", "checked_on", "method", "result", "http_status", "notes"}
+            or row["result"] != "reachable"
+            or row["method"] not in {"automated_get", "browser_open", "browser_search"}
+            or row["checked_on"] != audit["checked_on"]
+        ):
+            raise SystemExit(f"source-access audit is unresolved or invalid for {row.get('source_id')}")
+
+
+def _build_inventory(research: dict[str, Any]) -> dict[str, Any]:
+    anomalies = [
+        {
+            key: row[key]
+            for key in (
+                "anomaly_id",
+                "type",
+                "region_ids",
+                "subject_ids",
+                "source_ids",
+                "resolution",
+            )
+        }
+        for row in research["anomalies"]
+    ]
+    cells = [
+        {
+            "region_id": row["region_id"],
+            "type": row["anomaly_type"],
+            "status": row["status"],
+            "anomaly_ids": sorted(row["anomaly_ids"]),
+            "source_ids": sorted(row["supporting_source_ids"]),
+            "notes": row["conclusion"],
+        }
+        for row in research["reviews"]
+    ]
     return {
-        "schema_version": "0.3.0", "document_type": "historical_anomaly_inventory",
-        "artifact_version": "1.0.0", "pass_id": PASS_ID, "start_date": START_DATE,
-        "anomalies": sorted(rows, key=lambda row: row["anomaly_id"]),
-        "census": {"region_ids": sorted(REGIONS), "types": sorted(CLASSES),
-                   "researcher": "OpenAI Codex (research agent)", "reviewer": reviewer,
-                   "review_date": review_date, "cells": cells},
+        "schema_version": "0.3.0",
+        "document_type": "historical_anomaly_inventory",
+        "artifact_version": "1.0.0",
+        "pass_id": research["pass_id"],
+        "start_date": research["start_date"],
+        "anomalies": sorted(anomalies, key=lambda row: row["anomaly_id"]),
+        "census": {
+            "region_ids": sorted(research["regions"]),
+            "types": sorted(research["classes"]),
+            "researcher": research["researcher"],
+            "reviewer": None,
+            "review_date": None,
+            "cells": sorted(cells, key=lambda row: (row["region_id"], row["type"])),
+        },
     }
 
 
-def methodology() -> str:
-    definitions = "\n".join(f"- `{key}` — {value}" for key, value in CLASSES.items())
+def _build_source_manifest(research: dict[str, Any]) -> dict[str, Any]:
+    sources = [
+        {key: row[key] for key in SOURCE_MANIFEST_FIELDS}
+        for row in research["sources"]
+    ]
+    return {
+        "schema_version": "0.3.0",
+        "document_type": "start_date_source_manifest",
+        "artifact_version": "1.0.0",
+        "pass_id": research["pass_id"],
+        "start_date": research["start_date"],
+        "sources": sorted(sources, key=lambda row: row["source_id"]),
+        "conflict_resolution_notes": [
+            row["resolution"] for row in research["conflicts"]
+        ],
+    }
+
+
+def _build_gazetteer(research: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "schema_version": "0.3.0",
+        "document_type": "polity_gazetteer",
+        "artifact_version": "1.0.0",
+        "pass_id": research["pass_id"],
+        "start_date": research["start_date"],
+        "polities": [
+            {
+                "polity_id": row["polity_id"],
+                "name": row["canonical_name"],
+                "aliases": row["aliases"],
+                "valid_from": row["valid_from"],
+                "valid_to": row["valid_to"],
+                "capital_location_ids": [],
+                "relationships": row.get("relationships", []),
+                "source_ids": row["source_ids"],
+            }
+            for row in sorted(research["polities"], key=lambda row: row["polity_id"])
+        ],
+    }
+
+
+def _methodology(research: dict[str, Any]) -> str:
+    definitions = "\n".join(
+        f"- `{key}` — {row['definition']}"
+        for key, row in sorted(research["classes"].items())
+    )
     return f"""# M25C worldwide anomaly census methodology
 
-Research identity: **OpenAI Codex (research agent)**
-Start-date instant: **{START_DATE}**
-Pass: **{PASS_ID}**
+Research identity: **{research["researcher"]}**
+Start-date instant: **{research["start_date"]}**
+Pass: **{research["pass_id"]}**
 
 ## Acceptance rule
 
-A resolved anomaly requires (1) a reviewed academic or primary anchor, (2) corroboration from at least two independent provenance groups, (3) evidence spanning or specifically establishing {START_DATE}, and (4) a match to the fixed representation semantic below. Modern summaries and the existing synthetic fixture were used only as query/rejection controls. No quota was imposed.
-
-A negative cell records the exact geographic and semantic scope, a reviewed academic atlas anchor, a separate regional targeted survey, rejected lead categories, and the conclusion. It means no qualifying case was found in this bounded review; it is not a claim that the historical literature is exhausted.
+A positive anomaly requires date-valid support for the fixed semantic from reviewed evidence with at least two independent provenance groups. A negative record is a bounded conclusion from an exact regional survey locator plus a class-specific query and disposition log; it is not a claim that the literature is exhausted.
 
 ## Fixed class definitions
 
 {definitions}
 
-## Workflow and transformations
+## Review contract
 
-The 22 repository-pinned non-Antarctic UN M49 subregions were crossed with all eleven fixed classes to create 242 cells. Sources were reviewed through their institutional or publisher pages on {ACCESS_DATE}. Bibliographic metadata and conclusions were normalized into JSON; copyrighted text was not copied. Remote web sources remain URL-pinned with `checksum: null`; the generated local packet is SHA-256 locked.
-
-The persisted candidate deliberately retains an unfinalized reviewer and date. A non-persisted structural-review sentinel may be substituted only to exercise deterministic canonicalization and joint-link auditing before human review. It is never evidence of acceptance.
+The tracked research crosses 22 non-Antarctic UN M49 regions with eleven classes. `anomaly_census_review_ledger.json` preserves one record per cell, exact locators, queries, considered leads, dispositions, rationale, supporting source IDs, and the 1444-11-11 conclusion. Human acceptance is stored only in `review_acceptance.json`; it never changes this packet's frozen research bytes.
 """
 
 
-def write_notes(inventory: dict) -> None:
-    notes_root = LEDGER_ROOT / "regions"
-    for region_id, name in sorted(REGIONS.items()):
-        cells = [c for c in inventory["census"]["cells"] if c["region_id"] == region_id]
-        resolved = [aid for c in cells for aid in c["anomaly_ids"]]
-        decisions = "\n".join(f"- `{c['type']}`: **{c['status']}** — {c['notes']}" for c in cells)
-        leads = "\n".join(f"- `{aid}` accepted after anomaly-specific source review." for aid in resolved) or "- No lead met the anomaly acceptance rule."
-        (notes_root / f"{region_id}-{name.lower().replace(' ', '-').replace('-eastern', 'eastern')}.md").parent.mkdir(parents=True, exist_ok=True)
-        (notes_root / f"{region_id}-{name.lower().replace(' ', '-').replace('-eastern', 'eastern')}.md").write_text(f"""# {region_id} — {name}
-
-Reviewed {ACCESS_DATE} by OpenAI Codex (research agent).
-
-## Query scope
-
-Geography: the repository's UN M49 `{region_id}` partition. Semantics: each of the eleven fixed classes, with queries combining historical names, `1444`, `fifteenth century`, and class-specific synonyms (enclave, dependency, shared sovereignty, free city, concession, claim, disputed, monastic/tribal administration). Shepherd's atlas supplied the academic survey anchor; `regional-survey-{region_id}` supplied an independent targeted regional pass.
-
-## Sources and access
-
-- `shepherd-historical-atlas` — reviewed; date-range atlas anchor.
-- `regional-survey-{region_id}` — reviewed; independent regional history/geography control.
-- Anomaly-specific sources are listed in accepted leads below and in the manifest.
-
-No access failure changed a conclusion. Paywalled academic abstracts were used only where the publisher abstract itself stated the relied-on proposition. Remote pages were not redistributed. Temporal mismatches (especially modern dependencies, colonial borders, and later free cities) were rejected.
-
-## Leads
-
-{leads}
-
-## Cell decisions
-
-{decisions}
-""", encoding="utf-8")
-
-
-def sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
-
-
-def main() -> None:
-    LEDGER_ROOT.mkdir(parents=True, exist_ok=True)
-    EVIDENCE_ROOT.mkdir(parents=True, exist_ok=True)
-    inventory = build_inventory("UNFINALIZED — no independent human reviewer named", None)
-    write_json(EVIDENCE_ROOT / "anomaly_inventory.json", inventory)
-    write_json(EVIDENCE_ROOT / "source_manifest.json", {
-        "schema_version": "0.3.0", "document_type": "start_date_source_manifest",
-        "artifact_version": "1.0.0", "pass_id": PASS_ID, "start_date": START_DATE,
-        "sources": sorted(SOURCES, key=lambda row: row["source_id"]),
-        "conflict_resolution_notes": [
-            "Papal Avignon is classified as enclave/exclave rather than detached territory to avoid double-counting one semantic fact.",
-            "Ceuta is retained as disputed because Portugal's promised return after the 1437 Tangier defeat remained unperformed; the row records contested sovereignty, not loss of Portuguese control.",
-            "The English French-crown claim spans Northern and Western Europe but uses one stable anomaly ID.",
-            "San Marino, Calais, Papal Avignon, and Burgundian possessions were researched as leads and accepted only after the stated evidence checks.",
-        ],
-    })
-    gazetteer = {
-        "schema_version": "0.3.0", "document_type": "polity_gazetteer",
-        "artifact_version": "1.0.0", "pass_id": PASS_ID, "start_date": START_DATE,
-        "polities": [{"polity_id": pid, "name": name, "aliases": aliases,
-                       "valid_from": start, "valid_to": end, "capital_location_ids": [],
-                       "relationships": [], "source_ids": sources}
-                      for pid, name, aliases, start, end, sources in POLITIES],
-    }
-    write_json(EVIDENCE_ROOT / "gazetteer.json", gazetteer)
-    (LEDGER_ROOT / "methodology.md").write_text(methodology(), encoding="utf-8")
-    write_json(LEDGER_ROOT / "census-ledger.json", {"generated_from": "evidence/anomaly_inventory.json", "cells": inventory["census"]["cells"]})
-    with (LEDGER_ROOT / "census-ledger.csv").open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=["region_id", "region_name", "type", "status", "anomaly_ids", "source_ids", "notes"])
-        writer.writeheader()
-        for cell in inventory["census"]["cells"]:
-            writer.writerow({**cell, "region_name": REGIONS[cell["region_id"]], "anomaly_ids": ";".join(cell["anomaly_ids"]), "source_ids": ";".join(cell["source_ids"])})
-    write_notes(inventory)
-    (LEDGER_ROOT / "rejected-leads.md").write_text("""# Rejected leads
-
-- Monaco's modern microstate status was not accepted without a sufficiently precise 1444 constitutional finding.
-- Fixture examples Moresnet, Hong Kong, Panama Canal Zone, Guantánamo, and twentieth-century mandates were rejected as post-1444.
-- Papal Avignon was not duplicated as detached territory after its enclave/exclave semantic was selected.
-- Burgundian possessions were not decomposed into invented province/component rows; only the evidenced composite-realm semantic is retained.
-- Ordinary vassalage, tributary relations, and routine noncontiguous islands were rejected unless they met a fixed anomaly definition.
-- Indigenous and nomadic communities were not labeled non-state territories without evidence of a durable territorial administration at the exact date.
-""", encoding="utf-8")
-    (LEDGER_ROOT / "cross-regional-cases.md").write_text("""# Cross-regional cases
-
-- `lancastrian-french-crown-claim` is the sole cross-regional anomaly: Northern Europe (`154`) for the claimant and Western Europe (`155`) for the claimed crown. One stable ID is linked from both claim cells.
-- No other accepted case crosses the repository's M49 subregion partition.
-""", encoding="utf-8")
-    dossier = f"""# Worldwide 1444 anomaly census dossier
+def _dossier(research: dict[str, Any]) -> str:
+    return f"""# Worldwide 1444 anomaly census dossier
 
 ## Scope
 
-This packet closes all 242 cells formed by 22 non-Antarctic UN M49 subregions and eleven fixed anomaly classes for {START_DATE}. It contains no geometry, component/province IDs, assignments, canonical territory status, runtime data, certification, or release artifact.
+This frozen packet contains the 242-cell M25C anomaly census for {research["start_date"]}. It does not certify or promote the wider M25C pass.
 
 ## Research questions
 
-For each region/class pair: does a date-valid polity or territory require exceptional representation under the fixed semantic, and do an academic/primary anchor plus a second independent provenance group support it?
-
-## Methodology and classification rules
-
-The complete method and definitions are in `data/intermediate/m25c-anomaly-census/methodology.md`. Eleven anomalies were resolved; all remaining cells are bounded negative findings. A polity is reused across classes only for genuinely different semantics; one cross-regional English claim keeps one stable ID.
+For each M49 region and anomaly class, the review asks whether a date-valid polity or territory meets the fixed semantic and whether the recorded evidence supports acceptance or a bounded negative conclusion.
 
 ## Citations
 
-Every cited source has a real publisher, archive, institutional, or gazetteer URL in `source_manifest.json`. All anomaly and census links resolve there. Copyrighted works are cited, not redistributed.
+`source_manifest.json` identifies reviewed sources. `anomaly_census_review_ledger.json` supplies exact URLs and locators for every regional survey and the class-specific audit trail. `anomaly_evidence_reviews.json` preserves the positive-case locator review.
 
 ## Transformations and conflicts
 
-Bibliographic facts and date conclusions were normalized manually into schema-0.3 JSON. The atlas is a survey anchor, not dispositive proof. Conflicts and classification choices are recorded in the manifest and research notes. Ceuta's Portuguese control is distinguished from the still-unperformed promised return; English effective control is distinguished from its broader crown claim.
+The generator performs deterministic projection and sorting only. Research conclusions, canonical models, conflicts, cross-regional links, and rejected leads come from tracked `census-research.json`. Ceuta is rendered as a Portuguese detached possession; the unperformed 1437 restitution promise is retained as a diplomatic event and does not establish an active geographic dispute on 1444-11-11. The Lancastrian title claim is retained as a gazetteer relationship rather than a positive geographic anomaly.
 
 ## Exclusions
 
-No geometry, province/component identity, capital location identity, assignment, canonical territorial status, runtime compilation, or release file was created. Later-era fixture cases and modern colonial/dependency summaries were excluded unless independently established for 1444.
+The packet contains no geometry, fabric assignment, canonical status, runtime data, assembled-pass acceptance, certification, or release artifact.
 
 ## Uncertainty
 
-Negative cells mean no qualifying case emerged from the documented bounded review, not that all possible literature has been exhausted. Remote pages are URL-pinned but not content-checksummed. Capital names may be stated in sources, but `capital_location_ids` remain empty because this task forbids creating location assignments. A human must inspect every positive and negative cell before acceptance.
+Negative cells are bounded review findings, not proof that historical literature is exhausted. Remote sources are URL-pinned and live-status audited but are not content-checksummed.
 
 ## Review state
 
-Researcher: **OpenAI Codex (research agent)**. Reviewer and review date are deliberately unfinalized. `public_release_allowed` remains false.
+Researcher: **{research["researcher"]}**. No reviewer or review date is embedded in the frozen inventory. `human_review_complete` and `public_release_allowed` remain false until a valid sidecar is created by a distinct human.
 """
-    (EVIDENCE_ROOT / "dossier.md").write_text(dossier, encoding="utf-8")
-    (EVIDENCE_ROOT / "REVIEW.md").write_text("""# Independent review instructions
 
-Before naming yourself as reviewer, freeze and compare `SHA256SUMS`. Inspect every resolved anomaly and all 242 cells, including classifications, date validity on 1444-11-11, licensing, source independence, gazetteer links, conflicts, and rejected leads. Record requested changes outside this packet. Any changed hash invalidates prior review and requires re-research and a new complete review. Only after written acceptance may a real human identity and ISO date replace the unfinalized fields. Then run two clean canonical inventory builds, the complete joint handoff audit, focused and full tests, and `git diff --check`. Do not promote this packet by itself.
-""", encoding="utf-8")
-    write_json(EVIDENCE_ROOT / "candidate_status.json", {
-        "pass_id": PASS_ID, "start_date": START_DATE, "status": "research_complete_pending_independent_human_review",
-        "researcher": "OpenAI Codex (research agent)", "reviewer": None, "review_date": None,
-        "public_release_allowed": False,
-        "pending": ["independent human review", "fabric", "worldwide evidence", "assembly", "runtime certification", "release"],
-    })
-    index_lines = ["# Review index", "", "- `dossier.md` — scope, method, conflicts, exclusions, uncertainty", "- `anomaly_inventory.json` — eleven resolved anomalies and all 242 cells", "- `source_manifest.json` — reviewed linked evidence", "- `gazetteer.json` — sourced anomaly subjects", "- `candidate_status.json` — non-public pending status", "- `pre-review-audit.json` — reproducible schema, link-audit, and deterministic-build result", "- `REVIEW.md` — human review protocol", "- `data/intermediate/m25c-anomaly-census/` — methodology, CSV/JSON ledger, 22 regional notes, rejected and cross-regional indexes", "", "Hashes are in `SHA256SUMS`; that file excludes itself."]
-    (EVIDENCE_ROOT / "INDEX.md").write_text("\n".join(index_lines) + "\n", encoding="utf-8")
-    files = sorted([p for p in EVIDENCE_ROOT.rglob("*") if p.is_file() and p.name != "SHA256SUMS"] + [p for p in LEDGER_ROOT.rglob("*") if p.is_file()])
-    (EVIDENCE_ROOT / "SHA256SUMS").write_text("".join(f"{sha256(path)}  {path.relative_to(ROOT).as_posix()}\n" for path in files), encoding="utf-8")
+
+def _write_hashes(output: Path) -> None:
+    files = sorted(
+        path
+        for path in output.rglob("*")
+        if path.is_file() and path.name not in EXCLUDED_FROM_HASHES
+    )
+    (output / "SHA256SUMS").write_text(
+        "".join(
+            f"{_sha256(path)}  {path.relative_to(output).as_posix()}\n"
+            for path in files
+        ),
+        encoding="utf-8",
+    )
+
+
+def generate(
+    research_path: Path,
+    output: Path,
+    source_access_audit_path: Path | None = None,
+) -> None:
+    research = _load(research_path)
+    _validate_research(research)
+    audit_path = source_access_audit_path or research_path.with_name("source-access-audit.json")
+    source_access_audit = _load(audit_path)
+    _validate_source_access_audit(research, source_access_audit)
+    if (output / "review_acceptance.json").exists():
+        raise SystemExit("refusing to regenerate a packet with an acceptance sidecar")
+
+    inventory = _build_inventory(research)
+    source_manifest = _build_source_manifest(research)
+    ledger = {
+        "schema_version": "1.0.0",
+        "document_type": "m25c_anomaly_census_review_ledger",
+        "pass_id": research["pass_id"],
+        "start_date": research["start_date"],
+        "records": sorted(
+            research["reviews"],
+            key=lambda row: (row["region_id"], row["anomaly_type"]),
+        ),
+    }
+    ledger_findings = review_ledger_findings(
+        inventory,
+        ledger,
+        source_manifest,
+        {
+            "pass_id": research["pass_id"],
+            "start_date": research["start_date"],
+            "records": research["rejected_leads"],
+        },
+        source_access_audit,
+    )
+    if ledger_findings:
+        raise SystemExit(
+            "tracked census research is not closable:\n"
+            + json.dumps(ledger_findings, indent=2, sort_keys=True)
+        )
+    output.mkdir(parents=True, exist_ok=True)
+    _write_json(output / "anomaly_inventory.json", inventory)
+    _write_json(output / "anomaly_census_review_ledger.json", ledger)
+    _write_json(output / "source_manifest.json", source_manifest)
+    _write_json(output / "source-access-audit.json", source_access_audit)
+    _write_json(output / "gazetteer.json", _build_gazetteer(research))
+    _write_json(
+        output / "anomaly_evidence_reviews.json",
+        {
+            "pass_id": research["pass_id"],
+            "start_date": research["start_date"],
+            "anomalies": [
+                {
+                    "anomaly_id": row["anomaly_id"],
+                    "evidence_reviews": row["evidence_reviews"],
+                    "canonical_model": row["canonical_model"],
+                }
+                for row in research["anomalies"]
+            ],
+        },
+    )
+    _write_json(
+        output / "conflicts.json",
+        {
+            "pass_id": research["pass_id"],
+            "start_date": research["start_date"],
+            "records": research["conflicts"],
+        },
+    )
+    _write_json(
+        output / "cross-regional-cases.json",
+        {
+            "pass_id": research["pass_id"],
+            "start_date": research["start_date"],
+            "records": research["cross_regional_cases"],
+        },
+    )
+    _write_json(
+        output / "rejected-leads.json",
+        {
+            "pass_id": research["pass_id"],
+            "start_date": research["start_date"],
+            "records": research["rejected_leads"],
+        },
+    )
+    _write_json(
+        output / "candidate_status.json",
+        {
+            "pass_id": research["pass_id"],
+            "start_date": research["start_date"],
+            "status": "research_complete_pending_independent_human_review",
+            "researcher": research["researcher"],
+            "reviewer": None,
+            "review_date": None,
+            "human_review_complete": False,
+            "public_release_allowed": False,
+            "pending": [
+                "independent human anomaly-census review",
+                "fabric",
+                "worldwide evidence",
+                "assembly",
+                "runtime certification",
+                "release",
+            ],
+        },
+    )
+    (output / "methodology.md").write_text(_methodology(research), encoding="utf-8")
+    (output / "dossier.md").write_text(_dossier(research), encoding="utf-8")
+    (output / "REVIEW.md").write_text(
+        """# Independent anomaly-census review
+
+Inspect all positive anomaly evidence reviews and all 242 ledger records. Record requested changes outside the packet. If research changes are required, edit tracked `census-research.json`, discard this packet, and regenerate it. Do not patch frozen output.
+
+Acceptance uses `verify-m25c-anomaly-census.py sign --reviewer "<human name>" --review-date YYYY-MM-DD`. Signing creates only `review_acceptance.json`; assembled-pass `accept-review` remains a separate later gate.
+""",
+        encoding="utf-8",
+    )
+    (output / "INDEX.md").write_text(
+        """# Frozen M25C anomaly-census packet
+
+- `anomaly_inventory.json` — schema-0.3 inventory with 242 frozen cells
+- `anomaly_census_review_ledger.json` — region/class evidence and disposition log
+- `source_manifest.json` — reviewed source metadata
+- `source-access-audit.json` — live automated/browser access dispositions
+- `gazetteer.json` — anomaly subject records
+- `anomaly_evidence_reviews.json` — positive-case exact-locator reviews
+- `conflicts.json` — classification and evidence conflicts
+- `cross-regional-cases.json` — stable cross-region anomaly links
+- `rejected-leads.json` — negative-cell lead dispositions
+- `candidate_status.json` — non-public pending state
+- `SHA256SUMS` — frozen hashes; excludes only itself and `review_acceptance.json`
+- `REVIEW.md` — human review and signing protocol
+""",
+        encoding="utf-8",
+    )
+    _write_hashes(output)
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--research-input", type=Path, default=DEFAULT_RESEARCH)
+    parser.add_argument("--source-access-audit", type=Path)
+    parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT)
+    args = parser.parse_args()
+    generate(
+        args.research_input.resolve(),
+        args.output_dir.resolve(),
+        args.source_access_audit.resolve() if args.source_access_audit else None,
+    )
 
 
 if __name__ == "__main__":

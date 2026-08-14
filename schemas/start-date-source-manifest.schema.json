@@ -4,7 +4,7 @@
   "properties": {"schema_version": {"enum": ["0.1.0", "0.2.0", "0.3.0"]}, "document_type": {"const": "start_date_source_manifest"}, "artifact_version": {"type": "string", "minLength": 1}, "pass_id": {"type": "string", "minLength": 1}, "start_date": {"type": "string", "format": "date"},
     "sources": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["source_id", "citation", "url", "access_date", "version", "license", "checksum", "transformations", "review_status"], "properties": {
       "source_id": {"type": "string", "minLength": 1}, "citation": {"type": "string", "minLength": 1}, "url": {"anyOf": [{"type": "string", "format": "uri"}, {"type": "null"}]}, "access_date": {"anyOf": [{"type": "string", "format": "date"}, {"type": "null"}]}, "version": {"type": ["string", "null"]}, "license": {"type": "string", "minLength": 1}, "checksum": {"anyOf": [{"type": "string", "pattern": "^[0-9a-fA-F]{64}$"}, {"type": "null"}]}, "transformations": {"type": "array", "items": {"type": "string", "minLength": 1}}, "review_status": {"enum": ["planned", "reviewed", "rejected"]},
-      "source_type": {"enum": ["academic", "primary", "corroborating", "soft_corroboration", "negative_control"]},
+      "source_type": {"enum": ["academic", "archival", "institutional", "primary", "corroborating", "soft_corroboration", "negative_control"]},
       "valid_from": {"$ref": "#/$defs/dateish"}, "valid_to": {"$ref": "#/$defs/dateish"},
       "independence_group": {"type": "string", "minLength": 1},
       "derived_artifacts": {"type": "array", "items": {"$ref": "#/$defs/derivedArtifact"}}

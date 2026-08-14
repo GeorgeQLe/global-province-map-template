@@ -1,5 +1,75 @@
 # History
 
+## 2026-08-14 - M25C negative-cell evidence audit
+
+- Requalified the 22 regional surveys as institutional sources with exact
+  1400–1450 locators independent of Shepherd, and recorded a live access
+  disposition for every one of the 45 sources. Automated 403/429 cases were
+  browser-confirmed; the inaccessible Britannica Avignon corroboration was
+  replaced with UNESCO's institutional Avignon record.
+- Re-audited all 233 negative cells, preserving the nine positive cells and ten
+  locked geographic anomaly records. Every negative now names its considered
+  lead, records one or more controlled failure bases, gives a class/cell-specific
+  conclusion, and has an exactly matching rejected-lead record.
+- Extended closure validation to reject generic or undated searches, templated
+  rationales, incomplete lead dispositions, missing lead-source locators,
+  rejection-log drift, unresolved source access, and positive anomalies without
+  two independent provenance groups.
+- Generated twice into temporary directories with byte identity and regenerated
+  the canonical packet only after zero unresolved findings. George Le approved
+  the packet on 2026-08-14; accepted verification binds the sidecar to frozen
+  SHA256SUMS digest
+  `42367f817076b764b9508ac5750f372146da97d1889296088d492e17953b9ff9`,
+  reports `human_review_complete: true`, and preserves
+  `public_release_allowed: false`.
+- Quality gate: 52 focused M25C tests and all 356 repository tests passed with
+  no warnings; source/gazetteer, joint-handoff, accepted-packet, deterministic
+  generation, and `git diff --check` verification also passed.
+
+## 2026-08-14 - M25C canonical anomaly alignment
+
+- Recorded engine-neutral canonical treatments for the eleven reviewed cases in
+  `docs/m25c-anomaly-alignment-decisions.md`, preserving subprovince entities
+  and allowing consumer overrides only at the projection layer.
+- Reclassified Avignon-Comtat and Ceuta as detached territories, rejected an
+  active Ceuta dispute on the inspected 1444 evidence, and moved the supported
+  Lancastrian title claim out of geographic anomalies into a sourced gazetteer
+  relationship.
+- Preserved the exact 22×11 review matrix while removing the requirement to
+  manufacture a positive anomaly for every search class. The aligned research
+  baseline has ten geographic anomaly records across nine positive cells; all
+  242 cells remain required and independently reviewable.
+- This alignment supersedes the positive-count statement in the rejected
+  2026-08-06 packet. It is not a human acceptance and does not promote M25C.
+
+## 2026-08-06 - M25C census evidence repair and frozen signing boundary
+
+- Preserved SHA-256
+  `6089a23ea4100c1b5640eb7ee0b429eace2527ae3b8708a78afe816cbce8d9b1`
+  as the rejected packet baseline and moved the census research into tracked
+  `census-research.json`. The generator now renders deterministic artifacts
+  only; it contains no embedded regional aliases or review conclusions.
+- Replaced the repeated generic regional-survey aliases with region-specific
+  institutional records and exact locators, repaired the Ceuta and Calais
+  support chains, and generated a required 242-record review ledger covering
+  every combination of 22 M49 regions and 11 anomaly classes.
+- Added fail-closed ledger and joint-handoff checks for matrix agreement,
+  source review and identity, temporal coverage, atlas independence,
+  URL/locator uniqueness, class queries, lead dispositions, rationales, and
+  conclusions. Reused generic survey aliases now fail with actionable region,
+  class, and source identifiers.
+- Converted packet verification to explicit pending, sign, and accepted
+  states. Human acceptance is an exclusive sidecar bound to the frozen
+  `SHA256SUMS`; signing never rewrites research bytes. The downstream inventory
+  stage requires and validates that sidecar and overlays reviewer metadata only
+  in memory. The later assembled-pass `accept-review` gate is unchanged.
+- Quality gate: focused M25C tests passed 49 cases and the complete suite passed
+  353 tests. The repaired packet passed pending verification with 242 cells,
+  242 ledger records, 11 positive anomalies, zero joint findings, and explicit
+  non-review/non-release status. It remains unsigned pending a real independent
+  reviewer; fabric, remaining worldwide evidence, assembly, runtime
+  certification, and release are still blocked.
+
 ## 2026-07-21 - M25C closed worldwide anomaly-census packet
 
 - Replaced example-based anomaly coverage with a fail-closed schema-0.3 census

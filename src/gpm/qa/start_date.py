@@ -17,6 +17,7 @@ from shapely.geometry.base import BaseGeometry
 from shapely.ops import transform as shapely_transform, unary_union
 from shapely.strtree import STRtree
 
+from gpm.qa.m25c_census import review_ledger_findings
 from gpm.schemas import (
     SchemaValidationError,
     WORLDWIDE_M49_SUBREGIONS,
@@ -66,6 +67,7 @@ _ARTIFACT_VALIDATORS: dict[str, Callable[[dict[str, Any]], None]] = {
     "canonical_historical_status": validate_historical_territory_status,
     "world_coverage_mask": lambda document: _validate_world_coverage_mask(document),
     "anomaly_inventory": lambda document: validate_anomaly_inventory(document),
+    "anomaly_review_ledger": lambda document: _validate_review_ledger_header(document),
 }
 _DOSSIER_SECTIONS = (
     "scope", "research questions", "citations", "transformations and conflicts",
@@ -570,13 +572,6 @@ def validate_anomaly_inventory(document: dict[str, Any]) -> None:
             raise SchemaValidationError(f"{path}.region_ids contains invalid M49 subregions: {sorted(invalid_regions)}")
         seen.add(anomaly_id)
         anomaly_index[anomaly_id] = item
-    present = {item["type"] for item in document["anomalies"]}
-    if present != allowed:
-        raise SchemaValidationError(
-            "anomaly inventory must represent every required class; "
-            f"missing={sorted(allowed - present)}"
-        )
-
     census = document["census"]
     census_required = {"region_ids", "types", "researcher", "reviewer", "review_date", "cells"}
     if not isinstance(census, dict) or set(census) != census_required:
@@ -670,6 +665,16 @@ def validate_anomaly_inventory(document: dict[str, Any]) -> None:
             )
 
 
+def _validate_review_ledger_header(document: dict[str, Any]) -> None:
+    if (
+        not isinstance(document, dict)
+        or document.get("schema_version") != "1.0.0"
+        or document.get("document_type") != "m25c_anomaly_census_review_ledger"
+        or not isinstance(document.get("records"), list)
+    ):
+        raise SchemaValidationError("M25C anomaly review ledger has an invalid header or records")
+
+
 def _is_placeholder_identifier(value: Any) -> bool:
     normalized = str(value).strip().casefold()
     return normalized in {"pending", "placeholder", "todo", "tbd", "unknown"} or normalized.startswith("pending-")
@@ -685,6 +690,7 @@ def _check_global_contract(
     mask = documents["world_coverage_mask"]
     canonical = documents["canonical_historical_status"]
     inventory = documents["anomaly_inventory"]
+    ledger = documents["anomaly_review_ledger"]
     source_records = {row["source_id"]: row for row in documents["source_manifest"]["sources"]}
     source_ids = set(source_records)
     reviewed_source_ids = {source_id for source_id, row in source_records.items() if row["review_status"] == "reviewed"}
@@ -697,6 +703,18 @@ def _check_global_contract(
         identity = f"{cell['region_id']}/{cell['type']}"
         _unknown_refs(findings, "UNKNOWN_ANOMALY_SOURCE", cell["source_ids"], source_ids, identity)
         _unknown_refs(findings, "UNREVIEWED_ANOMALY_SOURCE", cell["source_ids"], reviewed_source_ids, identity)
+    for issue in review_ledger_findings(
+        inventory,
+        ledger,
+        documents["source_manifest"],
+    ):
+        _finding(
+            findings,
+            issue["code"],
+            "error",
+            issue["message"],
+            issue["affected_ids"],
+        )
     for polity in documents["polity_gazetteer"]["polities"]:
         _unknown_refs(findings, "UNREVIEWED_GLOBAL_POLITY_SOURCE", polity["source_ids"], reviewed_source_ids, polity["polity_id"])
         for relationship in polity["relationships"]:

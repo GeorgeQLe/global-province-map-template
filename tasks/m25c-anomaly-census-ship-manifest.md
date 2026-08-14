@@ -1,106 +1,152 @@
-# M25C Anomaly Census Ship Manifest
+# M25C Negative-Cell Evidence Audit Ship Manifest
 
 ## User goal
 
-Ship the current M25C worldwide anomaly-census work cleanly to the default
-branch, preserving the independent-review and non-release boundary.
+Audit all 233 negative region/class cells without reopening the locked
+geographic treatments; strengthen fail-closed closure validation; refreeze the
+242-cell census only after zero unresolved findings; record George Le's
+approval; and ship the complete session boundary.
 
 ## Changed files
 
+- `.agents/project.json`
+- `docs/m25c-anomaly-alignment-decisions.md`
 - `research/start-dates/1444-global-v1/README.md`
-- `research/start-dates/1444-global-v1/m25c_rejection_report.json`
-- `research/start-dates/1444-global-v1/provenance/1444-v2-seed.json`
+- `research/start-dates/1444-global-v1/census-research.json`
+- `research/start-dates/1444-global-v1/source-access-audit.json`
+- `schemas/start-date-pass-manifest.schema.json`
+- `schemas/start-date-source-manifest.schema.json`
 - `scripts/build-m25c-global-pass.py`
 - `scripts/generate-m25c-anomaly-census.py`
 - `scripts/verify-m25c-anomaly-census.py`
+- `src/gpm/qa/m25c_census.py`
 - `src/gpm/qa/start_date.py`
-- `tests/fixtures/m25c/placeholder-anomaly-inventory.json`
+- `src/gpm/schemas.py`
+- `tasks/history.md`
+- `tasks/lessons.md`
+- `tasks/m25c-anomaly-census-ship-manifest.md`
+- `tasks/roadmap.md`
+- `tasks/todo.md`
 - `tests/test_m25c_anomaly_inventory.py`
 - `tests/test_m25c_global_certification.py`
-- `tasks/todo.md`
-- `tasks/roadmap.md`
-- `tasks/history.md`
-- `tasks/m25c-anomaly-census-ship-manifest.md`
+- `tests/test_m25c_packet_signing.py`
+
+The generated packet and `review_acceptance.json` live under ignored
+`data/processed/`; the sidecar records George Le's local approval dated
+2026-08-14 and is intentionally not part of the Git commit.
 
 ## Per-file purpose
 
-- `research/start-dates/1444-global-v1/README.md` documents the closed census,
-  source-link, reviewer-separation, and canonical handoff requirements.
-- `m25c_rejection_report.json` records the placeholder seed's new fail-closed
-  census rejection instead of claiming that example class rows are sufficient.
-- `provenance/1444-v2-seed.json` pins the ignored build geometry and location
-  sidecar required by the accepted pilot handoff.
-- `scripts/build-m25c-global-pass.py` canonicalizes census input and aggregates
-  inventory/evidence defects before copying or assembly.
-- `scripts/generate-m25c-anomaly-census.py` reproducibly creates the ignored,
-  frozen pre-review research packet and its evidence ledger.
-- `scripts/verify-m25c-anomaly-census.py` checks the packet schemas, links,
-  expected pending-review finding, hashes, and byte-deterministic builds.
-- `src/gpm/qa/start_date.py` validates all 242 region/class cells, anomaly links,
-  reviewer identity, survey citations, and global source references.
-- `tests/fixtures/m25c/placeholder-anomaly-inventory.json` preserves the old
-  incomplete seed solely as a negative regression fixture.
-- `tests/test_m25c_anomaly_inventory.py` exercises closed-census structure,
-  link integrity, handoff evidence, rejection rules, and determinism.
-- `tests/test_m25c_global_certification.py` uses the negative fixture while
-  retaining the existing global certification boundary coverage.
-- `tasks/todo.md`, `tasks/roadmap.md`, and `tasks/history.md` reconcile active,
-  milestone, and session state without claiming human acceptance.
-- This manifest records the exact shipping boundary and quality gate.
+- `.agents/project.json` records the installed guided-walkthrough pack used for
+  manual browser fallbacks.
+- `docs/m25c-anomaly-alignment-decisions.md` preserves the locked, engine-neutral
+  treatments that the negative audit did not reopen.
+- The research README explains the tracked inputs, exact review matrix,
+  acceptance sidecar, live-access evidence, and downstream boundary.
+- `census-research.json` is the authoritative 22×11 research ledger: ten
+  anomalies in nine positive cells, 233 confirmed negatives, explicit failure
+  bases, exact locators, and matching rejected leads.
+- `source-access-audit.json` records live automated or browser-confirmed access
+  for all 45 source URLs.
+- The two schemas require the review ledger in schema-0.3 passes and admit
+  archival/institutional evidence types.
+- The builder requires a valid frozen acceptance sidecar before importing the
+  anomaly inventory and carries the review ledger through handoff validation.
+- The generator projects tracked research deterministically, validates closure
+  before writing, emits the source-access audit, and refuses signed-output
+  regeneration.
+- The verifier checks hashes, schemas, census/rejection/access ledgers, source
+  and gazetteer validity, joint handoff, pending state, and accepted sidecars.
+- `m25c_census.py` centralizes region/class/source/locator/query/lead,
+  provenance, access, rejection-parity, unresolved-cell, and acceptance rules.
+- `start_date.py` and `schemas.py` integrate the ledger and expanded source
+  provenance into normal schema-0.3 QA.
+- Task/history/roadmap/lessons files record completion, approval, the corrected
+  review boundary, residual blockers, and the next executable work.
+- The three M25C test modules cover the audit contract, signing immutability,
+  downstream overlays, schema integration, and certification boundaries.
 
 ## User-goal mapping
 
-The implementation turns the M25C anomaly requirement into a reproducible,
-closed worldwide research census and supplies an auditable candidate packet.
-Its validation and documentation prevent the generated research from being
-mistaken for independently accepted evidence or a certifiable public pass.
+The tracked research now gives every negative cell a named lead, controlled
+failure basis, targeted historical query, exact source locator, and unique
+conclusion. Closure requires exact rejection parity, reachable sources, no
+unresolved cells, and two independent provenance groups for positives. The ten
+locked geographic anomalies and non-geographic Lancastrian relationship remain
+unchanged except that inaccessible Britannica Avignon corroboration was
+replaced by UNESCO evidence. George Le's approval was recorded only after the
+audit produced no decision exceptions.
 
 ## Tests run
 
-- Executable verification: `uv run pytest -q` — 340 passed in 20.32 seconds,
-  with no warnings.
-- Executable packet verification:
-  `uv run python scripts/verify-m25c-anomaly-census.py` — source and gazetteer
-  schemas passed, joint findings were empty, and reordered canonical builds
-  were byte-identical with SHA-256
-  `bd10792df93c93a86a7cb752d9fd665518bab456a1851a11ee074c3c59503e01`.
-- Source hygiene: `git diff --check` — passed.
-- Security hygiene: changed-file credential-pattern scan — no matches.
+- Executable focused verification:
+  `.venv/bin/pytest -q tests/test_m25c_anomaly_inventory.py tests/test_m25c_packet_signing.py tests/test_m25c_global_certification.py`
+  — 52 passed with no warnings.
+- Executable complete suite: `.venv/bin/pytest -q` — 356 passed in 109.04
+  seconds with no warnings.
+- Executable packet verification: pending verification passed before signing;
+  accepted verification passed afterward with 242 cells, ten anomalies, zero
+  joint findings, `human_review_complete: true`, and
+  `public_release_allowed: false`.
+- Reproducibility: two independently generated temporary packet directories
+  were byte-identical; final frozen SHA256SUMS digest is
+  `42367f817076b764b9508ac5750f372146da97d1889296088d492e17953b9ff9`.
+- Source/gazetteer and joint-handoff validation passed through the packet
+  verifier. All 45 live-access records are resolved.
+- Source hygiene: `git diff --check` passed.
 
 ## Skipped tests
 
-- The real combined M25C pass build was not run because independent human
-  census review, the accepted worldwide fabric handoff, and the remaining
-  worldwide assignment/status evidence do not yet exist as accepted inputs.
-  The builder remains fail closed until those inputs are supplied.
-- No browser or deployment check is relevant: this boundary changes research
-  tooling and ignored pre-review artifacts, not a UI or hosted release, and the
-  repository has no explicit manual deploy contract.
+- No separate lint, typecheck, or build command is declared by `pyproject.toml`;
+  the complete Python suite and packet executables cover the changed code.
+- The full worldwide M25C pass was not assembled because remaining worldwide
+  evidence and later pass-level inputs are outside this census-audit boundary.
+- No deployment was run because the repository has no `deploy.md` or
+  `tasks/deploy.md` manual deploy contract.
 
 ## Adversarial review
 
-Reviewed the exact diff for ways to substitute examples for a census, omit or
-duplicate region/class cells, orphan cases, cross-link the wrong class/region,
-reuse the researcher as reviewer, cite missing or unreviewed evidence, depend
-on a single provenance group, reference missing polities, disagree across the
-two inventory copies, or gain order-dependent bytes. Each path is rejected or
-covered by focused tests. The only persisted verifier finding is the deliberate
-missing human review date; the candidate status remains non-public.
+An explicit equivalent adversarial sweep inspected the exact diff and tested
+missing/duplicate cells, generic or temporally unbounded searches, templated
+negative closure, empty or invalid failure bases, unknown/unreviewed/temporally
+invalid sources, missing or mismatched locators, reused generic surveys,
+rejection-log drift, unresolved URL access, insufficient positive provenance,
+invalid reviewer identities/dates, duplicate signatures, stale signatures,
+tampered frozen bytes, and downstream inventory use without acceptance.
+
+The sweep also checked that no alignment decision was silently reopened, the
+Lancastrian dispositions are cell-specific, generated packet status remains
+non-public, and signing changes only the excluded sidecar. No unresolved
+finding or warning remains.
+
+Correction enforcement: `tasks/lessons.md` records that locked decisions must
+not be presented as awaiting another review. `tasks/todo.md` and
+`tasks/roadmap.md` now route directly from completed census acceptance to
+worldwide pass assembly.
 
 ## Residual risk
 
-The research conclusions and negative cells have not received independent
-human historical review. Remote sources are URL-pinned rather than content-
-checksummed, and the full geometry/politics assembly has not consumed this
-packet. These limitations are explicit blockers, not accepted release risk.
+- Remote historical pages are URL- and locator-pinned but not content-
+  checksummed; the tracked live-access audit records availability, not immutable
+  source content.
+- The approval sidecar and frozen packet are intentional ignored build
+  artifacts. A clean clone must regenerate the packet and recreate or securely
+  transfer the signed sidecar before the downstream inventory stage.
+- Remaining worldwide evidence, real-pass assembly, pass-level review, runtime
+  certification, and release approval are still outstanding. No public release
+  was authorized.
 
 ## Rollback note
 
-Revert the anomaly-census shipping commit. Generated research data is ignored
-and can be regenerated; no database, hosted artifact, deployment, or migration
-is involved.
+Revert the session shipping commit to remove the tracked research, validation,
+schema, test, and documentation changes. The ignored packet can be regenerated;
+remove its local acceptance sidecar only if intentionally revoking the recorded
+local approval. No database, deployment, or irreversible migration is involved.
 
 ## Next command
 
-Human review of the frozen packet is required before another executable M25C
-assembly command is appropriate.
+```sh
+.venv/bin/python scripts/build-m25c-global-pass.py inventory \
+  --inventory-input data/processed/m25c-global-staging/evidence/anomaly_inventory.json \
+  --acceptance-input data/processed/m25c-global-staging/evidence/review_acceptance.json
+```

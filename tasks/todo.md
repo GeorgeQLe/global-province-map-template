@@ -2,11 +2,10 @@
 
 ## Active
 
-- M25C worldwide historical research inputs and independent acceptance: inspect
-  the generated 242-cell anomaly census and its source/gazetteer packet, record
-  acceptance with a distinct human reviewer and ISO review date, then combine
-  it with the accepted M23 fabric sidecars and remaining worldwide evidence for
-  the 22-region plus 11-class pass review.
+- M25C worldwide pass assembly: combine the accepted anomaly census with the
+  accepted M23 fabric sidecars and remaining worldwide political, status, and
+  regional evidence; run reviewed-split, aggregation, assembly, render, and
+  pass-level review gates before runtime certification.
 
 ## Up next (from roadmap)
 
@@ -20,6 +19,24 @@
   research acceptance and runtime-pack validation.
 
 ## Completed
+
+- [x] M25C negative-cell evidence audit: requalified all 22 institutional
+  regional surveys, re-audited 233 negative cells with explicit failure bases,
+  made rejection logs exact mirrors of negative cells, recorded live access for
+  all 45 sources (including browser fallbacks), replaced inaccessible Britannica
+  Avignon support with UNESCO, and added fail-closed query/rationale/locator,
+  access, provenance, and unresolved-cell validation. Two temporary renders were
+  byte-identical; the frozen candidate status remains non-public.
+
+- [x] M25C anomaly-census acceptance: George Le approved the refrozen 242-cell
+  census on 2026-08-14. The packet-only sidecar verifies in accepted state with
+  zero joint findings while `public_release_allowed` remains false.
+
+- [x] M25C frozen anomaly-census repair: tracked 242-cell research input,
+  region- and class-specific review ledger, fail-closed alias/source/locator
+  validation, deterministic hash-locked rendering, and immutable human
+  acceptance sidecar. The inventory remains unsigned and non-public; approval
+  is carried separately by the accepted sidecar.
 
 - [x] M25C worldwide research assembly workflow: deterministic inventory,
   M49 fabric enrichment, evidence import, reviewed-split gating, exact 22,000-
@@ -140,4 +157,5 @@
 
 ## Blockers
 
-- None.
+- Remaining worldwide evidence, pass assembly and review, runtime
+  certification, and release approval remain outstanding.

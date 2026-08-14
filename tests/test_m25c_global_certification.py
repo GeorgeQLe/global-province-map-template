@@ -43,7 +43,7 @@ def _global_manifest() -> dict:
         "dossier", "source_manifest", "boundary_registry", "polity_gazetteer",
         "location_assignments", "golden_borders", "full_build_geometry",
         "coverage_matrix", "changelog", "canonical_historical_status",
-        "world_coverage_mask", "anomaly_inventory",
+        "world_coverage_mask", "anomaly_inventory", "anomaly_review_ledger",
     )
     return {
         "schema_version": "0.3.0", "document_type": "start_date_research_pass",
