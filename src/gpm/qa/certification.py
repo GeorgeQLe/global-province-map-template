@@ -54,6 +54,8 @@ def certify_era(*, pass_dir: Path, runtime_dir: Path, output: Path) -> EraCertif
     pass_root, runtime_root, output_path = Path(pass_dir).resolve(), Path(runtime_dir).resolve(), Path(output).resolve()
     pass_manifest_path = pass_root / "pass_manifest.json"
     pass_manifest = _load_json(pass_manifest_path, "research pass")
+    if pass_manifest.get("qa_mode") == "provisional_internal_review":
+        raise EraCertificationError("provisional_internal_review passes are never certification-eligible")
     if pass_manifest.get("schema_version") != "0.3.0" or (pass_manifest.get("scope") or {}).get("kind") != "worldwide":
         raise EraCertificationError("M25C certification requires a schema 0.3.0 worldwide research pass")
     try:
@@ -150,6 +152,14 @@ def validate_certification_bundle(path: Path | str) -> dict[str, Any]:
         artifact = _bundle_artifact(manifest_path.parent, record["path"], role)
         if not artifact.is_file() or _sha256(artifact) != record["sha256"]:
             raise EraCertificationError(f"certification artifact is missing or altered: {role}")
+    research_path = _bundle_artifact(
+        manifest_path.parent,
+        document["artifacts"]["research_pass"]["path"],
+        "research_pass",
+    )
+    research = _load_json(research_path, "research pass")
+    if research.get("qa_mode") == "provisional_internal_review":
+        raise EraCertificationError("provisional_internal_review research cannot be published or demo-promoted")
     benchmark_path = _bundle_artifact(
         manifest_path.parent,
         document["artifacts"]["runtime_benchmark"]["path"],

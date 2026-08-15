@@ -12,7 +12,7 @@ import pytest
 from shapely.geometry import box, mapping
 
 from gpm.geo.shapefile import ShapeFeature
-from gpm.qa.certification import EraCertificationError, validate_certification_bundle
+from gpm.qa.certification import EraCertificationError, certify_era, validate_certification_bundle
 from gpm.release.demo import DemoBuildError, build_demo
 from gpm.schemas import (
     SchemaValidationError, WORLDWIDE_M49_SUBREGIONS,
@@ -28,6 +28,15 @@ PILOT = ROOT / "research" / "start-dates" / "1444-v2"
 def _builder_module():
     path = ROOT / "scripts" / "build-m25c-global-pass.py"
     spec = importlib.util.spec_from_file_location("m25c_builder", path)
+    assert spec and spec.loader
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def _provisional_module():
+    path = ROOT / "scripts" / "generate-m25c-provisional-pass.py"
+    spec = importlib.util.spec_from_file_location("m25c_provisional", path)
     assert spec and spec.loader
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -88,6 +97,56 @@ def test_global_manifest_may_encode_pending_review_for_preflight_only():
         validate_start_date_pass_manifest(manifest)
 
 
+def test_provisional_manifest_mode_is_schema_valid_but_non_promotable(tmp_path):
+    manifest = _global_manifest()
+    manifest["qa_mode"] = "provisional_internal_review"
+    manifest["review"].update({
+        "reviewer": "pending-independent-review",
+        "status": "pending_independent_review",
+    })
+    validate_start_date_pass_manifest(manifest)
+
+    output = tmp_path / "pass"
+    review = output / "review"
+    review.mkdir(parents=True)
+    (output / "pass_manifest.json").write_text(json.dumps(manifest) + "\n")
+    (review / "review_manifest.json").write_text(json.dumps({
+        "generator": "gpm qa render", "reviewer": "pending-independent-review",
+        "status": "pending_independent_review", "renders": [],
+    }) + "\n")
+    builder = _builder_module()
+    with pytest.raises(SystemExit, match="cannot be review-accepted"):
+        builder.stage_accept_review(Namespace(
+            output_dir=output, reviewer="Human Reviewer", review_date="2026-08-14",
+        ))
+    with pytest.raises(EraCertificationError, match="never certification-eligible"):
+        certify_era(pass_dir=output, runtime_dir=tmp_path / "runtime", output=tmp_path / "cert.json")
+
+
+def test_provisional_membership_resplit_is_exact_and_deterministic():
+    provisional = _provisional_module()
+    original = {"a": ["l1", "l2", "l3"], "b": ["l4", "l5"], "c": ["l6"]}
+    left = provisional._target_groups(original, [["l1", "l2"]], 5)
+    right = provisional._target_groups(original, [["l1", "l2"]], 5)
+    assert left == right
+    assert len(left) == 5
+    assert sorted(item for group in left for item in group) == [f"l{i}" for i in range(1, 7)]
+    assert ["l1", "l2"] in left
+
+
+def test_regional_packet_cannot_promote_a_weak_grade_a_claim():
+    provisional = _provisional_module()
+    packet = {
+        "region_id": "155", "source_pins": [{"source_id": "s", "locator": "p. 1", "sha256": "0" * 64}],
+        "sources": [{"source_id": "s", "review_status": "reviewed", "source_type": "academic",
+                     "valid_from": "1400", "valid_to": "1500", "independence_group": "one"}],
+        "coverage": [{"region_id": "155", "layer": "politics", "grade": "A",
+                      "source_ids": ["s"], "known_gaps": [], "exclusions": []}],
+    }
+    with pytest.raises(SystemExit, match="all four regional layers"):
+        provisional._qualify_grade_a_packet(packet)
+
+
 def test_m49_enrichment_is_deterministic_and_marks_antarctica(monkeypatch):
     builder = _builder_module()
     countries = [
@@ -129,6 +188,31 @@ def test_evidence_rejection_is_aggregated_and_copies_no_invalid_inputs(tmp_path)
     assert report["finding_count"] > 3
     assert {"artifact", "rule", "affected_ids", "remediation_owner"}.issubset(report["findings"][0])
     assert not (output / "source_manifest.json").exists()
+
+
+def test_evidence_bundle_accepts_the_versioned_census_ledger_contract(tmp_path):
+    builder = _builder_module()
+    evidence = tmp_path / "evidence"
+    evidence.mkdir()
+    for name in builder.CURATED_FILES:
+        if name in {"anomaly_inventory.json", "dossier.md"}:
+            continue
+        schema_version = (
+            "1.0.0" if name == "anomaly_census_review_ledger.json" else "0.3.0"
+        )
+        (evidence / name).write_text(json.dumps({
+            "schema_version": schema_version,
+            "pass_id": builder.PASS_ID,
+            "start_date": builder.START_DATE,
+        }) + "\n")
+
+    findings = builder._validate_evidence_bundle(evidence)
+
+    ledger_findings = [
+        row for row in findings
+        if row["artifact"] == "anomaly_census_review_ledger.json"
+    ]
+    assert not any(row["rule"] == "SCHEMA_VERSION_MISMATCH" for row in ledger_findings)
 
 
 def test_handoff_reports_all_missing_input_owners(tmp_path):
@@ -249,6 +333,33 @@ def test_certification_bundle_rejects_tampering(tmp_path):
     assert validate_certification_bundle(path)["status"] == "accepted"
     benchmark.write_text('{"status":"fail","gates":{}}\n')
     with pytest.raises(EraCertificationError, match="missing or altered"):
+        validate_certification_bundle(path)
+
+
+def test_certification_bundle_rejects_forged_provisional_lineage(tmp_path):
+    roles = ("research_pass", "research_qa", "canonical_historical_status", "independent_review", "runtime_manifest")
+    records = {}
+    for role in roles:
+        artifact = tmp_path / f"{role}.json"
+        content = {"qa_mode": "provisional_internal_review"} if role == "research_pass" else {}
+        artifact.write_text(json.dumps(content) + "\n")
+        records[role] = {"path": artifact.name, "sha256": hashlib.sha256(artifact.read_bytes()).hexdigest()}
+    benchmark = tmp_path / "runtime_benchmark.json"
+    benchmark.write_text(json.dumps({"status": "pass", "gates": {"all": "pass"}}) + "\n")
+    records["runtime_benchmark"] = {"path": benchmark.name, "sha256": hashlib.sha256(benchmark.read_bytes()).hexdigest()}
+    certification = {
+        "schema_version": "1.0.0", "certification_type": "gpm-global-era-certification",
+        "status": "accepted", "certification_id": "official-1444-global-v1",
+        "pass_id": "official-1444-global-v1", "start_date": "1444-11-11", "scope": "worldwide",
+        "public_scenario_id": "official-1444", "compatibility_revision": "1", "artifacts": records,
+        "gates": {name: "pass" for name in (
+            "research", "world_partition", "coverage", "canonical_runtime_parity",
+            "runtime_determinism", "runtime_performance", "independent_review",
+        )},
+    }
+    path = tmp_path / "certification.json"
+    path.write_text(json.dumps(certification) + "\n")
+    with pytest.raises(EraCertificationError, match="cannot be published or demo-promoted"):
         validate_certification_bundle(path)
 
 

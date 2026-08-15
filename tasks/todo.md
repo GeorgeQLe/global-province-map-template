@@ -2,10 +2,11 @@
 
 ## Active
 
-- M25C worldwide pass assembly: combine the accepted anomaly census with the
-  accepted M23 fabric sidecars and remaining worldwide political, status, and
-  regional evidence; run reviewed-split, aggregation, assembly, render, and
-  pass-level review gates before runtime certification.
+- M25C regional evidence promotion: replace provisional records in risk-first
+  order (`155, 154, 151, 039, 145, 015`, then Asia, Africa/Americas, and
+  Oceania) with dated, source-pinned four-layer packets. Only after all 88 rows
+  are gap-free Grade A may the ordinary research, human-review, runtime, and
+  publication gates run.
 
 ## Up next (from roadmap)
 
@@ -19,6 +20,14 @@
   research acceptance and runtime-pack validation.
 
 ## Completed
+
+- [x] M25C provisional worldwide pass: deterministic non-public assembly over
+  the accepted M23 r2 fabric and 23,582-location M49 mask, exact-once 22,000-
+  province membership, maximum-overlap `official-1444` politics transfer,
+  retained pilot/anomaly evidence, 88 honest B/C coverage rows, regional packet
+  qualification, and an explicit internal-QA mode that cannot be accepted,
+  certified, published, or demo-promoted. Duplicate 288 MB builds were
+  byte-identical; provisional pre- and post-render QA passed with zero errors.
 
 - [x] M25C negative-cell evidence audit: requalified all 22 institutional
   regional surveys, re-audited 233 negative cells with explicit failure bases,

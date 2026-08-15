@@ -1,0 +1,99 @@
+{
+  "actual_location_count": 30216,
+  "baseline_cell_count": 14466,
+  "counts": {
+    "adjacency_rows": 52544,
+    "admin_intersections": 74297,
+    "admin_pieces": 74297,
+    "lineage_events": 1070,
+    "locations": 30216
+  },
+  "fabric_id": "global-h3-v1",
+  "fabric_revision": "2",
+  "files": [
+    "locations.geojson",
+    "location_adjacency.csv",
+    "location_admin_intersections.csv",
+    "location_lineage.json",
+    "location_admin_pieces.geojson"
+  ],
+  "generated_at": "2026-07-16T00:00:00+00:00",
+  "generator_version": "0.1.0",
+  "geometry_revision": "1",
+  "h3": {
+    "baseline_resolution": 3,
+    "library_version": "4.5.0",
+    "maximum_resolution": 5,
+    "ordering": "lexicographically sorted"
+  },
+  "inputs": [
+    {
+      "format": "natural-earth-zip",
+      "license_lineage": [
+        "Natural Earth public domain"
+      ],
+      "path": "/Users/georgele/projects/games/global-province-map-template/data/raw/natural_earth/ne_10m_land.zip",
+      "role": "land"
+    },
+    {
+      "format": "natural-earth-zip",
+      "license_lineage": [
+        "Natural Earth public domain"
+      ],
+      "path": "/Users/georgele/projects/games/global-province-map-template/data/raw/natural_earth/ne_10m_admin_0_countries.zip",
+      "role": "admin0"
+    },
+    {
+      "format": "natural-earth-zip",
+      "license_lineage": [
+        "Natural Earth public domain"
+      ],
+      "path": "/Users/georgele/projects/games/global-province-map-template/data/raw/natural_earth/ne_10m_admin_1_states_provinces.zip",
+      "role": "admin1"
+    }
+  ],
+  "license_lineage": [
+    "Natural Earth public domain"
+  ],
+  "manifest_type": "location_fabric",
+  "missing_optional_signals": [
+    "population",
+    "settlement",
+    "terrain",
+    "historical"
+  ],
+  "output_fabric_revision": "2",
+  "refined_parent_count": 1052,
+  "schema_version": "0.1.0",
+  "signals": {
+    "historical": {
+      "available": false,
+      "license_lineage": [],
+      "path": null
+    },
+    "population": {
+      "available": false,
+      "license_lineage": [],
+      "path": null
+    },
+    "settlement": {
+      "available": false,
+      "license_lineage": [],
+      "path": null
+    },
+    "terrain": {
+      "available": false,
+      "license_lineage": [],
+      "path": null
+    }
+  },
+  "source_fabric_revision": "1",
+  "source_lineage": [
+    "/Users/georgele/projects/games/global-province-map-template/data/raw/natural_earth/ne_10m_admin_0_countries.zip",
+    "/Users/georgele/projects/games/global-province-map-template/data/raw/natural_earth/ne_10m_admin_1_states_provinces.zip",
+    "/Users/georgele/projects/games/global-province-map-template/data/raw/natural_earth/ne_10m_land.zip"
+  ],
+  "split_request_count": 19,
+  "target_location_count": 30000,
+  "weight_renormalization": "available-inputs-only"
+}

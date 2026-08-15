@@ -1,45 +1,68 @@
 {
-  "finding_count": 4,
+  "finding_count": 7,
   "findings": [
     {
       "affected_ids": [
-        "pending-claim",
-        "pending-composite-realm",
-        "pending-concession",
-        "pending-condominium",
-        "pending-dependency",
-        "pending-detached-territory",
-        "pending-disputed-area",
-        "pending-enclave-exclave",
-        "pending-free-protected-city",
-        "pending-microstate",
-        "pending-non-state-territory"
+        "assignments.json"
       ],
-      "artifact": "anomaly_inventory",
-      "message": "placeholder seed lacks the required closed 242-cell census and contains unresolved placeholder anomaly, subject, and source IDs",
+      "artifact": "assignments.json",
+      "message": "required reviewed artifact is missing",
       "remediation_owner": "historical-curator",
-      "rule": "INCOMPLETE_ANOMALY_CENSUS"
+      "rule": "MISSING_ARTIFACT"
     },
     {
-      "affected_ids": [],
-      "artifact": "evidence_bundle",
-      "message": "--evidence-dir is required",
+      "affected_ids": [
+        "boundaries.geojson"
+      ],
+      "artifact": "boundaries.geojson",
+      "message": "required reviewed artifact is missing",
       "remediation_owner": "historical-curator",
-      "rule": "MISSING_INPUT"
+      "rule": "MISSING_ARTIFACT"
     },
     {
-      "affected_ids": [],
-      "artifact": "fabric",
-      "message": "--fabric-input is required",
-      "remediation_owner": "fabric-curator",
-      "rule": "MISSING_INPUT"
+      "affected_ids": [
+        "build.geojson"
+      ],
+      "artifact": "build.geojson",
+      "message": "required reviewed artifact is missing",
+      "remediation_owner": "historical-curator",
+      "rule": "MISSING_ARTIFACT"
     },
     {
-      "affected_ids": [],
-      "artifact": "fabric_sidecars",
-      "message": "--fabric-sidecars-dir is required",
-      "remediation_owner": "fabric-curator",
-      "rule": "MISSING_INPUT"
+      "affected_ids": [
+        "changelog.json"
+      ],
+      "artifact": "changelog.json",
+      "message": "required reviewed artifact is missing",
+      "remediation_owner": "historical-curator",
+      "rule": "MISSING_ARTIFACT"
+    },
+    {
+      "affected_ids": [
+        "coverage.json"
+      ],
+      "artifact": "coverage.json",
+      "message": "required reviewed artifact is missing",
+      "remediation_owner": "historical-curator",
+      "rule": "MISSING_ARTIFACT"
+    },
+    {
+      "affected_ids": [
+        "golden.json"
+      ],
+      "artifact": "golden.json",
+      "message": "required reviewed artifact is missing",
+      "remediation_owner": "historical-curator",
+      "rule": "MISSING_ARTIFACT"
+    },
+    {
+      "affected_ids": [
+        "historical-territory-status.json"
+      ],
+      "artifact": "historical-territory-status.json",
+      "message": "required reviewed artifact is missing",
+      "remediation_owner": "historical-curator",
+      "rule": "MISSING_ARTIFACT"
     }
   ],
   "pass_id": "official-1444-global-v1",

@@ -1,5 +1,31 @@
 # History
 
+## 2026-08-15 - M25C provisional worldwide evidence pass
+
+- Added a deterministic non-public generator that filters the accepted M23 r2
+  fabric to the 23,582-location non-Antarctic M49 mask, preserves accepted pilot
+  groups where possible, deterministically re-splits surviving membership, and
+  produces exactly 22,000 provinces with exact-once location coverage.
+- Transferred `official-1444` politics by maximum-area overlap, retained the
+  accepted pilot spatial assertions and anomaly census, emitted soft-only
+  provisional ownership lines, complete canonical status/hierarchy records,
+  and exactly 88 honest B/C coverage rows with declared gaps.
+- Added `provisional_internal_review` to the manifest and QA contracts. It
+  downgrades only evidence-completeness/planned-source/review findings, compacts
+  them for usability, and leaves schema, checksum, topology, count, ID,
+  containment, census, and reference failures blocking. Review acceptance,
+  certification, certification-bundle validation, publication, and demo
+  promotion reject the provisional lineage unconditionally.
+- Added deterministic dated regional-packet merging and fail-closed Grade-A
+  qualification for all four layers, exact locators and hashes, temporal
+  applicability, academic/primary anchors, independent hard-boundary
+  corroboration, completeness attestations, and accepted visual review.
+- Quality gate: two clean 288 MB builds were byte-identical with pass-manifest
+  SHA-256 `eae4e26ec0bf464c78d336313b2bb4312bb82ec785efd12924b42e91f98024a0`;
+  provisional QA passed before render with zero errors/12 expected warnings and
+  after 30 review sheets with zero errors/10 expected warnings; all 361 tests
+  and `git diff --check` passed.
+
 ## 2026-08-14 - M25C negative-cell evidence audit
 
 - Requalified the 22 regional surveys as institutional sources with exact

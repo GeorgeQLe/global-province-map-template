@@ -83,7 +83,7 @@ ANOMALY_CENSUS_STATUSES = frozenset({"resolved_cases", "reviewed_none_found"})
 
 def run_start_date_qa(
     *, pass_dir: Path, manifest_input: Path | None = None, report_output: Path | None = None,
-    pending_review: bool = False,
+    pending_review: bool = False, provisional_internal_review: bool = False,
 ) -> StartDateQAResult:
     """Validate one independently releasable M24 research pass, fail closed."""
     root = Path(pass_dir).resolve()
@@ -93,6 +93,10 @@ def run_start_date_qa(
         validate_start_date_pass_manifest(manifest)
     except SchemaValidationError as exc:
         raise StartDateQAError(f"Invalid pass manifest {manifest_path}: {exc}") from exc
+    manifest_mode = manifest.get("qa_mode", "certification_review")
+    if provisional_internal_review and manifest_mode != "provisional_internal_review":
+        raise StartDateQAError("Provisional internal QA requires a provisional_internal_review manifest")
+    provisional_internal_review = provisional_internal_review or manifest_mode == "provisional_internal_review"
 
     findings: list[dict[str, Any]] = []
     documents: dict[str, dict[str, Any]] = {}
@@ -153,6 +157,34 @@ def run_start_date_qa(
             if finding["severity"] == "error" and finding["code"] in review_codes:
                 finding["severity"] = "warning"
                 finding["message"] = "Pending independent review gate: " + finding["message"]
+    if provisional_internal_review:
+        provisional_codes = {
+            "GLOBAL_COVERAGE_NOT_A", "GLOBAL_COVERAGE_GAPS",
+            "MISSING_POSITIVE_BORDER_ASSERTION", "MISSING_POSITIVE_CAPITAL_ASSERTION",
+            "MISSING_NEGATIVE_ANACHRONISM", "UNCERTIFIED_B_GRADE",
+            "UNREVIEWED_GLOBAL_ASSIGNMENT_SOURCE", "UNREVIEWED_GLOBAL_POLITY_SOURCE",
+            "UNREVIEWED_GLOBAL_RELATIONSHIP_SOURCE", "UNREVIEWED_CANONICAL_EVIDENCE",
+            "INVALID_INDEPENDENT_REVIEW", "INCOMPLETE_REVIEW_COVERAGE",
+            "INCOMPLETE_ANOMALY_REVIEW",
+        }
+        for finding in findings:
+            if finding["severity"] == "error" and finding["code"] in provisional_codes:
+                finding["severity"] = "warning"
+                finding["message"] = "Provisional internal review: " + finding["message"]
+        collapsed: list[dict[str, Any]] = []
+        grouped: dict[str, list[dict[str, Any]]] = {}
+        for finding in findings:
+            if finding["severity"] == "warning" and finding["code"] in provisional_codes:
+                grouped.setdefault(finding["code"], []).append(finding)
+            else:
+                collapsed.append(finding)
+        for code, rows in grouped.items():
+            affected = sorted({value for row in rows for value in row["affected_ids"]})
+            representative = dict(rows[0])
+            representative["affected_ids"] = affected[:100]
+            representative["message"] = f"{representative['message']} ({len(rows)} finding(s); affected IDs truncated to 100.)"
+            collapsed.append(representative)
+        findings = collapsed
     findings.sort(key=lambda item: (item["severity"] != "error", item["code"], item["affected_ids"]))
     assertion_results.sort(key=lambda item: item["assertion_id"])
     errors = sum(item["severity"] == "error" for item in findings)

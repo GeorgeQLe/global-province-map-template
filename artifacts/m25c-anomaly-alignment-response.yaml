@@ -1,0 +1,211 @@
+# M25C anomaly-alignment response
+# Replace nulls with selections, keep IDs unchanged, and return this file.
+schema_version: 1.0.0
+pass_id: official-1444-global-v1
+start_date: 1444-11-11
+
+global:
+  canonical_priority: historical_fidelity
+  profile_strategy: multiple_lossy_projections
+  retain_canonical_ids_when_simplified: true
+  expose_uncertainty: true
+  province_is_canonical_floor: false
+  preserve_subprovince_entities: true
+  default_small_scale_policy: symbolize
+  default_minimum_retention: nested_entity
+  consumer_projection_overrides_allowed: true
+  override_scope: projection_only
+  override_requires_lossiness_note: true
+  override_must_retain_canonical_ids: true
+  canonical_history_mutable_by_consumers: false
+  notes: ""
+
+# historical.decision:
+#   accept | revise | reject | needs_evidence
+#
+# cartography.representations:
+#   polygon | outline | hatch | point | label | inset | metadata_only
+#
+# cartography.small_scale:
+#   preserve | symbolize | merge | omit
+#
+# gameplay.projections:
+#   playable_entity | nonplayable_entity | province | relationship |
+#   claim | modifier | event | merge | none
+
+anomalies:
+  andorra-condominium:
+    historical:
+      decision: null
+      class: condominium
+      confidence: null # high | medium | low
+    canonical:
+      model: null # one_polity_two_co_sovereigns | polity_with_protection | other
+    cartography:
+      representations: []
+      small_scale: null
+    gameplay:
+      projections: []
+      single_owner_fallback: null
+    lossiness_note: ""
+    notes: ""
+
+  athos-monastic-territory:
+    historical:
+      decision: null
+      class: non-state-territory
+      confidence: null
+    canonical:
+      model: null # territory_with_monastic_administrator | autonomous_subdivision | institution_only | other
+    cartography:
+      representations: []
+      small_scale: null
+    gameplay:
+      projections: []
+      single_owner_fallback: null
+    lossiness_note: ""
+    notes: ""
+
+  avignon-papal-enclave:
+    historical:
+      decision: null
+      class: enclave-exclave
+      confidence: null
+    canonical:
+      model: null # papal_ownership_detached_geometry | papal_dependency | revised_scope | other
+    cartography:
+      representations: []
+      small_scale: null
+    gameplay:
+      projections: []
+      single_owner_fallback: null
+    lossiness_note: ""
+    notes: ""
+
+  burgundian-composite-realm:
+    historical:
+      decision: null
+      class: composite-realm
+      confidence: null
+    canonical:
+      model: null # one_ruler_multiple_polities | one_polity_autonomous_territories | unified_realm | other
+    cartography:
+      representations: []
+      small_scale: null
+    gameplay:
+      projections: []
+      single_owner_fallback: null
+    lossiness_note: ""
+    notes: ""
+
+  calais-english-detached:
+    historical:
+      decision: null
+      class: detached-territory
+      confidence: null
+    canonical:
+      model: null # english_ownership_control | city_and_pale | qualified_control | other
+    cartography:
+      representations: []
+      small_scale: null
+    gameplay:
+      projections: []
+      single_owner_fallback: null
+    lossiness_note: ""
+    notes: ""
+
+  ceuta-portuguese-marinid-dispute:
+    historical:
+      decision: null
+      class: disputed-area
+      confidence: null
+    canonical:
+      model: null # portugal_controls_morocco_claims | bilateral_dispute | possession_no_live_dispute | other
+    cartography:
+      representations: []
+      small_scale: null
+    gameplay:
+      projections: []
+      single_owner_fallback: null
+    lossiness_note: ""
+    notes: ""
+
+  galata-genoese-concession:
+    historical:
+      decision: null
+      class: concession
+      confidence: null
+    canonical:
+      model: null # host_sovereignty_genoese_jurisdiction | genoese_dependency | commercial_privileges_only | other
+    cartography:
+      representations: []
+      small_scale: null
+    gameplay:
+      projections: []
+      single_owner_fallback: null
+    lossiness_note: ""
+    notes: ""
+
+  lancastrian-french-crown-claim:
+    historical:
+      decision: null
+      class: claim
+      confidence: null
+    canonical:
+      model: null # claimant_to_crown | defined_territorial_claims | title_metadata_only | expired
+    cartography:
+      representations: []
+      small_scale: null
+    gameplay:
+      projections: []
+      single_owner_fallback: null
+    lossiness_note: ""
+    notes: ""
+
+  lubeck-free-imperial-city:
+    historical:
+      decision: null
+      class: free-protected-city
+      confidence: null
+    canonical:
+      model: null # autonomous_polity_in_empire | imperial_free_city_status | ordinary_city | other
+    cartography:
+      representations: []
+      small_scale: null
+    gameplay:
+      projections: []
+      single_owner_fallback: null
+    lossiness_note: ""
+    notes: ""
+
+  madeira-portuguese-dependency:
+    historical:
+      decision: null
+      class: dependency
+      confidence: null
+    canonical:
+      model: null # dependency_with_captaincies | normal_portuguese_territory | multiple_captaincies | other
+    cartography:
+      representations: []
+      small_scale: null
+    gameplay:
+      projections: []
+      single_owner_fallback: null
+    lossiness_note: ""
+    notes: ""
+
+  san-marino-microstate:
+    historical:
+      decision: null
+      class: microstate
+      confidence: null
+    canonical:
+      model: null # independent_polity | protected_autonomous_polity | territorial_community | other
+    cartography:
+      representations: []
+      small_scale: null
+    gameplay:
+      projections: []
+      single_owner_fallback: null
+    lossiness_note: ""
+    notes: ""

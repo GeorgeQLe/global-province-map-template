@@ -1,128 +1,2911 @@
 {
   "anomalies": [
     {
-      "anomaly_id": "pending-microstate",
-      "resolution": "pending_evidence",
+      "anomaly_id": "andorra-condominium",
+      "region_ids": [
+        "039"
+      ],
+      "resolution": "resolved",
       "source_ids": [
-        "pending"
+        "echr-andorra-pareage",
+        "pace-andorra-coregency"
       ],
       "subject_ids": [
-        "pending"
-      ],
-      "type": "microstate"
-    },
-    {
-      "anomaly_id": "pending-detached-territory",
-      "resolution": "pending_evidence",
-      "source_ids": [
-        "pending"
-      ],
-      "subject_ids": [
-        "pending"
-      ],
-      "type": "detached-territory"
-    },
-    {
-      "anomaly_id": "pending-enclave-exclave",
-      "resolution": "pending_evidence",
-      "source_ids": [
-        "pending"
-      ],
-      "subject_ids": [
-        "pending"
-      ],
-      "type": "enclave-exclave"
-    },
-    {
-      "anomaly_id": "pending-free-protected-city",
-      "resolution": "pending_evidence",
-      "source_ids": [
-        "pending"
-      ],
-      "subject_ids": [
-        "pending"
-      ],
-      "type": "free-protected-city"
-    },
-    {
-      "anomaly_id": "pending-composite-realm",
-      "resolution": "pending_evidence",
-      "source_ids": [
-        "pending"
-      ],
-      "subject_ids": [
-        "pending"
-      ],
-      "type": "composite-realm"
-    },
-    {
-      "anomaly_id": "pending-dependency",
-      "resolution": "pending_evidence",
-      "source_ids": [
-        "pending"
-      ],
-      "subject_ids": [
-        "pending"
-      ],
-      "type": "dependency"
-    },
-    {
-      "anomaly_id": "pending-condominium",
-      "resolution": "pending_evidence",
-      "source_ids": [
-        "pending"
-      ],
-      "subject_ids": [
-        "pending"
+        "andorra"
       ],
       "type": "condominium"
     },
     {
-      "anomaly_id": "pending-concession",
-      "resolution": "pending_evidence",
+      "anomaly_id": "athos-monastic-territory",
+      "region_ids": [
+        "039"
+      ],
+      "resolution": "resolved",
       "source_ids": [
-        "pending"
+        "cambridge-athos-ottomans",
+        "unesco-athos"
       ],
       "subject_ids": [
-        "pending"
+        "mount-athos-community"
+      ],
+      "type": "non-state-territory"
+    },
+    {
+      "anomaly_id": "avignon-papal-enclave",
+      "region_ids": [
+        "155"
+      ],
+      "resolution": "resolved",
+      "source_ids": [
+        "cambridge-avignon-comtat",
+        "unesco-avignon"
+      ],
+      "subject_ids": [
+        "papal-avignon"
+      ],
+      "type": "detached-territory"
+    },
+    {
+      "anomaly_id": "burgundian-composite-realm",
+      "region_ids": [
+        "155"
+      ],
+      "resolution": "resolved",
+      "source_ids": [
+        "dumasy-burgundy-1444",
+        "stein-burgundian-composite"
+      ],
+      "subject_ids": [
+        "burgundian-polities"
+      ],
+      "type": "composite-realm"
+    },
+    {
+      "anomaly_id": "calais-english-detached",
+      "region_ids": [
+        "155"
+      ],
+      "resolution": "resolved",
+      "source_ids": [
+        "cambridge-calais-pale",
+        "uk-national-archives-calais"
+      ],
+      "subject_ids": [
+        "pale-of-calais"
+      ],
+      "type": "detached-territory"
+    },
+    {
+      "anomaly_id": "ceuta-portuguese-marinid-dispute",
+      "region_ids": [
+        "015"
+      ],
+      "resolution": "resolved",
+      "source_ids": [
+        "cambridge-franciscans-ceuta",
+        "cambridge-portugal-ceuta"
+      ],
+      "subject_ids": [
+        "marinid-morocco",
+        "portuguese-ceuta"
+      ],
+      "type": "detached-territory"
+    },
+    {
+      "anomaly_id": "galata-genoese-concession",
+      "region_ids": [
+        "145"
+      ],
+      "resolution": "resolved",
+      "source_ids": [
+        "cambridge-galata-1453",
+        "cambridge-galata-privileges"
+      ],
+      "subject_ids": [
+        "genoese-galata"
       ],
       "type": "concession"
     },
     {
-      "anomaly_id": "pending-claim",
-      "resolution": "pending_evidence",
+      "anomaly_id": "lubeck-free-imperial-city",
+      "region_ids": [
+        "154"
+      ],
+      "resolution": "resolved",
       "source_ids": [
-        "pending"
+        "cambridge-lubeck",
+        "unesco-lubeck"
       ],
       "subject_ids": [
-        "pending"
+        "free-city-lubeck"
       ],
-      "type": "claim"
+      "type": "free-protected-city"
     },
     {
-      "anomaly_id": "pending-disputed-area",
-      "resolution": "pending_evidence",
+      "anomaly_id": "madeira-portuguese-dependency",
+      "region_ids": [
+        "039"
+      ],
+      "resolution": "resolved",
       "source_ids": [
-        "pending"
+        "cambridge-madeira-captaincies",
+        "cambridge-portuguese-islands"
       ],
       "subject_ids": [
-        "pending"
+        "madeira-captaincies"
       ],
-      "type": "disputed-area"
+      "type": "dependency"
     },
     {
-      "anomaly_id": "pending-non-state-territory",
-      "resolution": "pending_evidence",
+      "anomaly_id": "san-marino-microstate",
+      "region_ids": [
+        "039"
+      ],
+      "resolution": "resolved",
       "source_ids": [
-        "pending"
+        "oxford-demilitarized-states",
+        "unesco-san-marino"
       ],
       "subject_ids": [
-        "pending"
+        "san-marino"
       ],
-      "type": "non-state-territory"
+      "type": "microstate"
     }
   ],
   "artifact_version": "1.0.0",
+  "census": {
+    "cells": [
+      {
+        "anomaly_ids": [],
+        "notes": "005/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered Inca, Chim\u00fa, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
+        "region_id": "005",
+        "source_ids": [
+          "regional-survey-005",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "claim"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "005/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Inca, Chim\u00fa, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
+        "region_id": "005",
+        "source_ids": [
+          "regional-survey-005",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "composite-realm"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "005/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Inca, Chim\u00fa, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
+        "region_id": "005",
+        "source_ids": [
+          "regional-survey-005",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "concession"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "005/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Inca, Chim\u00fa, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
+        "region_id": "005",
+        "source_ids": [
+          "regional-survey-005",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "condominium"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "005/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Inca, Chim\u00fa, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
+        "region_id": "005",
+        "source_ids": [
+          "regional-survey-005",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "dependency"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "005/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Inca, Chim\u00fa, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
+        "region_id": "005",
+        "source_ids": [
+          "regional-survey-005",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "detached-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "005/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Inca, Chim\u00fa, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
+        "region_id": "005",
+        "source_ids": [
+          "regional-survey-005",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "disputed-area"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "005/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Inca, Chim\u00fa, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
+        "region_id": "005",
+        "source_ids": [
+          "regional-survey-005",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "enclave-exclave"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "005/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered Inca, Chim\u00fa, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
+        "region_id": "005",
+        "source_ids": [
+          "regional-survey-005",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "free-protected-city"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "005/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Inca, Chim\u00fa, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
+        "region_id": "005",
+        "source_ids": [
+          "regional-survey-005",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "microstate"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "005/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Inca, Chim\u00fa, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
+        "region_id": "005",
+        "source_ids": [
+          "regional-survey-005",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "non-state-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "011/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered Mali, Songhai, Akan, Dogon, and Tuareg control of Timbuktu and Gao.",
+        "region_id": "011",
+        "source_ids": [
+          "regional-survey-011",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "claim"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "011/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Mali, Songhai, Akan, Dogon, and Tuareg control of Timbuktu and Gao.",
+        "region_id": "011",
+        "source_ids": [
+          "regional-survey-011",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "composite-realm"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "011/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Mali, Songhai, Akan, Dogon, and Tuareg control of Timbuktu and Gao.",
+        "region_id": "011",
+        "source_ids": [
+          "regional-survey-011",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "concession"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "011/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Mali, Songhai, Akan, Dogon, and Tuareg control of Timbuktu and Gao.",
+        "region_id": "011",
+        "source_ids": [
+          "regional-survey-011",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "condominium"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "011/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Mali, Songhai, Akan, Dogon, and Tuareg control of Timbuktu and Gao.",
+        "region_id": "011",
+        "source_ids": [
+          "regional-survey-011",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "dependency"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "011/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Mali, Songhai, Akan, Dogon, and Tuareg control of Timbuktu and Gao.",
+        "region_id": "011",
+        "source_ids": [
+          "regional-survey-011",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "detached-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "011/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Mali, Songhai, Akan, Dogon, and Tuareg control of Timbuktu and Gao.",
+        "region_id": "011",
+        "source_ids": [
+          "regional-survey-011",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "disputed-area"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "011/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Mali, Songhai, Akan, Dogon, and Tuareg control of Timbuktu and Gao.",
+        "region_id": "011",
+        "source_ids": [
+          "regional-survey-011",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "enclave-exclave"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "011/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered Mali, Songhai, Akan, Dogon, and Tuareg control of Timbuktu and Gao.",
+        "region_id": "011",
+        "source_ids": [
+          "regional-survey-011",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "free-protected-city"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "011/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Mali, Songhai, Akan, Dogon, and Tuareg control of Timbuktu and Gao.",
+        "region_id": "011",
+        "source_ids": [
+          "regional-survey-011",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "microstate"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "011/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Mali, Songhai, Akan, Dogon, and Tuareg control of Timbuktu and Gao.",
+        "region_id": "011",
+        "source_ids": [
+          "regional-survey-011",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "non-state-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "013/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered Mayapan, Maya regional centers, K'iche', and neighboring states.",
+        "region_id": "013",
+        "source_ids": [
+          "regional-survey-013",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "claim"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "013/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Mayapan, Maya regional centers, K'iche', and neighboring states.",
+        "region_id": "013",
+        "source_ids": [
+          "regional-survey-013",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "composite-realm"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "013/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Mayapan, Maya regional centers, K'iche', and neighboring states.",
+        "region_id": "013",
+        "source_ids": [
+          "regional-survey-013",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "concession"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "013/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Mayapan, Maya regional centers, K'iche', and neighboring states.",
+        "region_id": "013",
+        "source_ids": [
+          "regional-survey-013",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "condominium"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "013/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Mayapan, Maya regional centers, K'iche', and neighboring states.",
+        "region_id": "013",
+        "source_ids": [
+          "regional-survey-013",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "dependency"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "013/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Mayapan, Maya regional centers, K'iche', and neighboring states.",
+        "region_id": "013",
+        "source_ids": [
+          "regional-survey-013",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "detached-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "013/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Mayapan, Maya regional centers, K'iche', and neighboring states.",
+        "region_id": "013",
+        "source_ids": [
+          "regional-survey-013",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "disputed-area"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "013/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Mayapan, Maya regional centers, K'iche', and neighboring states.",
+        "region_id": "013",
+        "source_ids": [
+          "regional-survey-013",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "enclave-exclave"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "013/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered Mayapan, Maya regional centers, K'iche', and neighboring states.",
+        "region_id": "013",
+        "source_ids": [
+          "regional-survey-013",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "free-protected-city"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "013/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Mayapan, Maya regional centers, K'iche', and neighboring states.",
+        "region_id": "013",
+        "source_ids": [
+          "regional-survey-013",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "microstate"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "013/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Mayapan, Maya regional centers, K'iche', and neighboring states.",
+        "region_id": "013",
+        "source_ids": [
+          "regional-survey-013",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "non-state-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "014/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered Solomonic Ethiopia and the Swahili coast city-states.",
+        "region_id": "014",
+        "source_ids": [
+          "regional-survey-014",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "claim"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "014/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Solomonic Ethiopia and the Swahili coast city-states.",
+        "region_id": "014",
+        "source_ids": [
+          "regional-survey-014",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "composite-realm"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "014/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Solomonic Ethiopia and the Swahili coast city-states.",
+        "region_id": "014",
+        "source_ids": [
+          "regional-survey-014",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "concession"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "014/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Solomonic Ethiopia and the Swahili coast city-states.",
+        "region_id": "014",
+        "source_ids": [
+          "regional-survey-014",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "condominium"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "014/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Solomonic Ethiopia and the Swahili coast city-states.",
+        "region_id": "014",
+        "source_ids": [
+          "regional-survey-014",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "dependency"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "014/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Solomonic Ethiopia and the Swahili coast city-states.",
+        "region_id": "014",
+        "source_ids": [
+          "regional-survey-014",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "detached-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "014/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Solomonic Ethiopia and the Swahili coast city-states.",
+        "region_id": "014",
+        "source_ids": [
+          "regional-survey-014",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "disputed-area"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "014/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Solomonic Ethiopia and the Swahili coast city-states.",
+        "region_id": "014",
+        "source_ids": [
+          "regional-survey-014",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "enclave-exclave"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "014/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered Solomonic Ethiopia and the Swahili coast city-states.",
+        "region_id": "014",
+        "source_ids": [
+          "regional-survey-014",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "free-protected-city"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "014/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Solomonic Ethiopia and the Swahili coast city-states.",
+        "region_id": "014",
+        "source_ids": [
+          "regional-survey-014",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "microstate"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "014/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Solomonic Ethiopia and the Swahili coast city-states.",
+        "region_id": "014",
+        "source_ids": [
+          "regional-survey-014",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "non-state-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "015/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered Marinid, Hafsid, and Zayyanid realms and Portuguese Ceuta.",
+        "region_id": "015",
+        "source_ids": [
+          "regional-survey-015",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "claim"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "015/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Marinid, Hafsid, and Zayyanid realms and Portuguese Ceuta.",
+        "region_id": "015",
+        "source_ids": [
+          "regional-survey-015",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "composite-realm"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "015/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Marinid, Hafsid, and Zayyanid realms and Portuguese Ceuta.",
+        "region_id": "015",
+        "source_ids": [
+          "regional-survey-015",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "concession"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "015/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Marinid, Hafsid, and Zayyanid realms and Portuguese Ceuta.",
+        "region_id": "015",
+        "source_ids": [
+          "regional-survey-015",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "condominium"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "015/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Marinid, Hafsid, and Zayyanid realms and Portuguese Ceuta.",
+        "region_id": "015",
+        "source_ids": [
+          "regional-survey-015",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "dependency"
+      },
+      {
+        "anomaly_ids": [
+          "ceuta-portuguese-marinid-dispute"
+        ],
+        "notes": "resolved_cases: Ceuta is retained as a Portuguese fortified detached possession.",
+        "region_id": "015",
+        "source_ids": [
+          "cambridge-franciscans-ceuta",
+          "cambridge-portugal-ceuta",
+          "regional-survey-015",
+          "shepherd-historical-atlas"
+        ],
+        "status": "resolved_cases",
+        "type": "detached-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "015/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Marinid, Hafsid, and Zayyanid realms and Portuguese Ceuta.",
+        "region_id": "015",
+        "source_ids": [
+          "cambridge-franciscans-ceuta",
+          "cambridge-portugal-ceuta",
+          "regional-survey-015",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "disputed-area"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "015/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Marinid, Hafsid, and Zayyanid realms and Portuguese Ceuta.",
+        "region_id": "015",
+        "source_ids": [
+          "regional-survey-015",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "enclave-exclave"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "015/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered Marinid, Hafsid, and Zayyanid realms and Portuguese Ceuta.",
+        "region_id": "015",
+        "source_ids": [
+          "regional-survey-015",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "free-protected-city"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "015/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Marinid, Hafsid, and Zayyanid realms and Portuguese Ceuta.",
+        "region_id": "015",
+        "source_ids": [
+          "regional-survey-015",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "microstate"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "015/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Marinid, Hafsid, and Zayyanid realms and Portuguese Ceuta.",
+        "region_id": "015",
+        "source_ids": [
+          "regional-survey-015",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "non-state-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "017/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered Kongo and the surveyed central-African political communities.",
+        "region_id": "017",
+        "source_ids": [
+          "regional-survey-017",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "claim"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "017/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Kongo and the surveyed central-African political communities.",
+        "region_id": "017",
+        "source_ids": [
+          "regional-survey-017",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "composite-realm"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "017/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Kongo and the surveyed central-African political communities.",
+        "region_id": "017",
+        "source_ids": [
+          "regional-survey-017",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "concession"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "017/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Kongo and the surveyed central-African political communities.",
+        "region_id": "017",
+        "source_ids": [
+          "regional-survey-017",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "condominium"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "017/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Kongo and the surveyed central-African political communities.",
+        "region_id": "017",
+        "source_ids": [
+          "regional-survey-017",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "dependency"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "017/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Kongo and the surveyed central-African political communities.",
+        "region_id": "017",
+        "source_ids": [
+          "regional-survey-017",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "detached-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "017/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Kongo and the surveyed central-African political communities.",
+        "region_id": "017",
+        "source_ids": [
+          "regional-survey-017",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "disputed-area"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "017/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Kongo and the surveyed central-African political communities.",
+        "region_id": "017",
+        "source_ids": [
+          "regional-survey-017",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "enclave-exclave"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "017/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered Kongo and the surveyed central-African political communities.",
+        "region_id": "017",
+        "source_ids": [
+          "regional-survey-017",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "free-protected-city"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "017/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Kongo and the surveyed central-African political communities.",
+        "region_id": "017",
+        "source_ids": [
+          "regional-survey-017",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "microstate"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "017/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Kongo and the surveyed central-African political communities.",
+        "region_id": "017",
+        "source_ids": [
+          "regional-survey-017",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "non-state-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "018/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered Great Zimbabwe, Mutapa, and southern-African communities.",
+        "region_id": "018",
+        "source_ids": [
+          "regional-survey-018",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "claim"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "018/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Great Zimbabwe, Mutapa, and southern-African communities.",
+        "region_id": "018",
+        "source_ids": [
+          "regional-survey-018",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "composite-realm"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "018/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Great Zimbabwe, Mutapa, and southern-African communities.",
+        "region_id": "018",
+        "source_ids": [
+          "regional-survey-018",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "concession"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "018/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Great Zimbabwe, Mutapa, and southern-African communities.",
+        "region_id": "018",
+        "source_ids": [
+          "regional-survey-018",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "condominium"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "018/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Great Zimbabwe, Mutapa, and southern-African communities.",
+        "region_id": "018",
+        "source_ids": [
+          "regional-survey-018",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "dependency"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "018/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Great Zimbabwe, Mutapa, and southern-African communities.",
+        "region_id": "018",
+        "source_ids": [
+          "regional-survey-018",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "detached-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "018/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Great Zimbabwe, Mutapa, and southern-African communities.",
+        "region_id": "018",
+        "source_ids": [
+          "regional-survey-018",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "disputed-area"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "018/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Great Zimbabwe, Mutapa, and southern-African communities.",
+        "region_id": "018",
+        "source_ids": [
+          "regional-survey-018",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "enclave-exclave"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "018/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered Great Zimbabwe, Mutapa, and southern-African communities.",
+        "region_id": "018",
+        "source_ids": [
+          "regional-survey-018",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "free-protected-city"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "018/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Great Zimbabwe, Mutapa, and southern-African communities.",
+        "region_id": "018",
+        "source_ids": [
+          "regional-survey-018",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "microstate"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "018/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Great Zimbabwe, Mutapa, and southern-African communities.",
+        "region_id": "018",
+        "source_ids": [
+          "regional-survey-018",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "non-state-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "021/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered Algonquian, Iroquoian, Mississippian, Puebloan, Thule, and Northwest Coast communities.",
+        "region_id": "021",
+        "source_ids": [
+          "regional-survey-021",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "claim"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "021/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Algonquian, Iroquoian, Mississippian, Puebloan, Thule, and Northwest Coast communities.",
+        "region_id": "021",
+        "source_ids": [
+          "regional-survey-021",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "composite-realm"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "021/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Algonquian, Iroquoian, Mississippian, Puebloan, Thule, and Northwest Coast communities.",
+        "region_id": "021",
+        "source_ids": [
+          "regional-survey-021",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "concession"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "021/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Algonquian, Iroquoian, Mississippian, Puebloan, Thule, and Northwest Coast communities.",
+        "region_id": "021",
+        "source_ids": [
+          "regional-survey-021",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "condominium"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "021/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Algonquian, Iroquoian, Mississippian, Puebloan, Thule, and Northwest Coast communities.",
+        "region_id": "021",
+        "source_ids": [
+          "regional-survey-021",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "dependency"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "021/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Algonquian, Iroquoian, Mississippian, Puebloan, Thule, and Northwest Coast communities.",
+        "region_id": "021",
+        "source_ids": [
+          "regional-survey-021",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "detached-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "021/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Algonquian, Iroquoian, Mississippian, Puebloan, Thule, and Northwest Coast communities.",
+        "region_id": "021",
+        "source_ids": [
+          "regional-survey-021",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "disputed-area"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "021/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Algonquian, Iroquoian, Mississippian, Puebloan, Thule, and Northwest Coast communities.",
+        "region_id": "021",
+        "source_ids": [
+          "regional-survey-021",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "enclave-exclave"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "021/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered Algonquian, Iroquoian, Mississippian, Puebloan, Thule, and Northwest Coast communities.",
+        "region_id": "021",
+        "source_ids": [
+          "regional-survey-021",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "free-protected-city"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "021/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Algonquian, Iroquoian, Mississippian, Puebloan, Thule, and Northwest Coast communities.",
+        "region_id": "021",
+        "source_ids": [
+          "regional-survey-021",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "microstate"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "021/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Algonquian, Iroquoian, Mississippian, Puebloan, Thule, and Northwest Coast communities.",
+        "region_id": "021",
+        "source_ids": [
+          "regional-survey-021",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "non-state-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "029/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered Ta\u00edno chiefdoms and other Greater Antillean communities.",
+        "region_id": "029",
+        "source_ids": [
+          "regional-survey-029",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "claim"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "029/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Ta\u00edno chiefdoms and other Greater Antillean communities.",
+        "region_id": "029",
+        "source_ids": [
+          "regional-survey-029",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "composite-realm"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "029/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Ta\u00edno chiefdoms and other Greater Antillean communities.",
+        "region_id": "029",
+        "source_ids": [
+          "regional-survey-029",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "concession"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "029/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Ta\u00edno chiefdoms and other Greater Antillean communities.",
+        "region_id": "029",
+        "source_ids": [
+          "regional-survey-029",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "condominium"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "029/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Ta\u00edno chiefdoms and other Greater Antillean communities.",
+        "region_id": "029",
+        "source_ids": [
+          "regional-survey-029",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "dependency"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "029/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Ta\u00edno chiefdoms and other Greater Antillean communities.",
+        "region_id": "029",
+        "source_ids": [
+          "regional-survey-029",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "detached-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "029/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Ta\u00edno chiefdoms and other Greater Antillean communities.",
+        "region_id": "029",
+        "source_ids": [
+          "regional-survey-029",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "disputed-area"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "029/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Ta\u00edno chiefdoms and other Greater Antillean communities.",
+        "region_id": "029",
+        "source_ids": [
+          "regional-survey-029",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "enclave-exclave"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "029/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered Ta\u00edno chiefdoms and other Greater Antillean communities.",
+        "region_id": "029",
+        "source_ids": [
+          "regional-survey-029",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "free-protected-city"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "029/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Ta\u00edno chiefdoms and other Greater Antillean communities.",
+        "region_id": "029",
+        "source_ids": [
+          "regional-survey-029",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "microstate"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "029/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Ta\u00edno chiefdoms and other Greater Antillean communities.",
+        "region_id": "029",
+        "source_ids": [
+          "regional-survey-029",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "non-state-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "030/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered Ming China and the surveyed East Asian interstate setting.",
+        "region_id": "030",
+        "source_ids": [
+          "regional-survey-030",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "claim"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "030/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Ming China and the surveyed East Asian interstate setting.",
+        "region_id": "030",
+        "source_ids": [
+          "regional-survey-030",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "composite-realm"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "030/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Ming China and the surveyed East Asian interstate setting.",
+        "region_id": "030",
+        "source_ids": [
+          "regional-survey-030",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "concession"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "030/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Ming China and the surveyed East Asian interstate setting.",
+        "region_id": "030",
+        "source_ids": [
+          "regional-survey-030",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "condominium"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "030/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Ming China and the surveyed East Asian interstate setting.",
+        "region_id": "030",
+        "source_ids": [
+          "regional-survey-030",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "dependency"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "030/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Ming China and the surveyed East Asian interstate setting.",
+        "region_id": "030",
+        "source_ids": [
+          "regional-survey-030",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "detached-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "030/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Ming China and the surveyed East Asian interstate setting.",
+        "region_id": "030",
+        "source_ids": [
+          "regional-survey-030",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "disputed-area"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "030/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Ming China and the surveyed East Asian interstate setting.",
+        "region_id": "030",
+        "source_ids": [
+          "regional-survey-030",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "enclave-exclave"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "030/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered Ming China and the surveyed East Asian interstate setting.",
+        "region_id": "030",
+        "source_ids": [
+          "regional-survey-030",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "free-protected-city"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "030/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Ming China and the surveyed East Asian interstate setting.",
+        "region_id": "030",
+        "source_ids": [
+          "regional-survey-030",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "microstate"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "030/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Ming China and the surveyed East Asian interstate setting.",
+        "region_id": "030",
+        "source_ids": [
+          "regional-survey-030",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "non-state-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "034/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered Sayyid Delhi, Vijayanagara, Bahmanid, Rajput, Odisha, and Sri Lankan realms.",
+        "region_id": "034",
+        "source_ids": [
+          "regional-survey-034",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "claim"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "034/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Sayyid Delhi, Vijayanagara, Bahmanid, Rajput, Odisha, and Sri Lankan realms.",
+        "region_id": "034",
+        "source_ids": [
+          "regional-survey-034",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "composite-realm"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "034/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Sayyid Delhi, Vijayanagara, Bahmanid, Rajput, Odisha, and Sri Lankan realms.",
+        "region_id": "034",
+        "source_ids": [
+          "regional-survey-034",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "concession"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "034/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Sayyid Delhi, Vijayanagara, Bahmanid, Rajput, Odisha, and Sri Lankan realms.",
+        "region_id": "034",
+        "source_ids": [
+          "regional-survey-034",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "condominium"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "034/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Sayyid Delhi, Vijayanagara, Bahmanid, Rajput, Odisha, and Sri Lankan realms.",
+        "region_id": "034",
+        "source_ids": [
+          "regional-survey-034",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "dependency"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "034/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Sayyid Delhi, Vijayanagara, Bahmanid, Rajput, Odisha, and Sri Lankan realms.",
+        "region_id": "034",
+        "source_ids": [
+          "regional-survey-034",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "detached-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "034/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Sayyid Delhi, Vijayanagara, Bahmanid, Rajput, Odisha, and Sri Lankan realms.",
+        "region_id": "034",
+        "source_ids": [
+          "regional-survey-034",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "disputed-area"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "034/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Sayyid Delhi, Vijayanagara, Bahmanid, Rajput, Odisha, and Sri Lankan realms.",
+        "region_id": "034",
+        "source_ids": [
+          "regional-survey-034",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "enclave-exclave"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "034/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered Sayyid Delhi, Vijayanagara, Bahmanid, Rajput, Odisha, and Sri Lankan realms.",
+        "region_id": "034",
+        "source_ids": [
+          "regional-survey-034",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "free-protected-city"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "034/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Sayyid Delhi, Vijayanagara, Bahmanid, Rajput, Odisha, and Sri Lankan realms.",
+        "region_id": "034",
+        "source_ids": [
+          "regional-survey-034",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "microstate"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "034/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Sayyid Delhi, Vijayanagara, Bahmanid, Rajput, Odisha, and Sri Lankan realms.",
+        "region_id": "034",
+        "source_ids": [
+          "regional-survey-034",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "non-state-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "035/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, \u0110\u1ea1i Vi\u1ec7t, and neighboring realms.",
+        "region_id": "035",
+        "source_ids": [
+          "regional-survey-035",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "claim"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "035/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, \u0110\u1ea1i Vi\u1ec7t, and neighboring realms.",
+        "region_id": "035",
+        "source_ids": [
+          "regional-survey-035",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "composite-realm"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "035/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, \u0110\u1ea1i Vi\u1ec7t, and neighboring realms.",
+        "region_id": "035",
+        "source_ids": [
+          "regional-survey-035",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "concession"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "035/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, \u0110\u1ea1i Vi\u1ec7t, and neighboring realms.",
+        "region_id": "035",
+        "source_ids": [
+          "regional-survey-035",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "condominium"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "035/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, \u0110\u1ea1i Vi\u1ec7t, and neighboring realms.",
+        "region_id": "035",
+        "source_ids": [
+          "regional-survey-035",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "dependency"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "035/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, \u0110\u1ea1i Vi\u1ec7t, and neighboring realms.",
+        "region_id": "035",
+        "source_ids": [
+          "regional-survey-035",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "detached-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "035/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, \u0110\u1ea1i Vi\u1ec7t, and neighboring realms.",
+        "region_id": "035",
+        "source_ids": [
+          "regional-survey-035",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "disputed-area"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "035/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, \u0110\u1ea1i Vi\u1ec7t, and neighboring realms.",
+        "region_id": "035",
+        "source_ids": [
+          "regional-survey-035",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "enclave-exclave"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "035/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, \u0110\u1ea1i Vi\u1ec7t, and neighboring realms.",
+        "region_id": "035",
+        "source_ids": [
+          "regional-survey-035",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "free-protected-city"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "035/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, \u0110\u1ea1i Vi\u1ec7t, and neighboring realms.",
+        "region_id": "035",
+        "source_ids": [
+          "regional-survey-035",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "microstate"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "035/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, \u0110\u1ea1i Vi\u1ec7t, and neighboring realms.",
+        "region_id": "035",
+        "source_ids": [
+          "regional-survey-035",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "non-state-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "039/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered Papal States, Naples, Aragonese islands, Italian city polities, Andorra, Madeira, San Marino, and Athos.",
+        "region_id": "039",
+        "source_ids": [
+          "regional-survey-039",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "claim"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "039/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Papal States, Naples, Aragonese islands, Italian city polities, Andorra, Madeira, San Marino, and Athos.",
+        "region_id": "039",
+        "source_ids": [
+          "regional-survey-039",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "composite-realm"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "039/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Papal States, Naples, Aragonese islands, Italian city polities, Andorra, Madeira, San Marino, and Athos.",
+        "region_id": "039",
+        "source_ids": [
+          "regional-survey-039",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "concession"
+      },
+      {
+        "anomaly_ids": [
+          "andorra-condominium"
+        ],
+        "notes": "resolved_cases: andorra-condominium",
+        "region_id": "039",
+        "source_ids": [
+          "echr-andorra-pareage",
+          "pace-andorra-coregency",
+          "regional-survey-039",
+          "shepherd-historical-atlas"
+        ],
+        "status": "resolved_cases",
+        "type": "condominium"
+      },
+      {
+        "anomaly_ids": [
+          "madeira-portuguese-dependency"
+        ],
+        "notes": "resolved_cases: madeira-portuguese-dependency",
+        "region_id": "039",
+        "source_ids": [
+          "cambridge-madeira-captaincies",
+          "cambridge-portuguese-islands",
+          "regional-survey-039",
+          "shepherd-historical-atlas"
+        ],
+        "status": "resolved_cases",
+        "type": "dependency"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "039/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Papal States, Naples, Aragonese islands, Italian city polities, Andorra, Madeira, San Marino, and Athos.",
+        "region_id": "039",
+        "source_ids": [
+          "regional-survey-039",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "detached-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "039/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Papal States, Naples, Aragonese islands, Italian city polities, Andorra, Madeira, San Marino, and Athos.",
+        "region_id": "039",
+        "source_ids": [
+          "regional-survey-039",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "disputed-area"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "039/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Papal States, Naples, Aragonese islands, Italian city polities, Andorra, Madeira, San Marino, and Athos.",
+        "region_id": "039",
+        "source_ids": [
+          "regional-survey-039",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "enclave-exclave"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "039/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered Papal States, Naples, Aragonese islands, Italian city polities, Andorra, Madeira, San Marino, and Athos.",
+        "region_id": "039",
+        "source_ids": [
+          "regional-survey-039",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "free-protected-city"
+      },
+      {
+        "anomaly_ids": [
+          "san-marino-microstate"
+        ],
+        "notes": "resolved_cases: san-marino-microstate",
+        "region_id": "039",
+        "source_ids": [
+          "oxford-demilitarized-states",
+          "regional-survey-039",
+          "shepherd-historical-atlas",
+          "unesco-san-marino"
+        ],
+        "status": "resolved_cases",
+        "type": "microstate"
+      },
+      {
+        "anomaly_ids": [
+          "athos-monastic-territory"
+        ],
+        "notes": "resolved_cases: athos-monastic-territory",
+        "region_id": "039",
+        "source_ids": [
+          "cambridge-athos-ottomans",
+          "regional-survey-039",
+          "shepherd-historical-atlas",
+          "unesco-athos"
+        ],
+        "status": "resolved_cases",
+        "type": "non-state-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "053/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered Aboriginal Australian and M\u0101ori political communities.",
+        "region_id": "053",
+        "source_ids": [
+          "regional-survey-053",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "claim"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "053/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Aboriginal Australian and M\u0101ori political communities.",
+        "region_id": "053",
+        "source_ids": [
+          "regional-survey-053",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "composite-realm"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "053/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Aboriginal Australian and M\u0101ori political communities.",
+        "region_id": "053",
+        "source_ids": [
+          "regional-survey-053",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "concession"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "053/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Aboriginal Australian and M\u0101ori political communities.",
+        "region_id": "053",
+        "source_ids": [
+          "regional-survey-053",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "condominium"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "053/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Aboriginal Australian and M\u0101ori political communities.",
+        "region_id": "053",
+        "source_ids": [
+          "regional-survey-053",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "dependency"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "053/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Aboriginal Australian and M\u0101ori political communities.",
+        "region_id": "053",
+        "source_ids": [
+          "regional-survey-053",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "detached-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "053/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Aboriginal Australian and M\u0101ori political communities.",
+        "region_id": "053",
+        "source_ids": [
+          "regional-survey-053",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "disputed-area"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "053/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Aboriginal Australian and M\u0101ori political communities.",
+        "region_id": "053",
+        "source_ids": [
+          "regional-survey-053",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "enclave-exclave"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "053/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered Aboriginal Australian and M\u0101ori political communities.",
+        "region_id": "053",
+        "source_ids": [
+          "regional-survey-053",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "free-protected-city"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "053/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Aboriginal Australian and M\u0101ori political communities.",
+        "region_id": "053",
+        "source_ids": [
+          "regional-survey-053",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "microstate"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "053/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Aboriginal Australian and M\u0101ori political communities.",
+        "region_id": "053",
+        "source_ids": [
+          "regional-survey-053",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "non-state-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "054/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered surveyed Melanesian chiefly and community structures.",
+        "region_id": "054",
+        "source_ids": [
+          "regional-survey-054",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "claim"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "054/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered surveyed Melanesian chiefly and community structures.",
+        "region_id": "054",
+        "source_ids": [
+          "regional-survey-054",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "composite-realm"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "054/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered surveyed Melanesian chiefly and community structures.",
+        "region_id": "054",
+        "source_ids": [
+          "regional-survey-054",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "concession"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "054/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered surveyed Melanesian chiefly and community structures.",
+        "region_id": "054",
+        "source_ids": [
+          "regional-survey-054",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "condominium"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "054/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered surveyed Melanesian chiefly and community structures.",
+        "region_id": "054",
+        "source_ids": [
+          "regional-survey-054",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "dependency"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "054/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered surveyed Melanesian chiefly and community structures.",
+        "region_id": "054",
+        "source_ids": [
+          "regional-survey-054",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "detached-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "054/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered surveyed Melanesian chiefly and community structures.",
+        "region_id": "054",
+        "source_ids": [
+          "regional-survey-054",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "disputed-area"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "054/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered surveyed Melanesian chiefly and community structures.",
+        "region_id": "054",
+        "source_ids": [
+          "regional-survey-054",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "enclave-exclave"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "054/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered surveyed Melanesian chiefly and community structures.",
+        "region_id": "054",
+        "source_ids": [
+          "regional-survey-054",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "free-protected-city"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "054/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered surveyed Melanesian chiefly and community structures.",
+        "region_id": "054",
+        "source_ids": [
+          "regional-survey-054",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "microstate"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "054/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered surveyed Melanesian chiefly and community structures.",
+        "region_id": "054",
+        "source_ids": [
+          "regional-survey-054",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "non-state-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "057/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered Nan Madol and surveyed Micronesian chiefly structures.",
+        "region_id": "057",
+        "source_ids": [
+          "regional-survey-057",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "claim"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "057/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Nan Madol and surveyed Micronesian chiefly structures.",
+        "region_id": "057",
+        "source_ids": [
+          "regional-survey-057",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "composite-realm"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "057/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Nan Madol and surveyed Micronesian chiefly structures.",
+        "region_id": "057",
+        "source_ids": [
+          "regional-survey-057",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "concession"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "057/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Nan Madol and surveyed Micronesian chiefly structures.",
+        "region_id": "057",
+        "source_ids": [
+          "regional-survey-057",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "condominium"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "057/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Nan Madol and surveyed Micronesian chiefly structures.",
+        "region_id": "057",
+        "source_ids": [
+          "regional-survey-057",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "dependency"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "057/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Nan Madol and surveyed Micronesian chiefly structures.",
+        "region_id": "057",
+        "source_ids": [
+          "regional-survey-057",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "detached-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "057/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Nan Madol and surveyed Micronesian chiefly structures.",
+        "region_id": "057",
+        "source_ids": [
+          "regional-survey-057",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "disputed-area"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "057/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Nan Madol and surveyed Micronesian chiefly structures.",
+        "region_id": "057",
+        "source_ids": [
+          "regional-survey-057",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "enclave-exclave"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "057/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered Nan Madol and surveyed Micronesian chiefly structures.",
+        "region_id": "057",
+        "source_ids": [
+          "regional-survey-057",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "free-protected-city"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "057/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Nan Madol and surveyed Micronesian chiefly structures.",
+        "region_id": "057",
+        "source_ids": [
+          "regional-survey-057",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "microstate"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "057/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Nan Madol and surveyed Micronesian chiefly structures.",
+        "region_id": "057",
+        "source_ids": [
+          "regional-survey-057",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "non-state-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "061/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered surveyed Polynesian chiefly and community structures.",
+        "region_id": "061",
+        "source_ids": [
+          "regional-survey-061",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "claim"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "061/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered surveyed Polynesian chiefly and community structures.",
+        "region_id": "061",
+        "source_ids": [
+          "regional-survey-061",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "composite-realm"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "061/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered surveyed Polynesian chiefly and community structures.",
+        "region_id": "061",
+        "source_ids": [
+          "regional-survey-061",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "concession"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "061/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered surveyed Polynesian chiefly and community structures.",
+        "region_id": "061",
+        "source_ids": [
+          "regional-survey-061",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "condominium"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "061/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered surveyed Polynesian chiefly and community structures.",
+        "region_id": "061",
+        "source_ids": [
+          "regional-survey-061",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "dependency"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "061/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered surveyed Polynesian chiefly and community structures.",
+        "region_id": "061",
+        "source_ids": [
+          "regional-survey-061",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "detached-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "061/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered surveyed Polynesian chiefly and community structures.",
+        "region_id": "061",
+        "source_ids": [
+          "regional-survey-061",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "disputed-area"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "061/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered surveyed Polynesian chiefly and community structures.",
+        "region_id": "061",
+        "source_ids": [
+          "regional-survey-061",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "enclave-exclave"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "061/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered surveyed Polynesian chiefly and community structures.",
+        "region_id": "061",
+        "source_ids": [
+          "regional-survey-061",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "free-protected-city"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "061/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered surveyed Polynesian chiefly and community structures.",
+        "region_id": "061",
+        "source_ids": [
+          "regional-survey-061",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "microstate"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "061/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered surveyed Polynesian chiefly and community structures.",
+        "region_id": "061",
+        "source_ids": [
+          "regional-survey-061",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "non-state-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "143/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered Timurid and Mongol successor polities.",
+        "region_id": "143",
+        "source_ids": [
+          "regional-survey-143",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "claim"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "143/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Timurid and Mongol successor polities.",
+        "region_id": "143",
+        "source_ids": [
+          "regional-survey-143",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "composite-realm"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "143/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Timurid and Mongol successor polities.",
+        "region_id": "143",
+        "source_ids": [
+          "regional-survey-143",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "concession"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "143/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Timurid and Mongol successor polities.",
+        "region_id": "143",
+        "source_ids": [
+          "regional-survey-143",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "condominium"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "143/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Timurid and Mongol successor polities.",
+        "region_id": "143",
+        "source_ids": [
+          "regional-survey-143",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "dependency"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "143/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Timurid and Mongol successor polities.",
+        "region_id": "143",
+        "source_ids": [
+          "regional-survey-143",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "detached-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "143/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Timurid and Mongol successor polities.",
+        "region_id": "143",
+        "source_ids": [
+          "regional-survey-143",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "disputed-area"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "143/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Timurid and Mongol successor polities.",
+        "region_id": "143",
+        "source_ids": [
+          "regional-survey-143",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "enclave-exclave"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "143/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered Timurid and Mongol successor polities.",
+        "region_id": "143",
+        "source_ids": [
+          "regional-survey-143",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "free-protected-city"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "143/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Timurid and Mongol successor polities.",
+        "region_id": "143",
+        "source_ids": [
+          "regional-survey-143",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "microstate"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "143/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Timurid and Mongol successor polities.",
+        "region_id": "143",
+        "source_ids": [
+          "regional-survey-143",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "non-state-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "145/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered Ottoman, Byzantine, Trebizond, Georgian, Golden Horde, and Genoese Galata jurisdictions.",
+        "region_id": "145",
+        "source_ids": [
+          "regional-survey-145",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "claim"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "145/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Ottoman, Byzantine, Trebizond, Georgian, Golden Horde, and Genoese Galata jurisdictions.",
+        "region_id": "145",
+        "source_ids": [
+          "regional-survey-145",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "composite-realm"
+      },
+      {
+        "anomaly_ids": [
+          "galata-genoese-concession"
+        ],
+        "notes": "resolved_cases: galata-genoese-concession",
+        "region_id": "145",
+        "source_ids": [
+          "cambridge-galata-1453",
+          "cambridge-galata-privileges",
+          "regional-survey-145",
+          "shepherd-historical-atlas"
+        ],
+        "status": "resolved_cases",
+        "type": "concession"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "145/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Ottoman, Byzantine, Trebizond, Georgian, Golden Horde, and Genoese Galata jurisdictions.",
+        "region_id": "145",
+        "source_ids": [
+          "regional-survey-145",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "condominium"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "145/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Ottoman, Byzantine, Trebizond, Georgian, Golden Horde, and Genoese Galata jurisdictions.",
+        "region_id": "145",
+        "source_ids": [
+          "regional-survey-145",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "dependency"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "145/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Ottoman, Byzantine, Trebizond, Georgian, Golden Horde, and Genoese Galata jurisdictions.",
+        "region_id": "145",
+        "source_ids": [
+          "regional-survey-145",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "detached-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "145/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Ottoman, Byzantine, Trebizond, Georgian, Golden Horde, and Genoese Galata jurisdictions.",
+        "region_id": "145",
+        "source_ids": [
+          "regional-survey-145",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "disputed-area"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "145/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Ottoman, Byzantine, Trebizond, Georgian, Golden Horde, and Genoese Galata jurisdictions.",
+        "region_id": "145",
+        "source_ids": [
+          "regional-survey-145",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "enclave-exclave"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "145/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered Ottoman, Byzantine, Trebizond, Georgian, Golden Horde, and Genoese Galata jurisdictions.",
+        "region_id": "145",
+        "source_ids": [
+          "regional-survey-145",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "free-protected-city"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "145/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Ottoman, Byzantine, Trebizond, Georgian, Golden Horde, and Genoese Galata jurisdictions.",
+        "region_id": "145",
+        "source_ids": [
+          "regional-survey-145",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "microstate"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "145/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Ottoman, Byzantine, Trebizond, Georgian, Golden Horde, and Genoese Galata jurisdictions.",
+        "region_id": "145",
+        "source_ids": [
+          "regional-survey-145",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "non-state-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "151/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered Muscovy, Poland-Lithuania, Teutonic Order, Golden Horde, and successor khanates.",
+        "region_id": "151",
+        "source_ids": [
+          "regional-survey-151",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "claim"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "151/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Muscovy, Poland-Lithuania, Teutonic Order, Golden Horde, and successor khanates.",
+        "region_id": "151",
+        "source_ids": [
+          "regional-survey-151",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "composite-realm"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "151/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Muscovy, Poland-Lithuania, Teutonic Order, Golden Horde, and successor khanates.",
+        "region_id": "151",
+        "source_ids": [
+          "regional-survey-151",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "concession"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "151/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Muscovy, Poland-Lithuania, Teutonic Order, Golden Horde, and successor khanates.",
+        "region_id": "151",
+        "source_ids": [
+          "regional-survey-151",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "condominium"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "151/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Muscovy, Poland-Lithuania, Teutonic Order, Golden Horde, and successor khanates.",
+        "region_id": "151",
+        "source_ids": [
+          "regional-survey-151",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "dependency"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "151/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Muscovy, Poland-Lithuania, Teutonic Order, Golden Horde, and successor khanates.",
+        "region_id": "151",
+        "source_ids": [
+          "regional-survey-151",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "detached-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "151/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Muscovy, Poland-Lithuania, Teutonic Order, Golden Horde, and successor khanates.",
+        "region_id": "151",
+        "source_ids": [
+          "regional-survey-151",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "disputed-area"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "151/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Muscovy, Poland-Lithuania, Teutonic Order, Golden Horde, and successor khanates.",
+        "region_id": "151",
+        "source_ids": [
+          "regional-survey-151",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "enclave-exclave"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "151/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered Muscovy, Poland-Lithuania, Teutonic Order, Golden Horde, and successor khanates.",
+        "region_id": "151",
+        "source_ids": [
+          "regional-survey-151",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "free-protected-city"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "151/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Muscovy, Poland-Lithuania, Teutonic Order, Golden Horde, and successor khanates.",
+        "region_id": "151",
+        "source_ids": [
+          "regional-survey-151",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "microstate"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "151/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Muscovy, Poland-Lithuania, Teutonic Order, Golden Horde, and successor khanates.",
+        "region_id": "151",
+        "source_ids": [
+          "regional-survey-151",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "non-state-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "154/claim confirmed negative: the historically supported Lancastrian title is non-geographic and is retained as a Northern European gazetteer relationship.",
+        "region_id": "154",
+        "source_ids": [
+          "bnf-troyes-manuscript",
+          "regional-survey-154",
+          "shepherd-historical-atlas",
+          "treaty-troyes-fordham"
+        ],
+        "status": "reviewed_none_found",
+        "type": "claim"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "154/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Kalmar Union, Baltic Hanseatic cities, England, Scotland, and L\u00fcbeck.",
+        "region_id": "154",
+        "source_ids": [
+          "regional-survey-154",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "composite-realm"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "154/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Kalmar Union, Baltic Hanseatic cities, England, Scotland, and L\u00fcbeck.",
+        "region_id": "154",
+        "source_ids": [
+          "regional-survey-154",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "concession"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "154/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Kalmar Union, Baltic Hanseatic cities, England, Scotland, and L\u00fcbeck.",
+        "region_id": "154",
+        "source_ids": [
+          "regional-survey-154",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "condominium"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "154/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Kalmar Union, Baltic Hanseatic cities, England, Scotland, and L\u00fcbeck.",
+        "region_id": "154",
+        "source_ids": [
+          "regional-survey-154",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "dependency"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "154/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Kalmar Union, Baltic Hanseatic cities, England, Scotland, and L\u00fcbeck.",
+        "region_id": "154",
+        "source_ids": [
+          "regional-survey-154",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "detached-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "154/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Kalmar Union, Baltic Hanseatic cities, England, Scotland, and L\u00fcbeck.",
+        "region_id": "154",
+        "source_ids": [
+          "regional-survey-154",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "disputed-area"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "154/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Kalmar Union, Baltic Hanseatic cities, England, Scotland, and L\u00fcbeck.",
+        "region_id": "154",
+        "source_ids": [
+          "regional-survey-154",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "enclave-exclave"
+      },
+      {
+        "anomaly_ids": [
+          "lubeck-free-imperial-city"
+        ],
+        "notes": "resolved_cases: lubeck-free-imperial-city",
+        "region_id": "154",
+        "source_ids": [
+          "cambridge-lubeck",
+          "regional-survey-154",
+          "shepherd-historical-atlas",
+          "unesco-lubeck"
+        ],
+        "status": "resolved_cases",
+        "type": "free-protected-city"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "154/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Kalmar Union, Baltic Hanseatic cities, England, Scotland, and L\u00fcbeck.",
+        "region_id": "154",
+        "source_ids": [
+          "regional-survey-154",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "microstate"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "154/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Kalmar Union, Baltic Hanseatic cities, England, Scotland, and L\u00fcbeck.",
+        "region_id": "154",
+        "source_ids": [
+          "regional-survey-154",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "non-state-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "155/claim confirmed negative: the historically supported Lancastrian title is non-geographic and is retained as a Western European gazetteer relationship.",
+        "region_id": "155",
+        "source_ids": [
+          "bnf-troyes-manuscript",
+          "regional-survey-155",
+          "shepherd-historical-atlas",
+          "treaty-troyes-fordham"
+        ],
+        "status": "reviewed_none_found",
+        "type": "claim"
+      },
+      {
+        "anomaly_ids": [
+          "burgundian-composite-realm"
+        ],
+        "notes": "resolved_cases: burgundian-composite-realm",
+        "region_id": "155",
+        "source_ids": [
+          "dumasy-burgundy-1444",
+          "regional-survey-155",
+          "shepherd-historical-atlas",
+          "stein-burgundian-composite"
+        ],
+        "status": "resolved_cases",
+        "type": "composite-realm"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "155/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Valois France, English possessions and claims, Burgundy, Avignon, and Calais.",
+        "region_id": "155",
+        "source_ids": [
+          "regional-survey-155",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "concession"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "155/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Valois France, English possessions and claims, Burgundy, Avignon, and Calais.",
+        "region_id": "155",
+        "source_ids": [
+          "regional-survey-155",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "condominium"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "155/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Valois France, English possessions and claims, Burgundy, Avignon, and Calais.",
+        "region_id": "155",
+        "source_ids": [
+          "regional-survey-155",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "dependency"
+      },
+      {
+        "anomaly_ids": [
+          "avignon-papal-enclave",
+          "calais-english-detached"
+        ],
+        "notes": "resolved_cases: Avignon-Comtat and the Pale of Calais are retained as distinct detached territorial possessions.",
+        "region_id": "155",
+        "source_ids": [
+          "cambridge-avignon-comtat",
+          "cambridge-calais-pale",
+          "regional-survey-155",
+          "shepherd-historical-atlas",
+          "uk-national-archives-calais",
+          "unesco-avignon"
+        ],
+        "status": "resolved_cases",
+        "type": "detached-territory"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "155/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Valois France, English possessions and claims, Burgundy, Avignon, and Calais.",
+        "region_id": "155",
+        "source_ids": [
+          "regional-survey-155",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "disputed-area"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "155/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Valois France, English possessions and claims, Burgundy, Avignon, and Calais.",
+        "region_id": "155",
+        "source_ids": [
+          "cambridge-avignon-comtat",
+          "regional-survey-155",
+          "shepherd-historical-atlas",
+          "unesco-avignon"
+        ],
+        "status": "reviewed_none_found",
+        "type": "enclave-exclave"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "155/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered Valois France, English possessions and claims, Burgundy, Avignon, and Calais.",
+        "region_id": "155",
+        "source_ids": [
+          "regional-survey-155",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "free-protected-city"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "155/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Valois France, English possessions and claims, Burgundy, Avignon, and Calais.",
+        "region_id": "155",
+        "source_ids": [
+          "regional-survey-155",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "microstate"
+      },
+      {
+        "anomaly_ids": [],
+        "notes": "155/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Valois France, English possessions and claims, Burgundy, Avignon, and Calais.",
+        "region_id": "155",
+        "source_ids": [
+          "regional-survey-155",
+          "shepherd-historical-atlas"
+        ],
+        "status": "reviewed_none_found",
+        "type": "non-state-territory"
+      }
+    ],
+    "region_ids": [
+      "005",
+      "011",
+      "013",
+      "014",
+      "015",
+      "017",
+      "018",
+      "021",
+      "029",
+      "030",
+      "034",
+      "035",
+      "039",
+      "053",
+      "054",
+      "057",
+      "061",
+      "143",
+      "145",
+      "151",
+      "154",
+      "155"
+    ],
+    "researcher": "OpenAI Codex (research agent)",
+    "review_date": "2026-08-14",
+    "reviewer": "George Le",
+    "types": [
+      "claim",
+      "composite-realm",
+      "concession",
+      "condominium",
+      "dependency",
+      "detached-territory",
+      "disputed-area",
+      "enclave-exclave",
+      "free-protected-city",
+      "microstate",
+      "non-state-territory"
+    ]
+  },
   "document_type": "historical_anomaly_inventory",
   "pass_id": "official-1444-global-v1",
   "schema_version": "0.3.0",

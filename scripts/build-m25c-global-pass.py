@@ -107,6 +107,9 @@ EVIDENCE_VALIDATORS = {
     "changelog.json": validate_start_date_changelog,
     "historical-territory-status.json": validate_historical_territory_status,
 }
+EVIDENCE_SCHEMA_VERSIONS = {
+    "anomaly_census_review_ledger.json": "1.0.0",
+}
 
 
 def main() -> int:
@@ -419,6 +422,8 @@ def stage_accept_review(args: argparse.Namespace) -> None:
     manifest_path = output / "pass_manifest.json"
     review_path = output / "review" / "review_manifest.json"
     manifest, review = _load(manifest_path), _load(review_path)
+    if manifest.get("qa_mode") == "provisional_internal_review":
+        raise SystemExit("provisional_internal_review manifests cannot be review-accepted")
     reviewer = args.reviewer.strip()
     if not reviewer or reviewer.casefold() in {
         str(review.get("generator", "")).casefold(), "gpm qa render", "generator",
@@ -602,8 +607,16 @@ def _validate_evidence_bundle(source: Path, *, inventory: dict[str, Any] | None 
                 _reject(findings, name, "SCHEMA_REJECTION", [name], "historical-curator", str(exc))
         if (document.get("pass_id"), document.get("start_date")) != (PASS_ID, START_DATE):
             _reject(findings, name, "PASS_IDENTITY_MISMATCH", [name], "historical-curator", f"expected {PASS_ID}/{START_DATE}")
-        if document.get("schema_version") != "0.3.0":
-            _reject(findings, name, "SCHEMA_VERSION_MISMATCH", [name], "historical-curator", "expected schema 0.3.0")
+        expected_schema_version = EVIDENCE_SCHEMA_VERSIONS.get(name, "0.3.0")
+        if document.get("schema_version") != expected_schema_version:
+            _reject(
+                findings,
+                name,
+                "SCHEMA_VERSION_MISMATCH",
+                [name],
+                "historical-curator",
+                f"expected schema {expected_schema_version}",
+            )
     _validate_evidence_contract(documents, findings)
     inventory_path = source / "anomaly_inventory.json"
     bundle_inventory: dict[str, Any] | None = None
