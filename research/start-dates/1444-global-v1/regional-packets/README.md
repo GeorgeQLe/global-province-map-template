@@ -56,3 +56,13 @@ Northern Cyprus and Palestine actors, repairs one Muscovy leak in Azerbaijan,
 and replaces every uncurated Arabian assignment with a bounded Rasulid-Yemen or
 explicitly fragmented local-Arabian record. The country-based M49 sheet needs
 no region correction.
+
+`015-northern-africa-2026-08-16.json` is the sixth accepted packet. It replaces
+all 643 Northern Africa assignments, supplies nine date-valid political records,
+ten canonical source pins, six checked capital features, 25 executable
+assertions, and two checksum-pinned Marinid-Zayyanid frontier assets. Its exact
+date is `1444-11-11`. The sheet distinguishes the Marinid, Zayyanid, Hafsid, and
+Mamluk states from the Kingdoms of Dongola and Alodia and from local Saharan,
+Beja, and Darfur-Kordofan polities. Portugal's possession of Ceuta remains in
+the already-promoted Southern Europe packet because the pinned M49 partition is
+country-based and assigns Spain's complete modern footprint to region `039`.

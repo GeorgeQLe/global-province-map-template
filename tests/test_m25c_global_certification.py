@@ -148,6 +148,7 @@ def test_regional_packet_cannot_promote_a_weak_grade_a_claim():
 
 
 @pytest.mark.parametrize(("region", "filename", "assignment_count", "correction_count"), [
+    ("015", "015-northern-africa-2026-08-16.json", 643, 0),
     ("039", "039-southern-europe-2026-08-15.json", 464, 0),
     ("145", "145-western-asia-2026-08-15.json", 768, 0),
     ("151", "151-eastern-europe-2026-08-15.json", 2178, 0),
@@ -173,7 +174,19 @@ def test_completed_region_grade_a_packets(region, filename, assignment_count, co
     assert all("official-1444-modern-scaffold-provisional" not in row["source_ids"]
                for row in packet["assignment_overrides"])
     assert len(packet["location_region_overrides"]) == correction_count
-    if region == "039":
+    if region == "015":
+        assert packet["expected_counts"] == {
+            "assertions": 25, "assignments": 643, "build_features": 6,
+            "derived_files": 2, "m49_corrections": 0, "polities": 9,
+            "sources": 10,
+        }
+        assert packet["visual_review_artifact"]["sha256"] == (
+            "19ba39121d02d71d9c2e9dd58b269bc91339eb23c53ab69a879361ba87b7ec05"
+        )
+        names = {row["polity_id"]: row["name"] for row in packet["polities"]}
+        assert names["scenario-mor"].startswith("Marinid Sultanate")
+        assert {"scenario-dongola", "scenario-alodia"}.issubset(names)
+    elif region == "039":
         assert packet["expected_counts"] == {
             "assertions": 29, "assignments": 464, "build_features": 7,
             "derived_files": 2, "m49_corrections": 0, "polities": 23,

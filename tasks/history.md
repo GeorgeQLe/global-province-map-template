@@ -1,5 +1,22 @@
 # History
 
+## 2026-08-16 - M25C Northern Africa Grade-A promotion
+
+- Promoted UN M49 region 015 with 643 non-provisional assignment overrides,
+  nine date-valid polity records, ten canonical source pins, six checked
+  capital features, and 25 executable assertions across all four layers.
+- Pinned the sheet to exactly 1444-11-11 and retained distinct Marinid,
+  Zayyanid, Hafsid, Mamluk, Dongola, Alodia, Saharan, Beja, and
+  Darfur-Kordofan political records rather than extending modern scaffold
+  actors over the Maghrib and Middle Nile.
+- Added independently sourced Marinid-Zayyanid boundary and polity-mask assets.
+  The accepted review sheet SHA-256 is
+  `19ba39121d02d71d9c2e9dd58b269bc91339eb23c53ab69a879361ba87b7ec05`.
+- The country-based M49 sheet needs no correction; Portugal's exact-date Ceuta
+  possession remains represented through the already-promoted region 039
+  packet. The worldwide lineage remains non-public and non-certifiable with 16
+  regions and 64 Grade-A rows remaining.
+
 ## 2026-08-15 - M25C Western Asia Grade-A promotion
 
 - Promoted UN M49 region 145 with 768 non-provisional assignment overrides,
