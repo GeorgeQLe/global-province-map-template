@@ -149,6 +149,7 @@ def test_regional_packet_cannot_promote_a_weak_grade_a_claim():
 
 @pytest.mark.parametrize(("region", "filename", "assignment_count", "correction_count"), [
     ("005", "005-south-america-2026-08-16.json", 2200, 0),
+    ("014", "014-eastern-africa-2026-08-16.json", 715, 0),
     ("015", "015-northern-africa-2026-08-16.json", 643, 0),
     ("021", "021-northern-america-2026-08-16.json", 3986, 0),
     ("030", "030-eastern-asia-2026-08-16.json", 1941, 0),
@@ -195,6 +196,25 @@ def test_completed_region_grade_a_packets(region, filename, assignment_count, co
                 "scenario-muisca-chiefdoms", "scenario-tairona-chiefdoms",
                 "scenario-amazonian-riverine", "scenario-mapuche-communities",
                 "scenario-uninhabited-south-atlantic-islands"}.issubset(actors)
+    elif region == "014":
+        assert packet["expected_counts"] == {
+            "assertions": 32, "assignments": 715, "build_features": 8,
+            "derived_files": 0, "m49_corrections": 0, "polities": 13,
+            "sources": 9,
+        }
+        assert packet["visual_review_artifact"]["sha256"] == (
+            "73860a47d532f9015e9c0e6006cfcc4dfe8581c72a66218f5d9605a024e51345"
+        )
+        actors = {row["owner_polity_id"] for row in packet["assignment_overrides"]}
+        assert not actors.intersection({
+            "scenario-eth", "scenario-tza", "scenario-moz", "scenario-unk",
+            "scenario-som", "scenario-sds", "scenario-zmb", "scenario-ken",
+        })
+        assert {"scenario-solomonic-ethiopia", "scenario-adal-sultanate",
+                "scenario-ajuran-somali", "scenario-great-lakes-kingdoms",
+                "scenario-kilwa-swahili-network", "scenario-great-zimbabwe-transition",
+                "scenario-malagasy-communities",
+                "scenario-uninhabited-western-indian-ocean"}.issubset(actors)
     elif region == "015":
         assert packet["expected_counts"] == {
             "assertions": 25, "assignments": 643, "build_features": 6,

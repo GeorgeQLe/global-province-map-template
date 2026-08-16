@@ -134,3 +134,17 @@ community fabrics. It removes the generic modern scaffold and the anachronistic
 Falklands actor, recording South Atlantic islands as uninhabited; later Inca
 maxima, colonial borders, and contact-era tribal maps are not projected back to
 `1444-11-11`. No additional country-based M49 correction applies.
+
+`014-eastern-africa-2026-08-16.json` is the thirteenth accepted packet. It
+replaces all 715 Eastern Africa assignments, supplies 13 date-valid political
+or community records, nine canonical source pins, eight checked political,
+port, archaeological, or settlement centers, and 32 executable assertions.
+The exact-date sheet distinguishes Zar'a Ya'eqob's Solomonic Ethiopia, Adal,
+Ajuran and southern Somali polities, Great Lakes kingdoms, northern and
+Kilwa-linked Swahili cities, Zambezi polities, the Great Zimbabwe transition,
+Malagasy communities, Comorian sultanates, and uninhabited remote islands. It
+removes all modern-country and generic scaffold actors, draws no unsupported
+hard frontier, and does not project later dynastic maxima or colonial borders
+back to `1444-11-11`. The five Mayotte and Réunion locations geographically
+corrected by region 155 remain represented through that already-promoted
+packet; no additional M49 correction is required here.

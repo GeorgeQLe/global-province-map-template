@@ -1,5 +1,26 @@
 # History
 
+## 2026-08-16 - M25C Eastern Africa Grade-A promotion
+
+- Promoted UN M49 region 014, the largest remaining Africa/Americas sheet,
+  with 715 non-provisional assignment overrides, 13 date-valid political or
+  community records, nine canonical source pins, eight checked political,
+  port, archaeological, or settlement centers, and 32 executable assertions
+  across all four layers.
+- Pinned the sheet to exactly 1444-11-11 and distinguished Zar'a Ya'eqob's
+  Solomonic Ethiopia, Adal, Ajuran and southern Somali polities, Great Lakes
+  kingdoms, northern and Kilwa-linked Swahili cities, Zambezi polities, the
+  Great Zimbabwe transition, Malagasy communities, Comorian sultanates, and
+  uninhabited remote islands.
+- Removed all modern-country and generic scaffold actors, asserted no hard
+  frontier, and avoided projecting later dynastic maxima or colonial borders
+  backward. The accepted deterministic review-sheet SHA-256 is
+  `73860a47d532f9015e9c0e6006cfcc4dfe8581c72a66218f5d9605a024e51345`.
+- The five Mayotte and Réunion locations corrected by region 155 remain in
+  that already-promoted packet, so no additional M49 correction is needed.
+  The worldwide lineage remains non-public and non-certifiable with 9 regions
+  and 36 Grade-A rows remaining.
+
 ## 2026-08-16 - M25C South America Grade-A promotion
 
 - Promoted UN M49 region 005, the largest remaining Africa/Americas sheet,
