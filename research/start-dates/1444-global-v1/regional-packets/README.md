@@ -76,3 +76,13 @@ Muromachi Japan during the Ashikaga succession interval, Oirat and Northern
 Yuan Mongol fabrics, Phagmodrupa-led Tibet, Jurchen polities, and Moghulistan.
 It removes the anachronistic Hong Kong, Macao, and Muscovy scaffold actors; no
 country-based M49 correction applies.
+
+`034-southern-asia-2026-08-16.json` is the eighth accepted packet. It replaces
+all 910 Southern Asia assignments, supplies 20 date-valid political records,
+nine canonical source pins, thirteen checked capital features, 53 executable
+assertions, and a checksum-pinned Bahmani–Vijayanagara frontier asset. Its
+exact date is `1444-11-11`. The sheet keeps the Sayyid Delhi, Gujarat, Malwa,
+Jaunpur, Bengal, Bahmani, Vijayanagara, Timurid, Qara Qoyunlu, Kashmir, Sindh,
+Himalayan, Sri Lankan, and island fabrics distinct. It replaces the modern
+Maldives and BIOT scaffold actors with the dated Maldives Sultanate and an
+explicitly uninhabited Chagos record; no country-based M49 correction applies.

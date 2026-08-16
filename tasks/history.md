@@ -1,5 +1,23 @@
 # History
 
+## 2026-08-16 - M25C Southern Asia Grade-A promotion
+
+- Promoted UN M49 region 034 with 910 non-provisional assignment overrides,
+  20 date-valid polity records, nine canonical source pins, thirteen checked
+  capital features, and 53 executable assertions across all four layers.
+- Pinned the sheet to exactly 1444-11-11 and separated the declining Sayyid
+  Sultanate of Delhi from Gujarat, Malwa, Jaunpur, Bengal, Odisha, Rajput,
+  Sindhi, Kashmir, Bahmani, Vijayanagara, Himalayan, Sri Lankan, Iranian, and
+  Afghan political fabrics.
+- Replaced the modern Maldives and BIOT actors with the Maldives Sultanate and
+  an explicitly uninhabited Chagos record, and added an independently
+  corroborated Bahmani–Vijayanagara frontier asset. The accepted review sheet
+  SHA-256 is
+  `6f7d463396142edcd69616c2732687b740c55c41dc7d5c700d1f22b60106f000`.
+- The country-based M49 sheet needs no correction. The worldwide lineage
+  remains non-public and non-certifiable with 14 regions and 56 Grade-A rows
+  remaining.
+
 ## 2026-08-16 - M25C Eastern Asia Grade-A promotion
 
 - Promoted UN M49 region 030 with 1,941 non-provisional assignment overrides,

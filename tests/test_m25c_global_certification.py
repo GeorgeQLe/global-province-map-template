@@ -150,6 +150,7 @@ def test_regional_packet_cannot_promote_a_weak_grade_a_claim():
 @pytest.mark.parametrize(("region", "filename", "assignment_count", "correction_count"), [
     ("015", "015-northern-africa-2026-08-16.json", 643, 0),
     ("030", "030-eastern-asia-2026-08-16.json", 1941, 0),
+    ("034", "034-southern-asia-2026-08-16.json", 910, 0),
     ("039", "039-southern-europe-2026-08-15.json", 464, 0),
     ("145", "145-western-asia-2026-08-15.json", 768, 0),
     ("151", "151-eastern-europe-2026-08-15.json", 2178, 0),
@@ -199,6 +200,19 @@ def test_completed_region_grade_a_packets(region, filename, assignment_count, co
         actors = {row["owner_polity_id"] for row in packet["assignment_overrides"]}
         assert not actors.intersection({"scenario-hkg", "scenario-mac", "scenario-mos"})
         assert {"scenario-jurchen", "scenario-moghulistan", "scenario-northern-yuan"}.issubset(actors)
+    elif region == "034":
+        assert packet["expected_counts"] == {
+            "assertions": 53, "assignments": 910, "build_features": 13,
+            "derived_files": 1, "m49_corrections": 0, "polities": 20,
+            "sources": 9,
+        }
+        assert packet["visual_review_artifact"]["sha256"] == (
+            "6f7d463396142edcd69616c2732687b740c55c41dc7d5c700d1f22b60106f000"
+        )
+        actors = {row["owner_polity_id"] for row in packet["assignment_overrides"]}
+        assert not actors.intersection({"scenario-iot", "scenario-mdv"})
+        assert {"scenario-kotte", "scenario-jaffna", "scenario-maldives",
+                "scenario-uninhabited-iot"}.issubset(actors)
     elif region == "039":
         assert packet["expected_counts"] == {
             "assertions": 29, "assignments": 464, "build_features": 7,
