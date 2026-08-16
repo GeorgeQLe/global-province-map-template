@@ -96,3 +96,15 @@ distinguishes the mainland courts from the maritime and archipelagic polities,
 replaces 1,256 uncurated assignments and the colliding modern scaffold codes,
 and records uninhabited South China Sea islets explicitly. Three Christmas and
 Cocos (Keeling) Island locations are corrected to M49 region `053`.
+
+`143-central-asia-2026-08-16.json` is the tenth and final accepted Asian
+packet. It replaces all 310 Central Asia assignments, supplies eight
+date-valid political records, seven canonical source pins, four checked urban
+features, 17 executable assertions, and a checksum-pinned
+Timurid–Moghulistan frontier asset. Its exact date is `1444-11-11`. The sheet
+distinguishes Shah Rukh and Ulugh Beg's Timurid administrations from
+Abu'l-Khayr's Uzbek ulus, Moghulistan under Esen Buqa II, the Nogai–Manghit
+steppe, Syr Darya frontier polities, and local Turkmen fabrics. It removes the
+modern Uzbek, Muscovite, and generic Chagatai scaffold actors. Two Russian
+locations are corrected to M49 region `151`, and one Iranian location is
+corrected to region `145`.

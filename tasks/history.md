@@ -1,5 +1,22 @@
 # History
 
+## 2026-08-16 - M25C Central Asia Grade-A promotion
+
+- Promoted UN M49 region 143, the final Asian region, with 310
+  non-provisional assignment overrides, eight date-valid polity records, seven
+  canonical source pins, four checked urban features, and 17 executable
+  assertions across all four layers.
+- Pinned the sheet to exactly 1444-11-11 and separated Shah Rukh and Ulugh
+  Beg's Timurid Transoxiana, Khurasan, and Khwarazm fabrics from Abu'l-Khayr's
+  Uzbek ulus, Moghulistan under Esen Buqa II, the Nogai–Manghit steppe, Syr
+  Darya frontier polities, and local Turkmen confederations.
+- Removed the modern Uzbek, Muscovite, and generic Chagatai scaffold actors and
+  accepted the deterministic review-sheet SHA-256
+  `cf8220bb99658d6b45f1d6ffc6cd42b6535f01282e26656432f2799e14d6ebd0`.
+- Corrected two Russian locations to M49 region 151 and one Iranian location
+  to region 145. The worldwide lineage remains non-public and non-certifiable
+  with 12 regions and 48 Grade-A rows remaining.
+
 ## 2026-08-16 - M25C South-Eastern Asia Grade-A promotion
 
 - Promoted UN M49 region 035 with 1,759 non-provisional assignment overrides,

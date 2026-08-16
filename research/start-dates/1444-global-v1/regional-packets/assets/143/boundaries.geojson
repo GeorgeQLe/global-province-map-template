@@ -1,0 +1,69 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            72.11523345351661,
+            41.29613823199102
+          ],
+          [
+            73.01789271406739,
+            41.25382579918633
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "classification": "hard_constraint",
+        "confidence": "high",
+        "date_precision": "day",
+        "derived_geometry_artifact_id": "derived-region-143-timurid-moghulistan-frontier",
+        "error_budget_km": 1.0,
+        "feature_id": "region-143-timurid-moghulistan-frontier",
+        "geographic_scope": "143",
+        "geometry_revision": "1444-r2",
+        "georeferencing": {
+          "control_points": [
+            {
+              "id": "region-143-frontier-0"
+            },
+            {
+              "id": "region-143-frontier-1"
+            },
+            {
+              "id": "region-143-frontier-2"
+            }
+          ],
+          "crs": "EPSG:4326",
+          "digitizer": "region-143-packet-generator",
+          "residual_error_km": 0.0,
+          "reviewer": "Codex regional geometry review",
+          "source_feature_reference": "packet#region-143-timurid-moghulistan-frontier",
+          "transform_method": "fabric-shared-boundary-extraction-wgs84"
+        },
+        "license_lineage": [
+          "derived from accepted global-h3-v1-r2 fabric"
+        ],
+        "semantics": "Checked 1444 sheet segment between Timurid Transoxiana and Moghulistan.",
+        "side_polity_ids": {
+          "left": "scenario-timurid-transoxiana",
+          "right": "scenario-moghulistan"
+        },
+        "source_ids": [
+          "iranica-central-asia-v",
+          "regional-survey-143",
+          "shepherd-historical-atlas"
+        ],
+        "start_date_programs": [
+          "1444-11-11"
+        ],
+        "uncertainty_notes": "Shared fabric edge retained only for the declared regional assertion; it is not a complete reconstructed frontier.",
+        "valid_from": "1400",
+        "valid_to": "1500"
+      },
+      "type": "Feature"
+    }
+  ],
+  "type": "FeatureCollection"
+}
