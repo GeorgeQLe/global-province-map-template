@@ -122,3 +122,15 @@ political groupings: later contact-era tribal maps and modern state borders
 are not projected backward. Under the country-based M49 partition, Greenland,
 Bermuda, Saint Pierre and Miquelon, and United States minor islands remain in
 `021`, so no geographic correction applies.
+
+`005-south-america-2026-08-16.json` is the twelfth accepted packet and the
+largest remaining Africa/Americas promotion. It replaces all 2,200 South
+America assignments, supplies 15 date-valid political or community records,
+nine canonical source pins, eight checked archaeological or political centers,
+and 32 executable assertions. The exact-date sheet keeps Pachakuti's early Inca
+state distinct from unconquered Chimor, Aymara kingdoms, other Andean polities,
+Muisca and Tairona chiefdoms, and deliberately coarse lowland and southern
+community fabrics. It removes the generic modern scaffold and the anachronistic
+Falklands actor, recording South Atlantic islands as uninhabited; later Inca
+maxima, colonial borders, and contact-era tribal maps are not projected back to
+`1444-11-11`. No additional country-based M49 correction applies.

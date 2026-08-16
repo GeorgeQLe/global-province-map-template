@@ -1,5 +1,24 @@
 # History
 
+## 2026-08-16 - M25C South America Grade-A promotion
+
+- Promoted UN M49 region 005, the largest remaining Africa/Americas sheet,
+  with 2,200 non-provisional assignment overrides, 15 date-valid political or
+  community records, nine canonical source pins, eight checked archaeological
+  or political centers, and 32 executable assertions across all four layers.
+- Pinned the sheet to exactly 1444-11-11 and kept Pachakuti's early Inca state
+  distinct from unconquered Chimor, Aymara kingdoms, other Andean polities,
+  Muisca and Tairona chiefdoms, and deliberately coarse lowland and southern
+  community fabrics.
+- Removed the generic modern scaffold and anachronistic Falklands actor,
+  recorded South Atlantic islands as uninhabited, and avoided projecting later
+  Inca maxima, colonial borders, or contact-era tribal maps backward. The
+  accepted deterministic review-sheet SHA-256 is
+  `7275a21a0e8eea8acf508d0e8518e8432f1c2c4164958d6cfa1592b180bf64c2`.
+- The country-based M49 sheet needs no additional correction. The worldwide
+  lineage remains non-public and non-certifiable with 10 regions and 40
+  Grade-A rows remaining.
+
 ## 2026-08-16 - M25C Northern America Grade-A promotion
 
 - Promoted UN M49 region 021, the largest remaining region and first

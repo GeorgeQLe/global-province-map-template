@@ -148,6 +148,7 @@ def test_regional_packet_cannot_promote_a_weak_grade_a_claim():
 
 
 @pytest.mark.parametrize(("region", "filename", "assignment_count", "correction_count"), [
+    ("005", "005-south-america-2026-08-16.json", 2200, 0),
     ("015", "015-northern-africa-2026-08-16.json", 643, 0),
     ("021", "021-northern-america-2026-08-16.json", 3986, 0),
     ("030", "030-eastern-asia-2026-08-16.json", 1941, 0),
@@ -179,7 +180,22 @@ def test_completed_region_grade_a_packets(region, filename, assignment_count, co
     assert all("official-1444-modern-scaffold-provisional" not in row["source_ids"]
                for row in packet["assignment_overrides"])
     assert len(packet["location_region_overrides"]) == correction_count
-    if region == "015":
+    if region == "005":
+        assert packet["expected_counts"] == {
+            "assertions": 32, "assignments": 2200, "build_features": 8,
+            "derived_files": 0, "m49_corrections": 0, "polities": 15,
+            "sources": 9,
+        }
+        assert packet["visual_review_artifact"]["sha256"] == (
+            "7275a21a0e8eea8acf508d0e8518e8432f1c2c4164958d6cfa1592b180bf64c2"
+        )
+        actors = {row["owner_polity_id"] for row in packet["assignment_overrides"]}
+        assert not actors.intersection({"scenario-flk", "scenario-nah"})
+        assert {"scenario-inca-cusco", "scenario-chimor", "scenario-aymara-kingdoms",
+                "scenario-muisca-chiefdoms", "scenario-tairona-chiefdoms",
+                "scenario-amazonian-riverine", "scenario-mapuche-communities",
+                "scenario-uninhabited-south-atlantic-islands"}.issubset(actors)
+    elif region == "015":
         assert packet["expected_counts"] == {
             "assertions": 25, "assignments": 643, "build_features": 6,
             "derived_files": 2, "m49_corrections": 0, "polities": 9,
