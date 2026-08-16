@@ -108,3 +108,17 @@ steppe, Syr Darya frontier polities, and local Turkmen fabrics. It removes the
 modern Uzbek, Muscovite, and generic Chagatai scaffold actors. Two Russian
 locations are corrected to M49 region `151`, and one Iranian location is
 corrected to region `145`.
+
+`021-northern-america-2026-08-16.json` is the eleventh accepted packet and
+the first risk-first Americas promotion. It replaces all 3,986 Northern
+America assignments, supplies 13 date-valid political records, eleven
+canonical source pins, eight checked archaeological or political centers,
+and 32 executable assertions. The exact-date sheet distinguishes late Norse
+Greenland from Thule and ancestral Inuit communities and retains separate
+subarctic, Northwest Coast, Columbia Plateau, California/Great Basin, Plains,
+Puebloan, Hohokam, Mississippian, Iroquoian, Eastern Woodlands, and
+uninhabited-island fabrics. These are deliberately coarse source-bounded
+political groupings: later contact-era tribal maps and modern state borders
+are not projected backward. Under the country-based M49 partition, Greenland,
+Bermuda, Saint Pierre and Miquelon, and United States minor islands remain in
+`021`, so no geographic correction applies.

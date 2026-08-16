@@ -1,5 +1,24 @@
 # History
 
+## 2026-08-16 - M25C Northern America Grade-A promotion
+
+- Promoted UN M49 region 021, the largest remaining region and first
+  risk-first Americas sheet, with 3,986 non-provisional assignment overrides,
+  13 date-valid political records, eleven canonical source pins, eight checked
+  archaeological or political centers, and 32 executable assertions across
+  all four layers.
+- Pinned the sheet to exactly 1444-11-11 and replaced the generic Native /
+  uncolonized scaffold with distinct late Norse Greenland, Thule and ancestral
+  Inuit, subarctic, Northwest Coast, Columbia Plateau, California/Great Basin,
+  Plains, Puebloan, Hohokam, Mississippian, Iroquoian, Eastern Woodlands, and
+  uninhabited-island fabrics.
+- Avoided projecting later contact-era tribal boundaries backward and drew no
+  unsupported hard frontier. The accepted deterministic review-sheet SHA-256
+  is `b3d9e29b88602856f4fb07a5671c071ca59984057d813889c6a3bb9a4fc32b3e`.
+- The country-based M49 sheet needs no correction. The worldwide lineage
+  remains non-public and non-certifiable with 11 regions and 44 Grade-A rows
+  remaining.
+
 ## 2026-08-16 - M25C Central Asia Grade-A promotion
 
 - Promoted UN M49 region 143, the final Asian region, with 310

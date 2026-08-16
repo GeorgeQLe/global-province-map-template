@@ -149,6 +149,7 @@ def test_regional_packet_cannot_promote_a_weak_grade_a_claim():
 
 @pytest.mark.parametrize(("region", "filename", "assignment_count", "correction_count"), [
     ("015", "015-northern-africa-2026-08-16.json", 643, 0),
+    ("021", "021-northern-america-2026-08-16.json", 3986, 0),
     ("030", "030-eastern-asia-2026-08-16.json", 1941, 0),
     ("034", "034-southern-asia-2026-08-16.json", 910, 0),
     ("035", "035-south-eastern-asia-2026-08-16.json", 1759, 3),
@@ -190,6 +191,20 @@ def test_completed_region_grade_a_packets(region, filename, assignment_count, co
         names = {row["polity_id"]: row["name"] for row in packet["polities"]}
         assert names["scenario-mor"].startswith("Marinid Sultanate")
         assert {"scenario-dongola", "scenario-alodia"}.issubset(names)
+    elif region == "021":
+        assert packet["expected_counts"] == {
+            "assertions": 32, "assignments": 3986, "build_features": 8,
+            "derived_files": 0, "m49_corrections": 0, "polities": 13,
+            "sources": 11,
+        }
+        assert packet["visual_review_artifact"]["sha256"] == (
+            "b3d9e29b88602856f4fb07a5671c071ca59984057d813889c6a3bb9a4fc32b3e"
+        )
+        actors = {row["owner_polity_id"] for row in packet["assignment_overrides"]}
+        assert "scenario-nah" not in actors
+        assert {"scenario-norse-greenland", "scenario-thule-inuit",
+                "scenario-hohokam-communities", "scenario-mississippian-chiefdoms",
+                "scenario-iroquoian-villages", "scenario-uninhabited-remote-islands"}.issubset(actors)
     elif region == "030":
         assert packet["expected_counts"] == {
             "assertions": 21, "assignments": 1941, "build_features": 5,
