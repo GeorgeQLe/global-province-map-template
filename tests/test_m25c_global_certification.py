@@ -151,6 +151,7 @@ def test_regional_packet_cannot_promote_a_weak_grade_a_claim():
     ("015", "015-northern-africa-2026-08-16.json", 643, 0),
     ("030", "030-eastern-asia-2026-08-16.json", 1941, 0),
     ("034", "034-southern-asia-2026-08-16.json", 910, 0),
+    ("035", "035-south-eastern-asia-2026-08-16.json", 1759, 3),
     ("039", "039-southern-europe-2026-08-15.json", 464, 0),
     ("145", "145-western-asia-2026-08-15.json", 768, 0),
     ("151", "151-eastern-europe-2026-08-15.json", 2178, 0),
@@ -213,6 +214,20 @@ def test_completed_region_grade_a_packets(region, filename, assignment_count, co
         assert not actors.intersection({"scenario-iot", "scenario-mdv"})
         assert {"scenario-kotte", "scenario-jaffna", "scenario-maldives",
                 "scenario-uninhabited-iot"}.issubset(actors)
+    elif region == "035":
+        assert packet["expected_counts"] == {
+            "assertions": 57, "assignments": 1759, "build_features": 14,
+            "derived_files": 1, "m49_corrections": 3, "polities": 29,
+            "sources": 7,
+        }
+        assert packet["visual_review_artifact"]["sha256"] == (
+            "8931349ecff68ab92179bd23c964bf85292a0b12a4b640bc56b2e6c22b6af6d2"
+        )
+        actors = {row["owner_polity_id"] for row in packet["assignment_overrides"]}
+        assert not actors.intersection({"scenario-unk", "scenario-mal", "scenario-pga", "scenario-scr"})
+        assert {"scenario-hanthawaddy", "scenario-lanxang", "scenario-malacca",
+                "scenario-majapahit", "scenario-sulu"}.issubset(actors)
+        assert {row["region_id"] for row in packet["location_region_overrides"]} == {"053"}
     elif region == "039":
         assert packet["expected_counts"] == {
             "assertions": 29, "assignments": 464, "build_features": 7,

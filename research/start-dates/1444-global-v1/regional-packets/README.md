@@ -86,3 +86,13 @@ Jaunpur, Bengal, Bahmani, Vijayanagara, Timurid, Qara Qoyunlu, Kashmir, Sindh,
 Himalayan, Sri Lankan, and island fabrics distinct. It replaces the modern
 Maldives and BIOT scaffold actors with the dated Maldives Sultanate and an
 explicitly uninhabited Chagos record; no country-based M49 correction applies.
+
+`035-south-eastern-asia-2026-08-16.json` is the ninth accepted packet. It
+replaces all 1,759 South-Eastern Asia assignments, supplies 29 date-valid
+political records, seven canonical source pins, fourteen checked capital
+features, 57 executable assertions, and a checksum-pinned
+Ayutthaya-Cambodia frontier asset. Its exact date is `1444-11-11`. The sheet
+distinguishes the mainland courts from the maritime and archipelagic polities,
+replaces 1,256 uncurated assignments and the colliding modern scaffold codes,
+and records uninhabited South China Sea islets explicitly. Three Christmas and
+Cocos (Keeling) Island locations are corrected to M49 region `053`.

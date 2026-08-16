@@ -1,5 +1,21 @@
 # History
 
+## 2026-08-16 - M25C South-Eastern Asia Grade-A promotion
+
+- Promoted UN M49 region 035 with 1,759 non-provisional assignment overrides,
+  29 date-valid polity records, seven canonical source pins, fourteen checked
+  capital features, and 57 executable assertions across all four layers.
+- Pinned the sheet to exactly 1444-11-11 and separated the Ava, Hanthawaddy,
+  Mrauk U, Ayutthaya, Lan Na, Lan Xang, Cambodian, Dai Viet, Champa, Malacca,
+  Majapahit, Sunda, Brunei, Sulu, and other mainland and archipelagic fabrics.
+- Replaced 1,256 uncurated assignments and colliding modern scaffold codes,
+  added an independently corroborated Ayutthaya-Cambodia frontier asset, and
+  accepted review-sheet SHA-256
+  `8931349ecff68ab92179bd23c964bf85292a0b12a4b640bc56b2e6c22b6af6d2`.
+- Corrected three Christmas and Cocos (Keeling) Island locations to M49 region
+  053. The worldwide lineage remains non-public and non-certifiable with 13
+  regions and 52 Grade-A rows remaining.
+
 ## 2026-08-16 - M25C Southern Asia Grade-A promotion
 
 - Promoted UN M49 region 034 with 910 non-provisional assignment overrides,
