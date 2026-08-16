@@ -1,5 +1,24 @@
 # History
 
+## 2026-08-16 - M25C Western Africa Grade-A promotion
+
+- Promoted UN M49 region 011, the largest remaining Africa/Americas sheet,
+  with 641 non-provisional assignment overrides, 15 date-valid political or
+  community records, eight canonical source pins, eight checked political or
+  urban centers, and 32 executable assertions across all four layers.
+- Pinned the sheet to exactly 1444-11-11 and distinguished the declining Mali
+  Empire, Tuareg Niger-bend control, pre-imperial Songhai, Jolof and Upper
+  Guinea polities, Mossi kingdoms, emerging Akan states, Dogon communities,
+  Hausa and Yoruba city networks, Benin, and lower-Niger and eastern-Sahel
+  political fields.
+- Removed every modern-country scaffold actor, recorded the eastern Atlantic
+  islands as uninhabited, asserted no unsupported hard local frontier, and
+  accepted review-sheet SHA-256
+  `b799182c56dbec98d6d45f31bd8ce7380697f3c66745502fc94c8247677c4150`.
+- Corrected one Algerian location to M49 region 015 and one Cameroonian
+  location to region 017. The worldwide lineage remains non-public and
+  non-certifiable with 8 regions and 32 Grade-A rows remaining.
+
 ## 2026-08-16 - M25C Eastern Africa Grade-A promotion
 
 - Promoted UN M49 region 014, the largest remaining Africa/Americas sheet,

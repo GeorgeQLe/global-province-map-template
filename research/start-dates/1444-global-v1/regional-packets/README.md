@@ -148,3 +148,15 @@ hard frontier, and does not project later dynastic maxima or colonial borders
 back to `1444-11-11`. The five Mayotte and Réunion locations geographically
 corrected by region 155 remain represented through that already-promoted
 packet; no additional M49 correction is required here.
+
+`011-western-africa-2026-08-16.json` is the fourteenth accepted packet. It
+replaces all 641 Western Africa assignments, supplies 15 date-valid political
+or community records, eight canonical source pins, eight checked political or
+urban centers, and 32 executable assertions. The exact-date sheet preserves
+the declining Mali Empire, Tuareg control of Timbuktu and Gao, pre-imperial
+Songhai, Jolof and Upper Guinea polities, Mossi kingdoms, emerging Akan states,
+Dogon communities, Hausa and Yoruba city networks, Benin, and lower-Niger and
+eastern-Sahel fields. It records Cape Verde and Saint Helena's Atlantic islands
+as uninhabited and draws no unsupported hard local frontier. One Algerian
+location is corrected to M49 region `015` and one Cameroonian location to
+region `017`.

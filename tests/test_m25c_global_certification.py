@@ -149,6 +149,7 @@ def test_regional_packet_cannot_promote_a_weak_grade_a_claim():
 
 @pytest.mark.parametrize(("region", "filename", "assignment_count", "correction_count"), [
     ("005", "005-south-america-2026-08-16.json", 2200, 0),
+    ("011", "011-western-africa-2026-08-16.json", 641, 2),
     ("014", "014-eastern-africa-2026-08-16.json", 715, 0),
     ("015", "015-northern-africa-2026-08-16.json", 643, 0),
     ("021", "021-northern-america-2026-08-16.json", 3986, 0),
@@ -196,6 +197,29 @@ def test_completed_region_grade_a_packets(region, filename, assignment_count, co
                 "scenario-muisca-chiefdoms", "scenario-tairona-chiefdoms",
                 "scenario-amazonian-riverine", "scenario-mapuche-communities",
                 "scenario-uninhabited-south-atlantic-islands"}.issubset(actors)
+    elif region == "011":
+        assert packet["expected_counts"] == {
+            "assertions": 32, "assignments": 641, "build_features": 8,
+            "derived_files": 0, "m49_corrections": 2, "polities": 15,
+            "sources": 8,
+        }
+        assert packet["visual_review_artifact"]["sha256"] == (
+            "b799182c56dbec98d6d45f31bd8ce7380697f3c66745502fc94c8247677c4150"
+        )
+        actors = {row["owner_polity_id"] for row in packet["assignment_overrides"]}
+        assert not actors.intersection({
+            "scenario-mal", "scenario-son", "scenario-mrt", "scenario-oyo",
+            "scenario-civ", "scenario-gnb", "scenario-cpv", "scenario-sle",
+            "scenario-lbr", "scenario-ben", "scenario-tgo", "scenario-shn",
+            "scenario-gmb", "scenario-sah",
+        })
+        assert {"scenario-mali-empire-decline", "scenario-tuareg-niger-bend",
+                "scenario-songhai-kingdom", "scenario-jolof-senegambia",
+                "scenario-mossi-kingdoms", "scenario-akan-states",
+                "scenario-hausa-city-states", "scenario-yoruba-polities",
+                "scenario-benin-kingdom", "scenario-uninhabited-atlantic-islands"}.issubset(actors)
+        assert {target: sum(row["region_id"] == target for row in packet["location_region_overrides"])
+                for target in {"015", "017"}} == {"015": 1, "017": 1}
     elif region == "014":
         assert packet["expected_counts"] == {
             "assertions": 32, "assignments": 715, "build_features": 8,
