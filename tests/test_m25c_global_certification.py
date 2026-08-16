@@ -147,6 +147,93 @@ def test_regional_packet_cannot_promote_a_weak_grade_a_claim():
         provisional._qualify_grade_a_packet(packet)
 
 
+@pytest.mark.parametrize(("region", "filename", "assignment_count", "correction_count"), [
+    ("154", "154-northern-europe-2026-08-15.json", 1367, 1),
+    ("155", "155-western-europe-2026-08-15.json", 385, 39),
+])
+def test_completed_region_grade_a_packets(region, filename, assignment_count, correction_count):
+    provisional = _provisional_module()
+    packet_path = GLOBAL / "regional-packets" / filename
+    packet = json.loads(packet_path.read_text())
+
+    provisional._qualify_grade_a_packet(packet, packet_path)
+
+    assert packet["region_id"] == region
+    assert packet["start_date"] == "1444-11-11"
+    assert packet["visual_review"] == "accepted"
+    assert len(packet["visual_review_artifact"]["sha256"]) == 64
+    assert {row["layer"] for row in packet["coverage"]} == set(provisional.LAYERS)
+    assert all(row["grade"] == "A" and not row["known_gaps"] and not row["exclusions"]
+               for row in packet["coverage"])
+    assert len(packet["assignment_overrides"]) == assignment_count
+    assert len({row["province_id"] for row in packet["assignment_overrides"]}) == assignment_count
+    assert all("official-1444-modern-scaffold-provisional" not in row["source_ids"]
+               for row in packet["assignment_overrides"])
+    assert len(packet["location_region_overrides"]) == correction_count
+    if region == "154":
+        assert packet["location_region_overrides"] == [{
+            "location_id": "loc_83d09efffffffff_9e81297988", "region_id": "005",
+            "reason": "Bouvet Island is geographically in UN M49 South America, not Northern Europe.",
+        }]
+        assert packet["expected_counts"] == {
+            "assertions": 23, "assignments": 1367, "derived_files": 3,
+            "m49_corrections": 1, "polities": 18, "sources": 14,
+        }
+    else:
+        assert {target: sum(row["region_id"] == target for row in packet["location_region_overrides"])
+                for target in {"005", "014", "029"}} == {"005": 10, "014": 5, "029": 24}
+
+
+def test_region_grade_a_source_pins_bind_the_canonical_source_records():
+    provisional = _provisional_module()
+    packet_path = GLOBAL / "regional-packets" / "155-western-europe-2026-08-15.json"
+    packet = json.loads(packet_path.read_text())
+    packet["source_pins"][0]["sha256"] = "0" * 64
+
+    with pytest.raises(SystemExit, match="invalid canonical source pin"):
+        provisional._qualify_grade_a_packet(packet)
+
+
+def test_region_grade_a_derived_files_are_contained_regular_and_checksum_pinned(tmp_path):
+    provisional = _provisional_module()
+    source_path = GLOBAL / "regional-packets" / "155-western-europe-2026-08-15.json"
+    packet_path = tmp_path / "packet.json"
+    packet = json.loads(source_path.read_text())
+    asset = tmp_path / "assets" / "boundary.geojson"
+    asset.parent.mkdir()
+    asset.write_text('{"type":"FeatureCollection","features":[]}\n')
+    source_ids = ["dauphant-2020-sources", "shepherd-historical-atlas"]
+    packet["derived_files"] = [{
+        "asset_id": "checked-boundary", "path": "assets/boundary.geojson",
+        "target_path": "regional-assets/155/boundary.geojson",
+        "sha256": hashlib.sha256(asset.read_bytes()).hexdigest(),
+        "source_ids": source_ids, "valid_from": "1400", "valid_to": "1500",
+    }]
+    packet_path.write_text(json.dumps(packet))
+
+    provisional._qualify_grade_a_packet(packet, packet_path)
+    packet["derived_files"][0]["sha256"] = "0" * 64
+    with pytest.raises(SystemExit, match="missing or checksum-invalid"):
+        provisional._qualify_grade_a_packet(packet, packet_path)
+
+
+def test_region_grade_a_build_features_require_checked_unique_capital_points():
+    provisional = _provisional_module()
+    packet_path = GLOBAL / "regional-packets" / "155-western-europe-2026-08-15.json"
+    packet = json.loads(packet_path.read_text())
+    packet["build_features"] = [{
+        "type": "Feature", "properties": {
+            "feature_id": "capital-test", "feature_type": "capital",
+            "source_ids": ["regional-survey-155"],
+        },
+        "geometry": {"type": "Point", "coordinates": [0, 0]},
+    }]
+    provisional._qualify_grade_a_packet(packet)
+    packet["build_features"].append(json.loads(json.dumps(packet["build_features"][0])))
+    with pytest.raises(SystemExit, match="invalid or duplicate build feature"):
+        provisional._qualify_grade_a_packet(packet)
+
+
 def test_m49_enrichment_is_deterministic_and_marks_antarctica(monkeypatch):
     builder = _builder_module()
     countries = [

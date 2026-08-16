@@ -1,0 +1,194 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            -3.4944287278558863,
+            54.67729204593729
+          ],
+          [
+            -2.7331111199996654,
+            55.014798631472935
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "classification": "hard_constraint",
+        "confidence": "high",
+        "date_precision": "year",
+        "derived_geometry_artifact_id": "derived-region-154-anglo-scottish-border",
+        "error_budget_km": 1.0,
+        "feature_id": "region-154-anglo-scottish-border",
+        "geographic_scope": "154",
+        "geometry_revision": "1444-r2",
+        "georeferencing": {
+          "control_points": [
+            {
+              "id": "region-154-anglo-scottish-border-0"
+            },
+            {
+              "id": "region-154-anglo-scottish-border-1"
+            },
+            {
+              "id": "region-154-anglo-scottish-border-2"
+            }
+          ],
+          "crs": "EPSG:4326",
+          "digitizer": "region-154-packet-generator",
+          "residual_error_km": 0.0,
+          "reviewer": "Codex regional geometry review",
+          "source_feature_reference": "assets/154/boundaries.geojson#region-154-anglo-scottish-border",
+          "transform_method": "fabric-shared-boundary-extraction-wgs84"
+        },
+        "license_lineage": [
+          "derived from accepted global-h3-v1-r2 fabric"
+        ],
+        "semantics": "Checked 1444 Anglo-Scottish political boundary segment.",
+        "side_polity_ids": {
+          "left": "lancastrian-england",
+          "right": "kingdom-of-scotland"
+        },
+        "source_ids": [
+          "cambridge-scots-border",
+          "cambridge-wars-map"
+        ],
+        "start_date_programs": [
+          "1444-11-11"
+        ],
+        "uncertainty_notes": "Checked regional packet geometry; retained only for the declared assertion.",
+        "valid_from": "1400",
+        "valid_to": "1500"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            -6.252287782419955,
+            52.65299661925585
+          ],
+          [
+            -7.210984789425374,
+            52.8721847955339
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "classification": "hard_constraint",
+        "confidence": "high",
+        "date_precision": "year",
+        "derived_geometry_artifact_id": "derived-region-154-irish-pale-frontier",
+        "error_budget_km": 1.0,
+        "feature_id": "region-154-irish-pale-frontier",
+        "geographic_scope": "154",
+        "geometry_revision": "1444-r2",
+        "georeferencing": {
+          "control_points": [
+            {
+              "id": "region-154-irish-pale-frontier-0"
+            },
+            {
+              "id": "region-154-irish-pale-frontier-1"
+            },
+            {
+              "id": "region-154-irish-pale-frontier-2"
+            }
+          ],
+          "crs": "EPSG:4326",
+          "digitizer": "region-154-packet-generator",
+          "residual_error_km": 0.0,
+          "reviewer": "Codex regional geometry review",
+          "source_feature_reference": "assets/154/boundaries.geojson#region-154-irish-pale-frontier",
+          "transform_method": "fabric-shared-boundary-extraction-wgs84"
+        },
+        "license_lineage": [
+          "derived from accepted global-h3-v1-r2 fabric"
+        ],
+        "semantics": "Checked boundary between effective English rule and an adjacent Irish lordship.",
+        "side_polity_ids": {
+          "left": "lordship-of-ireland",
+          "right": "lordship-desmond"
+        },
+        "source_ids": [
+          "cambridge-ireland-pale",
+          "cambridge-wars-map"
+        ],
+        "start_date_programs": [
+          "1444-11-11"
+        ],
+        "uncertainty_notes": "Checked regional packet geometry; retained only for the declared assertion.",
+        "valid_from": "1400",
+        "valid_to": "1500"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            9.136607520773394,
+            55.576824691918056
+          ],
+          [
+            8.644634337854585,
+            55.371332688603964
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "classification": "hard_constraint",
+        "confidence": "high",
+        "date_precision": "year",
+        "derived_geometry_artifact_id": "derived-region-154-eider-frontier",
+        "error_budget_km": 1.0,
+        "feature_id": "region-154-eider-frontier",
+        "geographic_scope": "154",
+        "geometry_revision": "1444-r2",
+        "georeferencing": {
+          "control_points": [
+            {
+              "id": "region-154-eider-frontier-0"
+            },
+            {
+              "id": "region-154-eider-frontier-1"
+            },
+            {
+              "id": "region-154-eider-frontier-2"
+            }
+          ],
+          "crs": "EPSG:4326",
+          "digitizer": "region-154-packet-generator",
+          "residual_error_km": 0.0,
+          "reviewer": "Codex regional geometry review",
+          "source_feature_reference": "assets/154/boundaries.geojson#region-154-eider-frontier",
+          "transform_method": "fabric-shared-boundary-extraction-wgs84"
+        },
+        "license_lineage": [
+          "derived from accepted global-h3-v1-r2 fabric"
+        ],
+        "semantics": "Eider frontier between Danish Schleswig and imperial Holstein.",
+        "side_polity_ids": {
+          "left": "kingdom-of-denmark",
+          "right": "county-of-holstein"
+        },
+        "source_ids": [
+          "nordfriisk-eider",
+          "shepherd-historical-atlas"
+        ],
+        "start_date_programs": [
+          "1444-11-11"
+        ],
+        "uncertainty_notes": "Checked regional packet geometry; retained only for the declared assertion.",
+        "valid_from": "1400",
+        "valid_to": "1500"
+      },
+      "type": "Feature"
+    }
+  ],
+  "type": "FeatureCollection"
+}

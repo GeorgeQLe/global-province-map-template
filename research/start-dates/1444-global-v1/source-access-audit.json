@@ -68,6 +68,15 @@
       "notes": "HTTP GET followed redirects and returned 200."
     },
     {
+      "source_id": "cambridge-kalmar-union",
+      "url": "https://www.cambridge.org/core/books/abs/cambridge-history-of-scandinavia/interscandinavian-relations/8664BE2846BEE72480907AD5C7369C11",
+      "checked_on": "2026-08-14",
+      "method": "browser_search",
+      "result": "reachable",
+      "http_status": null,
+      "notes": "Browser search retrieved the Cambridge chapter record and its dated summary."
+    },
+    {
       "source_id": "cambridge-lubeck",
       "url": "https://www.cambridge.org/core/books/studies-in-numismatic-method/finds-of-english-medieval-coins-in-schleswigholstein/962AFCDD17F7171DCA3035A2DDEE4405",
       "checked_on": "2026-08-14",

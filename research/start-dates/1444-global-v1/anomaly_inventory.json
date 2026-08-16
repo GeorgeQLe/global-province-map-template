@@ -52,8 +52,8 @@
       ],
       "resolution": "resolved",
       "source_ids": [
-        "dumasy-burgundy-1444",
-        "stein-burgundian-composite"
+        "stein-burgundian-composite",
+        "dumasy-burgundy-1444"
       ],
       "subject_ids": [
         "burgundian-polities"
@@ -82,12 +82,12 @@
       ],
       "resolution": "resolved",
       "source_ids": [
-        "cambridge-franciscans-ceuta",
-        "cambridge-portugal-ceuta"
+        "cambridge-portugal-ceuta",
+        "cambridge-franciscans-ceuta"
       ],
       "subject_ids": [
-        "marinid-morocco",
-        "portuguese-ceuta"
+        "portuguese-ceuta",
+        "marinid-morocco"
       ],
       "type": "detached-territory"
     },
@@ -98,13 +98,28 @@
       ],
       "resolution": "resolved",
       "source_ids": [
-        "cambridge-galata-1453",
-        "cambridge-galata-privileges"
+        "cambridge-galata-privileges",
+        "cambridge-galata-1453"
       ],
       "subject_ids": [
         "genoese-galata"
       ],
       "type": "concession"
+    },
+    {
+      "anomaly_id": "kalmar-union-composite-realm",
+      "region_ids": [
+        "154"
+      ],
+      "resolution": "resolved",
+      "source_ids": [
+        "cambridge-kalmar-union",
+        "regional-survey-154"
+      ],
+      "subject_ids": [
+        "kalmar-union"
+      ],
+      "type": "composite-realm"
     },
     {
       "anomaly_id": "lubeck-free-imperial-city",
@@ -128,8 +143,8 @@
       ],
       "resolution": "resolved",
       "source_ids": [
-        "cambridge-madeira-captaincies",
-        "cambridge-portuguese-islands"
+        "cambridge-portuguese-islands",
+        "cambridge-madeira-captaincies"
       ],
       "subject_ids": [
         "madeira-captaincies"
@@ -143,8 +158,8 @@
       ],
       "resolution": "resolved",
       "source_ids": [
-        "oxford-demilitarized-states",
-        "unesco-san-marino"
+        "unesco-san-marino",
+        "oxford-demilitarized-states"
       ],
       "subject_ids": [
         "san-marino"
@@ -157,7 +172,7 @@
     "cells": [
       {
         "anomaly_ids": [],
-        "notes": "005/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered Inca, Chim\u00fa, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
+        "notes": "005/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered Inca, Chimú, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
         "region_id": "005",
         "source_ids": [
           "regional-survey-005",
@@ -168,7 +183,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "005/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Inca, Chim\u00fa, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
+        "notes": "005/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Inca, Chimú, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
         "region_id": "005",
         "source_ids": [
           "regional-survey-005",
@@ -179,7 +194,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "005/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Inca, Chim\u00fa, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
+        "notes": "005/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Inca, Chimú, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
         "region_id": "005",
         "source_ids": [
           "regional-survey-005",
@@ -190,7 +205,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "005/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Inca, Chim\u00fa, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
+        "notes": "005/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Inca, Chimú, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
         "region_id": "005",
         "source_ids": [
           "regional-survey-005",
@@ -201,7 +216,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "005/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Inca, Chim\u00fa, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
+        "notes": "005/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Inca, Chimú, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
         "region_id": "005",
         "source_ids": [
           "regional-survey-005",
@@ -212,7 +227,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "005/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Inca, Chim\u00fa, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
+        "notes": "005/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Inca, Chimú, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
         "region_id": "005",
         "source_ids": [
           "regional-survey-005",
@@ -223,7 +238,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "005/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Inca, Chim\u00fa, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
+        "notes": "005/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Inca, Chimú, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
         "region_id": "005",
         "source_ids": [
           "regional-survey-005",
@@ -234,7 +249,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "005/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Inca, Chim\u00fa, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
+        "notes": "005/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Inca, Chimú, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
         "region_id": "005",
         "source_ids": [
           "regional-survey-005",
@@ -245,7 +260,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "005/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered Inca, Chim\u00fa, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
+        "notes": "005/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered Inca, Chimú, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
         "region_id": "005",
         "source_ids": [
           "regional-survey-005",
@@ -256,7 +271,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "005/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Inca, Chim\u00fa, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
+        "notes": "005/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Inca, Chimú, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
         "region_id": "005",
         "source_ids": [
           "regional-survey-005",
@@ -267,7 +282,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "005/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Inca, Chim\u00fa, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
+        "notes": "005/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Inca, Chimú, Chincha, Ica, Cajamarca, and Wanka polities and cultures.",
         "region_id": "005",
         "source_ids": [
           "regional-survey-005",
@@ -1131,7 +1146,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "029/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered Ta\u00edno chiefdoms and other Greater Antillean communities.",
+        "notes": "029/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered Taíno chiefdoms and other Greater Antillean communities.",
         "region_id": "029",
         "source_ids": [
           "regional-survey-029",
@@ -1142,7 +1157,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "029/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Ta\u00edno chiefdoms and other Greater Antillean communities.",
+        "notes": "029/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Taíno chiefdoms and other Greater Antillean communities.",
         "region_id": "029",
         "source_ids": [
           "regional-survey-029",
@@ -1153,7 +1168,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "029/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Ta\u00edno chiefdoms and other Greater Antillean communities.",
+        "notes": "029/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Taíno chiefdoms and other Greater Antillean communities.",
         "region_id": "029",
         "source_ids": [
           "regional-survey-029",
@@ -1164,7 +1179,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "029/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Ta\u00edno chiefdoms and other Greater Antillean communities.",
+        "notes": "029/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Taíno chiefdoms and other Greater Antillean communities.",
         "region_id": "029",
         "source_ids": [
           "regional-survey-029",
@@ -1175,7 +1190,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "029/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Ta\u00edno chiefdoms and other Greater Antillean communities.",
+        "notes": "029/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Taíno chiefdoms and other Greater Antillean communities.",
         "region_id": "029",
         "source_ids": [
           "regional-survey-029",
@@ -1186,7 +1201,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "029/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Ta\u00edno chiefdoms and other Greater Antillean communities.",
+        "notes": "029/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Taíno chiefdoms and other Greater Antillean communities.",
         "region_id": "029",
         "source_ids": [
           "regional-survey-029",
@@ -1197,7 +1212,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "029/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Ta\u00edno chiefdoms and other Greater Antillean communities.",
+        "notes": "029/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Taíno chiefdoms and other Greater Antillean communities.",
         "region_id": "029",
         "source_ids": [
           "regional-survey-029",
@@ -1208,7 +1223,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "029/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Ta\u00edno chiefdoms and other Greater Antillean communities.",
+        "notes": "029/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Taíno chiefdoms and other Greater Antillean communities.",
         "region_id": "029",
         "source_ids": [
           "regional-survey-029",
@@ -1219,7 +1234,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "029/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered Ta\u00edno chiefdoms and other Greater Antillean communities.",
+        "notes": "029/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered Taíno chiefdoms and other Greater Antillean communities.",
         "region_id": "029",
         "source_ids": [
           "regional-survey-029",
@@ -1230,7 +1245,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "029/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Ta\u00edno chiefdoms and other Greater Antillean communities.",
+        "notes": "029/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Taíno chiefdoms and other Greater Antillean communities.",
         "region_id": "029",
         "source_ids": [
           "regional-survey-029",
@@ -1241,7 +1256,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "029/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Ta\u00edno chiefdoms and other Greater Antillean communities.",
+        "notes": "029/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Taíno chiefdoms and other Greater Antillean communities.",
         "region_id": "029",
         "source_ids": [
           "regional-survey-029",
@@ -1494,7 +1509,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "035/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, \u0110\u1ea1i Vi\u1ec7t, and neighboring realms.",
+        "notes": "035/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, Đại Việt, and neighboring realms.",
         "region_id": "035",
         "source_ids": [
           "regional-survey-035",
@@ -1505,7 +1520,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "035/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, \u0110\u1ea1i Vi\u1ec7t, and neighboring realms.",
+        "notes": "035/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, Đại Việt, and neighboring realms.",
         "region_id": "035",
         "source_ids": [
           "regional-survey-035",
@@ -1516,7 +1531,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "035/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, \u0110\u1ea1i Vi\u1ec7t, and neighboring realms.",
+        "notes": "035/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, Đại Việt, and neighboring realms.",
         "region_id": "035",
         "source_ids": [
           "regional-survey-035",
@@ -1527,7 +1542,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "035/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, \u0110\u1ea1i Vi\u1ec7t, and neighboring realms.",
+        "notes": "035/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, Đại Việt, and neighboring realms.",
         "region_id": "035",
         "source_ids": [
           "regional-survey-035",
@@ -1538,7 +1553,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "035/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, \u0110\u1ea1i Vi\u1ec7t, and neighboring realms.",
+        "notes": "035/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, Đại Việt, and neighboring realms.",
         "region_id": "035",
         "source_ids": [
           "regional-survey-035",
@@ -1549,7 +1564,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "035/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, \u0110\u1ea1i Vi\u1ec7t, and neighboring realms.",
+        "notes": "035/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, Đại Việt, and neighboring realms.",
         "region_id": "035",
         "source_ids": [
           "regional-survey-035",
@@ -1560,7 +1575,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "035/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, \u0110\u1ea1i Vi\u1ec7t, and neighboring realms.",
+        "notes": "035/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, Đại Việt, and neighboring realms.",
         "region_id": "035",
         "source_ids": [
           "regional-survey-035",
@@ -1571,7 +1586,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "035/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, \u0110\u1ea1i Vi\u1ec7t, and neighboring realms.",
+        "notes": "035/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, Đại Việt, and neighboring realms.",
         "region_id": "035",
         "source_ids": [
           "regional-survey-035",
@@ -1582,7 +1597,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "035/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, \u0110\u1ea1i Vi\u1ec7t, and neighboring realms.",
+        "notes": "035/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, Đại Việt, and neighboring realms.",
         "region_id": "035",
         "source_ids": [
           "regional-survey-035",
@@ -1593,7 +1608,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "035/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, \u0110\u1ea1i Vi\u1ec7t, and neighboring realms.",
+        "notes": "035/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, Đại Việt, and neighboring realms.",
         "region_id": "035",
         "source_ids": [
           "regional-survey-035",
@@ -1604,7 +1619,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "035/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, \u0110\u1ea1i Vi\u1ec7t, and neighboring realms.",
+        "notes": "035/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Ayutthaya, Lan Xang, Malacca, Majapahit, Đại Việt, and neighboring realms.",
         "region_id": "035",
         "source_ids": [
           "regional-survey-035",
@@ -1752,7 +1767,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "053/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered Aboriginal Australian and M\u0101ori political communities.",
+        "notes": "053/claim confirmed negative: no formal sovereignty or title assertion over an uncontrolled geographic whole is evidenced for 1444-11-11 after the recorded regional survey and synonym searches considered Aboriginal Australian and Māori political communities.",
         "region_id": "053",
         "source_ids": [
           "regional-survey-053",
@@ -1763,7 +1778,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "053/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Aboriginal Australian and M\u0101ori political communities.",
+        "notes": "053/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Aboriginal Australian and Māori political communities.",
         "region_id": "053",
         "source_ids": [
           "regional-survey-053",
@@ -1774,7 +1789,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "053/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Aboriginal Australian and M\u0101ori political communities.",
+        "notes": "053/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Aboriginal Australian and Māori political communities.",
         "region_id": "053",
         "source_ids": [
           "regional-survey-053",
@@ -1785,7 +1800,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "053/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Aboriginal Australian and M\u0101ori political communities.",
+        "notes": "053/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Aboriginal Australian and Māori political communities.",
         "region_id": "053",
         "source_ids": [
           "regional-survey-053",
@@ -1796,7 +1811,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "053/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Aboriginal Australian and M\u0101ori political communities.",
+        "notes": "053/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Aboriginal Australian and Māori political communities.",
         "region_id": "053",
         "source_ids": [
           "regional-survey-053",
@@ -1807,7 +1822,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "053/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Aboriginal Australian and M\u0101ori political communities.",
+        "notes": "053/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Aboriginal Australian and Māori political communities.",
         "region_id": "053",
         "source_ids": [
           "regional-survey-053",
@@ -1818,7 +1833,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "053/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Aboriginal Australian and M\u0101ori political communities.",
+        "notes": "053/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Aboriginal Australian and Māori political communities.",
         "region_id": "053",
         "source_ids": [
           "regional-survey-053",
@@ -1829,7 +1844,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "053/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Aboriginal Australian and M\u0101ori political communities.",
+        "notes": "053/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Aboriginal Australian and Māori political communities.",
         "region_id": "053",
         "source_ids": [
           "regional-survey-053",
@@ -1840,7 +1855,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "053/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered Aboriginal Australian and M\u0101ori political communities.",
+        "notes": "053/free-protected-city confirmed negative: no chartered civic autonomy, imperial immediacy, or comparable protected-city institution is evidenced at the start date after the recorded regional survey and synonym searches considered Aboriginal Australian and Māori political communities.",
         "region_id": "053",
         "source_ids": [
           "regional-survey-053",
@@ -1851,7 +1866,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "053/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Aboriginal Australian and M\u0101ori political communities.",
+        "notes": "053/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Aboriginal Australian and Māori political communities.",
         "region_id": "053",
         "source_ids": [
           "regional-survey-053",
@@ -1862,7 +1877,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "053/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Aboriginal Australian and M\u0101ori political communities.",
+        "notes": "053/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Aboriginal Australian and Māori political communities.",
         "region_id": "053",
         "source_ids": [
           "regional-survey-053",
@@ -2615,19 +2630,21 @@
         "type": "claim"
       },
       {
-        "anomaly_ids": [],
-        "notes": "154/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Kalmar Union, Baltic Hanseatic cities, England, Scotland, and L\u00fcbeck.",
+        "anomaly_ids": [
+          "kalmar-union-composite-realm"
+        ],
+        "notes": "resolved_cases: kalmar-union-composite-realm",
         "region_id": "154",
         "source_ids": [
-          "regional-survey-154",
-          "shepherd-historical-atlas"
+          "cambridge-kalmar-union",
+          "regional-survey-154"
         ],
-        "status": "reviewed_none_found",
+        "status": "resolved_cases",
         "type": "composite-realm"
       },
       {
         "anomaly_ids": [],
-        "notes": "154/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Kalmar Union, Baltic Hanseatic cities, England, Scotland, and L\u00fcbeck.",
+        "notes": "154/concession confirmed negative: no grant establishes territorial or extraterritorial jurisdiction for an external community at the start date after the recorded regional survey and synonym searches considered Kalmar Union, Baltic Hanseatic cities, England, Scotland, and Lübeck.",
         "region_id": "154",
         "source_ids": [
           "regional-survey-154",
@@ -2638,7 +2655,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "154/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Kalmar Union, Baltic Hanseatic cities, England, Scotland, and L\u00fcbeck.",
+        "notes": "154/condominium confirmed negative: no instrument or institution establishes formally shared superior authority by multiple rulers at the start date after the recorded regional survey and synonym searches considered Kalmar Union, Baltic Hanseatic cities, England, Scotland, and Lübeck.",
         "region_id": "154",
         "source_ids": [
           "regional-survey-154",
@@ -2649,7 +2666,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "154/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Kalmar Union, Baltic Hanseatic cities, England, Scotland, and L\u00fcbeck.",
+        "notes": "154/dependency confirmed negative: no possession is evidenced as separately governed and subordinate rather than an ordinary contiguous division after the recorded regional survey and synonym searches considered Kalmar Union, Baltic Hanseatic cities, England, Scotland, and Lübeck.",
         "region_id": "154",
         "source_ids": [
           "regional-survey-154",
@@ -2660,7 +2677,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "154/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Kalmar Union, Baltic Hanseatic cities, England, Scotland, and L\u00fcbeck.",
+        "notes": "154/detached-territory confirmed negative: no governed possession is evidenced as geographically separated from its polity principal lands after the recorded regional survey and synonym searches considered Kalmar Union, Baltic Hanseatic cities, England, Scotland, and Lübeck.",
         "region_id": "154",
         "source_ids": [
           "regional-survey-154",
@@ -2671,7 +2688,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "154/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Kalmar Union, Baltic Hanseatic cities, England, Scotland, and L\u00fcbeck.",
+        "notes": "154/disputed-area confirmed negative: no date-valid record shows two identifiable authorities actively contesting sovereignty or required return on 1444-11-11 after the recorded regional survey and synonym searches considered Kalmar Union, Baltic Hanseatic cities, England, Scotland, and Lübeck.",
         "region_id": "154",
         "source_ids": [
           "regional-survey-154",
@@ -2682,7 +2699,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "154/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Kalmar Union, Baltic Hanseatic cities, England, Scotland, and L\u00fcbeck.",
+        "notes": "154/enclave-exclave confirmed negative: no evidenced territory is wholly or almost wholly surrounded by another polity at the start-date geography after the recorded regional survey and synonym searches considered Kalmar Union, Baltic Hanseatic cities, England, Scotland, and Lübeck.",
         "region_id": "154",
         "source_ids": [
           "regional-survey-154",
@@ -2708,7 +2725,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "154/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Kalmar Union, Baltic Hanseatic cities, England, Scotland, and L\u00fcbeck.",
+        "notes": "154/microstate confirmed negative: no territorially minute self-governing polity requiring separate representation is evidenced at the start date after the recorded regional survey and synonym searches considered Kalmar Union, Baltic Hanseatic cities, England, Scotland, and Lübeck.",
         "region_id": "154",
         "source_ids": [
           "regional-survey-154",
@@ -2719,7 +2736,7 @@
       },
       {
         "anomaly_ids": [],
-        "notes": "154/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Kalmar Union, Baltic Hanseatic cities, England, Scotland, and L\u00fcbeck.",
+        "notes": "154/non-state-territory confirmed negative: no durable territorial administration outside both dynastic statehood and ordinary subdivision is evidenced after the recorded regional survey and synonym searches considered Kalmar Union, Baltic Hanseatic cities, England, Scotland, and Lübeck.",
         "region_id": "154",
         "source_ids": [
           "regional-survey-154",
@@ -2890,7 +2907,7 @@
       "155"
     ],
     "researcher": "OpenAI Codex (research agent)",
-    "review_date": "2026-08-14",
+    "review_date": "2026-08-15",
     "reviewer": "George Le",
     "types": [
       "claim",

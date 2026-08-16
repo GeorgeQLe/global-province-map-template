@@ -70,7 +70,16 @@ def generate(args: argparse.Namespace) -> None:
     sidecars = output / "sidecars"
     sidecars.mkdir(exist_ok=True)
 
+    packets = _load_packets(args.regional_packets_dir)
     mask = _load(args.global_input / "world_coverage_mask.geojson")
+    location_region_overrides = {
+        row["location_id"]: row["region_id"]
+        for packet in packets for row in packet.get("location_region_overrides") or []
+    }
+    for feature in mask["features"]:
+        location_id = feature["properties"]["location_id"]
+        if location_id in location_region_overrides:
+            feature["properties"]["region_id"] = location_region_overrides[location_id]
     mask_features = sorted(mask["features"], key=lambda f: f["properties"]["location_id"])
     locations = {f["properties"]["location_id"]: f for f in mask_features}
     if len(locations) != 23_582:
@@ -226,6 +235,21 @@ def generate(args: argparse.Namespace) -> None:
         feature for feature in _load(args.pilot_input / "build.geojson")["features"]
         if feature["properties"]["feature_type"] == "capital"
     ]
+    capital_index = {feature["properties"]["feature_id"]: feature for feature in capital_features}
+    for packet in packets:
+        for feature in packet.get("build_features") or []:
+            capital_index[feature["properties"]["feature_id"]] = {
+                "type": "Feature",
+                "properties": {
+                    "feature_id": feature["properties"]["feature_id"],
+                    "feature_type": "capital",
+                },
+                "geometry": json.loads(json.dumps(feature["geometry"])),
+            }
+    capital_features = list(capital_index.values())
+    capital_ids = [feature["properties"]["feature_id"] for feature in capital_features]
+    if len(capital_ids) != len(set(capital_ids)):
+        raise SystemExit("regional packet build feature IDs must be globally unique")
     build = _header("start_date_full_build_geometry") | {
         "geometry_revision": GEOMETRY_REVISION, "type": "FeatureCollection",
         "features": [{"type": "Feature", "properties": {"feature_id": province_id, "feature_type": "province"},
@@ -263,7 +287,6 @@ def generate(args: argparse.Namespace) -> None:
         "coverage": coverage_rows, "exclusions": [],
         "known_gaps": ["All 22 regions require four-layer Grade-A promotion before certification."],
     }
-    packets = _load_packets(args.regional_packets_dir)
     _apply_packets(packets, source_manifest, gazetteer, boundaries, golden, assignments, coverage)
     boundaries["features"].sort(key=lambda feature: feature["properties"]["feature_id"])
     golden["assertions"].sort(key=lambda row: row["assertion_id"])
@@ -290,7 +313,8 @@ def generate(args: argparse.Namespace) -> None:
     ledger = _load(args.anomaly_input / "anomaly_census_review_ledger.json")
     ledger["artifact_version"] = VERSION
     _write(output / "anomaly_census_review_ledger.json", ledger)
-    shutil.copyfile(args.global_input / "world_coverage_mask.geojson", output / "world_coverage_mask.geojson")
+    _write(output / "world_coverage_mask.geojson", mask)
+    _copy_packet_derived_files(packets, output)
 
     changelog = _header("start_date_changelog") | {
         "version": VERSION, "released_at": "2026-08-14",
@@ -461,7 +485,11 @@ def _canonical_status(geometries: dict[str, Any], assignments: list[dict[str, An
 def _load_packets(directory: Path | None) -> list[dict[str, Any]]:
     if directory is None:
         return []
-    packets = [_load(path) for path in sorted(directory.glob("*.json"))]
+    packets = []
+    for path in sorted(directory.glob("*.json")):
+        packet = _load(path)
+        packet["_packet_path"] = str(path.resolve())
+        packets.append(packet)
     for packet in packets:
         if packet.get("packet_type") != "m25c_regional_evidence" or packet.get("start_date") != START_DATE:
             raise SystemExit("regional packet has invalid type/date")
@@ -475,11 +503,11 @@ def _load_packets(directory: Path | None) -> list[dict[str, Any]]:
                 or not re.fullmatch(r"[0-9a-f]{64}", str(pin.get("sha256") or ""))
             ):
                 raise SystemExit("regional packet source pins require source_id, exact locator, and sha256")
-        _qualify_grade_a_packet(packet)
+        _qualify_grade_a_packet(packet, Path(packet["_packet_path"]))
     return sorted(packets, key=lambda row: (row["region_id"], row["as_of_date"], row.get("packet_id", "")))
 
 
-def _qualify_grade_a_packet(packet: dict[str, Any]) -> None:
+def _qualify_grade_a_packet(packet: dict[str, Any], packet_path: Path | None = None) -> None:
     rows = packet.get("coverage") or []
     if not any(row.get("grade") == "A" for row in rows):
         return
@@ -496,7 +524,12 @@ def _qualify_grade_a_packet(packet: dict[str, Any]) -> None:
     ):
         raise SystemExit(f"Grade-A packet {region} lacks accepted visual review or completeness attestations")
     source_index = {row["source_id"]: row for row in packet.get("sources") or []}
-    pin_ids = {row["source_id"] for row in packet["source_pins"]}
+    pin_index = {row["source_id"]: row for row in packet["source_pins"]}
+    pin_ids = set(pin_index)
+    for source_id, pin in pin_index.items():
+        source = source_index.get(source_id)
+        if source is None or pin["sha256"] != _source_pin_sha256(source, pin["locator"]):
+            raise SystemExit(f"Grade-A packet {region} has an invalid canonical source pin for {source_id}")
     for row in rows:
         cited = row.get("source_ids") or []
         if not cited or not set(cited).issubset(pin_ids):
@@ -516,6 +549,43 @@ def _qualify_grade_a_packet(packet: dict[str, Any]) -> None:
         groups = {source.get("independence_group") for source in evidence if source}
         if len(groups) < 2:
             raise SystemExit(f"Grade-A hard boundary {props.get('feature_id')} lacks independent corroboration")
+    build_ids: set[str] = set()
+    for feature in packet.get("build_features") or []:
+        props = feature.get("properties") or {}
+        feature_id = props.get("feature_id")
+        if (
+            not feature_id or feature_id in build_ids or props.get("feature_type") != "capital"
+            or (feature.get("geometry") or {}).get("type") != "Point"
+            or not set(props.get("source_ids") or []).issubset(pin_ids)
+        ):
+            raise SystemExit(f"Grade-A packet {region} has an invalid or duplicate build feature")
+        build_ids.add(feature_id)
+    asset_ids: set[str] = set()
+    target_paths: set[str] = set()
+    for derived in packet.get("derived_files") or []:
+        asset_id = derived.get("asset_id")
+        relative = Path(str(derived.get("path") or ""))
+        target = Path(str(derived.get("target_path") or ""))
+        if (
+            not asset_id or asset_id in asset_ids or not relative.parts or relative.is_absolute()
+            or ".." in relative.parts or not target.parts or target.is_absolute() or ".." in target.parts
+            or target.as_posix() in target_paths
+            or not re.fullmatch(r"[0-9a-f]{64}", str(derived.get("sha256") or ""))
+            or not set(derived.get("source_ids") or []).issubset(pin_ids)
+            or len({source_index[sid]["independence_group"] for sid in derived.get("source_ids") or []}) < 2
+            or not _source_applies(derived, START_DATE)
+        ):
+            raise SystemExit(f"Grade-A packet {region} has an invalid derived file declaration")
+        asset_ids.add(asset_id)
+        target_paths.add(target.as_posix())
+        if packet_path is not None:
+            asset_path = packet_path.parent / relative
+            try:
+                asset_path.resolve().relative_to(packet_path.parent.resolve())
+            except ValueError as exc:
+                raise SystemExit(f"Grade-A packet {region} derived file escapes packet assets") from exc
+            if asset_path.is_symlink() or not asset_path.is_file() or _sha256(asset_path) != derived["sha256"]:
+                raise SystemExit(f"Grade-A packet {region} derived file is missing or checksum-invalid: {asset_id}")
 
 
 def _source_applies(source: dict[str, Any], start_date: str) -> bool:
@@ -527,13 +597,38 @@ def _source_applies(source: dict[str, Any], start_date: str) -> bool:
     return bound(source.get("valid_from"), False) <= start_date <= bound(source.get("valid_to"), True)
 
 
+def _source_pin_sha256(source: dict[str, Any], locator: str) -> str:
+    """Bind a packet pin to the complete source record and its exact locator."""
+    payload = json.dumps(
+        {"locator": locator, "source": source},
+        sort_keys=True, separators=(",", ":"), ensure_ascii=False,
+    )
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
 def _apply_packets(packets: list[dict[str, Any]], sources: dict[str, Any], gazetteer: dict[str, Any],
                    boundaries: dict[str, Any], golden: dict[str, Any], assignments: dict[str, Any],
                    coverage: dict[str, Any]) -> None:
     if not packets:
         return
-    source_rows = _merge_records("source_id", sources["sources"], *(p.get("sources") or [] for p in packets))
-    polity_rows = _merge_records("polity_id", gazetteer["polities"], *(p.get("polities") or [] for p in packets))
+    source_index = {row["source_id"]: row for row in sources["sources"]}
+    for packet in packets:
+        for row in packet.get("sources") or []:
+            incoming = json.loads(json.dumps(row))
+            existing = source_index.get(row["source_id"])
+            if existing:
+                artifacts = {
+                    artifact["artifact_id"]: artifact
+                    for artifact in (existing.get("derived_artifacts") or []) + (incoming.get("derived_artifacts") or [])
+                }
+                incoming["derived_artifacts"] = [artifacts[key] for key in sorted(artifacts)]
+            source_index[row["source_id"]] = incoming
+    source_rows = list(source_index.values())
+    polity_index = {row["polity_id"]: row for row in gazetteer["polities"]}
+    for packet in packets:
+        for row in packet.get("polities") or []:
+            polity_index[row["polity_id"]] = json.loads(json.dumps(row))
+    polity_rows = list(polity_index.values())
     sources["sources"] = sorted(source_rows, key=lambda row: row["source_id"])
     gazetteer["polities"] = sorted(polity_rows, key=lambda row: row["polity_id"])
     boundaries["features"].extend(f for p in packets for f in p.get("boundary_features") or [])
@@ -542,6 +637,20 @@ def _apply_packets(packets: list[dict[str, Any]], sources: dict[str, Any], gazet
     assignments["assignments"] = [{**row, **overrides.get(row["province_id"], {})} for row in assignments["assignments"]]
     replacement = {(row["region_id"], row["layer"]): row for p in packets for row in p.get("coverage") or []}
     coverage["coverage"] = [replacement.get((row["region_id"], row["layer"]), row) for row in coverage["coverage"]]
+    promoted = {
+        region for region in WORLDWIDE_M49_SUBREGIONS
+        if all(
+            replacement.get((region, layer), {}).get("grade") == "A"
+            and not replacement[(region, layer)].get("known_gaps")
+            and not replacement[(region, layer)].get("exclusions")
+            for layer in LAYERS
+        )
+    }
+    remaining = sorted(WORLDWIDE_M49_SUBREGIONS - promoted)
+    coverage["known_gaps"] = ([] if not remaining else [
+        f"{len(remaining)} of 22 regions require four-layer Grade-A promotion before certification: "
+        + ", ".join(remaining)
+    ])
 
 
 def _provisional_source(path: Path) -> dict[str, Any]:
@@ -603,6 +712,22 @@ def _copy_derived_artifacts(source_root: Path, output: Path, sources: list[dict[
                 continue
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(source_path, target)
+
+
+def _copy_packet_derived_files(packets: list[dict[str, Any]], output: Path) -> None:
+    """Copy only qualified, checksum-pinned packet assets into the assembled pass."""
+    output_root = output.resolve()
+    for packet in packets:
+        packet_path = Path(packet["_packet_path"])
+        for derived in packet.get("derived_files") or []:
+            source = (packet_path.parent / derived["path"]).resolve()
+            target = (output / derived["target_path"]).resolve()
+            try:
+                target.relative_to(output_root)
+            except ValueError as exc:
+                raise SystemExit(f"packet derived target escapes assembled pass: {derived['target_path']}") from exc
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(source, target)
 
 
 def _header(document_type: str) -> dict[str, Any]:

@@ -1,5 +1,44 @@
 # History
 
+## 2026-08-15 - M25C Northern Europe Grade-A promotion
+
+- Repaired the frozen anomaly census by accepting the Kalmar Union as a
+  composite realm under Christopher of Bavaria, retained Lübeck and the
+  non-geographic Lancastrian claim, and refroze all 242 cells. George Le
+  accepted digest `11f5821ecdd9cf54e68731297f47457244d758b06b8be23c951bda10c254b282`.
+- Promoted UN M49 region 154 with 1,367 non-provisional assignment overrides,
+  18 polity replacements, 14 canonical source pins, 23 executable assertions,
+  and three checksum-pinned regional assets. Bouvet Island moved to South
+  America `005` before grouping and rendering.
+- The packet represents the three Kalmar kingdoms separately; replaces modern
+  independent Channel Island, Manx, and whole-island Irish scaffolds; and
+  retains sourced English, Scottish, Lithuanian, Livonian, Novgorodian, and
+  Lübeck records. The accepted render digest is
+  `7ed1bf36e09a2dd28f084ce0138a5447570dd2ac6565df2e1f065908f8e15515`.
+- Packet qualification now validates checked capital points and contained,
+  regular, checksum-pinned derived files with date-valid independent evidence.
+  The worldwide lineage remains non-public and non-certifiable with 20 regions
+  and 80 Grade-A rows remaining.
+
+## 2026-08-15 - M25C first regional Grade-A promotion
+
+- Promoted UN M49 region 155 (Western Europe) with the first exact-date,
+  source-pinned four-layer Grade-A packet: 385 complete assignment overrides,
+  14 reviewed sources, 19 sourced scaffold-polity replacements, and 20
+  region-scoped executable spatial assertions.
+- Bound each packet source pin to the SHA-256 of its complete canonical source
+  record plus exact locator and made packet polity records authoritative
+  replacements, closing placeholder-digest and non-overriding-polity gaps in
+  the positive merge path.
+- Visual review caught 39 locations inherited from sovereign-country metadata
+  even though UN M49 lists their areas separately. The packet now moves 24 to
+  Caribbean `029`, ten to South America `005`, and five to Eastern Africa
+  `014` before assignment and review rendering.
+- The corrected region sheet contains Western European land only; all 20 new
+  assertions pass and provisional full-world QA reports zero errors. The
+  worldwide lineage remains non-public and non-certifiable while 21 regional
+  packets and 84 Grade-A rows remain.
+
 ## 2026-08-15 - M25C provisional worldwide evidence pass
 
 - Added a deterministic non-public generator that filters the accepted M23 r2

@@ -248,6 +248,44 @@
       "type": "concession"
     },
     {
+      "anomaly_id": "kalmar-union-composite-realm",
+      "canonical_model": {
+        "common_ruler": "christopher_of_bavaria",
+        "constituent_realms": [
+          "kingdom_of_denmark",
+          "kingdom_of_norway",
+          "kingdom_of_sweden"
+        ],
+        "minimum_retention": "sovereign_composite_with_constituent_realms",
+        "separate_councils_and_institutions": true,
+        "specific_form": "composite_union"
+      },
+      "evidence_reviews": [
+        {
+          "conclusion": "The chapter places Christopher of Bavaria on the Danish, Norwegian, and Swedish thrones in 1440–48 and describes each kingdom's separate realm council and institutions.",
+          "locator": "Chapter 24 > Inter-Scandinavian relations > Scandinavian unions (1319–1520), including Christopher of Bavaria, king of Denmark, Norway and Sweden (1440–1448)",
+          "source_id": "cambridge-kalmar-union"
+        },
+        {
+          "conclusion": "The dated regional chronology independently distinguishes Denmark and Norway from Sweden and Finland during the Kalmar Union period.",
+          "locator": "Timeline > 1400 A.D.–1450 A.D. > DENMARK AND NORWAY / SWEDEN AND FINLAND; Overview",
+          "source_id": "regional-survey-154"
+        }
+      ],
+      "region_ids": [
+        "154"
+      ],
+      "resolution": "resolved",
+      "source_ids": [
+        "cambridge-kalmar-union",
+        "regional-survey-154"
+      ],
+      "subject_ids": [
+        "kalmar-union"
+      ],
+      "type": "composite-realm"
+    },
+    {
       "anomaly_id": "lubeck-free-imperial-city",
       "canonical_model": {
         "governing_authority": "council_of_lubeck",
@@ -506,6 +544,20 @@
       ],
       "valid_from": "1384",
       "valid_to": "1477"
+    },
+    {
+      "aliases": [
+        "Union of Kalmar",
+        "Scandinavian Union"
+      ],
+      "canonical_name": "Kalmar Union under Christopher of Bavaria",
+      "polity_id": "kalmar-union",
+      "source_ids": [
+        "cambridge-kalmar-union",
+        "regional-survey-154"
+      ],
+      "valid_from": "1440",
+      "valid_to": "1448"
     },
     {
       "aliases": [
@@ -4127,21 +4179,6 @@
         "regional-survey-154",
         "shepherd-historical-atlas",
         "treaty-troyes-fordham"
-      ]
-    },
-    {
-      "lead_id": "154/composite-realm/bounded-survey-leads",
-      "region_id": "154",
-      "anomaly_type": "composite-realm",
-      "lead": "Kalmar Union, Baltic Hanseatic cities, England, Scotland, and Lübeck",
-      "disposition": "rejected",
-      "failure_basis": [
-        "institutional_status"
-      ],
-      "rationale": "Kalmar Union, Baltic Hanseatic cities, England, Scotland, and Lübeck was the named composite-realm lead for region 154; no union under one ruler is evidenced in which the named territories retained separate constitutional institutions.",
-      "source_ids": [
-        "regional-survey-154",
-        "shepherd-historical-atlas"
       ]
     },
     {
@@ -14831,28 +14868,28 @@
       ]
     },
     {
-      "anomaly_ids": [],
+      "anomaly_ids": [
+        "kalmar-union-composite-realm"
+      ],
       "anomaly_type": "composite-realm",
-      "conclusion": "154/composite-realm confirmed negative: no union under one ruler is evidenced in which the named territories retained separate constitutional institutions after the recorded regional survey and synonym searches considered Kalmar Union, Baltic Hanseatic cities, England, Scotland, and Lübeck.",
+      "conclusion": "resolved_cases: kalmar-union-composite-realm",
       "considered_leads": [
         {
-          "disposition": "rejected",
-          "lead": "Kalmar Union, Baltic Hanseatic cities, England, Scotland, and Lübeck",
-          "rationale": "Kalmar Union, Baltic Hanseatic cities, England, Scotland, and Lübeck was the named composite-realm lead for region 154; no union under one ruler is evidenced in which the named territories retained separate constitutional institutions.",
+          "disposition": "accepted",
+          "lead": "Kalmar Union under Christopher of Bavaria",
+          "rationale": "Christopher was king of Denmark, Norway, and Sweden on 1444-11-11 while the three realms retained separate councils and institutions.",
           "supporting_source_ids": [
-            "regional-survey-154",
-            "shepherd-historical-atlas"
+            "cambridge-kalmar-union",
+            "regional-survey-154"
           ],
-          "failure_basis": [
-            "institutional_status"
-          ]
+          "failure_basis": []
         }
       ],
       "queries": [
         "\"Northern Europe\" 1444 \"composite monarchy OR personal union OR separate laws under one ruler\"",
         "\"Northern Europe\" \"fifteenth century\" composite monarchy"
       ],
-      "rationale": "Kalmar Union, Baltic Hanseatic cities, England, Scotland, and Lübeck was the named composite-realm lead for region 154; no union under one ruler is evidenced in which the named territories retained separate constitutional institutions.",
+      "rationale": "The academic union history and independent dated regional chronology support one ruler over three constitutionally distinct Scandinavian kingdoms at the exact start date.",
       "region_id": "154",
       "regional_survey_source_ids": [
         "regional-survey-154"
@@ -14860,20 +14897,20 @@
       "review_id": "154/composite-realm",
       "source_locators": [
         {
+          "source_id": "cambridge-kalmar-union",
+          "url": "https://www.cambridge.org/core/books/abs/cambridge-history-of-scandinavia/interscandinavian-relations/8664BE2846BEE72480907AD5C7369C11",
+          "locator": "Chapter 24 > Inter-Scandinavian relations > Scandinavian unions (1319–1520), including Christopher of Bavaria, king of Denmark, Norway and Sweden (1440–1448)"
+        },
+        {
           "source_id": "regional-survey-154",
           "url": "https://www.metmuseum.org/toah/ht/08/eue.html",
           "locator": "Timeline > 1400 A.D.–1450 A.D. > DENMARK AND NORWAY / SWEDEN AND FINLAND; Overview"
-        },
-        {
-          "source_id": "shepherd-historical-atlas",
-          "url": "https://archive.org/details/historicalatlas00shep",
-          "locator": "Regional historical plates covering 1400–1500"
         }
       ],
-      "status": "reviewed_none_found",
+      "status": "resolved_cases",
       "supporting_source_ids": [
-        "regional-survey-154",
-        "shepherd-historical-atlas"
+        "cambridge-kalmar-union",
+        "regional-survey-154"
       ]
     },
     {
@@ -16047,6 +16084,23 @@
       "valid_from": "1261",
       "valid_to": "1453",
       "version": "web edition reviewed 2026-07-21"
+    },
+    {
+      "access_date": "2026-08-15",
+      "checksum": null,
+      "citation": "Jens E. Olesen, 'Inter-Scandinavian relations', The Cambridge History of Scandinavia, vol. 1, chapter 24: the distinct Scandinavian kingdoms, their realm councils, and Christopher of Bavaria as king of Denmark, Norway, and Sweden (1440–1448).",
+      "derived_artifacts": [],
+      "independence_group": "cambridge-olesen",
+      "license": "Citation/link only; no source text redistributed",
+      "locator": "Chapter 24 > Inter-Scandinavian relations > Scandinavian unions (1319–1520), including Christopher of Bavaria, king of Denmark, Norway and Sweden (1440–1448)",
+      "review_status": "reviewed",
+      "source_id": "cambridge-kalmar-union",
+      "source_type": "academic",
+      "transformations": [],
+      "url": "https://www.cambridge.org/core/books/abs/cambridge-history-of-scandinavia/interscandinavian-relations/8664BE2846BEE72480907AD5C7369C11",
+      "valid_from": "1319",
+      "valid_to": "1520",
+      "version": "Cambridge Core chapter page reviewed 2026-08-15"
     },
     {
       "access_date": "2026-07-21",
