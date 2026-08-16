@@ -1,5 +1,23 @@
 # History
 
+## 2026-08-15 - M25C Western Asia Grade-A promotion
+
+- Promoted UN M49 region 145 with 768 non-provisional assignment overrides,
+  eight authoritative polity replacements, 11 canonical source pins, seven
+  checked capital features, and 29 executable assertions across all four layers.
+- Pinned the exact date to 1444-11-11, one day after the Ottoman victory at
+  Varna, while preserving distinct Byzantine, Lusignan Cypriot, Georgian,
+  Mamluk, Qara Qoyunlu, Rasulid, local Arabian, and Ottoman records.
+- Removed the modern Northern Cyprus and Palestine actors, repaired one Muscovy
+  leak in Azerbaijan, and replaced all 371 uncurated Arabian assignments with
+  bounded Rasulid-Yemen or explicitly fragmented local-Arabian evidence.
+- Added independently sourced Ottoman-Qara Qoyunlu boundary and polity-mask
+  assets. The accepted review sheet SHA-256 is
+  `5db0275d6156cd6188bb85abcadc28811f7a1b2452efcd2e5b5dc3add93afcac`.
+- The country-based M49 sheet needs no correction. The worldwide lineage
+  remains non-public and non-certifiable with 17 regions and 68 Grade-A rows
+  remaining.
+
 ## 2026-08-15 - M25C Southern Europe Grade-A promotion
 
 - Promoted UN M49 region 039 with 464 non-provisional assignment overrides,

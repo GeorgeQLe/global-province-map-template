@@ -627,7 +627,20 @@ def _apply_packets(packets: list[dict[str, Any]], sources: dict[str, Any], gazet
     polity_index = {row["polity_id"]: row for row in gazetteer["polities"]}
     for packet in packets:
         for row in packet.get("polities") or []:
-            polity_index[row["polity_id"]] = json.loads(json.dumps(row))
+            incoming = json.loads(json.dumps(row))
+            existing = polity_index.get(row["polity_id"])
+            if existing:
+                for field in ("aliases", "capital_location_ids", "source_ids"):
+                    incoming[field] = sorted(
+                        set(existing.get(field) or []) | set(incoming.get(field) or [])
+                    )
+                relationships = {
+                    relation["relationship_id"]: relation
+                    for relation in (existing.get("relationships") or [])
+                    + (incoming.get("relationships") or [])
+                }
+                incoming["relationships"] = [relationships[key] for key in sorted(relationships)]
+            polity_index[row["polity_id"]] = incoming
     polity_rows = list(polity_index.values())
     sources["sources"] = sorted(source_rows, key=lambda row: row["source_id"])
     gazetteer["polities"] = sorted(polity_rows, key=lambda row: row["polity_id"])

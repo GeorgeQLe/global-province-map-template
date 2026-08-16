@@ -149,6 +149,7 @@ def test_regional_packet_cannot_promote_a_weak_grade_a_claim():
 
 @pytest.mark.parametrize(("region", "filename", "assignment_count", "correction_count"), [
     ("039", "039-southern-europe-2026-08-15.json", 464, 0),
+    ("145", "145-western-asia-2026-08-15.json", 768, 0),
     ("151", "151-eastern-europe-2026-08-15.json", 2178, 0),
     ("154", "154-northern-europe-2026-08-15.json", 1367, 1),
     ("155", "155-western-europe-2026-08-15.json", 385, 39),
@@ -184,6 +185,21 @@ def test_completed_region_grade_a_packets(region, filename, assignment_count, co
         names = {row["polity_id"]: row["name"] for row in packet["polities"]}
         assert names["scenario-tur"].endswith("after the Battle of Varna")
         assert names["scenario-nap"] == "Kingdom of Naples under Alfonso V"
+    elif region == "145":
+        assert packet["expected_counts"] == {
+            "assertions": 29, "assignments": 768, "build_features": 7,
+            "derived_files": 2, "m49_corrections": 0, "polities": 8,
+            "sources": 11,
+        }
+        assert packet["visual_review_artifact"]["sha256"] == (
+            "5db0275d6156cd6188bb85abcadc28811f7a1b2452efcd2e5b5dc3add93afcac"
+        )
+        assert "scenario-unk" not in {
+            row["owner_polity_id"] for row in packet["assignment_overrides"]
+        }
+        assert {row["polity_id"] for row in packet["polities"]} >= {
+            "scenario-rasulid", "scenario-local-arabia",
+        }
     elif region == "151":
         assert packet["expected_counts"] == {
             "assertions": 5, "assignments": 2178, "m49_corrections": 0,
@@ -217,6 +233,38 @@ def test_region_grade_a_source_pins_bind_the_canonical_source_records():
 
     with pytest.raises(SystemExit, match="invalid canonical source pin"):
         provisional._qualify_grade_a_packet(packet)
+
+
+def test_regional_packet_merge_preserves_cross_region_polity_capitals():
+    provisional = _provisional_module()
+    packet = {
+        "region_id": "145", "sources": [], "coverage": [],
+        "polities": [{
+            "polity_id": "shared", "name": "Shared polity", "aliases": [],
+            "capital_location_ids": ["eastern-capital"], "relationships": [],
+            "source_ids": ["east-source"],
+        }],
+        "boundary_features": [], "assertions": [], "assignment_overrides": [],
+    }
+    sources = {"sources": []}
+    gazetteer = {"polities": [{
+        "polity_id": "shared", "name": "Shared polity", "aliases": [],
+        "capital_location_ids": ["western-capital"], "relationships": [],
+        "source_ids": ["west-source"],
+    }]}
+    boundaries = {"features": []}
+    golden = {"assertions": []}
+    assignments = {"assignments": []}
+    coverage = {"coverage": []}
+
+    provisional._apply_packets(
+        [packet], sources, gazetteer, boundaries, golden, assignments, coverage,
+    )
+
+    assert gazetteer["polities"][0]["capital_location_ids"] == [
+        "eastern-capital", "western-capital",
+    ]
+    assert gazetteer["polities"][0]["source_ids"] == ["east-source", "west-source"]
 
 
 def test_region_grade_a_derived_files_are_contained_regular_and_checksum_pinned(tmp_path):

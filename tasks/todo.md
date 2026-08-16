@@ -3,9 +3,10 @@
 ## Active
 
 - M25C regional evidence promotion: replace provisional records in risk-first
-  order (`145, 015`, then Asia, Africa/Americas, and Oceania)
-  with dated, source-pinned four-layer packets. Regions `039`, `151`, `154`, and
-  `155` are complete; 18 regions and 72 rows remain. Only after all 88 rows are gap-free Grade A may
+  order (`015`, then Asia, Africa/Americas, and Oceania)
+  with dated, source-pinned four-layer packets. Regions `039`, `145`, `151`,
+  `154`, and `155` are complete; 17 regions and 68 rows remain. Only after all
+  88 rows are gap-free Grade A may
   the ordinary research, human-review, runtime, and publication gates run.
 
 ## Up next (from roadmap)

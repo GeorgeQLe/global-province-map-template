@@ -46,3 +46,13 @@ Italian states, Balkan polities, Byzantium, and the Ottoman Sultanate. The
 Portugal–Castile hard frontier is independently pinned and rendered. Under the
 country-based M49 partition, Spain's and Portugal's complete territories remain
 in `039`, so no geographic correction applies.
+
+`145-western-asia-2026-08-15.json` is the fifth accepted packet. It replaces
+all 768 Western Asia assignments, supplies eight authoritative polity records,
+11 canonical source pins, seven checked capital features, 29 executable
+assertions, and two checksum-pinned Ottoman-Qara Qoyunlu frontier assets. Its
+exact `1444-11-11` interpretation is the day after Varna. It removes the modern
+Northern Cyprus and Palestine actors, repairs one Muscovy leak in Azerbaijan,
+and replaces every uncurated Arabian assignment with a bounded Rasulid-Yemen or
+explicitly fragmented local-Arabian record. The country-based M49 sheet needs
+no region correction.
