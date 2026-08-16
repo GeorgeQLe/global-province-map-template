@@ -26,3 +26,13 @@ date-valid records. Its 23 assertions cover three political frontiers, six
 capital locations across three layers, and modern Ireland/Åland negative
 controls. Three packet assets are copied only after containment, regular-file,
 unique-ID, checksum, temporal, and independent-corroboration checks pass.
+
+`151-eastern-europe-2026-08-15.json` is the third accepted packet. It replaces
+all 2,178 Eastern Europe assignments, adds 15 authoritative polity records and
+five executable assertions, and binds ten complete source records to exact
+locators. The exact date matters: `1444-11-11` is the day after the Battle of
+Varna, so the Polish and Hungarian records explicitly describe the resulting
+interregnum and succession state while Lithuania remains distinct. No M49
+correction applies: under the pinned country-based UN partition, the complete
+Russian Federation footprint belongs to subregion `151`, including its Asian
+territory and antimeridian islands.

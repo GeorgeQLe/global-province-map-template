@@ -1,5 +1,20 @@
 # History
 
+## 2026-08-15 - M25C Eastern Europe Grade-A promotion
+
+- Promoted UN M49 region 151 with 2,178 non-provisional assignment overrides,
+  15 authoritative polity replacements, ten canonical source pins, and five
+  executable assertions across the four required layers.
+- Pinned the exact date to 1444-11-11, one day after the Ottoman victory at
+  Varna, and labeled the Polish interregnum and Hungarian succession state
+  without collapsing the separately governed Lithuanian polity.
+- Accepted the full country-based UN M49 Russia footprint with no geographic
+  correction. The reviewed sheet therefore includes Russia's Asian extent and
+  antimeridian islands; its SHA-256 is
+  `2ecf89be71b36d59ac8ea05c90e8dde5bff80c1e839003a67ec5311cf7cf5d2b`.
+- Full provisional worldwide QA passed with zero errors. The lineage remains
+  non-public and non-certifiable with 19 regions and 76 Grade-A rows remaining.
+
 ## 2026-08-15 - M25C Northern Europe Grade-A promotion
 
 - Repaired the frozen anomaly census by accepting the Kalmar Union as a

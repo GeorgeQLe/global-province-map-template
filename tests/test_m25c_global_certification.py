@@ -148,6 +148,7 @@ def test_regional_packet_cannot_promote_a_weak_grade_a_claim():
 
 
 @pytest.mark.parametrize(("region", "filename", "assignment_count", "correction_count"), [
+    ("151", "151-eastern-europe-2026-08-15.json", 2178, 0),
     ("154", "154-northern-europe-2026-08-15.json", 1367, 1),
     ("155", "155-western-europe-2026-08-15.json", 385, 39),
 ])
@@ -170,7 +171,18 @@ def test_completed_region_grade_a_packets(region, filename, assignment_count, co
     assert all("official-1444-modern-scaffold-provisional" not in row["source_ids"]
                for row in packet["assignment_overrides"])
     assert len(packet["location_region_overrides"]) == correction_count
-    if region == "154":
+    if region == "151":
+        assert packet["expected_counts"] == {
+            "assertions": 5, "assignments": 2178, "m49_corrections": 0,
+            "polities": 15, "sources": 10,
+        }
+        assert packet["visual_review_artifact"]["sha256"] == (
+            "2ecf89be71b36d59ac8ea05c90e8dde5bff80c1e839003a67ec5311cf7cf5d2b"
+        )
+        assert {row["polity_id"]: row["name"] for row in packet["polities"]}[
+            "scenario-pol"
+        ].endswith("post-Varna interregnum")
+    elif region == "154":
         assert packet["location_region_overrides"] == [{
             "location_id": "loc_83d09efffffffff_9e81297988", "region_id": "005",
             "reason": "Bouvet Island is geographically in UN M49 South America, not Northern Europe.",
@@ -179,7 +191,7 @@ def test_completed_region_grade_a_packets(region, filename, assignment_count, co
             "assertions": 23, "assignments": 1367, "derived_files": 3,
             "m49_corrections": 1, "polities": 18, "sources": 14,
         }
-    else:
+    elif region == "155":
         assert {target: sum(row["region_id"] == target for row in packet["location_region_overrides"])
                 for target in {"005", "014", "029"}} == {"005": 10, "014": 5, "029": 24}
 
