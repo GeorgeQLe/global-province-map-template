@@ -1,0 +1,69 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            98.19771852158979,
+            42.39719105534706
+          ],
+          [
+            98.95577899044292,
+            42.17023703462252
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "classification": "hard_constraint",
+        "confidence": "high",
+        "date_precision": "day",
+        "derived_geometry_artifact_id": "derived-region-030-ming-oirat-frontier",
+        "error_budget_km": 1.0,
+        "feature_id": "region-030-ming-oirat-frontier",
+        "geographic_scope": "030",
+        "geometry_revision": "1444-r2",
+        "georeferencing": {
+          "control_points": [
+            {
+              "id": "region-030-frontier-0"
+            },
+            {
+              "id": "region-030-frontier-1"
+            },
+            {
+              "id": "region-030-frontier-2"
+            }
+          ],
+          "crs": "EPSG:4326",
+          "digitizer": "region-030-packet-generator",
+          "residual_error_km": 0.0,
+          "reviewer": "Codex regional geometry review",
+          "source_feature_reference": "packet#region-030-ming-oirat-frontier",
+          "transform_method": "fabric-shared-boundary-extraction-wgs84"
+        },
+        "license_lineage": [
+          "derived from accepted global-h3-v1-r2 fabric"
+        ],
+        "semantics": "Checked 1444 frontier segment between Ming and Oirat political sheets.",
+        "side_polity_ids": {
+          "left": "scenario-mng",
+          "right": "scenario-oir"
+        },
+        "source_ids": [
+          "cambridge-ming-allies",
+          "cambridge-ming-oirat-frontier",
+          "shepherd-historical-atlas"
+        ],
+        "start_date_programs": [
+          "1444-11-11"
+        ],
+        "uncertainty_notes": "Shared fabric edge retained only for the declared regional assertion.",
+        "valid_from": "1431",
+        "valid_to": "1454"
+      },
+      "type": "Feature"
+    }
+  ],
+  "type": "FeatureCollection"
+}

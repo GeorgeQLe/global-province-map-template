@@ -66,3 +66,13 @@ Mamluk states from the Kingdoms of Dongola and Alodia and from local Saharan,
 Beja, and Darfur-Kordofan polities. Portugal's possession of Ceuta remains in
 the already-promoted Southern Europe packet because the pinned M49 partition is
 country-based and assigns Spain's complete modern footprint to region `039`.
+
+`030-eastern-asia-2026-08-16.json` is the seventh accepted packet. It replaces
+all 1,941 Eastern Asia assignments, supplies eight date-valid political records,
+nine canonical source pins, five checked capital features, 21 executable
+assertions, and a checksum-pinned Ming-Oirat frontier asset. Its exact date is
+`1444-11-11`. The sheet distinguishes Ming China, Joseon under Sejong,
+Muromachi Japan during the Ashikaga succession interval, Oirat and Northern
+Yuan Mongol fabrics, Phagmodrupa-led Tibet, Jurchen polities, and Moghulistan.
+It removes the anachronistic Hong Kong, Macao, and Muscovy scaffold actors; no
+country-based M49 correction applies.

@@ -1,5 +1,21 @@
 # History
 
+## 2026-08-16 - M25C Eastern Asia Grade-A promotion
+
+- Promoted UN M49 region 030 with 1,941 non-provisional assignment overrides,
+  eight date-valid polity records, nine canonical source pins, five checked
+  capital features, and 21 executable assertions across all four layers.
+- Pinned the sheet to exactly 1444-11-11 and retained separate Ming, Joseon,
+  Muromachi Japanese, Oirat, Northern Yuan, Jurchen, Phagmodrupa Tibetan, and
+  Moghulistan records instead of extending modern state actors backward.
+- Removed the anachronistic Hong Kong, Macao, and Muscovy assignments and added
+  an independently corroborated Ming-Oirat frontier asset. The accepted review
+  sheet SHA-256 is
+  `995c0fe202ab3c93d9266fc1706da7fe513076aada09db811969a2ed88807abc`.
+- The country-based M49 sheet needs no correction. The worldwide lineage
+  remains non-public and non-certifiable with 15 regions and 60 Grade-A rows
+  remaining.
+
 ## 2026-08-16 - M25C Northern Africa Grade-A promotion
 
 - Promoted UN M49 region 015 with 643 non-provisional assignment overrides,
