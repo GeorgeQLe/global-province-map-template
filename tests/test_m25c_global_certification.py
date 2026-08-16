@@ -148,6 +148,7 @@ def test_regional_packet_cannot_promote_a_weak_grade_a_claim():
 
 
 @pytest.mark.parametrize(("region", "filename", "assignment_count", "correction_count"), [
+    ("039", "039-southern-europe-2026-08-15.json", 464, 0),
     ("151", "151-eastern-europe-2026-08-15.json", 2178, 0),
     ("154", "154-northern-europe-2026-08-15.json", 1367, 1),
     ("155", "155-western-europe-2026-08-15.json", 385, 39),
@@ -171,7 +172,19 @@ def test_completed_region_grade_a_packets(region, filename, assignment_count, co
     assert all("official-1444-modern-scaffold-provisional" not in row["source_ids"]
                for row in packet["assignment_overrides"])
     assert len(packet["location_region_overrides"]) == correction_count
-    if region == "151":
+    if region == "039":
+        assert packet["expected_counts"] == {
+            "assertions": 29, "assignments": 464, "build_features": 7,
+            "derived_files": 2, "m49_corrections": 0, "polities": 23,
+            "sources": 18,
+        }
+        assert packet["visual_review_artifact"]["sha256"] == (
+            "ee88cd687939060294c5a3e75ca392435245a605d2dc2ab6e3fbf0aff96f0f66"
+        )
+        names = {row["polity_id"]: row["name"] for row in packet["polities"]}
+        assert names["scenario-tur"].endswith("after the Battle of Varna")
+        assert names["scenario-nap"] == "Kingdom of Naples under Alfonso V"
+    elif region == "151":
         assert packet["expected_counts"] == {
             "assertions": 5, "assignments": 2178, "m49_corrections": 0,
             "polities": 15, "sources": 10,

@@ -36,3 +36,13 @@ interregnum and succession state while Lithuania remains distinct. No M49
 correction applies: under the pinned country-based UN partition, the complete
 Russian Federation footprint belongs to subregion `151`, including its Asian
 territory and antimeridian islands.
+
+`039-southern-europe-2026-08-15.json` is the fourth accepted packet. It replaces
+all 464 Southern Europe assignments, supplies 23 authoritative polity records,
+18 canonical source pins, seven checked capital features, 29 executable
+assertions, and two checksum-pinned frontier assets. Its exact `1444-11-11`
+interpretation is the day after Varna and preserves distinct Iberian crowns,
+Italian states, Balkan polities, Byzantium, and the Ottoman Sultanate. The
+Portugal–Castile hard frontier is independently pinned and rendered. Under the
+country-based M49 partition, Spain's and Portugal's complete territories remain
+in `039`, so no geographic correction applies.

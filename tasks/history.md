@@ -1,5 +1,20 @@
 # History
 
+## 2026-08-15 - M25C Southern Europe Grade-A promotion
+
+- Promoted UN M49 region 039 with 464 non-provisional assignment overrides,
+  23 authoritative polity replacements, 18 canonical source pins, seven
+  checked capital features, and 29 executable assertions across all four layers.
+- Pinned the exact date to 1444-11-11, one day after the Ottoman victory at
+  Varna, while preserving distinct Iberian crowns, Italian states, Balkan
+  polities, Byzantium, and the Ottoman Sultanate.
+- Added independently sourced Portugal–Castile boundary and polity-mask assets.
+  The accepted review sheet SHA-256 is
+  `ee88cd687939060294c5a3e75ca392435245a605d2dc2ab6e3fbf0aff96f0f66`.
+- The country-based M49 sheet needs no correction. The worldwide lineage
+  remains non-public and non-certifiable with 18 regions and 72 Grade-A rows
+  remaining.
+
 ## 2026-08-15 - M25C Eastern Europe Grade-A promotion
 
 - Promoted UN M49 region 151 with 2,178 non-provisional assignment overrides,
