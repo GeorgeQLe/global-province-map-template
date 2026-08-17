@@ -154,6 +154,7 @@ def test_regional_packet_cannot_promote_a_weak_grade_a_claim():
     ("014", "014-eastern-africa-2026-08-16.json", 715, 0),
     ("015", "015-northern-africa-2026-08-16.json", 643, 0),
     ("017", "017-middle-africa-2026-08-16.json", 527, 0),
+    ("018", "018-southern-africa-2026-08-16.json", 225, 0),
     ("021", "021-northern-america-2026-08-16.json", 3986, 0),
     ("029", "029-caribbean-2026-08-16.json", 372, 0),
     ("030", "030-eastern-asia-2026-08-16.json", 1941, 0),
@@ -306,6 +307,28 @@ def test_completed_region_grade_a_packets(region, filename, assignment_count, co
         assert {"scenario-norse-greenland", "scenario-thule-inuit",
                 "scenario-hohokam-communities", "scenario-mississippian-chiefdoms",
                 "scenario-iroquoian-villages", "scenario-uninhabited-remote-islands"}.issubset(actors)
+    elif region == "018":
+        assert packet["expected_counts"] == {
+            "assertions": 32, "assignments": 225, "build_features": 8,
+            "derived_files": 0, "m49_corrections": 0, "polities": 8,
+            "sources": 8,
+        }
+        assert packet["visual_review_artifact"]["sha256"] == (
+            "5b6086afc19995c54413496414280806c15837a77955ae975a95e858fd933adf"
+        )
+        actors = {row["owner_polity_id"] for row in packet["assignment_overrides"]}
+        assert not actors.intersection({
+            "scenario-atf", "scenario-bwa", "scenario-kon", "scenario-lso",
+            "scenario-nam", "scenario-swz", "scenario-zaf",
+        })
+        assert {"scenario-limpopo-shashe-successors",
+                "scenario-sotho-tswana-communities",
+                "scenario-nguni-speaking-communities",
+                "scenario-kalahari-san-communities",
+                "scenario-khoe-pastoral-communities",
+                "scenario-ovambo-kavango-communities",
+                "scenario-cape-khoekhoe-san",
+                "scenario-uninhabited-southern-ocean-islands"}.issubset(actors)
     elif region == "029":
         assert packet["expected_counts"] == {
             "assertions": 32, "assignments": 372, "build_features": 8,

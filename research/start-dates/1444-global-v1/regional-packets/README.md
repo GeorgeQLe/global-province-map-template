@@ -201,3 +201,15 @@ archipelago's documented cultural diversity into a single pan-Caribbean
 polity. The 24 Caribbean locations geographically corrected by region 155
 remain represented through that already-promoted packet, so no additional M49
 correction is required here.
+
+`018-southern-africa-2026-08-16.json` is the eighteenth accepted packet and
+the final Africa/Americas promotion. It replaces all 225 Southern Africa
+assignments, supplies eight date-valid successor-polity or community records,
+eight canonical source pins, eight checked archaeological or settlement sites,
+and 32 executable assertions. The exact-date sheet distinguishes
+Limpopo-Shashe successor polities; Sotho-Tswana and Nguni-speaking farming
+communities; Kalahari San, Khoe pastoral, northern Namibian, and Cape fabrics;
+and uninhabited Southern Ocean islands. It removes every modern-country
+scaffold actor, draws no unsupported hard local frontier, and does not project
+later Zulu, Swazi, Sotho, Tswana, or colonial territorial states backward to
+`1444-11-11`. No country-based M49 correction is required.

@@ -1,5 +1,24 @@
 # History
 
+## 2026-08-16 - M25C Southern Africa Grade-A promotion
+
+- Promoted UN M49 region 018, the final Africa/Americas sheet, with 225
+  non-provisional assignment overrides, eight date-valid successor-polity or
+  community records, eight canonical source pins, eight checked
+  archaeological or settlement sites, and 32 executable assertions across all
+  four layers.
+- Pinned the sheet to exactly 1444-11-11 and distinguished Limpopo-Shashe
+  successors; Sotho-Tswana and Nguni-speaking farming communities; Kalahari
+  San, Khoe pastoral, northern Namibian, and Cape fabrics; and uninhabited
+  Southern Ocean islands.
+- Removed every modern-country scaffold actor, avoided projecting later
+  southern African kingdoms or colonial borders backward, asserted no
+  unsupported hard local frontier, and accepted review-sheet SHA-256
+  `5b6086afc19995c54413496414280806c15837a77955ae975a95e858fd933adf`.
+- The country-based M49 sheet needs no correction. The worldwide lineage
+  remains non-public and non-certifiable with 4 regions and 16 Grade-A rows
+  remaining.
+
 ## 2026-08-16 - M25C Caribbean Grade-A promotion
 
 - Promoted UN M49 region 029, the largest remaining Africa/Americas sheet,
