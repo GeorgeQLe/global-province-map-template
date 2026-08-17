@@ -1,5 +1,24 @@
 # History
 
+## 2026-08-16 - M25C Australia and New Zealand Grade-A promotion
+
+- Promoted UN M49 region 053, the largest remaining Oceania sheet, with 1,199
+  non-provisional assignment overrides, 14 date-valid community or island
+  records, twelve canonical source pins, eight checked archaeological,
+  cultural-landscape, or settlement sites, and 32 executable assertions across
+  all four layers.
+- Pinned the sheet to exactly 1444-11-11 and preserved broad Aboriginal
+  Australian community fabrics, distinct North and South Island Maori iwi and
+  hapu fabrics, the late Norfolk Island Polynesian settlement, Tokelau
+  communities, and uninhabited remote islands.
+- Avoided projecting modern language-map boundaries or pan-Indigenous polities
+  backward, asserted no unsupported hard local frontier, and accepted
+  review-sheet SHA-256
+  `2b3d18fcd8920ce1359d768a03aee2ba8cfe846aed0404f8868ee37e2e53e7e6`.
+- Corrected seven Tokelau locations from region 053 to M49 Polynesia `061`.
+  The worldwide lineage remains non-public and non-certifiable with 3 regions
+  and 12 Grade-A rows remaining.
+
 ## 2026-08-16 - M25C Southern Africa Grade-A promotion
 
 - Promoted UN M49 region 018, the final Africa/Americas sheet, with 225

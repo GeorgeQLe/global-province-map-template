@@ -213,3 +213,17 @@ and uninhabited Southern Ocean islands. It removes every modern-country
 scaffold actor, draws no unsupported hard local frontier, and does not project
 later Zulu, Swazi, Sotho, Tswana, or colonial territorial states backward to
 `1444-11-11`. No country-based M49 correction is required.
+
+`053-australia-new-zealand-2026-08-16.json` is the nineteenth accepted packet
+and the first Oceania promotion. It replaces all 1,199 Australia and New
+Zealand assignments, supplies 14 date-valid community or island records, twelve
+canonical source pins, eight checked archaeological, cultural-landscape, or
+settlement sites, and 32 executable assertions. The exact-date sheet preserves
+broad Kimberley, Arnhem/Top End, Cape York/Torres Strait, desert, south-west,
+south-east, east-coast, and Tasmanian Aboriginal community fabrics; distinct
+North and South Island Maori iwi and hapu fabrics; the late Norfolk Island
+Polynesian settlement; Tokelau communities; and uninhabited remote islands. It
+does not turn modern language maps into fixed 1444 borders or collapse distinct
+Indigenous peoples into pan-continental polities. Seven Tokelau locations that
+Natural Earth's New Zealand geometry leaked into `053` are corrected to M49
+Polynesia `061`.

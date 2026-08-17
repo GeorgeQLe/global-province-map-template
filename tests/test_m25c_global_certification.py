@@ -161,6 +161,7 @@ def test_regional_packet_cannot_promote_a_weak_grade_a_claim():
     ("034", "034-southern-asia-2026-08-16.json", 910, 0),
     ("035", "035-south-eastern-asia-2026-08-16.json", 1759, 3),
     ("039", "039-southern-europe-2026-08-15.json", 464, 0),
+    ("053", "053-australia-new-zealand-2026-08-16.json", 1199, 7),
     ("143", "143-central-asia-2026-08-16.json", 310, 3),
     ("145", "145-western-asia-2026-08-15.json", 768, 0),
     ("151", "151-eastern-europe-2026-08-15.json", 2178, 0),
@@ -408,6 +409,27 @@ def test_completed_region_grade_a_packets(region, filename, assignment_count, co
         names = {row["polity_id"]: row["name"] for row in packet["polities"]}
         assert names["scenario-tur"].endswith("after the Battle of Varna")
         assert names["scenario-nap"] == "Kingdom of Naples under Alfonso V"
+    elif region == "053":
+        assert packet["expected_counts"] == {
+            "assertions": 32, "assignments": 1199, "build_features": 8,
+            "derived_files": 0, "m49_corrections": 7, "polities": 14,
+            "sources": 12,
+        }
+        assert packet["visual_review_artifact"]["sha256"] == (
+            "2b3d18fcd8920ce1359d768a03aee2ba8cfe846aed0404f8868ee37e2e53e7e6"
+        )
+        actors = {row["owner_polity_id"] for row in packet["assignment_overrides"]}
+        assert not actors.intersection({"scenario-nah", "scenario-csi", "scenario-atc", "scenario-nfk"})
+        assert {
+            "scenario-kimberley-communities", "scenario-arnhem-top-end-communities",
+            "scenario-cape-york-torres-communities", "scenario-western-desert-communities",
+            "scenario-central-desert-communities", "scenario-southwest-australia-communities",
+            "scenario-murray-southeast-communities", "scenario-east-coast-australia-communities",
+            "scenario-tasmanian-communities", "scenario-maori-north-island-hapu",
+            "scenario-maori-south-island-hapu", "scenario-norfolk-polynesian-community",
+            "scenario-tokelau-communities", "scenario-uninhabited-australasian-islands",
+        } == actors
+        assert {row["region_id"] for row in packet["location_region_overrides"]} == {"061"}
     elif region == "143":
         assert packet["expected_counts"] == {
             "assertions": 17, "assignments": 310, "build_features": 4,
