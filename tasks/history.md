@@ -1,5 +1,24 @@
 # History
 
+## 2026-08-16 - M25C Middle Africa Grade-A promotion
+
+- Promoted UN M49 region 017, the largest remaining Africa/Americas sheet,
+  with 527 non-provisional assignment overrides, 13 date-valid political or
+  community records, eight canonical source pins, eight checked political,
+  settlement, or archaeological centers, and 32 executable assertions across
+  all four layers.
+- Pinned the sheet to exactly 1444-11-11 and kept Nzinga a Nkwu's Kongo
+  kingdom and Sayfawa Kanem-Bornu distinct from Sao, Tio-Anziku, Mbundu,
+  Cameroon Grassfields, equatorial forest, Ubangian, central Congo-basin, and
+  Upemba political fabrics.
+- Avoided projecting later Central African dynastic and colonial maxima
+  backward, recorded Sao Tome and Principe as uninhabited before Portuguese
+  settlement, asserted no unsupported hard frontier, and accepted review-sheet
+  SHA-256 `71817c27b493b111209610d2c2bd709e4873be8b2d110053ab1fe876282175ae`.
+- The country-based M49 sheet needs no additional correction. The worldwide
+  lineage remains non-public and non-certifiable with 6 regions and 24 Grade-A
+  rows remaining.
+
 ## 2026-08-16 - M25C Central America Grade-A promotion
 
 - Promoted UN M49 region 013, the largest remaining Africa/Americas sheet,

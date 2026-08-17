@@ -174,3 +174,15 @@ isthmus's Pacific, Caribbean, Costa Rican, and Panamanian chiefdom systems. It
 removes the generic Native/uncolonized and anachronistic Clipperton scaffold
 actors, records remote eastern Pacific islands as uninhabited, draws no
 unsupported hard local frontier, and requires no M49 correction.
+
+`017-middle-africa-2026-08-16.json` is the sixteenth accepted packet. It
+replaces all 527 Middle Africa assignments, supplies 13 date-valid kingdom,
+regional-polity, or community records, eight canonical source pins, eight
+checked political, settlement, or archaeological centers, and 32 executable
+assertions. The exact-date sheet keeps Nzinga a Nkwu's Kongo kingdom and
+Sayfawa Kanem-Bornu distinct from Sao, Tio-Anziku, Mbundu, Cameroon
+Grassfields, equatorial forest, Ubangian, central Congo-basin, and Upemba
+political fabrics. It does not project later Luba, Lunda, Loango, Ndongo, or
+colonial territorial maxima backward to `1444-11-11`, records Sao Tome and
+Principe as uninhabited before Portuguese settlement, draws no unsupported
+hard local frontier, and requires no additional M49 correction.

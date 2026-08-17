@@ -153,6 +153,7 @@ def test_regional_packet_cannot_promote_a_weak_grade_a_claim():
     ("013", "013-central-america-2026-08-16.json", 605, 0),
     ("014", "014-eastern-africa-2026-08-16.json", 715, 0),
     ("015", "015-northern-africa-2026-08-16.json", 643, 0),
+    ("017", "017-middle-africa-2026-08-16.json", 527, 0),
     ("021", "021-northern-america-2026-08-16.json", 3986, 0),
     ("030", "030-eastern-asia-2026-08-16.json", 1941, 0),
     ("034", "034-southern-asia-2026-08-16.json", 910, 0),
@@ -270,6 +271,26 @@ def test_completed_region_grade_a_packets(region, filename, assignment_count, co
         names = {row["polity_id"]: row["name"] for row in packet["polities"]}
         assert names["scenario-mor"].startswith("Marinid Sultanate")
         assert {"scenario-dongola", "scenario-alodia"}.issubset(names)
+    elif region == "017":
+        assert packet["expected_counts"] == {
+            "assertions": 32, "assignments": 527, "build_features": 8,
+            "derived_files": 0, "m49_corrections": 0, "polities": 13,
+            "sources": 8,
+        }
+        assert packet["visual_review_artifact"]["sha256"] == (
+            "71817c27b493b111209610d2c2bd709e4873be8b2d110053ab1fe876282175ae"
+        )
+        actors = {row["owner_polity_id"] for row in packet["assignment_overrides"]}
+        assert not actors.intersection({
+            "scenario-caf", "scenario-gab", "scenario-gnq", "scenario-kan",
+            "scenario-kon", "scenario-stp",
+        })
+        assert {"scenario-kongo-kingdom", "scenario-kanem-bornu",
+                "scenario-sao-lake-chad", "scenario-tio-anziku-polities",
+                "scenario-mbundu-polities", "scenario-cameroon-grassfields",
+                "scenario-equatorial-forest-communities",
+                "scenario-ubangian-communities", "scenario-upemba-polities",
+                "scenario-uninhabited-gulf-guinea-islands"}.issubset(actors)
     elif region == "021":
         assert packet["expected_counts"] == {
             "assertions": 32, "assignments": 3986, "build_features": 8,
