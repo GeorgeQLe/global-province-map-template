@@ -160,3 +160,17 @@ eastern-Sahel fields. It records Cape Verde and Saint Helena's Atlantic islands
 as uninhabited and draws no unsupported hard local frontier. One Algerian
 location is corrected to M49 region `015` and one Cameroonian location to
 region `017`.
+
+`013-central-america-2026-08-16.json` is the fifteenth accepted packet. It
+replaces all 605 Central America assignments, supplies 25 date-valid state,
+kingdom, chiefdom, or community records, eleven canonical source pins, twelve
+checked political or archaeological centers, and 48 executable assertions.
+The country-based M49 sheet includes Mexico as well as Belize, Guatemala, El
+Salvador, Honduras, Nicaragua, Costa Rica, and Panama. The exact-date sheet
+keeps the early Mexica-led Triple Alliance distinct from Tlaxcala and the
+Purepecha state; preserves Gulf, southern Mexican, Yucatan-successor, Peten,
+Belize, K'iche', other Maya, Pipil, and Lenca fabrics; and distinguishes the
+isthmus's Pacific, Caribbean, Costa Rican, and Panamanian chiefdom systems. It
+removes the generic Native/uncolonized and anachronistic Clipperton scaffold
+actors, records remote eastern Pacific islands as uninhabited, draws no
+unsupported hard local frontier, and requires no M49 correction.

@@ -1,5 +1,25 @@
 # History
 
+## 2026-08-16 - M25C Central America Grade-A promotion
+
+- Promoted UN M49 region 013, the largest remaining Africa/Americas sheet,
+  with 605 non-provisional assignment overrides, 25 date-valid political or
+  community records, eleven canonical source pins, twelve checked political
+  or archaeological centers, and 48 executable assertions across all four
+  layers.
+- Pinned the sheet to exactly 1444-11-11 and kept the early Mexica-led Triple
+  Alliance distinct from Tlaxcala and the Purepecha state while preserving
+  Gulf and southern Mexican kingdoms, Yucatan successors, Peten and Belize
+  Maya polities, the K'iche' state, other Maya kingdoms, Pipil Cuzcatlan,
+  Lenca polities, and lower-Central-American chiefdom systems.
+- Removed the generic Native/uncolonized and anachronistic Clipperton scaffold
+  actors, recorded remote eastern Pacific islands as uninhabited, asserted no
+  unsupported hard local frontier, and accepted review-sheet SHA-256
+  `621f1de5a6712a1491b27087985fef2bce966d209e3c7a02a285f2311fe87871`.
+- The country-based M49 sheet needs no correction. The worldwide lineage
+  remains non-public and non-certifiable with 7 regions and 28 Grade-A rows
+  remaining.
+
 ## 2026-08-16 - M25C Western Africa Grade-A promotion
 
 - Promoted UN M49 region 011, the largest remaining Africa/Americas sheet,

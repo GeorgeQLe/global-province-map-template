@@ -150,6 +150,7 @@ def test_regional_packet_cannot_promote_a_weak_grade_a_claim():
 @pytest.mark.parametrize(("region", "filename", "assignment_count", "correction_count"), [
     ("005", "005-south-america-2026-08-16.json", 2200, 0),
     ("011", "011-western-africa-2026-08-16.json", 641, 2),
+    ("013", "013-central-america-2026-08-16.json", 605, 0),
     ("014", "014-eastern-africa-2026-08-16.json", 715, 0),
     ("015", "015-northern-africa-2026-08-16.json", 643, 0),
     ("021", "021-northern-america-2026-08-16.json", 3986, 0),
@@ -220,6 +221,24 @@ def test_completed_region_grade_a_packets(region, filename, assignment_count, co
                 "scenario-benin-kingdom", "scenario-uninhabited-atlantic-islands"}.issubset(actors)
         assert {target: sum(row["region_id"] == target for row in packet["location_region_overrides"])
                 for target in {"015", "017"}} == {"015": 1, "017": 1}
+    elif region == "013":
+        assert packet["expected_counts"] == {
+            "assertions": 48, "assignments": 605, "build_features": 12,
+            "derived_files": 0, "m49_corrections": 0, "polities": 25,
+            "sources": 11,
+        }
+        assert packet["visual_review_artifact"]["sha256"] == (
+            "621f1de5a6712a1491b27087985fef2bce966d209e3c7a02a285f2311fe87871"
+        )
+        actors = {row["owner_polity_id"] for row in packet["assignment_overrides"]}
+        assert not actors.intersection({"scenario-nah", "scenario-clp"})
+        assert {"scenario-mexica-triple-alliance", "scenario-tlaxcalan-confederation",
+                "scenario-purepecha-state", "scenario-yucatan-successor-polities",
+                "scenario-peten-belize-maya", "scenario-kiche-state",
+                "scenario-pipil-cuzcatlan", "scenario-lenca-polities",
+                "scenario-nicarao-polities", "scenario-diquis-chiefdoms",
+                "scenario-cocle-parita-chiefdoms",
+                "scenario-uninhabited-east-pacific-islands"}.issubset(actors)
     elif region == "014":
         assert packet["expected_counts"] == {
             "assertions": 32, "assignments": 715, "build_features": 8,
