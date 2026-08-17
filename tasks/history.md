@@ -1,5 +1,22 @@
 # History
 
+## 2026-08-16 - M25C Melanesia Grade-A promotion
+
+- Promoted UN M49 region 054, the largest remaining Oceania sheet, with 414
+  non-provisional assignment overrides, twelve conservative local-community or
+  chiefly records, ten canonical source pins, eight checked archaeological or
+  cultural-landscape sites, and 32 executable assertions across all four
+  layers.
+- Pinned the sheet to exactly 1444-11-11 and kept New Guinea,
+  Bismarck-Bougainville, Solomon, Vanuatu, Fijian, and Kanak community fabrics
+  distinct.
+- Avoided projecting modern states, fixed ethnic borders, pan-Melanesian
+  authority, or later paramount chiefdoms backward, asserted no unsupported
+  hard local frontier, and accepted review-sheet SHA-256
+  `b47bc579f3d0753d57cb20cdf2b6fe33ad494075dc65c870f79f16ff614e52c9`.
+- No country-based M49 correction was required. The worldwide lineage remains
+  non-public and non-certifiable with 2 regions and 8 Grade-A rows remaining.
+
 ## 2026-08-16 - M25C Australia and New Zealand Grade-A promotion
 
 - Promoted UN M49 region 053, the largest remaining Oceania sheet, with 1,199

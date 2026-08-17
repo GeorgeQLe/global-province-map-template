@@ -227,3 +227,15 @@ does not turn modern language maps into fixed 1444 borders or collapse distinct
 Indigenous peoples into pan-continental polities. Seven Tokelau locations that
 Natural Earth's New Zealand geometry leaked into `053` are corrected to M49
 Polynesia `061`.
+
+`054-melanesia-2026-08-16.json` is the twentieth accepted packet and the second
+Oceania promotion. It replaces all 414 Melanesia assignments, supplies twelve
+conservative local-community or chiefly fabrics, ten canonical source pins,
+eight checked archaeological or cultural-landscape sites, and 32 executable
+assertions. The exact-date sheet keeps New Guinea highland, north-coast, and
+south-coast communities; Bismarck-Bougainville island communities; western,
+central/eastern, and Santa Cruz Solomon communities; northern and
+central/southern Vanuatu communities; western and eastern Fijian chiefdoms;
+and Kanak communities distinct. It does not project modern states, fixed
+ethnic borders, pan-Melanesian authority, or later paramount chiefdoms backward
+to `1444-11-11`. No country-based M49 correction is required.

@@ -162,6 +162,7 @@ def test_regional_packet_cannot_promote_a_weak_grade_a_claim():
     ("035", "035-south-eastern-asia-2026-08-16.json", 1759, 3),
     ("039", "039-southern-europe-2026-08-15.json", 464, 0),
     ("053", "053-australia-new-zealand-2026-08-16.json", 1199, 7),
+    ("054", "054-melanesia-2026-08-16.json", 414, 0),
     ("143", "143-central-asia-2026-08-16.json", 310, 3),
     ("145", "145-western-asia-2026-08-15.json", 768, 0),
     ("151", "151-eastern-europe-2026-08-15.json", 2178, 0),
@@ -430,6 +431,31 @@ def test_completed_region_grade_a_packets(region, filename, assignment_count, co
             "scenario-tokelau-communities", "scenario-uninhabited-australasian-islands",
         } == actors
         assert {row["region_id"] for row in packet["location_region_overrides"]} == {"061"}
+    elif region == "054":
+        assert packet["expected_counts"] == {
+            "assertions": 32, "assignments": 414, "build_features": 8,
+            "derived_files": 0, "m49_corrections": 0, "polities": 12,
+            "sources": 10,
+        }
+        assert packet["visual_review_artifact"]["sha256"] == (
+            "b47bc579f3d0753d57cb20cdf2b6fe33ad494075dc65c870f79f16ff614e52c9"
+        )
+        actors = {row["owner_polity_id"] for row in packet["assignment_overrides"]}
+        assert not actors.intersection({"scenario-png", "scenario-slb", "scenario-vut",
+                                        "scenario-fji", "scenario-ncl"})
+        assert {
+            "scenario-new-guinea-highlands-communities",
+            "scenario-new-guinea-north-coast-communities",
+            "scenario-new-guinea-south-coast-communities",
+            "scenario-bismarck-bougainville-communities",
+            "scenario-western-solomons-communities",
+            "scenario-central-solomons-communities",
+            "scenario-santa-cruz-communities",
+            "scenario-northern-vanuatu-communities",
+            "scenario-central-southern-vanuatu-chiefdoms",
+            "scenario-western-fiji-chiefdoms", "scenario-eastern-fiji-chiefdoms",
+            "scenario-kanak-chiefdoms",
+        } == actors
     elif region == "143":
         assert packet["expected_counts"] == {
             "assertions": 17, "assignments": 310, "build_features": 4,
