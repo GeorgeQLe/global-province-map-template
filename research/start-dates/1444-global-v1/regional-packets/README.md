@@ -252,3 +252,17 @@ fabrics distinct. It does not project modern dependencies, fixed ethnic borders,
 later dynasties, or a pan-Polynesian state backward to `1444-11-11`. The seven
 Tokelau locations remain represented through accepted region 053, so no new
 country-based M49 correction is required.
+
+`057-micronesia-2026-08-16.json` is the twenty-second and final accepted
+regional packet. It replaces all 175 native Micronesia assignments, supplies
+thirteen conservative island-community, atoll-network, voyaging, chiefly, or
+uninhabited-island records, ten canonical source pins, eight checked
+archaeological, ceremonial, or settlement sites, and 32 executable assertions.
+The exact-date sheet preserves the Saudeleur polity on Pohnpei and Leluh on
+Kosrae while keeping Palauan, Yapese and central Caroline, Chamorro Latte,
+Marshallese, Gilbertese, Nauruan, and remote-island fabrics distinct. It does
+not project modern dependencies, colonial relationships, fixed ethnic borders,
+or a pan-Micronesian state backward to `1444-11-11`. No country-based M49
+correction is required. All 22 regions and all 88 coverage rows are now
+four-layer Grade A, closing regional evidence promotion and enabling the
+ordinary worldwide research-review and certification sequence to begin.

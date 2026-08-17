@@ -1,5 +1,23 @@
 # History
 
+## 2026-08-16 - M25C Micronesia Grade-A promotion
+
+- Promoted UN M49 region 057 with 175 non-provisional assignment overrides,
+  thirteen conservative island-community, atoll-network, voyaging, chiefly, or
+  uninhabited-island records, ten canonical source pins, eight checked
+  archaeological, ceremonial, or settlement sites, and 32 executable
+  assertions across all four layers.
+- Pinned the sheet to exactly 1444-11-11, preserved the Saudeleur polity on
+  Pohnpei and Leluh on Kosrae, and kept Palauan, Caroline, Chamorro Latte,
+  Marshallese, Gilbertese, Nauruan, and remote-island fabrics distinct.
+- Avoided projecting modern dependencies, colonial relationships, fixed ethnic
+  borders, or a pan-Micronesian state backward, asserted no unsupported hard
+  local frontier, and accepted review-sheet SHA-256
+  `d81edf89684cfdf97f65faa1c5a891df1a47a552aef38a5b5e858e4ddea8c7dc`.
+- No country-based M49 correction was required. All 22 regions and 88 Grade-A
+  rows are complete; the regional evidence-promotion phase is closed and the
+  ordinary worldwide research QA and human-review sequence may now begin.
+
 ## 2026-08-16 - M25C Polynesia Grade-A promotion
 
 - Promoted UN M49 region 061 with 176 non-provisional assignment overrides,

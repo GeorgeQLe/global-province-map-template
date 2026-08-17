@@ -2,14 +2,11 @@
 
 ## Active
 
-- M25C regional evidence promotion: replace provisional records in risk-first
-  order (Asia, then Africa/Americas, and Oceania)
-  with dated, source-pinned four-layer packets. Regions `005`, `011`, `013`,
-  `014`, `015`, `017`, `018`, `021`, `029`, `030`, `034`, `035`, `039`, `053`, `054`, `061`,
-  `143`, `145`, `151`, `154`, and `155`
-  are complete; 1 region and 4 rows remain. Only after all 88 rows are
-  gap-free Grade A may
-  the ordinary research, human-review, runtime, and publication gates run.
+- M25C global 1444 certification: all 22 regional packets and 88 Grade-A rows
+  are complete. Run the ordinary worldwide research QA and human-review
+  sequence, then the canonical/runtime parity, determinism, performance,
+  certification, and publication gates without weakening the fail-closed
+  boundary.
 
 ## Up next (from roadmap)
 
@@ -23,6 +20,12 @@
   research acceptance and runtime-pack validation.
 
 ## Completed
+
+- [x] M25C regional evidence promotion: replaced provisional records in
+  risk-first order across Asia, Africa/Americas, and Oceania with dated,
+  source-pinned four-layer packets. All 22 M49 regions and all 88 coverage rows
+  are gap-free Grade A; Micronesia `057` closed the sequence with 175 assignment
+  overrides and no M49 correction.
 
 - [x] M25C provisional worldwide pass: deterministic non-public assembly over
   the accepted M23 r2 fabric and 23,582-location M49 mask, exact-once 22,000-
