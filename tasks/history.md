@@ -1,5 +1,23 @@
 # History
 
+## 2026-08-16 - M25C Caribbean Grade-A promotion
+
+- Promoted UN M49 region 029, the largest remaining Africa/Americas sheet,
+  with 372 non-provisional assignment overrides, 11 date-valid chiefdom or
+  community records, eight canonical source pins, eight checked
+  archaeological sites, and 32 executable assertions across all four layers.
+- Pinned the sheet to exactly 1444-11-11 and distinguished Lucayan, Cuban,
+  Hispaniolan, Boriken, Jamaican, Guanahatabey, northern and southern Lesser
+  Antillean, Trinidadian, southern-Caribbean, and small-island fabrics.
+- Removed every generic and modern-island scaffold actor, asserted no hard
+  local frontier, preserved uncertainty around local political boundaries,
+  and accepted review-sheet SHA-256
+  `ce83e796b976bfd6ca81678425766c99eab5eeda532dfe4a4b66c9f9a413ecba`.
+- The 24 Caribbean locations corrected by region 155 remain represented
+  through that packet, so no additional M49 correction is needed. The
+  worldwide lineage remains non-public and non-certifiable with 5 regions and
+  20 Grade-A rows remaining.
+
 ## 2026-08-16 - M25C Middle Africa Grade-A promotion
 
 - Promoted UN M49 region 017, the largest remaining Africa/Americas sheet,

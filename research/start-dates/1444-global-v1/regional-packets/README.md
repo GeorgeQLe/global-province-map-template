@@ -186,3 +186,18 @@ political fabrics. It does not project later Luba, Lunda, Loango, Ndongo, or
 colonial territorial maxima backward to `1444-11-11`, records Sao Tome and
 Principe as uninhabited before Portuguese settlement, draws no unsupported
 hard local frontier, and requires no additional M49 correction.
+
+`029-caribbean-2026-08-16.json` is the seventeenth accepted packet. It
+replaces all 372 Caribbean assignments, supplies 11 date-valid chiefdom or
+community records, eight canonical source pins, eight checked archaeological
+sites, and 32 executable assertions. The exact-date sheet distinguishes
+Lucayan communities in the Bahamas and Turks and Caicos; Cuban, Hispaniolan,
+Boriken, and Jamaican Taino fabrics; Guanahatabey western Cuba; Virgin and
+northern Leeward Island communities; Kalinago and related Lesser Antillean
+communities; Trinidadian and southern-Caribbean fabrics; and small or
+seasonally used islands. It removes every generic and modern-island scaffold
+actor, draws no unsupported hard local frontier, and does not flatten the
+archipelago's documented cultural diversity into a single pan-Caribbean
+polity. The 24 Caribbean locations geographically corrected by region 155
+remain represented through that already-promoted packet, so no additional M49
+correction is required here.

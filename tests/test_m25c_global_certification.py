@@ -155,6 +155,7 @@ def test_regional_packet_cannot_promote_a_weak_grade_a_claim():
     ("015", "015-northern-africa-2026-08-16.json", 643, 0),
     ("017", "017-middle-africa-2026-08-16.json", 527, 0),
     ("021", "021-northern-america-2026-08-16.json", 3986, 0),
+    ("029", "029-caribbean-2026-08-16.json", 372, 0),
     ("030", "030-eastern-asia-2026-08-16.json", 1941, 0),
     ("034", "034-southern-asia-2026-08-16.json", 910, 0),
     ("035", "035-south-eastern-asia-2026-08-16.json", 1759, 3),
@@ -305,6 +306,34 @@ def test_completed_region_grade_a_packets(region, filename, assignment_count, co
         assert {"scenario-norse-greenland", "scenario-thule-inuit",
                 "scenario-hohokam-communities", "scenario-mississippian-chiefdoms",
                 "scenario-iroquoian-villages", "scenario-uninhabited-remote-islands"}.issubset(actors)
+    elif region == "029":
+        assert packet["expected_counts"] == {
+            "assertions": 32, "assignments": 372, "build_features": 8,
+            "derived_files": 0, "m49_corrections": 0, "polities": 11,
+            "sources": 8,
+        }
+        assert packet["visual_review_artifact"]["sha256"] == (
+            "ce83e796b976bfd6ca81678425766c99eab5eeda532dfe4a4b66c9f9a413ecba"
+        )
+        actors = {row["owner_polity_id"] for row in packet["assignment_overrides"]}
+        assert not actors.intersection({
+            "scenario-nah", "scenario-tca", "scenario-vct", "scenario-tto",
+            "scenario-grd", "scenario-vir", "scenario-vgb", "scenario-aia",
+            "scenario-bjn", "scenario-cym", "scenario-atg", "scenario-brb",
+            "scenario-maf", "scenario-kna", "scenario-msr", "scenario-dma",
+            "scenario-lca", "scenario-umi", "scenario-blm", "scenario-abw",
+            "scenario-ser", "scenario-sxm", "scenario-usg", "scenario-cuw",
+        })
+        assert {"scenario-lucayan-chiefdoms", "scenario-cuba-taino-chiefdoms",
+                "scenario-guanahatabey-communities",
+                "scenario-hispaniola-taino-chiefdoms",
+                "scenario-boriken-taino-chiefdoms",
+                "scenario-jamaica-taino-communities",
+                "scenario-eastern-taino-communities",
+                "scenario-kalinago-lesser-antilles",
+                "scenario-trinidad-communities",
+                "scenario-caquetio-southern-caribbean",
+                "scenario-small-island-communities"}.issubset(actors)
     elif region == "030":
         assert packet["expected_counts"] == {
             "assertions": 21, "assignments": 1941, "build_features": 5,
