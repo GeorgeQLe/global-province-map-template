@@ -239,3 +239,16 @@ central/southern Vanuatu communities; western and eastern Fijian chiefdoms;
 and Kanak communities distinct. It does not project modern states, fixed
 ethnic borders, pan-Melanesian authority, or later paramount chiefdoms backward
 to `1444-11-11`. No country-based M49 correction is required.
+
+`061-polynesia-2026-08-16.json` is the twenty-first accepted packet and the
+third Oceania promotion. It replaces all 176 native Polynesia assignments,
+supplies fifteen conservative island-community, chieftain-polity, or
+uninhabited-island records, ten canonical source pins, eight checked
+archaeological, ceremonial, or settlement sites, and 32 executable assertions.
+The exact-date sheet preserves the fourteenth-century Tu'i Tonga chiefdom while
+keeping French Polynesian island groups, northern and southern Cook Islands,
+Tuvalu, Samoa, Niue, Uvea, Futuna, Pitcairn-Henderson, and uninhabited Oeno-Ducie
+fabrics distinct. It does not project modern dependencies, fixed ethnic borders,
+later dynasties, or a pan-Polynesian state backward to `1444-11-11`. The seven
+Tokelau locations remain represented through accepted region 053, so no new
+country-based M49 correction is required.

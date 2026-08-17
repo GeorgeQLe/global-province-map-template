@@ -1,5 +1,22 @@
 # History
 
+## 2026-08-16 - M25C Polynesia Grade-A promotion
+
+- Promoted UN M49 region 061 with 176 non-provisional assignment overrides,
+  fifteen conservative island-community, chieftain-polity, or uninhabited-island
+  records, ten canonical source pins, eight checked archaeological, ceremonial,
+  or settlement sites, and 32 executable assertions across all four layers.
+- Pinned the sheet to exactly 1444-11-11, preserved the fourteenth-century Tu'i
+  Tonga chiefdom, and kept French Polynesian, Cook, Tuvaluan, Samoan, Niuean,
+  Wallisian, Futunan, and Pitcairn island fabrics distinct.
+- Avoided projecting modern dependencies, fixed ethnic borders, later dynasties,
+  or a pan-Polynesian state backward, asserted no unsupported hard local
+  frontier, and accepted review-sheet SHA-256
+  `a3fb0c1f3d719bdd9aa893c5e3b2da38758c5b046cb98c7cb1adeb6fece59c9e`.
+- No new country-based M49 correction was required; the seven Tokelau locations
+  remain represented through accepted region 053. The worldwide lineage remains
+  non-public and non-certifiable with 1 region and 4 Grade-A rows remaining.
+
 ## 2026-08-16 - M25C Melanesia Grade-A promotion
 
 - Promoted UN M49 region 054, the largest remaining Oceania sheet, with 414
