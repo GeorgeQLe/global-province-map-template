@@ -20,8 +20,8 @@ DEFAULT_OUTPUT = ROOT / "research/start-dates/1444-global-v1/regional-packets/02
 COUNTRIES = ROOT / "data/raw/natural_earth/ne_10m_admin_0_countries.zip"
 START_DATE = "1444-11-11"
 AS_OF_DATE = "2026-08-16"
-EXPECTED_ASSIGNMENTS = 372
-VISUAL_REVIEW_SHA256 = "ce83e796b976bfd6ca81678425766c99eab5eeda532dfe4a4b66c9f9a413ecba"
+EXPECTED_ASSIGNMENTS = 396
+VISUAL_REVIEW_SHA256 = "a9968a21b77e7a979c70dba2bd291b01529e9f3bc93b0ce3fa3c5a9820288ccf"
 
 
 LOCATORS = {
@@ -33,6 +33,20 @@ LOCATORS = {
     "nmai-taino-gallery-guide": "Who Are the Taino? and map > Greater Antilles, Bahamas, Kalinago, and surrounding island communities",
     "unesco-caribbean-archaeology": "Annex 2 > Pre-Hispanic Cultures of the Insular Caribbean; Greater and Lesser Antillean archaeological sequences",
     "smithsonian-comparative-arawakan": "Comparative Arawakan Histories > Taino regional variants, village organization, and district and provincial chiefdoms",
+    "pmc-east-guadeloupe-networks": "Late pre-colonial East-Guadeloupe > village networks and Anse a la Gourde sequence",
+    "adlfi-anse-a-la-gourde": "Anse a la Gourde > phased occupation through 1400 CE",
+    "inrap-guadeloupe-history": "Guadeloupe, une histoire retrouvee > Amerindian settlement and material record",
+    "inrap-antilles-archaeology": "L'archeologie des Antilles > island-network interpretation and precolumbian sequence",
+    "yale-martinique-later-prehistory": "Later prehistory in Martinique > 600-1450 CE sequence and Island-Carib identification limits",
+    "inrap-martinique-anse-bellay": "Anse Bellay > late precolumbian Martinique evidence, eleventh-fourteenth centuries",
+    "leiden-martinique-ansea-trabaud": "Anse Trabaud > late precolonial Martinique coastal deposits",
+    "leiden-precolumbian-saba-thesis": "Pre-Columbian Saba > settlement reports and late precolumbian social environment",
+    "leiden-saba-first-inhabitants": "Saba's first inhabitants > Amerindian occupation through 1492",
+    "springer-late-precolonial-saba-networks": "Remotely Local > Saba networks, AD 1000-1450",
+    "leiden-st-eustatius-archaeology": "St. Eustatius > Amerindian sites and Golden Rock settlement",
+    "jas-st-eustatius-golden-rock": "Golden Rock > pre-Columbian settlement and inter-island exchange",
+    "tandf-bonaire-isotopes": "Pre-colonial Bonaire > Indigenous lifeways and local residence evidence",
+    "royalsociety-caquetio-calibration": "Caquetio > Bonaire distribution and Dabajuroid archaeological association",
 }
 
 
@@ -85,7 +99,127 @@ STATIC_SOURCES = [
         "https://repository.si.edu/bitstreams/03d796ff-b4f3-4dde-bdf7-2229e4956524/download",
         "smithsonian-comparative-arawakan", "academic",
     ),
+    source(
+        "pmc-east-guadeloupe-networks",
+        "Angus Mol et al., 'Exploring Transformations in Caribbean Indigenous Social Networks through Visibility Studies: Late Pre-Colonial East-Guadeloupe'.",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC5953974/", "east-guadeloupe-network-study", "academic",
+    ),
+    source(
+        "adlfi-anse-a-la-gourde",
+        "French Ministry of Culture, ADLFI, 'Resultats significatifs en Guadeloupe pour l'annee 1996: Anse a la Gourde'.",
+        "https://journals.openedition.org/adlfi/113978", "adlfi-anse-gourde", "academic",
+    ),
+    source(
+        "inrap-guadeloupe-history", "Inrap, Guadeloupe, une histoire retrouvee.",
+        "https://www.inrap.fr/sites/inrap.fr/files/atoms/files/memoire-fouilles-guadeloupe_2015.pdf",
+        "inrap-guadeloupe-synthesis", "academic",
+    ),
+    source(
+        "inrap-antilles-archaeology", "Inrap, 'L'archeologie des Antilles'.",
+        "https://www.inrap.fr/l-archeologie-des-antilles-14877", "inrap-antilles-overview", "academic",
+    ),
+    source(
+        "yale-martinique-later-prehistory",
+        "Louis Allaire, Later Prehistory in Martinique and the Island Caribs: Problems in Ethnic Identification, Yale University dissertation.",
+        "https://ehrafarchaeology.yale.edu/traditions/s051/documents/002",
+        "yale-allaire-martinique", "academic",
+    ),
+    source(
+        "inrap-martinique-anse-bellay", "Inrap, 'Anse Bellay' archaeological site record.",
+        "https://www.inrap.fr/anse-bellay-4750", "inrap-anse-bellay", "academic",
+    ),
+    source(
+        "leiden-martinique-ansea-trabaud",
+        "Leiden University, Menno Hoogland publication record for late-precolonial Anse Trabaud, Martinique.",
+        "https://www.universiteitleiden.nl/en/research/research-projects/archaeology/martinique",
+        "leiden-anse-trabaud", "academic",
+    ),
+    source(
+        "leiden-precolumbian-saba-thesis",
+        "Menno L. P. Hoogland, In Search of the Native Population of Pre-Columbian Saba, Leiden University.",
+        "https://www.universiteitleiden.nl/en/research/research-output/archaeology/in-search-of-the-native-population-of-pre-columbian-saba.-part-two-settlements-in-their-natural-and-social-environment",
+        "leiden-hoogland-saba", "academic",
+    ),
+    source(
+        "leiden-saba-first-inhabitants",
+        "Leiden University, 'A look inside the Saba Archaeological Center' and Saba's First Inhabitants.",
+        "https://www.universiteitleiden.nl/nexus1492/news/sabarc-2019-finds",
+        "leiden-hofman-hoogland-saba", "academic",
+    ),
+    source(
+        "springer-late-precolonial-saba-networks",
+        "Angus Mol, Menno Hoogland, and Corinne Hofman, 'Remotely Local: Ego-networks of Late Pre-colonial (AD 1000-1450) Saba'.",
+        "https://doi.org/10.1007/s10816-013-9200-5", "springer-saba-networks", "academic",
+    ),
+    source(
+        "leiden-st-eustatius-archaeology", "Leiden University, 'St. Eustatius' archaeology project.",
+        "https://www.universiteitleiden.nl/en/research/research-projects/archaeology/st.-eustatius",
+        "leiden-st-eustatius-project", "academic",
+    ),
+    source(
+        "jas-st-eustatius-golden-rock",
+        "Harlow et al., 'Pre-Columbian jadeitite artifacts from the Golden Rock Site, St. Eustatius', Journal of Archaeological Science 40.",
+        "https://doi.org/10.1016/j.jas.2013.03.025", "jas-golden-rock", "academic",
+    ),
+    source(
+        "tandf-bonaire-isotopes",
+        "Eleni Seferidou, Sebastiaan Knippenberg, and Jason Laffoon, 'Reconstructing past lifeways of Indigenous individuals in pre-colonial Bonaire'.",
+        "https://doi.org/10.1080/15564894.2023.2289190", "bonaire-isotope-study", "academic",
+    ),
+    source(
+        "royalsociety-caquetio-calibration",
+        "Walker et al., 'Deriving calibrations for Arawakan using archaeological evidence', Royal Society Open Science.",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9732640/", "royal-society-arawakan", "academic",
+    ),
 ]
+
+
+GUADELOUPE_SOURCES = [
+    "adlfi-anse-a-la-gourde", "inrap-antilles-archaeology", "inrap-guadeloupe-history",
+    "pmc-east-guadeloupe-networks",
+]
+MARTINIQUE_SOURCES = [
+    "inrap-martinique-anse-bellay", "leiden-martinique-ansea-trabaud",
+    "yale-martinique-later-prehistory",
+]
+SABA_SOURCES = [
+    "leiden-precolumbian-saba-thesis", "leiden-saba-first-inhabitants",
+    "springer-late-precolonial-saba-networks",
+]
+ST_EUSTATIUS_SOURCES = ["jas-st-eustatius-golden-rock", "leiden-st-eustatius-archaeology"]
+BONAIRE_SOURCES = ["royalsociety-caquetio-calibration", "tandf-bonaire-isotopes"]
+CORRECTION_PACKET = ROOT / "research/start-dates/1444-global-v1/regional-packets/155-western-europe-2026-08-15.json"
+GUADELOUPE_NOTE = "Guadeloupe residual: a late-precolonial Lesser Antillean community network is retained without projecting French sovereignty or a harder local ethnic frontier to 1444-11-11."
+MARTINIQUE_NOTE = "Martinique residual: late-precolonial island communities are assigned to the Kalinago-related Lesser Antillean fabric with explicit ethnic-boundary uncertainty."
+SABA_NOTE = "Saba residual: the fourteenth-century Kelbey's Ridge and wider late-precolonial network support a northern Leeward community assignment at 1444-11-11."
+ST_EUSTATIUS_NOTE = "Sint Eustatius residual: precolumbian occupation is established, but the evidence does not support a specific continuously occupied polity at 1444-11-11."
+BONAIRE_NOTE = "Bonaire residual: late-precolonial Caquetio-associated communities are supported by island archaeology; no Dutch sovereignty is projected backward."
+CORRECTED_ASSIGNMENTS = {
+    "loc_835e43fffffffff_7a1063e862": ("prv_17a2082ff620fff2365c", "scenario-kalinago-lesser-antilles", GUADELOUPE_SOURCES, 0.45, GUADELOUPE_NOTE),
+    "loc_835e5cfffffffff_2ab68c1e58": ("prv_2672ba4a59434e1097be", "scenario-kalinago-lesser-antilles", GUADELOUPE_SOURCES, 0.45, GUADELOUPE_NOTE),
+    "loc_835e43fffffffff_c83e1ce1da": ("prv_4a456cb955650662c02c", "scenario-kalinago-lesser-antilles", GUADELOUPE_SOURCES, 0.45, GUADELOUPE_NOTE),
+    "loc_835e4bfffffffff_7b21fd4fff": ("prv_5486a37d9e86c8d02c36", "scenario-eastern-taino-communities", SABA_SOURCES, 0.35, SABA_NOTE),
+    "loc_835e43fffffffff_8e2598daef": ("prv_55d2a5f86e33f9a1e0f6", "scenario-kalinago-lesser-antilles", GUADELOUPE_SOURCES, 0.45, GUADELOUPE_NOTE),
+    "loc_835e46fffffffff_f74726b473": ("prv_57b4e5f40a10e9eb381e", "scenario-kalinago-lesser-antilles", MARTINIQUE_SOURCES, 0.45, MARTINIQUE_NOTE),
+    "loc_835e5cfffffffff_15e968bfc2": ("prv_601f0e1dce2c047ff9b1", "scenario-kalinago-lesser-antilles", GUADELOUPE_SOURCES, 0.45, GUADELOUPE_NOTE),
+    "loc_835e5cfffffffff_3798bc792c": ("prv_67d747708875f2223712", "scenario-kalinago-lesser-antilles", GUADELOUPE_SOURCES, 0.45, GUADELOUPE_NOTE),
+    "loc_835e43fffffffff_483b66cd61": ("prv_6851031205ea4eed2d95", "scenario-kalinago-lesser-antilles", GUADELOUPE_SOURCES, 0.45, GUADELOUPE_NOTE),
+    "loc_835e43fffffffff_38c143e382": ("prv_7e505f8595a1e7d80118", "scenario-kalinago-lesser-antilles", GUADELOUPE_SOURCES, 0.45, GUADELOUPE_NOTE),
+    "loc_835e42fffffffff_62ba9e62fb": ("prv_7f27dae3ee89a0f66538", "scenario-kalinago-lesser-antilles", MARTINIQUE_SOURCES, 0.45, MARTINIQUE_NOTE),
+    "loc_835e5dfffffffff_a646fd5470": ("prv_82a3457e29f98a53c095", "scenario-kalinago-lesser-antilles", GUADELOUPE_SOURCES, 0.45, GUADELOUPE_NOTE),
+    "loc_835e43fffffffff_73093ec31b": ("prv_8fea3e2c28a3f224b005", "scenario-kalinago-lesser-antilles", GUADELOUPE_SOURCES, 0.45, GUADELOUPE_NOTE),
+    "loc_835e5dfffffffff_e2b27ba088": ("prv_94e92fbb78d7fe1b97b2", "scenario-kalinago-lesser-antilles", GUADELOUPE_SOURCES, 0.45, GUADELOUPE_NOTE),
+    "loc_836744fffffffff_c1890d6cc2": ("prv_ab4cbfb4ba8ef151dae9", "scenario-caquetio-southern-caribbean", BONAIRE_SOURCES, 0.25, BONAIRE_NOTE),
+    "loc_835e4bfffffffff_12eb076dd3": ("prv_b31341d5fc6a20f66d8d", "scenario-small-island-communities", ST_EUSTATIUS_SOURCES, 0.55, ST_EUSTATIUS_NOTE),
+    "loc_836740fffffffff_50847f2e9c": ("prv_bb1f1984122ac5695b3b", "scenario-caquetio-southern-caribbean", BONAIRE_SOURCES, 0.25, BONAIRE_NOTE),
+    "loc_835e5dfffffffff_1060162a95": ("prv_bbe4b181a47cc45070b6", "scenario-kalinago-lesser-antilles", GUADELOUPE_SOURCES, 0.45, GUADELOUPE_NOTE),
+    "loc_835e5dfffffffff_2656f3ce70": ("prv_be9567c2033d1b7fee4f", "scenario-kalinago-lesser-antilles", GUADELOUPE_SOURCES, 0.45, GUADELOUPE_NOTE),
+    "loc_835e40fffffffff_dba80c9470": ("prv_c5fff292c95e2ba4f0ee", "scenario-kalinago-lesser-antilles", MARTINIQUE_SOURCES, 0.45, MARTINIQUE_NOTE),
+    "loc_835e43fffffffff_269993ccb5": ("prv_d1eefa0b15368af256bb", "scenario-kalinago-lesser-antilles", GUADELOUPE_SOURCES, 0.45, GUADELOUPE_NOTE),
+    "loc_835e5cfffffffff_133685825d": ("prv_d4a91f94d8f3312856f3", "scenario-kalinago-lesser-antilles", GUADELOUPE_SOURCES, 0.45, GUADELOUPE_NOTE),
+    "loc_835e43fffffffff_9c67cb4923": ("prv_eef6464d5bfff220c3b2", "scenario-kalinago-lesser-antilles", GUADELOUPE_SOURCES, 0.45, GUADELOUPE_NOTE),
+    "loc_836746fffffffff_f55accb5a3": ("prv_f7a214361558b659829e", "scenario-caquetio-southern-caribbean", BONAIRE_SOURCES, 0.25, BONAIRE_NOTE),
+}
 
 
 GEOMETRY_SOURCES = [
@@ -185,11 +319,33 @@ def final_actor(country: str, point: Point) -> str:
 def build_packet(baseline: Path, output: Path, visual_sha256: str) -> dict[str, Any]:
     source_index = {row["source_id"]: row for row in load(baseline / "source_manifest.json")["sources"]}
     source_index.update({row["source_id"]: row for row in STATIC_SOURCES})
-    selected_ids = sorted(set(GEOMETRY_SOURCES + POLITICS_SOURCES + HIERARCHY_SOURCES + RELATIONSHIP_SOURCES))
+    residual_sources = (
+        GUADELOUPE_SOURCES + MARTINIQUE_SOURCES + SABA_SOURCES
+        + ST_EUSTATIUS_SOURCES + BONAIRE_SOURCES
+    )
+    selected_ids = sorted(set(
+        GEOMETRY_SOURCES + POLITICS_SOURCES + HIERARCHY_SOURCES
+        + RELATIONSHIP_SOURCES + residual_sources
+    ))
     build_index = {f["properties"]["feature_id"]: shape(f["geometry"])
                    for f in load(baseline / "build.geojson")["features"]
                    if f["properties"]["feature_type"] == "province"}
-    assignments = [row for row in load(baseline / "assignments.json")["assignments"] if row["region_id"] == "029"]
+    baseline_assignments = load(baseline / "assignments.json")["assignments"]
+    correction_targets = {
+        row["location_id"] for row in load(CORRECTION_PACKET)["location_region_overrides"]
+        if row["region_id"] == "029"
+    }
+    if correction_targets != set(CORRECTED_ASSIGNMENTS):
+        raise SystemExit("region-029 correction-packet location scope drifted")
+    corrected_by_province = {}
+    for location_id, (province_id, actor, source_ids, uncertainty, notes) in CORRECTED_ASSIGNMENTS.items():
+        matches = [row for row in baseline_assignments if location_id in row["location_ids"]]
+        if len(matches) != 1 or matches[0]["province_id"] != province_id or matches[0]["location_ids"] != [location_id]:
+            raise SystemExit(f"region-029 corrected province/location pair drifted: {province_id}/{location_id}")
+        corrected_by_province[province_id] = (actor, source_ids, uncertainty, notes)
+    assignments = [row for row in baseline_assignments if row["region_id"] == "029"] + [
+        row for row in baseline_assignments if row["province_id"] in corrected_by_province
+    ]
     if len(assignments) != EXPECTED_ASSIGNMENTS:
         raise SystemExit(f"region-029 assignment scope drifted: {len(assignments)}")
 
@@ -198,15 +354,18 @@ def build_packet(baseline: Path, output: Path, visual_sha256: str) -> dict[str, 
     overrides = []
     for row in assignments:
         point = build_index[row["province_id"]].representative_point()
-        actor = final_actor(nearest_country(point, countries), point)
+        corrected = corrected_by_province.get(row["province_id"])
+        actor = corrected[0] if corrected else final_actor(nearest_country(point, countries), point)
+        assignment_sources = sorted(corrected[1]) if corrected else POLITICS_SOURCES
+        uncertainty = corrected[2] if corrected else 0.35
+        notes = corrected[3] if corrected else "Caribbean exact-date replacement for 1444-11-11; island chiefdom and community fields remain coarse where archaeological and early-contact evidence does not support a hard local frontier."
         actor_by_province[row["province_id"]] = actor
         overrides.append({
             "province_id": row["province_id"], "polity_ids": [actor],
             "sovereign_polity_id": actor, "owner_polity_id": actor,
             "controller_polity_id": actor, "core_polity_ids": [actor],
-            "claim_polity_ids": [], "dispute_polity_ids": [], "source_ids": POLITICS_SOURCES,
-            "uncertainty": 0.35,
-            "notes": "Caribbean exact-date replacement for 1444-11-11; island chiefdom and community fields remain coarse where archaeological and early-contact evidence does not support a hard local frontier.",
+            "claim_polity_ids": [], "dispute_polity_ids": [], "source_ids": assignment_sources,
+            "uncertainty": uncertainty, "notes": notes,
             "hierarchy": {"area_id": f"area-029-{actor}", "method": "evidence-backed-polity-region-grouping-v1",
                           "region_id": "029", "superregion_id": "m49-superregion-029"},
         })
@@ -221,7 +380,16 @@ def build_packet(baseline: Path, output: Path, visual_sha256: str) -> dict[str, 
         polity = json.loads(json.dumps(old_polities.get(polity_id, {
             "polity_id": polity_id, "aliases": [], "capital_location_ids": [], "relationships": [],
         })))
-        polity.update({"name": NAMES[polity_id], "source_ids": all_polity_sources,
+        polity_sources = set(all_polity_sources)
+        if polity_id == "scenario-kalinago-lesser-antilles":
+            polity_sources.update(GUADELOUPE_SOURCES + MARTINIQUE_SOURCES)
+        elif polity_id == "scenario-eastern-taino-communities":
+            polity_sources.update(SABA_SOURCES)
+        elif polity_id == "scenario-small-island-communities":
+            polity_sources.update(ST_EUSTATIUS_SOURCES)
+        elif polity_id == "scenario-caquetio-southern-caribbean":
+            polity_sources.update(BONAIRE_SOURCES)
+        polity.update({"name": NAMES[polity_id], "source_ids": sorted(polity_sources),
                        "valid_from": "1400", "valid_to": "1500", "capital_location_ids": []})
         polities.append(polity)
 

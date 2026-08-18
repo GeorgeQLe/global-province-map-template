@@ -20,8 +20,8 @@ DEFAULT_OUTPUT = ROOT / "research/start-dates/1444-global-v1/regional-packets/00
 COUNTRIES = ROOT / "data/raw/natural_earth/ne_10m_admin_0_countries.zip"
 START_DATE = "1444-11-11"
 AS_OF_DATE = "2026-08-16"
-EXPECTED_ASSIGNMENTS = 2200
-VISUAL_REVIEW_SHA256 = "7275a21a0e8eea8acf508d0e8518e8432f1c2c4164958d6cfa1592b180bf64c2"
+EXPECTED_ASSIGNMENTS = 2211
+VISUAL_REVIEW_SHA256 = "2d08b4d7d5c4dd84377f1c87d42151ab734f7758ea97eb2604c4c8ceb9702ede"
 
 
 LOCATORS = {
@@ -34,6 +34,10 @@ LOCATORS = {
     "banrep-tairona-muisca": "Museo del Oro > Tairona and Muisca sections on cities, villages, and chiefdoms",
     "iphan-amazonian-archaeology": "Arqueologia Amazonica > sedentary settlement, earthworks, exchange, and regional ceramic traditions",
     "argentina-loma-rica": "Poblado prehispanico de Loma Rica > 1300-1500 dating, settlement scale, and defensible location",
+    "inrap-guyane-precolumbian": "Guyane > occupations precolombiennes, village evidence, and 750-1600 chronology",
+    "inrap-guyane-kourou-luna1": "Carriere S2 - Luna 1 > precolumbian occupation and first-contact sequence at Kourou",
+    "cnrs-guiana-precolumbian-forest": "La foret guyanaise > precolumbian settlement legacy across the Guiana Shield",
+    "npolar-bouvet-history": "Bouvetoya > 1739 first recorded sighting and 1927 first landing",
 }
 
 
@@ -89,7 +93,66 @@ STATIC_SOURCES = [
         "https://www.argentina.gob.ar/capital-humano/cultura/monumentos/poblado-prehispanico-de-loma-rica",
         "argentina-monumentos",
     ),
+    source(
+        "inrap-guyane-precolumbian",
+        "Institut national de recherches archeologiques preventives, Guyane: archaeological overview.",
+        "https://www.inrap.fr/sites/inrap.fr/files/atoms/files/guyane_08_0.pdf",
+        "inrap-guyane-overview", "academic",
+    ),
+    source(
+        "inrap-guyane-kourou-luna1",
+        "Institut national de recherches archeologiques preventives, 'Decouverte d'un site precolombien sur le Centre spatial guyanais de Kourou'.",
+        "https://www.inrap.fr/decouverte-d-un-site-precolombien-sur-le-centre-spatial-guyanais-de-kourou-11598",
+        "inrap-kourou-luna1", "academic",
+    ),
+    source(
+        "cnrs-guiana-precolumbian-forest",
+        "CNRS Ecologie & Environnement, 'La foret guyanaise, heritiere de l'influence precolombienne'.",
+        "https://www.inee.cnrs.fr/fr/cnrsinfo/la-foret-guyanaise-heritiere-de-linfluence-precolombienne",
+        "cnrs-guiana-forest", "academic",
+    ),
+    source(
+        "npolar-bouvet-history",
+        "Norwegian Polar Institute, 'Did you know that Bouvetoya is the most isolated island in the world?'.",
+        "https://nettarkiv.npolar.no/sorpolen2011.npolar.no/en/did-you-know/2011-11-18-bouvetoya-is-the-most-isolated-island-in-the-world.html",
+        "norwegian-polar-institute-bouvet",
+    ),
 ]
+
+
+FRENCH_GUIANA_SOURCES = [
+    "cnrs-guiana-precolumbian-forest", "inrap-guyane-kourou-luna1",
+    "inrap-guyane-precolumbian",
+]
+BOUVET_SOURCES = ["npolar-bouvet-history"]
+CORRECTION_PACKETS = (
+    ROOT / "research/start-dates/1444-global-v1/regional-packets/154-northern-europe-2026-08-15.json",
+    ROOT / "research/start-dates/1444-global-v1/regional-packets/155-western-europe-2026-08-15.json",
+)
+CORRECTED_ASSIGNMENTS = {
+    "loc_835f12fffffffff_c5be541d90": ("prv_19e89e4eaa5dfc2e2b3a", "scenario-orinoco-guianas", FRENCH_GUIANA_SOURCES, 0.45,
+        "French Guiana residual: precolumbian Guiana-Shield community networks; no French or later colonial sovereignty is projected to 1444-11-11."),
+    "loc_835f12fffffffff_7d7d0ad1d6": ("prv_24997d8e705642bb38f5", "scenario-orinoco-guianas", FRENCH_GUIANA_SOURCES, 0.45,
+        "French Guiana residual: precolumbian Guiana-Shield community networks; no French or later colonial sovereignty is projected to 1444-11-11."),
+    "loc_83d09efffffffff_9e81297988": ("prv_310ae0921fe95823a658", "scenario-uninhabited-south-atlantic-islands", BOUVET_SOURCES, 0.05,
+        "Bouvet residual: the island had no recorded human landing before 1927 and is uninhabited at 1444-11-11."),
+    "loc_835f16fffffffff_30c99531b6": ("prv_5081bb9cdeeb7086dcfd", "scenario-orinoco-guianas", FRENCH_GUIANA_SOURCES, 0.45,
+        "French Guiana residual: precolumbian Guiana-Shield community networks; no French or later colonial sovereignty is projected to 1444-11-11."),
+    "loc_835f1efffffffff_a99e688aa1": ("prv_58b55f11fd5efce327a6", "scenario-orinoco-guianas", FRENCH_GUIANA_SOURCES, 0.45,
+        "French Guiana residual: precolumbian Guiana-Shield community networks; no French or later colonial sovereignty is projected to 1444-11-11."),
+    "loc_835f14fffffffff_2ef32b2a07": ("prv_7be0440ed5267d0d1db3", "scenario-orinoco-guianas", FRENCH_GUIANA_SOURCES, 0.45,
+        "French Guiana residual: precolumbian Guiana-Shield community networks; no French or later colonial sovereignty is projected to 1444-11-11."),
+    "loc_835f13fffffffff_daefe30f3d": ("prv_8eea9d15a3846e2137d9", "scenario-orinoco-guianas", FRENCH_GUIANA_SOURCES, 0.45,
+        "French Guiana residual: precolumbian Guiana-Shield community networks; no French or later colonial sovereignty is projected to 1444-11-11."),
+    "loc_835f33fffffffff_2a560c7111": ("prv_9aff2ceaa4e216c0cc1e", "scenario-orinoco-guianas", FRENCH_GUIANA_SOURCES, 0.45,
+        "French Guiana residual: precolumbian Guiana-Shield community networks; no French or later colonial sovereignty is projected to 1444-11-11."),
+    "loc_835f10fffffffff_4b6436f831": ("prv_a1149707e1319b5535a6", "scenario-orinoco-guianas", FRENCH_GUIANA_SOURCES, 0.45,
+        "French Guiana residual: precolumbian Guiana-Shield community networks; no French or later colonial sovereignty is projected to 1444-11-11."),
+    "loc_835f15fffffffff_ed166b3ae1": ("prv_a5171223bb3523db5c71", "scenario-orinoco-guianas", FRENCH_GUIANA_SOURCES, 0.45,
+        "French Guiana residual: precolumbian Guiana-Shield community networks; no French or later colonial sovereignty is projected to 1444-11-11."),
+    "loc_835f11fffffffff_341d198e42": ("prv_bed2f369053802b9bafe", "scenario-orinoco-guianas", FRENCH_GUIANA_SOURCES, 0.45,
+        "French Guiana residual: precolumbian Guiana-Shield community networks; no French or later colonial sovereignty is projected to 1444-11-11."),
+}
 
 
 GEOMETRY_SOURCES = [
@@ -216,11 +279,30 @@ def final_actor(country: str, point: Point) -> str:
 def build_packet(baseline: Path, output: Path, visual_sha256: str) -> dict[str, Any]:
     source_index = {row["source_id"]: row for row in load(baseline / "source_manifest.json")["sources"]}
     source_index.update({row["source_id"]: row for row in STATIC_SOURCES})
-    selected_ids = sorted(set(GEOMETRY_SOURCES + POLITICS_SOURCES + HIERARCHY_SOURCES + RELATIONSHIP_SOURCES))
+    selected_ids = sorted(set(
+        GEOMETRY_SOURCES + POLITICS_SOURCES + HIERARCHY_SOURCES + RELATIONSHIP_SOURCES
+        + FRENCH_GUIANA_SOURCES + BOUVET_SOURCES
+    ))
     build_index = {f["properties"]["feature_id"]: shape(f["geometry"])
                    for f in load(baseline / "build.geojson")["features"]
                    if f["properties"]["feature_type"] == "province"}
-    assignments = [row for row in load(baseline / "assignments.json")["assignments"] if row["region_id"] == "005"]
+    baseline_assignments = load(baseline / "assignments.json")["assignments"]
+    correction_targets = {
+        row["location_id"]
+        for path in CORRECTION_PACKETS for row in load(path)["location_region_overrides"]
+        if row["region_id"] == "005"
+    }
+    if correction_targets != set(CORRECTED_ASSIGNMENTS):
+        raise SystemExit("region-005 correction-packet location scope drifted")
+    corrected_by_province = {}
+    for location_id, (province_id, actor, source_ids, uncertainty, notes) in CORRECTED_ASSIGNMENTS.items():
+        matches = [row for row in baseline_assignments if location_id in row["location_ids"]]
+        if len(matches) != 1 or matches[0]["province_id"] != province_id or matches[0]["location_ids"] != [location_id]:
+            raise SystemExit(f"region-005 corrected province/location pair drifted: {province_id}/{location_id}")
+        corrected_by_province[province_id] = (actor, source_ids, uncertainty, notes)
+    assignments = [row for row in baseline_assignments if row["region_id"] == "005"] + [
+        row for row in baseline_assignments if row["province_id"] in corrected_by_province
+    ]
     if len(assignments) != EXPECTED_ASSIGNMENTS:
         raise SystemExit(f"region-005 assignment scope drifted: {len(assignments)}")
 
@@ -229,15 +311,18 @@ def build_packet(baseline: Path, output: Path, visual_sha256: str) -> dict[str, 
     overrides = []
     for row in assignments:
         point = build_index[row["province_id"]].representative_point()
-        actor = final_actor(nearest_country(point, countries), point)
+        corrected = corrected_by_province.get(row["province_id"])
+        actor = corrected[0] if corrected else final_actor(nearest_country(point, countries), point)
+        assignment_sources = sorted(corrected[1]) if corrected else POLITICS_SOURCES
+        uncertainty = corrected[2] if corrected else 0.35
+        notes = corrected[3] if corrected else "South America exact-date replacement for 1444-11-11; named state and chiefdom systems are kept distinct where the evidence supports them, while broad community fabrics avoid projecting later colonial, national, or ethnographic borders backward."
         actor_by_province[row["province_id"]] = actor
         overrides.append({
             "province_id": row["province_id"], "polity_ids": [actor],
             "sovereign_polity_id": actor, "owner_polity_id": actor,
             "controller_polity_id": actor, "core_polity_ids": [actor],
-            "claim_polity_ids": [], "dispute_polity_ids": [], "source_ids": POLITICS_SOURCES,
-            "uncertainty": 0.35,
-            "notes": "South America exact-date replacement for 1444-11-11; named state and chiefdom systems are kept distinct where the evidence supports them, while broad community fabrics avoid projecting later colonial, national, or ethnographic borders backward.",
+            "claim_polity_ids": [], "dispute_polity_ids": [], "source_ids": assignment_sources,
+            "uncertainty": uncertainty, "notes": notes,
             "hierarchy": {"area_id": f"area-005-{actor}", "method": "evidence-backed-polity-region-grouping-v1",
                           "region_id": "005", "superregion_id": "m49-superregion-005"},
         })
@@ -253,7 +338,12 @@ def build_packet(baseline: Path, output: Path, visual_sha256: str) -> dict[str, 
             "polity_id": polity_id, "aliases": [], "capital_location_ids": [], "relationships": [],
         })))
         polity["name"] = NAMES[polity_id]
-        polity["source_ids"] = all_polity_sources
+        polity_sources = set(all_polity_sources)
+        if polity_id == "scenario-orinoco-guianas":
+            polity_sources.update(FRENCH_GUIANA_SOURCES)
+        elif polity_id == "scenario-uninhabited-south-atlantic-islands":
+            polity_sources.update(BOUVET_SOURCES)
+        polity["source_ids"] = sorted(polity_sources)
         polity["valid_from"], polity["valid_to"] = "1400", "1500"
         polity["capital_location_ids"] = []
         polities.append(polity)

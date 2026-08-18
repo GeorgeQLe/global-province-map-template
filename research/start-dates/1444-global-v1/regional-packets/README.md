@@ -124,20 +124,22 @@ Bermuda, Saint Pierre and Miquelon, and United States minor islands remain in
 `021`, so no geographic correction applies.
 
 `005-south-america-2026-08-16.json` is the twelfth accepted packet and the
-largest remaining Africa/Americas promotion. It replaces all 2,200 South
+largest remaining Africa/Americas promotion. It replaces all 2,211 South
 America assignments, supplies 15 date-valid political or community records,
-nine canonical source pins, eight checked archaeological or political centers,
+13 canonical source pins, eight checked archaeological or political centers,
 and 32 executable assertions. The exact-date sheet keeps Pachakuti's early Inca
 state distinct from unconquered Chimor, Aymara kingdoms, other Andean polities,
 Muisca and Tairona chiefdoms, and deliberately coarse lowland and southern
 community fabrics. It removes the generic modern scaffold and the anachronistic
 Falklands actor, recording South Atlantic islands as uninhabited; later Inca
 maxima, colonial borders, and contact-era tribal maps are not projected back to
-`1444-11-11`. No additional country-based M49 correction applies.
+`1444-11-11`. The destination packet now owns the ten French Guiana residual
+assignments corrected by region 155 and the Bouvet residual corrected by region
+154, while correction ownership remains in those source packets.
 
 `014-eastern-africa-2026-08-16.json` is the thirteenth accepted packet. It
-replaces all 715 Eastern Africa assignments, supplies 13 date-valid political
-or community records, nine canonical source pins, eight checked political,
+replaces all 720 Eastern Africa assignments, supplies 14 date-valid political
+or community records, 14 canonical source pins, eight checked political,
 port, archaeological, or settlement centers, and 32 executable assertions.
 The exact-date sheet distinguishes Zar'a Ya'eqob's Solomonic Ethiopia, Adal,
 Ajuran and southern Somali polities, Great Lakes kingdoms, northern and
@@ -145,9 +147,10 @@ Kilwa-linked Swahili cities, Zambezi polities, the Great Zimbabwe transition,
 Malagasy communities, Comorian sultanates, and uninhabited remote islands. It
 removes all modern-country and generic scaffold actors, draws no unsupported
 hard frontier, and does not project later dynastic maxima or colonial borders
-back to `1444-11-11`. The five Mayotte and Réunion locations geographically
-corrected by region 155 remain represented through that already-promoted
-packet; no additional M49 correction is required here.
+back to `1444-11-11`. It now owns the five Mayotte and Reunion residual
+assignments geographically corrected by region 155. Mayotte uses a separate,
+source-bounded pre-sultanate community polity; Reunion remains uninhabited.
+Correction ownership stays in the region-155 packet.
 
 `011-western-africa-2026-08-16.json` is the fourteenth accepted packet. It
 replaces all 641 Western Africa assignments, supplies 15 date-valid political
@@ -188,8 +191,8 @@ Principe as uninhabited before Portuguese settlement, draws no unsupported
 hard local frontier, and requires no additional M49 correction.
 
 `029-caribbean-2026-08-16.json` is the seventeenth accepted packet. It
-replaces all 372 Caribbean assignments, supplies 11 date-valid chiefdom or
-community records, eight canonical source pins, eight checked archaeological
+replaces all 396 Caribbean assignments, supplies 11 date-valid chiefdom or
+community records, 22 canonical source pins, eight checked archaeological
 sites, and 32 executable assertions. The exact-date sheet distinguishes
 Lucayan communities in the Bahamas and Turks and Caicos; Cuban, Hispaniolan,
 Boriken, and Jamaican Taino fabrics; Guanahatabey western Cuba; Virgin and
@@ -198,9 +201,10 @@ communities; Trinidadian and southern-Caribbean fabrics; and small or
 seasonally used islands. It removes every generic and modern-island scaffold
 actor, draws no unsupported hard local frontier, and does not flatten the
 archipelago's documented cultural diversity into a single pan-Caribbean
-polity. The 24 Caribbean locations geographically corrected by region 155
-remain represented through that already-promoted packet, so no additional M49
-correction is required here.
+polity. The destination packet now owns all 24 residual assignments for
+Guadeloupe, Martinique, Saba, Sint Eustatius, and Bonaire geographically
+corrected by region 155, using case-specific evidence while correction
+ownership remains in the region-155 packet.
 
 `018-southern-africa-2026-08-16.json` is the eighteenth accepted packet and
 the final Africa/Americas promotion. It replaces all 225 Southern Africa

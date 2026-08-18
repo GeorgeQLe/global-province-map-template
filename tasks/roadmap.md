@@ -1,6 +1,6 @@
 # Roadmap Progress
 
-Updated: 2026-08-16
+Updated: 2026-08-18
 
 Product direction (see root `ROADMAP.md`): dual audience for **strategy-game
 seeds** and **historical / SaaS maps**, with a **strong historical accuracy
@@ -47,7 +47,7 @@ historical coverage.
 | M24 | complete | schemas and `gpm qa start-date` | `test_m24_start_date_framework.py` | contract and rejected-pass evidence | framework only; does not certify an era |
 | M25A | complete | hard-case casebook + typed-status schema | eight executable per-class canonical/runtime/visual/picking/LOD/adjacency/save fixtures | research artifacts only | synthetic contract fixtures, not historical evidence |
 | M25B | complete | `gpm export runtime`; `gpm.runtime` | `test_m25b_runtime.py`; duplicate-build/budget benchmarks | synthetic runtime reference pack | global-scale budgets re-run per certified era |
-| M25C | in progress; 22 of 22 regions promoted | accepted refrozen census and M23/M49 inputs; deterministic provisional generator; all 22 M49 regions carry four-layer Grade-A packets; schema 0.3 provisional QA plus unchanged certification gates | exact 23,582-location/22,000-province/88-row checks, regional source-pin, asset, spatial, and render gates; provisional QA and non-promotion tests | regional evidence is complete, but the provisional path remains non-public and non-certifiable pending ordinary research QA and human review | run the ordinary worldwide research QA and human-review sequence before runtime certification and publication |
+| M25C | in progress; 22 of 22 regions promoted | accepted refrozen census and M23/M49 inputs; deterministic provisional generator; all 22 M49 regions carry four-layer Grade-A packets; 40 corrected residual assignments are source-pinned in destination packets; schema 0.3 provisional QA plus unchanged certification gates | exact 23,582-location/22,000-province/88-row checks, exact-once corrected-assignment ownership, regional source-pin, asset, spatial, and render gates; provisional QA and non-promotion tests | regional evidence is complete and the residual assignment-source defects are closed, but the provisional path remains non-public and non-certifiable pending remaining evidence cleanup and human review | research and decide the surviving provisional polity/source references before assertion cleanup, assembled-pass review, runtime certification, and publication |
 | M26 | planned | global 1836 pass + runtime delta/migration | worldwide research and runtime validation | none yet | begins after M25C |
 | M27 | planned | 1914 canonical pass + runtime delta/migration | future research and runtime validation | none yet | begins after M26 |
 | M28 | planned | 1936 canonical pass + runtime delta/migration | future research and runtime validation | none yet | begins after M27 |
@@ -163,7 +163,10 @@ historical coverage.
 - M25C worldwide historical evidence and reviewed pass assembly. The repaired
   242-cell packet is reproducible, hash-locked, ledger-backed, and approved by
   George Le through the packet-only acceptance sidecar. The frozen candidate
-  status and public-release flag remain false by design. Remaining worldwide
+  status and public-release flag remain false by design. The 40 corrected
+  residual assignments are now owned exactly once by destination packets 005,
+  014, and 029 with case-specific sources, removing 200 ordinary QA findings.
+  Surviving polity/source references are the next decision gate; assertion
   evidence, real-pass assembly, assembled-pass review, runtime certification,
   and release remain outstanding. The 1444-v2 candidate remains a five-region
   research pilot, not a release boundary.

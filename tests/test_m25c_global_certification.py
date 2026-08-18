@@ -24,6 +24,88 @@ ROOT = Path(__file__).resolve().parents[1]
 GLOBAL = ROOT / "research" / "start-dates" / "1444-global-v1"
 PILOT = ROOT / "research" / "start-dates" / "1444-v2"
 
+CORRECTED_DESTINATION_PAIRS = {
+    "005": {
+        "loc_835f12fffffffff_c5be541d90": ("prv_19e89e4eaa5dfc2e2b3a", "guiana"),
+        "loc_835f12fffffffff_7d7d0ad1d6": ("prv_24997d8e705642bb38f5", "guiana"),
+        "loc_83d09efffffffff_9e81297988": ("prv_310ae0921fe95823a658", "bouvet"),
+        "loc_835f16fffffffff_30c99531b6": ("prv_5081bb9cdeeb7086dcfd", "guiana"),
+        "loc_835f1efffffffff_a99e688aa1": ("prv_58b55f11fd5efce327a6", "guiana"),
+        "loc_835f14fffffffff_2ef32b2a07": ("prv_7be0440ed5267d0d1db3", "guiana"),
+        "loc_835f13fffffffff_daefe30f3d": ("prv_8eea9d15a3846e2137d9", "guiana"),
+        "loc_835f33fffffffff_2a560c7111": ("prv_9aff2ceaa4e216c0cc1e", "guiana"),
+        "loc_835f10fffffffff_4b6436f831": ("prv_a1149707e1319b5535a6", "guiana"),
+        "loc_835f15fffffffff_ed166b3ae1": ("prv_a5171223bb3523db5c71", "guiana"),
+        "loc_835f11fffffffff_341d198e42": ("prv_bed2f369053802b9bafe", "guiana"),
+    },
+    "014": {
+        "loc_83a254fffffffff_bf97337886": ("prv_25dc8e80988576f13b94", "reunion"),
+        "loc_83a304fffffffff_05539f788e": ("prv_4f169aa651ddb7613e94", "mayotte"),
+        "loc_83a250fffffffff_a1a76e1ee2": ("prv_621047cd51de209ae7a6", "reunion"),
+        "loc_83a304fffffffff_714c8bce3a": ("prv_8f086db76587de59188f", "mayotte"),
+        "loc_83a255fffffffff_a359a377a6": ("prv_a080717eaf32dacfea49", "reunion"),
+    },
+    "029": {
+        "loc_835e43fffffffff_7a1063e862": ("prv_17a2082ff620fff2365c", "guadeloupe"),
+        "loc_835e5cfffffffff_2ab68c1e58": ("prv_2672ba4a59434e1097be", "guadeloupe"),
+        "loc_835e43fffffffff_c83e1ce1da": ("prv_4a456cb955650662c02c", "guadeloupe"),
+        "loc_835e4bfffffffff_7b21fd4fff": ("prv_5486a37d9e86c8d02c36", "saba"),
+        "loc_835e43fffffffff_8e2598daef": ("prv_55d2a5f86e33f9a1e0f6", "guadeloupe"),
+        "loc_835e46fffffffff_f74726b473": ("prv_57b4e5f40a10e9eb381e", "martinique"),
+        "loc_835e5cfffffffff_15e968bfc2": ("prv_601f0e1dce2c047ff9b1", "guadeloupe"),
+        "loc_835e5cfffffffff_3798bc792c": ("prv_67d747708875f2223712", "guadeloupe"),
+        "loc_835e43fffffffff_483b66cd61": ("prv_6851031205ea4eed2d95", "guadeloupe"),
+        "loc_835e43fffffffff_38c143e382": ("prv_7e505f8595a1e7d80118", "guadeloupe"),
+        "loc_835e42fffffffff_62ba9e62fb": ("prv_7f27dae3ee89a0f66538", "martinique"),
+        "loc_835e5dfffffffff_a646fd5470": ("prv_82a3457e29f98a53c095", "guadeloupe"),
+        "loc_835e43fffffffff_73093ec31b": ("prv_8fea3e2c28a3f224b005", "guadeloupe"),
+        "loc_835e5dfffffffff_e2b27ba088": ("prv_94e92fbb78d7fe1b97b2", "guadeloupe"),
+        "loc_836744fffffffff_c1890d6cc2": ("prv_ab4cbfb4ba8ef151dae9", "bonaire"),
+        "loc_835e4bfffffffff_12eb076dd3": ("prv_b31341d5fc6a20f66d8d", "st-eustatius"),
+        "loc_836740fffffffff_50847f2e9c": ("prv_bb1f1984122ac5695b3b", "bonaire"),
+        "loc_835e5dfffffffff_1060162a95": ("prv_bbe4b181a47cc45070b6", "guadeloupe"),
+        "loc_835e5dfffffffff_2656f3ce70": ("prv_be9567c2033d1b7fee4f", "guadeloupe"),
+        "loc_835e40fffffffff_dba80c9470": ("prv_c5fff292c95e2ba4f0ee", "martinique"),
+        "loc_835e43fffffffff_269993ccb5": ("prv_d1eefa0b15368af256bb", "guadeloupe"),
+        "loc_835e5cfffffffff_133685825d": ("prv_d4a91f94d8f3312856f3", "guadeloupe"),
+        "loc_835e43fffffffff_9c67cb4923": ("prv_eef6464d5bfff220c3b2", "guadeloupe"),
+        "loc_836746fffffffff_f55accb5a3": ("prv_f7a214361558b659829e", "bonaire"),
+    },
+}
+
+CORRECTED_POLICIES = {
+    "guiana": ("scenario-orinoco-guianas", 0.45, {
+        "cnrs-guiana-precolumbian-forest", "inrap-guyane-kourou-luna1",
+        "inrap-guyane-precolumbian",
+    }, "French Guiana residual:"),
+    "bouvet": ("scenario-uninhabited-south-atlantic-islands", 0.05,
+               {"npolar-bouvet-history"}, "Bouvet residual:"),
+    "mayotte": ("scenario-pre-sultanate-mayotte-communities", 0.45, {
+        "culture-mayotte-archaeological-timeline", "culture-mayotte-forty-years",
+        "openedition-tsingoni-mosque", "persee-mayotte-bagamoyo",
+    }, "Mayotte residual:"),
+    "reunion": ("scenario-uninhabited-western-indian-ocean", 0.05,
+                {"culture-indian-ocean-reunion-history"}, "Reunion residual:"),
+    "guadeloupe": ("scenario-kalinago-lesser-antilles", 0.45, {
+        "adlfi-anse-a-la-gourde", "inrap-antilles-archaeology",
+        "inrap-guadeloupe-history", "pmc-east-guadeloupe-networks",
+    }, "Guadeloupe residual:"),
+    "martinique": ("scenario-kalinago-lesser-antilles", 0.45, {
+        "inrap-martinique-anse-bellay", "leiden-martinique-ansea-trabaud",
+        "yale-martinique-later-prehistory",
+    }, "Martinique residual:"),
+    "saba": ("scenario-eastern-taino-communities", 0.35, {
+        "leiden-precolumbian-saba-thesis", "leiden-saba-first-inhabitants",
+        "springer-late-precolonial-saba-networks",
+    }, "Saba residual:"),
+    "st-eustatius": ("scenario-small-island-communities", 0.55, {
+        "jas-st-eustatius-golden-rock", "leiden-st-eustatius-archaeology",
+    }, "Sint Eustatius residual:"),
+    "bonaire": ("scenario-caquetio-southern-caribbean", 0.25, {
+        "royalsociety-caquetio-calibration", "tandf-bonaire-isotopes",
+    }, "Bonaire residual:"),
+}
+
 
 def _builder_module():
     path = ROOT / "scripts" / "build-m25c-global-pass.py"
@@ -148,15 +230,15 @@ def test_regional_packet_cannot_promote_a_weak_grade_a_claim():
 
 
 @pytest.mark.parametrize(("region", "filename", "assignment_count", "correction_count"), [
-    ("005", "005-south-america-2026-08-16.json", 2200, 0),
+    ("005", "005-south-america-2026-08-16.json", 2211, 0),
     ("011", "011-western-africa-2026-08-16.json", 641, 2),
     ("013", "013-central-america-2026-08-16.json", 605, 0),
-    ("014", "014-eastern-africa-2026-08-16.json", 715, 0),
+    ("014", "014-eastern-africa-2026-08-16.json", 720, 0),
     ("015", "015-northern-africa-2026-08-16.json", 643, 0),
     ("017", "017-middle-africa-2026-08-16.json", 527, 0),
     ("018", "018-southern-africa-2026-08-16.json", 225, 0),
     ("021", "021-northern-america-2026-08-16.json", 3986, 0),
-    ("029", "029-caribbean-2026-08-16.json", 372, 0),
+    ("029", "029-caribbean-2026-08-16.json", 396, 0),
     ("030", "030-eastern-asia-2026-08-16.json", 1941, 0),
     ("034", "034-southern-asia-2026-08-16.json", 910, 0),
     ("035", "035-south-eastern-asia-2026-08-16.json", 1759, 3),
@@ -192,12 +274,12 @@ def test_completed_region_grade_a_packets(region, filename, assignment_count, co
     assert len(packet["location_region_overrides"]) == correction_count
     if region == "005":
         assert packet["expected_counts"] == {
-            "assertions": 32, "assignments": 2200, "build_features": 8,
+            "assertions": 32, "assignments": 2211, "build_features": 8,
             "derived_files": 0, "m49_corrections": 0, "polities": 15,
-            "sources": 9,
+            "sources": 13,
         }
         assert packet["visual_review_artifact"]["sha256"] == (
-            "7275a21a0e8eea8acf508d0e8518e8432f1c2c4164958d6cfa1592b180bf64c2"
+            "2d08b4d7d5c4dd84377f1c87d42151ab734f7758ea97eb2604c4c8ceb9702ede"
         )
         actors = {row["owner_polity_id"] for row in packet["assignment_overrides"]}
         assert not actors.intersection({"scenario-flk", "scenario-nah"})
@@ -248,12 +330,12 @@ def test_completed_region_grade_a_packets(region, filename, assignment_count, co
                 "scenario-uninhabited-east-pacific-islands"}.issubset(actors)
     elif region == "014":
         assert packet["expected_counts"] == {
-            "assertions": 32, "assignments": 715, "build_features": 8,
-            "derived_files": 0, "m49_corrections": 0, "polities": 13,
-            "sources": 9,
+            "assertions": 32, "assignments": 720, "build_features": 8,
+            "derived_files": 0, "m49_corrections": 0, "polities": 14,
+            "sources": 14,
         }
         assert packet["visual_review_artifact"]["sha256"] == (
-            "73860a47d532f9015e9c0e6006cfcc4dfe8581c72a66218f5d9605a024e51345"
+            "98a51a9d5a934c4b969d886cd99797aeb970ad7fe958ed50b5eb42c46fc720c2"
         )
         actors = {row["owner_polity_id"] for row in packet["assignment_overrides"]}
         assert not actors.intersection({
@@ -264,7 +346,23 @@ def test_completed_region_grade_a_packets(region, filename, assignment_count, co
                 "scenario-ajuran-somali", "scenario-great-lakes-kingdoms",
                 "scenario-kilwa-swahili-network", "scenario-great-zimbabwe-transition",
                 "scenario-malagasy-communities",
-                "scenario-uninhabited-western-indian-ocean"}.issubset(actors)
+                "scenario-uninhabited-western-indian-ocean",
+                "scenario-pre-sultanate-mayotte-communities"}.issubset(actors)
+        mayotte = {row["polity_id"]: row for row in packet["polities"]}[
+            "scenario-pre-sultanate-mayotte-communities"
+        ]
+        assert mayotte == {
+            "aliases": [], "capital_location_ids": [],
+            "name": "Pre-sultanate Mayotte communities",
+            "polity_id": "scenario-pre-sultanate-mayotte-communities",
+            "relationships": [],
+            "source_ids": [
+                "culture-mayotte-archaeological-timeline",
+                "culture-mayotte-forty-years", "openedition-tsingoni-mosque",
+                "persee-mayotte-bagamoyo",
+            ],
+            "valid_from": "1400", "valid_to": "1500",
+        }
     elif region == "015":
         assert packet["expected_counts"] == {
             "assertions": 25, "assignments": 643, "build_features": 6,
@@ -335,12 +433,12 @@ def test_completed_region_grade_a_packets(region, filename, assignment_count, co
                 "scenario-uninhabited-southern-ocean-islands"}.issubset(actors)
     elif region == "029":
         assert packet["expected_counts"] == {
-            "assertions": 32, "assignments": 372, "build_features": 8,
+            "assertions": 32, "assignments": 396, "build_features": 8,
             "derived_files": 0, "m49_corrections": 0, "polities": 11,
-            "sources": 8,
+            "sources": 22,
         }
         assert packet["visual_review_artifact"]["sha256"] == (
-            "ce83e796b976bfd6ca81678425766c99eab5eeda532dfe4a4b66c9f9a413ecba"
+            "a9968a21b77e7a979c70dba2bd291b01529e9f3bc93b0ce3fa3c5a9820288ccf"
         )
         actors = {row["owner_polity_id"] for row in packet["assignment_overrides"]}
         assert not actors.intersection({
@@ -564,6 +662,77 @@ def test_completed_region_grade_a_packets(region, filename, assignment_count, co
     elif region == "155":
         assert {target: sum(row["region_id"] == target for row in packet["location_region_overrides"])
                 for target in {"005", "014", "029"}} == {"005": 10, "014": 5, "029": 24}
+
+
+def test_corrected_assignments_are_exactly_once_in_destination_packets():
+    packet_files = {
+        "005": "005-south-america-2026-08-16.json",
+        "014": "014-eastern-africa-2026-08-16.json",
+        "029": "029-caribbean-2026-08-16.json",
+    }
+    destinations = {
+        region: json.loads((GLOBAL / "regional-packets" / filename).read_text())
+        for region, filename in packet_files.items()
+    }
+    correction_packets = [
+        json.loads((GLOBAL / "regional-packets" / filename).read_text())
+        for filename in (
+            "154-northern-europe-2026-08-15.json",
+            "155-western-europe-2026-08-15.json",
+        )
+    ]
+    correction_map = {
+        row["location_id"]: row["region_id"]
+        for packet in correction_packets for row in packet["location_region_overrides"]
+        if row["region_id"] in destinations
+    }
+    expected_targets = {
+        location_id: region
+        for region, pairs in CORRECTED_DESTINATION_PAIRS.items()
+        for location_id in pairs
+    }
+    assert correction_map == expected_targets
+    assert all(not packet["location_region_overrides"] for packet in destinations.values())
+
+    destination_indexes = {
+        region: {row["province_id"]: row for row in packet["assignment_overrides"]}
+        for region, packet in destinations.items()
+    }
+    correction_provinces = {
+        row["province_id"]
+        for packet in correction_packets for row in packet["assignment_overrides"]
+    }
+    occurrence_count = 0
+    for region, pairs in CORRECTED_DESTINATION_PAIRS.items():
+        for location_id, (province_id, policy_id) in pairs.items():
+            occurrences = [
+                (candidate_region, index[province_id])
+                for candidate_region, index in destination_indexes.items()
+                if province_id in index
+            ]
+            assert len(occurrences) == 1
+            assert occurrences[0][0] == region
+            assert province_id not in correction_provinces
+            row = occurrences[0][1]
+            actor, uncertainty, source_ids, note_prefix = CORRECTED_POLICIES[policy_id]
+            assert row["polity_ids"] == [actor]
+            assert row["sovereign_polity_id"] == actor
+            assert row["owner_polity_id"] == actor
+            assert row["controller_polity_id"] == actor
+            assert row["core_polity_ids"] == [actor]
+            assert row["claim_polity_ids"] == []
+            assert row["dispute_polity_ids"] == []
+            assert row["uncertainty"] == uncertainty
+            assert set(row["source_ids"]) == source_ids
+            assert row["notes"].startswith(note_prefix)
+            assert row["hierarchy"] == {
+                "area_id": f"area-{region}-{actor}",
+                "method": "evidence-backed-polity-region-grouping-v1",
+                "region_id": region,
+                "superregion_id": f"m49-superregion-{region}",
+            }
+            occurrence_count += 1
+    assert occurrence_count == 40
 
 
 def test_region_grade_a_source_pins_bind_the_canonical_source_records():

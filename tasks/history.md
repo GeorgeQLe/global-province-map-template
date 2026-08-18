@@ -1,5 +1,23 @@
 # History
 
+## 2026-08-18 - M25C corrected residual assignment remediation
+
+- Preserved geographic correction ownership in regional packets 154 and 155
+  while moving assignment ownership for all 40 corrected locations into their
+  destination packets: 11 assignments in South America 005, five in Eastern
+  Africa 014, and 24 in the Caribbean 029.
+- Added case-specific reviewed evidence and canonical source pins for French
+  Guiana, Bouvet, Mayotte, Reunion, Guadeloupe, Martinique, Saba, Sint
+  Eustatius, and Bonaire, and added the source-bounded pre-sultanate Mayotte
+  communities polity without capital, claims, disputes, or relationships.
+- Regenerated deterministic packet totals of 2,211/15/13 for 005, 720/14/14
+  for 014, and 396/11/22 for 029, plus the worldwide pass, status, anomaly,
+  hash, render, and unsigned pending-review artifacts.
+- Added exact mapping, actor, uncertainty, source, Mayotte-polity, and
+  cross-destination exact-once certification coverage. The full suite passed
+  388 tests; ordinary QA retained zero errors and removed the predicted 200
+  residual assignment and derived findings.
+
 ## 2026-08-16 - M25C Micronesia Grade-A promotion
 
 - Promoted UN M49 region 057 with 175 non-provisional assignment overrides,

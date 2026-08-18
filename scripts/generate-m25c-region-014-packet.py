@@ -20,8 +20,8 @@ DEFAULT_OUTPUT = ROOT / "research/start-dates/1444-global-v1/regional-packets/01
 COUNTRIES = ROOT / "data/raw/natural_earth/ne_10m_admin_0_countries.zip"
 START_DATE = "1444-11-11"
 AS_OF_DATE = "2026-08-16"
-EXPECTED_ASSIGNMENTS = 715
-VISUAL_REVIEW_SHA256 = "73860a47d532f9015e9c0e6006cfcc4dfe8581c72a66218f5d9605a024e51345"
+EXPECTED_ASSIGNMENTS = 720
+VISUAL_REVIEW_SHA256 = "98a51a9d5a934c4b969d886cd99797aeb970ad7fe958ed50b5eb42c46fc720c2"
 
 
 LOCATORS = {
@@ -34,6 +34,11 @@ LOCATORS = {
     "unesco-great-zimbabwe": "Outstanding Universal Value > Shona city, trade, and c.1450 transition",
     "met-ambohimanga": "Africa's Cultural Landmarks > first occupation in the fifteenth century",
     "cambridge-precolonial-africa-regions": "Eastern Interior and East Coast controlled-vocabulary definitions",
+    "culture-mayotte-archaeological-timeline": "Chronologie illustree de Mayotte > settlement origins through the late-medieval Swahili phase",
+    "culture-mayotte-forty-years": "Archeologies mahoraises > ninth- through fifteenth-century settlement map and synthesis",
+    "persee-mayotte-bagamoyo": "Bagamoyo > cemetery chronology, tenth-fourteenth centuries, and early island settlement",
+    "openedition-tsingoni-mosque": "La mosquee de Tsingoni > village chronology and 1538 sultanate-era mosque terminus",
+    "culture-indian-ocean-reunion-history": "History and environment > uninhabited Mascarin before seventeenth-century settlement",
 }
 
 
@@ -82,7 +87,57 @@ STATIC_SOURCES = [
         "History in Africa, 'Defining Regions of Pre-Colonial Africa: A Controlled Vocabulary'.",
         "https://doi.org/10.1017/hia.2020.11", "cambridge-history-in-africa", "academic",
     ),
+    source(
+        "culture-mayotte-archaeological-timeline",
+        "French Ministry of Culture, 'Frise archeologique: chronologie illustree de Mayotte'.",
+        "https://www.culture.gouv.fr/regions/dac-mayotte/les-actualites/Frise-archeologique-chronologie-illustree-de-Mayotte",
+        "culture-ministry-mayotte-timeline", "academic",
+    ),
+    source(
+        "culture-mayotte-forty-years",
+        "French Ministry of Culture, Archeologies mahoraises: Quarante annees de recherches.",
+        "https://www.culture.gouv.fr/regions/dac-mayotte/publications-ressources-communication/la-collection-patrimoines-caches-de-mayotte/Archeologies-mahoraises.-Quarante-annees-de-recherches",
+        "culture-ministry-mayotte-synthesis", "academic",
+    ),
+    source(
+        "persee-mayotte-bagamoyo",
+        "Patrice Courtaud, 'Le peuplement de Mayotte: l'etude des sites sepulcraux de Bagamoyo', Bulletins et Memoires de la Societe d'Anthropologie de Paris.",
+        "https://www.persee.fr/doc/bmsap_0037-8984_1999_num_11_3_2566_t1_0487_0000_2",
+        "persee-bagamoyo", "academic",
+    ),
+    source(
+        "openedition-tsingoni-mosque",
+        "Martial Pauly et al., 'La mosquee de Tsingoni (Mayotte): premieres investigations archeologiques', Les nouvelles de l'archeologie 150.",
+        "https://journals.openedition.org/nda/3883",
+        "openedition-tsingoni", "academic",
+    ),
+    source(
+        "culture-indian-ocean-reunion-history",
+        "French Ministry of Culture, Archaeology in the Indian Ocean, 'History and environment'.",
+        "https://archeologie.culture.gouv.fr/ocean-indien/en/history-and-environment",
+        "culture-ministry-indian-ocean", "academic",
+    ),
 ]
+
+
+MAYOTTE_SOURCES = [
+    "culture-mayotte-archaeological-timeline", "culture-mayotte-forty-years",
+    "openedition-tsingoni-mosque", "persee-mayotte-bagamoyo",
+]
+REUNION_SOURCES = ["culture-indian-ocean-reunion-history"]
+CORRECTION_PACKET = ROOT / "research/start-dates/1444-global-v1/regional-packets/155-western-europe-2026-08-15.json"
+CORRECTED_ASSIGNMENTS = {
+    "loc_83a254fffffffff_bf97337886": ("prv_25dc8e80988576f13b94", "scenario-uninhabited-western-indian-ocean", REUNION_SOURCES, 0.05,
+        "Reunion residual: the island remained uninhabited until the seventeenth century; no French ownership is projected to 1444-11-11."),
+    "loc_83a304fffffffff_05539f788e": ("prv_4f169aa651ddb7613e94", "scenario-pre-sultanate-mayotte-communities", MAYOTTE_SOURCES, 0.45,
+        "Mayotte residual: late-medieval island communities predate the documented sixteenth-century sultanate consolidation."),
+    "loc_83a250fffffffff_a1a76e1ee2": ("prv_621047cd51de209ae7a6", "scenario-uninhabited-western-indian-ocean", REUNION_SOURCES, 0.05,
+        "Reunion residual: the island remained uninhabited until the seventeenth century; no French ownership is projected to 1444-11-11."),
+    "loc_83a304fffffffff_714c8bce3a": ("prv_8f086db76587de59188f", "scenario-pre-sultanate-mayotte-communities", MAYOTTE_SOURCES, 0.45,
+        "Mayotte residual: late-medieval island communities predate the documented sixteenth-century sultanate consolidation."),
+    "loc_83a255fffffffff_a359a377a6": ("prv_a080717eaf32dacfea49", "scenario-uninhabited-western-indian-ocean", REUNION_SOURCES, 0.05,
+        "Reunion residual: the island remained uninhabited until the seventeenth century; no French ownership is projected to 1444-11-11."),
+}
 
 
 GEOMETRY_SOURCES = [
@@ -112,6 +167,7 @@ NAMES = {
     "scenario-malagasy-communities": "Malagasy coastal and highland communities",
     "scenario-comorian-sultanates": "Comorian island sultanates",
     "scenario-uninhabited-western-indian-ocean": "Uninhabited western Indian Ocean islands",
+    "scenario-pre-sultanate-mayotte-communities": "Pre-sultanate Mayotte communities",
 }
 
 
@@ -197,11 +253,29 @@ def final_actor(country: str, point: Point) -> str:
 def build_packet(baseline: Path, output: Path, visual_sha256: str) -> dict[str, Any]:
     source_index = {row["source_id"]: row for row in load(baseline / "source_manifest.json")["sources"]}
     source_index.update({row["source_id"]: row for row in STATIC_SOURCES})
-    selected_ids = sorted(set(GEOMETRY_SOURCES + POLITICS_SOURCES + HIERARCHY_SOURCES + RELATIONSHIP_SOURCES))
+    selected_ids = sorted(set(
+        GEOMETRY_SOURCES + POLITICS_SOURCES + HIERARCHY_SOURCES + RELATIONSHIP_SOURCES
+        + MAYOTTE_SOURCES + REUNION_SOURCES
+    ))
     build_index = {f["properties"]["feature_id"]: shape(f["geometry"])
                    for f in load(baseline / "build.geojson")["features"]
                    if f["properties"]["feature_type"] == "province"}
-    assignments = [row for row in load(baseline / "assignments.json")["assignments"] if row["region_id"] == "014"]
+    baseline_assignments = load(baseline / "assignments.json")["assignments"]
+    correction_targets = {
+        row["location_id"] for row in load(CORRECTION_PACKET)["location_region_overrides"]
+        if row["region_id"] == "014"
+    }
+    if correction_targets != set(CORRECTED_ASSIGNMENTS):
+        raise SystemExit("region-014 correction-packet location scope drifted")
+    corrected_by_province = {}
+    for location_id, (province_id, actor, source_ids, uncertainty, notes) in CORRECTED_ASSIGNMENTS.items():
+        matches = [row for row in baseline_assignments if location_id in row["location_ids"]]
+        if len(matches) != 1 or matches[0]["province_id"] != province_id or matches[0]["location_ids"] != [location_id]:
+            raise SystemExit(f"region-014 corrected province/location pair drifted: {province_id}/{location_id}")
+        corrected_by_province[province_id] = (actor, source_ids, uncertainty, notes)
+    assignments = [row for row in baseline_assignments if row["region_id"] == "014"] + [
+        row for row in baseline_assignments if row["province_id"] in corrected_by_province
+    ]
     if len(assignments) != EXPECTED_ASSIGNMENTS:
         raise SystemExit(f"region-014 assignment scope drifted: {len(assignments)}")
 
@@ -210,15 +284,18 @@ def build_packet(baseline: Path, output: Path, visual_sha256: str) -> dict[str, 
     overrides = []
     for row in assignments:
         point = build_index[row["province_id"]].representative_point()
-        actor = final_actor(nearest_country(point, countries), point)
+        corrected = corrected_by_province.get(row["province_id"])
+        actor = corrected[0] if corrected else final_actor(nearest_country(point, countries), point)
+        assignment_sources = sorted(corrected[1]) if corrected else POLITICS_SOURCES
+        uncertainty = corrected[2] if corrected else 0.35
+        notes = corrected[3] if corrected else "Eastern Africa exact-date replacement for 1444-11-11; documented kingdoms and port-city systems are kept distinct while broad interior community fabrics avoid projecting modern borders or later dynastic maxima backward."
         actor_by_province[row["province_id"]] = actor
         overrides.append({
             "province_id": row["province_id"], "polity_ids": [actor],
             "sovereign_polity_id": actor, "owner_polity_id": actor,
             "controller_polity_id": actor, "core_polity_ids": [actor],
-            "claim_polity_ids": [], "dispute_polity_ids": [], "source_ids": POLITICS_SOURCES,
-            "uncertainty": 0.35,
-            "notes": "Eastern Africa exact-date replacement for 1444-11-11; documented kingdoms and port-city systems are kept distinct while broad interior community fabrics avoid projecting modern borders or later dynastic maxima backward.",
+            "claim_polity_ids": [], "dispute_polity_ids": [], "source_ids": assignment_sources,
+            "uncertainty": uncertainty, "notes": notes,
             "hierarchy": {"area_id": f"area-014-{actor}", "method": "evidence-backed-polity-region-grouping-v1",
                           "region_id": "014", "superregion_id": "m49-superregion-014"},
         })
@@ -234,7 +311,13 @@ def build_packet(baseline: Path, output: Path, visual_sha256: str) -> dict[str, 
             "polity_id": polity_id, "aliases": [], "capital_location_ids": [], "relationships": [],
         })))
         polity["name"] = NAMES[polity_id]
-        polity["source_ids"] = all_polity_sources
+        if polity_id == "scenario-pre-sultanate-mayotte-communities":
+            polity["source_ids"] = sorted(MAYOTTE_SOURCES)
+        else:
+            polity_sources = set(all_polity_sources)
+            if polity_id == "scenario-uninhabited-western-indian-ocean":
+                polity_sources.update(REUNION_SOURCES)
+            polity["source_ids"] = sorted(polity_sources)
         polity["valid_from"], polity["valid_to"] = "1400", "1500"
         polity["capital_location_ids"] = []
         polities.append(polity)

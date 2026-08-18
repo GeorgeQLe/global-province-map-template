@@ -3,10 +3,44 @@
 ## Active
 
 - M25C global 1444 certification: all 22 regional packets and 88 Grade-A rows
-  are complete. Run the ordinary worldwide research QA and human-review
-  sequence, then the canonical/runtime parity, determinism, performance,
-  certification, and publication gates without weakening the fail-closed
-  boundary.
+  are complete. Close the ordinary worldwide research-QA defects through the
+  following decision-gated sequence. Each research step is read-only and must
+  present exact affected records, source evidence, a recommended treatment,
+  alternatives, tradeoffs, and expected QA impact. Do not begin its remediation
+  step until George Le records a decision. After every remediation, regenerate
+  the worldwide pass, rerun the relevant QA, and update the remaining-defect
+  inventory.
+
+  1. [x] Research the 40 residual provisional assignments in M49 regions 005,
+     014, and 029 and recommend exact packet ownership and historical treatment.
+  2. [x] After reviewer decision, implement the approved assignment remediation
+     and verify assignment-source and derived canonical-evidence fallout.
+  3. [ ] Research the surviving provisional polity/source references and
+     recommend, record by record, pruning or reviewed-source replacement.
+  4. [ ] After reviewer decision, implement the approved polity/source cleanup
+     and verify the ordinary worldwide evidence gates.
+  5. [ ] Research missing positive-border and negative-anachronism assertions
+     for the affected Americas and Africa regions and recommend exact assertions.
+  6. [ ] After reviewer decision, implement the approved Americas/Africa
+     assertion remediation and verify its spatial and source-pinning gates.
+  7. [ ] Research missing assertions for the affected Asia and Europe regions
+     and recommend exact assertions.
+  8. [ ] After reviewer decision, implement the approved Asia/Europe assertion
+     remediation and verify its spatial and source-pinning gates.
+  9. [ ] Research missing assertions for the affected Oceania regions and
+     recommend exact assertions.
+  10. [ ] After reviewer decision, implement the approved Oceania assertion
+      remediation and verify its spatial and source-pinning gates.
+  11. [ ] Research and recommend the fail-closed transition from the provisional
+      generator to a promotable assembled-pass mode; retain all publication and
+      certification guards until ordinary research QA is clean.
+  12. [ ] After reviewer decision, implement the approved assembly transition,
+      run ordinary worldwide QA, render the final review bundle, and stop for
+      independent human review before runtime certification or publication.
+
+- After M25C research acceptance: run canonical/runtime parity, determinism,
+  performance, certification, and publication gates without weakening the
+  fail-closed boundary.
 
 ## Up next (from roadmap)
 
@@ -172,5 +206,7 @@
 
 ## Blockers
 
-- Remaining worldwide evidence, pass assembly and review, runtime
-  certification, and release approval remain outstanding.
+- Remaining provisional polity/source cleanup, assertion evidence, pass
+  assembly and review, runtime certification, and release approval remain
+  outstanding. The worldwide review deliberately remains unsigned and pending
+  independent review.
