@@ -1,5 +1,25 @@
 # History
 
+## 2026-08-18 - M25C provisional polity/source cleanup
+
+- Applied George Le's approved record-by-record treatment to the sole surviving
+  planned scaffold source: retained 71 historically supported polities with
+  reviewed packet sources and pruned 127 obsolete or unreferenced scaffold
+  polity records.
+- Replaced 834 legacy Northern Europe core aliases with their reviewed owner
+  polities, pruned 262 undated and unasserted provisional soft boundaries, and
+  removed ten pilot capital assertions exactly duplicated by reviewed regional
+  assertions.
+- Removed `official-1444-modern-scaffold-provisional` from the source manifest
+  after proving that no assembled evidence artifact still references it. The
+  regenerated pass contains 229 sources, 336 polities, 22 boundaries, and 689
+  assertions.
+- Added fail-closed exact-set, exact-count, source-review, live-reference, and
+  zero-residue coverage. The complete suite passed 389 tests; fresh worldwide
+  assembly passed with zero errors and five expected pre-render warnings, and
+  rendered pending-review QA passed with zero errors and the three expected
+  missing-assertion and independent-review warnings.
+
 ## 2026-08-18 - M25C corrected residual assignment remediation
 
 - Preserved geographic correction ownership in regional packets 154 and 155

@@ -27,6 +27,80 @@ from gpm.schemas import WORLDWIDE_M49_SUBREGIONS  # noqa: E402
 PASS_ID = "official-1444-global-v1"
 START_DATE = "1444-11-11"
 VERSION = "1.0.0-provisional.1"
+PROVISIONAL_SOURCE_ID = "official-1444-modern-scaffold-provisional"
+
+APPROVED_REVIEWED_SCAFFOLD_POLITIES = frozenset({
+    "scenario-ara", "scenario-ava", "scenario-ayu", "scenario-bah", "scenario-bav",
+    "scenario-ben", "scenario-boh", "scenario-bos", "scenario-bra", "scenario-bre",
+    "scenario-bri", "scenario-bur", "scenario-byz", "scenario-cas", "scenario-col",
+    "scenario-cri", "scenario-cyp", "scenario-dai", "scenario-dan", "scenario-del",
+    "scenario-eng", "scenario-fer", "scenario-flo", "scenario-fra", "scenario-gen",
+    "scenario-geo", "scenario-gra", "scenario-guj", "scenario-hab", "scenario-han",
+    "scenario-hes", "scenario-hun", "scenario-jap", "scenario-kor", "scenario-lit",
+    "scenario-luc", "scenario-mam", "scenario-mlo", "scenario-mng", "scenario-mol",
+    "scenario-mor", "scenario-mos", "scenario-nap", "scenario-nav", "scenario-nep",
+    "scenario-nov", "scenario-oir", "scenario-pal", "scenario-pap", "scenario-pol",
+    "scenario-pom", "scenario-por", "scenario-pro", "scenario-qqa", "scenario-sah",
+    "scenario-sav", "scenario-sax", "scenario-ser", "scenario-sie", "scenario-swi",
+    "scenario-teu", "scenario-tib", "scenario-tim", "scenario-tlc", "scenario-tun",
+    "scenario-tur", "scenario-uzb", "scenario-ven", "scenario-vij", "scenario-wal",
+    "scenario-wur",
+})
+
+APPROVED_PRUNED_SCAFFOLD_POLITIES = frozenset({
+    "scenario-abw", "scenario-aia", "scenario-ald", "scenario-asm", "scenario-ata",
+    "scenario-atc", "scenario-atf", "scenario-atg", "scenario-bdi", "scenario-bjn",
+    "scenario-blm", "scenario-bmu", "scenario-brb", "scenario-brt", "scenario-bwa",
+    "scenario-caf", "scenario-chag", "scenario-civ", "scenario-clp", "scenario-cnm",
+    "scenario-cok", "scenario-com", "scenario-cpv", "scenario-csi", "scenario-cuw",
+    "scenario-cym", "scenario-cyn", "scenario-dji", "scenario-dma", "scenario-esb",
+    "scenario-eth", "scenario-flk", "scenario-fro", "scenario-fsm", "scenario-gab",
+    "scenario-ggy", "scenario-gmb", "scenario-gnb", "scenario-gnq", "scenario-grd",
+    "scenario-grl", "scenario-gum", "scenario-ham", "scenario-hkg", "scenario-hmd",
+    "scenario-imn", "scenario-ioa", "scenario-iot", "scenario-ire", "scenario-jey",
+    "scenario-kab", "scenario-kan", "scenario-kas", "scenario-ken", "scenario-khm",
+    "scenario-kir", "scenario-kna", "scenario-kon", "scenario-kos", "scenario-lbr",
+    "scenario-lca", "scenario-liv", "scenario-lso", "scenario-mac", "scenario-maf",
+    "scenario-mal", "scenario-man", "scenario-mdv", "scenario-mhl", "scenario-mnp",
+    "scenario-moz", "scenario-mrt", "scenario-msr", "scenario-mus", "scenario-mwi",
+    "scenario-nah", "scenario-nam", "scenario-ncl", "scenario-nfk", "scenario-niu",
+    "scenario-nor", "scenario-nru", "scenario-oyo", "scenario-pcn", "scenario-pga",
+    "scenario-plw", "scenario-psx", "scenario-pyf", "scenario-rwa", "scenario-sco",
+    "scenario-scr", "scenario-sds", "scenario-sgs", "scenario-shn", "scenario-slb",
+    "scenario-sle", "scenario-sol", "scenario-som", "scenario-son", "scenario-spi",
+    "scenario-spm", "scenario-stp", "scenario-swe", "scenario-swz", "scenario-sxm",
+    "scenario-syc", "scenario-tca", "scenario-tgo", "scenario-tls", "scenario-ton",
+    "scenario-tto", "scenario-tuv", "scenario-tza", "scenario-uga", "scenario-umi",
+    "scenario-unk", "scenario-usg", "scenario-vct", "scenario-vgb", "scenario-vir",
+    "scenario-vut", "scenario-wlf", "scenario-wsb", "scenario-wsm", "scenario-zaf",
+    "scenario-zmb", "scenario-zwe",
+})
+
+APPROVED_LEGACY_CORE_COUNTS = {
+    "scenario-ald": 61,
+    "scenario-fro": 12,
+    "scenario-ggy": 6,
+    "scenario-imn": 2,
+    "scenario-ire": 39,
+    "scenario-jey": 1,
+    "scenario-liv": 27,
+    "scenario-nor": 73,
+    "scenario-sco": 99,
+    "scenario-swe": 514,
+}
+
+APPROVED_REDUNDANT_PILOT_ASSERTIONS = frozenset({
+    "capital-burgundy-politics-1444",
+    "capital-burgundy-relationships-1444",
+    "capital-central-europe-politics-1444",
+    "capital-central-europe-relationships-1444",
+    "capital-france-politics-1444",
+    "capital-france-relationships-1444",
+    "capital-hre-politics-1444",
+    "capital-hre-relationships-1444",
+    "capital-low-countries-politics-1444",
+    "capital-low-countries-relationships-1444",
+})
 GENERATED_AT = "2026-08-14T00:00:00Z"
 PROFILE = "eu-like"
 AGGREGATION_REVISION = "1444-r2"
@@ -288,6 +362,9 @@ def generate(args: argparse.Namespace) -> None:
         "known_gaps": ["All 22 regions require four-layer Grade-A promotion before certification."],
     }
     _apply_packets(packets, source_manifest, gazetteer, boundaries, golden, assignments, coverage)
+    _apply_approved_polity_source_cleanup(
+        source_manifest, gazetteer, boundaries, golden, assignments, coverage,
+    )
     boundaries["features"].sort(key=lambda feature: feature["properties"]["feature_id"])
     golden["assertions"].sort(key=lambda row: row["assertion_id"])
     assignments["assignments"].sort(key=lambda row: row["province_id"])
@@ -664,6 +741,126 @@ def _apply_packets(packets: list[dict[str, Any]], sources: dict[str, Any], gazet
         f"{len(remaining)} of 22 regions require four-layer Grade-A promotion before certification: "
         + ", ".join(remaining)
     ])
+
+
+def _apply_approved_polity_source_cleanup(
+    sources: dict[str, Any], gazetteer: dict[str, Any], boundaries: dict[str, Any],
+    golden: dict[str, Any], assignments: dict[str, Any], coverage: dict[str, Any],
+) -> None:
+    """Apply the reviewer-approved 2026-08-18 scaffold-reference cleanup."""
+    provisional_boundaries = [
+        feature for feature in boundaries["features"]
+        if feature["properties"].get("source_ids") == [PROVISIONAL_SOURCE_ID]
+    ]
+    if len(provisional_boundaries) != 262 or any(
+        feature["properties"].get("classification") != "soft_evidence"
+        or feature["properties"].get("confidence") != "provisional"
+        or feature["properties"].get("valid_from") is not None
+        or feature["properties"].get("valid_to") is not None
+        for feature in provisional_boundaries
+    ):
+        raise SystemExit("approved cleanup expected exactly 262 undated provisional soft boundaries")
+    provisional_boundary_ids = {
+        feature["properties"]["feature_id"] for feature in provisional_boundaries
+    }
+    asserted_provisional_boundaries = {
+        boundary_id
+        for assertion in golden["assertions"]
+        for boundary_id in assertion.get("boundary_feature_ids") or []
+        if boundary_id in provisional_boundary_ids
+    }
+    if asserted_provisional_boundaries:
+        raise SystemExit("approved cleanup refuses to prune an asserted provisional boundary")
+    boundaries["features"] = [
+        feature for feature in boundaries["features"]
+        if feature["properties"]["feature_id"] not in provisional_boundary_ids
+    ]
+
+    redundant_assertions = {
+        assertion["assertion_id"]
+        for assertion in golden["assertions"]
+        if PROVISIONAL_SOURCE_ID in assertion.get("tolerance_policy", {}).get("source_ids", [])
+    }
+    if redundant_assertions != APPROVED_REDUNDANT_PILOT_ASSERTIONS:
+        raise SystemExit("approved cleanup found unexpected provisional pilot assertions")
+    golden["assertions"] = [
+        assertion for assertion in golden["assertions"]
+        if assertion["assertion_id"] not in APPROVED_REDUNDANT_PILOT_ASSERTIONS
+    ]
+
+    observed_core_counts = {
+        polity_id: sum(
+            polity_id in (assignment.get("core_polity_ids") or [])
+            for assignment in assignments["assignments"]
+        )
+        for polity_id in APPROVED_LEGACY_CORE_COUNTS
+    }
+    if observed_core_counts != APPROVED_LEGACY_CORE_COUNTS:
+        raise SystemExit("approved cleanup found unexpected legacy core-reference counts")
+    legacy_core_ids = set(APPROVED_LEGACY_CORE_COUNTS)
+    for assignment in assignments["assignments"]:
+        cores = assignment.get("core_polity_ids") or []
+        if legacy_core_ids.intersection(cores):
+            assignment["core_polity_ids"] = sorted({
+                assignment["owner_polity_id"] if polity_id in legacy_core_ids else polity_id
+                for polity_id in cores
+            })
+
+    source_index = {row["source_id"]: row for row in sources["sources"]}
+    provisional_polities = {
+        row["polity_id"]: row for row in gazetteer["polities"]
+        if PROVISIONAL_SOURCE_ID in row.get("source_ids", [])
+    }
+    reviewed_polities = {
+        polity_id for polity_id, row in provisional_polities.items()
+        if set(row["source_ids"]) - {PROVISIONAL_SOURCE_ID}
+    }
+    pruned_polities = set(provisional_polities) - reviewed_polities
+    if (len(provisional_polities) != 198
+            or reviewed_polities != APPROVED_REVIEWED_SCAFFOLD_POLITIES
+            or pruned_polities != APPROVED_PRUNED_SCAFFOLD_POLITIES):
+        raise SystemExit("approved cleanup found unexpected provisional polity records")
+    for polity_id in reviewed_polities:
+        replacement_ids = set(provisional_polities[polity_id]["source_ids"]) - {PROVISIONAL_SOURCE_ID}
+        if any(source_index.get(source_id, {}).get("review_status") != "reviewed"
+               for source_id in replacement_ids):
+            raise SystemExit(f"approved cleanup found an unreviewed replacement source for {polity_id}")
+        provisional_polities[polity_id]["source_ids"] = sorted(replacement_ids)
+
+    retained_polity_ids = {
+        row["polity_id"] for row in gazetteer["polities"]
+        if row["polity_id"] not in provisional_polities or row["polity_id"] in reviewed_polities
+    }
+    referenced_polity_ids = set()
+    for assignment in assignments["assignments"]:
+        for key in ("polity_ids", "core_polity_ids", "claim_polity_ids", "dispute_polity_ids"):
+            referenced_polity_ids.update(assignment.get(key) or [])
+        for key in ("sovereign_polity_id", "owner_polity_id", "controller_polity_id"):
+            referenced_polity_ids.add(assignment[key])
+    for feature in boundaries["features"]:
+        referenced_polity_ids.update(feature["properties"].get("side_polity_ids", {}).values())
+    for polity in gazetteer["polities"]:
+        referenced_polity_ids.update(
+            relation["target_polity_id"] for relation in polity.get("relationships") or []
+        )
+    pruned_but_referenced = pruned_polities & referenced_polity_ids
+    if pruned_but_referenced:
+        raise SystemExit("approved cleanup would prune referenced polities: "
+                         + ", ".join(sorted(pruned_but_referenced)))
+    gazetteer["polities"] = [
+        row for row in gazetteer["polities"] if row["polity_id"] in retained_polity_ids
+    ]
+    sources["sources"] = [
+        row for row in sources["sources"] if row["source_id"] != PROVISIONAL_SOURCE_ID
+    ]
+
+    for artifact_name, document in (
+        ("source manifest", sources), ("gazetteer", gazetteer),
+        ("boundary registry", boundaries), ("golden assertions", golden),
+        ("assignments", assignments), ("coverage", coverage),
+    ):
+        if PROVISIONAL_SOURCE_ID in json.dumps(document, sort_keys=True):
+            raise SystemExit(f"approved cleanup left a provisional source reference in {artifact_name}")
 
 
 def _provisional_source(path: Path) -> dict[str, Any]:

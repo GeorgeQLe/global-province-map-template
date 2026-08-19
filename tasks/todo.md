@@ -15,9 +15,9 @@
      014, and 029 and recommend exact packet ownership and historical treatment.
   2. [x] After reviewer decision, implement the approved assignment remediation
      and verify assignment-source and derived canonical-evidence fallout.
-  3. [ ] Research the surviving provisional polity/source references and
+  3. [x] Research the surviving provisional polity/source references and
      recommend, record by record, pruning or reviewed-source replacement.
-  4. [ ] After reviewer decision, implement the approved polity/source cleanup
+  4. [x] After reviewer decision, implement the approved polity/source cleanup
      and verify the ordinary worldwide evidence gates.
   5. [ ] Research missing positive-border and negative-anachronism assertions
      for the affected Americas and Africa regions and recommend exact assertions.
@@ -206,7 +206,6 @@
 
 ## Blockers
 
-- Remaining provisional polity/source cleanup, assertion evidence, pass
-  assembly and review, runtime certification, and release approval remain
-  outstanding. The worldwide review deliberately remains unsigned and pending
-  independent review.
+- Assertion evidence, pass assembly and review, runtime certification, and
+  release approval remain outstanding. The worldwide review deliberately
+  remains unsigned and pending independent review.

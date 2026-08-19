@@ -216,6 +216,80 @@ def test_provisional_membership_resplit_is_exact_and_deterministic():
     assert ["l1", "l2"] in left
 
 
+def test_approved_polity_source_cleanup_is_exact_and_fail_closed():
+    provisional = _provisional_module()
+    source_id = provisional.PROVISIONAL_SOURCE_ID
+    reviewed_ids = provisional.APPROVED_REVIEWED_SCAFFOLD_POLITIES
+    pruned_ids = provisional.APPROVED_PRUNED_SCAFFOLD_POLITIES
+    assert len(reviewed_ids) == 71
+    assert len(pruned_ids) == 127
+    assert reviewed_ids.isdisjoint(pruned_ids)
+
+    sources = {"sources": [
+        {"source_id": source_id, "review_status": "planned"},
+        {"source_id": "reviewed", "review_status": "reviewed"},
+    ]}
+    gazetteer = {"polities": [
+        *[
+            {"polity_id": polity_id, "source_ids": [source_id, "reviewed"],
+             "relationships": []}
+            for polity_id in sorted(reviewed_ids)
+        ],
+        *[
+            {"polity_id": polity_id, "source_ids": [source_id], "relationships": []}
+            for polity_id in sorted(pruned_ids)
+        ],
+        *[
+            {"polity_id": f"reviewed-owner-{polity_id}", "source_ids": ["reviewed"],
+             "relationships": []}
+            for polity_id in provisional.APPROVED_LEGACY_CORE_COUNTS
+        ],
+    ]}
+    boundaries = {"features": [
+        {"properties": {
+            "feature_id": f"provisional-boundary-{index}",
+            "source_ids": [source_id], "classification": "soft_evidence",
+            "confidence": "provisional", "valid_from": None, "valid_to": None,
+            "side_polity_ids": {"left": "scenario-ara", "right": "scenario-ava"},
+        }}
+        for index in range(262)
+    ]}
+    golden = {"assertions": [
+        {"assertion_id": assertion_id, "boundary_feature_ids": [],
+         "tolerance_policy": {"source_ids": [source_id]}}
+        for assertion_id in sorted(provisional.APPROVED_REDUNDANT_PILOT_ASSERTIONS)
+    ]}
+    assignments = {"assignments": [
+        {
+            "assignment_id": f"assignment-{polity_id}-{index}",
+            "polity_ids": [f"reviewed-owner-{polity_id}"],
+            "core_polity_ids": [polity_id], "claim_polity_ids": [],
+            "dispute_polity_ids": [],
+            "sovereign_polity_id": f"reviewed-owner-{polity_id}",
+            "owner_polity_id": f"reviewed-owner-{polity_id}",
+            "controller_polity_id": f"reviewed-owner-{polity_id}",
+        }
+        for polity_id, count in provisional.APPROVED_LEGACY_CORE_COUNTS.items()
+        for index in range(count)
+    ]}
+    coverage = {"coverage": [], "known_gaps": []}
+
+    provisional._apply_approved_polity_source_cleanup(
+        sources, gazetteer, boundaries, golden, assignments, coverage,
+    )
+
+    assert {row["source_id"] for row in sources["sources"]} == {"reviewed"}
+    assert not boundaries["features"]
+    assert not golden["assertions"]
+    assert len(gazetteer["polities"]) == 81
+    assert not pruned_ids.intersection(row["polity_id"] for row in gazetteer["polities"])
+    assert all(row["source_ids"] == ["reviewed"] for row in gazetteer["polities"])
+    assert all(
+        row["core_polity_ids"] == [row["owner_polity_id"]]
+        for row in assignments["assignments"]
+    )
+
+
 def test_regional_packet_cannot_promote_a_weak_grade_a_claim():
     provisional = _provisional_module()
     packet = {
