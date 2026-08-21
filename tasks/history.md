@@ -1,5 +1,22 @@
 # History
 
+## 2026-08-21 - M25C Asia/Europe assertion re-research
+
+- Re-audited the exact six missing negative-anachronism warnings in Eastern,
+  Southern, South-eastern, Central, and Western Asia and Southern Europe.
+- Selected six treaty-grounded modern inland seams. Fresh compositional
+  measurements found five failures from `0.7985` to `1.0`; Southern Europe
+  instead exposed a zero-transition, all-unknown status collapse that currently
+  yields a vacuous pass.
+- Found that all six surviving regional positive borders repeat the rejected
+  Northern Africa provenance pattern: a generated fabric edge is extracted and
+  then compared back to itself with zero residual.
+- Recommended six exact Natural Earth 5.1.1 controls, fail-closed handling for
+  zero-transition seam assertions, retirement of all six circular borders, and
+  no tolerance, assignment, runtime, certification, or publication change.
+- Recorded evidence, alternatives, tradeoffs, expected QA impact, and the exact
+  reviewer decision in `tasks/m25c-asia-europe-assertion-reresearch.md`.
+
 ## 2026-08-21 - M25C Americas/Africa assertion remediation
 
 - Retired the circular Northern Africa Marinid-Zayyanid border, its boundary

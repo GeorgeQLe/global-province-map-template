@@ -34,8 +34,11 @@
      Nine pinned inland-seam controls now execute at 75 km / 0.20; regions 021
      and 029 pass, while seven failures retain component diagnostics and block
      certification. All nine positive-border requirements remain open.
-  8. [ ] Research missing assertions for the affected Asia and Europe regions
-     and recommend exact assertions.
+  8. [x] Research missing assertions for the affected Asia and Europe regions
+     and recommend exact assertions. Six modern inland-seam controls are
+     specified; all six circular generated-border gates require retirement,
+     and Southern Europe's zero-transition status collapse must fail closed;
+     see `tasks/m25c-asia-europe-assertion-reresearch.md`.
   9. [ ] After reviewer decision, implement the approved Asia/Europe assertion
      remediation and verify its spatial and source-pinning gates.
   10. [ ] Research missing assertions for the affected Oceania regions and
