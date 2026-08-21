@@ -8,6 +8,15 @@ Grade A is reserved for packets whose four coverage rows declare no gaps or
 exclusions and cite exact-date reviewed sources plus passing spatial assertions.
 The provisional generator does not infer, widen, or auto-promote those claims.
 
+All 22 packets use the compositional territorial-status migration (`packet_version`
+`2.0.0`). Every assignment has the five canonical facets and explicit typed
+relationships. Community, network, mobile, and chiefdom profiles retain
+presence/use/customary semantics without automatic ownership or control. The
+219 explicitly uninhabited assignments have null actors and all-none facets;
+their 13 synthetic pseudo-polities were removed. Americas/Africa outline
+assertion remediation is paused until these status-derived outlines are
+re-researched.
+
 `155-western-europe-2026-08-15.json` is the first accepted four-layer Grade-A
 packet. It replaces 385 geographically scoped assignments, adds 20 executable
 region assertions, and corrects 39 atomic locations that Natural Earth's

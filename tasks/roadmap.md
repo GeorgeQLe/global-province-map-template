@@ -1,6 +1,6 @@
 # Roadmap Progress
 
-Updated: 2026-08-18
+Updated: 2026-08-21
 
 Product direction (see root `ROADMAP.md`): dual audience for **strategy-game
 seeds** and **historical / SaaS maps**, with a **strong historical accuracy
@@ -47,7 +47,7 @@ historical coverage.
 | M24 | complete | schemas and `gpm qa start-date` | `test_m24_start_date_framework.py` | contract and rejected-pass evidence | framework only; does not certify an era |
 | M25A | complete | hard-case casebook + typed-status schema | eight executable per-class canonical/runtime/visual/picking/LOD/adjacency/save fixtures | research artifacts only | synthetic contract fixtures, not historical evidence |
 | M25B | complete | `gpm export runtime`; `gpm.runtime` | `test_m25b_runtime.py`; duplicate-build/budget benchmarks | synthetic runtime reference pack | global-scale budgets re-run per certified era |
-| M25C | in progress; 22 of 22 regions promoted | accepted refrozen census and M23/M49 inputs; deterministic provisional generator; all 22 M49 regions carry four-layer Grade-A packets; corrected residual assignments and the approved polity/source cleanup are source-clean; schema 0.3 provisional QA plus unchanged certification gates | exact 23,582-location/22,000-province/88-row checks, exact-once corrected-assignment ownership, exact scaffold-reference pruning/replacement, regional source-pin, asset, spatial, and render gates; provisional QA and non-promotion tests | regional evidence, residual assignment sources, and provisional polity/source references are clean, but the provisional path remains non-public and non-certifiable pending assertion cleanup and human review | research and decide the missing positive-border and negative-anachronism assertions before assembled-pass review, runtime certification, and publication |
+| M25C | in progress; 22 of 22 regions compositionally migrated | all 22 Grade-A packets now separate five territorial facets from typed actor relationships; canonical `0.2.0`, assignments `0.4.0`, ordered overlays, and runtime `2.0.0` retain v1 readability | exact 23,582-location/22,000-province coverage, complete facets, nullable actors, and zero remaining rows for the former 219 uninhabited pseudo-owners | corrected regional defaults and downstream overlay contract are implemented; provisional publication guards remain | re-research status-derived positive-border and negative-anachronism assertions, beginning with the paused Americas/Africa work, before review and certification |
 | M26 | planned | global 1836 pass + runtime delta/migration | worldwide research and runtime validation | none yet | begins after M25C |
 | M27 | planned | 1914 canonical pass + runtime delta/migration | future research and runtime validation | none yet | begins after M26 |
 | M28 | planned | 1936 canonical pass + runtime delta/migration | future research and runtime validation | none yet | begins after M27 |

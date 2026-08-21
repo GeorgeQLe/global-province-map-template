@@ -1,5 +1,22 @@
 # History
 
+## 2026-08-21 - M25C compositional territorial-status migration
+
+- Replaced mandatory nation-state ownership with five independent territorial
+  facets and typed actor relationships across all 22 Grade-A regional packets.
+  The migration preserves 23,582 playable locations and 22,000 provinces while
+  removing all 219 uninhabited pseudo-owner assignments and 13 synthetic
+  pseudo-polities.
+- Added canonical status `0.2.0`, location assignments `0.4.0`, runtime pack
+  `2.0.0`, nullable actors, ordered fail-closed overlays, atlas projection, and
+  runtime-v1 readability.
+- Added a deterministic migration command and schema/runtime/QA coverage. An
+  adversarial review also corrected typed-polity validation so assignment
+  schema `0.4.0` remains fail-closed with nullable primary actors.
+- The full suite passed 395 tests, targeted migration coverage passed 86 tests,
+  and a clean-room migration reproduced all 22 packet JSON files exactly.
+  Americas/Africa assertion re-research remains the next decision-gated task.
+
 ## 2026-08-18 - M25C provisional polity/source cleanup
 
 - Applied George Le's approved record-by-record treatment to the sole surviving

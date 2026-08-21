@@ -284,11 +284,23 @@ def _check_cross_artifact_contract(
         province_to_polities.setdefault(row["province_id"], set()).update(row["polity_ids"])
         _unknown_refs(findings, "UNKNOWN_ASSIGNMENT_POLITY", row["polity_ids"], polities, row["assignment_id"])
         _unknown_refs(findings, "UNKNOWN_ASSIGNMENT_SOURCE", row["source_ids"], sources, row["assignment_id"])
-        if manifest["schema_version"] in {"0.2.0", "0.3.0"}:
-            typed = [row["sovereign_polity_id"], row["owner_polity_id"], row["controller_polity_id"], *row["core_polity_ids"], *row["claim_polity_ids"], *row["dispute_polity_ids"]]
+        if assignments["schema_version"] in {"0.2.0", "0.3.0", "0.4.0"}:
+            typed = [value for value in [row["sovereign_polity_id"], row["owner_polity_id"], row["controller_polity_id"], *row["core_polity_ids"], *row["claim_polity_ids"], *row["dispute_polity_ids"]] if value is not None]
             _unknown_refs(findings, "UNKNOWN_TYPED_POLITICS_POLITY", typed, polities, row["assignment_id"])
             if row["region_id"] in set(manifest["scope"]["priority_regions"]) and not row.get("hierarchy"):
                 _finding(findings, "MISSING_HIERARCHY_MAPPING", "error", "Priority-region assignment lacks hierarchy mapping.", [row["assignment_id"]])
+        if assignments.get("schema_version") == "0.4.0":
+            facets = row.get("facets") or {}
+            missing_facets = sorted({"habitability", "population_presence", "settlement_pattern", "tenure", "authority"} - set(facets))
+            if missing_facets:
+                _finding(findings, "MISSING_TERRITORIAL_FACETS", "error", "Assignment lacks complete compositional status facets.", [row["assignment_id"], *missing_facets])
+            state_values = [row.get(key) for key in ("sovereign_polity_id", "owner_polity_id", "controller_polity_id")]
+            relationships = row.get("status_relationships") or []
+            _unknown_refs(findings, "UNKNOWN_STATUS_RELATIONSHIP_ACTOR", [item.get("actor_political_unit_id") for item in relationships if item.get("actor_political_unit_id")], polities, row["assignment_id"])
+            if facets.get("habitability") == "uninhabitable" and (any(state_values) or row.get("polity_ids") or relationships):
+                _finding(findings, "SYNTHETIC_UNINHABITED_ACTOR", "error", "Uninhabitable territory has a synthetic actor or relationship.", [row["assignment_id"]])
+            if facets.get("authority") in {"administered", "occupied"} and not any(item.get("relationship") in {"controller", "occupier", "co-administrator", "mandate-authority"} for item in relationships):
+                _finding(findings, "ADMINISTRATION_WITHOUT_RELATIONSHIP", "error", "State-administered facet lacks a documented authority relationship.", [row["assignment_id"]])
     for polity in polity_records.values():
         _unknown_refs(findings, "UNKNOWN_CAPITAL_LOCATION", polity["capital_location_ids"], locations, polity["polity_id"])
     for request in assignments["targeted_split_requests"]:

@@ -25,12 +25,10 @@ def test_historical_status_schema_is_valid_and_requires_canonical_identities():
     Draft202012Validator.check_schema(schema)
 
     component = schema["properties"]["components"]["items"]
-    assert {"territory_component_id", "political_unit_id", "geometry"} <= set(
+    assert {"territory_component_id", "province_id", "geometry", "facets"} <= set(
         component["required"]
     )
-    relationships = set(
-        schema["properties"]["statuses"]["items"]["properties"]["relationship"]["enum"]
-    )
+    relationships = set(schema["$defs"]["relationship"]["anyOf"][0]["enum"])
     assert relationships == {
         "sovereign",
         "owner",
@@ -44,6 +42,10 @@ def test_historical_status_schema_is_valid_and_requires_canonical_identities():
         "mandate-authority",
         "lessee",
         "claimant",
+        "territorial_presence",
+        "seasonal_use",
+        "customary_tenure",
+        "tributary_influence",
     }
 
 

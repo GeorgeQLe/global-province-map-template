@@ -1,92 +1,40 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://global-province-map-template.invalid/schemas/historical-territory-status.schema.json",
-  "title": "Historical territory and typed status rows",
+  "title": "Compositional historical territorial status",
   "type": "object",
-  "required": ["schema_version", "start_date", "components", "political_units", "provinces", "statuses"],
+  "required": ["schema_version", "compatibility_revision", "start_date", "components", "political_units", "provinces", "statuses"],
   "properties": {
-    "schema_version": {"const": "0.1.0"},
+    "schema_version": {"const": "0.2.0"},
+    "compatibility_revision": {"type": "string", "minLength": 1},
     "start_date": {"type": "string", "format": "date"},
-    "components": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "required": ["territory_component_id", "political_unit_id", "geometry"],
-        "properties": {
-          "territory_component_id": {"type": "string", "minLength": 1},
-          "political_unit_id": {"type": "string", "minLength": 1},
-          "province_id": {"type": "string", "minLength": 1},
-          "geometry": {"$ref": "#/$defs/polygonGeometry"},
-          "historically_required": {"type": "boolean", "default": true},
-          "minimum_area_merge_exempt": {"const": true},
-          "evidence_ids": {"$ref": "#/$defs/nonEmptyIds"}
-        },
-        "additionalProperties": true
-      }
-    },
-    "political_units": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "required": ["political_unit_id", "territory_component_ids", "documented_status"],
-        "properties": {
-          "political_unit_id": {"type": "string", "minLength": 1},
-          "territory_component_ids": {"$ref": "#/$defs/nonEmptyIds"},
-          "documented_status": {"type": "string", "minLength": 1}
-        },
-        "additionalProperties": true
-      }
-    },
-    "provinces": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "required": ["province_id", "territory_component_ids"],
-        "properties": {
-          "province_id": {"type": "string", "minLength": 1},
-          "territory_component_ids": {"$ref": "#/$defs/nonEmptyIds"},
-          "shared_administrative_unit_evidence_ids": {"$ref": "#/$defs/nonEmptyIds"},
-          "full_status_match": {"type": "boolean"}
-        },
-        "additionalProperties": true
-      }
-    },
-    "statuses": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "required": ["subject_id", "relationship", "actor_political_unit_id", "valid_from", "valid_to", "evidence_ids"],
-        "properties": {
-          "subject_id": {"type": "string", "minLength": 1},
-          "relationship": {
-            "enum": ["sovereign", "owner", "controller", "core", "claim", "dispute", "protector", "co-administrator", "occupier", "mandate-authority", "lessee", "claimant"]
-          },
-          "actor_political_unit_id": {"type": "string", "minLength": 1},
-          "valid_from": {"type": "string", "format": "date"},
-          "valid_to": {"type": "string", "format": "date"},
-          "evidence_ids": {"$ref": "#/$defs/nonEmptyIds"},
-          "certainty": {"enum": ["documented", "disputed", "uncertain"]}
-        },
-        "additionalProperties": true
-      }
-    }
+    "components": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["territory_component_id", "province_id", "geometry", "facets"], "properties": {
+      "territory_component_id": {"type": "string", "minLength": 1}, "political_unit_id": {"type": ["string", "null"], "minLength": 1}, "province_id": {"type": "string", "minLength": 1}, "geometry": {"$ref": "#/$defs/polygonGeometry"}, "facets": {"$ref": "#/$defs/facets"}, "historically_required": {"type": "boolean", "default": true}, "minimum_area_merge_exempt": {"const": true}, "evidence_ids": {"$ref": "#/$defs/nonEmptyIds"}
+    }, "additionalProperties": true}},
+    "political_units": {"type": "array", "items": {"type": "object", "required": ["political_unit_id", "actor_kind", "territory_component_ids", "documented_status"], "properties": {
+      "political_unit_id": {"type": "string", "minLength": 1}, "actor_kind": {"$ref": "#/$defs/actorKind"}, "territory_component_ids": {"$ref": "#/$defs/ids"}, "documented_status": {"type": "string", "minLength": 1}
+    }, "additionalProperties": true}},
+    "provinces": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["province_id", "territory_component_ids"], "properties": {
+      "province_id": {"type": "string", "minLength": 1}, "territory_component_ids": {"$ref": "#/$defs/nonEmptyIds"}, "shared_administrative_unit_evidence_ids": {"$ref": "#/$defs/nonEmptyIds"}, "full_status_match": {"type": "boolean"}
+    }, "additionalProperties": true}},
+    "statuses": {"type": "array", "items": {"type": "object", "required": ["subject_id", "relationship", "actor_political_unit_id", "valid_from", "valid_to", "evidence_ids"], "properties": {
+      "subject_id": {"type": "string", "minLength": 1}, "relationship": {"$ref": "#/$defs/relationship"}, "actor_political_unit_id": {"type": "string", "minLength": 1}, "valid_from": {"type": "string", "format": "date"}, "valid_to": {"type": "string", "format": "date"}, "evidence_ids": {"$ref": "#/$defs/nonEmptyIds"}, "certainty": {"enum": ["documented", "disputed", "uncertain"]}
+    }, "additionalProperties": true}}
   },
   "$defs": {
-    "nonEmptyIds": {
-      "type": "array",
-      "minItems": 1,
-      "uniqueItems": true,
-      "items": {"type": "string", "minLength": 1}
-    },
-    "polygonGeometry": {
-      "type": "object",
-      "required": ["type", "coordinates"],
-      "properties": {
-        "type": {"enum": ["Polygon", "MultiPolygon"]},
-        "coordinates": {"type": "array", "minItems": 1}
-      },
-      "additionalProperties": false
-    }
+    "ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "nonEmptyIds": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "actorKind": {"anyOf": [{"enum": ["state", "polity", "chiefdom", "city_network", "community", "mobile_community", "external_claimant", "other", "unknown"]}, {"$ref": "#/$defs/extension"}]},
+    "relationship": {"anyOf": [{"enum": ["sovereign", "owner", "controller", "core", "claim", "dispute", "protector", "co-administrator", "occupier", "mandate-authority", "lessee", "claimant", "territorial_presence", "seasonal_use", "customary_tenure", "tributary_influence"]}, {"$ref": "#/$defs/extension"}]},
+    "extension": {"type": "string", "pattern": "^x-[a-z0-9][a-z0-9-]*:[a-z0-9][a-z0-9_.-]*$"},
+    "facets": {"type": "object", "required": ["habitability", "population_presence", "settlement_pattern", "tenure", "authority"], "properties": {
+      "habitability": {"anyOf": [{"enum": ["habitable", "marginal", "uninhabitable", "unknown"]}, {"$ref": "#/$defs/extension"}]},
+      "population_presence": {"anyOf": [{"enum": ["none", "transient", "seasonal", "resident", "mixed", "unknown"]}, {"$ref": "#/$defs/extension"}]},
+      "settlement_pattern": {"anyOf": [{"enum": ["none", "mobile", "semi_mobile", "dispersed", "nucleated", "mixed", "unknown"]}, {"$ref": "#/$defs/extension"}]},
+      "tenure": {"anyOf": [{"enum": ["none", "customary_community", "polity_associated", "shared", "contested", "unknown"]}, {"$ref": "#/$defs/extension"}]},
+      "authority": {"anyOf": [{"enum": ["none", "local_decentralized", "tributary_influence", "administered", "occupied", "shared", "contested", "unknown"]}, {"$ref": "#/$defs/extension"}]}
+    }, "patternProperties": {"^x-[a-z0-9][a-z0-9-]*:[a-z0-9][a-z0-9_.-]*$": {"type": "string", "pattern": "^(x-[a-z0-9][a-z0-9-]*:)?[a-z0-9][a-z0-9_.-]*$"}}, "additionalProperties": false},
+    "polygonGeometry": {"type": "object", "required": ["type", "coordinates"], "properties": {"type": {"enum": ["Polygon", "MultiPolygon"]}, "coordinates": {"type": "array", "minItems": 1}}, "additionalProperties": false}
   },
   "additionalProperties": true
 }

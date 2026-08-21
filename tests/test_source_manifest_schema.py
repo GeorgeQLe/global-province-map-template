@@ -61,6 +61,7 @@ def test_schema_files_are_machine_readable_json_schema_documents():
         "start-date-source-manifest.schema.json",
         "tileset-manifest.schema.json",
         "topology-qa-report.schema.json",
+        "territorial-status-overlay.schema.json",
     }
 
     for path in schema_paths:

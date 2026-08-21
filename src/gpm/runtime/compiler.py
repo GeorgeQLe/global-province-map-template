@@ -22,6 +22,7 @@ from shapely.ops import triangulate
 
 from gpm import __version__
 from gpm.historical.casebook import load_casebook
+from gpm.historical.territorial_status import TerritorialStatusOverlayError, resolve_territorial_status
 from gpm.schemas import (
     SchemaValidationError,
     validate_historical_territory_status,
@@ -30,11 +31,11 @@ from gpm.schemas import (
 from gpm.tiles.build import build_pmtiles_from_features
 
 
-FORMAT_VERSION = "1.0.0"
 UINT32_MAX = 0xFFFFFFFF
 RELATIONSHIPS = (
     "sovereign", "owner", "controller", "core", "claim", "dispute", "protector", "co-administrator",
     "occupier", "mandate-authority", "lessee", "claimant",
+    "territorial_presence", "seasonal_use", "customary_tenure", "tributary_influence",
 )
 SUBJECT_KINDS = {"component": 0, "province": 1, "political_unit": 2}
 
@@ -66,11 +67,12 @@ def compile_runtime_pack(
     output_dir: Path | str,
     *,
     pack_id: str | None = None,
-    compatibility_revision: str = "1",
+    compatibility_revision: str | None = None,
     previous_revision: str | None = None,
     include_debug_symbols: bool = False,
     min_zoom: int = 0,
     max_zoom: int = 4,
+    overlays: Iterable[Path | str | dict[str, Any]] = (),
 ) -> RuntimeCompileResult:
     """Compile one canonical status document or an M25A casebook.
 
@@ -81,9 +83,10 @@ def compile_runtime_pack(
     destination = Path(output_dir)
     if destination.exists() and any(destination.iterdir()):
         raise RuntimeCompileError(f"runtime output directory is not empty: {destination}")
-    scenarios, migrations, source_kind = _load_scenarios(source)
+    scenarios, migrations, source_kind = _load_scenarios(source, overlays=overlays)
     resolved_pack_id = pack_id or source.stem.replace("_", "-")
-    if not resolved_pack_id or not compatibility_revision:
+    resolved_compatibility_revision = compatibility_revision or str(scenarios[0][1].get("compatibility_revision") or "1")
+    if not resolved_pack_id or not resolved_compatibility_revision:
         raise RuntimeCompileError("pack_id and compatibility_revision must be non-empty")
 
     parent = destination.parent.resolve()
@@ -95,7 +98,7 @@ def compile_runtime_pack(
             migrations,
             root,
             pack_id=resolved_pack_id,
-            compatibility_revision=compatibility_revision,
+            compatibility_revision=resolved_compatibility_revision,
             previous_revision=previous_revision,
             source_kind=source_kind,
             include_debug_symbols=include_debug_symbols,
@@ -112,12 +115,14 @@ def compile_runtime_pack(
     )
 
 
-def _load_scenarios(source: Path) -> tuple[list[tuple[str, dict[str, Any]]], dict[str, str], str]:
+def _load_scenarios(source: Path, *, overlays: Iterable[Path | str | dict[str, Any]] = ()) -> tuple[list[tuple[str, dict[str, Any]]], dict[str, str], str]:
     try:
         document = json.loads(source.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         raise RuntimeCompileError(f"cannot load canonical input {source}: {exc}") from exc
     if document.get("fixture_type") == "historical-hard-case-casebook":
+        if list(overlays):
+            raise RuntimeCompileError("territorial-status overlays cannot target a casebook")
         casebook = load_casebook(source)
         scenarios = []
         migration: dict[str, str] = {}
@@ -129,6 +134,10 @@ def _load_scenarios(source: Path) -> tuple[list[tuple[str, dict[str, Any]]], dic
     try:
         validate_historical_territory_status(document)
     except SchemaValidationError as exc:
+        raise RuntimeCompileError(str(exc)) from exc
+    try:
+        document = resolve_territorial_status(document, overlays)
+    except TerritorialStatusOverlayError as exc:
         raise RuntimeCompileError(str(exc)) from exc
     scenario_id = str(document.get("scenario_id") or document["start_date"])
     migration = dict(document.get("province_id_map") or document.get("migration", {}).get("province_id_map") or {})
@@ -148,6 +157,10 @@ def _compile(
     min_zoom: int,
     max_zoom: int,
 ) -> dict[str, Any]:
+    canonical_versions = {document.get("schema_version") for _, document in scenarios}
+    if len(canonical_versions) != 1:
+        raise RuntimeCompileError("all scenarios in one runtime pack must use the same canonical schema version")
+    format_version = "2.0.0" if canonical_versions == {"0.2.0"} else "1.0.0"
     for name in ("core", "graphs", "scenarios", "geometry"):
         (root / name).mkdir(parents=True, exist_ok=True)
 
@@ -161,16 +174,23 @@ def _compile(
         level: sorted({value for row in provinces.values() if (value := _hierarchy_value(row, level))})
         for level in ("area", "region", "superregion")
     }
+    relationship_ids = list(RELATIONSHIPS[:12]) if format_version == "1.0.0" else [*RELATIONSHIPS, *sorted({row["relationship"] for _, document in scenarios for row in document["statuses"] if row["relationship"] not in RELATIONSHIPS})]
+    facet_dimensions = sorted({dimension for _, document in scenarios for row in document["components"] for dimension in row.get("facets", {})})
+    facet_values = sorted({f"{dimension}={value}" for _, document in scenarios for row in document["components"] for dimension, value in row.get("facets", {}).items()})
     maps = {
         "components": component_ids,
         "provinces": province_ids,
         "political_units": unit_ids,
-        "relationships": list(RELATIONSHIPS),
+        "relationships": relationship_ids,
         "scenarios": [scenario_id for scenario_id, _ in sorted(scenarios)],
         "areas": hierarchy_ids["area"],
         "regions": hierarchy_ids["region"],
         "superregions": hierarchy_ids["superregion"],
     }
+    if format_version == "2.0.0":
+        maps["facet_dimensions"] = facet_dimensions
+        maps["facet_values"] = facet_values
+        maps["actor_kinds"] = sorted({row.get("actor_kind", "unknown") for row in units.values()} | {"unknown"})
     _write_json(root / "core" / "stable_ids.json", maps)
     component_index = {value: index for index, value in enumerate(component_ids)}
     province_index = {value: index for index, value in enumerate(province_ids)}
@@ -180,11 +200,11 @@ def _compile(
     for stable_id in component_ids:
         row = components[stable_id]
         component_records.append((
-            unit_index[row["political_unit_id"]], province_index[row["province_id"]],
+            unit_index.get(row.get("political_unit_id"), UINT32_MAX), province_index[row["province_id"]],
             1 if row.get("historically_required") else 0,
             1 if row.get("minimum_area_merge_exempt") else 0,
         ))
-    _write_table(root / "core" / "components.bin", b"GPMCMP1\0", "<IIBBxx", component_records)
+    _write_table(root / "core" / "components.bin", b"GPMCMP2\0" if format_version == "2.0.0" else b"GPMCMP1\0", "<IIBBxx", component_records)
 
     province_members: list[int] = []
     province_records = []
@@ -203,13 +223,18 @@ def _compile(
     _write_table(root / "core" / "provinces.bin", b"GPMPRV1\0", "<IIIII", province_records)
     _write_u32(root / "core" / "province_components.bin", province_members)
 
-    _write_table(root / "core" / "political_units.bin", b"GPMUNT1\0", "<I", [(index,) for index in range(len(unit_ids))])
+    if format_version == "2.0.0":
+        actor_kinds = maps["actor_kinds"]
+        _write_table(root / "core" / "political_units.bin", b"GPMUNT2\0", "<II", [(index, actor_kinds.index(units.get(unit_ids[index], {}).get("actor_kind", "unknown"))) for index in range(len(unit_ids))])
+    else:
+        _write_table(root / "core" / "political_units.bin", b"GPMUNT1\0", "<I", [(index,) for index in range(len(unit_ids))])
 
     ordered_scenarios = sorted(scenarios, key=lambda item: item[0])
     scenario_meta = []
     base_rows: list[tuple[int, ...]] | None = None
+    base_facets: list[tuple[int, ...]] | None = None
     for scenario_index, (scenario_id, document) in enumerate(ordered_scenarios):
-        rows = _status_records(document, component_index, province_index, unit_index)
+        rows = _status_records(document, component_index, province_index, unit_index, relationship_ids)
         union_path = f"scenarios/unions-{scenario_index:03d}.bin"
         _write_unions(root / union_path, document.get("union_relationships", []), unit_index)
         if scenario_index == 0:
@@ -224,9 +249,22 @@ def _compile(
             filename = f"delta-{scenario_index:03d}.bin"
             _write_delta(root / "scenarios" / filename, removed, added)
             mode = "delta"
-        scenario_meta.append({"dense_index": scenario_index, "scenario_id": scenario_id,
+        meta = {"dense_index": scenario_index, "scenario_id": scenario_id,
                               "start_date": document["start_date"], "mode": mode,
-                              "path": f"scenarios/{filename}", "union_path": union_path})
+                              "path": f"scenarios/{filename}", "union_path": union_path}
+        if format_version == "2.0.0":
+            facet_rows = _facet_records(document, component_index, facet_dimensions, facet_values)
+            if scenario_index == 0:
+                base_facets = facet_rows
+                facet_filename, facet_mode = "facets-base.bin", "base"
+                _write_table(root / "scenarios" / facet_filename, b"GPMFCT2\0", "<III", facet_rows)
+            else:
+                assert base_facets is not None
+                removed, added = sorted(set(base_facets) - set(facet_rows)), sorted(set(facet_rows) - set(base_facets))
+                facet_filename, facet_mode = f"facets-delta-{scenario_index:03d}.bin", "delta"
+                _write_facet_delta(root / "scenarios" / facet_filename, removed, added)
+            meta.update({"facet_path": f"scenarios/{facet_filename}", "facet_mode": facet_mode})
+        scenario_meta.append(meta)
     _write_json(root / "scenarios" / "index.json", {"base_scenario": ordered_scenarios[0][0], "scenarios": scenario_meta})
 
     graph_edges = _graph_edges(components, component_index, province_index, scenarios)
@@ -250,7 +288,7 @@ def _compile(
         raise RuntimeCompileError(f"cannot compile runtime PMTiles: {exc}") from exc
 
     _write_json(root / "migration.json", {
-        "schema_version": FORMAT_VERSION,
+        "schema_version": format_version,
         "from_compatibility_revision": previous_revision,
         "to_compatibility_revision": compatibility_revision,
         "unchanged_stable_ids_compatible": True,
@@ -277,7 +315,7 @@ def _compile(
         gzip.compress((root / "geometry" / "lod0.tri").read_bytes(), mtime=0)
     )
     manifest = {
-        "schema_version": FORMAT_VERSION,
+        "schema_version": format_version,
         "pack_type": "gpm-game-runtime",
         "pack_id": pack_id,
         "compatibility_revision": compatibility_revision,
@@ -300,6 +338,8 @@ def _compile(
         },
         "files": files,
     }
+    if format_version == "2.0.0":
+        manifest["counts"].update({"facet_dimensions": len(facet_dimensions), "facet_values": len(facet_values)})
     validate_runtime_pack_manifest(manifest)
     _write_json(root / "runtime_manifest.json", manifest)
     return {"pack_id": pack_id, "compatibility_revision": compatibility_revision,
@@ -328,7 +368,7 @@ def _identity_projection(collection: str, row: dict[str, Any]) -> Any:
     return tuple(sorted(row.get("territory_component_ids", [])))
 
 
-def _status_records(document: dict[str, Any], components: dict[str, int], provinces: dict[str, int], units: dict[str, int]) -> list[tuple[int, ...]]:
+def _status_records(document: dict[str, Any], components: dict[str, int], provinces: dict[str, int], units: dict[str, int], relationships: list[str]) -> list[tuple[int, ...]]:
     records = []
     for row in document["statuses"]:
         subject = row["subject_id"]
@@ -341,12 +381,16 @@ def _status_records(document: dict[str, Any], components: dict[str, int], provin
         else:
             raise RuntimeCompileError(f"status has unknown subject: {subject}")
         try:
-            relation = RELATIONSHIPS.index(row["relationship"])
+            relation = relationships.index(row["relationship"])
             actor = units[row["actor_political_unit_id"]]
         except (ValueError, KeyError) as exc:
             raise RuntimeCompileError(f"status cannot resolve relationship/actor: {row}") from exc
         records.append((kind, relation, 0, subject_index, actor))
     return sorted(set(records))
+
+
+def _facet_records(document: dict[str, Any], components: dict[str, int], dimensions: list[str], values: list[str]) -> list[tuple[int, ...]]:
+    return sorted((components[row["territory_component_id"]], dimensions.index(dimension), values.index(f"{dimension}={value}")) for row in document["components"] for dimension, value in row["facets"].items())
 
 
 def _graph_edges(components: dict[str, dict[str, Any]], component_index: dict[str, int], province_index: dict[str, int], scenarios: list[tuple[str, dict[str, Any]]]) -> dict[str, set[tuple[int, int]]]:
@@ -425,6 +469,14 @@ def _write_u32(path: Path, values: Iterable[int]) -> None:
 def _write_delta(path: Path, removed: list[tuple[int, ...]], added: list[tuple[int, ...]]) -> None:
     fmt = "<BBHII"
     payload = bytearray(b"GPMDEL1\0" + struct.pack("<III", len(removed), len(added), struct.calcsize(fmt)))
+    for row in removed + added:
+        payload.extend(struct.pack(fmt, *row))
+    path.write_bytes(payload)
+
+
+def _write_facet_delta(path: Path, removed: list[tuple[int, ...]], added: list[tuple[int, ...]]) -> None:
+    fmt = "<III"
+    payload = bytearray(b"GPMFDL2\0" + struct.pack("<III", len(removed), len(added), struct.calcsize(fmt)))
     for row in removed + added:
         payload.extend(struct.pack(fmt, *row))
     path.write_bytes(payload)

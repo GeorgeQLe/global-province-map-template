@@ -394,3 +394,9 @@ See [docs/m14-beta-release.md](docs/m14-beta-release.md).
 `gpm review` starts a local review server (default `http://127.0.0.1:8765/`)
 for the processed province layer. It optionally loads adjacency and topology QA
 outputs when present, and opens a browser unless `--no-open` is passed.
+Canonical territorial status now uses a compositional `0.2.0` contract: physical
+habitability, population presence, settlement, tenure, and authority are
+independent from actor relationships. Runtime `2.0.0` stores those facets and
+nullable actors while retaining runtime-v1 loading. Ordered downstream overlays
+are available through repeatable `gpm export runtime --overlay`; see
+[`docs/compositional-territorial-status.md`](docs/compositional-territorial-status.md).

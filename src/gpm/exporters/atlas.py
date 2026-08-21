@@ -23,6 +23,7 @@ from shapely.geometry.base import BaseGeometry
 from gpm import __version__
 from gpm.config import load_profile
 from gpm.exporters.pack import ExportError, _build_attribution_records
+from gpm.historical import resolve_territorial_status, resolved_territory_state
 from gpm.paths import EXPORT_DIR, PROCESSED_DATA_DIR
 from gpm.scenarios import ScenarioError, load_scenario, resolve_ownership_records
 
@@ -52,6 +53,11 @@ OWNERSHIP_TABLE_FIELDS_BASE = (
     "end_date",
     "owner",
     "controller",
+    "habitability",
+    "population_presence",
+    "settlement_pattern",
+    "tenure",
+    "authority",
     "cores",
     "claims",
     "culture",
@@ -96,6 +102,32 @@ class AtlasExportResult:
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
+
+
+def territorial_status_atlas_features(
+    canonical: dict[str, Any], *, overlays: tuple[dict[str, Any] | Path | str, ...] = (),
+) -> list[dict[str, Any]]:
+    """Build component-level atlas features from compositional canonical status."""
+    document = resolve_territorial_status(canonical, overlays)
+    state = resolved_territory_state(document)
+    components = {row["territory_component_id"]: row for row in document["components"]}
+    features = []
+    for row in state["components"]:
+        owner, controller = row["owner"], row["controller"]
+        features.append({"type": "Feature", "geometry": components[row["territory_component_id"]]["geometry"], "properties": {
+            "territory_component_id": row["territory_component_id"], "province_id": row["province_id"],
+            "owner": owner, "controller": controller,
+            "owner_color": tag_fill_color(owner) if owner is not None else UNKNOWN_FILL,
+            "controller_color": tag_fill_color(controller) if controller is not None else UNKNOWN_FILL,
+            **row["facets"],
+        }})
+    return features
+
+
+def dissolve_territorial_owners(features: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Dissolve component atlas features by non-null owner only."""
+    owners = {str(feature["properties"]["owner"]) for feature in features if feature.get("properties", {}).get("owner") is not None}
+    return _dissolve_by_key(features, key="owner", color_field="owner_color", colors={owner: tag_fill_color(owner) for owner in owners}, include_unassigned=False)
 
 
 def export_atlas_pack(
@@ -836,8 +868,10 @@ def identity_fill_color(value: str | None) -> str:
 def _color_map_for_records(records: list[dict[str, Any]]) -> dict[str, str]:
     tags: set[str] = set()
     for row in records:
-        tags.add(str(row["owner"]))
-        tags.add(str(row["controller"]))
+        if row.get("owner") is not None:
+            tags.add(str(row["owner"]))
+        if row.get("controller") is not None:
+            tags.add(str(row["controller"]))
         for core in row.get("cores") or []:
             tags.add(str(core))
         for claim in row.get("claims") or []:
@@ -878,8 +912,8 @@ def _build_choropleth_features(
         row = ownership_by_id.get(province_id)
         if row is None:
             continue
-        owner = str(row["owner"])
-        controller = str(row["controller"])
+        owner = str(row["owner"]) if row.get("owner") is not None else None
+        controller = str(row["controller"]) if row.get("controller") is not None else None
         joined = {
             **{key: props.get(key) for key in (
                 "province_id",
@@ -902,6 +936,11 @@ def _build_choropleth_features(
             "end_date": row["end_date"],
             "owner": owner,
             "controller": controller,
+            "habitability": row.get("habitability") or (row.get("facets") or {}).get("habitability"),
+            "population_presence": row.get("population_presence") or (row.get("facets") or {}).get("population_presence"),
+            "settlement_pattern": row.get("settlement_pattern") or (row.get("facets") or {}).get("settlement_pattern"),
+            "tenure": row.get("tenure") or (row.get("facets") or {}).get("tenure"),
+            "authority": row.get("authority") or (row.get("facets") or {}).get("authority"),
             "cores": list(row.get("cores") or []),
             "claims": list(row.get("claims") or []),
             "culture": row.get("culture"),
@@ -909,8 +948,8 @@ def _build_choropleth_features(
             "disputed": bool(row.get("disputed")),
             "assignment_source": row.get("assignment_source"),
             "notes": row.get("notes"),
-            "owner_color": colors.get(owner, FALLBACK_FILL),
-            "controller_color": colors.get(controller, FALLBACK_FILL),
+            "owner_color": colors.get(owner, UNKNOWN_FILL) if owner is not None else UNKNOWN_FILL,
+            "controller_color": colors.get(controller, UNKNOWN_FILL) if controller is not None else UNKNOWN_FILL,
             "uncertain": _is_uncertain(
                 {
                     "owner": owner,
@@ -1384,6 +1423,11 @@ def _write_ownership_csv(
                 "end_date": "" if row.get("end_date") is None else row["end_date"],
                 "owner": row["owner"],
                 "controller": row["controller"],
+                "habitability": row.get("habitability") or (row.get("facets") or {}).get("habitability") or "",
+                "population_presence": row.get("population_presence") or (row.get("facets") or {}).get("population_presence") or "",
+                "settlement_pattern": row.get("settlement_pattern") or (row.get("facets") or {}).get("settlement_pattern") or "",
+                "tenure": row.get("tenure") or (row.get("facets") or {}).get("tenure") or "",
+                "authority": row.get("authority") or (row.get("facets") or {}).get("authority") or "",
                 "cores": json.dumps(row.get("cores") or [], ensure_ascii=False),
                 "claims": json.dumps(row.get("claims") or [], ensure_ascii=False),
                 "culture": "" if row.get("culture") is None else row["culture"],
@@ -1394,8 +1438,8 @@ def _write_ownership_csv(
                 "parent_region_id": row.get("parent_region_id") or "",
                 "display_name": row.get("display_name") or "",
                 "notes": row.get("notes") or "",
-                "owner_color": colors.get(row["owner"], FALLBACK_FILL),
-                "controller_color": colors.get(row["controller"], FALLBACK_FILL),
+                "owner_color": colors.get(row["owner"], UNKNOWN_FILL) if row.get("owner") is not None else UNKNOWN_FILL,
+                "controller_color": colors.get(row["controller"], UNKNOWN_FILL) if row.get("controller") is not None else UNKNOWN_FILL,
             }
             if include_identity_paint:
                 out["culture_color"] = identity_fill_color(row.get("culture"))

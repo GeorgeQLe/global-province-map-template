@@ -355,14 +355,16 @@ trivia.
   - required attribution present
   - restricted sources absent from default builds
 - Add **scenario politics QA**:
-  - every land province has owner/controller for official scenarios
+  - every territory component has complete habitability, population-presence,
+    settlement, tenure, and authority facets; owner/controller remain nullable
   - unknown tags flagged
   - orphan cores/claims
   - large contiguous owner components sanity checks
   - mandatory spatial golden-border and negative-anachronism checks in every
     claimed priority region
   - semantic checks for sovereignty, control, occupation, dependencies,
-    personal unions, claims, and uncertainty
+    personal unions, claims, presence, seasonal use, customary tenure,
+    tributary influence, and uncertainty
 - Add visual QA:
   - static render snapshots (modern + era ownership choropleths)
   - interactive map viewer
@@ -636,6 +638,9 @@ Production authoring and runtime program:
   M7 export contracts and M19 PMTiles are foundations reused by this milestone,
   not superseded implementations. Two compilations must be byte-identical and
   preserve component, political-unit, province, status, and migration mappings.
+  Runtime v2 adds facet dimension/value IDs, separate facet deltas, and an
+  explicit nullable component-actor sentinel while the loader retains runtime
+  v1 readability.
 - **M25C — Global 1444 Certification** — expand the existing five-region
   candidate worldwide. The unsigned 1444-v2 remains a valuable pilot and
   evidence set, not a release boundary. Brussels and Nord remain mandatory
@@ -668,7 +673,7 @@ validation. Certification order is 1444 → 1836 → 1914 → 1936.
 - Reported local viewport tile-read p95 is at most 25 ms.
 - Runtime code performs no polygon unions, topology reconstruction,
   georeferencing, or historical-source processing.
-- Runtime component, political-unit, province, status, membership, ownership,
+- Runtime component, political-unit, province, facet, status, membership, nullable ownership,
   hierarchy, adjacency, and migration mappings cross-validate against the
   accepted canonical pass.
 - Save/load tests cover stable IDs, dense indices, pack revisions,

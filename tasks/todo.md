@@ -4,7 +4,8 @@
 
 - M25C global 1444 certification: all 22 regional packets and 88 Grade-A rows
   are complete. Close the ordinary worldwide research-QA defects through the
-  following decision-gated sequence. Each research step is read-only and must
+  following decision-gated sequence. The worldwide compositional territorial
+  migration is now the prerequisite for renewed outline research. Each research step is read-only and must
   present exact affected records, source evidence, a recommended treatment,
   alternatives, tradeoffs, and expected QA impact. Do not begin its remediation
   step until George Le records a decision. After every remediation, regenerate
@@ -19,22 +20,28 @@
      recommend, record by record, pruning or reviewed-source replacement.
   4. [x] After reviewer decision, implement the approved polity/source cleanup
      and verify the ordinary worldwide evidence gates.
-  5. [ ] Research missing positive-border and negative-anachronism assertions
+  5. [x] Replace mandatory nation-state ownership with researched component
+     facets and actor relationships across all 22 packets; remove all 219
+     uninhabited pseudo-owner assignments; add ordered overlays and runtime v2
+     while retaining runtime-v1 readability.
+  6. [ ] Re-research status-derived positive-border and negative-anachronism assertions
      for the affected Americas and Africa regions and recommend exact assertions.
-  6. [ ] After reviewer decision, implement the approved Americas/Africa
+     This remains intentionally paused until the corrected status-derived
+     outlines are reviewed.
+  7. [ ] After reviewer decision, implement the approved Americas/Africa
      assertion remediation and verify its spatial and source-pinning gates.
-  7. [ ] Research missing assertions for the affected Asia and Europe regions
+  8. [ ] Research missing assertions for the affected Asia and Europe regions
      and recommend exact assertions.
-  8. [ ] After reviewer decision, implement the approved Asia/Europe assertion
+  9. [ ] After reviewer decision, implement the approved Asia/Europe assertion
      remediation and verify its spatial and source-pinning gates.
-  9. [ ] Research missing assertions for the affected Oceania regions and
+  10. [ ] Research missing assertions for the affected Oceania regions and
      recommend exact assertions.
-  10. [ ] After reviewer decision, implement the approved Oceania assertion
+  11. [ ] After reviewer decision, implement the approved Oceania assertion
       remediation and verify its spatial and source-pinning gates.
-  11. [ ] Research and recommend the fail-closed transition from the provisional
+  12. [ ] Research and recommend the fail-closed transition from the provisional
       generator to a promotable assembled-pass mode; retain all publication and
       certification guards until ordinary research QA is clean.
-  12. [ ] After reviewer decision, implement the approved assembly transition,
+  13. [ ] After reviewer decision, implement the approved assembly transition,
       run ordinary worldwide QA, render the final review bundle, and stop for
       independent human review before runtime certification or publication.
 
@@ -54,6 +61,14 @@
   research acceptance and runtime-pack validation.
 
 ## Completed
+
+- [x] Compositional territorial-status migration: canonical status `0.2.0`,
+  location assignments `0.4.0`, runtime pack `2.0.0`, nullable territorial
+  actors, five independently researched facets, typed community/use/tenure
+  relationships, ordered fail-closed overlays, v1 runtime readability, and all
+  22 regional packets migrated. Acceptance census: 23,582 playable locations,
+  22,000 provinces, complete facets, and zero of the former 219 uninhabited
+  pseudo-owner rows remaining.
 
 - [x] M25C regional evidence promotion: replaced provisional records in
   risk-first order across Asia, Africa/Americas, and Oceania with dated,

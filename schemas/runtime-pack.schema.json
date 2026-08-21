@@ -6,7 +6,7 @@
   "additionalProperties": false,
   "required": ["schema_version", "pack_type", "pack_id", "compatibility_revision", "generator", "canonical_input_kind", "deterministic", "counts", "entrypoints", "debug_symbols_included", "size_metrics", "files"],
   "properties": {
-    "schema_version": {"const": "1.0.0"},
+    "schema_version": {"enum": ["1.0.0", "2.0.0"]},
     "pack_type": {"const": "gpm-game-runtime"},
     "pack_id": {"type": "string", "minLength": 1},
     "compatibility_revision": {"type": "string", "minLength": 1},
@@ -24,11 +24,13 @@
       "properties": {
         "components": {"type": "integer", "minimum": 1},
         "provinces": {"type": "integer", "minimum": 1},
-        "political_units": {"type": "integer", "minimum": 1},
+        "political_units": {"type": "integer", "minimum": 0},
         "scenarios": {"type": "integer", "minimum": 1},
         "triangles_by_lod": {"type": "object"},
         "tiles": {"type": "integer", "minimum": 1},
-        "graph_edges": {"type": "object"}
+        "graph_edges": {"type": "object"},
+        "facet_dimensions": {"type": "integer", "minimum": 0},
+        "facet_values": {"type": "integer", "minimum": 0}
       },
       "additionalProperties": false
     },
@@ -57,5 +59,9 @@
         }
       }
     }
-  }
+  },
+  "allOf": [{
+    "if": {"properties": {"schema_version": {"const": "2.0.0"}}, "required": ["schema_version"]},
+    "then": {"properties": {"counts": {"required": ["facet_dimensions", "facet_values"]}}}
+  }]
 }

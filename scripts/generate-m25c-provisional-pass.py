@@ -362,6 +362,12 @@ def generate(args: argparse.Namespace) -> None:
         "known_gaps": ["All 22 regions require four-layer Grade-A promotion before certification."],
     }
     _apply_packets(packets, source_manifest, gazetteer, boundaries, golden, assignments, coverage)
+    if all(row.get("facets") for row in assignments["assignments"]):
+        assignments["schema_version"] = "0.4.0"
+        gazetteer["schema_version"] = "0.4.0"
+        for polity in gazetteer["polities"]:
+            polity.setdefault("actor_kind", "unknown")
+            polity.setdefault("territory_component_ids", [])
     _apply_approved_polity_source_cleanup(
         source_manifest, gazetteer, boundaries, golden, assignments, coverage,
     )
@@ -380,7 +386,7 @@ def generate(args: argparse.Namespace) -> None:
                            ("coverage.json", coverage)):
         _write(output / name, document)
 
-    canonical = _canonical_status(province_geometries, assignments["assignments"])
+    canonical = _canonical_status(province_geometries, assignments["assignments"], gazetteer["polities"])
     inventory = _load(args.global_input / "anomaly_inventory.json")
     canonical["accepted_anomaly_ids"] = sorted(row["anomaly_id"] for row in inventory["anomalies"])
     canonical["qa_mode"] = "provisional_internal_review"
@@ -524,39 +530,45 @@ def _provisional_boundaries(pilot: Path, scenario_features: list[dict[str, Any]]
     return document
 
 
-def _canonical_status(geometries: dict[str, Any], assignments: list[dict[str, Any]]) -> dict[str, Any]:
+def _canonical_status(geometries: dict[str, Any], assignments: list[dict[str, Any]], actor_profiles: list[dict[str, Any]] | None = None) -> dict[str, Any]:
     components, provinces, statuses = [], [], []
     unit_components: dict[str, list[str]] = defaultdict(list)
     assignment_index = {row["province_id"]: row for row in assignments}
     for province_id in sorted(geometries):
         component_id = f"cmp-{province_id}"
         assignment = assignment_index[province_id]
-        sovereign, owner, controller = (
-            assignment["sovereign_polity_id"], assignment["owner_polity_id"], assignment["controller_polity_id"]
-        )
+        sovereign, owner, controller = (assignment.get("sovereign_polity_id"), assignment.get("owner_polity_id"), assignment.get("controller_polity_id"))
         evidence = assignment["source_ids"]
+        facets = assignment.get("facets") or {dimension: "unknown" for dimension in ("habitability", "population_presence", "settlement_pattern", "tenure", "authority")}
         components.append({"territory_component_id": component_id, "political_unit_id": owner,
                            "province_id": province_id, "geometry": mapping(geometries[province_id]),
+                           "facets": facets,
                            "historically_required": True, "minimum_area_merge_exempt": True,
                            "evidence_ids": evidence, "provisional": True})
-        unit_components[owner].append(component_id)
+        if owner is not None:
+            unit_components[owner].append(component_id)
         provinces.append({"province_id": province_id, "territory_component_ids": [component_id],
                           "hierarchy": assignment_index[province_id]["hierarchy"], "provisional": True})
-        for relationship, actor in (("sovereign", sovereign), ("owner", owner), ("controller", controller)):
-            statuses.append({"subject_id": component_id, "relationship": relationship,
-                             "actor_political_unit_id": actor, "valid_from": START_DATE, "valid_to": START_DATE,
-                             "evidence_ids": evidence, "certainty": "uncertain" if evidence == ["official-1444-modern-scaffold-provisional"] else "documented"})
-    actor_ids = {
-        actor for row in assignments
-        for actor in (row["sovereign_polity_id"], row["owner_polity_id"], row["controller_polity_id"])
-    }
-    political_units = [{"political_unit_id": unit, "territory_component_ids": sorted(components_for_unit),
-                        "documented_status": "provisional owner grouping"}
-                       for unit, components_for_unit in sorted(unit_components.items())]
-    external = sorted(actor_ids - set(unit_components))
-    return {"schema_version": "0.1.0", "pass_id": PASS_ID, "start_date": START_DATE, "scenario_id": PASS_ID,
+        relationship_rows = assignment.get("status_relationships")
+        if relationship_rows is None:
+            relationship_rows = [{"relationship": relationship, "actor_political_unit_id": actor, "valid_from": START_DATE, "valid_to": START_DATE, "evidence_ids": evidence, "certainty": "uncertain" if evidence == ["official-1444-modern-scaffold-provisional"] else "documented"} for relationship, actor in (("sovereign", sovereign), ("owner", owner), ("controller", controller)) if actor is not None]
+        for relationship_row in relationship_rows:
+            statuses.append({"subject_id": component_id, **relationship_row,
+                             "valid_from": relationship_row.get("valid_from", START_DATE),
+                             "valid_to": relationship_row.get("valid_to", START_DATE),
+                             "evidence_ids": relationship_row.get("evidence_ids", evidence),
+                             "certainty": relationship_row.get("certainty", "uncertain" if assignment.get("uncertainty", 0) >= 0.5 else "documented")})
+    actor_ids = {row["actor_political_unit_id"] for row in statuses}
+    profiles = {row["polity_id"]: row for row in actor_profiles or []}
+    relationships_by_actor = {actor: {row["relationship"] for row in statuses if row["actor_political_unit_id"] == actor} for actor in actor_ids}
+    political_units = []
+    for unit in sorted(actor_ids):
+        relationships = relationships_by_actor[unit]
+        kind = profiles.get(unit, {}).get("actor_kind") or ("state" if relationships & {"sovereign", "owner", "controller"} else "mobile_community" if "seasonal_use" in relationships else "community" if relationships & {"territorial_presence", "customary_tenure"} else "polity")
+        political_units.append({"political_unit_id": unit, "actor_kind": kind, "territory_component_ids": sorted(unit_components.get(unit, [])), "documented_status": profiles.get(unit, {}).get("name") or "researched compositional territorial actor"})
+    return {"schema_version": "0.2.0", "compatibility_revision": "2", "pass_id": PASS_ID, "start_date": START_DATE, "scenario_id": PASS_ID,
             "components": components, "political_units": political_units, "provinces": provinces,
-            "statuses": statuses, "external_actor_ids": external, "adjacency": []}
+            "statuses": statuses, "adjacency": []}
 
 
 def _load_packets(directory: Path | None) -> list[dict[str, Any]]:

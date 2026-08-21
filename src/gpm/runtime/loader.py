@@ -26,7 +26,7 @@ class RuntimePack:
             self.manifest = json.loads((self.root / "runtime_manifest.json").read_text(encoding="utf-8"))
         except (OSError, json.JSONDecodeError) as exc:
             raise RuntimeLoadError(f"cannot read runtime manifest: {exc}") from exc
-        if self.manifest.get("pack_type") != "gpm-game-runtime" or self.manifest.get("schema_version") != "1.0.0":
+        if self.manifest.get("pack_type") != "gpm-game-runtime" or self.manifest.get("schema_version") not in {"1.0.0", "2.0.0"}:
             raise RuntimeLoadError("unsupported runtime pack type or schema version")
         if verify_hashes:
             self.verify()
@@ -123,6 +123,53 @@ class RuntimePack:
             })
         return tuple(decoded)
 
+    def scenario_facets(self, scenario: int | str = 0) -> tuple[dict[str, Any], ...]:
+        """Decode component facets for runtime v2; v1 packs expose no facet rows."""
+        if self.manifest["schema_version"] == "1.0.0":
+            return ()
+        meta = self._scenario_meta(scenario)
+        base_meta = self.scenario_index["scenarios"][0]
+        rows = set(self._facet_table(base_meta["facet_path"]))
+        if meta["facet_mode"] == "delta":
+            removed, added = self._facet_delta(meta["facet_path"])
+            rows.difference_update(removed)
+            rows.update(added)
+        grouped: dict[int, dict[str, str]] = {}
+        for component, dimension, value in sorted(rows):
+            dimension_name = self.ids["facet_dimensions"][dimension]
+            encoded = self.ids["facet_values"][value]
+            prefix = f"{dimension_name}="
+            if not encoded.startswith(prefix):
+                raise RuntimeLoadError(f"facet value does not match dimension: {encoded}")
+            grouped.setdefault(component, {})[dimension_name] = encoded[len(prefix):]
+        return tuple({"territory_component_id": self.ids["components"][component], "facets": grouped[component]} for component in sorted(grouped))
+
+    def resolved_territory_state(self, scenario: int | str = 0) -> dict[str, Any]:
+        """Return facets and nullable primary actors without conflating presence with ownership."""
+        meta = self._scenario_meta(scenario)
+        statuses = self.scenario_statuses(scenario)
+        by_subject: dict[str, list[dict[str, Any]]] = {}
+        for row in statuses:
+            by_subject.setdefault(row["subject_id"], []).append(row)
+        facets = {row["territory_component_id"]: row["facets"] for row in self.scenario_facets(scenario)}
+        component_rows = self._component_table()
+        components = []
+        province_facets: dict[str, dict[str, set[str]]] = {}
+        for index, (actor, province, _, _) in enumerate(component_rows):
+            component_id, province_id = self.ids["components"][index], self.ids["provinces"][province]
+            province_facets.setdefault(province_id, {})
+            relationships = by_subject.get(component_id, [])
+            primary = {name: None for name in ("sovereign", "owner", "controller")}
+            for row in relationships:
+                if row["relationship"] in primary:
+                    primary[row["relationship"]] = row["actor_political_unit_id"]
+            component_facets = facets.get(component_id, {})
+            for dimension, value in component_facets.items():
+                province_facets.setdefault(province_id, {}).setdefault(dimension, set()).add(value)
+            components.append({"territory_component_id": component_id, "province_id": province_id, "political_unit_id": None if actor == 0xFFFFFFFF else self.ids["political_units"][actor], "facets": component_facets, **primary, "relationships": relationships})
+        provinces = [{"province_id": province_id, "facets": {dimension: next(iter(values)) if len(values) == 1 else "mixed" for dimension, values in sorted(dimensions.items())}} for province_id, dimensions in sorted(province_facets.items())]
+        return {"scenario_id": meta["scenario_id"], "components": components, "provinces": provinces}
+
     def scenario_unions(self, scenario: int | str = 0) -> tuple[dict[str, Any], ...]:
         """Decode the scenario's political-unit personal-union relationships."""
         scenarios = self.scenario_index["scenarios"]
@@ -202,6 +249,52 @@ class RuntimePack:
             return json.loads((self.root / relative).read_text(encoding="utf-8"))
         except (OSError, json.JSONDecodeError) as exc:
             raise RuntimeLoadError(f"cannot read runtime asset {relative}: {exc}") from exc
+
+    def _scenario_meta(self, scenario: int | str) -> dict[str, Any]:
+        scenarios = self.scenario_index["scenarios"]
+        if isinstance(scenario, str):
+            try:
+                return next(item for item in scenarios if item["scenario_id"] == scenario)
+            except StopIteration as exc:
+                raise RuntimeLoadError(f"unknown scenario: {scenario}") from exc
+        try:
+            if not 0 <= scenario < len(scenarios):
+                raise IndexError(scenario)
+            return scenarios[scenario]
+        except (IndexError, TypeError) as exc:
+            raise RuntimeLoadError(f"unknown scenario dense index: {scenario}") from exc
+
+    def _component_table(self) -> tuple[tuple[int, ...], ...]:
+        data = (self.root / "core/components.bin").read_bytes()
+        expected_magic = b"GPMCMP2\0" if self.manifest["schema_version"] == "2.0.0" else b"GPMCMP1\0"
+        if data[:8] != expected_magic:
+            raise RuntimeLoadError("invalid component table")
+        count, record_size = struct.unpack_from("<II", data, 8)
+        fmt = "<IIBBxx"
+        if record_size != struct.calcsize(fmt) or len(data) != 16 + count * record_size:
+            raise RuntimeLoadError("invalid component table size")
+        return tuple(struct.unpack_from(fmt, data, 16 + index * record_size) for index in range(count))
+
+    def _facet_table(self, relative: str) -> tuple[tuple[int, ...], ...]:
+        data = (self.root / relative).read_bytes()
+        if data[:8] != b"GPMFCT2\0":
+            raise RuntimeLoadError(f"invalid facet table: {relative}")
+        count, record_size = struct.unpack_from("<II", data, 8)
+        fmt = "<III"
+        if record_size != struct.calcsize(fmt) or len(data) != 16 + count * record_size:
+            raise RuntimeLoadError(f"invalid facet table size: {relative}")
+        return tuple(struct.unpack_from(fmt, data, 16 + index * record_size) for index in range(count))
+
+    def _facet_delta(self, relative: str) -> tuple[set[tuple[int, ...]], set[tuple[int, ...]]]:
+        data = (self.root / relative).read_bytes()
+        if data[:8] != b"GPMFDL2\0":
+            raise RuntimeLoadError(f"invalid facet delta: {relative}")
+        removed_count, added_count, record_size = struct.unpack_from("<III", data, 8)
+        fmt, total = "<III", removed_count + added_count
+        if record_size != struct.calcsize(fmt) or len(data) != 20 + total * record_size:
+            raise RuntimeLoadError(f"invalid facet delta size: {relative}")
+        rows = [struct.unpack_from(fmt, data, 20 + index * record_size) for index in range(total)]
+        return set(rows[:removed_count]), set(rows[removed_count:])
 
     def _status_table(self, relative: str) -> tuple[tuple[int, ...], ...]:
         data = (self.root / relative).read_bytes()

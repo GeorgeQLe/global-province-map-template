@@ -346,6 +346,18 @@ def test_completed_region_grade_a_packets(region, filename, assignment_count, co
     assert all("official-1444-modern-scaffold-provisional" not in row["source_ids"]
                for row in packet["assignment_overrides"])
     assert len(packet["location_region_overrides"]) == correction_count
+    if packet.get("packet_version") == "2.0.0":
+        profiles = {row["polity_id"]: row for row in packet["polities"]}
+        assert all(row.get("actor_kind") for row in profiles.values())
+        assert not any("uninhabited" in polity_id for polity_id in profiles)
+        for row in packet["assignment_overrides"]:
+            assert set(row["facets"]) == {"habitability", "population_presence", "settlement_pattern", "tenure", "authority"}
+            relationship_actors = {item["actor_political_unit_id"] for item in row["status_relationships"]}
+            assert relationship_actors <= set(profiles)
+            if row["facets"]["habitability"] == "uninhabitable":
+                assert not row["polity_ids"] and not relationship_actors
+                assert row["owner_polity_id"] is row["controller_polity_id"] is row["sovereign_polity_id"] is None
+        return
     if region == "005":
         assert packet["expected_counts"] == {
             "assertions": 32, "assignments": 2211, "build_features": 8,
@@ -789,11 +801,16 @@ def test_corrected_assignments_are_exactly_once_in_destination_packets():
             assert province_id not in correction_provinces
             row = occurrences[0][1]
             actor, uncertainty, source_ids, note_prefix = CORRECTED_POLICIES[policy_id]
-            assert row["polity_ids"] == [actor]
-            assert row["sovereign_polity_id"] == actor
-            assert row["owner_polity_id"] == actor
-            assert row["controller_polity_id"] == actor
-            assert row["core_polity_ids"] == [actor]
+            uninhabited = row["facets"]["habitability"] == "uninhabitable"
+            assert row["polity_ids"] == ([] if uninhabited else [actor])
+            profiles = {item["polity_id"]: item for item in destinations[region]["polities"]}
+            state_actor = not uninhabited and profiles[actor]["actor_kind"] == "state"
+            expected_primary = actor if state_actor else None
+            assert row["sovereign_polity_id"] == expected_primary
+            assert row["owner_polity_id"] == expected_primary
+            assert row["controller_polity_id"] == expected_primary
+            assert row["core_polity_ids"] == ([actor] if state_actor else [])
+            assert {item["actor_political_unit_id"] for item in row["status_relationships"]} == (set() if uninhabited else {actor})
             assert row["claim_polity_ids"] == []
             assert row["dispute_polity_ids"] == []
             assert row["uncertainty"] == uncertainty

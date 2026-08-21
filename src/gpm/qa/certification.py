@@ -189,6 +189,11 @@ def _check_runtime_parity(canonical: dict[str, Any], runtime: RuntimePack, manif
     expected_status = {(row["subject_id"], row["relationship"], row["actor_political_unit_id"]) for row in canonical["statuses"]}
     if actual != expected_status:
         raise EraCertificationError("canonical/runtime typed-status parity failed")
+    if canonical.get("schema_version") == "0.2.0":
+        actual_facets = {row["territory_component_id"]: row["facets"] for row in runtime.scenario_facets(scenario_id)}
+        expected_facets = {row["territory_component_id"]: row["facets"] for row in canonical["components"]}
+        if actual_facets != expected_facets:
+            raise EraCertificationError("canonical/runtime territorial-facet parity failed")
     for province in canonical["provinces"]:
         hierarchy = province.get("hierarchy") or province
         if not all(hierarchy.get(f"{level}_id") for level in ("area", "region", "superregion")):

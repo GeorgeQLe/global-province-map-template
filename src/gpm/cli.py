@@ -559,8 +559,9 @@ def _build_parser() -> argparse.ArgumentParser:
         help="Empty output directory for the runtime pack.",
     )
     runtime.add_argument("--pack-id", help="Public pack identifier; defaults to the input filename stem.")
-    runtime.add_argument("--compatibility-revision", default="1", help="Save compatibility revision (default: 1).")
+    runtime.add_argument("--compatibility-revision", help="Save compatibility revision; defaults to the canonical revision (or 1 for canonical v1).")
     runtime.add_argument("--previous-revision", help="Revision accepted by the emitted migration map.")
+    runtime.add_argument("--overlay", action="append", type=Path, default=[], help="Ordered territorial-status overlay; may be repeated and later overlays win.")
     runtime.add_argument("--debug-symbols", action="store_true", help="Emit the separate optional canonical debug-symbol file.")
     runtime.add_argument("--min-zoom", type=int, default=0, help="PMTiles minimum zoom (default: 0).")
     runtime.add_argument("--max-zoom", type=int, default=4, help="PMTiles maximum zoom (default: 4).")
@@ -2237,6 +2238,7 @@ def _export_runtime(args: argparse.Namespace) -> int:
             include_debug_symbols=bool(args.debug_symbols),
             min_zoom=int(args.min_zoom),
             max_zoom=int(args.max_zoom),
+            overlays=args.overlay,
         )
         benchmark = RuntimePack.benchmark(args.output_dir) if args.benchmark else None
     except (RuntimeCompileError, RuntimeLoadError, OSError) as error:

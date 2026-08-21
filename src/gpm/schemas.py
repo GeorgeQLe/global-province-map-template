@@ -18,6 +18,10 @@ WORLDWIDE_M49_SUBREGIONS = frozenset({
     "053", "054", "057", "061",
 })
 
+TERRITORIAL_FACETS = (
+    "habitability", "population_presence", "settlement_pattern", "tenure", "authority",
+)
+
 
 def validate_global_certification_manifest(document: dict[str, Any]) -> None:
     """Validate the public M25C worldwide-certification envelope."""
@@ -37,7 +41,7 @@ def validate_runtime_pack_manifest(manifest: dict[str, Any]) -> None:
          "debug_symbols_included", "size_metrics", "files"],
         "runtime manifest",
     )
-    if manifest["schema_version"] != "1.0.0" or manifest["pack_type"] != "gpm-game-runtime":
+    if manifest["schema_version"] not in {"1.0.0", "2.0.0"} or manifest["pack_type"] != "gpm-game-runtime":
         raise SchemaValidationError("invalid M25B runtime manifest type or version")
     if not isinstance(manifest["pack_id"], str) or not manifest["pack_id"]:
         raise SchemaValidationError("runtime manifest.pack_id must be non-empty")
@@ -47,9 +51,16 @@ def validate_runtime_pack_manifest(manifest: dict[str, Any]) -> None:
         raise SchemaValidationError("runtime manifest.deterministic must be true")
     counts = manifest["counts"]
     _require_object(counts, "runtime manifest.counts")
-    for key in ("components", "provinces", "political_units", "scenarios"):
+    for key in ("components", "provinces", "scenarios"):
         if not isinstance(counts.get(key), int) or counts[key] < 1:
             raise SchemaValidationError(f"runtime manifest.counts.{key} must be positive")
+    minimum_units = 0 if manifest["schema_version"] == "2.0.0" else 1
+    if not isinstance(counts.get("political_units"), int) or counts["political_units"] < minimum_units:
+        raise SchemaValidationError("runtime manifest.counts.political_units is invalid")
+    if manifest["schema_version"] == "2.0.0":
+        for key in ("facet_dimensions", "facet_values"):
+            if not isinstance(counts.get(key), int) or counts[key] < 0:
+                raise SchemaValidationError(f"runtime manifest.counts.{key} must be non-negative")
     files = manifest["files"]
     if not isinstance(files, list) or not files:
         raise SchemaValidationError("runtime manifest.files must be non-empty")
@@ -823,11 +834,18 @@ def validate_historical_territory_status(document: dict[str, Any]) -> None:
     """Validate M25A identities, references, geometry, and typed status dates."""
     schema = load_schema("historical-territory-status")
     _require_object(document, "historical territory status")
-    _validate_json_schema(document, schema, "historical territory status")
+    version = document.get("schema_version")
+    if version == "0.2.0":
+        _validate_json_schema(document, schema, "historical territory status")
+    elif version == "0.1.0":
+        # Canonical v1 remains readable only as an input compatibility contract.
+        _require_keys(document, ["start_date", "components", "political_units", "provinces", "statuses"], "historical territory status")
+    else:
+        raise SchemaValidationError("historical territory status.schema_version must be 0.2.0")
     start_date = document["start_date"]
 
     component_ids: set[str] = set()
-    component_units: dict[str, str] = {}
+    component_units: dict[str, str | None] = {}
     component_provinces: dict[str, str] = {}
     component_geometries: dict[str, Any] = {}
     try:
@@ -841,7 +859,7 @@ def validate_historical_territory_status(document: dict[str, Any]) -> None:
         if component_id in component_ids:
             raise SchemaValidationError(f"duplicate territory_component_id: {component_id}")
         component_ids.add(component_id)
-        component_units[component_id] = component["political_unit_id"]
+        component_units[component_id] = component.get("political_unit_id")
         component_provinces[component_id] = component["province_id"]
         if component["historically_required"] is not True or component["minimum_area_merge_exempt"] is not True:
             raise SchemaValidationError(f"{path} must preserve the historically required polygon")
@@ -857,6 +875,8 @@ def validate_historical_territory_status(document: dict[str, Any]) -> None:
         if unit_id in unit_ids:
             raise SchemaValidationError(f"duplicate political_unit_id: {unit_id}")
         unit_ids.add(unit_id)
+        if version == "0.2.0" and "actor_kind" not in unit:
+            raise SchemaValidationError(f"political unit {unit_id} is missing actor_kind")
         for component_id in unit["territory_component_ids"]:
             if component_id not in component_ids:
                 raise SchemaValidationError(f"political unit {unit_id} references unknown component {component_id}")
@@ -865,8 +885,9 @@ def validate_historical_territory_status(document: dict[str, Any]) -> None:
             if component_id in unit_members:
                 raise SchemaValidationError(f"component {component_id} belongs to multiple political units")
             unit_members.add(component_id)
-    if unit_members != component_ids:
-        raise SchemaValidationError("every component must belong to exactly one political unit")
+    expected_unit_members = {component_id for component_id, unit_id in component_units.items() if unit_id is not None}
+    if unit_members != expected_unit_members:
+        raise SchemaValidationError("every component with a political unit must belong to exactly that unit")
 
     province_ids: set[str] = set()
     province_members: set[str] = set()
@@ -900,6 +921,8 @@ def validate_historical_territory_status(document: dict[str, Any]) -> None:
         raise SchemaValidationError("every component must belong to exactly one province")
 
     actor_ids = set(document.get("external_actor_ids") or []) | unit_ids
+    if version == "0.2.0" and document.get("external_actor_ids"):
+        raise SchemaValidationError("canonical 0.2.0 actors must have explicit political-unit profiles")
     subjects = component_ids | unit_ids | province_ids
     seen_statuses: set[tuple[str, str, str]] = set()
     for status in document["statuses"]:
@@ -913,6 +936,45 @@ def validate_historical_territory_status(document: dict[str, Any]) -> None:
             raise SchemaValidationError(f"status references unknown actor {status['actor_political_unit_id']}")
         if not status["valid_from"] <= start_date <= status["valid_to"]:
             raise SchemaValidationError(f"status {key} is not valid on {start_date}")
+
+    if version == "0.2.0":
+        statuses_by_subject: dict[str, list[dict[str, Any]]] = {}
+        for status in document["statuses"]:
+            statuses_by_subject.setdefault(status["subject_id"], []).append(status)
+        for component in document["components"]:
+            component_id = component["territory_component_id"]
+            facets = component["facets"]
+            if facets["habitability"] == "uninhabitable":
+                expected = {"population_presence": "none", "settlement_pattern": "none", "tenure": "none", "authority": "none"}
+                if any(facets[key] != value for key, value in expected.items()):
+                    raise SchemaValidationError(f"uninhabitable component {component_id} has inconsistent facets")
+                if component.get("political_unit_id") is not None or statuses_by_subject.get(component_id):
+                    raise SchemaValidationError(f"uninhabitable component {component_id} may not have a synthetic territorial actor")
+            if facets["authority"] in {"administered", "occupied"} and not any(
+                row["relationship"] in {"controller", "occupier", "co-administrator", "mandate-authority"}
+                for row in statuses_by_subject.get(component_id, [])
+            ):
+                raise SchemaValidationError(f"component {component_id} has state authority without a documented authority relationship")
+
+
+def derive_province_facets(document: dict[str, Any]) -> dict[str, dict[str, str]]:
+    """Derive each province facet; differing component values resolve to ``mixed``."""
+    components = {row["territory_component_id"]: row for row in document["components"]}
+    result: dict[str, dict[str, str]] = {}
+    for province in document["provinces"]:
+        values: dict[str, str] = {}
+        for dimension in TERRITORIAL_FACETS:
+            observed = {components[item]["facets"][dimension] for item in province["territory_component_ids"]}
+            values[dimension] = next(iter(observed)) if len(observed) == 1 else "mixed"
+        extension_dimensions = sorted({
+            dimension for item in province["territory_component_ids"]
+            for dimension in components[item]["facets"] if dimension.startswith("x-")
+        })
+        for dimension in extension_dimensions:
+            observed = {components[item]["facets"].get(dimension, "unknown") for item in province["territory_component_ids"]}
+            values[dimension] = next(iter(observed)) if len(observed) == 1 else "mixed"
+        result[province["province_id"]] = values
+    return result
 
 
 def validate_location_assignments(document: dict[str, Any]) -> None:
@@ -932,7 +994,7 @@ def validate_location_assignments(document: dict[str, Any]) -> None:
         _nonempty_string(record["path"], f"assignments.fabric_sidecars.{role}.path")
         if not isinstance(record["sha256"], str) or not re.fullmatch(r"[0-9a-fA-F]{64}", record["sha256"]):
             raise SchemaValidationError(f"assignments.fabric_sidecars.{role}.sha256 must be a SHA-256 digest")
-    if document["schema_version"] in {"0.2.0", "0.3.0"}:
+    if document["schema_version"] in {"0.2.0", "0.3.0", "0.4.0"}:
         _require_keys(document, ["constraint_sha256", "release_sidecars"], "assignments")
         if not isinstance(document["constraint_sha256"], str) or not re.fullmatch(r"[0-9a-fA-F]{64}", document["constraint_sha256"]):
             raise SchemaValidationError("assignments.constraint_sha256 must be a SHA-256 digest")
@@ -963,14 +1025,18 @@ def validate_location_assignments(document: dict[str, Any]) -> None:
             raise SchemaValidationError(f"locations assigned more than once: {sorted(duplicates)}")
         seen_locations.update(locations)
         _nonempty_string(row["province_id"], f"{path}.province_id")
-        _string_list(row["polity_ids"], f"{path}.polity_ids", nonempty=True)
+        _string_list(row["polity_ids"], f"{path}.polity_ids", nonempty=document["schema_version"] != "0.4.0")
         _string_list(row["source_ids"], f"{path}.source_ids", nonempty=True)
         if not isinstance(row["uncertainty"], (int, float)) or not 0 <= row["uncertainty"] <= 1:
             raise SchemaValidationError(f"{path}.uncertainty must be between 0 and 1")
-        if document["schema_version"] in {"0.2.0", "0.3.0"}:
+        if document["schema_version"] in {"0.2.0", "0.3.0", "0.4.0"}:
             _require_keys(row, ["region_id", "sovereign_polity_id", "owner_polity_id", "controller_polity_id", "core_polity_ids", "claim_polity_ids", "dispute_polity_ids", "hierarchy"], path)
-            for key in ("region_id", "sovereign_polity_id", "owner_polity_id", "controller_polity_id"):
-                _nonempty_string(row[key], f"{path}.{key}")
+            _nonempty_string(row["region_id"], f"{path}.region_id")
+            for key in ("sovereign_polity_id", "owner_polity_id", "controller_polity_id"):
+                if document["schema_version"] == "0.4.0":
+                    _nullable_string(row[key], f"{path}.{key}")
+                else:
+                    _nonempty_string(row[key], f"{path}.{key}")
             for key in ("core_polity_ids", "claim_polity_ids", "dispute_polity_ids"):
                 _string_list(row[key], f"{path}.{key}")
             hierarchy = row["hierarchy"]
@@ -978,6 +1044,8 @@ def validate_location_assignments(document: dict[str, Any]) -> None:
             _require_keys(hierarchy, ["area_id", "region_id", "superregion_id", "method"], f"{path}.hierarchy")
             for key in ("area_id", "region_id", "superregion_id", "method"):
                 _nonempty_string(hierarchy[key], f"{path}.hierarchy.{key}")
+            if document["schema_version"] == "0.4.0":
+                _require_keys(row, ["facets"], path)
     if not isinstance(document["targeted_split_requests"], list):
         raise SchemaValidationError("assignments.targeted_split_requests must be an array")
     seen_requests: set[str] = set()
@@ -1114,7 +1182,7 @@ def _m24_header(document: Any, path: str, document_type: str, schema: dict[str, 
     _require_object(document, path)
     _validate_json_schema(document, schema, path)
     _require_keys(document, schema["required"], path)
-    if document["schema_version"] not in {"0.1.0", "0.2.0", "0.3.0"} or document["document_type"] != document_type:
+    if document["schema_version"] not in {"0.1.0", "0.2.0", "0.3.0", "0.4.0"} or document["document_type"] != document_type:
         raise SchemaValidationError(f"{path} has invalid M24 document type or schema version")
     _nonempty_string(document["pass_id"], f"{path}.pass_id")
     _nonempty_string(document["artifact_version"], f"{path}.artifact_version")
