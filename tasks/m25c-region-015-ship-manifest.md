@@ -1,5 +1,11 @@
 # M25C Northern Africa Grade-A Promotion Ship Manifest
 
+> Remediation note (2026-08-21): the generated Marinid-Zayyanid frontier
+> described below was subsequently found to be circular evidence and retired.
+> Region 015 now carries one Natural Earth Morocco-Algeria modern negative
+> control, which fails closed at 1.0. The original promotion record is retained
+> here as history, not as the current evidence claim.
+
 ## User goal
 
 Promote UN M49 region 015 (Northern Africa) with an exact-date, source-pinned,

@@ -1,5 +1,41 @@
 # History
 
+## 2026-08-21 - M25C Americas/Africa assertion remediation
+
+- Retired the circular Northern Africa Marinid-Zayyanid border, its boundary
+  registry feature, and its frontier and polity-mask assets without changing
+  the underlying actors or assignments.
+- Added a schema-0.3-only compositional inland-seam relation and nine reviewed,
+  region-specific Natural Earth 5.1.1 negative controls pinned to archive SHA-256
+  `ce1ac7036499a0edd641fbc093cd209a98f96a49d2eca8480aaacad35138a7f6`.
+- Dissolved components by all five facets plus active typed actor relationships,
+  measured each modern seam in the fixed 75 km corridor, and emitted stable
+  reference/matched lengths, transition counts, and affected component IDs.
+- Worldwide provisional QA preserved seven failures (`005`, `011`, `013`,
+  `014`, `015`, `017`, `018`) and passed `021` and `029`. Missing negative
+  controls fell from 19 to 10; missing positive borders rose from 12 to 13 as
+  intended, with all nine affected Americas/Africa regions still open.
+- Reordered generator cleanup so legacy reference counts are validated and
+  cleaned before packet application. No runtime pack, signature, publication,
+  certification, or tolerance was changed.
+
+## 2026-08-21 - M25C Americas/Africa assertion re-research
+
+- Re-audited the exact eight missing positive-border warnings, nine missing
+  negative-anachronism warnings, and the surviving Northern Africa
+  Marinid/Zayyanid border after the compositional territorial-status migration.
+- Found that the regional generators still begin from modern country membership
+  and coordinate classifications; their generated seams cannot independently
+  evidence a `1444-11-11` hard frontier.
+- Recommended retirement of `region-015-border-marinid-zayyanid`, no fabricated
+  positive replacements, and nine exact modern inland-seam controls using a
+  compositional status-boundary coincidence relation rather than the vacuous
+  single-province polygon-overlap relation.
+- Recorded sources, alternatives, tradeoffs, expected QA impact, and the exact
+  reviewer decision in `tasks/m25c-americas-africa-assertion-reresearch.md`.
+- Made no packet, schema, QA, runtime, certification, or publication change;
+  remediation remains explicitly decision-gated.
+
 ## 2026-08-21 - M25C compositional territorial-status migration
 
 - Replaced mandatory nation-state ownership with five independent territorial

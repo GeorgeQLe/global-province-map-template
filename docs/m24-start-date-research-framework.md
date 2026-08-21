@@ -101,6 +101,10 @@ A boundary referenced exclusively by a `negative_anachronism` assertion may
 instead carry its truthful later validity (for example, a 2022 administrative
 outline); `start_date_programs` records that it is applicable as a negative
 control without falsely dating the modern feature to the historical start.
+For schema `0.3.0`, such a soft modern control may set `side_polity_ids` to
+null and provide exactly two `reference_unit_ids`; this is rejected unless the
+feature is referenced exclusively by negative-anachronism assertions. Hard and
+historical boundaries still require two distinct historical polity sides.
 
 ## Reconstruction workflow
 
@@ -122,6 +126,14 @@ negative-anachronism tests. No known recent administrative outline may remain
 where it contradicts the claimed date. Tests compare reconstructed geometry to
 dated constraints and forbidden modern outlines using measurable spatial
 relations and tolerances.
+
+Worldwide schema `0.3.0` also supports the narrowly scoped
+`regional_status_boundary_matches_forbidden_modern_seam_ratio_lte` relation.
+It dissolves components with identical five-facet and active typed-relationship
+signatures, finds boundaries between differing signatures, and measures the
+fraction of a modern inland seam within a fixed 75 km transition corridor.
+Zero-length seams fail closed. Results may include reference/matched kilometre
+lengths, the corridor, transition count, and sorted affected component IDs.
 
 `period-geometry` requires the dated aggregation to be applied and tested in the
 full build. A boundary-hint overlay, or a hard override that only matches sample

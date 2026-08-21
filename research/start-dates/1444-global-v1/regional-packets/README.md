@@ -13,9 +13,10 @@ All 22 packets use the compositional territorial-status migration (`packet_versi
 relationships. Community, network, mobile, and chiefdom profiles retain
 presence/use/customary semantics without automatic ownership or control. The
 219 explicitly uninhabited assignments have null actors and all-none facets;
-their 13 synthetic pseudo-polities were removed. Americas/Africa outline
-assertion remediation is paused until these status-derived outlines are
-re-researched.
+their 13 synthetic pseudo-polities were removed. Nine Americas/Africa packets
+now pin Natural Earth 5.1.1 inland seams as modern negative controls. Seven
+fail at the fixed 0.20 ratio and therefore keep worldwide certification
+blocked; no generated status seam has been promoted as a historical border.
 
 `155-western-europe-2026-08-15.json` is the first accepted four-layer Grade-A
 packet. It replaces 385 geographically scoped assignments, adds 20 executable
@@ -68,8 +69,10 @@ no region correction.
 
 `015-northern-africa-2026-08-16.json` is the sixth accepted packet. It replaces
 all 643 Northern Africa assignments, supplies nine date-valid political records,
-ten canonical source pins, six checked capital features, 25 executable
-assertions, and two checksum-pinned Marinid-Zayyanid frontier assets. Its exact
+11 canonical source pins, six checked capital features, 25 executable
+assertions, and one checksum-pinned Morocco-Algeria modern negative-control
+asset. The circular generated Marinid-Zayyanid border and both of its obsolete
+frontier/mask assets have been retired. Its exact
 date is `1444-11-11`. The sheet distinguishes the Marinid, Zayyanid, Hafsid, and
 Mamluk states from the Kingdoms of Dongola and Alodia and from local Saharan,
 Beja, and Darfur-Kordofan polities. Portugal's possession of Ceuta remains in

@@ -736,12 +736,22 @@ def validate_historical_boundary_registry(document: dict[str, Any]) -> None:
         if props["classification"] not in {"hard_constraint", "soft_evidence"}:
             raise SchemaValidationError(f"{path}.properties.classification is unsupported")
         sides = props["side_polity_ids"]
-        _require_object(sides, f"{path}.properties.side_polity_ids")
-        _require_keys(sides, ["left", "right"], f"{path}.properties.side_polity_ids")
-        if set(sides) != {"left", "right"} or sides["left"] == sides["right"]:
-            raise SchemaValidationError(f"{path}.properties.side_polity_ids must name distinct left/right polities")
-        for side in ("left", "right"):
-            _nonempty_string(sides[side], f"{path}.properties.side_polity_ids.{side}")
+        if sides is None:
+            if document["schema_version"] != "0.3.0" or props["classification"] != "soft_evidence":
+                raise SchemaValidationError(f"{path}.properties.side_polity_ids may be null only for 0.3.0 soft evidence")
+            reference_units = props.get("reference_unit_ids")
+            values = _string_list(reference_units, f"{path}.properties.reference_unit_ids", nonempty=True)
+            if len(values) != 2 or len(set(values)) != 2:
+                raise SchemaValidationError(f"{path}.properties.reference_unit_ids must name exactly two distinct units")
+        else:
+            _require_object(sides, f"{path}.properties.side_polity_ids")
+            _require_keys(sides, ["left", "right"], f"{path}.properties.side_polity_ids")
+            if set(sides) != {"left", "right"} or sides["left"] == sides["right"]:
+                raise SchemaValidationError(f"{path}.properties.side_polity_ids must name distinct left/right polities")
+            for side in ("left", "right"):
+                _nonempty_string(sides[side], f"{path}.properties.side_polity_ids.{side}")
+            if "reference_unit_ids" in props:
+                raise SchemaValidationError(f"{path}.properties.reference_unit_ids is reserved for modern negative controls")
         for key in ("source_ids", "license_lineage", "start_date_programs"):
             _string_list(props[key], f"{path}.properties.{key}", nonempty=True)
         if document["schema_version"] in {"0.2.0", "0.3.0"} and props["classification"] == "hard_constraint":
@@ -1079,7 +1089,7 @@ def validate_spatial_golden_borders(document: dict[str, Any]) -> None:
         if assertion["assertion_id"] in seen:
             raise SchemaValidationError(f"duplicate assertion_id: {assertion['assertion_id']}")
         seen.add(assertion["assertion_id"])
-        if assertion["assertion_type"] not in {"border", "capital", "outline"}:
+        if assertion["assertion_type"] not in {"border", "capital", "outline", "seam"}:
             raise SchemaValidationError(f"{path}.assertion_type is unsupported")
         if assertion["expectation"] not in {"positive", "negative_anachronism"}:
             raise SchemaValidationError(f"{path}.expectation is unsupported")
@@ -1093,16 +1103,27 @@ def validate_spatial_golden_borders(document: dict[str, Any]) -> None:
             "border_matches_boundary_hausdorff_km_lte": ("border", "positive", 2, 1, "kilometres"),
             "capital_within_subject": ("capital", "positive", 2, 0, "boolean"),
             "forbidden_outline_overlap_ratio_lte": ("outline", "negative_anachronism", 1, 1, "ratio"),
+            "regional_status_boundary_matches_forbidden_modern_seam_ratio_lte": ("seam", "negative_anachronism", 1, 1, "ratio"),
         }
         if relation not in expected:
             raise SchemaValidationError(f"{path}.spatial_relation is unsupported")
+        if relation == "regional_status_boundary_matches_forbidden_modern_seam_ratio_lte" and document["schema_version"] != "0.3.0":
+            raise SchemaValidationError(f"{path}.spatial_relation is restricted to schema 0.3.0")
         kind, expectation, subjects, boundaries, unit = expected[relation]
         if (assertion["assertion_type"], assertion["expectation"], len(assertion["subject_ids"]), len(assertion["boundary_feature_ids"]), assertion["unit"]) != (kind, expectation, subjects, boundaries, unit):
             raise SchemaValidationError(f"{path} does not match the {relation} contract")
         if relation == "capital_within_subject" and assertion["tolerance"] != 1:
             raise SchemaValidationError(f"{path}.tolerance must be 1 for capital containment")
-        if relation == "forbidden_outline_overlap_ratio_lte" and assertion["tolerance"] > 1:
+        if relation in {"forbidden_outline_overlap_ratio_lte", "regional_status_boundary_matches_forbidden_modern_seam_ratio_lte"} and assertion["tolerance"] > 1:
             raise SchemaValidationError(f"{path}.tolerance must be at most 1 for a ratio")
+        if relation == "regional_status_boundary_matches_forbidden_modern_seam_ratio_lte":
+            if assertion["subject_ids"] != [assertion["region_id"]]:
+                raise SchemaValidationError(f"{path}.subject_ids must contain exactly its region_id")
+            parameters = assertion.get("measurement_parameters")
+            _require_object(parameters, f"{path}.measurement_parameters")
+            _require_keys(parameters, ["corridor_km"], f"{path}.measurement_parameters")
+            if set(parameters) != {"corridor_km"} or parameters["corridor_km"] != 75:
+                raise SchemaValidationError(f"{path}.measurement_parameters.corridor_km must be 75")
         if document["schema_version"] == "0.3.0":
             policy = assertion.get("tolerance_policy")
             _require_object(policy, f"{path}.tolerance_policy")

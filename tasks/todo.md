@@ -24,12 +24,16 @@
      facets and actor relationships across all 22 packets; remove all 219
      uninhabited pseudo-owner assignments; add ordered overlays and runtime v2
      while retaining runtime-v1 readability.
-  6. [ ] Re-research status-derived positive-border and negative-anachronism assertions
+  6. [x] Re-research status-derived positive-border and negative-anachronism assertions
      for the affected Americas and Africa regions and recommend exact assertions.
-     This remains intentionally paused until the corrected status-derived
-     outlines are reviewed.
-  7. [ ] After reviewer decision, implement the approved Americas/Africa
+     The review rejects generated status seams as historical borders, recommends
+     retiring the surviving Northern Africa border, and specifies nine modern
+     inland-seam controls; see `tasks/m25c-americas-africa-assertion-reresearch.md`.
+  7. [x] After reviewer decision, implement the approved Americas/Africa
      assertion remediation and verify its spatial and source-pinning gates.
+     Nine pinned inland-seam controls now execute at 75 km / 0.20; regions 021
+     and 029 pass, while seven failures retain component diagnostics and block
+     certification. All nine positive-border requirements remain open.
   8. [ ] Research missing assertions for the affected Asia and Europe regions
      and recommend exact assertions.
   9. [ ] After reviewer decision, implement the approved Asia/Europe assertion

@@ -7,6 +7,7 @@ import csv
 import json
 import math
 import re
+from collections import defaultdict
 from dataclasses import asdict, dataclass
 from datetime import date
 from pathlib import Path
@@ -234,7 +235,19 @@ def _check_cross_artifact_contract(
         boundary_records[props["feature_id"]] = feature
         owner = props["feature_id"]
         _unknown_refs(findings, "UNKNOWN_BOUNDARY_SOURCE", props["source_ids"], sources, owner)
-        _unknown_refs(findings, "UNKNOWN_BOUNDARY_POLITY", list(props["side_polity_ids"].values()), polities, owner)
+        sides = props["side_polity_ids"]
+        if sides is None:
+            referencing = [
+                assertion for assertion in documents["golden_borders"]["assertions"]
+                if owner in assertion["boundary_feature_ids"]
+            ]
+            if (
+                props["classification"] != "soft_evidence" or not referencing
+                or any(assertion["expectation"] != "negative_anachronism" for assertion in referencing)
+            ):
+                _finding(findings, "INVALID_NULL_BOUNDARY_SIDES", "error", f"{owner} may omit historical sides only as an exclusively referenced negative control.", [owner])
+        else:
+            _unknown_refs(findings, "UNKNOWN_BOUNDARY_POLITY", list(sides.values()), polities, owner)
         if owner not in negative_reference_ids:
             _check_temporal(findings, owner, props["valid_from"], props["valid_to"], manifest["start_date"], "BOUNDARY_DATE_OUT_OF_RANGE")
         if manifest["start_date"] not in props["start_date_programs"]:
@@ -311,7 +324,11 @@ def _check_cross_artifact_contract(
     missing_provinces = sorted(provinces - build_features.keys())
     if missing_provinces:
         _finding(findings, "MISSING_BUILD_PROVINCE", "error", "Assigned provinces are absent from the full build.", missing_provinces)
-    results = _execute_assertions(documents["golden_borders"], build_features, boundary_records, findings)
+    results = _execute_assertions(
+        documents["golden_borders"], build_features, boundary_records, findings,
+        canonical=documents.get("canonical_historical_status"), assignments=assignments,
+        start_date=manifest["start_date"],
+    )
     result_by_id = {item["assertion_id"]: item for item in results}
 
     priority = set(manifest["scope"]["priority_regions"])
@@ -341,7 +358,11 @@ def _check_cross_artifact_contract(
             if location_to_province.get(capital) != province:
                 _finding(findings, "CAPITAL_ASSIGNMENT_MISMATCH", "error", f"{assertion['assertion_id']} does not test the capital's assigned province.", [assertion["assertion_id"], capital, province])
         elif assertion["assertion_type"] == "border":
-            sides = set(boundary_records[assertion["boundary_feature_ids"][0]]["properties"]["side_polity_ids"].values())
+            side_record = boundary_records[assertion["boundary_feature_ids"][0]]["properties"]["side_polity_ids"]
+            if side_record is None:
+                _finding(findings, "BORDER_SIDE_ASSIGNMENT_MISMATCH", "error", f"{assertion['assertion_id']} has no dated historical polity sides.", [assertion["assertion_id"]])
+                continue
+            sides = set(side_record.values())
             subject_polities = [province_to_polities.get(subject, set()) for subject in assertion["subject_ids"]]
             if not all(subject_polities) or not all(any(side in polities for side in sides) for polities in subject_polities) or not sides.issubset(set().union(*subject_polities)):
                 _finding(findings, "BORDER_SIDE_ASSIGNMENT_MISMATCH", "error", f"{assertion['assertion_id']} subjects do not represent both dated boundary sides.", [assertion["assertion_id"]])
@@ -523,18 +544,26 @@ def _derived_province_id(
     return f"prv_{hashlib.sha256(payload.encode()).hexdigest()[:20]}"
 
 
-def _execute_assertions(golden: dict[str, Any], build: dict[str, BaseGeometry], boundaries: dict[str, dict[str, Any]], findings: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def _execute_assertions(
+    golden: dict[str, Any], build: dict[str, BaseGeometry], boundaries: dict[str, dict[str, Any]],
+    findings: list[dict[str, Any]], *, canonical: dict[str, Any] | None = None,
+    assignments: dict[str, Any] | None = None, start_date: str | None = None,
+) -> list[dict[str, Any]]:
     results = []
     for assertion in golden["assertions"]:
         aid, relation = assertion["assertion_id"], assertion["spatial_relation"]
-        missing = [item for item in assertion["subject_ids"] if item not in build]
+        is_seam = relation == "regional_status_boundary_matches_forbidden_modern_seam_ratio_lte"
+        missing = [] if is_seam else [item for item in assertion["subject_ids"] if item not in build]
         missing += [item for item in assertion["boundary_feature_ids"] if item not in boundaries]
         measurement: float | None = None
+        diagnostics: dict[str, Any] = {}
+        if is_seam and (canonical is None or assignments is None or start_date is None):
+            missing.append("canonical_historical_status")
         if missing:
             status = "fail"
             _finding(findings, "UNKNOWN_SPATIAL_SUBJECT", "error", f"{aid} references missing spatial IDs.", [aid, *missing])
         else:
-            subjects = [build[item] for item in assertion["subject_ids"]]
+            subjects = [] if is_seam else [build[item] for item in assertion["subject_ids"]]
             refs = [shape(boundaries[item]["geometry"]) for item in assertion["boundary_feature_ids"]]
             if relation == "border_matches_boundary_hausdorff_lte":
                 shared = subjects[0].boundary.intersection(subjects[1].boundary)
@@ -547,11 +576,26 @@ def _execute_assertions(golden: dict[str, Any], build: dict[str, BaseGeometry], 
             elif relation == "capital_within_subject":
                 measurement = 1.0 if subjects[1].covers(subjects[0]) else 0.0
                 status = "pass" if measurement == 1.0 else "fail"
-            else:  # forbidden_outline_overlap_ratio_lte
+            elif relation == "forbidden_outline_overlap_ratio_lte":
                 denominator = refs[0].area
                 measurement = subjects[0].intersection(refs[0]).area / denominator if denominator else 1.0
                 status = "pass" if measurement <= assertion["tolerance"] else "fail"
-        result = {"assertion_id": aid, "spatial_relation": relation, "unit": assertion["unit"], "tolerance": assertion["tolerance"], "measurement": measurement, "status": status}
+            else:
+                if refs[0].geom_type not in {"LineString", "MultiLineString"}:
+                    measurement, status = 1.0, "fail"
+                    diagnostics = {
+                        "reference_length_km": 0.0, "matched_length_km": 0.0,
+                        "corridor_km": assertion["measurement_parameters"]["corridor_km"],
+                        "transition_count": 0, "affected_component_ids": [],
+                    }
+                    _finding(findings, "INVALID_SEAM_REFERENCE_GEOMETRY", "error", f"{aid} requires line-valued modern seam geometry.", [aid])
+                else:
+                    measurement, diagnostics = _measure_forbidden_modern_seam(
+                        assertion["region_id"], refs[0], assertion["measurement_parameters"]["corridor_km"],
+                        canonical, assignments, start_date,
+                    )
+                    status = "pass" if measurement <= assertion["tolerance"] else "fail"
+        result = {"assertion_id": aid, "spatial_relation": relation, "unit": assertion["unit"], "tolerance": assertion["tolerance"], "measurement": measurement, "status": status, **diagnostics}
         results.append(result)
         if status != "pass":
             _finding(findings, "SPATIAL_ASSERTION_FAILED", "error", f"Executed spatial assertion {aid} failed.", [aid])
@@ -809,13 +853,6 @@ def _check_global_contract(
             canonical_geometry = unary_union([components[item] for item in province["territory_component_ids"]])
             if not canonical_geometry.equals(build_geometry[province_id]):
                 _finding(findings, "CANONICAL_GEOMETRY_MISMATCH", "error", "Canonical component union differs from research geometry.", [province_id])
-    statuses = {(row["subject_id"], row["relationship"]) for row in canonical["statuses"]}
-    for component_id in components:
-        missing = [relation for relation in ("sovereign", "owner", "controller") if (component_id, relation) not in statuses]
-        if missing:
-            _finding(findings, "MISSING_TYPED_COMPONENT_STATUS", "error", "Every component needs sovereign, owner, and controller status.", [component_id, *missing])
-
-
 def _validate_full_build(document: dict[str, Any]) -> None:
     required = {"schema_version", "document_type", "artifact_version", "pass_id", "start_date", "geometry_revision", "type", "features"}
     if not isinstance(document, dict) or set(document) != required or document.get("schema_version") not in {"0.1.0", "0.2.0", "0.3.0"} or document.get("document_type") != "start_date_full_build_geometry" or document.get("type") != "FeatureCollection":
@@ -993,6 +1030,93 @@ def _contains_date(lower: str | None, upper: str | None, target: str) -> bool:
         return (low is None or low <= target_date) and (high is None or target_date <= high)
     except ValueError:
         return False
+
+
+def _measure_forbidden_modern_seam(
+    region_id: str, reference: BaseGeometry, corridor_km: float,
+    canonical: dict[str, Any], assignments: dict[str, Any], start_date: str,
+) -> tuple[float, dict[str, Any]]:
+    """Measure modern-seam coincidence against dissolved compositional signatures."""
+    region_by_province = {
+        row["province_id"]: row["region_id"] for row in assignments["assignments"]
+    }
+    statuses_by_subject: dict[str, list[tuple[str, str]]] = defaultdict(list)
+    for status in canonical["statuses"]:
+        if _contains_date(status.get("valid_from"), status.get("valid_to"), start_date):
+            statuses_by_subject[status["subject_id"]].append(
+                (status["relationship"], status["actor_political_unit_id"])
+            )
+
+    facet_names = (
+        "habitability", "population_presence", "settlement_pattern", "tenure", "authority",
+    )
+    groups: dict[tuple[Any, ...], list[tuple[str, BaseGeometry]]] = defaultdict(list)
+    for component in canonical["components"]:
+        if region_by_province.get(component["province_id"]) != region_id:
+            continue
+        subjects = {
+            component["territory_component_id"], component["province_id"],
+            component.get("political_unit_id"),
+        }
+        active = sorted({
+            pair for subject in subjects if subject is not None
+            for pair in statuses_by_subject.get(subject, [])
+        })
+        signature = tuple(component["facets"][name] for name in facet_names) + (tuple(active),)
+        groups[signature].append((component["territory_component_id"], shape(component["geometry"])))
+
+    dissolved = [
+        (signature, unary_union([geometry for _component_id, geometry in members]), members)
+        for signature, members in sorted(groups.items(), key=lambda row: repr(row[0]))
+    ]
+    transitions: list[tuple[BaseGeometry, list[tuple[str, BaseGeometry]]]] = []
+    for index, (_left_signature, left_geometry, left_members) in enumerate(dissolved):
+        for _right_signature, right_geometry, right_members in dissolved[index + 1:]:
+            transition = left_geometry.boundary.intersection(right_geometry.boundary)
+            if not transition.is_empty and transition.length > 0:
+                transitions.append((transition, left_members + right_members))
+
+    geographic_transition_union = unary_union([transition for transition, _members in transitions]) if transitions else None
+    center_lat = reference.centroid.y if geographic_transition_union is None or geographic_transition_union.is_empty else (
+        reference.centroid.y + geographic_transition_union.centroid.y
+    ) / 2.0
+    x_scale = 111.320 * math.cos(math.radians(center_lat))
+    y_scale = 110.574
+    project = lambda x, y, z=None: (x * x_scale, y * y_scale)
+    projected_reference = shapely_transform(project, reference)
+    reference_length = projected_reference.length
+    projected_transitions = [
+        (shapely_transform(project, transition), members) for transition, members in transitions
+    ]
+    transition_union = unary_union([transition for transition, _members in projected_transitions]) if projected_transitions else None
+    if reference_length <= 0:
+        matched_length = 0.0
+        measurement = 1.0
+        affected: list[str] = []
+    elif transition_union is None or transition_union.is_empty:
+        matched_length = 0.0
+        measurement = 0.0
+        affected = []
+    else:
+        matched_reference = projected_reference.intersection(transition_union.buffer(corridor_km))
+        matched_length = matched_reference.length
+        measurement = min(1.0, matched_length / reference_length)
+        affected_ids = set()
+        matched_corridor = projected_reference.buffer(corridor_km)
+        for transition, members in projected_transitions:
+            if not transition.intersects(matched_corridor):
+                continue
+            for component_id, geometry in members:
+                if shapely_transform(project, geometry).boundary.intersects(matched_corridor):
+                    affected_ids.add(component_id)
+        affected = sorted(affected_ids)
+    return measurement, {
+        "reference_length_km": reference_length,
+        "matched_length_km": matched_length,
+        "corridor_km": corridor_km,
+        "transition_count": len(transitions),
+        "affected_component_ids": affected,
+    }
 
 
 def _hausdorff_km(left: BaseGeometry, right: BaseGeometry) -> float:

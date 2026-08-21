@@ -361,16 +361,21 @@ def generate(args: argparse.Namespace) -> None:
         "coverage": coverage_rows, "exclusions": [],
         "known_gaps": ["All 22 regions require four-layer Grade-A promotion before certification."],
     }
+    _apply_approved_polity_source_cleanup(
+        source_manifest, gazetteer, boundaries, golden, assignments, coverage,
+        stage="references",
+    )
     _apply_packets(packets, source_manifest, gazetteer, boundaries, golden, assignments, coverage)
+    _apply_approved_polity_source_cleanup(
+        source_manifest, gazetteer, boundaries, golden, assignments, coverage,
+        stage="polities",
+    )
     if all(row.get("facets") for row in assignments["assignments"]):
         assignments["schema_version"] = "0.4.0"
         gazetteer["schema_version"] = "0.4.0"
         for polity in gazetteer["polities"]:
             polity.setdefault("actor_kind", "unknown")
             polity.setdefault("territory_component_ids", [])
-    _apply_approved_polity_source_cleanup(
-        source_manifest, gazetteer, boundaries, golden, assignments, coverage,
-    )
     boundaries["features"].sort(key=lambda feature: feature["properties"]["feature_id"])
     golden["assertions"].sort(key=lambda row: row["assertion_id"])
     assignments["assignments"].sort(key=lambda row: row["province_id"])
@@ -655,14 +660,23 @@ def _qualify_grade_a_packet(packet: dict[str, Any], packet_path: Path | None = N
         asset_id = derived.get("asset_id")
         relative = Path(str(derived.get("path") or ""))
         target = Path(str(derived.get("target_path") or ""))
+        derived_sources = [source_index[sid] for sid in derived.get("source_ids") or [] if sid in source_index]
+        negative_control = derived.get("role") == "negative_control_geometry"
+        valid_evidence = (
+            len({source["independence_group"] for source in derived_sources}) >= 2
+            and _source_applies(derived, START_DATE)
+        ) or (
+            negative_control and len(derived_sources) == 1
+            and derived_sources[0].get("review_status") == "reviewed"
+            and derived_sources[0].get("source_type") == "negative_control"
+        )
         if (
             not asset_id or asset_id in asset_ids or not relative.parts or relative.is_absolute()
             or ".." in relative.parts or not target.parts or target.is_absolute() or ".." in target.parts
             or target.as_posix() in target_paths
             or not re.fullmatch(r"[0-9a-f]{64}", str(derived.get("sha256") or ""))
             or not set(derived.get("source_ids") or []).issubset(pin_ids)
-            or len({source_index[sid]["independence_group"] for sid in derived.get("source_ids") or []}) < 2
-            or not _source_applies(derived, START_DATE)
+            or not valid_evidence
         ):
             raise SystemExit(f"Grade-A packet {region} has an invalid derived file declaration")
         asset_ids.add(asset_id)
@@ -735,7 +749,16 @@ def _apply_packets(packets: list[dict[str, Any]], sources: dict[str, Any], gazet
     gazetteer["polities"] = sorted(polity_rows, key=lambda row: row["polity_id"])
     boundaries["features"].extend(f for p in packets for f in p.get("boundary_features") or [])
     golden["assertions"].extend(a for p in packets for a in p.get("assertions") or [])
-    overrides = {row["province_id"]: row for p in packets for row in p.get("assignment_overrides") or []}
+    overrides = {}
+    for packet in packets:
+        for row in packet.get("assignment_overrides") or []:
+            incoming = json.loads(json.dumps(row))
+            incoming["core_polity_ids"] = sorted({
+                incoming.get("owner_polity_id") if polity_id in APPROVED_LEGACY_CORE_COUNTS else polity_id
+                for polity_id in incoming.get("core_polity_ids") or []
+                if incoming.get("owner_polity_id") is not None or polity_id not in APPROVED_LEGACY_CORE_COUNTS
+            })
+            overrides[incoming["province_id"]] = incoming
     assignments["assignments"] = [{**row, **overrides.get(row["province_id"], {})} for row in assignments["assignments"]]
     replacement = {(row["region_id"], row["layer"]): row for p in packets for row in p.get("coverage") or []}
     coverage["coverage"] = [replacement.get((row["region_id"], row["layer"]), row) for row in coverage["coverage"]]
@@ -757,9 +780,79 @@ def _apply_packets(packets: list[dict[str, Any]], sources: dict[str, Any], gazet
 
 def _apply_approved_polity_source_cleanup(
     sources: dict[str, Any], gazetteer: dict[str, Any], boundaries: dict[str, Any],
-    golden: dict[str, Any], assignments: dict[str, Any], coverage: dict[str, Any],
+    golden: dict[str, Any], assignments: dict[str, Any], coverage: dict[str, Any], *, stage: str = "all",
 ) -> None:
     """Apply the reviewer-approved 2026-08-18 scaffold-reference cleanup."""
+    if stage not in {"all", "references", "polities"}:
+        raise ValueError(f"unsupported cleanup stage: {stage}")
+    if stage != "polities":
+        _apply_approved_legacy_reference_cleanup(boundaries, golden, assignments)
+    if stage == "references":
+        return
+
+    source_index = {row["source_id"]: row for row in sources["sources"]}
+    provisional_polities = {
+        row["polity_id"]: row for row in gazetteer["polities"]
+        if PROVISIONAL_SOURCE_ID in row.get("source_ids", [])
+    }
+    reviewed_polities = {
+        polity_id for polity_id, row in provisional_polities.items()
+        if set(row["source_ids"]) - {PROVISIONAL_SOURCE_ID}
+    }
+    pruned_polities = set(provisional_polities) - reviewed_polities
+    if (len(provisional_polities) != 198
+            or reviewed_polities != APPROVED_REVIEWED_SCAFFOLD_POLITIES
+            or pruned_polities != APPROVED_PRUNED_SCAFFOLD_POLITIES):
+        raise SystemExit("approved cleanup found unexpected provisional polity records")
+    for polity_id in reviewed_polities:
+        replacement_ids = set(provisional_polities[polity_id]["source_ids"]) - {PROVISIONAL_SOURCE_ID}
+        if any(source_index.get(source_id, {}).get("review_status") != "reviewed"
+               for source_id in replacement_ids):
+            raise SystemExit(f"approved cleanup found an unreviewed replacement source for {polity_id}")
+        provisional_polities[polity_id]["source_ids"] = sorted(replacement_ids)
+
+    retained_polity_ids = {
+        row["polity_id"] for row in gazetteer["polities"]
+        if row["polity_id"] not in provisional_polities or row["polity_id"] in reviewed_polities
+    }
+    referenced_polity_ids = set()
+    for assignment in assignments["assignments"]:
+        for key in ("polity_ids", "core_polity_ids", "claim_polity_ids", "dispute_polity_ids"):
+            referenced_polity_ids.update(assignment.get(key) or [])
+        for key in ("sovereign_polity_id", "owner_polity_id", "controller_polity_id"):
+            value = assignment[key]
+            if value is not None:
+                referenced_polity_ids.add(value)
+    for feature in boundaries["features"]:
+        referenced_polity_ids.update((feature["properties"].get("side_polity_ids") or {}).values())
+    for polity in gazetteer["polities"]:
+        referenced_polity_ids.update(
+            relation["target_polity_id"] for relation in polity.get("relationships") or []
+        )
+    pruned_but_referenced = pruned_polities & referenced_polity_ids
+    if pruned_but_referenced:
+        raise SystemExit("approved cleanup would prune referenced polities: "
+                         + ", ".join(sorted(pruned_but_referenced)))
+    gazetteer["polities"] = [
+        row for row in gazetteer["polities"] if row["polity_id"] in retained_polity_ids
+    ]
+    sources["sources"] = [
+        row for row in sources["sources"] if row["source_id"] != PROVISIONAL_SOURCE_ID
+    ]
+
+    for artifact_name, document in (
+        ("source manifest", sources), ("gazetteer", gazetteer),
+        ("boundary registry", boundaries), ("golden assertions", golden),
+        ("assignments", assignments), ("coverage", coverage),
+    ):
+        if PROVISIONAL_SOURCE_ID in json.dumps(document, sort_keys=True):
+            raise SystemExit(f"approved cleanup left a provisional source reference in {artifact_name}")
+
+
+def _apply_approved_legacy_reference_cleanup(
+    boundaries: dict[str, Any], golden: dict[str, Any], assignments: dict[str, Any],
+) -> None:
+    """Validate and remove the legacy scaffold references before packet migration."""
     provisional_boundaries = [
         feature for feature in boundaries["features"]
         if feature["properties"].get("source_ids") == [PROVISIONAL_SOURCE_ID]
@@ -817,63 +910,6 @@ def _apply_approved_polity_source_cleanup(
                 assignment["owner_polity_id"] if polity_id in legacy_core_ids else polity_id
                 for polity_id in cores
             })
-
-    source_index = {row["source_id"]: row for row in sources["sources"]}
-    provisional_polities = {
-        row["polity_id"]: row for row in gazetteer["polities"]
-        if PROVISIONAL_SOURCE_ID in row.get("source_ids", [])
-    }
-    reviewed_polities = {
-        polity_id for polity_id, row in provisional_polities.items()
-        if set(row["source_ids"]) - {PROVISIONAL_SOURCE_ID}
-    }
-    pruned_polities = set(provisional_polities) - reviewed_polities
-    if (len(provisional_polities) != 198
-            or reviewed_polities != APPROVED_REVIEWED_SCAFFOLD_POLITIES
-            or pruned_polities != APPROVED_PRUNED_SCAFFOLD_POLITIES):
-        raise SystemExit("approved cleanup found unexpected provisional polity records")
-    for polity_id in reviewed_polities:
-        replacement_ids = set(provisional_polities[polity_id]["source_ids"]) - {PROVISIONAL_SOURCE_ID}
-        if any(source_index.get(source_id, {}).get("review_status") != "reviewed"
-               for source_id in replacement_ids):
-            raise SystemExit(f"approved cleanup found an unreviewed replacement source for {polity_id}")
-        provisional_polities[polity_id]["source_ids"] = sorted(replacement_ids)
-
-    retained_polity_ids = {
-        row["polity_id"] for row in gazetteer["polities"]
-        if row["polity_id"] not in provisional_polities or row["polity_id"] in reviewed_polities
-    }
-    referenced_polity_ids = set()
-    for assignment in assignments["assignments"]:
-        for key in ("polity_ids", "core_polity_ids", "claim_polity_ids", "dispute_polity_ids"):
-            referenced_polity_ids.update(assignment.get(key) or [])
-        for key in ("sovereign_polity_id", "owner_polity_id", "controller_polity_id"):
-            referenced_polity_ids.add(assignment[key])
-    for feature in boundaries["features"]:
-        referenced_polity_ids.update(feature["properties"].get("side_polity_ids", {}).values())
-    for polity in gazetteer["polities"]:
-        referenced_polity_ids.update(
-            relation["target_polity_id"] for relation in polity.get("relationships") or []
-        )
-    pruned_but_referenced = pruned_polities & referenced_polity_ids
-    if pruned_but_referenced:
-        raise SystemExit("approved cleanup would prune referenced polities: "
-                         + ", ".join(sorted(pruned_but_referenced)))
-    gazetteer["polities"] = [
-        row for row in gazetteer["polities"] if row["polity_id"] in retained_polity_ids
-    ]
-    sources["sources"] = [
-        row for row in sources["sources"] if row["source_id"] != PROVISIONAL_SOURCE_ID
-    ]
-
-    for artifact_name, document in (
-        ("source manifest", sources), ("gazetteer", gazetteer),
-        ("boundary registry", boundaries), ("golden assertions", golden),
-        ("assignments", assignments), ("coverage", coverage),
-    ):
-        if PROVISIONAL_SOURCE_ID in json.dumps(document, sort_keys=True):
-            raise SystemExit(f"approved cleanup left a provisional source reference in {artifact_name}")
-
 
 def _provisional_source(path: Path) -> dict[str, Any]:
     return {"source_id": "official-1444-modern-scaffold-provisional",
