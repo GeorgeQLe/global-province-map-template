@@ -1056,6 +1056,33 @@
         ]
       },
       "unit": "boolean"
+    },
+    {
+      "assertion_id": "region-053-negative-modern-western-australia-south-australia-seam",
+      "assertion_type": "seam",
+      "boundary_feature_ids": [
+        "forbidden-modern-western-australia-south-australia-seam"
+      ],
+      "expectation": "negative_anachronism",
+      "layer": "geometry",
+      "measurement_parameters": {
+        "corridor_km": 75
+      },
+      "notes": "Fail when compositional status transitions reproduce more than 20% of the modern AU-WA-AU-SA inland seam.",
+      "region_id": "053",
+      "spatial_relation": "regional_status_boundary_matches_forbidden_modern_seam_ratio_lte",
+      "subject_ids": [
+        "053"
+      ],
+      "tolerance": 0.2,
+      "tolerance_policy": {
+        "fixed_before_measurement": true,
+        "source_derived_tolerance": 0.2,
+        "source_ids": [
+          "natural-earth-admin1-5.1.1-region-053"
+        ]
+      },
+      "unit": "ratio"
     }
   ],
   "assignment_overrides": [
@@ -61835,7 +61862,202 @@
       "uncertainty": 0.35
     }
   ],
-  "boundary_features": [],
+  "boundary_features": [
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              129.00009199300007,
+              -31.689222914999903
+            ],
+            [
+              129.00011600215169,
+              -31.336743258494607
+            ]
+          ],
+          [
+            [
+              129.00011600215169,
+              -31.336743258494607
+            ],
+            [
+              129.00011600215169,
+              -30.980951022671547
+            ]
+          ],
+          [
+            [
+              129.00011600215169,
+              -30.980951022671547
+            ],
+            [
+              129.00011600215169,
+              -30.625158786848544
+            ]
+          ],
+          [
+            [
+              129.00011600215169,
+              -30.625158786848544
+            ],
+            [
+              129.00011600215169,
+              -30.2693148741821
+            ]
+          ],
+          [
+            [
+              129.00011600215169,
+              -30.2693148741821
+            ],
+            [
+              129.00011600215169,
+              -29.913522637459778
+            ]
+          ],
+          [
+            [
+              129.00011600215169,
+              -29.913522637459778
+            ],
+            [
+              129.00011600215169,
+              -29.55778207758084
+            ]
+          ],
+          [
+            [
+              129.00011600215169,
+              -29.55778207758084
+            ],
+            [
+              129.00011600215169,
+              -29.2020415177019
+            ]
+          ],
+          [
+            [
+              129.00011600215169,
+              -29.2020415177019
+            ],
+            [
+              129.00011600215169,
+              -28.84624928187884
+            ]
+          ],
+          [
+            [
+              129.00011600215169,
+              -28.84624928187884
+            ],
+            [
+              129.00011600215169,
+              -28.490457045156518
+            ]
+          ],
+          [
+            [
+              129.00011600215169,
+              -28.490457045156518
+            ],
+            [
+              129.00011600215169,
+              -28.134613131590754
+            ]
+          ],
+          [
+            [
+              129.00011600215169,
+              -28.134613131590754
+            ],
+            [
+              129.00011600215169,
+              -27.77882089576775
+            ]
+          ],
+          [
+            [
+              129.00011600215169,
+              -27.77882089576775
+            ],
+            [
+              129.00011600215169,
+              -27.423080335888812
+            ]
+          ],
+          [
+            [
+              129.00011600215169,
+              -27.423080335888812
+            ],
+            [
+              129.00011600215169,
+              -27.067339776009874
+            ]
+          ],
+          [
+            [
+              129.00011600215169,
+              -27.067339776009874
+            ],
+            [
+              129.00011600215169,
+              -26.711547540186814
+            ]
+          ],
+          [
+            [
+              129.00011600215169,
+              -26.711547540186814
+            ],
+            [
+              129.00011600215169,
+              -26.35570362662105
+            ]
+          ],
+          [
+            [
+              129.00011600215169,
+              -26.35570362662105
+            ],
+            [
+              129.00011600215169,
+              -25.999911390798047
+            ]
+          ]
+        ],
+        "type": "MultiLineString"
+      },
+      "properties": {
+        "classification": "soft_evidence",
+        "confidence": "high",
+        "date_precision": "year",
+        "feature_id": "forbidden-modern-western-australia-south-australia-seam",
+        "geographic_scope": "053",
+        "geometry_revision": "natural-earth-5.1.1",
+        "license_lineage": [
+          "Natural Earth public domain"
+        ],
+        "reference_unit_ids": [
+          "AU-WA",
+          "AU-SA"
+        ],
+        "semantics": "Modern inland Admin-1 seam between AU-WA and AU-SA; negative control only.",
+        "side_polity_ids": null,
+        "source_ids": [
+          "natural-earth-admin1-5.1.1-region-053"
+        ],
+        "start_date_programs": [
+          "1444-11-11"
+        ],
+        "uncertainty_notes": "Shared polygon boundary excludes coastlines by construction.",
+        "valid_from": "2022",
+        "valid_to": null
+      },
+      "type": "Feature"
+    }
+  ],
   "build_features": [
     {
       "geometry": {
@@ -62076,7 +62298,8 @@
         "region-053-site-murujuga-geometry",
         "region-053-site-rangihoua-geometry",
         "region-053-site-wairau-bar-geometry",
-        "region-053-site-emily-bay-geometry"
+        "region-053-site-emily-bay-geometry",
+        "region-053-negative-modern-western-australia-south-australia-seam"
       ],
       "evidence_summary": "Complete M49 053 fabric reviewed through Australasian institutional sources and eight checked sites; seven Tokelau locations are corrected to Polynesia and no unsupported hard local frontier is asserted.",
       "exclusions": [],
@@ -62192,15 +62415,28 @@
       ]
     }
   ],
-  "derived_files": [],
+  "derived_files": [
+    {
+      "asset_id": "region-053-negative-controls",
+      "path": "assets/053/negative-controls.geojson",
+      "role": "negative_control_geometry",
+      "sha256": "b0b819506cec2b8494ce59e39a02e7efbc15b248eb763874abf6a352c79f19bc",
+      "source_ids": [
+        "natural-earth-admin1-5.1.1-region-053"
+      ],
+      "target_path": "regional-assets/053/negative-controls.geojson",
+      "valid_from": "2022",
+      "valid_to": null
+    }
+  ],
   "expected_counts": {
-    "assertions": 32,
+    "assertions": 33,
     "assignments": 1199,
     "build_features": 8,
-    "derived_files": 0,
+    "derived_files": 1,
     "m49_corrections": 7,
     "polities": 13,
-    "sources": 12
+    "sources": 13
   },
   "location_assignment_schema_version": "0.4.0",
   "location_region_overrides": [
@@ -62649,6 +62885,11 @@
       "locator": "Outstanding Universal Value > Aboriginal occupation record and continuing Traditional Tribal Group connections",
       "sha256": "882cabf59440ad1c8d74e1fb0bce04710cfbab569f3a0e229731a9424a5795b9",
       "source_id": "unesco-willandra"
+    },
+    {
+      "locator": "Admin-1 5.1.1 > ISO_3166_2 shared boundary AU-WA-AU-SA",
+      "sha256": "08dcb942d051a0472ca773b0fe9b7c2bdaec1ad07bb86c0e6810cbba4005864d",
+      "source_id": "natural-earth-admin1-5.1.1-region-053"
     }
   ],
   "sources": [
@@ -62843,6 +63084,32 @@
       "valid_from": "1400",
       "valid_to": "1500",
       "version": "Publisher record reviewed 2026-08-16"
+    },
+    {
+      "access_date": "2026-08-16",
+      "checksum": "efc59726337323058f9446210adc96673179cd344e053666ee3d28cb58ba2b05",
+      "citation": "Natural Earth, Admin 1 – States, Provinces, version 5.1.1.",
+      "derived_artifacts": [
+        {
+          "artifact_id": "region-053-negative-controls",
+          "media_type": "application/geo+json",
+          "path": "regional-assets/053/negative-controls.geojson",
+          "role": "negative_control_geometry",
+          "sha256": "b0b819506cec2b8494ce59e39a02e7efbc15b248eb763874abf6a352c79f19bc"
+        }
+      ],
+      "independence_group": "natural-earth-admin1-modern-control-053",
+      "license": "Public domain",
+      "review_status": "reviewed",
+      "source_id": "natural-earth-admin1-5.1.1-region-053",
+      "source_type": "negative_control",
+      "transformations": [
+        "Extracted the shared AU-WA-AU-SA polygon boundary; coastlines excluded automatically."
+      ],
+      "url": "https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-1-states-provinces/",
+      "valid_from": "2022",
+      "valid_to": null,
+      "version": "5.1.1 (2022)"
     }
   ],
   "start_date": "1444-11-11",

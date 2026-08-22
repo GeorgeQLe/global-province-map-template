@@ -1,5 +1,38 @@
 # History
 
+## 2026-08-21 - M25C Oceania assertion remediation
+
+- Implemented the approved Admin-1 negative controls for regions `053`, `054`,
+  `057`, and `061`, pinning the Natural Earth `5.1.1` archive and exact WA-SA,
+  Central-NCD, Yaren-Meneng, and American Samoa Western-Eastern shared lines.
+- Added one reviewed source, boundary feature, assertion, and checksum-pinned
+  GeoJSON asset to each packet; generalized the shared helper without changing
+  the fixed `75 km` / `0.20` seam contract.
+- Fresh worldwide QA reproduced `053` at `1.0`, `054` at `0.0`, and fail-closed
+  null results for zero-transition `057` and `061`. The complete inventory is
+  19 controls, 16 failures, three passes, and zero missing negatives.
+- Focused seam and global-certification verification passed 58 tests. Nineteen
+  positive-border requirements and all runtime, signing, certification, and
+  publication guards remain unchanged; assembly-transition research is next.
+
+## 2026-08-21 - M25C Oceania assertion research
+
+- Re-audited the final four missing negative-anachronism regions: `053`, `054`,
+  `057`, and `061`. Admin-0 inland controls are unavailable or out of regional
+  scope for island Oceania, so the recommendation uses four internal Natural
+  Earth Admin-1 `5.1.1` seams.
+- Pinned exact WA-SA, Central-NCD, Yaren-Meneng, and American Samoa
+  Western-Eastern unit pairs to archive SHA-256
+  `efc59726337323058f9446210adc96673179cd344e053666ee3d28cb58ba2b05`.
+- A fresh worldwide assembly measured `053` at `1.0` with 16 transitions and
+  `054` at `0.0` with seven. Regions `057` and `061` each have zero
+  land-adjacent compositional transitions and must fail closed as
+  non-executable rather than receive vacuous passes.
+- Recorded exact assertions, sources, alternatives, expected QA impact, and a
+  four-part reviewer decision in `tasks/m25c-oceania-assertion-research.md`.
+  No packet, QA implementation, tolerance, runtime, certification, or
+  publication state changed; remediation remains decision-gated.
+
 ## 2026-08-21 - M25C Asia/Europe assertion remediation
 
 - Implemented the approved bundle for regions `030`, `034`, `035`, `039`,

@@ -1,0 +1,47 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            166.93264031197612,
+            -0.5506678462726399
+          ],
+          [
+            166.9252922897074,
+            -0.5343808064290556
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "classification": "soft_evidence",
+        "confidence": "high",
+        "date_precision": "year",
+        "feature_id": "forbidden-modern-yaren-meneng-seam",
+        "geographic_scope": "057",
+        "geometry_revision": "natural-earth-5.1.1",
+        "license_lineage": [
+          "Natural Earth public domain"
+        ],
+        "reference_unit_ids": [
+          "NR-14",
+          "NR-11"
+        ],
+        "semantics": "Modern inland Admin-1 seam between NR-14 and NR-11; negative control only.",
+        "side_polity_ids": null,
+        "source_ids": [
+          "natural-earth-admin1-5.1.1-region-057"
+        ],
+        "start_date_programs": [
+          "1444-11-11"
+        ],
+        "uncertainty_notes": "Shared polygon boundary excludes coastlines by construction.",
+        "valid_from": "2022",
+        "valid_to": null
+      },
+      "type": "Feature"
+    }
+  ],
+  "type": "FeatureCollection"
+}

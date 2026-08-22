@@ -13,12 +13,13 @@ All 22 packets use the compositional territorial-status migration (`packet_versi
 relationships. Community, network, mobile, and chiefdom profiles retain
 presence/use/customary semantics without automatic ownership or control. The
 219 explicitly uninhabited assignments have null actors and all-none facets;
-their 13 synthetic pseudo-polities were removed. Fifteen Americas/Africa and
-Asia/Europe packets now pin Natural Earth 5.1.1 inland seams as modern negative
-controls. Thirteen fail at the fixed 0.20 ratio (including Southern Europe's
-non-executable zero-transition result) and therefore keep worldwide
-certification blocked; no generated status seam has been promoted as a
-historical border.
+their 13 synthetic pseudo-polities were removed. Nineteen packets now pin
+Natural Earth 5.1.1 inland seams as modern negative controls: fifteen Admin-0
+controls in the Americas/Africa and Asia/Europe plus four Admin-1 controls in
+Oceania. Sixteen fail at the fixed 0.20 ratio or as non-executable zero-
+transition checks; `021`, `029`, and `054` pass. Worldwide certification
+remains blocked, and no generated status seam has been promoted as a historical
+border.
 
 `155-western-europe-2026-08-15.json` is the first accepted four-layer Grade-A
 packet. It replaces 385 geographically scoped assignments, adds 20 executable
@@ -242,9 +243,9 @@ later Zulu, Swazi, Sotho, Tswana, or colonial territorial states backward to
 
 `053-australia-new-zealand-2026-08-16.json` is the nineteenth accepted packet
 and the first Oceania promotion. It replaces all 1,199 Australia and New
-Zealand assignments, supplies 14 date-valid community or island records, twelve
+Zealand assignments, supplies 14 date-valid community or island records, thirteen
 canonical source pins, eight checked archaeological, cultural-landscape, or
-settlement sites, and 32 executable assertions. The exact-date sheet preserves
+settlement sites, and 33 executable assertions. The exact-date sheet preserves
 broad Kimberley, Arnhem/Top End, Cape York/Torres Strait, desert, south-west,
 south-east, east-coast, and Tasmanian Aboriginal community fabrics; distinct
 North and South Island Maori iwi and hapu fabrics; the late Norfolk Island
@@ -253,42 +254,51 @@ does not turn modern language maps into fixed 1444 borders or collapse distinct
 Indigenous peoples into pan-continental polities. Seven Tokelau locations that
 Natural Earth's New Zealand geometry leaked into `053` are corrected to M49
 Polynesia `061`.
+Its checksum-pinned modern Western Australia-South Australia Admin-1 seam
+control fails at `1.0`, exposing exact reproduction of the modern line across
+16 compositional transitions.
 
 `054-melanesia-2026-08-16.json` is the twentieth accepted packet and the second
 Oceania promotion. It replaces all 414 Melanesia assignments, supplies twelve
-conservative local-community or chiefly fabrics, ten canonical source pins,
-eight checked archaeological or cultural-landscape sites, and 32 executable
+conservative local-community or chiefly fabrics, eleven canonical source pins,
+eight checked archaeological or cultural-landscape sites, and 33 executable
 assertions. The exact-date sheet keeps New Guinea highland, north-coast, and
 south-coast communities; Bismarck-Bougainville island communities; western,
 central/eastern, and Santa Cruz Solomon communities; northern and
 central/southern Vanuatu communities; western and eastern Fijian chiefdoms;
 and Kanak communities distinct. It does not project modern states, fixed
 ethnic borders, pan-Melanesian authority, or later paramount chiefdoms backward
-to `1444-11-11`. No country-based M49 correction is required.
+to `1444-11-11`. No country-based M49 correction is required. Its modern
+Central Province-National Capital District Admin-1 seam control passes at
+`0.0` against seven executable regional transitions.
 
 `061-polynesia-2026-08-16.json` is the twenty-first accepted packet and the
 third Oceania promotion. It replaces all 176 native Polynesia assignments,
 supplies fifteen conservative island-community, chieftain-polity, or
-uninhabited-island records, ten canonical source pins, eight checked
-archaeological, ceremonial, or settlement sites, and 32 executable assertions.
+uninhabited-island records, eleven canonical source pins, eight checked
+archaeological, ceremonial, or settlement sites, and 33 assertions.
 The exact-date sheet preserves the fourteenth-century Tu'i Tonga chiefdom while
 keeping French Polynesian island groups, northern and southern Cook Islands,
 Tuvalu, Samoa, Niue, Uvea, Futuna, Pitcairn-Henderson, and uninhabited Oeno-Ducie
 fabrics distinct. It does not project modern dependencies, fixed ethnic borders,
 later dynasties, or a pan-Polynesian state backward to `1444-11-11`. The seven
 Tokelau locations remain represented through accepted region 053, so no new
-country-based M49 correction is required.
+country-based M49 correction is required. Its modern American Samoa
+Western-Eastern district seam fails closed as non-executable because the
+island-separated polity model has zero land-adjacent status transitions.
 
 `057-micronesia-2026-08-16.json` is the twenty-second and final accepted
 regional packet. It replaces all 175 native Micronesia assignments, supplies
 thirteen conservative island-community, atoll-network, voyaging, chiefly, or
-uninhabited-island records, ten canonical source pins, eight checked
-archaeological, ceremonial, or settlement sites, and 32 executable assertions.
+uninhabited-island records, eleven canonical source pins, eight checked
+archaeological, ceremonial, or settlement sites, and 33 assertions.
 The exact-date sheet preserves the Saudeleur polity on Pohnpei and Leluh on
 Kosrae while keeping Palauan, Yapese and central Caroline, Chamorro Latte,
 Marshallese, Gilbertese, Nauruan, and remote-island fabrics distinct. It does
 not project modern dependencies, colonial relationships, fixed ethnic borders,
 or a pan-Micronesian state backward to `1444-11-11`. No country-based M49
-correction is required. All 22 regions and all 88 coverage rows are now
+correction is required. Its modern Nauru Yaren-Meneng seam fails closed as
+non-executable because the island-separated polity model has zero land-adjacent
+status transitions. All 22 regions and all 88 coverage rows are now
 four-layer Grade A, closing regional evidence promotion and enabling the
 ordinary worldwide research-review and certification sequence to begin.

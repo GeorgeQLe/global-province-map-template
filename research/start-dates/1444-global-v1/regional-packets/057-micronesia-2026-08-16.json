@@ -976,6 +976,33 @@
         ]
       },
       "unit": "boolean"
+    },
+    {
+      "assertion_id": "region-057-negative-modern-yaren-meneng-seam",
+      "assertion_type": "seam",
+      "boundary_feature_ids": [
+        "forbidden-modern-yaren-meneng-seam"
+      ],
+      "expectation": "negative_anachronism",
+      "layer": "geometry",
+      "measurement_parameters": {
+        "corridor_km": 75
+      },
+      "notes": "Fail when compositional status transitions reproduce more than 20% of the modern NR-14-NR-11 inland seam.",
+      "region_id": "057",
+      "spatial_relation": "regional_status_boundary_matches_forbidden_modern_seam_ratio_lte",
+      "subject_ids": [
+        "057"
+      ],
+      "tolerance": 0.2,
+      "tolerance_policy": {
+        "fixed_before_measurement": true,
+        "source_derived_tolerance": 0.2,
+        "source_ids": [
+          "natural-earth-admin1-5.1.1-region-057"
+        ]
+      },
+      "unit": "ratio"
     }
   ],
   "assignment_overrides": [
@@ -9443,7 +9470,50 @@
       "uncertainty": 0.35
     }
   ],
-  "boundary_features": [],
+  "boundary_features": [
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            166.93264031197612,
+            -0.5506678462726399
+          ],
+          [
+            166.9252922897074,
+            -0.5343808064290556
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "classification": "soft_evidence",
+        "confidence": "high",
+        "date_precision": "year",
+        "feature_id": "forbidden-modern-yaren-meneng-seam",
+        "geographic_scope": "057",
+        "geometry_revision": "natural-earth-5.1.1",
+        "license_lineage": [
+          "Natural Earth public domain"
+        ],
+        "reference_unit_ids": [
+          "NR-14",
+          "NR-11"
+        ],
+        "semantics": "Modern inland Admin-1 seam between NR-14 and NR-11; negative control only.",
+        "side_polity_ids": null,
+        "source_ids": [
+          "natural-earth-admin1-5.1.1-region-057"
+        ],
+        "start_date_programs": [
+          "1444-11-11"
+        ],
+        "uncertainty_notes": "Shared polygon boundary excludes coastlines by construction.",
+        "valid_from": "2022",
+        "valid_to": null
+      },
+      "type": "Feature"
+    }
+  ],
   "build_features": [
     {
       "geometry": {
@@ -9668,7 +9738,8 @@
         "region-057-site-nan-madol-geometry",
         "region-057-site-leluh-geometry",
         "region-057-site-laura-majuro-geometry",
-        "region-057-site-tarawa-geometry"
+        "region-057-site-tarawa-geometry",
+        "region-057-negative-modern-yaren-meneng-seam"
       ],
       "evidence_summary": "Complete M49 057 island fabric reviewed through institutional and academic sources and eight checked sites; no unsupported hard local frontier or country-based M49 correction is asserted.",
       "exclusions": [],
@@ -9774,15 +9845,28 @@
       ]
     }
   ],
-  "derived_files": [],
+  "derived_files": [
+    {
+      "asset_id": "region-057-negative-controls",
+      "path": "assets/057/negative-controls.geojson",
+      "role": "negative_control_geometry",
+      "sha256": "65dd4fe9feb290f67d0850fb323cb0ea76a64188569033d00150eddace662160",
+      "source_ids": [
+        "natural-earth-admin1-5.1.1-region-057"
+      ],
+      "target_path": "regional-assets/057/negative-controls.geojson",
+      "valid_from": "2022",
+      "valid_to": null
+    }
+  ],
   "expected_counts": {
-    "assertions": 32,
+    "assertions": 33,
     "assignments": 175,
     "build_features": 8,
-    "derived_files": 0,
+    "derived_files": 1,
     "m49_corrections": 0,
     "polities": 12,
-    "sources": 10
+    "sources": 11
   },
   "location_assignment_schema_version": "0.4.0",
   "location_region_overrides": [],
@@ -10137,6 +10221,11 @@
       "locator": "Abstract > Majuro colonization and long-lived pit-agriculture landscape",
       "sha256": "d65d6d5802bee7e851308c1ac884b6a294353037a4387c18386e65503288923b",
       "source_id": "yamaguchi-majuro"
+    },
+    {
+      "locator": "Admin-1 5.1.1 > ISO_3166_2 shared boundary NR-14-NR-11",
+      "sha256": "75d2b16236327a5a9f7bd2f5127e8019bc8dbf9fdc3c81bff91778e1fd74142d",
+      "source_id": "natural-earth-admin1-5.1.1-region-057"
     }
   ],
   "sources": [
@@ -10299,6 +10388,32 @@
       "valid_from": "1400",
       "valid_to": "1500",
       "version": "Publisher record reviewed 2026-08-16"
+    },
+    {
+      "access_date": "2026-08-16",
+      "checksum": "efc59726337323058f9446210adc96673179cd344e053666ee3d28cb58ba2b05",
+      "citation": "Natural Earth, Admin 1 – States, Provinces, version 5.1.1.",
+      "derived_artifacts": [
+        {
+          "artifact_id": "region-057-negative-controls",
+          "media_type": "application/geo+json",
+          "path": "regional-assets/057/negative-controls.geojson",
+          "role": "negative_control_geometry",
+          "sha256": "65dd4fe9feb290f67d0850fb323cb0ea76a64188569033d00150eddace662160"
+        }
+      ],
+      "independence_group": "natural-earth-admin1-modern-control-057",
+      "license": "Public domain",
+      "review_status": "reviewed",
+      "source_id": "natural-earth-admin1-5.1.1-region-057",
+      "source_type": "negative_control",
+      "transformations": [
+        "Extracted the shared NR-14-NR-11 polygon boundary; coastlines excluded automatically."
+      ],
+      "url": "https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-1-states-provinces/",
+      "valid_from": "2022",
+      "valid_to": null,
+      "version": "5.1.1 (2022)"
     }
   ],
   "start_date": "1444-11-11",

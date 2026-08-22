@@ -1,0 +1,79 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -170.69263346744887,
+              -14.314819686188377
+            ],
+            [
+              -170.70123788132312,
+              -14.3124824093357
+            ]
+          ],
+          [
+            [
+              -170.70123788132312,
+              -14.3124824093357
+            ],
+            [
+              -170.71385481564718,
+              -14.314423476362322
+            ]
+          ],
+          [
+            [
+              -170.71385481564718,
+              -14.314423476362322
+            ],
+            [
+              -170.71482534871083,
+              -14.300836008974613
+            ]
+          ],
+          [
+            [
+              -170.71482534871083,
+              -14.300836008974613
+            ],
+            [
+              -170.72150631416503,
+              -14.289239190935916
+            ]
+          ]
+        ],
+        "type": "MultiLineString"
+      },
+      "properties": {
+        "classification": "soft_evidence",
+        "confidence": "high",
+        "date_precision": "year",
+        "feature_id": "forbidden-modern-american-samoa-western-eastern-district-seam",
+        "geographic_scope": "061",
+        "geometry_revision": "natural-earth-5.1.1",
+        "license_lineage": [
+          "Natural Earth public domain"
+        ],
+        "reference_unit_ids": [
+          "AS-X05~",
+          "AS-X01~"
+        ],
+        "semantics": "Modern inland Admin-1 seam between AS-X05~ and AS-X01~; negative control only.",
+        "side_polity_ids": null,
+        "source_ids": [
+          "natural-earth-admin1-5.1.1-region-061"
+        ],
+        "start_date_programs": [
+          "1444-11-11"
+        ],
+        "uncertainty_notes": "Shared polygon boundary excludes coastlines by construction.",
+        "valid_from": "2022",
+        "valid_to": null
+      },
+      "type": "Feature"
+    }
+  ],
+  "type": "FeatureCollection"
+}

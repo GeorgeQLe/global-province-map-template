@@ -182,9 +182,9 @@ def test_nullable_historical_sides_are_limited_to_soft_modern_controls():
         validate_historical_boundary_registry(hard)
 
 
-def test_all_fifteen_natural_earth_controls_are_nonempty_and_packet_assets_are_pinned():
+def test_all_nineteen_natural_earth_controls_are_nonempty_and_packet_assets_are_pinned():
     controls = _control_module()
-    assert len(controls.CONTROLS) == 15
+    assert len(controls.CONTROLS) == 19
     for region, (_left, _right, suffix) in sorted(controls.CONTROLS.items()):
         first = controls.extract_control(region)
         second = controls.extract_control(region)
@@ -196,6 +196,26 @@ def test_all_fifteen_natural_earth_controls_are_nonempty_and_packet_assets_are_p
         assert hashlib.sha256(asset_path.read_bytes()).hexdigest() == derived["sha256"]
         boundary = next(row for row in packet["boundary_features"] if row["properties"]["feature_id"] == f"forbidden-modern-{suffix}")
         assert shape(boundary["geometry"]).equals_exact(first, 0)
+
+
+def test_oceania_controls_use_the_exact_admin1_archive_and_units():
+    controls = _control_module()
+    assert controls.ADMIN1_CONTROLS == {"053", "054", "057", "061"}
+    assert controls.NATURAL_EARTH_ADMIN1_SHA256 == hashlib.sha256(
+        controls.STATES_PROVINCES.read_bytes()
+    ).hexdigest()
+    assert {region: controls.CONTROLS[region][:2] for region in controls.ADMIN1_CONTROLS} == {
+        "053": ("AU-WA", "AU-SA"),
+        "054": ("PG-CPM", "PG-NCD"),
+        "057": ("NR-14", "NR-11"),
+        "061": ("AS-X05~", "AS-X01~"),
+    }
+    for region in controls.ADMIN1_CONTROLS:
+        packet_path = next(PACKETS.glob(f"{region}-*.json"))
+        packet = json.loads(packet_path.read_text())
+        source = next(row for row in packet["sources"] if row["source_type"] == "negative_control")
+        assert source["source_id"] == f"natural-earth-admin1-5.1.1-region-{region}"
+        assert source["checksum"] == controls.NATURAL_EARTH_ADMIN1_SHA256
 
 
 def test_asia_europe_packet_counts_and_retired_lineage_are_exact():

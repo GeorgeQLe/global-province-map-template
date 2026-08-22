@@ -44,10 +44,16 @@
      inland-seam controls now fail at 75 km / 0.20, including Southern Europe's
      fail-closed zero-transition result; 13 total seam failures block
      certification, and only the four Oceania regions still lack negatives.
-  10. [ ] Research missing assertions for the affected Oceania regions and
-     recommend exact assertions.
-  11. [ ] After reviewer decision, implement the approved Oceania assertion
-      remediation and verify its spatial and source-pinning gates.
+  10. [x] Research missing assertions for the affected Oceania regions and
+     recommend exact assertions. Four pinned Natural Earth Admin-1 controls are
+     specified: `053` fails at `1.0`, `054` passes at `0.0`, and `057`/`061`
+     fail closed with zero land-adjacent transitions; see
+     `tasks/m25c-oceania-assertion-research.md`.
+  11. [x] After reviewer decision, implement the approved Oceania assertion
+      remediation and verify its spatial and source-pinning gates. All four
+      Admin-1 assets are checksum-pinned; worldwide QA reproduces the approved
+      `053` failure, `054` pass, and `057`/`061` non-executable failures, for 16
+      total seam blockers and no missing negatives.
   12. [ ] Research and recommend the fail-closed transition from the provisional
       generator to a promotable assembled-pass mode; retain all publication and
       certification guards until ordinary research QA is clean.

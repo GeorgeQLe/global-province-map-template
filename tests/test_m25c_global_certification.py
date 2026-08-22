@@ -301,7 +301,7 @@ def test_approved_polity_source_cleanup_is_exact_and_fail_closed():
     )
 
 
-def test_americas_africa_and_asia_europe_remediation_inventory_is_exact_and_fail_closed():
+def test_worldwide_negative_control_inventory_is_exact_and_fail_closed():
     packets = [json.loads(path.read_text()) for path in sorted((GLOBAL / "regional-packets").glob("*.json"))]
     assertions = [row for packet in packets for row in packet.get("assertions") or []]
     seams = [
@@ -310,9 +310,9 @@ def test_americas_africa_and_asia_europe_remediation_inventory_is_exact_and_fail
     ]
     regions = {
         "005", "011", "013", "014", "015", "017", "018", "021", "029",
-        "030", "034", "035", "039", "143", "145",
+        "030", "034", "035", "039", "053", "054", "057", "061", "143", "145",
     }
-    assert len(seams) == 15
+    assert len(seams) == 19
     assert {row["region_id"] for row in seams} == regions
     assert all(row["tolerance"] == 0.2 and row["measurement_parameters"] == {"corridor_km": 75} for row in seams)
     assert not any(row["assertion_id"] == "region-015-border-marinid-zayyanid" for row in assertions)
@@ -331,11 +331,32 @@ def test_americas_africa_and_asia_europe_remediation_inventory_is_exact_and_fail
         "145": "region-145-border-ottoman-qara-qoyunlu",
     }
     assert not {row["assertion_id"] for row in assertions}.intersection(retired.values())
+    retired_artifacts = {
+        "derived-region-015-marinid-zayyanid-frontier",
+        "derived-region-015-polity-masks",
+        "derived-region-030-ming-oirat-frontier",
+        "derived-region-034-bahmani-vijayanagara-frontier",
+        "derived-region-035-ayutthaya-cambodia-frontier",
+        "derived-region-039-portugal-castile-frontier",
+        "derived-region-039-portugal-castile-mask",
+        "derived-region-143-timurid-moghulistan-frontier",
+        "derived-region-145-ottoman-qara-qoyunlu-frontier",
+        "derived-region-145-ottoman-qara-qoyunlu-mask",
+    }
+    assert retired_artifacts.isdisjoint(
+        artifact["artifact_id"]
+        for packet in packets for source in packet["sources"]
+        for artifact in source.get("derived_artifacts") or []
+    )
     for region in retired:
         packet = next(packet for packet in packets if packet["region_id"] == region)
         regional_seams = [row for row in packet["assertions"] if row["expectation"] == "negative_anachronism"]
         assert len(regional_seams) == 1
         assert not (GLOBAL / "regional-packets" / "assets" / region / "boundaries.geojson").exists()
+    for region in regions:
+        packet = next(packet for packet in packets if packet["region_id"] == region)
+        regional_seams = [row for row in packet["assertions"] if row["expectation"] == "negative_anachronism"]
+        assert len(regional_seams) == 1
     for region in {"039", "145"}:
         assert not (GLOBAL / "regional-packets" / "assets" / region / "polity-masks.geojson").exists()
 

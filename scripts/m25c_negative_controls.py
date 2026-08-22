@@ -15,7 +15,9 @@ from gpm.historical.packet_migration import migrate_packet
 
 ROOT = Path(__file__).resolve().parents[1]
 COUNTRIES = ROOT / "data/raw/natural_earth/ne_10m_admin_0_countries.zip"
+STATES_PROVINCES = ROOT / "data/raw/natural_earth/ne_10m_admin_1_states_provinces.zip"
 NATURAL_EARTH_SHA256 = "ce1ac7036499a0edd641fbc093cd209a98f96a49d2eca8480aaacad35138a7f6"
+NATURAL_EARTH_ADMIN1_SHA256 = "efc59726337323058f9446210adc96673179cd344e053666ee3d28cb58ba2b05"
 RELATION = "regional_status_boundary_matches_forbidden_modern_seam_ratio_lte"
 
 CONTROLS = {
@@ -34,7 +36,13 @@ CONTROLS = {
     "039": ("ITA", "SVN", "italy-slovenia-seam"),
     "143": ("KAZ", "UZB", "kazakhstan-uzbekistan-seam"),
     "145": ("SAU", "YEM", "saudi-arabia-yemen-seam"),
+    "053": ("AU-WA", "AU-SA", "western-australia-south-australia-seam"),
+    "054": ("PG-CPM", "PG-NCD", "central-province-national-capital-district-seam"),
+    "057": ("NR-14", "NR-11", "yaren-meneng-seam"),
+    "061": ("AS-X05~", "AS-X01~", "american-samoa-western-eastern-district-seam"),
 }
+
+ADMIN1_CONTROLS = frozenset({"053", "054", "057", "061"})
 
 RETIREMENTS = {
     "015": {
@@ -103,21 +111,24 @@ def _canonical_hash(value: Any) -> str:
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
 
-def _archive_hash() -> str:
-    return hashlib.sha256(COUNTRIES.read_bytes()).hexdigest()
+def _archive_hash(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def extract_control(region_id: str):
-    """Return the non-empty shared Admin-0 boundary for one approved code pair."""
+    """Return the non-empty shared modern boundary for one approved code pair."""
     left_code, right_code, _suffix = CONTROLS[region_id]
-    countries = {
-        str(feature.properties["ADM0_A3"]).rstrip("\x00"): shape(feature.geometry)
-        for feature in read_zipped_shapefile(COUNTRIES)
+    is_admin1 = region_id in ADMIN1_CONTROLS
+    archive = STATES_PROVINCES if is_admin1 else COUNTRIES
+    code_field = "iso_3166_2" if is_admin1 else "ADM0_A3"
+    units = {
+        str(feature.properties[code_field]).rstrip("\x00"): shape(feature.geometry)
+        for feature in read_zipped_shapefile(archive)
     }
-    missing = {left_code, right_code} - set(countries)
+    missing = {left_code, right_code} - set(units)
     if missing:
-        raise SystemExit(f"Natural Earth control {region_id} is missing country codes: {sorted(missing)}")
-    seam = countries[left_code].boundary.intersection(countries[right_code].boundary)
+        raise SystemExit(f"Natural Earth control {region_id} is missing unit codes: {sorted(missing)}")
+    seam = units[left_code].boundary.intersection(units[right_code].boundary)
     if seam.is_empty or not seam.is_valid or seam.geom_type not in {"LineString", "MultiLineString"} or seam.length <= 0:
         raise SystemExit(f"Natural Earth control {region_id} has no non-empty shared inland boundary")
     return seam
@@ -127,19 +138,42 @@ def add_negative_control(packet: dict[str, Any], output: Path) -> dict[str, Any]
     """Retire configured circular gates and add one reviewed modern seam."""
     region_id = packet["region_id"]
     left_code, right_code, suffix = CONTROLS[region_id]
-    if _archive_hash() != NATURAL_EARTH_SHA256:
-        raise SystemExit("pinned Natural Earth Admin-0 5.1.1 archive checksum drifted")
+    is_admin1 = region_id in ADMIN1_CONTROLS
+    archive = STATES_PROVINCES if is_admin1 else COUNTRIES
+    archive_sha256 = NATURAL_EARTH_ADMIN1_SHA256 if is_admin1 else NATURAL_EARTH_SHA256
+    admin_level = "Admin-1" if is_admin1 else "Admin-0"
+    source_slug = "admin1" if is_admin1 else "admin0"
+    source_title = "Admin 1 – States, Provinces" if is_admin1 else "Admin 0 – Countries"
+    source_url = (
+        "https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-1-states-provinces/"
+        if is_admin1 else
+        "https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-0-countries/"
+    )
+    if _archive_hash(archive) != archive_sha256:
+        raise SystemExit(f"pinned Natural Earth {admin_level} 5.1.1 archive checksum drifted")
 
     if region_id in RETIREMENTS:
         _retire_legacy_assertion(packet, output, RETIREMENTS[region_id])
 
-    source_id = f"natural-earth-admin0-5.1.1-region-{region_id}"
+    retired_artifact_ids = {
+        artifact_id
+        for retirement in RETIREMENTS.values()
+        for artifact_id in retirement["artifact_ids"]
+    }
+    for source in packet["sources"]:
+        source["derived_artifacts"] = [
+            row for row in source.get("derived_artifacts") or []
+            if row["artifact_id"] not in retired_artifact_ids
+        ]
+
+    source_id = f"natural-earth-{source_slug}-5.1.1-region-{region_id}"
     boundary_id = f"forbidden-modern-{suffix}"
     assertion_id = f"region-{region_id}-negative-modern-{suffix}"
     asset_id = f"region-{region_id}-negative-controls"
     asset_relative = f"assets/{region_id}/negative-controls.geojson"
     asset_target = f"regional-assets/{region_id}/negative-controls.geojson"
-    locator = f"Admin-0 countries 5.1.1 > ADM0_A3 shared boundary {left_code}-{right_code}"
+    code_field = "ISO_3166_2" if is_admin1 else "ADM0_A3"
+    locator = f"{admin_level} 5.1.1 > {code_field} shared boundary {left_code}-{right_code}"
     seam = extract_control(region_id)
 
     boundary = {
@@ -150,7 +184,7 @@ def add_negative_control(packet: dict[str, Any], output: Path) -> dict[str, Any]
             "valid_from": "2022",
             "valid_to": None,
             "date_precision": "year",
-            "semantics": f"Modern inland Admin-0 seam between {left_code} and {right_code}; negative control only.",
+            "semantics": f"Modern inland {admin_level} seam between {left_code} and {right_code}; negative control only.",
             "side_polity_ids": None,
             "reference_unit_ids": [left_code, right_code],
             "source_ids": [source_id],
@@ -172,18 +206,18 @@ def add_negative_control(packet: dict[str, Any], output: Path) -> dict[str, Any]
 
     source = {
         "source_id": source_id,
-        "citation": "Natural Earth, Admin 0 – Countries, version 5.1.1.",
-        "url": "https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-0-countries/",
+        "citation": f"Natural Earth, {source_title}, version 5.1.1.",
+        "url": source_url,
         "access_date": packet["as_of_date"],
         "version": "5.1.1 (2022)",
         "license": "Public domain",
-        "checksum": NATURAL_EARTH_SHA256,
+        "checksum": archive_sha256,
         "transformations": [f"Extracted the shared {left_code}-{right_code} polygon boundary; coastlines excluded automatically."],
         "review_status": "reviewed",
         "source_type": "negative_control",
         "valid_from": "2022",
         "valid_to": None,
-        "independence_group": f"natural-earth-admin0-modern-control-{region_id}",
+        "independence_group": f"natural-earth-{source_slug}-modern-control-{region_id}",
         "derived_artifacts": [{
             "artifact_id": asset_id,
             "role": "negative_control_geometry",

@@ -992,6 +992,33 @@
         ]
       },
       "unit": "boolean"
+    },
+    {
+      "assertion_id": "region-061-negative-modern-american-samoa-western-eastern-district-seam",
+      "assertion_type": "seam",
+      "boundary_feature_ids": [
+        "forbidden-modern-american-samoa-western-eastern-district-seam"
+      ],
+      "expectation": "negative_anachronism",
+      "layer": "geometry",
+      "measurement_parameters": {
+        "corridor_km": 75
+      },
+      "notes": "Fail when compositional status transitions reproduce more than 20% of the modern AS-X05~-AS-X01~ inland seam.",
+      "region_id": "061",
+      "spatial_relation": "regional_status_boundary_matches_forbidden_modern_seam_ratio_lte",
+      "subject_ids": [
+        "061"
+      ],
+      "tolerance": 0.2,
+      "tolerance_policy": {
+        "fixed_before_measurement": true,
+        "source_derived_tolerance": 0.2,
+        "source_ids": [
+          "natural-earth-admin1-5.1.1-region-061"
+        ]
+      },
+      "unit": "ratio"
     }
   ],
   "assignment_overrides": [
@@ -9609,7 +9636,82 @@
       "uncertainty": 0.35
     }
   ],
-  "boundary_features": [],
+  "boundary_features": [
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -170.69263346744887,
+              -14.314819686188377
+            ],
+            [
+              -170.70123788132312,
+              -14.3124824093357
+            ]
+          ],
+          [
+            [
+              -170.70123788132312,
+              -14.3124824093357
+            ],
+            [
+              -170.71385481564718,
+              -14.314423476362322
+            ]
+          ],
+          [
+            [
+              -170.71385481564718,
+              -14.314423476362322
+            ],
+            [
+              -170.71482534871083,
+              -14.300836008974613
+            ]
+          ],
+          [
+            [
+              -170.71482534871083,
+              -14.300836008974613
+            ],
+            [
+              -170.72150631416503,
+              -14.289239190935916
+            ]
+          ]
+        ],
+        "type": "MultiLineString"
+      },
+      "properties": {
+        "classification": "soft_evidence",
+        "confidence": "high",
+        "date_precision": "year",
+        "feature_id": "forbidden-modern-american-samoa-western-eastern-district-seam",
+        "geographic_scope": "061",
+        "geometry_revision": "natural-earth-5.1.1",
+        "license_lineage": [
+          "Natural Earth public domain"
+        ],
+        "reference_unit_ids": [
+          "AS-X05~",
+          "AS-X01~"
+        ],
+        "semantics": "Modern inland Admin-1 seam between AS-X05~ and AS-X01~; negative control only.",
+        "side_polity_ids": null,
+        "source_ids": [
+          "natural-earth-admin1-5.1.1-region-061"
+        ],
+        "start_date_programs": [
+          "1444-11-11"
+        ],
+        "uncertainty_notes": "Shared polygon boundary excludes coastlines by construction.",
+        "valid_from": "2022",
+        "valid_to": null
+      },
+      "type": "Feature"
+    }
+  ],
   "build_features": [
     {
       "geometry": {
@@ -9834,7 +9936,8 @@
         "region-061-site-lapaha-geometry",
         "region-061-site-toaga-geometry",
         "region-061-site-talietumu-geometry",
-        "region-061-site-henderson-geometry"
+        "region-061-site-henderson-geometry",
+        "region-061-negative-modern-american-samoa-western-eastern-district-seam"
       ],
       "evidence_summary": "Complete M49 061 island fabric reviewed through institutional and academic sources and eight checked sites; no unsupported hard local frontier or new country-based M49 correction is asserted.",
       "exclusions": [],
@@ -9942,15 +10045,28 @@
       ]
     }
   ],
-  "derived_files": [],
+  "derived_files": [
+    {
+      "asset_id": "region-061-negative-controls",
+      "path": "assets/061/negative-controls.geojson",
+      "role": "negative_control_geometry",
+      "sha256": "fd83befb30f5f786cb249f93664d4dbe8a3454d25e0fb44944f2f3d968ca9410",
+      "source_ids": [
+        "natural-earth-admin1-5.1.1-region-061"
+      ],
+      "target_path": "regional-assets/061/negative-controls.geojson",
+      "valid_from": "2022",
+      "valid_to": null
+    }
+  ],
   "expected_counts": {
-    "assertions": 32,
+    "assertions": 33,
     "assignments": 176,
     "build_features": 8,
-    "derived_files": 0,
+    "derived_files": 1,
     "m49_corrections": 0,
     "polities": 14,
-    "sources": 10
+    "sources": 11
   },
   "location_assignment_schema_version": "0.4.0",
   "location_region_overrides": [],
@@ -10351,6 +10467,11 @@
       "locator": "Description > stratified clan governance and traditional chiefly institutions",
       "sha256": "4f95764c3c0b4a3a9594b93d598770340c19817f4444f3229d7e6b50938c4c5f",
       "source_id": "unesco-tuvalu-landscape"
+    },
+    {
+      "locator": "Admin-1 5.1.1 > ISO_3166_2 shared boundary AS-X05~-AS-X01~",
+      "sha256": "f68083bcc020c3849d0e046414b969bafeb4a1cd2ac034ee81911f988559c2bc",
+      "source_id": "natural-earth-admin1-5.1.1-region-061"
     }
   ],
   "sources": [
@@ -10513,6 +10634,32 @@
       "valid_from": "1400",
       "valid_to": "1500",
       "version": "Publisher record reviewed 2026-08-16"
+    },
+    {
+      "access_date": "2026-08-16",
+      "checksum": "efc59726337323058f9446210adc96673179cd344e053666ee3d28cb58ba2b05",
+      "citation": "Natural Earth, Admin 1 – States, Provinces, version 5.1.1.",
+      "derived_artifacts": [
+        {
+          "artifact_id": "region-061-negative-controls",
+          "media_type": "application/geo+json",
+          "path": "regional-assets/061/negative-controls.geojson",
+          "role": "negative_control_geometry",
+          "sha256": "fd83befb30f5f786cb249f93664d4dbe8a3454d25e0fb44944f2f3d968ca9410"
+        }
+      ],
+      "independence_group": "natural-earth-admin1-modern-control-061",
+      "license": "Public domain",
+      "review_status": "reviewed",
+      "source_id": "natural-earth-admin1-5.1.1-region-061",
+      "source_type": "negative_control",
+      "transformations": [
+        "Extracted the shared AS-X05~-AS-X01~ polygon boundary; coastlines excluded automatically."
+      ],
+      "url": "https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-1-states-provinces/",
+      "valid_from": "2022",
+      "valid_to": null,
+      "version": "5.1.1 (2022)"
     }
   ],
   "start_date": "1444-11-11",

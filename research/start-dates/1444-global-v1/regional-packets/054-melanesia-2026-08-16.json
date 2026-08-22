@@ -992,6 +992,33 @@
         ]
       },
       "unit": "boolean"
+    },
+    {
+      "assertion_id": "region-054-negative-modern-central-province-national-capital-district-seam",
+      "assertion_type": "seam",
+      "boundary_feature_ids": [
+        "forbidden-modern-central-province-national-capital-district-seam"
+      ],
+      "expectation": "negative_anachronism",
+      "layer": "geometry",
+      "measurement_parameters": {
+        "corridor_km": 75
+      },
+      "notes": "Fail when compositional status transitions reproduce more than 20% of the modern PG-CPM-PG-NCD inland seam.",
+      "region_id": "054",
+      "spatial_relation": "regional_status_boundary_matches_forbidden_modern_seam_ratio_lte",
+      "subject_ids": [
+        "054"
+      ],
+      "tolerance": 0.2,
+      "tolerance_policy": {
+        "fixed_before_measurement": true,
+        "source_derived_tolerance": 0.2,
+        "source_ids": [
+          "natural-earth-admin1-5.1.1-region-054"
+        ]
+      },
+      "unit": "ratio"
     }
   ],
   "assignment_overrides": [
@@ -21282,7 +21309,272 @@
       "uncertainty": 0.35
     }
   ],
-  "boundary_features": [],
+  "boundary_features": [
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              147.099945509,
+              -9.48170338299991
+            ],
+            [
+              147.07291466667846,
+              -9.459318943114738
+            ]
+          ],
+          [
+            [
+              147.07291466667846,
+              -9.459318943114738
+            ],
+            [
+              147.06516320222,
+              -9.44913868590163
+            ]
+          ],
+          [
+            [
+              147.06516320222,
+              -9.44913868590163
+            ],
+            [
+              147.06195926310943,
+              -9.441025486237208
+            ]
+          ],
+          [
+            [
+              147.06195926310943,
+              -9.441025486237208
+            ],
+            [
+              147.0617525584338,
+              -9.434204196866176
+            ]
+          ],
+          [
+            [
+              147.0617525584338,
+              -9.434204196866176
+            ],
+            [
+              147.06392296787067,
+              -9.429398289099765
+            ]
+          ],
+          [
+            [
+              147.06392296787067,
+              -9.429398289099765
+            ],
+            [
+              147.06795372928116,
+              -9.424747410064924
+            ]
+          ],
+          [
+            [
+              147.06795372928116,
+              -9.424747410064924
+            ],
+            [
+              147.07374148987776,
+              -9.421078382961014
+            ]
+          ],
+          [
+            [
+              147.07374148987776,
+              -9.421078382961014
+            ],
+            [
+              147.08273318868567,
+              -9.417409355857103
+            ]
+          ],
+          [
+            [
+              147.08273318868567,
+              -9.417409355857103
+            ],
+            [
+              147.12479780467493,
+              -9.404955335520299
+            ]
+          ],
+          [
+            [
+              147.12479780467493,
+              -9.404955335520299
+            ],
+            [
+              147.1609196313359,
+              -9.384698174780965
+            ]
+          ],
+          [
+            [
+              147.1609196313359,
+              -9.384698174780965
+            ],
+            [
+              147.1728568868358,
+              -9.381029147677054
+            ]
+          ],
+          [
+            [
+              147.1728568868358,
+              -9.381029147677054
+            ],
+            [
+              147.18453576081663,
+              -9.382889499650673
+            ]
+          ],
+          [
+            [
+              147.18453576081663,
+              -9.382889499650673
+            ],
+            [
+              147.19414757724883,
+              -9.38826384909737
+            ]
+          ],
+          [
+            [
+              147.19414757724883,
+              -9.38826384909737
+            ],
+            [
+              147.20996056542765,
+              -9.402371514933463
+            ]
+          ],
+          [
+            [
+              147.20996056542765,
+              -9.402371514933463
+            ],
+            [
+              147.21771202988623,
+              -9.407177422699931
+            ]
+          ],
+          [
+            [
+              147.21771202988623,
+              -9.407177422699931
+            ],
+            [
+              147.22639367123088,
+              -9.408417657049256
+            ]
+          ],
+          [
+            [
+              147.22639367123088,
+              -9.408417657049256
+            ],
+            [
+              147.2477877144314,
+              -9.40671233470647
+            ]
+          ],
+          [
+            [
+              147.2477877144314,
+              -9.40671233470647
+            ],
+            [
+              147.25807132443197,
+              -9.409502861767692
+            ]
+          ],
+          [
+            [
+              147.25807132443197,
+              -9.409502861767692
+            ],
+            [
+              147.26876834468328,
+              -9.423352146084653
+            ]
+          ],
+          [
+            [
+              147.26876834468328,
+              -9.423352146084653
+            ],
+            [
+              147.2782251323839,
+              -9.44800180344049
+            ]
+          ],
+          [
+            [
+              147.2782251323839,
+              -9.44800180344049
+            ],
+            [
+              147.2861316273727,
+              -9.482469984602119
+            ]
+          ],
+          [
+            [
+              147.2861316273727,
+              -9.482469984602119
+            ],
+            [
+              147.28675174409761,
+              -9.519470309507199
+            ]
+          ],
+          [
+            [
+              147.28675174409761,
+              -9.519470309507199
+            ],
+            [
+              147.2867782665811,
+              -9.521264791155172
+            ]
+          ]
+        ],
+        "type": "MultiLineString"
+      },
+      "properties": {
+        "classification": "soft_evidence",
+        "confidence": "high",
+        "date_precision": "year",
+        "feature_id": "forbidden-modern-central-province-national-capital-district-seam",
+        "geographic_scope": "054",
+        "geometry_revision": "natural-earth-5.1.1",
+        "license_lineage": [
+          "Natural Earth public domain"
+        ],
+        "reference_unit_ids": [
+          "PG-CPM",
+          "PG-NCD"
+        ],
+        "semantics": "Modern inland Admin-1 seam between PG-CPM and PG-NCD; negative control only.",
+        "side_polity_ids": null,
+        "source_ids": [
+          "natural-earth-admin1-5.1.1-region-054"
+        ],
+        "start_date_programs": [
+          "1444-11-11"
+        ],
+        "uncertainty_notes": "Shared polygon boundary excludes coastlines by construction.",
+        "valid_from": "2022",
+        "valid_to": null
+      },
+      "type": "Feature"
+    }
+  ],
   "build_features": [
     {
       "geometry": {
@@ -21507,7 +21799,8 @@
         "region-054-site-mangaas-geometry",
         "region-054-site-bourewa-geometry",
         "region-054-site-lakeba-geometry",
-        "region-054-site-thio-geometry"
+        "region-054-site-thio-geometry",
+        "region-054-negative-modern-central-province-national-capital-district-seam"
       ],
       "evidence_summary": "Complete M49 054 island fabric reviewed through institutional and academic sources and eight checked sites; no unsupported hard local frontier or country-based M49 correction is asserted.",
       "exclusions": [],
@@ -21615,15 +21908,28 @@
       ]
     }
   ],
-  "derived_files": [],
+  "derived_files": [
+    {
+      "asset_id": "region-054-negative-controls",
+      "path": "assets/054/negative-controls.geojson",
+      "role": "negative_control_geometry",
+      "sha256": "a5cbc09ef7217113ffadb6e8957a2336311a42fe8a80bbdaa43a0f7198643afe",
+      "source_ids": [
+        "natural-earth-admin1-5.1.1-region-054"
+      ],
+      "target_path": "regional-assets/054/negative-controls.geojson",
+      "valid_from": "2022",
+      "valid_to": null
+    }
+  ],
   "expected_counts": {
-    "assertions": 32,
+    "assertions": 33,
     "assignments": 414,
     "build_features": 8,
-    "derived_files": 0,
+    "derived_files": 1,
     "m49_corrections": 0,
     "polities": 12,
-    "sources": 10
+    "sources": 11
   },
   "location_assignment_schema_version": "0.4.0",
   "location_region_overrides": [],
@@ -21978,6 +22284,11 @@
       "locator": "Settlement chronology > faced shrines and coastal Roviana development from the fourteenth century",
       "sha256": "20f200175a0bddf9b5ebe45641cce2ef381810316e88b111662fa35169cc8455",
       "source_id": "walter-sheppard-roviana"
+    },
+    {
+      "locator": "Admin-1 5.1.1 > ISO_3166_2 shared boundary PG-CPM-PG-NCD",
+      "sha256": "43fc3297a1f9af96f0b4aa4c5cdfbc8b939adc2761f25829e9752f25e015384f",
+      "source_id": "natural-earth-admin1-5.1.1-region-054"
     }
   ],
   "sources": [
@@ -22140,6 +22451,32 @@
       "valid_from": "1400",
       "valid_to": "1500",
       "version": "Publisher record reviewed 2026-08-16"
+    },
+    {
+      "access_date": "2026-08-16",
+      "checksum": "efc59726337323058f9446210adc96673179cd344e053666ee3d28cb58ba2b05",
+      "citation": "Natural Earth, Admin 1 – States, Provinces, version 5.1.1.",
+      "derived_artifacts": [
+        {
+          "artifact_id": "region-054-negative-controls",
+          "media_type": "application/geo+json",
+          "path": "regional-assets/054/negative-controls.geojson",
+          "role": "negative_control_geometry",
+          "sha256": "a5cbc09ef7217113ffadb6e8957a2336311a42fe8a80bbdaa43a0f7198643afe"
+        }
+      ],
+      "independence_group": "natural-earth-admin1-modern-control-054",
+      "license": "Public domain",
+      "review_status": "reviewed",
+      "source_id": "natural-earth-admin1-5.1.1-region-054",
+      "source_type": "negative_control",
+      "transformations": [
+        "Extracted the shared PG-CPM-PG-NCD polygon boundary; coastlines excluded automatically."
+      ],
+      "url": "https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-1-states-provinces/",
+      "valid_from": "2022",
+      "valid_to": null,
+      "version": "5.1.1 (2022)"
     }
   ],
   "start_date": "1444-11-11",
