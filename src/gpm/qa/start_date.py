@@ -149,6 +149,11 @@ def run_start_date_qa(
         assertion_results = _check_cross_artifact_contract(manifest, documents, geometry, findings)
         if manifest["schema_version"] == "0.3.0":
             _check_global_contract(root, manifest, documents, geometry, findings)
+        if (
+            manifest.get("pass_id") == "official-1444-global-v1"
+            and manifest_mode == "certification_review"
+        ):
+            _check_m25c_certification_lineage(root, manifest, documents, findings)
 
     if pending_review:
         if manifest.get("schema_version") != "0.3.0":
@@ -207,6 +212,60 @@ def run_start_date_qa(
     except OSError as exc:
         raise StartDateQAError(f"Cannot write M24 QA report {out_path}: {exc}") from exc
     return StartDateQAResult(manifest["pass_id"], manifest["start_date"], status, len(artifact_paths), errors, warnings, str(out_path))
+
+
+def _check_m25c_certification_lineage(
+    root: Path, manifest: dict[str, Any], documents: dict[str, dict[str, Any]],
+    findings: list[dict[str, Any]],
+) -> None:
+    """Require certification-review M25C artifacts to tell one non-provisional story."""
+    canonical = documents.get("canonical_historical_status") or {}
+    if canonical.get("qa_mode") != "certification_review":
+        _finding(findings, "MIXED_QA_MODE", "error",
+                 "M25C pass and canonical status must both use certification_review.",
+                 ["canonical_historical_status"])
+    residue = []
+    if canonical.get("provisional") is not False:
+        residue.append("canonical_historical_status")
+    for group in ("components", "provinces"):
+        if any(row.get("provisional") is not False for row in canonical.get(group) or []):
+            residue.append(f"canonical_historical_status:{group}")
+    assignments = documents.get("location_assignments") or {}
+    record = (assignments.get("release_sidecars") or {}).get("aggregation_manifest") or {}
+    relative = Path(str(record.get("path") or ""))
+    aggregation: dict[str, Any] = {}
+    if relative.parts and not relative.is_absolute() and ".." not in relative.parts:
+        path = root / relative
+        if path.is_file() and not path.is_symlink():
+            try:
+                aggregation = _load_json(path, "Aggregation manifest")
+            except StartDateQAError:
+                aggregation = {}
+    if aggregation.get("provisional") is not False:
+        residue.append("aggregation_manifest")
+    if aggregation.get("qa_mode") != "certification_review":
+        _finding(findings, "MIXED_QA_MODE", "error",
+                 "M25C aggregation and pass modes must both use certification_review.",
+                 ["aggregation_manifest"])
+    if residue:
+        _finding(findings, "PROVISIONAL_LINEAGE", "error",
+                 "Certification-review M25C artifacts may not retain provisional flags.",
+                 sorted(residue))
+    version = manifest.get("artifact_version")
+    if canonical.get("artifact_version") != version or aggregation.get("generator_version") != version:
+        _finding(findings, "MIXED_ARTIFACT_VERSION", "error",
+                 "M25C pass, canonical status, and aggregation must use one artifact version.",
+                 ["pass_manifest", "canonical_historical_status", "aggregation_manifest"])
+    sentinel = "official-1444-modern-scaffold-provisional"
+    affected = [role for role, document in documents.items()
+                if sentinel in json.dumps(document, sort_keys=True)]
+    dossier = root / str((manifest.get("artifacts") or {}).get("dossier", {}).get("path") or "")
+    if dossier.is_file() and sentinel in dossier.read_text(encoding="utf-8"):
+        affected.append("dossier")
+    if affected:
+        _finding(findings, "PROVISIONAL_SOURCE_LINEAGE", "error",
+                 "Certification-review M25C artifacts retain the provisional source sentinel.",
+                 sorted(affected))
 
 
 def _check_cross_artifact_contract(

@@ -54,12 +54,21 @@
       Admin-1 assets are checksum-pinned; worldwide QA reproduces the approved
       `053` failure, `054` pass, and `057`/`061` non-executable failures, for 16
       total seam blockers and no missing negatives.
-  12. [ ] Research and recommend the fail-closed transition from the provisional
-      generator to a promotable assembled-pass mode; retain all publication and
-      certification guards until ordinary research QA is clean.
-  13. [ ] After reviewer decision, implement the approved assembly transition,
-      run ordinary worldwide QA, render the final review bundle, and stop for
-      independent human review before runtime certification or publication.
+  12. [x] Research and recommend the fail-closed transition from the provisional
+      generator to a promotable assembled-pass mode. The recommendation uses a
+      shared final-artifact qualifier and a two-gate state transition: assembled
+      qualification first, then zero-error ordinary QA before review eligibility.
+      The current fully rendered candidate would retain 54 non-review blockers;
+      see `tasks/m25c-assembled-pass-transition-research.md`.
+  13. [x] After reviewer decision, implement the approved assembly transition,
+      run ordinary worldwide QA, and keep the candidate non-accepting while its
+      spatial and positive-geometry defects remain. The transactional assembled
+      build and full render reproduce exactly 54 non-review errors and one
+      pending-review warning; all four permissions remain false and
+      `accept-review` refuses without mutation.
+  14. [ ] After separately approved remediation makes ordinary QA clean, render
+      the final review bundle and stop for independent human review before
+      runtime certification or publication.
 
 - After M25C research acceptance: run canonical/runtime parity, determinism,
   performance, certification, and publication gates without weakening the

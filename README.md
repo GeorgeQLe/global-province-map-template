@@ -93,6 +93,27 @@ and treat stable IDs as public identity while dense indices remain pack-local.
 Official-era claims require both research acceptance and runtime-pack
 validation. Stable province IDs derive from location membership plus profile,
 era, and geometry revision.
+
+M25C now has an explicit assembled-candidate path. The safe default remains a
+non-promotable provisional pass; the assembled opt-in requires the pinned 22
+regional packets and accepted anomaly sidecar, and it remains review-blocked
+until rendering plus ordinary pending-review QA are clean:
+
+```bash
+.venv/bin/python scripts/generate-m25c-provisional-pass.py \
+  --regional-packets-dir research/start-dates/1444-global-v1/regional-packets --qa
+.venv/bin/python scripts/generate-m25c-provisional-pass.py \
+  --assembly-mode assembled-pass \
+  --regional-packets-dir research/start-dates/1444-global-v1/regional-packets \
+  --acceptance-input data/processed/m25c-global-staging/evidence/review_acceptance.json
+.venv/bin/python scripts/build-m25c-global-pass.py render \
+  --output-dir data/processed/m25c-assembled-pass
+.venv/bin/python scripts/build-m25c-global-pass.py preflight \
+  --output-dir data/processed/m25c-assembled-pass
+```
+
+The current assembled candidate intentionally fails preflight on 54 research
+defects and cannot be accepted, certified, published, or deployed.
 `gpm build provinces` now consumes `data/processed/locations.geojson` by
 default; the former Natural Earth scaffold is available only through the
 explicit `--legacy-modern-admin` compatibility flag. Targeted splits require a

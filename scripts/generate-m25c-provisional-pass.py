@@ -7,9 +7,11 @@ import argparse
 import csv
 import hashlib
 import json
+import os
 import re
 import shutil
 import sys
+import tempfile
 from collections import defaultdict
 from pathlib import Path
 from typing import Any
@@ -22,6 +24,13 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from gpm.qa.start_date import run_start_date_qa  # noqa: E402
+from gpm.qa.m25c_assembled import (  # noqa: E402
+    ACCEPTED_WORLD_MASK_SHA256,
+    ASSEMBLED_VERSION,
+    qualify_accepted_anomaly,
+    qualify_assembled_pass,
+    qualify_fabric_sidecars,
+)
 from gpm.schemas import WORLDWIDE_M49_SUBREGIONS  # noqa: E402
 
 PASS_ID = "official-1444-global-v1"
@@ -109,6 +118,7 @@ TARGET_PROVINCES = 22_000
 LAYERS = ("geometry", "politics", "hierarchy", "gazetteer_relationships")
 
 DEFAULT_OUTPUT = ROOT / "data" / "processed" / "m25c-provisional"
+DEFAULT_ASSEMBLED_OUTPUT = ROOT / "data" / "processed" / "m25c-assembled-pass"
 GLOBAL = ROOT / "research" / "start-dates" / "1444-global-v1"
 PILOT = ROOT / "research" / "start-dates" / "1444-v2"
 ANOMALY = ROOT / "data" / "processed" / "m25c-global-staging" / "evidence"
@@ -117,20 +127,31 @@ SCENARIO = ROOT / "data" / "processed" / "demo_build" / "atlas" / "scenarios" / 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--assembly-mode", choices=("provisional", "assembled-pass"), default="provisional")
+    parser.add_argument("--output-dir", type=Path)
     parser.add_argument("--global-input", type=Path, default=GLOBAL)
     parser.add_argument("--pilot-input", type=Path, default=PILOT)
     parser.add_argument("--anomaly-input", type=Path, default=ANOMALY)
     parser.add_argument("--scenario-input", type=Path, default=SCENARIO)
     parser.add_argument("--regional-packets-dir", type=Path)
+    parser.add_argument("--acceptance-input", type=Path)
     parser.add_argument("--qa", action="store_true")
     args = parser.parse_args()
+    if args.output_dir is None:
+        args.output_dir = DEFAULT_ASSEMBLED_OUTPUT if args.assembly_mode == "assembled-pass" else DEFAULT_OUTPUT
+    if args.assembly_mode == "assembled-pass":
+        if args.regional_packets_dir is None or args.acceptance_input is None:
+            parser.error("assembled-pass mode requires --regional-packets-dir and --acceptance-input")
     generate(args)
     if args.qa:
         result = run_start_date_qa(
             pass_dir=args.output_dir,
-            report_output=args.output_dir / "start_date_provisional_qa.json",
-            provisional_internal_review=True,
+            report_output=args.output_dir / (
+                "start_date_qa.json" if args.assembly_mode == "assembled-pass"
+                else "start_date_provisional_qa.json"
+            ),
+            pending_review=args.assembly_mode == "assembled-pass",
+            provisional_internal_review=args.assembly_mode == "provisional",
         )
         print(json.dumps(result.to_dict(), sort_keys=True))
         if not result.passed:
@@ -139,13 +160,77 @@ def main() -> int:
 
 
 def generate(args: argparse.Namespace) -> None:
+    """Generate into a sibling staging directory and atomically promote it."""
+    mode = getattr(args, "assembly_mode", "provisional")
+    target = Path(args.output_dir).resolve()
+    target.parent.mkdir(parents=True, exist_ok=True)
+    if mode == "assembled-pass":
+        pinned_inputs = (
+            (Path(args.global_input), GLOBAL, "global input"),
+            (Path(args.pilot_input), PILOT, "pilot input"),
+            (Path(args.anomaly_input), ANOMALY, "anomaly input"),
+            (Path(args.scenario_input), SCENARIO, "scenario input"),
+        )
+        for supplied, expected, label in pinned_inputs:
+            if supplied.is_symlink() or supplied.resolve() != expected.resolve():
+                raise SystemExit(f"assembled-pass mode requires the exact pinned {label}")
+        packets_argument = Path(args.regional_packets_dir)
+        if packets_argument.is_symlink():
+            raise SystemExit("assembled-pass regional packet directory may not be a symlink")
+        packets_dir = packets_argument.resolve()
+        if packets_dir != (GLOBAL / "regional-packets").resolve():
+            raise SystemExit("assembled-pass mode requires the exact pinned regional packet directory")
+        if any(path.is_symlink() for path in packets_dir.rglob("*")):
+            raise SystemExit("assembled-pass regional packet directory may not contain symlinks")
+        acceptance_argument = Path(args.acceptance_input)
+        if acceptance_argument.is_symlink():
+            raise SystemExit("assembled-pass anomaly acceptance may not be a symlink")
+        acceptance = acceptance_argument.resolve()
+        if acceptance != (ANOMALY / "review_acceptance.json").resolve():
+            raise SystemExit("assembled-pass mode requires the exact accepted anomaly sidecar")
+        try:
+            accepted_inventory = qualify_accepted_anomaly(ANOMALY / "anomaly_inventory.json", acceptance)
+            assembled_inventory = _load(Path(args.global_input) / "anomaly_inventory.json")
+            accepted_inventory.pop("artifact_version", None)
+            assembled_inventory.pop("artifact_version", None)
+            if accepted_inventory != assembled_inventory:
+                raise ValueError("assembled anomaly inventory is not the accepted census overlay")
+            qualify_fabric_sidecars(Path(args.global_input) / "sidecars")
+            if _sha256(Path(args.global_input) / "world_coverage_mask.geojson") != ACCEPTED_WORLD_MASK_SHA256:
+                raise ValueError("accepted world coverage mask checksum changed")
+        except ValueError as exc:
+            raise SystemExit(f"assembled-pass input qualification failed: {exc}") from exc
+
+    staging = Path(tempfile.mkdtemp(prefix=f".{target.name}.staging-", dir=target.parent))
+    staged_args = argparse.Namespace(**{**vars(args), "output_dir": staging})
+    global VERSION
+    prior_version = VERSION
+    VERSION = ASSEMBLED_VERSION if mode == "assembled-pass" else "1.0.0-provisional.1"
+    try:
+        _generate_into(staged_args)
+        if mode == "assembled-pass":
+            packets = _load_packets(Path(args.regional_packets_dir))
+            try:
+                qualify_assembled_pass(staging, packets=packets)
+            except ValueError as exc:
+                raise SystemExit(f"assembled-pass final qualification failed: {exc}") from exc
+        _promote_directory(staging, target)
+    finally:
+        VERSION = prior_version
+        if staging.exists():
+            shutil.rmtree(staging)
+
+
+def _generate_into(args: argparse.Namespace) -> None:
     output = args.output_dir.resolve()
+    assembled = getattr(args, "assembly_mode", "provisional") == "assembled-pass"
     output.mkdir(parents=True, exist_ok=True)
     sidecars = output / "sidecars"
     sidecars.mkdir(exist_ok=True)
 
     packets = _load_packets(args.regional_packets_dir)
     mask = _load(args.global_input / "world_coverage_mask.geojson")
+    mask["artifact_version"] = VERSION
     location_region_overrides = {
         row["location_id"]: row["region_id"]
         for packet in packets for row in packet.get("location_region_overrides") or []
@@ -287,7 +372,8 @@ def generate(args: argparse.Namespace) -> None:
         "generated_at": GENERATED_AT, "generator_version": VERSION,
         "files": ["locations.geojson", "province_membership.csv"],
         "inputs": {"locations": "locations.geojson", "historical_constraints": "../boundaries.geojson", "modern_pieces": None},
-        "provisional": True,
+        "provisional": not assembled,
+        "qa_mode": "certification_review" if assembled else "provisional_internal_review",
     }
     _write(sidecars / "aggregation_manifest.json", aggregation)
     assignments = _header("start_date_location_assignments") | {
@@ -394,10 +480,16 @@ def generate(args: argparse.Namespace) -> None:
     canonical = _canonical_status(province_geometries, assignments["assignments"], gazetteer["polities"])
     inventory = _load(args.global_input / "anomaly_inventory.json")
     canonical["accepted_anomaly_ids"] = sorted(row["anomaly_id"] for row in inventory["anomalies"])
-    canonical["qa_mode"] = "provisional_internal_review"
+    canonical["qa_mode"] = "certification_review" if assembled else "provisional_internal_review"
+    canonical["provisional"] = not assembled
+    for group in ("components", "provinces"):
+        for row in canonical[group]:
+            row["provisional"] = not assembled
     canonical["artifact_version"] = VERSION
     _write(output / "historical-territory-status.json", canonical)
-    shutil.copyfile(args.global_input / "anomaly_inventory.json", output / "anomaly_inventory.json")
+    inventory_document = _load(args.global_input / "anomaly_inventory.json")
+    inventory_document["artifact_version"] = VERSION
+    _write(output / "anomaly_inventory.json", inventory_document)
     ledger = _load(args.anomaly_input / "anomaly_census_review_ledger.json")
     ledger["artifact_version"] = VERSION
     _write(output / "anomaly_census_review_ledger.json", ledger)
@@ -405,14 +497,25 @@ def generate(args: argparse.Namespace) -> None:
     _copy_packet_derived_files(packets, output)
 
     changelog = _header("start_date_changelog") | {
-        "version": VERSION, "released_at": "2026-08-14",
-        "changes": [{"change_id": "provisional-worldwide-seed", "category": "research",
-                     "summary": "Transferred official-1444 scaffold politics by maximum-area overlap; output is non-promotable.",
-                     "affected_ids": sorted(WORLDWIDE_M49_SUBREGIONS)}],
-        "migrations": ["No runtime or public migration is permitted from provisional_internal_review output."],
+        "version": VERSION, "released_at": "2026-08-22" if assembled else "2026-08-14",
+        "changes": [{
+            "change_id": "assembled-worldwide-evidence" if assembled else "provisional-worldwide-seed",
+            "category": "research",
+            "summary": (
+                "Assembled one reviewed regional evidence packet for every pinned world region; ordinary research QA remains authoritative."
+                if assembled else
+                "Transferred official-1444 scaffold politics by maximum-area overlap; output is non-promotable."
+            ),
+            "affected_ids": sorted(WORLDWIDE_M49_SUBREGIONS),
+        }],
+        "migrations": [
+            "No runtime or public migration is permitted before independent review and certification."
+            if assembled else
+            "No runtime or public migration is permitted from provisional_internal_review output."
+        ],
     }
     _write(output / "changelog.json", changelog)
-    (output / "dossier.md").write_text(_dossier(packets), encoding="utf-8")
+    (output / "dossier.md").write_text(_dossier(packets, assembled=assembled), encoding="utf-8")
     review = {"schema_version": "1.0.0", "pass_id": PASS_ID, "generator": "gpm qa render",
               "reviewer": "pending-independent-review", "status": "pending_independent_review", "renders": []}
     _write(output / "review" / "review_manifest.json", review)
@@ -430,7 +533,8 @@ def generate(args: argparse.Namespace) -> None:
         "schema_version": "0.3.0", "document_type": "start_date_research_pass", "artifact_version": VERSION,
         "pass_id": PASS_ID, "start_date": START_DATE, "version": VERSION, "era": "late-medieval",
         "fabric_revision": "global-h3-v1-r2", "geometry_revision": GEOMETRY_REVISION,
-        "generated_at": GENERATED_AT, "qa_mode": "provisional_internal_review",
+        "generated_at": GENERATED_AT,
+        "qa_mode": "certification_review" if assembled else "provisional_internal_review",
         "scope": {"kind": "worldwide", "regions": sorted(WORLDWIDE_M49_SUBREGIONS),
                   "priority_regions": sorted(WORLDWIDE_M49_SUBREGIONS), "layers": list(LAYERS),
                   "world_coverage_mask_sha256": artifacts["world_coverage_mask"]["sha256"],
@@ -444,8 +548,9 @@ def generate(args: argparse.Namespace) -> None:
     }
     _write(output / "pass_manifest.json", manifest)
     _write(output / "candidate_status.json", {"pass_id": PASS_ID, "start_date": START_DATE,
-           "status": "provisional_internal_review", "public_release_allowed": False,
-           "review_acceptance_allowed": False, "certification_allowed": False, "runtime_publication_allowed": False})
+           "status": "assembled_pending_research_qa" if assembled else "provisional_internal_review",
+           "public_release_allowed": False, "review_acceptance_allowed": False,
+           "certification_allowed": False, "runtime_publication_allowed": False})
 
 
 def _target_groups(original: dict[str, list[str]], locked: list[list[str]], target: int) -> list[list[str]]:
@@ -581,6 +686,8 @@ def _load_packets(directory: Path | None) -> list[dict[str, Any]]:
         return []
     packets = []
     for path in sorted(directory.glob("*.json")):
+        if path.is_symlink() or not path.is_file():
+            raise SystemExit(f"regional packet must be a regular file: {path}")
         packet = _load(path)
         packet["_packet_path"] = str(path.resolve())
         packets.append(packet)
@@ -1016,7 +1123,28 @@ def _artifact_version(path: Path) -> str:
     return VERSION if path.suffix == ".md" else str(_load(path).get("artifact_version") or VERSION)
 
 
-def _dossier(packets: list[dict[str, Any]]) -> str:
+def _dossier(packets: list[dict[str, Any]], *, assembled: bool = False) -> str:
+    if assembled:
+        return f"""# M25C assembled worldwide evidence candidate
+
+## Scope
+All 22 non-Antarctic M49 subregions, 23,582 playable locations, and exactly 22,000 assembled provinces.
+
+## Research questions
+Do the complete reviewed regional replacements satisfy ordinary spatial and evidence QA?
+
+## Citations
+All final claims resolve to reviewed source records supplied by the 22 pinned regional packets and accepted anomaly census.
+
+## Transformations and conflicts
+The accepted fabric is aggregated deterministically, then exactly {len(packets)} dated regional packets replace every assignment and coverage row.
+
+## Exclusions
+Antarctica is excluded. Runtime publication and public release require later independent review and certification.
+
+## Uncertainty
+Assembly completeness does not certify research correctness. Ordinary pending-review QA remains fail-closed.
+"""
     return f"""# M25C provisional worldwide evidence pass
 
 ## Scope
@@ -1037,6 +1165,29 @@ Antarctica is excluded. This pass cannot be review-accepted, certified, publishe
 ## Uncertainty
 Every unpromoted region declares layer gaps. Soft provisional ownership lines are never historical hard constraints.
 """
+
+
+def _promote_directory(staging: Path, target: Path) -> None:
+    """Promote a complete sibling tree with rollback if the second rename fails."""
+    backup = target.with_name(f".{target.name}.rollback-{os.getpid()}")
+    if backup.exists():
+        raise SystemExit(f"transactional rollback path already exists: {backup}")
+    moved_old = False
+    try:
+        if target.exists():
+            os.replace(target, backup)
+            moved_old = True
+        os.replace(staging, target)
+    except BaseException:
+        if moved_old and backup.exists() and not target.exists():
+            os.replace(backup, target)
+        raise
+    if moved_old:
+        try:
+            shutil.rmtree(backup)
+        except OSError:
+            # The new output is already complete; retain the recoverable backup.
+            pass
 
 
 def _load(path: Path) -> dict[str, Any]:

@@ -34,6 +34,7 @@ from gpm.qa.m25c_census import (  # noqa: E402
     overlay_acceptance,
     review_ledger_findings,
 )
+from gpm.qa.m25c_assembled import ASSEMBLED_VERSION, qualify_assembled_pass  # noqa: E402
 from gpm.qa.start_date import (  # noqa: E402
     HISTORICAL_ANOMALY_TYPES,
     StartDateQAError,
@@ -353,19 +354,24 @@ def stage_assembly(args: argparse.Namespace) -> None:
     missing = [name for name in ARTIFACT_FILES.values() if not (output / name).is_file()]
     if missing:
         raise SystemExit("assembly is missing reviewed artifacts: " + ", ".join(missing))
+    try:
+        qualify_assembled_pass(output)
+    except ValueError as exc:
+        raise SystemExit(f"assembly qualification rejected: {exc}") from exc
     assignments = _load(output / "assignments.json")
     geometry = _load(output / "build.geojson")
     mask_hash = _sha256(output / "world_coverage_mask.geojson")
     artifacts = {
-        role: {"path": name, "version": _artifact_version(output / name), "sha256": _sha256(output / name)}
+        role: {"path": name, "version": ASSEMBLED_VERSION, "sha256": _sha256(output / name)}
         for role, name in ARTIFACT_FILES.items()
     }
     manifest = {
         "schema_version": "0.3.0", "document_type": "start_date_research_pass",
-        "artifact_version": ARTIFACT_VERSION, "pass_id": PASS_ID, "start_date": START_DATE,
-        "version": ARTIFACT_VERSION, "era": "late-medieval",
+        "artifact_version": ASSEMBLED_VERSION, "pass_id": PASS_ID, "start_date": START_DATE,
+        "version": ASSEMBLED_VERSION, "era": "late-medieval",
         "fabric_revision": assignments["fabric_revision"],
         "geometry_revision": geometry["geometry_revision"], "generated_at": GENERATED_AT,
+        "qa_mode": "certification_review",
         "scope": {
             "kind": "worldwide", "regions": sorted(WORLDWIDE_M49_SUBREGIONS),
             "priority_regions": sorted(WORLDWIDE_M49_SUBREGIONS),
@@ -380,8 +386,18 @@ def stage_assembly(args: argparse.Namespace) -> None:
                    "generator": "gpm qa render", "reviewer": "pending-independent-review",
                    "status": "pending_independent_review"},
     }
-    _write(output / "pass_manifest.json", manifest)
-    _write_candidate_status(output, "pending_independent_review")
+    manifest_path = output / "pass_manifest.json"
+    status_path = output / "candidate_status.json"
+    original_manifest = manifest_path.read_bytes() if manifest_path.exists() else None
+    original_status = status_path.read_bytes() if status_path.exists() else None
+    try:
+        _write(manifest_path, manifest)
+        qualify_assembled_pass(output)
+        _write_candidate_status(output, "assembled_pending_research_qa")
+    except (ValueError, OSError) as exc:
+        _restore_bytes(manifest_path, original_manifest)
+        _restore_bytes(status_path, original_status)
+        raise SystemExit(f"assembly qualification rejected: {exc}") from exc
 
 
 def stage_render(args: argparse.Namespace) -> None:
@@ -399,16 +415,21 @@ def stage_render(args: argparse.Namespace) -> None:
 
 
 def stage_preflight(args: argparse.Namespace) -> None:
+    output = Path(args.output_dir).resolve()
     try:
         result = run_start_date_qa(
-            pass_dir=args.output_dir, report_output=args.output_dir / "start_date_preflight.json",
+            pass_dir=output, report_output=output / "start_date_preflight.json",
             pending_review=True,
         )
     except StartDateQAError as exc:
         raise SystemExit(f"preflight rejected: {exc}") from exc
     print(json.dumps(result.to_dict(), sort_keys=True))
     if not result.passed:
+        _write_candidate_status(output, "assembled_pending_research_qa")
         raise SystemExit(f"preflight failed with {result.error_count} non-review error(s)")
+    _write_candidate_status(
+        output, "pending_independent_review", review_acceptance_allowed=True,
+    )
 
 
 def stage_accept_review(args: argparse.Namespace) -> None:
@@ -431,6 +452,18 @@ def stage_accept_review(args: argparse.Namespace) -> None:
     }:
         raise SystemExit("reviewer identity must name an independent human reviewer")
     _verify_review_bundle(output, manifest, review)
+    try:
+        preaccept = run_start_date_qa(
+            pass_dir=output,
+            report_output=output / "start_date_preaccept_qa.json",
+            pending_review=True,
+        )
+    except StartDateQAError as exc:
+        raise SystemExit(f"review acceptance preflight rejected: {exc}") from exc
+    if not preaccept.passed:
+        raise SystemExit(
+            f"review acceptance refused: pending-review QA has {preaccept.error_count} non-review error(s)"
+        )
     original_manifest, original_review = manifest_path.read_bytes(), review_path.read_bytes()
     review.update({"reviewer": reviewer, "reviewed_at": args.review_date, "status": "accepted"})
     _write(review_path, review)
@@ -942,11 +975,20 @@ def _artifact_version(path: Path) -> str:
     return str(_load(path).get("artifact_version") or ARTIFACT_VERSION)
 
 
-def _write_candidate_status(output: Path, status: str, **extra: str) -> None:
+def _write_candidate_status(output: Path, status: str, **extra: Any) -> None:
     _write(output / "candidate_status.json", {
         "pass_id": PASS_ID, "start_date": START_DATE, "status": status,
-        "public_release_allowed": False, **extra,
+        "review_acceptance_allowed": False, "certification_allowed": False,
+        "runtime_publication_allowed": False, "public_release_allowed": False,
+        **extra,
     })
+
+
+def _restore_bytes(path: Path, content: bytes | None) -> None:
+    if content is None:
+        path.unlink(missing_ok=True)
+    else:
+        path.write_bytes(content)
 
 
 def _load(path: Path) -> dict[str, Any]:

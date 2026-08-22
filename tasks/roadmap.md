@@ -1,6 +1,6 @@
 # Roadmap Progress
 
-Updated: 2026-08-21
+Updated: 2026-08-22
 
 Product direction (see root `ROADMAP.md`): dual audience for **strategy-game
 seeds** and **historical / SaaS maps**, with a **strong historical accuracy
@@ -47,7 +47,7 @@ historical coverage.
 | M24 | complete | schemas and `gpm qa start-date` | `test_m24_start_date_framework.py` | contract and rejected-pass evidence | framework only; does not certify an era |
 | M25A | complete | hard-case casebook + typed-status schema | eight executable per-class canonical/runtime/visual/picking/LOD/adjacency/save fixtures | research artifacts only | synthetic contract fixtures, not historical evidence |
 | M25B | complete | `gpm export runtime`; `gpm.runtime` | `test_m25b_runtime.py`; duplicate-build/budget benchmarks | synthetic runtime reference pack | global-scale budgets re-run per certified era |
-| M25C | in progress; 22 of 22 regions compositionally migrated | compositional seam QA and 19 implemented Natural Earth 5.1.1 modern controls now supplement the five-facet/typed-relationship model | 16 seams fail; Oceania reproduces `053` at `1.0`, passes `054` at `0.0`, and fails `057`/`061` non-executable with zero land transitions | 19 regions lack independently georeferenced positive borders; no region lacks a negative assertion | research the fail-closed transition from provisional generation to promotable assembly; retain every certification/publication guard |
+| M25C | in progress; assembled and ordinary-QA blocked | shared final-artifact qualifier, transactional `assembled-pass` generation, complete render, ordinary pending-review QA | 54 non-review blockers reproduced: 16 failed seams, 16 downstream uncertified Grade-A rows, three non-executable seams, and 19 missing positive borders | `1.0.0-assembled.1` certification-review candidate; all review/certification/runtime/public permissions false | separately decision-gated seam and positive-border remediation; only zero-error preflight may enable independent review |
 | M26 | planned | global 1836 pass + runtime delta/migration | worldwide research and runtime validation | none yet | begins after M25C |
 | M27 | planned | 1914 canonical pass + runtime delta/migration | future research and runtime validation | none yet | begins after M26 |
 | M28 | planned | 1936 canonical pass + runtime delta/migration | future research and runtime validation | none yet | begins after M27 |

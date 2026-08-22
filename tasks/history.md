@@ -1,5 +1,46 @@
 # History
 
+## 2026-08-22 - M25C fail-closed assembled-pass transition
+
+- Added the default-safe `--assembly-mode assembled-pass` opt-in and shared
+  final-artifact qualifier for exact 22-packet, 22,000-province,
+  23,582-location, and 88-row closure; accepted anomaly/fabric bindings;
+  reviewed-source closure; path/hash integrity; and non-provisional metadata.
+- Made generation transactional with a sibling staging tree and rollback-safe
+  directory swap. Generic assembly can no longer relabel provisional bytes.
+- Emitted `1.0.0-assembled.1` with consistent `certification_review` lineage
+  and `assembled_pending_research_qa`; all four candidate permissions remain
+  false until authoritative gates recompute cleanly.
+- Hardened ordinary QA, pending-review preflight, and `accept-review` so review
+  eligibility requires a complete render plus zero non-review errors before
+  any review bytes change.
+- Two deterministic full assemblies matched. Complete rendering and ordinary
+  preflight reproduced exactly 54 non-review errors and one pending-review
+  warning, so acceptance remained disabled and no runtime, certification,
+  demo, publication, or deployment artifact was produced.
+
+## 2026-08-21 - M25C assembled-pass transition research
+
+- Confirmed exact evidence-assembly closure at 22 unique regional packets,
+  22,000 assignment overrides, and 88 gap-free Grade-A coverage rows, with the
+  provisional scaffold source absent from final evidence artifacts.
+- Found that a manifest-only mode flip is unsafe: all 22,000 canonical
+  components and all 22,000 canonical provinces plus the aggregation manifest
+  still carry provisional metadata, while the generic assembly stage does not
+  qualify final bytes before removing the manifest guard.
+- Recommended one shared final-artifact qualifier and a two-gate state machine:
+  accepted-input and structural assembly qualification first, then complete
+  rendering and zero-error ordinary QA before independent-review eligibility.
+- Enumerated the current post-render ordinary-QA expectation: 16 failed seams,
+  16 downstream uncertified Grade-A geometry rows, three non-executable seams,
+  and 19 missing positive borders, for 54 non-review errors. All review,
+  certification, runtime-publication, and public-release permissions remain
+  false pending reviewer decision and later remediation.
+- Recorded exact qualification requirements, alternatives, regression
+  contracts, and a five-part decision request in
+  `tasks/m25c-assembled-pass-transition-research.md`. No implementation or
+  release state changed.
+
 ## 2026-08-21 - M25C Oceania assertion remediation
 
 - Implemented the approved Admin-1 negative controls for regions `053`, `054`,
