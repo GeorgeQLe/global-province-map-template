@@ -19,6 +19,14 @@ from gpm.schemas import (
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKETS = ROOT / "research/start-dates/1444-global-v1/regional-packets"
+ASIA_EUROPE_COUNTS = {
+    "030": {"assertions": 21, "sources": 10, "derived_files": 1},
+    "034": {"assertions": 53, "sources": 10, "derived_files": 1},
+    "035": {"assertions": 57, "sources": 8, "derived_files": 1},
+    "039": {"assertions": 29, "sources": 19, "derived_files": 1},
+    "143": {"assertions": 17, "sources": 8, "derived_files": 1},
+    "145": {"assertions": 29, "sources": 12, "derived_files": 1},
+}
 
 
 def _control_module():
@@ -97,6 +105,31 @@ def test_seam_pass_zero_length_fail_closed_and_diagnostics_are_deterministic():
     assert zero["reference_length_km"] == 0
 
 
+def test_seam_with_zero_transitions_is_non_executable_and_fails_closed():
+    findings = []
+    args = (
+        _golden(), {}, {"modern-seam": {"geometry": LineString([(4, 0), (4, 1)]).__geo_interface__}},
+    )
+    kwargs = {
+        "canonical": _canonical(facet_transition=False, actor_transition=False),
+        "assignments": {"assignments": [
+            {"province_id": "p1", "region_id": "r"},
+            {"province_id": "p2", "region_id": "r"},
+        ]}, "start_date": "1444-11-11",
+    }
+    results = _execute_assertions(*args, findings, **kwargs)
+    repeated_findings = []
+    repeated = _execute_assertions(*copy.deepcopy(args), repeated_findings, **copy.deepcopy(kwargs))
+    assert (results, findings) == (repeated, repeated_findings)
+    assert results[0]["status"] == "fail"
+    assert results[0]["measurement"] is None
+    assert results[0]["transition_count"] == 0
+    assert results[0]["affected_component_ids"] == []
+    assert {row["code"] for row in findings} >= {
+        "NON_EXECUTABLE_SEAM_ASSERTION", "SPATIAL_ASSERTION_FAILED",
+    }
+
+
 def test_seam_rejects_non_line_reference_geometry():
     findings = []
     result = _execute_assertions(
@@ -149,8 +182,9 @@ def test_nullable_historical_sides_are_limited_to_soft_modern_controls():
         validate_historical_boundary_registry(hard)
 
 
-def test_all_nine_natural_earth_controls_are_nonempty_and_packet_assets_are_pinned():
+def test_all_fifteen_natural_earth_controls_are_nonempty_and_packet_assets_are_pinned():
     controls = _control_module()
+    assert len(controls.CONTROLS) == 15
     for region, (_left, _right, suffix) in sorted(controls.CONTROLS.items()):
         first = controls.extract_control(region)
         second = controls.extract_control(region)
@@ -162,3 +196,22 @@ def test_all_nine_natural_earth_controls_are_nonempty_and_packet_assets_are_pinn
         assert hashlib.sha256(asset_path.read_bytes()).hexdigest() == derived["sha256"]
         boundary = next(row for row in packet["boundary_features"] if row["properties"]["feature_id"] == f"forbidden-modern-{suffix}")
         assert shape(boundary["geometry"]).equals_exact(first, 0)
+
+
+def test_asia_europe_packet_counts_and_retired_lineage_are_exact():
+    controls = _control_module()
+    for region, expected in ASIA_EUROPE_COUNTS.items():
+        packet_path = next(PACKETS.glob(f"{region}-*.json"))
+        packet = json.loads(packet_path.read_text())
+        assert {key: packet["expected_counts"][key] for key in expected} == expected
+        retirement = controls.RETIREMENTS[region]
+        assert retirement["assertion_id"] not in {row["assertion_id"] for row in packet["assertions"]}
+        assert retirement["boundary_id"] not in {
+            row["properties"]["feature_id"] for row in packet["boundary_features"]
+        }
+        assert retirement["asset_ids"].isdisjoint(row["asset_id"] for row in packet["derived_files"])
+        source_artifacts = {
+            artifact["artifact_id"]
+            for source in packet["sources"] for artifact in source.get("derived_artifacts") or []
+        }
+        assert retirement["artifact_ids"].isdisjoint(source_artifacts)

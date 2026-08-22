@@ -11,6 +11,8 @@ from typing import Any
 
 from shapely.geometry import Point, mapping, shape
 
+from m25c_negative_controls import add_negative_control
+
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_BASELINE = Path("/private/tmp/m25c-region-155-baseline")
@@ -322,7 +324,9 @@ def main() -> int:
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--visual-review-sha256", default=VISUAL_REVIEW_SHA256)
     args = parser.parse_args()
-    packet = build_packet(args.baseline_dir, args.output, args.visual_review_sha256)
+    packet = add_negative_control(
+        build_packet(args.baseline_dir, args.output, args.visual_review_sha256), args.output,
+    )
     actual = {"assignments": len(packet["assignment_overrides"]), "polities": len(packet["polities"]),
               "m49_corrections": len(packet["location_region_overrides"]), "sources": len(packet["sources"]),
               "assertions": len(packet["assertions"]), "build_features": len(packet["build_features"]),

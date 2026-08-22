@@ -13,10 +13,12 @@ All 22 packets use the compositional territorial-status migration (`packet_versi
 relationships. Community, network, mobile, and chiefdom profiles retain
 presence/use/customary semantics without automatic ownership or control. The
 219 explicitly uninhabited assignments have null actors and all-none facets;
-their 13 synthetic pseudo-polities were removed. Nine Americas/Africa packets
-now pin Natural Earth 5.1.1 inland seams as modern negative controls. Seven
-fail at the fixed 0.20 ratio and therefore keep worldwide certification
-blocked; no generated status seam has been promoted as a historical border.
+their 13 synthetic pseudo-polities were removed. Fifteen Americas/Africa and
+Asia/Europe packets now pin Natural Earth 5.1.1 inland seams as modern negative
+controls. Thirteen fail at the fixed 0.20 ratio (including Southern Europe's
+non-executable zero-transition result) and therefore keep worldwide
+certification blocked; no generated status seam has been promoted as a
+historical border.
 
 `155-western-europe-2026-08-15.json` is the first accepted four-layer Grade-A
 packet. It replaces 385 geographically scoped assignments, adds 20 executable
@@ -49,23 +51,27 @@ territory and antimeridian islands.
 
 `039-southern-europe-2026-08-15.json` is the fourth accepted packet. It replaces
 all 464 Southern Europe assignments, supplies 23 authoritative polity records,
-18 canonical source pins, seven checked capital features, 29 executable
-assertions, and two checksum-pinned frontier assets. Its exact `1444-11-11`
+19 canonical source pins, seven checked capital features, 29 assertions, and
+one checksum-pinned Italy-Slovenia modern negative-control asset. Its exact `1444-11-11`
 interpretation is the day after Varna and preserves distinct Iberian crowns,
 Italian states, Balkan polities, Byzantium, and the Ottoman Sultanate. The
-Portugal–Castile hard frontier is independently pinned and rendered. Under the
-country-based M49 partition, Spain's and Portugal's complete territories remain
-in `039`, so no geographic correction applies.
+generated Portugal–Castile self-comparison and both of its obsolete
+frontier/mask assets have been retired. The migrated status sheet currently has
+zero executable transitions, so the negative seam fails closed with a null
+measurement. Under the country-based M49 partition, Spain's and Portugal's
+complete territories remain in `039`, so no geographic correction applies.
 
 `145-western-asia-2026-08-15.json` is the fifth accepted packet. It replaces
 all 768 Western Asia assignments, supplies eight authoritative polity records,
-11 canonical source pins, seven checked capital features, 29 executable
-assertions, and two checksum-pinned Ottoman-Qara Qoyunlu frontier assets. Its
+12 canonical source pins, seven checked capital features, 29 executable
+assertions, and one checksum-pinned Saudi Arabia-Yemen modern negative-control
+asset. Its
 exact `1444-11-11` interpretation is the day after Varna. It removes the modern
 Northern Cyprus and Palestine actors, repairs one Muscovy leak in Azerbaijan,
 and replaces every uncurated Arabian assignment with a bounded Rasulid-Yemen or
 explicitly fragmented local-Arabian record. The country-based M49 sheet needs
-no region correction.
+no region correction. The circular Ottoman-Qara Qoyunlu assertion and its
+frontier/mask assets have been retired pending independent georeferencing.
 
 `015-northern-africa-2026-08-16.json` is the sixth accepted packet. It replaces
 all 643 Northern Africa assignments, supplies nine date-valid political records,
@@ -81,8 +87,9 @@ country-based and assigns Spain's complete modern footprint to region `039`.
 
 `030-eastern-asia-2026-08-16.json` is the seventh accepted packet. It replaces
 all 1,941 Eastern Asia assignments, supplies eight date-valid political records,
-nine canonical source pins, five checked capital features, 21 executable
-assertions, and a checksum-pinned Ming-Oirat frontier asset. Its exact date is
+ten canonical source pins, five checked capital features, 21 executable
+assertions, and a checksum-pinned China-Mongolia modern negative-control asset.
+The circular Ming-Oirat generated-edge assertion has been retired. Its exact date is
 `1444-11-11`. The sheet distinguishes Ming China, Joseon under Sejong,
 Muromachi Japan during the Ashikaga succession interval, Oirat and Northern
 Yuan Mongol fabrics, Phagmodrupa-led Tibet, Jurchen polities, and Moghulistan.
@@ -91,8 +98,9 @@ country-based M49 correction applies.
 
 `034-southern-asia-2026-08-16.json` is the eighth accepted packet. It replaces
 all 910 Southern Asia assignments, supplies 20 date-valid political records,
-nine canonical source pins, thirteen checked capital features, 53 executable
-assertions, and a checksum-pinned Bahmani–Vijayanagara frontier asset. Its
+ten canonical source pins, thirteen checked capital features, 53 executable
+assertions, and a checksum-pinned India-Bangladesh modern negative-control
+asset. The circular Bahmani–Vijayanagara generated-edge assertion has been retired. Its
 exact date is `1444-11-11`. The sheet keeps the Sayyid Delhi, Gujarat, Malwa,
 Jaunpur, Bengal, Bahmani, Vijayanagara, Timurid, Qara Qoyunlu, Kashmir, Sindh,
 Himalayan, Sri Lankan, and island fabrics distinct. It replaces the modern
@@ -101,9 +109,10 @@ explicitly uninhabited Chagos record; no country-based M49 correction applies.
 
 `035-south-eastern-asia-2026-08-16.json` is the ninth accepted packet. It
 replaces all 1,759 South-Eastern Asia assignments, supplies 29 date-valid
-political records, seven canonical source pins, fourteen checked capital
-features, 57 executable assertions, and a checksum-pinned
-Ayutthaya-Cambodia frontier asset. Its exact date is `1444-11-11`. The sheet
+political records, eight canonical source pins, fourteen checked capital
+features, 57 executable assertions, and a checksum-pinned Thailand-Myanmar
+modern negative-control asset. The circular Ayutthaya-Cambodia generated-edge
+assertion has been retired. Its exact date is `1444-11-11`. The sheet
 distinguishes the mainland courts from the maritime and archipelagic polities,
 replaces 1,256 uncurated assignments and the colliding modern scaffold codes,
 and records uninhabited South China Sea islets explicitly. Three Christmas and
@@ -111,9 +120,10 @@ Cocos (Keeling) Island locations are corrected to M49 region `053`.
 
 `143-central-asia-2026-08-16.json` is the tenth and final accepted Asian
 packet. It replaces all 310 Central Asia assignments, supplies eight
-date-valid political records, seven canonical source pins, four checked urban
-features, 17 executable assertions, and a checksum-pinned
-Timurid–Moghulistan frontier asset. Its exact date is `1444-11-11`. The sheet
+date-valid political records, eight canonical source pins, four checked urban
+features, 17 executable assertions, and a checksum-pinned Kazakhstan-Uzbekistan
+modern negative-control asset. The circular Timurid-Moghulistan generated-edge
+assertion has been retired. Its exact date is `1444-11-11`. The sheet
 distinguishes Shah Rukh and Ulugh Beg's Timurid administrations from
 Abu'l-Khayr's Uzbek ulus, Moghulistan under Esen Buqa II, the Nogai–Manghit
 steppe, Syr Darya frontier polities, and local Turkmen fabrics. It removes the

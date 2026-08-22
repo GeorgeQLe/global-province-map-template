@@ -28,6 +28,73 @@ CONTROLS = {
     "018": ("BWA", "ZAF", "botswana-south-africa-seam"),
     "021": ("USA", "CAN", "us-canada-seam"),
     "029": ("HTI", "DOM", "haiti-dominican-seam"),
+    "030": ("CHN", "MNG", "china-mongolia-seam"),
+    "034": ("IND", "BGD", "india-bangladesh-seam"),
+    "035": ("THA", "MMR", "thailand-myanmar-seam"),
+    "039": ("ITA", "SVN", "italy-slovenia-seam"),
+    "143": ("KAZ", "UZB", "kazakhstan-uzbekistan-seam"),
+    "145": ("SAU", "YEM", "saudi-arabia-yemen-seam"),
+}
+
+RETIREMENTS = {
+    "015": {
+        "assertion_id": "region-015-border-marinid-zayyanid",
+        "boundary_id": "region-015-marinid-zayyanid-frontier",
+        "asset_ids": {"region-015-boundaries", "region-015-polity-masks"},
+        "artifact_ids": {
+            "derived-region-015-marinid-zayyanid-frontier",
+            "derived-region-015-polity-masks",
+        },
+        "filenames": {"boundaries.geojson", "polity-masks.geojson"},
+    },
+    "030": {
+        "assertion_id": "region-030-border-ming-oirat",
+        "boundary_id": "region-030-ming-oirat-frontier",
+        "asset_ids": {"region-030-boundaries"},
+        "artifact_ids": {"derived-region-030-ming-oirat-frontier"},
+        "filenames": {"boundaries.geojson"},
+    },
+    "034": {
+        "assertion_id": "region-034-border-bahmani-vijayanagara",
+        "boundary_id": "region-034-bahmani-vijayanagara-frontier",
+        "asset_ids": {"region-034-boundaries"},
+        "artifact_ids": {"derived-region-034-bahmani-vijayanagara-frontier"},
+        "filenames": {"boundaries.geojson"},
+    },
+    "035": {
+        "assertion_id": "region-035-border-ayutthaya-cambodia",
+        "boundary_id": "region-035-ayutthaya-cambodia-frontier",
+        "asset_ids": {"region-035-boundaries"},
+        "artifact_ids": {"derived-region-035-ayutthaya-cambodia-frontier"},
+        "filenames": {"boundaries.geojson"},
+    },
+    "039": {
+        "assertion_id": "region-039-border-portugal-castile",
+        "boundary_id": "region-039-portugal-castile-frontier",
+        "asset_ids": {"region-039-boundaries", "region-039-polity-masks"},
+        "artifact_ids": {
+            "derived-region-039-portugal-castile-frontier",
+            "derived-region-039-portugal-castile-mask",
+        },
+        "filenames": {"boundaries.geojson", "polity-masks.geojson"},
+    },
+    "143": {
+        "assertion_id": "region-143-border-timurid-moghulistan",
+        "boundary_id": "region-143-timurid-moghulistan-frontier",
+        "asset_ids": {"region-143-boundaries"},
+        "artifact_ids": {"derived-region-143-timurid-moghulistan-frontier"},
+        "filenames": {"boundaries.geojson"},
+    },
+    "145": {
+        "assertion_id": "region-145-border-ottoman-qara-qoyunlu",
+        "boundary_id": "region-145-ottoman-qara-qoyunlu-frontier",
+        "asset_ids": {"region-145-boundaries", "region-145-polity-masks"},
+        "artifact_ids": {
+            "derived-region-145-ottoman-qara-qoyunlu-frontier",
+            "derived-region-145-ottoman-qara-qoyunlu-mask",
+        },
+        "filenames": {"boundaries.geojson", "polity-masks.geojson"},
+    },
 }
 
 
@@ -56,15 +123,15 @@ def extract_control(region_id: str):
     return seam
 
 
-def add_negative_control(packet: dict[str, Any], output: Path, *, retire_region_015: bool = False) -> dict[str, Any]:
-    """Add one reviewed modern seam and, for 015, retire its circular legacy gate."""
+def add_negative_control(packet: dict[str, Any], output: Path) -> dict[str, Any]:
+    """Retire configured circular gates and add one reviewed modern seam."""
     region_id = packet["region_id"]
     left_code, right_code, suffix = CONTROLS[region_id]
     if _archive_hash() != NATURAL_EARTH_SHA256:
         raise SystemExit("pinned Natural Earth Admin-0 5.1.1 archive checksum drifted")
 
-    if retire_region_015:
-        _retire_region_015(packet, output)
+    if region_id in RETIREMENTS:
+        _retire_legacy_assertion(packet, output, RETIREMENTS[region_id])
 
     source_id = f"natural-earth-admin0-5.1.1-region-{region_id}"
     boundary_id = f"forbidden-modern-{suffix}"
@@ -181,31 +248,26 @@ def add_negative_control(packet: dict[str, Any], output: Path, *, retire_region_
     return migrate_packet(packet)
 
 
-def _retire_region_015(packet: dict[str, Any], output: Path) -> None:
-    assertion_id = "region-015-border-marinid-zayyanid"
-    boundary_id = "region-015-marinid-zayyanid-frontier"
-    derived_ids = {
-        "derived-region-015-marinid-zayyanid-frontier",
-        "derived-region-015-polity-masks",
-    }
+def _retire_legacy_assertion(packet: dict[str, Any], output: Path, retirement: dict[str, Any]) -> None:
+    assertion_id = retirement["assertion_id"]
+    boundary_id = retirement["boundary_id"]
     packet["assertions"] = [row for row in packet["assertions"] if row["assertion_id"] != assertion_id]
     packet["boundary_features"] = [
         row for row in packet["boundary_features"] if row["properties"]["feature_id"] != boundary_id
     ]
     packet["derived_files"] = [
-        row for row in packet["derived_files"] if row["asset_id"] not in {
-            "region-015-boundaries", "region-015-polity-masks"
-        }
+        row for row in packet["derived_files"] if row["asset_id"] not in retirement["asset_ids"]
     ]
     for source in packet["sources"]:
         source["derived_artifacts"] = [
-            row for row in source.get("derived_artifacts") or [] if row["artifact_id"] not in derived_ids
+            row for row in source.get("derived_artifacts") or []
+            if row["artifact_id"] not in retirement["artifact_ids"]
         ]
     for row in packet["coverage"]:
         row["assertion_ids"] = [value for value in row["assertion_ids"] if value != assertion_id]
     packet["expected_counts"]["assertions"] -= 1
-    packet["expected_counts"]["derived_files"] -= 2
-    for filename in ("boundaries.geojson", "polity-masks.geojson"):
-        path = output.parent / "assets" / "015" / filename
+    packet["expected_counts"]["derived_files"] -= len(retirement["asset_ids"])
+    for filename in retirement["filenames"]:
+        path = output.parent / "assets" / packet["region_id"] / filename
         if path.exists():
             path.unlink()

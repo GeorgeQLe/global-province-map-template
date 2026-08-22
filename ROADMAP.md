@@ -644,8 +644,11 @@ Production authoring and runtime program:
 - **M25C — Global 1444 Certification** — expand the existing five-region
   candidate worldwide. The unsigned 1444-v2 remains a valuable pilot and
   evidence set, not a release boundary. Brussels and Nord remain mandatory
-  negative-anachronism regressions. Restore the 1444 public tab only after all
-  global research and M25B runtime gates pass.
+  negative-anachronism regressions. Fifteen pinned modern inland-seam controls
+  now expose thirteen unresolved failures; only four Oceania regions still lack
+  a negative control, and 19 regions lack an independently georeferenced
+  positive border. Restore the 1444 public tab only after all global research
+  and M25B runtime gates pass.
 - **M26 — Global 1836 Certification** — worldwide post-Napoleonic geometry,
   politics, status, and anomaly coverage. Reuse the M25B runtime contract; publish
   scenario-only deltas when location/province membership is unchanged, and

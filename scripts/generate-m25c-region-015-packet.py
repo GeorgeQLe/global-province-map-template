@@ -333,8 +333,7 @@ def main() -> int:
     parser.add_argument("--visual-review-sha256", default=VISUAL_REVIEW_SHA256)
     args = parser.parse_args()
     packet = add_negative_control(
-        build_packet(args.baseline_dir, args.output, args.visual_review_sha256),
-        args.output, retire_region_015=True,
+        build_packet(args.baseline_dir, args.output, args.visual_review_sha256), args.output,
     )
     actual = {"assignments": len(packet["assignment_overrides"]), "polities": len(packet["polities"]),
               "m49_corrections": len(packet["location_region_overrides"]), "sources": len(packet["sources"]),

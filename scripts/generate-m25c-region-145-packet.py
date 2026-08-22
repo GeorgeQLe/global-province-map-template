@@ -10,6 +10,8 @@ from pathlib import Path
 from typing import Any
 
 from shapely.geometry import Point, mapping, shape
+
+from m25c_negative_controls import add_negative_control
 from shapely.ops import unary_union
 
 
@@ -437,7 +439,9 @@ def main() -> int:
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--visual-review-sha256", default=VISUAL_REVIEW_SHA256)
     args = parser.parse_args()
-    packet = build_packet(args.baseline_dir, args.output, args.visual_review_sha256)
+    packet = add_negative_control(
+        build_packet(args.baseline_dir, args.output, args.visual_review_sha256), args.output,
+    )
     actual = {
         "assignments": len(packet["assignment_overrides"]), "polities": len(packet["polities"]),
         "m49_corrections": len(packet["location_region_overrides"]),

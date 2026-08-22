@@ -1,6 +1,6 @@
 # M25C Asia/Europe assertion re-research
 
-Status: **research complete; reviewer decision required**
+Status: **approved and implemented on 2026-08-21**
 Start date: `1444-11-11`
 Research date: `2026-08-21`
 
@@ -158,3 +158,22 @@ Approve or amend the following bundle before implementation:
    that the existing nine controls retain their outcomes; and
 4. keep all six positive-border requirements, plus Southern Europe's missing
    compositional status distinctions, fail-closed pending independent evidence.
+
+## Approved implementation outcome
+
+George Le approved the four-part bundle above. Implementation retired all six
+circular positive assertions, six boundary features, six boundary assets, and
+the assertion-only polity-mask assets for regions `039` and `145`. It added the
+six specified Natural Earth 5.1.1 controls at the unchanged `75 km` / `0.20`
+contract and made zero-transition seam assertions fail with a null measurement,
+deterministic `transition_count: 0` diagnostics, and a dedicated
+`NON_EXECUTABLE_SEAM_ASSERTION` error.
+
+A fresh provisional worldwide assembly reproduced the researched outcomes:
+`030` measured `0.8388803144`, `034` measured `0.7985413935`, and `035`,
+`143`, and `145` measured `1.0`; `039` failed non-executable with zero
+transitions. The prior nine controls retained seven failures and the `021` and
+`029` passes. Missing negatives now contain only Oceania regions `053`, `054`,
+`057`, and `061`; missing positives contain 19 regions. Thirteen seam failures
+remain certification blockers. No assignment, facet, relationship, tolerance,
+runtime, signing, certification, publication, or deployment state changed.

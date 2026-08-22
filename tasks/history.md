@@ -1,5 +1,23 @@
 # History
 
+## 2026-08-21 - M25C Asia/Europe assertion remediation
+
+- Implemented the approved bundle for regions `030`, `034`, `035`, `039`,
+  `143`, and `145`: retired six circular generated-edge borders and eight
+  obsolete boundary/mask assets, then added six checksum-pinned Natural Earth
+  5.1.1 modern inland-seam controls at the fixed `75 km` / `0.20` contract.
+- Hardened compositional seam QA so a region with zero executable transitions
+  fails with a null measurement, deterministic zero-transition diagnostics,
+  and `NON_EXECUTABLE_SEAM_ASSERTION` alongside the ordinary spatial failure.
+- Fresh worldwide QA retained the prior seven failures and `021`/`029` passes;
+  the five executable new controls failed at `0.7985`-`1.0`, and `039` failed
+  non-executable. Thirteen seam failures continue to block certification.
+- Missing negatives fell to the four Oceania regions (`053`, `054`, `057`,
+  `061`), while missing positives rose to 19. Assignments, facets,
+  relationships, tolerances, runtime, signing, certification, and publication
+  state remain unchanged. Oceania assertion research is next and remains
+  decision-gated.
+
 ## 2026-08-21 - M25C Asia/Europe assertion re-research
 
 - Re-audited the exact six missing negative-anachronism warnings in Eastern,

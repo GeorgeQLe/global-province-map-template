@@ -39,8 +39,11 @@
      specified; all six circular generated-border gates require retirement,
      and Southern Europe's zero-transition status collapse must fail closed;
      see `tasks/m25c-asia-europe-assertion-reresearch.md`.
-  9. [ ] After reviewer decision, implement the approved Asia/Europe assertion
-     remediation and verify its spatial and source-pinning gates.
+  9. [x] After reviewer decision, implement the approved Asia/Europe assertion
+     remediation and verify its spatial and source-pinning gates. Six pinned
+     inland-seam controls now fail at 75 km / 0.20, including Southern Europe's
+     fail-closed zero-transition result; 13 total seam failures block
+     certification, and only the four Oceania regions still lack negatives.
   10. [ ] Research missing assertions for the affected Oceania regions and
      recommend exact assertions.
   11. [ ] After reviewer decision, implement the approved Oceania assertion

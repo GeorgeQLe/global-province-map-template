@@ -594,7 +594,14 @@ def _execute_assertions(
                         assertion["region_id"], refs[0], assertion["measurement_parameters"]["corridor_km"],
                         canonical, assignments, start_date,
                     )
-                    status = "pass" if measurement <= assertion["tolerance"] else "fail"
+                    if diagnostics["transition_count"] == 0:
+                        measurement, status = None, "fail"
+                        _finding(
+                            findings, "NON_EXECUTABLE_SEAM_ASSERTION", "error",
+                            f"{aid} has no regional compositional status transitions to test.", [aid],
+                        )
+                    else:
+                        status = "pass" if measurement <= assertion["tolerance"] else "fail"
         result = {"assertion_id": aid, "spatial_relation": relation, "unit": assertion["unit"], "tolerance": assertion["tolerance"], "measurement": measurement, "status": status, **diagnostics}
         results.append(result)
         if status != "pass":

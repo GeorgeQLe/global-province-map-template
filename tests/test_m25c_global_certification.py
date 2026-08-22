@@ -301,15 +301,18 @@ def test_approved_polity_source_cleanup_is_exact_and_fail_closed():
     )
 
 
-def test_americas_africa_remediation_inventory_is_exact_and_fail_closed():
+def test_americas_africa_and_asia_europe_remediation_inventory_is_exact_and_fail_closed():
     packets = [json.loads(path.read_text()) for path in sorted((GLOBAL / "regional-packets").glob("*.json"))]
     assertions = [row for packet in packets for row in packet.get("assertions") or []]
     seams = [
         row for row in assertions
         if row["spatial_relation"] == "regional_status_boundary_matches_forbidden_modern_seam_ratio_lte"
     ]
-    regions = {"005", "011", "013", "014", "015", "017", "018", "021", "029"}
-    assert len(seams) == 9
+    regions = {
+        "005", "011", "013", "014", "015", "017", "018", "021", "029",
+        "030", "034", "035", "039", "143", "145",
+    }
+    assert len(seams) == 15
     assert {row["region_id"] for row in seams} == regions
     assert all(row["tolerance"] == 0.2 and row["measurement_parameters"] == {"corridor_km": 75} for row in seams)
     assert not any(row["assertion_id"] == "region-015-border-marinid-zayyanid" for row in assertions)
@@ -318,6 +321,23 @@ def test_americas_africa_remediation_inventory_is_exact_and_fail_closed():
         if row["expectation"] == "positive" and row["assertion_type"] == "border"
     }
     assert regions.isdisjoint(positive_border_regions)
+
+    retired = {
+        "030": "region-030-border-ming-oirat",
+        "034": "region-034-border-bahmani-vijayanagara",
+        "035": "region-035-border-ayutthaya-cambodia",
+        "039": "region-039-border-portugal-castile",
+        "143": "region-143-border-timurid-moghulistan",
+        "145": "region-145-border-ottoman-qara-qoyunlu",
+    }
+    assert not {row["assertion_id"] for row in assertions}.intersection(retired.values())
+    for region in retired:
+        packet = next(packet for packet in packets if packet["region_id"] == region)
+        regional_seams = [row for row in packet["assertions"] if row["expectation"] == "negative_anachronism"]
+        assert len(regional_seams) == 1
+        assert not (GLOBAL / "regional-packets" / "assets" / region / "boundaries.geojson").exists()
+    for region in {"039", "145"}:
+        assert not (GLOBAL / "regional-packets" / "assets" / region / "polity-masks.geojson").exists()
 
 
 def test_regional_packet_cannot_promote_a_weak_grade_a_claim():
