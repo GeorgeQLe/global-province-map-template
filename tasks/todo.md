@@ -66,9 +66,17 @@
       build and full render reproduce exactly 54 non-review errors and one
       pending-review warning; all four permissions remain false and
       `accept-review` refuses without mutation.
-  14. [ ] After separately approved remediation makes ordinary QA clean, render
-      the final review bundle and stop for independent human review before
-      runtime certification or publication.
+  14. [x] Re-research the 16 failed seams, three non-executable controls, and
+      19 missing positive borders. The evidence supports covered executable-zero
+      semantics, a Southern Europe status rebuild plus scoped Portugal-Castile
+      border, five reviewed border-non-applicability records, and conditional
+      region-by-region digitization; it rejects invented universal borders. See
+      `tasks/m25c-spatial-remediation-reresearch.md`.
+  15. [ ] After reviewer decision, implement the approved spatial-remediation
+      bundle, regenerate twice, render, rerun ordinary worldwide QA, and update
+      the exact remaining-defect inventory.
+  16. [ ] After ordinary QA is clean, render the final review bundle and stop
+      for independent human review before runtime certification or publication.
 
 - After M25C research acceptance: run canonical/runtime parity, determinism,
   performance, certification, and publication gates without weakening the

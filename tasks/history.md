@@ -1,5 +1,27 @@
 # History
 
+## 2026-08-22 - M25C worldwide spatial-remediation re-research
+
+- Reproduced all 19 modern-seam measurements from a fresh assembled pass:
+  16 failures, including the three null/zero-transition controls in `039`,
+  `057`, and `061`, with `021`, `029`, and `054` passing.
+- Distinguished missing Southern Europe status evidence from covered island
+  seams that cross one reviewed historical component, and recommended
+  fail-closed covered executable-zero semantics with explicit both-side and
+  eligibility diagnostics.
+- Re-researched all 19 missing positive-border regions. Portugal-Castile is
+  ready for a scoped official/treaty-backed asset; Raichur is a conditional
+  digitization candidate; the remaining lines lack exact-date independent
+  geometry.
+- Recommended reviewed border-non-applicability records for `021`, `053`,
+  `054`, `057`, and `061`, where a hard territorial line would contradict the
+  topology or cited evidence, while retaining mandatory positive hard spatial
+  anchors and independent review.
+- Recorded exact assertion records, alternatives, expected QA impact, and the
+  five-part implementation decision in
+  `tasks/m25c-spatial-remediation-reresearch.md`. No pass or release bytes
+  changed and all candidate permissions remain false.
+
 ## 2026-08-22 - M25C fail-closed assembled-pass transition
 
 - Added the default-safe `--assembly-mode assembled-pass` opt-in and shared
