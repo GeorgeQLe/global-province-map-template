@@ -1,5 +1,23 @@
 # History
 
+## 2026-08-22 - M25C spatial-remediation decision approved with amendments
+
+- George Le approved all five spatial-remediation decisions with amendments.
+- Tightened covered-zero eligibility to require fully non-unknown, reviewed,
+  date-valid coverage over the full usable seam with deterministic both-side
+  sampling and explicit coverage/rejection diagnostics.
+- Replaced blanket Southern Europe restoration with corridor-first,
+  record-level reconstruction and required independently derived, masked,
+  provenance-complete Portugal-Castile stable segments.
+- Made the five border-non-applicability regions candidates rather than
+  automatic exemptions; each must pass a revision-bound land-adjacency audit,
+  hard-anchor binding, dedicated QA result, and independent hash review.
+- Limited Raichur to independently corroborated point, zone, or explicitly
+  supported line claims and prohibited inferred closed-frontier interpolation.
+- Added separate pre-implementation evidence approval and post-implementation
+  verification gates for every other corridor or border. No remediation bytes,
+  QA outputs, candidate permissions, or release artifacts changed.
+
 ## 2026-08-22 - M25C worldwide spatial-remediation re-research
 
 - Reproduced all 19 modern-seam measurements from a fresh assembled pass:

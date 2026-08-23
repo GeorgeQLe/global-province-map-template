@@ -72,10 +72,18 @@
       border, five reviewed border-non-applicability records, and conditional
       region-by-region digitization; it rejects invented universal borders. See
       `tasks/m25c-spatial-remediation-reresearch.md`.
-  15. [ ] After reviewer decision, implement the approved spatial-remediation
-      bundle, regenerate twice, render, rerun ordinary worldwide QA, and update
-      the exact remaining-defect inventory.
-  16. [ ] After ordinary QA is clean, render the final review bundle and stop
+  15. [ ] Implement the approved first spatial-remediation phase: the amended
+      covered-zero contract, corridor-first Southern Europe reconstruction and
+      independently derived Portugal-Castile stable segments, and fail-closed
+      qualification of the five applicability candidates. Research Raichur
+      points/zones, but promote no hard border unless its separately stated
+      source conditions pass. Regenerate twice, render, rerun ordinary
+      worldwide QA, and update the exact remaining-defect inventory.
+  16. [ ] Review each remaining corridor or positive-border evidence packet
+      separately before its enumerated edits. After approved implementations,
+      reproduce their bound bytes and rerun affected, neighboring, and ordinary
+      worldwide QA without changing tolerances or release permissions.
+  17. [ ] After ordinary QA is clean, render the final review bundle and stop
       for independent human review before runtime certification or publication.
 
 - After M25C research acceptance: run canonical/runtime parity, determinism,

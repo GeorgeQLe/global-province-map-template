@@ -1,6 +1,6 @@
 # M25C worldwide spatial-remediation re-research
 
-Status: **research complete; remediation decision required**
+Status: **approved with amendments; staged remediation pending**
 Start date: `1444-11-11`
 Research date: `2026-08-22`
 
@@ -243,3 +243,71 @@ Approve or amend this bundle before implementation:
    spatial source; and
 5. no other positive promotion or seam assignment edit until its exact
    corridor-level evidence packet is separately reviewed.
+
+## Approved decision — 2026-08-22
+
+George Le approved all five decisions with the following amendments. These
+terms supersede any less-specific wording in the recommendation above.
+
+1. **Covered executable zero.** An eligible component is date-valid, bound to
+   reviewed evidence, and non-`unknown` on every required facet. Both-side
+   observability must use deterministic seam-normal sampling inside the fixed
+   `75 km` corridor. The full usable reference seam must have eligible coverage
+   on the seam and on both sides; any gap, ambiguous side sample, invalid or
+   zero-length reference, or all-unknown coverage remains null/fail. Diagnostics
+   must include usable and covered reference kilometres, coverage ratio,
+   left/right sampled component IDs, eligibility-rejection reasons, and
+   transition count.
+2. **Southern Europe and Portugal-Castile.** Do not restore all 464 legacy
+   assignments wholesale. Reconstruct record-level, date-valid components,
+   beginning with the Italy-Slovenia corridor, and require decision 1's
+   observability gate before calling the seam executable. Derive the
+   Portugal-Castile line independently from official linework and an explicit
+   source-derived stable-segment mask. Exclude Olivença and every later-changed,
+   specially governed, or post-1297-demarcated segment unless separately shown
+   to preserve the 1444 line. Publish the inclusion/exclusion manifest, exact
+   locators, checksums, license lineage, transformations, error budget, and
+   independent-review signature. Neither the reference line nor its subjects
+   may be derived from candidate shared fabric edges.
+3. **Positive-border applicability.** Missing applicability records fail
+   closed and `required` remains the default. Bind every record to region,
+   start date, fabric and geometry revisions, exact component inventory, source
+   hashes, and passing geometry-layer anchor assertion IDs. A
+   `not_applicable` record must inventory eligible land-adjacent actor pairs and
+   show that none supports a hard two-sided territorial line under the current
+   model; incomplete research cannot qualify. QA must emit a dedicated result,
+   not silently suppress a missing-border error. Independent review binds the
+   record hash, and any bound component, source, or geometry change invalidates
+   it. Regions `021`, `053`, `054`, `057`, and `061` are approved candidates,
+   not automatic exemptions; `029` remains required/pending.
+4. **Raichur.** A second source must be independent of the inscription's
+   evidence tradition, corroborate control through `1444-11-11`, and support
+   the same claimed spatial relation. Fort possession, tribute, campaign reach,
+   rivers, zones, and two-sided territorial lines remain distinct claims.
+   Points may become hard anchors and approximate or contested reach may remain
+   soft zones, but no forts or rivers may be connected into an inferred closed
+   frontier. Only segments independently supported as the exact-date
+   Bahmani-Vijayanagara division may become a hard border. Predeclare locators,
+   transformations, control points, uncertainty, and error budget and require
+   independent review. If the evidence does not qualify, `034` remains pending
+   and receives no applicability exemption. This work is separate from the
+   India-Bangladesh seam remediation.
+5. **Every other remediation.** Each corridor or border requires a separately
+   approved pre-implementation packet naming exact assertions and components,
+   snapshot hashes, old and proposed values, evidence-to-component mapping,
+   locators, rationale, predeclared measurement, tolerance, and expected QA
+   impact, plus confirmation that it uses neither modern-country dispatch nor
+   candidate-derived geometry. Post-implementation verification must explain
+   every changed component, reject unapproved drift, reproduce approved bytes,
+   verify provenance and temporal validity, and rerun affected, neighboring,
+   and ordinary worldwide QA. Regressions block independently of improvements.
+   Separately approved packets may execute together only while remaining
+   independently hash-bound and traceable. No tolerance, reference seam,
+   assertion deletion, coverage grade, review permission, certification state,
+   or publication permission changes without a separate approval.
+
+Implementation is staged. Decisions 1-3 and the qualified portions of decision
+2 form the first remediation phase. Decision 4 authorizes research and
+point/zone digitization but no hard border until its conditions pass. All other
+corridor edits and positive promotions remain stopped at their individual
+pre-implementation review gates.
