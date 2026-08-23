@@ -1,5 +1,22 @@
 # History
 
+## 2026-08-23 - M25C Task 16 region 005 corridor review
+
+- Separately reviewed the next ordered Task 16 packet: South America's
+  Peru-Bolivia negative-control corridor and missing positive-border gate.
+- Rejected implementation. The current region generator resolves province
+  points to Natural Earth `ADM0_A3` and dispatches `PER` and `BOL` through
+  different actor branches, violating the explicit no-modern-country-dispatch
+  condition. The resulting seam match is `0.8934851380134233` against the
+  fixed `0.20` maximum.
+- Hash-bound the 21 affected components, current values, exact assertion,
+  source pins, assembled artifacts, and preflight result. The sources support
+  broad Inca/Chimor/Aymara chronology and centers but no exact-date two-sided
+  line or evidence-to-component mapping.
+- Authorized no edits. All three region `005` blockers and all review,
+  certification, runtime, publication, and deployment permissions remain
+  unchanged. Task 16 continues with the next separate packet.
+
 ## 2026-08-23 - M25C spatial-remediation phase 1
 
 - Implemented eligible covered-zero seam semantics with complete reviewed,

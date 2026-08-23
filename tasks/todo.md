@@ -90,6 +90,12 @@
       separately before its enumerated edits. After approved implementations,
       reproduce their bound bytes and rerun affected, neighboring, and ordinary
       worldwide QA without changing tolerances or release permissions.
+      The first separate review, region `005` Peru-Bolivia / positive-border,
+      is complete and rejected before implementation: the current actor split
+      uses Natural Earth `ADM0_A3` modern-country dispatch and the evidence has
+      no exact-date, independently georeferenced line or component mapping. No
+      bytes or QA/release state changed; see
+      `tasks/m25c-region-005-corridor-evidence-review.md`.
   17. [ ] After ordinary QA is clean, render the final review bundle and stop
       for independent human review before runtime certification or publication.
 
