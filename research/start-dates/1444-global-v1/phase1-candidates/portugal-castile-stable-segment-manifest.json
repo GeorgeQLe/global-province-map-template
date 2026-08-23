@@ -1,0 +1,60 @@
+{
+  "artifact_id": "candidate-portugal-castile-caop-5394",
+  "artifact_path": "research/start-dates/1444-global-v1/phase1-candidates/caop-segment-5394.geojson",
+  "artifact_sha256": "f86b6f6b824bd15054df1164ea66adafcb0c7c37f4328187b03b11a78ebbf6e9",
+  "artifact_status": "candidate_unpromoted",
+  "candidate_claim": "A present-day official Portugal-Spain land-boundary segment near Penha Garcia that may be eligible for a future Portugal-Castile stable-segment assertion after segment-specific historical and fabric review.",
+  "derived_at": "2026-08-22",
+  "error_budget": {
+    "allowed_hausdorff_distance_km": 5.0,
+    "current_nearest_subject_edge_hausdorff_distance_km": 69.0,
+    "result": "failed"
+  },
+  "exclusion_policy": {
+    "excluded_categories": [
+      "Olivenza or other CAOP segments whose boundary status is not agreed",
+      "Couto Misto and other historically exceptional northern segments",
+      "Contienda de Moura and other later-demarcated segments",
+      "the southern Cuncos-to-sea section governed by the 1926 convention",
+      "any segment without independent, segment-specific evidence of stability on 1444-11-11"
+    ],
+    "mask_status": "conservative_manual_candidate_filter_pending_independent_review"
+  },
+  "independent_review": {
+    "reviewed_artifact_sha256": null,
+    "reviewer": null,
+    "status": "pending"
+  },
+  "license": "Official DGT CAOP download; retain source attribution and verify the publisher's current reuse terms before redistribution.",
+  "promotion": {
+    "permitted": false,
+    "reasons": [
+      "No independent segment-specific source yet establishes that the selected geometry represents the exact 1444-11-11 Portugal-Castile line.",
+      "The current unsplit province fabric has no independently derived two-sided subject edge within the declared 5 km error budget.",
+      "Independent hash review is pending."
+    ]
+  },
+  "selection": {
+    "boundary_status": "Definido",
+    "country_pair": "PT#ES",
+    "left_entity": "Espanha",
+    "right_entity": "Penha Garcia",
+    "segment_id": "5394",
+    "source_layer": "Cont_Troco_Limite_Terra",
+    "source_length_m": 15413.98
+  },
+  "source": {
+    "archive_sha256": "149dab7ec438e7b1863f01db4b7768819ea3ebab480468dedbf6505b936e9718",
+    "archive_url": "https://www.dgterritorio.gov.pt/sites/default/files/ficheiros-cartografia/CAOP_Continente_2023-shp.zip",
+    "citation": "Direcao-Geral do Territorio, Carta Administrativa Oficial de Portugal, Continente 2023",
+    "landing_page": "https://www.dgterritorio.gov.pt/atividades/cartografia/cartografia-tematica/caop?language=pt",
+    "source_crs": "EPSG:3763"
+  },
+  "start_date": "1444-11-11",
+  "transformations": [
+    "selected the official land-boundary record with ICC=PT#ES and ID_TROCO=5394",
+    "transformed EPSG:3763 coordinates to EPSG:4326 with pyproj",
+    "simplified the line with a 0.001 degree tolerance while preserving topology",
+    "serialized one GeoJSON LineString with deterministically ordered properties"
+  ]
+}

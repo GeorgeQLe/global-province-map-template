@@ -76,16 +76,6 @@ RETIREMENTS = {
         "artifact_ids": {"derived-region-035-ayutthaya-cambodia-frontier"},
         "filenames": {"boundaries.geojson"},
     },
-    "039": {
-        "assertion_id": "region-039-border-portugal-castile",
-        "boundary_id": "region-039-portugal-castile-frontier",
-        "asset_ids": {"region-039-boundaries", "region-039-polity-masks"},
-        "artifact_ids": {
-            "derived-region-039-portugal-castile-frontier",
-            "derived-region-039-portugal-castile-mask",
-        },
-        "filenames": {"boundaries.geojson", "polity-masks.geojson"},
-    },
     "143": {
         "assertion_id": "region-143-border-timurid-moghulistan",
         "boundary_id": "region-143-timurid-moghulistan-frontier",

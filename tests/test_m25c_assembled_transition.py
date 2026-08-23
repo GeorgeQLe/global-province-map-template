@@ -95,6 +95,7 @@ def _assembled_fixture(root: Path) -> list[dict]:
             "components": [{"provisional": False} for _ in province_ids],
             "provinces": [{"provisional": False} for _ in province_ids],
         },
+        "positive-border-applicability.json": {"records": []},
         "world_coverage_mask.geojson": {
             "features": [{"properties": {"location_id": value}} for value in locations],
         },

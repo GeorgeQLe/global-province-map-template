@@ -49,6 +49,12 @@ def migrate_packet(packet: dict[str, Any]) -> dict[str, Any]:
     actor_sources: dict[str, set[str]] = {}
     removed = 0
     for row in result.get("assignment_overrides", []):
+        if row.pop("_preserve_reviewed_compositional_status", False):
+            for relationship in row.get("status_relationships") or []:
+                actor = relationship["actor_political_unit_id"]
+                used.add(actor)
+                actor_sources.setdefault(actor, set()).update(row["source_ids"])
+            continue
         actors = [value for value in (row.get("owner_polity_id"), row.get("controller_polity_id"), row.get("sovereign_polity_id")) if value]
         actor = actors[0] if actors else (row.get("polity_ids") or [None])[0]
         if actor is None and row.get("status_relationships"):

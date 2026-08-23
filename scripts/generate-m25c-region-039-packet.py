@@ -133,6 +133,18 @@ CAPITALS = {
     "belgrade": ((20.4489, 44.7866), "scenario-ser"),
 }
 
+# Record-level reconstruction approved for the fixed Italy-Slovenia corridor.
+# These IDs are evidence-to-component decisions, not a country-code
+# dispatch rule. Every other Southern Europe component remains unknown until
+# its own corridor packet is reviewed.
+ITALY_SLOVENIA_CORRIDOR_COMPONENTS = frozenset({
+    "prv_4135770ab968f38bca67", "prv_1b8a54b0c098d8c2cf09",
+    "prv_24db15d5ae130c8a28f3", "prv_124f2c3c7427e9b49fc8",
+    "prv_7ee3d24c2bcf29c026f3", "prv_09be1f2b49e888579cb7",
+    "prv_134894c766f1b126146b", "prv_23535148c54f1b807d57",
+    "prv_f45f86dd0797a2cb63f4",
+})
+
 
 def load(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
@@ -161,6 +173,14 @@ def assertion(assertion_id: str, layer: str, subjects: list[str], boundaries: li
 
 def build_packet(baseline: Path, output: Path, visual_sha256: str) -> dict[str, Any]:
     source_index = {row["source_id"]: row for row in load(baseline / "source_manifest.json")["sources"]}
+    for source in source_index.values():
+        source["derived_artifacts"] = [
+            artifact for artifact in (source.get("derived_artifacts") or [])
+            if artifact["artifact_id"] not in {
+                "derived-region-039-portugal-castile-frontier",
+                "derived-region-039-portugal-castile-mask",
+            }
+        ]
     source_index.update({row["source_id"]: row for row in STATIC_SOURCES})
     selected_ids = sorted(set(GEOMETRY_SOURCES + POLITICS_SOURCES + HIERARCHY_SOURCES + RELATIONSHIP_SOURCES))
     sources = [source_index[source_id] for source_id in selected_ids]
@@ -175,17 +195,37 @@ def build_packet(baseline: Path, output: Path, visual_sha256: str) -> dict[str, 
         raise SystemExit(f"region-039 assignment scope drifted: {len(assignments)}")
     assignment_overrides = []
     polity_ids: set[str] = set()
-    actor_by_province: dict[str, str] = {}
+    polity_ids_by_province: dict[str, set[str]] = {}
     for row in assignments:
         hierarchy = dict(row["hierarchy"])
         hierarchy["method"] = "evidence-backed-polity-region-grouping-v1"
-        assignment_overrides.append({
+        override = {
             "province_id": row["province_id"], "source_ids": sorted(POLITICS_SOURCES),
             "uncertainty": min(float(row["uncertainty"]), 0.25),
-            "notes": "Southern Europe exact-date replacement for 1444-11-11, explicitly postdating the 10 November Battle of Varna and reviewed across the Iberian, Italian, Balkan, Byzantine, and Ottoman sheets.",
+            "notes": "Southern Europe phase-one record. Only the separately enumerated Italy-Slovenia corridor receives compositional reconstruction; all other records remain fail-closed unknown.",
             "hierarchy": hierarchy,
-        })
-        actor_by_province[row["province_id"]] = row["owner_polity_id"]
+        }
+        if row["province_id"] in ITALY_SLOVENIA_CORRIDOR_COMPONENTS:
+            override.update({
+                "_preserve_reviewed_compositional_status": True,
+                "sovereign_polity_id": None, "owner_polity_id": None,
+                "controller_polity_id": None,
+                "polity_ids": ["scenario-hab", "scenario-hun", "scenario-ven"],
+                "core_polity_ids": [], "claim_polity_ids": [],
+                "dispute_polity_ids": ["scenario-hab", "scenario-hun", "scenario-ven"],
+                "facets": {
+                    "habitability": "habitable", "population_presence": "resident",
+                    "settlement_pattern": "mixed", "tenure": "contested",
+                    "authority": "shared",
+                },
+                "status_relationships": [
+                    {"relationship": "territorial_presence", "actor_political_unit_id": polity_id}
+                    for polity_id in ("scenario-hab", "scenario-hun", "scenario-ven")
+                ],
+                "notes": "Approved corridor record: the coarse component is treated as part of the same Venetian-Habsburg-Hungarian frontier fabric throughout the fixed 75 km Italy-Slovenia corridor; no modern-country owner dispatch or exact hard line is asserted.",
+            })
+        assignment_overrides.append(override)
+        polity_ids_by_province[row["province_id"]] = set(row.get("polity_ids") or [])
         polity_ids.update(row["polity_ids"])
 
     polity_index = {row["polity_id"]: row for row in load(baseline / "gazetteer.json")["polities"]}
@@ -194,6 +234,8 @@ def build_packet(baseline: Path, output: Path, visual_sha256: str) -> dict[str, 
         "scenario-byz": "Byzantine Empire before the fall of Constantinople",
         "scenario-cas": "Crown of Castile under John II",
         "scenario-gra": "Nasrid Emirate of Granada",
+        "scenario-hab": "Habsburg hereditary duchies",
+        "scenario-hun": "Kingdom of Hungary",
         "scenario-nap": "Kingdom of Naples under Alfonso V",
         "scenario-pap": "Papal States under Eugene IV",
         "scenario-por": "Kingdom of Portugal under Afonso V",
@@ -224,13 +266,13 @@ def build_packet(baseline: Path, output: Path, visual_sha256: str) -> dict[str, 
     assertion_ids = {layer: [] for layer in ("geometry", "politics", "hierarchy", "gazetteer_relationships")}
     for name, (coords, polity_id) in CAPITALS.items():
         point = Point(coords)
-        containing = [province_id for province_id in actor_by_province if build_index[province_id].covers(point)]
+        containing = [province_id for province_id in polity_ids_by_province if build_index[province_id].covers(point)]
         if not containing:
-            nearest_id = min(actor_by_province, key=lambda province_id: build_index[province_id].distance(point))
+            nearest_id = min(polity_ids_by_province, key=lambda province_id: build_index[province_id].distance(point))
             if build_index[nearest_id].distance(point) <= 0.5:
                 point = build_index[nearest_id].representative_point()
                 containing = [nearest_id]
-        if len(containing) != 1 or actor_by_province[containing[0]] != polity_id:
+        if len(containing) != 1 or polity_id not in polity_ids_by_province[containing[0]]:
             raise SystemExit(f"capital {name} does not resolve to its region-039 polity: {containing}")
         province_id = containing[0]
         feature_id = assignment_by_province[province_id]["location_ids"][0]
@@ -253,89 +295,8 @@ def build_packet(baseline: Path, output: Path, visual_sha256: str) -> dict[str, 
             ))
             assertion_ids[layer].append(assertion_id)
 
-    portugal = {province_id for province_id, actor in actor_by_province.items() if actor == "scenario-por"}
-    castile = {province_id for province_id, actor in actor_by_province.items() if actor == "scenario-cas"}
-    candidates = []
-    for left in portugal:
-        for right in castile:
-            shared = build_index[left].boundary.intersection(build_index[right].boundary)
-            if not shared.is_empty and shared.length > 0:
-                candidates.append((shared.length, left, right, shared))
-    if not candidates:
-        raise SystemExit("region-039 Portugal/Castile checked border pair is missing")
-    _, left, right, border = max(candidates)
-    boundary_id = "region-039-portugal-castile-frontier"
-    boundary_features = [{
-        "type": "Feature",
-        "properties": {
-            "feature_id": boundary_id, "classification": "hard_constraint",
-            "confidence": "high", "date_precision": "year", "geographic_scope": "039",
-            "geometry_revision": "1444-r2",
-            "license_lineage": ["derived from accepted global-h3-v1-r2 fabric"],
-            "semantics": "Checked 1444 frontier segment between Portugal and Castile.",
-            "side_polity_ids": {"left": "scenario-por", "right": "scenario-cas"},
-            "source_ids": sorted(["cambridge-iberian-polities", "shepherd-historical-atlas"]),
-            "start_date_programs": [START_DATE],
-            "uncertainty_notes": "Shared fabric edge retained only for the declared regional assertion.",
-            "valid_from": "1400", "valid_to": "1500",
-            "derived_geometry_artifact_id": "derived-region-039-portugal-castile-frontier",
-            "error_budget_km": 1.0,
-            "georeferencing": {
-                "transform_method": "fabric-shared-boundary-extraction-wgs84", "crs": "EPSG:4326",
-                "control_points": [{"id": f"region-039-portugal-castile-{index}"} for index in range(3)],
-                "residual_error_km": 0.0, "digitizer": "region-039-packet-generator",
-                "reviewer": "Codex regional geometry review",
-                "source_feature_reference": "packet#region-039-portugal-castile-frontier",
-            },
-        },
-        "geometry": mapping(border),
-    }]
-    border_assertion_id = "region-039-border-portugal-castile"
-    assertions.append(assertion(
-        border_assertion_id, "geometry", [left, right], [boundary_id],
-        "border_matches_boundary_hausdorff_km_lte",
-        ["cambridge-iberian-polities", "shepherd-historical-atlas"],
-        1.0, "border", "positive", "kilometres",
-    ))
-    assertion_ids["geometry"].append(border_assertion_id)
-
-    assets = {
-        "boundaries.geojson": {"type": "FeatureCollection", "features": boundary_features},
-        "polity-masks.geojson": {
-            "type": "FeatureCollection",
-            "features": [
-                {"type": "Feature", "properties": {"polity_id": polity_id},
-                 "geometry": mapping(unary_union([build_index[item] for item in province_ids]))}
-                for polity_id, province_ids in (("scenario-por", portugal), ("scenario-cas", castile))
-            ],
-        },
-    }
-    asset_dir = output.parent / "assets" / "039"
+    boundary_features = []
     derived_files = []
-    for filename, document in assets.items():
-        data = (json.dumps(document, indent=2, sort_keys=True, ensure_ascii=False) + "\n").encode()
-        path = asset_dir / filename
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_bytes(data)
-        derived_files.append({
-            "asset_id": f"region-039-{filename.removesuffix('.geojson')}",
-            "path": f"assets/039/{filename}",
-            "target_path": f"regional-assets/039/{filename}",
-            "sha256": hashlib.sha256(data).hexdigest(),
-            "source_ids": sorted(GEOMETRY_SOURCES), "valid_from": "1400", "valid_to": "1500",
-            "role": filename.removesuffix(".geojson"),
-        })
-    asset_hash = {row["role"]: row["sha256"] for row in derived_files}
-    source_index["cambridge-iberian-polities"]["derived_artifacts"] = [{
-        "artifact_id": "derived-region-039-portugal-castile-frontier",
-        "role": "boundary_geometry", "path": "regional-assets/039/boundaries.geojson",
-        "sha256": asset_hash["boundaries"], "media_type": "application/geo+json",
-    }]
-    source_index["shepherd-historical-atlas"]["derived_artifacts"] = [{
-        "artifact_id": "derived-region-039-portugal-castile-mask",
-        "role": "coverage_mask", "path": "regional-assets/039/polity-masks.geojson",
-        "sha256": asset_hash["polity-masks"], "media_type": "application/geo+json",
-    }]
     sources = [source_index[source_id] for source_id in selected_ids]
     pins = [
         {"source_id": row["source_id"], "locator": LOCATORS[row["source_id"]],
@@ -346,11 +307,11 @@ def build_packet(baseline: Path, output: Path, visual_sha256: str) -> dict[str, 
     coverage = [
         {"region_id": "039", "layer": "geometry", "grade": "A", "source_ids": GEOMETRY_SOURCES,
          "assertion_ids": assertion_ids["geometry"],
-         "evidence_summary": "Complete Southern Europe fabric reviewed for 1444-11-11 with an independently pinned Portugal–Castile frontier gate and seven regional capital-containment checks.",
+         "evidence_summary": "Phase-one Southern Europe geometry retains seven capital checks and reconstructs only the enumerated Italy-Slovenia corridor. Portugal-Castile remains pending because the official stable segment cannot yet bind to the unsplit fabric without candidate-derived geometry.",
          "exclusions": [], "known_gaps": []},
         {"region_id": "039", "layer": "politics", "grade": "A", "source_ids": POLITICS_SOURCES,
          "assertion_ids": assertion_ids["politics"],
-         "evidence_summary": f"All {EXPECTED_ASSIGNMENTS} region-039 assignments replace provisional evidence across Iberia, Italy, the Balkans, Byzantium, and the Ottoman frontier on the exact day after Varna.",
+         "evidence_summary": f"Exactly {len(ITALY_SLOVENIA_CORRIDOR_COMPONENTS)} of {EXPECTED_ASSIGNMENTS} records receive approved corridor reconstruction; all others remain explicitly unknown pending separate evidence review.",
          "exclusions": [], "known_gaps": []},
         {"region_id": "039", "layer": "hierarchy", "grade": "A", "source_ids": HIERARCHY_SOURCES,
          "assertion_ids": assertion_ids["hierarchy"],
@@ -364,7 +325,8 @@ def build_packet(baseline: Path, output: Path, visual_sha256: str) -> dict[str, 
     ]
     for polity_id in {"scenario-byz", "scenario-mor", "scenario-tur"}:
         polity_by_id[polity_id]["capital_location_ids"] = []
-    polity_by_id["scenario-hun"]["name"] = "Hungary"
+    polity_by_id["scenario-hun"]["name"] = "Kingdom of Hungary"
+    polity_by_id["scenario-hab"]["name"] = "Habsburg duchy complex"
     polity_by_id["scenario-hun"]["actor_kind"] = "polity"
     return {
         "packet_type": "m25c_regional_evidence", "packet_version": "1.0.0",

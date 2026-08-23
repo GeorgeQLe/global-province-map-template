@@ -13,7 +13,7 @@ from datetime import date
 from pathlib import Path
 from typing import Any, Callable
 
-from shapely.geometry import shape
+from shapely.geometry import LineString, Point, shape
 from shapely.geometry.base import BaseGeometry
 from shapely.ops import transform as shapely_transform, unary_union
 from shapely.strtree import STRtree
@@ -26,6 +26,7 @@ from gpm.schemas import (
     validate_historical_territory_status,
     validate_location_assignments,
     validate_polity_gazetteer,
+    validate_positive_border_applicability,
     validate_spatial_golden_borders,
     validate_start_date_changelog,
     validate_start_date_coverage,
@@ -66,6 +67,7 @@ _ARTIFACT_VALIDATORS: dict[str, Callable[[dict[str, Any]], None]] = {
     "coverage_matrix": validate_start_date_coverage,
     "changelog": validate_start_date_changelog,
     "canonical_historical_status": validate_historical_territory_status,
+    "positive_border_applicability": validate_positive_border_applicability,
     "world_coverage_mask": lambda document: _validate_world_coverage_mask(document),
     "anomaly_inventory": lambda document: validate_anomaly_inventory(document),
     "anomaly_review_ledger": lambda document: _validate_review_ledger_header(document),
@@ -386,9 +388,14 @@ def _check_cross_artifact_contract(
     results = _execute_assertions(
         documents["golden_borders"], build_features, boundary_records, findings,
         canonical=documents.get("canonical_historical_status"), assignments=assignments,
-        start_date=manifest["start_date"],
+        start_date=manifest["start_date"], source_records=source_records,
     )
     result_by_id = {item["assertion_id"]: item for item in results}
+
+    applicable_border_exemptions = _check_positive_border_applicability(
+        documents.get("positive_border_applicability"), manifest, documents,
+        source_records, result_by_id, findings, results,
+    )
 
     priority = set(manifest["scope"]["priority_regions"])
     assertions = documents["golden_borders"]["assertions"]
@@ -428,6 +435,8 @@ def _check_cross_artifact_contract(
     for region in sorted(priority):
         region_items = [a for a in assertions if a["region_id"] == region]
         for kind in ("border", "capital"):
+            if kind == "border" and region in applicable_border_exemptions:
+                continue
             if not any(a["assertion_type"] == kind and a["expectation"] == "positive" for a in region_items):
                 _finding(findings, f"MISSING_POSITIVE_{kind.upper()}_ASSERTION", "error", f"Priority region {region} needs a positive {kind} assertion.", [region])
         if not any(a["expectation"] == "negative_anachronism" for a in region_items):
@@ -471,6 +480,94 @@ def _check_cross_artifact_contract(
     if documents["changelog"]["version"] != manifest["version"]:
         _finding(findings, "CHANGELOG_VERSION_MISMATCH", "error", "Changelog version does not match the pass version.", [])
     return results
+
+
+def _canonical_json_hash(value: Any) -> str:
+    payload = json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def _check_positive_border_applicability(
+    document: dict[str, Any] | None, manifest: dict[str, Any],
+    documents: dict[str, dict[str, Any]], source_records: dict[str, dict[str, Any]],
+    spatial_results: dict[str, dict[str, Any]], findings: list[dict[str, Any]],
+    assertion_results: list[dict[str, Any]],
+) -> set[str]:
+    """Return only independently reviewed, byte-valid not-applicable regions."""
+    if document is None:
+        return set()
+    canonical = documents["canonical_historical_status"]
+    assignments = documents["location_assignments"]
+    region_by_province = {
+        row["province_id"]: row["region_id"] for row in assignments["assignments"]
+    }
+    components_by_region: dict[str, list[str]] = defaultdict(list)
+    for component in canonical["components"]:
+        components_by_region[region_by_province.get(component["province_id"], "")].append(
+            component["territory_component_id"]
+        )
+    assertion_defs = {
+        row["assertion_id"]: row for row in documents["golden_borders"]["assertions"]
+    }
+    qualified: set[str] = set()
+    for record in document["records"]:
+        region_id = record["region_id"]
+        errors = []
+        expected_inventory = sorted(components_by_region.get(region_id, []))
+        if not expected_inventory or record["component_inventory"] != expected_inventory:
+            errors.append("component_inventory_mismatch")
+        if record["component_inventory_sha256"] != _canonical_json_hash(expected_inventory):
+            errors.append("component_inventory_hash_mismatch")
+        if (record["start_date"], record["fabric_revision"], record["geometry_revision"]) != (
+            manifest["start_date"], manifest["fabric_revision"], manifest["geometry_revision"],
+        ):
+            errors.append("revision_binding_mismatch")
+        for source_id in record["source_ids"]:
+            source = source_records.get(source_id)
+            if source is None or record["source_sha256"].get(source_id) != _canonical_json_hash(source):
+                errors.append("source_hash_mismatch")
+                break
+        anchors = record["hard_anchor_assertion_ids"]
+        if not anchors:
+            errors.append("missing_hard_anchor")
+        for assertion_id in anchors:
+            definition = assertion_defs.get(assertion_id)
+            result = spatial_results.get(assertion_id)
+            if (
+                definition is None or definition.get("region_id") != region_id
+                or definition.get("layer") != "geometry"
+                or definition.get("expectation") != "positive"
+                or definition.get("assertion_type") != "capital"
+                or result is None or result.get("status") != "pass"
+            ):
+                errors.append("invalid_or_failing_hard_anchor")
+                break
+        review = record["independent_review"]
+        unsigned = {key: value for key, value in record.items() if key != "independent_review"}
+        if review["record_sha256"] != _canonical_json_hash(unsigned):
+            errors.append("record_hash_mismatch")
+        if review["status"] != "accepted" or not review["reviewed_at"]:
+            errors.append("independent_review_pending")
+        if record["reason"] != "no_land_adjacency" and not record["eligible_land_adjacent_actor_pairs"]:
+            errors.append("missing_land_adjacency_audit")
+        if any(pair["disposition"] == "hard_line_supported" for pair in record["eligible_land_adjacent_actor_pairs"]):
+            errors.append("hard_line_supported")
+        passed = record["status"] == "not_applicable" and not errors
+        assertion_id = f"region-{region_id}-positive-border-applicability"
+        assertion_results.append({
+            "assertion_id": assertion_id, "spatial_relation": "positive_border_not_applicable",
+            "unit": "boolean", "tolerance": 1, "measurement": 1 if passed else 0,
+            "status": "pass" if passed else "fail",
+        })
+        if passed:
+            qualified.add(region_id)
+        else:
+            _finding(
+                findings, "BORDER_APPLICABILITY_NOT_QUALIFIED", "error",
+                f"Region {region_id} border-applicability candidate failed closed: {', '.join(sorted(set(errors)))}.",
+                [region_id, assertion_id],
+            )
+    return qualified
 
 
 def _check_fabric_sidecars(
@@ -607,6 +704,7 @@ def _execute_assertions(
     golden: dict[str, Any], build: dict[str, BaseGeometry], boundaries: dict[str, dict[str, Any]],
     findings: list[dict[str, Any]], *, canonical: dict[str, Any] | None = None,
     assignments: dict[str, Any] | None = None, start_date: str | None = None,
+    source_records: dict[str, dict[str, Any]] | None = None,
 ) -> list[dict[str, Any]]:
     results = []
     for assertion in golden["assertions"]:
@@ -651,13 +749,13 @@ def _execute_assertions(
                 else:
                     measurement, diagnostics = _measure_forbidden_modern_seam(
                         assertion["region_id"], refs[0], assertion["measurement_parameters"]["corridor_km"],
-                        canonical, assignments, start_date,
+                        canonical, assignments, start_date, source_records=source_records,
                     )
-                    if diagnostics["transition_count"] == 0:
+                    if not diagnostics["executable"]:
                         measurement, status = None, "fail"
                         _finding(
                             findings, "NON_EXECUTABLE_SEAM_ASSERTION", "error",
-                            f"{aid} has no regional compositional status transitions to test.", [aid],
+                            f"{aid} lacks complete eligible on-seam and deterministic both-side coverage.", [aid],
                         )
                     else:
                         status = "pass" if measurement <= assertion["tolerance"] else "fail"
@@ -1101,8 +1199,9 @@ def _contains_date(lower: str | None, upper: str | None, target: str) -> bool:
 def _measure_forbidden_modern_seam(
     region_id: str, reference: BaseGeometry, corridor_km: float,
     canonical: dict[str, Any], assignments: dict[str, Any], start_date: str,
+    *, source_records: dict[str, dict[str, Any]] | None = None,
 ) -> tuple[float, dict[str, Any]]:
-    """Measure modern-seam coincidence against dissolved compositional signatures."""
+    """Measure seam coincidence, requiring complete reviewed both-side observability."""
     region_by_province = {
         row["province_id"]: row["region_id"] for row in assignments["assignments"]
     }
@@ -1117,19 +1216,48 @@ def _measure_forbidden_modern_seam(
         "habitability", "population_presence", "settlement_pattern", "tenure", "authority",
     )
     groups: dict[tuple[Any, ...], list[tuple[str, BaseGeometry]]] = defaultdict(list)
+    regional_members: list[tuple[str, BaseGeometry]] = []
+    eligible_members: list[tuple[str, BaseGeometry]] = []
+    rejection_reasons: dict[str, list[str]] = defaultdict(list)
     for component in canonical["components"]:
         if region_by_province.get(component["province_id"]) != region_id:
             continue
+        component_id = component["territory_component_id"]
+        geometry = shape(component["geometry"])
+        regional_members.append((component_id, geometry))
+        facets = component.get("facets") or {}
+        evidence_ids = component.get("evidence_ids") or []
+        reasons = []
+        if any(not facets.get(name) or facets.get(name) == "unknown" for name in facet_names):
+            reasons.append("unknown_required_facet")
+        if not evidence_ids:
+            reasons.append("missing_component_evidence")
+        if source_records is not None:
+            for evidence_id in evidence_ids:
+                source = source_records.get(evidence_id)
+                if source is None:
+                    reasons.append("unknown_evidence_source")
+                elif source.get("review_status") != "reviewed":
+                    reasons.append("unreviewed_evidence_source")
+                elif not _contains_date(source.get("valid_from"), source.get("valid_to"), start_date):
+                    reasons.append("evidence_out_of_date")
+        if geometry.is_empty or not geometry.is_valid:
+            reasons.append("invalid_component_geometry")
+        if reasons:
+            for reason in sorted(set(reasons)):
+                rejection_reasons[reason].append(component_id)
+            continue
         subjects = {
-            component["territory_component_id"], component["province_id"],
+            component_id, component["province_id"],
             component.get("political_unit_id"),
         }
         active = sorted({
             pair for subject in subjects if subject is not None
             for pair in statuses_by_subject.get(subject, [])
         })
-        signature = tuple(component["facets"][name] for name in facet_names) + (tuple(active),)
-        groups[signature].append((component["territory_component_id"], shape(component["geometry"])))
+        signature = tuple(facets[name] for name in facet_names) + (tuple(active),)
+        groups[signature].append((component_id, geometry))
+        eligible_members.append((component_id, geometry))
 
     dissolved = [
         (signature, unary_union([geometry for _component_id, geometry in members]), members)
@@ -1151,6 +1279,76 @@ def _measure_forbidden_modern_seam(
     project = lambda x, y, z=None: (x * x_scale, y * y_scale)
     projected_reference = shapely_transform(project, reference)
     reference_length = projected_reference.length
+    projected_eligible = [
+        (component_id, shapely_transform(project, geometry))
+        for component_id, geometry in eligible_members
+        if geometry.distance(reference) <= max(2.0, corridor_km / 50.0)
+    ]
+    projected_regional = [
+        (component_id, shapely_transform(project, geometry))
+        for component_id, geometry in regional_members
+        if geometry.distance(reference) <= max(2.0, corridor_km / 50.0)
+    ]
+    coverage_epsilon_km = 0.001
+    usable_parts = [
+        projected_reference.intersection(geometry.buffer(coverage_epsilon_km))
+        for _component_id, geometry in projected_regional
+        if geometry.distance(projected_reference) <= coverage_epsilon_km
+    ] if reference_length > 0 else []
+    usable_reference = unary_union(usable_parts) if usable_parts else LineString()
+    usable_reference_km = min(reference_length, usable_reference.length)
+    covered_parts = [
+        usable_reference.intersection(geometry.buffer(coverage_epsilon_km))
+        for _component_id, geometry in projected_eligible
+        if geometry.distance(usable_reference) <= coverage_epsilon_km
+    ] if usable_reference_km > 0 else []
+    covered_reference = unary_union(covered_parts) if covered_parts else LineString()
+    covered_reference_km = min(usable_reference_km, covered_reference.length)
+    coverage_ratio = covered_reference_km / usable_reference_km if usable_reference_km > 0 else 0.0
+    left_ids: set[str] = set()
+    right_ids: set[str] = set()
+    ambiguous_samples = 0
+    missing_side_samples = 0
+    sample_count = 0
+    if usable_reference_km > 0 and projected_eligible:
+        sample_count = max(1, int(math.ceil(usable_reference_km / 5.0)))
+        offset = min(corridor_km / 2.0, 0.05)
+        delta = min(0.05, usable_reference_km / 1000.0)
+        for index in range(sample_count):
+            distance = usable_reference_km * (index + 0.5) / sample_count
+            before = usable_reference.interpolate(max(0.0, distance - delta))
+            after = usable_reference.interpolate(min(usable_reference_km, distance + delta))
+            dx, dy = after.x - before.x, after.y - before.y
+            norm = math.hypot(dx, dy)
+            if norm <= 0:
+                ambiguous_samples += 1
+                continue
+            nx, ny = -dy / norm, dx / norm
+            center = usable_reference.interpolate(distance)
+            samples = (
+                Point(center.x + nx * offset, center.y + ny * offset),
+                Point(center.x - nx * offset, center.y - ny * offset),
+            )
+            sample_hits: list[set[str]] = []
+            for sample in samples:
+                hits = {
+                    component_id for component_id, geometry in projected_eligible
+                    if geometry.buffer(coverage_epsilon_km).covers(sample)
+                }
+                sample_hits.append(hits)
+            if not sample_hits[0] or not sample_hits[1]:
+                missing_side_samples += 1
+            if len(sample_hits[0]) > 1 or len(sample_hits[1]) > 1:
+                ambiguous_samples += 1
+            left_ids.update(sample_hits[0])
+            right_ids.update(sample_hits[1])
+    executable = bool(
+        usable_reference_km > 0
+        and coverage_ratio >= 1.0 - 1e-7
+        and sample_count > 0
+        and missing_side_samples == 0
+        and ambiguous_samples == 0
+    )
     projected_transitions = [
         (shapely_transform(project, transition), members) for transition, members in transitions
     ]
@@ -1177,7 +1375,19 @@ def _measure_forbidden_modern_seam(
                     affected_ids.add(component_id)
         affected = sorted(affected_ids)
     return measurement, {
+        "executable": executable,
         "reference_length_km": reference_length,
+        "usable_reference_km": usable_reference_km,
+        "covered_reference_km": covered_reference_km,
+        "coverage_ratio": coverage_ratio,
+        "left_sampled_component_ids": sorted(left_ids),
+        "right_sampled_component_ids": sorted(right_ids),
+        "eligibility_rejection_reasons": {
+            reason: sorted(component_ids) for reason, component_ids in sorted(rejection_reasons.items())
+        },
+        "normal_sample_count": sample_count,
+        "missing_side_sample_count": missing_side_samples,
+        "ambiguous_side_sample_count": ambiguous_samples,
         "matched_length_km": matched_length,
         "corridor_km": corridor_km,
         "transition_count": len(transitions),

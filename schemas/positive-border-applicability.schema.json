@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/global-province-map/positive-border-applicability.schema.json",
+  "title": "M25C positive-border applicability determinations",
+  "type": "object",
+  "required": ["schema_version", "document_type", "artifact_version", "pass_id", "start_date", "records"],
+  "properties": {
+    "schema_version": {"const": "0.3.0"}, "document_type": {"const": "positive_border_applicability"},
+    "artifact_version": {"type": "string", "minLength": 1}, "pass_id": {"type": "string", "minLength": 1},
+    "start_date": {"type": "string", "format": "date"},
+    "records": {"type": "array", "items": {"$ref": "#/$defs/record"}}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "strings": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "actorPair": {
+      "type": "object", "required": ["left_actor_id", "right_actor_id", "component_ids", "disposition"],
+      "properties": {"left_actor_id": {"type": "string", "minLength": 1}, "right_actor_id": {"type": "string", "minLength": 1}, "component_ids": {"$ref": "#/$defs/strings"}, "disposition": {"enum": ["no_land_adjacency", "non_territorial_fabric", "evidence_supports_zone_not_line", "hard_line_supported"]}},
+      "additionalProperties": false
+    },
+    "review": {
+      "type": "object", "required": ["status", "reviewer", "reviewed_at", "record_sha256"],
+      "properties": {"status": {"enum": ["accepted", "pending_independent_review"]}, "reviewer": {"type": "string", "minLength": 1}, "reviewed_at": {"type": ["string", "null"]}, "record_sha256": {"$ref": "#/$defs/hash"}},
+      "additionalProperties": false
+    },
+    "record": {
+      "type": "object",
+      "required": ["region_id", "start_date", "status", "reason", "fabric_revision", "geometry_revision", "component_inventory", "component_inventory_sha256", "source_ids", "source_sha256", "hard_anchor_assertion_ids", "eligible_land_adjacent_actor_pairs", "determination", "independent_review"],
+      "properties": {
+        "region_id": {"type": "string", "minLength": 1}, "start_date": {"type": "string", "format": "date"}, "status": {"enum": ["required", "not_applicable"]}, "reason": {"enum": ["no_land_adjacency", "non_territorial_fabric", "evidence_supports_zone_not_line"]},
+        "fabric_revision": {"type": "string", "minLength": 1}, "geometry_revision": {"type": "string", "minLength": 1}, "component_inventory": {"$ref": "#/$defs/strings"}, "component_inventory_sha256": {"$ref": "#/$defs/hash"},
+        "source_ids": {"$ref": "#/$defs/strings"}, "source_sha256": {"type": "object", "minProperties": 1, "additionalProperties": {"$ref": "#/$defs/hash"}}, "hard_anchor_assertion_ids": {"$ref": "#/$defs/strings"},
+        "eligible_land_adjacent_actor_pairs": {"type": "array", "items": {"$ref": "#/$defs/actorPair"}}, "determination": {"type": "string", "minLength": 1}, "independent_review": {"$ref": "#/$defs/review"}
+      }, "additionalProperties": false
+    }
+  }
+}

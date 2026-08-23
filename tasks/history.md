@@ -1,5 +1,32 @@
 # History
 
+## 2026-08-23 - M25C spatial-remediation phase 1
+
+- Implemented eligible covered-zero seam semantics with complete reviewed,
+  date-valid, non-unknown usable-seam coverage; deterministic both-side normal
+  sampling; and explicit coverage, ambiguity, rejection, and transition
+  diagnostics. Covered zero-transition controls `039`, `057`, and `061` now
+  execute and pass without invented borders.
+- Reconstructed exactly nine coarse components in the approved Italy-Slovenia
+  corridor as shared Venetian-Habsburg-Hungarian frontier fabric. The other 455
+  Southern Europe records remain unknown, and the retired candidate-edge
+  Portugal-Castile line was not restored.
+- Added a revision- and hash-bound positive-border-applicability contract and
+  five candidate records. All five fail dedicated qualification while their
+  adjacency audits and independent reviews are pending, so all missing-border
+  findings remain in force.
+- Extracted and checksum-pinned one official CAOP Portugal-Spain segment as an
+  unpromoted research candidate. It fails its subject-edge error budget and
+  lacks segment-specific independent 1444 corroboration. Raichur likewise
+  produced no promotable geometry because the second located account repeats
+  the Kadiri-inscription evidence tradition.
+- Generated the complete assembled pass twice with byte-identical trees,
+  rendered 30 sheets, and ran ordinary pending-review QA. The exact result is
+  58 non-review errors plus one independent-review warning: five applicability,
+  19 missing-border, eight non-executable seam, 13 spatial, and 13 downstream
+  Grade-A findings. All 423 repository tests pass; candidate permissions remain
+  false.
+
 ## 2026-08-22 - M25C spatial-remediation decision approved with amendments
 
 - George Le approved all five spatial-remediation decisions with amendments.

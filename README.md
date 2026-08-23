@@ -112,8 +112,12 @@ until rendering plus ordinary pending-review QA are clean:
   --output-dir data/processed/m25c-assembled-pass
 ```
 
-The current assembled candidate intentionally fails preflight on 54 research
-defects and cannot be accepted, certified, published, or deployed.
+After spatial-remediation phase 1, the current assembled candidate
+intentionally fails preflight on 58 research defects and one pending-review
+warning. Covered zero-transition seams now execute only with complete reviewed,
+date-valid, non-unknown both-side coverage; five border-applicability candidates
+remain fail-closed pending complete adjacency audits and independent hash
+review. The candidate cannot be accepted, certified, published, or deployed.
 `gpm build provinces` now consumes `data/processed/locations.geojson` by
 default; the former Natural Earth scaffold is available only through the
 explicit `--legacy-modern-admin` compatibility flag. Targeted splits require a

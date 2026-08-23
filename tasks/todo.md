@@ -72,13 +72,20 @@
       border, five reviewed border-non-applicability records, and conditional
       region-by-region digitization; it rejects invented universal borders. See
       `tasks/m25c-spatial-remediation-reresearch.md`.
-  15. [ ] Implement the approved first spatial-remediation phase: the amended
+  15. [x] Implement the approved first spatial-remediation phase: the amended
       covered-zero contract, corridor-first Southern Europe reconstruction and
       independently derived Portugal-Castile stable segments, and fail-closed
       qualification of the five applicability candidates. Research Raichur
       points/zones, but promote no hard border unless its separately stated
       source conditions pass. Regenerate twice, render, rerun ordinary
       worldwide QA, and update the exact remaining-defect inventory.
+      Covered-zero observability, the exact nine-record `039` corridor rebuild,
+      five fail-closed applicability candidates, and the unpromoted CAOP
+      candidate are complete. Two assembled trees are byte-identical; 30 sheets
+      render; ordinary QA retains exactly 58 non-review errors and one warning.
+      Portugal-Castile and Raichur remain unpromoted because their independent
+      spatial conditions did not pass; see
+      `tasks/m25c-spatial-remediation-phase-1.md`.
   16. [ ] Review each remaining corridor or positive-border evidence packet
       separately before its enumerated edits. After approved implementations,
       reproduce their bound bytes and rerun affected, neighboring, and ordinary

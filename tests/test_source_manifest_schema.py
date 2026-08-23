@@ -44,6 +44,7 @@ def test_schema_files_are_machine_readable_json_schema_documents():
         "province-aggregation-manifest.schema.json",
         "province-membership-record.schema.json",
         "polity-gazetteer.schema.json",
+        "positive-border-applicability.schema.json",
         "region-entity.schema.json",
         "release-manifest.schema.json",
         "runtime-pack.schema.json",

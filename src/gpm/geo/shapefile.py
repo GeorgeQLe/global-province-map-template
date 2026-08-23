@@ -91,9 +91,14 @@ def _read_shp(data: bytes) -> list[dict[str, Any] | None]:
         if shape_type == 0:
             geometries.append(None)
             continue
-        if shape_type not in {5, 15, 25}:
-            raise ShapefileReadError(f"Unsupported shapefile shape type {shape_type}; expected Polygon.")
-        geometries.append(_read_polygon_record(content))
+        if shape_type in {3, 13, 23}:
+            geometries.append(_read_polyline_record(content))
+        elif shape_type in {5, 15, 25}:
+            geometries.append(_read_polygon_record(content))
+        else:
+            raise ShapefileReadError(
+                f"Unsupported shapefile shape type {shape_type}; expected PolyLine or Polygon."
+            )
 
     return geometries
 
@@ -123,6 +128,30 @@ def _read_polygon_record(content: bytes) -> dict[str, Any]:
             rings.append(_closed_ring(ring))
 
     return _rings_to_geojson_geometry(rings)
+
+
+def _read_polyline_record(content: bytes) -> dict[str, Any]:
+    if len(content) < 44:
+        raise ShapefileReadError("Truncated polyline record.")
+    part_count, point_count = struct.unpack("<2i", content[36:44])
+    parts_offset = 44
+    points_offset = parts_offset + (part_count * 4)
+    points_end = points_offset + (point_count * 16)
+    if len(content) < points_end:
+        raise ShapefileReadError("Truncated polyline points.")
+    part_starts = list(struct.unpack(f"<{part_count}i", content[parts_offset:points_offset]))
+    points = [
+        list(struct.unpack("<2d", content[points_offset + index * 16:points_offset + (index + 1) * 16]))
+        for index in range(point_count)
+    ]
+    parts = []
+    for part_index, start in enumerate(part_starts):
+        end = part_starts[part_index + 1] if part_index + 1 < len(part_starts) else point_count
+        if end - start >= 2:
+            parts.append(points[start:end])
+    if len(parts) == 1:
+        return {"type": "LineString", "coordinates": parts[0]}
+    return {"type": "MultiLineString", "coordinates": parts}
 
 
 def _rings_to_geojson_geometry(rings: list[list[list[float]]]) -> dict[str, Any]:

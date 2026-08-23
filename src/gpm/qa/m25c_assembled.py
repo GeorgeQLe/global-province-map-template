@@ -21,6 +21,7 @@ ARTIFACT_FILES = (
     "source_manifest.json", "boundaries.geojson", "gazetteer.json",
     "assignments.json", "golden.json", "build.geojson", "coverage.json",
     "changelog.json", "historical-territory-status.json",
+    "positive-border-applicability.json",
     "world_coverage_mask.geojson", "anomaly_inventory.json",
     "anomaly_census_review_ledger.json", "dossier.md",
 )

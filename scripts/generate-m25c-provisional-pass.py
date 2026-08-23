@@ -487,6 +487,11 @@ def _generate_into(args: argparse.Namespace) -> None:
             row["provisional"] = not assembled
     canonical["artifact_version"] = VERSION
     _write(output / "historical-territory-status.json", canonical)
+    applicability = _positive_border_applicability(
+        canonical, assignments, source_manifest, golden,
+        fabric_revision="global-h3-v1-r2", geometry_revision=GEOMETRY_REVISION,
+    )
+    _write(output / "positive-border-applicability.json", applicability)
     inventory_document = _load(args.global_input / "anomaly_inventory.json")
     inventory_document["artifact_version"] = VERSION
     _write(output / "anomaly_inventory.json", inventory_document)
@@ -526,6 +531,7 @@ def _generate_into(args: argparse.Namespace) -> None:
         "full_build_geometry": "build.geojson", "coverage_matrix": "coverage.json", "changelog": "changelog.json",
         "canonical_historical_status": "historical-territory-status.json", "world_coverage_mask": "world_coverage_mask.geojson",
         "anomaly_inventory": "anomaly_inventory.json", "anomaly_review_ledger": "anomaly_census_review_ledger.json",
+        "positive_border_applicability": "positive-border-applicability.json",
     }
     artifacts = {role: {"path": name, "version": _artifact_version(output / name), "sha256": _sha256(output / name)}
                  for role, name in artifact_files.items()}
@@ -1165,6 +1171,68 @@ Antarctica is excluded. This pass cannot be review-accepted, certified, publishe
 ## Uncertainty
 Every unpromoted region declares layer gaps. Soft provisional ownership lines are never historical hard constraints.
 """
+
+
+def _hash_json(value: Any) -> str:
+    payload = json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def _positive_border_applicability(
+    canonical: dict[str, Any], assignments: dict[str, Any], source_manifest: dict[str, Any],
+    golden: dict[str, Any], *, fabric_revision: str, geometry_revision: str,
+) -> dict[str, Any]:
+    """Emit five fail-closed candidate audits; independent review remains external."""
+    reasons = {
+        "021": "non_territorial_fabric", "053": "non_territorial_fabric",
+        "054": "evidence_supports_zone_not_line", "057": "no_land_adjacency",
+        "061": "non_territorial_fabric",
+    }
+    region_by_province = {
+        row["province_id"]: row["region_id"] for row in assignments["assignments"]
+    }
+    assignments_by_province = {
+        row["province_id"]: row for row in assignments["assignments"]
+    }
+    source_by_id = {row["source_id"]: row for row in source_manifest["sources"]}
+    assertions = golden["assertions"]
+    records = []
+    for region_id, reason in sorted(reasons.items()):
+        components = sorted(
+            row["territory_component_id"] for row in canonical["components"]
+            if region_by_province.get(row["province_id"]) == region_id
+        )
+        province_ids = {
+            row["province_id"] for row in canonical["components"]
+            if region_by_province.get(row["province_id"]) == region_id
+        }
+        source_ids = sorted({
+            source_id for province_id in province_ids
+            for source_id in assignments_by_province[province_id]["source_ids"]
+        })
+        anchors = sorted(
+            row["assertion_id"] for row in assertions
+            if row["region_id"] == region_id and row["layer"] == "geometry"
+            and row["expectation"] == "positive" and row["assertion_type"] == "capital"
+        )
+        record = {
+            "region_id": region_id, "start_date": START_DATE, "status": "not_applicable",
+            "reason": reason, "fabric_revision": fabric_revision,
+            "geometry_revision": geometry_revision, "component_inventory": components,
+            "component_inventory_sha256": _hash_json(components), "source_ids": source_ids,
+            "source_sha256": {source_id: _hash_json(source_by_id[source_id]) for source_id in source_ids},
+            "hard_anchor_assertion_ids": anchors,
+            # The independent reviewer must verify the complete adjacency audit
+            # and replace this empty candidate inventory before acceptance.
+            "eligible_land_adjacent_actor_pairs": [],
+            "determination": "Candidate only: exact land-adjacent actor-pair audit and independent hash review remain pending.",
+        }
+        record["independent_review"] = {
+            "status": "pending_independent_review", "reviewer": "pending-independent-review",
+            "reviewed_at": None, "record_sha256": _hash_json(record),
+        }
+        records.append(record)
+    return _header("positive_border_applicability") | {"records": records}
 
 
 def _promote_directory(staging: Path, target: Path) -> None:

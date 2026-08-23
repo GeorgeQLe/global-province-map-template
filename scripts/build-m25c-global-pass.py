@@ -50,6 +50,7 @@ from gpm.schemas import (  # noqa: E402
     validate_location_fabric_manifest,
     validate_location_lineage,
     validate_polity_gazetteer,
+    validate_positive_border_applicability,
     validate_spatial_golden_borders,
     validate_start_date_changelog,
     validate_start_date_coverage,
@@ -86,6 +87,7 @@ ARTIFACT_FILES = {
     "coverage_matrix": "coverage.json",
     "changelog": "changelog.json",
     "canonical_historical_status": "historical-territory-status.json",
+    "positive_border_applicability": "positive-border-applicability.json",
     "world_coverage_mask": "world_coverage_mask.geojson",
     "anomaly_inventory": "anomaly_inventory.json",
     "anomaly_review_ledger": "anomaly_census_review_ledger.json",
@@ -107,6 +109,7 @@ EVIDENCE_VALIDATORS = {
     "coverage.json": validate_start_date_coverage,
     "changelog.json": validate_start_date_changelog,
     "historical-territory-status.json": validate_historical_territory_status,
+    "positive-border-applicability.json": validate_positive_border_applicability,
 }
 EVIDENCE_SCHEMA_VERSIONS = {
     "anomaly_census_review_ledger.json": "1.0.0",

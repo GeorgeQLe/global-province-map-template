@@ -22,7 +22,8 @@
       "full_build_geometry": {"$ref": "#/$defs/artifact"}, "coverage_matrix": {"$ref": "#/$defs/artifact"}, "changelog": {"$ref": "#/$defs/artifact"},
       "canonical_historical_status": {"$ref": "#/$defs/artifact"}, "world_coverage_mask": {"$ref": "#/$defs/artifact"},
       "anomaly_inventory": {"$ref": "#/$defs/artifact"},
-      "anomaly_review_ledger": {"$ref": "#/$defs/artifact"}
+      "anomaly_review_ledger": {"$ref": "#/$defs/artifact"},
+      "positive_border_applicability": {"$ref": "#/$defs/artifact"}
     }, "additionalProperties": false},
     "review": {"$ref": "#/$defs/review"}
   },

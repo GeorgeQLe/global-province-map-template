@@ -584,6 +584,24 @@ def validate_scenario_politics_qa_report(report: dict[str, Any]) -> None:
         raise SchemaValidationError("report.status does not match error findings")
 
 
+def validate_positive_border_applicability(document: dict[str, Any]) -> None:
+    """Validate revision-bound, independently reviewed border dispositions."""
+    schema = load_schema("positive-border-applicability")
+    _require_object(document, "positive border applicability")
+    _validate_json_schema(document, schema, "positive border applicability")
+    seen: set[str] = set()
+    for index, record in enumerate(document["records"]):
+        path = f"positive border applicability.records[{index}]"
+        region_id = record["region_id"]
+        if region_id in seen:
+            raise SchemaValidationError(f"{path}.region_id must be unique")
+        seen.add(region_id)
+        if record["component_inventory"] != sorted(record["component_inventory"]):
+            raise SchemaValidationError(f"{path}.component_inventory must be sorted")
+        if set(record["source_ids"]) != set(record["source_sha256"]):
+            raise SchemaValidationError(f"{path}.source hashes must exactly cover source_ids")
+
+
 def validate_start_date_pass_manifest(document: dict[str, Any]) -> None:
     """Validate the M24 independently releasable pass manifest."""
     schema = load_schema("start-date-pass-manifest")
