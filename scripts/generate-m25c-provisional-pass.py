@@ -117,6 +117,14 @@ GEOMETRY_REVISION = "1444-r2"
 TARGET_PROVINCES = 22_000
 LAYERS = ("geometry", "politics", "hierarchy", "gazetteer_relationships")
 
+REGION_057_APPLICABILITY_DETERMINATION = (
+    "Independent audits reproduced 175 components, 13 internal adjacency edges, "
+    "zero cross-actor pairs, and zero eligible land-adjacent actor pairs."
+)
+REGION_057_APPLICABILITY_RECORD_SHA256 = (
+    "861b65efd997a11cd22af9beff76515fcffffcfd5e58d65af6aaa9d6ac21fb30"
+)
+
 DEFAULT_OUTPUT = ROOT / "data" / "processed" / "m25c-provisional"
 DEFAULT_ASSEMBLED_OUTPUT = ROOT / "data" / "processed" / "m25c-assembled-pass"
 GLOBAL = ROOT / "research" / "start-dates" / "1444-global-v1"
@@ -490,6 +498,7 @@ def _generate_into(args: argparse.Namespace) -> None:
     applicability = _positive_border_applicability(
         canonical, assignments, source_manifest, golden,
         fabric_revision="global-h3-v1-r2", geometry_revision=GEOMETRY_REVISION,
+        apply_approved_reviews=assembled,
     )
     _write(output / "positive-border-applicability.json", applicability)
     inventory_document = _load(args.global_input / "anomaly_inventory.json")
@@ -1181,8 +1190,9 @@ def _hash_json(value: Any) -> str:
 def _positive_border_applicability(
     canonical: dict[str, Any], assignments: dict[str, Any], source_manifest: dict[str, Any],
     golden: dict[str, Any], *, fabric_revision: str, geometry_revision: str,
+    apply_approved_reviews: bool = False,
 ) -> dict[str, Any]:
-    """Emit five fail-closed candidate audits; independent review remains external."""
+    """Emit five fail-closed audits and apply only exact hash-bound approvals."""
     reasons = {
         "021": "non_territorial_fabric", "053": "non_territorial_fabric",
         "054": "evidence_supports_zone_not_line", "057": "no_land_adjacency",
@@ -1227,10 +1237,22 @@ def _positive_border_applicability(
             "eligible_land_adjacent_actor_pairs": [],
             "determination": "Candidate only: exact land-adjacent actor-pair audit and independent hash review remain pending.",
         }
-        record["independent_review"] = {
-            "status": "pending_independent_review", "reviewer": "pending-independent-review",
-            "reviewed_at": None, "record_sha256": _hash_json(record),
-        }
+        if apply_approved_reviews and region_id == "057":
+            record["determination"] = REGION_057_APPLICABILITY_DETERMINATION
+            record_sha256 = _hash_json(record)
+            if record_sha256 != REGION_057_APPLICABILITY_RECORD_SHA256:
+                raise SystemExit(
+                    "approved region 057 applicability record drifted; new independent review required"
+                )
+            record["independent_review"] = {
+                "status": "accepted", "reviewer": "independent-reviewers",
+                "reviewed_at": "2026-08-23", "record_sha256": record_sha256,
+            }
+        else:
+            record["independent_review"] = {
+                "status": "pending_independent_review", "reviewer": "pending-independent-review",
+                "reviewed_at": None, "record_sha256": _hash_json(record),
+            }
         records.append(record)
     return _header("positive_border_applicability") | {"records": records}
 

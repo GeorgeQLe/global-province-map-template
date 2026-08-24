@@ -86,7 +86,7 @@
       Portugal-Castile and Raichur remain unpromoted because their independent
       spatial conditions did not pass; see
       `tasks/m25c-spatial-remediation-phase-1.md`.
-  16. [ ] Review each remaining corridor or positive-border evidence packet
+  16. [x] Review each remaining corridor or positive-border evidence packet
       separately before its enumerated edits. After approved implementations,
       reproduce their bound bytes and rerun affected, neighboring, and ordinary
       worldwide QA without changing tolerances or release permissions.
@@ -137,13 +137,14 @@
       candidate-derived generator paths. Region `057` is the sole approval
       candidate: two reviewers independently reproduced 175 components, 13
       internal adjacency edges, zero cross-actor pairs, one Nauru component,
-      and eight passing anchors. Implementation is deferred to a serial update
-      of only its hash-bound `no_land_adjacency` applicability record, followed
-      by affected and ordinary worldwide QA. Task 16 remains open for that
-      implementation; no corridor, tolerance, packet, assembled artifact, or
-      permission changed during the parallel review. See
-      `tasks/m25c-region-057-corridor-evidence-review.md` and the other ordered
-      region review files.
+      and eight passing anchors. Its serial implementation now applies only the
+      approved hash-bound `no_land_adjacency` record. Region `057` has no
+      remaining findings, all affected assertions pass, and ordinary worldwide
+      QA falls exactly from 58 to 56 non-review errors plus one warning. The
+      other four applicability candidates remain pending, no corridor,
+      tolerance, packet, or permission changed, and replacement evidence is
+      still required for the unrelated blockers before Task 17. See
+      `tasks/m25c-region-057-applicability-implementation-ship-manifest.md`.
   17. [ ] After ordinary QA is clean, render the final review bundle and stop
       for independent human review before runtime certification or publication.
 

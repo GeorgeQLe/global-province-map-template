@@ -361,6 +361,51 @@ def test_worldwide_negative_control_inventory_is_exact_and_fail_closed():
         assert not (GLOBAL / "regional-packets" / "assets" / region / "polity-masks.geojson").exists()
 
 
+def test_region_057_applicability_review_is_assembled_only_and_hash_bound(monkeypatch):
+    provisional = _provisional_module()
+    canonical = {"components": [{
+        "territory_component_id": "component-057", "province_id": "province-057",
+    }]}
+    assignments = {"assignments": [{
+        "province_id": "province-057", "region_id": "057", "source_ids": ["source-057"],
+    }]}
+    source_manifest = {"sources": [{"source_id": "source-057"}]}
+    golden = {"assertions": [{
+        "assertion_id": "anchor-057", "region_id": "057", "layer": "geometry",
+        "expectation": "positive", "assertion_type": "capital",
+    }]}
+    arguments = (canonical, assignments, source_manifest, golden)
+    revisions = {"fabric_revision": "fabric-r1", "geometry_revision": "geometry-r1"}
+
+    pending = provisional._positive_border_applicability(*arguments, **revisions)
+    pending_record = next(row for row in pending["records"] if row["region_id"] == "057")
+    assert pending_record["independent_review"]["status"] == "pending_independent_review"
+
+    approved_unsigned = {
+        key: value for key, value in pending_record.items() if key != "independent_review"
+    }
+    approved_unsigned["determination"] = provisional.REGION_057_APPLICABILITY_DETERMINATION
+    monkeypatch.setattr(
+        provisional, "REGION_057_APPLICABILITY_RECORD_SHA256",
+        provisional._hash_json(approved_unsigned),
+    )
+    approved = provisional._positive_border_applicability(
+        *arguments, **revisions, apply_approved_reviews=True,
+    )
+    approved_record = next(row for row in approved["records"] if row["region_id"] == "057")
+    assert approved_record["independent_review"] == {
+        "status": "accepted", "reviewer": "independent-reviewers",
+        "reviewed_at": "2026-08-23",
+        "record_sha256": provisional._hash_json(approved_unsigned),
+    }
+
+    source_manifest["sources"][0]["changed_after_review"] = True
+    with pytest.raises(SystemExit, match="new independent review required"):
+        provisional._positive_border_applicability(
+            *arguments, **revisions, apply_approved_reviews=True,
+        )
+
+
 def test_regional_packet_cannot_promote_a_weak_grade_a_claim():
     provisional = _provisional_module()
     packet = {

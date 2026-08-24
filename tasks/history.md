@@ -1,5 +1,23 @@
 # History
 
+## 2026-08-23 - M25C region 057 applicability implementation
+
+- Implemented the independently approved region `057` `no_land_adjacency`
+  determination only for assembled-pass generation. The accepted review binds
+  the reproduced 175-component inventory, 13 internal adjacency edges, zero
+  cross-actor/eligible pairs, eight positive anchors, frozen revisions and
+  source records to unsigned-record SHA-256
+  `861b65efd997a11cd22af9beff76515fcffffcfd5e58d65af6aaa9d6ac21fb30`.
+- Kept provisional generation pending and made assembled generation fail closed
+  if any approved record byte drifts. The other four applicability candidates,
+  every corridor, packet, tolerance, component, geometry, and permission remain
+  unchanged.
+- Passed 31 affected contract tests plus the new assembled-only/hash-drift
+  regression. A fresh assembled generation rendered all 30 sheets. Region
+  `057` has no findings and all affected assertions pass; ordinary worldwide
+  QA now reports exactly 56 unrelated non-review errors and one warning, down
+  from 58 and one.
+
 ## 2026-08-23 - M25C Task 16 parallel remaining-region reviews
 
 - Froze all corridor, packet, generator, acceptance, adjacency, fabric, and
