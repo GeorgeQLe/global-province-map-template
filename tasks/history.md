@@ -1,5 +1,28 @@
 # History
 
+## 2026-08-23 - M25C Task 16 parallel remaining-region reviews
+
+- Froze all corridor, packet, generator, acceptance, adjacency, fabric, and
+  assembled inputs; generated one immutable assembled snapshot, rendered all
+  30 sheets, and reproduced ordinary QA at exactly 58 non-review errors plus
+  one warning. The 14 regional reviews stayed read-only across five waves.
+- Rejected regions `017`, `018`, `021`, `029`, `030`, `034`, `035`, `039`,
+  `053`, `054`, `061`, `143`, and `145`. Adversarial cross-review reproduced
+  their measurements and found no overlooked qualifying mapping. Rejection
+  reasons include modern-country/coordinate dispatch, incomplete adjacency
+  audits, source contamination, missing exact-date spatial provenance, and
+  stale generator paths that could recreate retired candidate-derived edges.
+- Independently approved only region `057` as an implementation candidate:
+  both reviews found 175 components, 13 internal edges, zero cross-actor
+  pairs, one Nauru component spanning the Yaren-Meneng control, and eight
+  passing anchors. The applicability-record update is explicitly deferred to
+  a later serial implementation and QA phase.
+- Wrote one hash-bound evidence review and ship manifest per region. No source,
+  packet, corridor, tolerance, generated artifact, runtime, review,
+  certification, publication, release, or deployment permission changed.
+  Task 16 stays open on the exact region `057` blocker; Task 17 does not
+  advance while ordinary QA remains non-clean.
+
 ## 2026-08-23 - M25C Task 16 region 015 corridor review
 
 - Separately reviewed the next ordered Task 16 packet: Northern Africa's

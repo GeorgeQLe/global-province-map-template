@@ -129,6 +129,21 @@
       component mapping, and the prior candidate-derived Marinid-Zayyanid edge
       remains retired. No bytes or QA/release state changed; see
       `tasks/m25c-region-015-corridor-evidence-review.md`.
+      The remaining 14 frozen-baseline reviews are complete. Regions `017`,
+      `018`, `021`, `029`, `030`, `034`, `035`, `039`, `053`, `054`, `061`,
+      `143`, and `145` are rejected before implementation; their packets do not
+      supply a qualifying exact-date mapping or complete applicability audit,
+      and several retain modern dispatch, source contamination, or retired
+      candidate-derived generator paths. Region `057` is the sole approval
+      candidate: two reviewers independently reproduced 175 components, 13
+      internal adjacency edges, zero cross-actor pairs, one Nauru component,
+      and eight passing anchors. Implementation is deferred to a serial update
+      of only its hash-bound `no_land_adjacency` applicability record, followed
+      by affected and ordinary worldwide QA. Task 16 remains open for that
+      implementation; no corridor, tolerance, packet, assembled artifact, or
+      permission changed during the parallel review. See
+      `tasks/m25c-region-057-corridor-evidence-review.md` and the other ordered
+      region review files.
   17. [ ] After ordinary QA is clean, render the final review bundle and stop
       for independent human review before runtime certification or publication.
 
