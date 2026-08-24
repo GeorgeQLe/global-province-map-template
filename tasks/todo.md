@@ -120,6 +120,15 @@
       packet has no independently derived historical boundary or exhaustive
       old/new component mapping. No bytes or QA/release state changed; see
       `tasks/m25c-region-014-corridor-evidence-review.md`.
+      The fifth separate review, region `015` Morocco-Algeria / positive-border,
+      is also complete and rejected before implementation: its generator
+      preserves inherited baseline actors without an independent historical-
+      spatial chooser, while the stricter current seam executes at `1.0`
+      across all `1572.8105766747265 km` of usable reference. The packet has no
+      independently derived historical boundary or exhaustive old/new
+      component mapping, and the prior candidate-derived Marinid-Zayyanid edge
+      remains retired. No bytes or QA/release state changed; see
+      `tasks/m25c-region-015-corridor-evidence-review.md`.
   17. [ ] After ordinary QA is clean, render the final review bundle and stop
       for independent human review before runtime certification or publication.
 

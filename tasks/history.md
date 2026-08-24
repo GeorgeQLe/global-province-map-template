@@ -1,5 +1,24 @@
 # History
 
+## 2026-08-23 - M25C Task 16 region 015 corridor review
+
+- Separately reviewed the next ordered Task 16 packet: Northern Africa's
+  Morocco-Algeria negative-control corridor and missing positive-border gate.
+- Rejected implementation. The current generator preserves inherited baseline
+  Marinid and Zayyanid actors without an independent historical-spatial chooser;
+  its only coordinate subdivision applies to the southern Mamluk sheet.
+- Reproduced the current stricter seam result: all
+  `1572.8105766747265 km` of usable reference is covered and matched, producing
+  `1.0` against the fixed `0.20` maximum with no missing side samples.
+  Hash-bound the 34 affected components, 68 unknown-facet rejections, current
+  source pins, assembled artifacts, and three region findings.
+- Authorized no corridor edits. The packet establishes date-relevant dynasties
+  and six checked centers but supplies no independently georeferenced exact-date
+  boundary, complete two-sided fabric, or evidence-to-component old/new
+  mapping. The retired circular Marinid-Zayyanid edge remains absent. All
+  review, certification, runtime, publication, and deployment permissions
+  remain unchanged. Task 16 continues with region `017`.
+
 ## 2026-08-23 - M25C Task 16 region 014 corridor review
 
 - Separately reviewed the next ordered Task 16 packet: Eastern Africa's
