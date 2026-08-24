@@ -145,10 +145,15 @@
       tolerance, packet, or permission changed. Replacement evidence for all
       56 unrelated blockers is now obtained and separately hash-bound: a pinned
       peer-reviewed 1444 source slice, eight direct-border candidates, ten
-      complete applicability audits, and 18 exact corridor dossiers. It remains
-      unsigned and unimplemented pending independent decisions, so Task 17 is
-      still blocked. See
-      `tasks/m25c-worldwide-replacement-evidence.md` and
+      complete applicability audits, and 18 exact corridor dossiers. Independent
+      record-by-record review accepts 13 frozen finding routes, rejects none,
+      and requires supplemental evidence for 43. All eight direct borders and
+      region `061`'s zero-adjacency applicability record are accepted; the
+      other nine applicability records, their 180 actor-pair dispositions, and
+      512 uncovered or overlapping corridor rows remain fail-closed. Nothing is
+      implemented and Task 17 is still blocked. See
+      `tasks/m25c-worldwide-replacement-evidence.md`,
+      `tasks/m25c-worldwide-replacement-evidence-independent-review.md`, and
       `tasks/m25c-worldwide-replacement-evidence-ship-manifest.md`; the earlier
       implementation boundary is recorded in
       `tasks/m25c-region-057-applicability-implementation-ship-manifest.md`.

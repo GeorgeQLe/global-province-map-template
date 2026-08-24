@@ -1,5 +1,20 @@
 # History
 
+## 2026-08-24 - M25C worldwide replacement-evidence independent review
+
+- Independently decided all replacement-evidence surfaces before
+  implementation. Accepted the pinned Cliopatria source and `20 km`
+  operational mapping budget with explicit limits, all eight direct historical
+  borders, and region `061`'s exhaustive `no_land_adjacency` record.
+- Required pair-specific supplemental evidence for the other nine
+  applicability records and all 180 enumerated actor-pair dispositions.
+  Accepted 245 single-polity representative-point matches narrowly; required
+  supplemental evidence for 509 uncovered and three overlapping corridor
+  component rows.
+- At the frozen-finding level, accepted 13 routes, rejected none, and required
+  supplemental evidence for 43. No packet, assembled artifact, tolerance,
+  permission, QA result, runtime output, or Task 17 state changed.
+
 ## 2026-08-24 - M25C worldwide replacement evidence before Task 17
 
 - Pinned Seshat Cliopatria `v0.2.0` at exact commit and archive/unpacked

@@ -1,6 +1,6 @@
 # M25C worldwide replacement evidence before Task 17
 
-Status: **research complete; pending independent decisions; not implemented**
+Status: **independently reviewed; partial acceptance; supplemental evidence required; not implemented**
 
 Date: 2026-08-24
 
@@ -132,3 +132,20 @@ the exact 56-finding accounting, and the unchanged Task 17 state.
 4. For each corridor dossier, approve only explicitly covered component rows;
    require supplemental evidence for every uncovered or overlapping row before
    implementation.
+
+## Independent review outcome
+
+The record-by-record review is complete in
+`tasks/m25c-worldwide-replacement-evidence-independent-review.md`. Cliopatria
+and the operational 20 km mapping budget are accepted with explicit scope
+limits. All eight direct-border candidates and region `061`'s exhaustive
+`no_land_adjacency` record are accepted. The other nine applicability records
+and all 180 of their actor-pair dispositions require pair-specific supplemental
+evidence. Of 757 corridor rows, 245 single-polity representative-point matches
+are accepted narrowly and 512 uncovered or overlapping rows require
+supplemental evidence.
+
+At the frozen-finding level the result is 13 accepts, zero rejects, and 43
+supplemental-evidence requests. No implementation, candidate mutation,
+tolerance change, permission change, or Task 17 advancement is authorized by
+the review itself.
