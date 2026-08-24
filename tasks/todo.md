@@ -104,6 +104,14 @@
       historical boundary or exhaustive old/new component mapping. No bytes or
       QA/release state changed; see
       `tasks/m25c-region-011-corridor-evidence-review.md`.
+      The third separate review, region `013` Mexico-Guatemala /
+      positive-border, is also complete and rejected before implementation:
+      its actor chooser dispatches on Natural Earth `ADM0_A3`, while the
+      stricter current seam result is non-executable at only
+      `0.05028550174174008` eligible coverage with 171 missing side samples.
+      The packet has no independently derived historical boundary or
+      exhaustive old/new component mapping. No bytes or QA/release state
+      changed; see `tasks/m25c-region-013-corridor-evidence-review.md`.
   17. [ ] After ordinary QA is clean, render the final review bundle and stop
       for independent human review before runtime certification or publication.
 
