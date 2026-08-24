@@ -1,0 +1,2997 @@
+{
+  "cliopatria_source": {
+    "commit": "ad28a691b7c07c1fca89d0e0636d324667d2a258",
+    "date_rule": "FromYear <= 1444 <= ToYear",
+    "license": "CC BY 4.0",
+    "peer_reviewed_method_doi": "https://doi.org/10.1038/s41597-025-04516-9",
+    "polity_mapping_feature_count": 137,
+    "snapshot_feature_count": 144,
+    "source_geojson_sha256": "5df3b5868cfab8f76030853fa2346ed3cd71171ad807b6f72d783ee2dce6839e",
+    "version": "v0.2.0"
+  },
+  "corridor_component_count": 95,
+  "corridor_component_mapping": [
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_02f6712a8300cbddb9e3",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 26.930185,
+      "province_id": "prv_02f6712a8300cbddb9e3",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ming Dynasty"
+      ],
+      "component_id": "cmp-prv_042f5bf5740581649f7f",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 65.007695,
+      "province_id": "prv_042f5bf5740581649f7f",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_0ab34de2a540ad301d19",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_0ab34de2a540ad301d19",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ming Dynasty"
+      ],
+      "component_id": "cmp-prv_0ba7945db618e6d9b534",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 28.63855,
+      "province_id": "prv_0ba7945db618e6d9b534",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_107f1e7d095116762f93",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 57.746983,
+      "province_id": "prv_107f1e7d095116762f93",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_1314aaed2a796a1600c3",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_1314aaed2a796a1600c3",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_1376aa4abf1f66b22462",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_1376aa4abf1f66b22462",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_157413bc73f6bd637e20",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_157413bc73f6bd637e20",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_1adc606252c0d3ed4947",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-oir"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_1adc606252c0d3ed4947",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_236b65fd518e4e04a88c",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_236b65fd518e4e04a88c",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_2595ec9ad51d1692ca4b",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-oir"
+      ],
+      "distance_to_modern_seam_km": 65.485874,
+      "province_id": "prv_2595ec9ad51d1692ca4b",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_2d3d08276989b2a29ed3",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-moghulistan",
+      "current_relationship_actors": [
+        "scenario-moghulistan"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_2d3d08276989b2a29ed3",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_2d886ba92e14360a567b",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-oir"
+      ],
+      "distance_to_modern_seam_km": 68.81465,
+      "province_id": "prv_2d886ba92e14360a567b",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ming Dynasty"
+      ],
+      "component_id": "cmp-prv_2feb805ca958e59f32d2",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 72.333505,
+      "province_id": "prv_2feb805ca958e59f32d2",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ming Dynasty"
+      ],
+      "component_id": "cmp-prv_31bd5f4a485868b986db",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_31bd5f4a485868b986db",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_367267800ecebb822736",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_367267800ecebb822736",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_367cbf5bde584bdb27fa",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 34.876835,
+      "province_id": "prv_367cbf5bde584bdb27fa",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_3770110f042ce3d29dcd",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 13.013242,
+      "province_id": "prv_3770110f042ce3d29dcd",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_3af50c8b2c63969008d2",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-oir"
+      ],
+      "distance_to_modern_seam_km": 23.144387,
+      "province_id": "prv_3af50c8b2c63969008d2",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_3b8ba99613ba9e724fc4",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_3b8ba99613ba9e724fc4",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_3f8a7050b966b264a7eb",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_3f8a7050b966b264a7eb",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_40eaa55ad1919e48b1f3",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 2.217613,
+      "province_id": "prv_40eaa55ad1919e48b1f3",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_42beee33b14d849ef1b7",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-oir"
+      ],
+      "distance_to_modern_seam_km": 11.605703,
+      "province_id": "prv_42beee33b14d849ef1b7",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_43d3fc9182718ea8353a",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_43d3fc9182718ea8353a",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_453dd8a38f17827407bd",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 56.566768,
+      "province_id": "prv_453dd8a38f17827407bd",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ming Dynasty"
+      ],
+      "component_id": "cmp-prv_49c59a1c5e919500c32d",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_49c59a1c5e919500c32d",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ming Dynasty"
+      ],
+      "component_id": "cmp-prv_4a5789951692fa67405f",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_4a5789951692fa67405f",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_4b33135eae1750225038",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-oir"
+      ],
+      "distance_to_modern_seam_km": 36.814852,
+      "province_id": "prv_4b33135eae1750225038",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_4c4b10c90fdeacd5ee8a",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-oir"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_4c4b10c90fdeacd5ee8a",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_4c579f0f11f8f61fc73f",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_4c579f0f11f8f61fc73f",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_4dc3200e8d172af305ce",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_4dc3200e8d172af305ce",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_50838d6c82692e259f25",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 54.279707,
+      "province_id": "prv_50838d6c82692e259f25",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_5437c4d92c84e33e8763",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 54.063431,
+      "province_id": "prv_5437c4d92c84e33e8763",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ming Dynasty"
+      ],
+      "component_id": "cmp-prv_545916d525f9e6eceedc",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 73.607883,
+      "province_id": "prv_545916d525f9e6eceedc",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_5a366842e8862f9ca29f",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-oir"
+      ],
+      "distance_to_modern_seam_km": 51.712265,
+      "province_id": "prv_5a366842e8862f9ca29f",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ming Dynasty"
+      ],
+      "component_id": "cmp-prv_5cafaeeb57b3262b0762",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-moghulistan",
+      "current_relationship_actors": [
+        "scenario-moghulistan"
+      ],
+      "distance_to_modern_seam_km": 60.237678,
+      "province_id": "prv_5cafaeeb57b3262b0762",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ming Dynasty"
+      ],
+      "component_id": "cmp-prv_5d308d27f303a7d6b1a1",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_5d308d27f303a7d6b1a1",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_5ef1d11c0aec320a6897",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 8.261865,
+      "province_id": "prv_5ef1d11c0aec320a6897",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_5f067e638820a9567616",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-oir"
+      ],
+      "distance_to_modern_seam_km": 56.789966,
+      "province_id": "prv_5f067e638820a9567616",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_663d88ebaddcf3eb84c1",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_663d88ebaddcf3eb84c1",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_6bdb594010d2b6b0f86b",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_6bdb594010d2b6b0f86b",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ming Dynasty"
+      ],
+      "component_id": "cmp-prv_6e658ef64363e9e9efdc",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 9.267237,
+      "province_id": "prv_6e658ef64363e9e9efdc",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_707399ff13eaf5c435b6",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 17.426717,
+      "province_id": "prv_707399ff13eaf5c435b6",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_74fa553dd62ee1ec76e3",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-oir"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_74fa553dd62ee1ec76e3",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_79713cbb02663a55f6f0",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 10.347341,
+      "province_id": "prv_79713cbb02663a55f6f0",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_798648d243a6911d0b4f",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-moghulistan",
+      "current_relationship_actors": [
+        "scenario-moghulistan"
+      ],
+      "distance_to_modern_seam_km": 52.995587,
+      "province_id": "prv_798648d243a6911d0b4f",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_7bdf5bc309142da14afa",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_7bdf5bc309142da14afa",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_8087400fa54a4e1401dc",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_8087400fa54a4e1401dc",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ming Dynasty"
+      ],
+      "component_id": "cmp-prv_80eecd3d198a6458543c",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 12.567317,
+      "province_id": "prv_80eecd3d198a6458543c",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_831ba83052c6961b8548",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_831ba83052c6961b8548",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_84c5d01327d0043c3e24",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_84c5d01327d0043c3e24",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ming Dynasty"
+      ],
+      "component_id": "cmp-prv_84d23146a6f4902a3ebf",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_84d23146a6f4902a3ebf",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_8794be3d15935f43deb4",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_8794be3d15935f43deb4",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_88a024eb07709ef38485",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_88a024eb07709ef38485",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_88d4be763983ef488d0f",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 21.505938,
+      "province_id": "prv_88d4be763983ef488d0f",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ming Dynasty"
+      ],
+      "component_id": "cmp-prv_8bf7efd6fc930364be17",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 21.571679,
+      "province_id": "prv_8bf7efd6fc930364be17",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ming Dynasty"
+      ],
+      "component_id": "cmp-prv_8cda69ef8f8341640769",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 63.284074,
+      "province_id": "prv_8cda69ef8f8341640769",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_977aa19360f4332a6eeb",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 72.471132,
+      "province_id": "prv_977aa19360f4332a6eeb",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_98dcb13eefe63056d143",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 42.977807,
+      "province_id": "prv_98dcb13eefe63056d143",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_99b915e44a41cb5e37cd",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-oir"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_99b915e44a41cb5e37cd",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ming Dynasty"
+      ],
+      "component_id": "cmp-prv_9accddcfdc34ec4cc80b",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 44.856421,
+      "province_id": "prv_9accddcfdc34ec4cc80b",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_9f5de124db1fc43f6d14",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-oir"
+      ],
+      "distance_to_modern_seam_km": 11.447244,
+      "province_id": "prv_9f5de124db1fc43f6d14",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_9fb7c093bddac19795ed",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-oir"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_9fb7c093bddac19795ed",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_a1e8abc2a9652acbf5a9",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 3.435111,
+      "province_id": "prv_a1e8abc2a9652acbf5a9",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_a449099db9b5341046f3",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-oir"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_a449099db9b5341046f3",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_a4e4df6d7ad5bbd65916",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 55.283326,
+      "province_id": "prv_a4e4df6d7ad5bbd65916",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ming Dynasty"
+      ],
+      "component_id": "cmp-prv_ace39db3fa2370102513",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_ace39db3fa2370102513",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_adbd41cfb5fea238b022",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-oir"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_adbd41cfb5fea238b022",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_b20365bc8e976996c302",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-moghulistan",
+      "current_relationship_actors": [
+        "scenario-moghulistan"
+      ],
+      "distance_to_modern_seam_km": 34.877982,
+      "province_id": "prv_b20365bc8e976996c302",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ming Dynasty"
+      ],
+      "component_id": "cmp-prv_b5029e19bc6e947f6401",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 8.465507,
+      "province_id": "prv_b5029e19bc6e947f6401",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_bb3e42e08bdbf26077b3",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_bb3e42e08bdbf26077b3",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_bc268abdfa974e3f4d2d",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-oir"
+      ],
+      "distance_to_modern_seam_km": 72.690258,
+      "province_id": "prv_bc268abdfa974e3f4d2d",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ming Dynasty"
+      ],
+      "component_id": "cmp-prv_bcd179bcc339edb0d8e3",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-oir"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_bcd179bcc339edb0d8e3",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ming Dynasty"
+      ],
+      "component_id": "cmp-prv_be9223e6cbd6ce2b6ed2",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 40.440239,
+      "province_id": "prv_be9223e6cbd6ce2b6ed2",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_c11e4f2aea9a3f2ff757",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-oir"
+      ],
+      "distance_to_modern_seam_km": 16.189755,
+      "province_id": "prv_c11e4f2aea9a3f2ff757",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_c289bf426392933d7af9",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-oir"
+      ],
+      "distance_to_modern_seam_km": 3.235821,
+      "province_id": "prv_c289bf426392933d7af9",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ming Dynasty"
+      ],
+      "component_id": "cmp-prv_c4b967d39dda129b94af",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_c4b967d39dda129b94af",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ming Dynasty"
+      ],
+      "component_id": "cmp-prv_c7c76c81059aceeeba46",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 31.970773,
+      "province_id": "prv_c7c76c81059aceeeba46",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_cb4eea988eab425685ec",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-oir"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_cb4eea988eab425685ec",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_cb61c4280f424cb36368",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 64.735604,
+      "province_id": "prv_cb61c4280f424cb36368",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_cf8ae4547080880a0b30",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-oir"
+      ],
+      "distance_to_modern_seam_km": 38.055725,
+      "province_id": "prv_cf8ae4547080880a0b30",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ming Dynasty"
+      ],
+      "component_id": "cmp-prv_d221a93a8f4ef4ca798d",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 52.221386,
+      "province_id": "prv_d221a93a8f4ef4ca798d",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ming Dynasty"
+      ],
+      "component_id": "cmp-prv_d2ef2ab81b685ca0be82",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-moghulistan",
+      "current_relationship_actors": [
+        "scenario-moghulistan"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_d2ef2ab81b685ca0be82",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_d83d16db95203c7c591e",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-oir"
+      ],
+      "distance_to_modern_seam_km": 36.13319,
+      "province_id": "prv_d83d16db95203c7c591e",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_d9ff72fa7a072619a848",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-moghulistan",
+      "current_relationship_actors": [
+        "scenario-moghulistan"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_d9ff72fa7a072619a848",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_dbe8ed57217f25b35e26",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-moghulistan",
+      "current_relationship_actors": [
+        "scenario-moghulistan"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_dbe8ed57217f25b35e26",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ming Dynasty"
+      ],
+      "component_id": "cmp-prv_dec6e5495a3681a1da28",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_dec6e5495a3681a1da28",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_dfc78028d0aac062c0af",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_dfc78028d0aac062c0af",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_e002dd91cbdbec28bea4",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 65.2465,
+      "province_id": "prv_e002dd91cbdbec28bea4",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ming Dynasty"
+      ],
+      "component_id": "cmp-prv_ebf24da6d99ac7047ada",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_ebf24da6d99ac7047ada",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_ecf68ece295091e90b8b",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-oir"
+      ],
+      "distance_to_modern_seam_km": 52.939464,
+      "province_id": "prv_ecf68ece295091e90b8b",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ming Dynasty"
+      ],
+      "component_id": "cmp-prv_f0b7bb9c734683e608dd",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 2.997275,
+      "province_id": "prv_f0b7bb9c734683e608dd",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ming Dynasty"
+      ],
+      "component_id": "cmp-prv_f40693cdb79d5dd0dfd9",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_f40693cdb79d5dd0dfd9",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_f79fa2c881a882d72ed9",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-northern-yuan"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_f79fa2c881a882d72ed9",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Four Oirats"
+      ],
+      "component_id": "cmp-prv_fcb5d952e41371d242cd",
+      "current_evidence_ids": [
+        "cambridge-joseon-sejong",
+        "cambridge-ming-allies",
+        "cambridge-ming-oirat-frontier",
+        "cambridge-ming-reigns",
+        "cambridge-phagmodrupa",
+        "macao-government-brief-history",
+        "met-japan-muromachi",
+        "regional-survey-030",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mng",
+      "current_relationship_actors": [
+        "scenario-mng"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_fcb5d952e41371d242cd",
+      "source_classification": "single_polity"
+    }
+  ],
+  "direct_border_pair": [
+    "Ming Dynasty",
+    "Four Oirats"
+  ],
+  "document_type": "m25c_replacement_evidence_dossier",
+  "frozen_findings": [
+    {
+      "code": "MISSING_POSITIVE_BORDER_ASSERTION",
+      "message": "Priority region 030 needs a positive border assertion."
+    },
+    {
+      "code": "NON_EXECUTABLE_SEAM_ASSERTION",
+      "message": "region-030-negative-modern-china-mongolia-seam lacks complete eligible on-seam and deterministic both-side coverage."
+    },
+    {
+      "code": "SPATIAL_ASSERTION_FAILED",
+      "message": "Executed spatial assertion region-030-negative-modern-china-mongolia-seam failed."
+    },
+    {
+      "code": "UNCERTIFIED_A_GRADE",
+      "message": "A grade for 030/geometry is not supported by matching reviewed evidence and executed gates."
+    }
+  ],
+  "independence_statement": "Cliopatria bytes and source geometry predate this candidate; the derivation reads neither candidate boundaries nor modern-control geometry when selecting source polity values.",
+  "limitations": [
+    "Cliopatria encodes unquantified historical-border uncertainty.",
+    "Its raster-to-vector workflow was smoothed to 0.07 degrees; the proposed 20 km budget is conservative but requires reviewer acceptance.",
+    "A component outside Cliopatria polity coverage is not evidence of an empty or ungoverned landscape.",
+    "This dossier authorizes no packet mutation; uncovered or overlapping components require an explicit reviewer disposition."
+  ],
+  "region_id": "030",
+  "review_route": "direct_source_boundary",
+  "schema_version": "1.0.0",
+  "single_polity_component_count": 95,
+  "source_coverage_ratio": 1.0,
+  "start_date": "1444-11-11",
+  "status": "pending_independent_review"
+}

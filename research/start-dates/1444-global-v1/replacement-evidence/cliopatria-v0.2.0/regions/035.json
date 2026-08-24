@@ -1,0 +1,1441 @@
+{
+  "cliopatria_source": {
+    "commit": "ad28a691b7c07c1fca89d0e0636d324667d2a258",
+    "date_rule": "FromYear <= 1444 <= ToYear",
+    "license": "CC BY 4.0",
+    "peer_reviewed_method_doi": "https://doi.org/10.1038/s41597-025-04516-9",
+    "polity_mapping_feature_count": 137,
+    "snapshot_feature_count": 144,
+    "source_geojson_sha256": "5df3b5868cfab8f76030853fa2346ed3cd71171ad807b6f72d783ee2dce6839e",
+    "version": "v0.2.0"
+  },
+  "corridor_component_count": 49,
+  "corridor_component_mapping": [
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_0448c946473851dbc23e",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-hanthawaddy",
+      "current_relationship_actors": [
+        "scenario-hanthawaddy"
+      ],
+      "distance_to_modern_seam_km": 61.437276,
+      "province_id": "prv_0448c946473851dbc23e",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ayutthaya Kingdom"
+      ],
+      "component_id": "cmp-prv_073d4c9bbbd238838cb1",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-hanthawaddy",
+      "current_relationship_actors": [
+        "scenario-hanthawaddy"
+      ],
+      "distance_to_modern_seam_km": 29.161805,
+      "province_id": "prv_073d4c9bbbd238838cb1",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_10a9ea4a515da77e94af",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-hanthawaddy",
+      "current_relationship_actors": [
+        "scenario-hanthawaddy"
+      ],
+      "distance_to_modern_seam_km": 64.355684,
+      "province_id": "prv_10a9ea4a515da77e94af",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Lan Na Kingdom"
+      ],
+      "component_id": "cmp-prv_11c6f886a11306125ae4",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-lanna",
+      "current_relationship_actors": [
+        "scenario-lanna"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_11c6f886a11306125ae4",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ava Kingdom"
+      ],
+      "component_id": "cmp-prv_1ad5ef8d93de14ae5719",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-ava",
+      "current_relationship_actors": [
+        "scenario-ava"
+      ],
+      "distance_to_modern_seam_km": 71.965196,
+      "province_id": "prv_1ad5ef8d93de14ae5719",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_342f8e7f901887d5f0ce",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-hanthawaddy",
+      "current_relationship_actors": [
+        "scenario-hanthawaddy"
+      ],
+      "distance_to_modern_seam_km": 26.853143,
+      "province_id": "prv_342f8e7f901887d5f0ce",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ayutthaya Kingdom"
+      ],
+      "component_id": "cmp-prv_34a74e24a1fdf2af34a9",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-ayu",
+      "current_relationship_actors": [
+        "scenario-ayu"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_34a74e24a1fdf2af34a9",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ayutthaya Kingdom"
+      ],
+      "component_id": "cmp-prv_35fd9d0e26393fffecf2",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-ayu",
+      "current_relationship_actors": [
+        "scenario-ayu"
+      ],
+      "distance_to_modern_seam_km": 60.417126,
+      "province_id": "prv_35fd9d0e26393fffecf2",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_382d934a4d1a9c156e15",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-hanthawaddy",
+      "current_relationship_actors": [
+        "scenario-hanthawaddy"
+      ],
+      "distance_to_modern_seam_km": 63.162397,
+      "province_id": "prv_382d934a4d1a9c156e15",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ayutthaya Kingdom"
+      ],
+      "component_id": "cmp-prv_3b210a632b235db8c035",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-hanthawaddy",
+      "current_relationship_actors": [
+        "scenario-hanthawaddy"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_3b210a632b235db8c035",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Shan States"
+      ],
+      "component_id": "cmp-prv_3ee5d441b2fa62e1be88",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-shan"
+      ],
+      "distance_to_modern_seam_km": 14.930483,
+      "province_id": "prv_3ee5d441b2fa62e1be88",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Hanthawaddy Kingdom"
+      ],
+      "component_id": "cmp-prv_40a752ee52587cb9e758",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-hanthawaddy",
+      "current_relationship_actors": [
+        "scenario-hanthawaddy"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_40a752ee52587cb9e758",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ava Kingdom"
+      ],
+      "component_id": "cmp-prv_46d0467ea39192835333",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-hanthawaddy",
+      "current_relationship_actors": [
+        "scenario-hanthawaddy"
+      ],
+      "distance_to_modern_seam_km": 43.359603,
+      "province_id": "prv_46d0467ea39192835333",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ayutthaya Kingdom"
+      ],
+      "component_id": "cmp-prv_4c05e7b23e158cc735c5",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-ayu",
+      "current_relationship_actors": [
+        "scenario-ayu"
+      ],
+      "distance_to_modern_seam_km": 56.852496,
+      "province_id": "prv_4c05e7b23e158cc735c5",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Lan Na Kingdom"
+      ],
+      "component_id": "cmp-prv_4e6ff10a7dd5fb98ec6f",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-lanna",
+      "current_relationship_actors": [
+        "scenario-lanna"
+      ],
+      "distance_to_modern_seam_km": 42.934417,
+      "province_id": "prv_4e6ff10a7dd5fb98ec6f",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_5001192a70498a3a1c2b",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-hanthawaddy",
+      "current_relationship_actors": [
+        "scenario-hanthawaddy"
+      ],
+      "distance_to_modern_seam_km": 36.808572,
+      "province_id": "prv_5001192a70498a3a1c2b",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ayutthaya Kingdom"
+      ],
+      "component_id": "cmp-prv_51314c3f8c1c6cc3d000",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-hanthawaddy",
+      "current_relationship_actors": [
+        "scenario-hanthawaddy"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_51314c3f8c1c6cc3d000",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Shan States"
+      ],
+      "component_id": "cmp-prv_523b340f85b08aeae577",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-lanna",
+      "current_relationship_actors": [
+        "scenario-lanna"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_523b340f85b08aeae577",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ayutthaya Kingdom"
+      ],
+      "component_id": "cmp-prv_56cd1adc38dc49460fb7",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-ayu",
+      "current_relationship_actors": [
+        "scenario-ayu"
+      ],
+      "distance_to_modern_seam_km": 32.809601,
+      "province_id": "prv_56cd1adc38dc49460fb7",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Hanthawaddy Kingdom"
+      ],
+      "component_id": "cmp-prv_5cde86d0d67cff467781",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-hanthawaddy",
+      "current_relationship_actors": [
+        "scenario-hanthawaddy"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_5cde86d0d67cff467781",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Shan States"
+      ],
+      "component_id": "cmp-prv_5f5c744baa984cd308f0",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-hanthawaddy",
+      "current_relationship_actors": [
+        "scenario-hanthawaddy"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_5f5c744baa984cd308f0",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ayutthaya Kingdom"
+      ],
+      "component_id": "cmp-prv_61afb64657a9394816ed",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-ayu",
+      "current_relationship_actors": [
+        "scenario-ayu"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_61afb64657a9394816ed",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_63ecc2d4604f4601a836",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-hanthawaddy",
+      "current_relationship_actors": [
+        "scenario-hanthawaddy"
+      ],
+      "distance_to_modern_seam_km": 29.43101,
+      "province_id": "prv_63ecc2d4604f4601a836",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_66e71b3bcac9e360d465",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-hanthawaddy",
+      "current_relationship_actors": [
+        "scenario-hanthawaddy"
+      ],
+      "distance_to_modern_seam_km": 71.645708,
+      "province_id": "prv_66e71b3bcac9e360d465",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ayutthaya Kingdom"
+      ],
+      "component_id": "cmp-prv_78282583dafe29ff84c1",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-ayu",
+      "current_relationship_actors": [
+        "scenario-ayu"
+      ],
+      "distance_to_modern_seam_km": 58.013346,
+      "province_id": "prv_78282583dafe29ff84c1",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_7843de2a1f84543ca85f",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-hanthawaddy",
+      "current_relationship_actors": [
+        "scenario-hanthawaddy"
+      ],
+      "distance_to_modern_seam_km": 59.454913,
+      "province_id": "prv_7843de2a1f84543ca85f",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_88bdec80ba170f0b91e0",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-ayu",
+      "current_relationship_actors": [
+        "scenario-ayu"
+      ],
+      "distance_to_modern_seam_km": 73.111228,
+      "province_id": "prv_88bdec80ba170f0b91e0",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ava Kingdom"
+      ],
+      "component_id": "cmp-prv_8d0b8c000b663b660702",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-ava",
+      "current_relationship_actors": [
+        "scenario-ava"
+      ],
+      "distance_to_modern_seam_km": 43.046503,
+      "province_id": "prv_8d0b8c000b663b660702",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Shan States"
+      ],
+      "component_id": "cmp-prv_94b9998e0bf851eb93ba",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-shan"
+      ],
+      "distance_to_modern_seam_km": 56.799313,
+      "province_id": "prv_94b9998e0bf851eb93ba",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_9c62ccfd459a3cca861a",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-ayu",
+      "current_relationship_actors": [
+        "scenario-ayu"
+      ],
+      "distance_to_modern_seam_km": 61.759754,
+      "province_id": "prv_9c62ccfd459a3cca861a",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Shan States"
+      ],
+      "component_id": "cmp-prv_9d40e99b451a8f9d1b94",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-shan"
+      ],
+      "distance_to_modern_seam_km": 52.565102,
+      "province_id": "prv_9d40e99b451a8f9d1b94",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ayutthaya Kingdom"
+      ],
+      "component_id": "cmp-prv_9f50ad9b617117cb81d4",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-ayu",
+      "current_relationship_actors": [
+        "scenario-ayu"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_9f50ad9b617117cb81d4",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_a2c87974d9f522b4e806",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-hanthawaddy",
+      "current_relationship_actors": [
+        "scenario-hanthawaddy"
+      ],
+      "distance_to_modern_seam_km": 58.280755,
+      "province_id": "prv_a2c87974d9f522b4e806",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ayutthaya Kingdom"
+      ],
+      "component_id": "cmp-prv_a31d1eeecc81c8f95a9f",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-ayu",
+      "current_relationship_actors": [
+        "scenario-ayu"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_a31d1eeecc81c8f95a9f",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Sukhothai Kingdom"
+      ],
+      "component_id": "cmp-prv_a3c936fd0cadfef29581",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-ayu",
+      "current_relationship_actors": [
+        "scenario-ayu"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_a3c936fd0cadfef29581",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_af2be631269e0a4c83c9",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-hanthawaddy",
+      "current_relationship_actors": [
+        "scenario-hanthawaddy"
+      ],
+      "distance_to_modern_seam_km": 46.174467,
+      "province_id": "prv_af2be631269e0a4c83c9",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ayutthaya Kingdom"
+      ],
+      "component_id": "cmp-prv_b1792f8e322d4e3bfa19",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-ayu",
+      "current_relationship_actors": [
+        "scenario-ayu"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_b1792f8e322d4e3bfa19",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ayutthaya Kingdom"
+      ],
+      "component_id": "cmp-prv_b32a5185dff1fdf235c7",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-hanthawaddy",
+      "current_relationship_actors": [
+        "scenario-hanthawaddy"
+      ],
+      "distance_to_modern_seam_km": 30.923597,
+      "province_id": "prv_b32a5185dff1fdf235c7",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ayutthaya Kingdom"
+      ],
+      "component_id": "cmp-prv_bf00d066396ae7340846",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-ayu",
+      "current_relationship_actors": [
+        "scenario-ayu"
+      ],
+      "distance_to_modern_seam_km": 40.352123,
+      "province_id": "prv_bf00d066396ae7340846",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_bf3ff892f72756b15445",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-hanthawaddy",
+      "current_relationship_actors": [
+        "scenario-hanthawaddy"
+      ],
+      "distance_to_modern_seam_km": 58.773874,
+      "province_id": "prv_bf3ff892f72756b15445",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ayutthaya Kingdom"
+      ],
+      "component_id": "cmp-prv_c6a94a1c596c74255972",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-hanthawaddy",
+      "current_relationship_actors": [
+        "scenario-hanthawaddy"
+      ],
+      "distance_to_modern_seam_km": 9.090871,
+      "province_id": "prv_c6a94a1c596c74255972",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Lan Na Kingdom"
+      ],
+      "component_id": "cmp-prv_c8a8e2d72f134df91918",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-lanna",
+      "current_relationship_actors": [
+        "scenario-lanna"
+      ],
+      "distance_to_modern_seam_km": 11.875661,
+      "province_id": "prv_c8a8e2d72f134df91918",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Hanthawaddy Kingdom"
+      ],
+      "component_id": "cmp-prv_ce659c2be7f28a45899f",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-hanthawaddy",
+      "current_relationship_actors": [
+        "scenario-hanthawaddy"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_ce659c2be7f28a45899f",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_cfb2c4633fbf6f033445",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-hanthawaddy",
+      "current_relationship_actors": [
+        "scenario-hanthawaddy"
+      ],
+      "distance_to_modern_seam_km": 57.675803,
+      "province_id": "prv_cfb2c4633fbf6f033445",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Sukhothai Kingdom"
+      ],
+      "component_id": "cmp-prv_e52b40bf5c82357d04b4",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-ayu",
+      "current_relationship_actors": [
+        "scenario-ayu"
+      ],
+      "distance_to_modern_seam_km": 2.129354,
+      "province_id": "prv_e52b40bf5c82357d04b4",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Shan States"
+      ],
+      "component_id": "cmp-prv_e66d932748c41783fd34",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-shan"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_e66d932748c41783fd34",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_f29610166aa2ffb0bfdb",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-hanthawaddy",
+      "current_relationship_actors": [
+        "scenario-hanthawaddy"
+      ],
+      "distance_to_modern_seam_km": 55.95932,
+      "province_id": "prv_f29610166aa2ffb0bfdb",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Ayutthaya Kingdom"
+      ],
+      "component_id": "cmp-prv_f4c024327fcb61f38a29",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-ayu",
+      "current_relationship_actors": [
+        "scenario-ayu"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_f4c024327fcb61f38a29",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_fc3199fa59dbc1827552",
+      "current_evidence_ids": [
+        "cambridge-malacca-1400",
+        "met-southeast-asia-1000-1400",
+        "regional-survey-035",
+        "shepherd-historical-atlas",
+        "unesco-ayutthaya",
+        "unesco-insular-southeast-asia",
+        "unesco-melaka"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-hanthawaddy",
+      "current_relationship_actors": [
+        "scenario-hanthawaddy"
+      ],
+      "distance_to_modern_seam_km": 49.839986,
+      "province_id": "prv_fc3199fa59dbc1827552",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    }
+  ],
+  "direct_border_pair": [
+    "Khmer Empire",
+    "Ayutthaya Kingdom"
+  ],
+  "document_type": "m25c_replacement_evidence_dossier",
+  "frozen_findings": [
+    {
+      "code": "MISSING_POSITIVE_BORDER_ASSERTION",
+      "message": "Priority region 035 needs a positive border assertion."
+    },
+    {
+      "code": "NON_EXECUTABLE_SEAM_ASSERTION",
+      "message": "region-035-negative-modern-thailand-myanmar-seam lacks complete eligible on-seam and deterministic both-side coverage."
+    },
+    {
+      "code": "SPATIAL_ASSERTION_FAILED",
+      "message": "Executed spatial assertion region-035-negative-modern-thailand-myanmar-seam failed."
+    },
+    {
+      "code": "UNCERTIFIED_A_GRADE",
+      "message": "A grade for 035/geometry is not supported by matching reviewed evidence and executed gates."
+    }
+  ],
+  "independence_statement": "Cliopatria bytes and source geometry predate this candidate; the derivation reads neither candidate boundaries nor modern-control geometry when selecting source polity values.",
+  "limitations": [
+    "Cliopatria encodes unquantified historical-border uncertainty.",
+    "Its raster-to-vector workflow was smoothed to 0.07 degrees; the proposed 20 km budget is conservative but requires reviewer acceptance.",
+    "A component outside Cliopatria polity coverage is not evidence of an empty or ungoverned landscape.",
+    "This dossier authorizes no packet mutation; uncovered or overlapping components require an explicit reviewer disposition."
+  ],
+  "region_id": "035",
+  "review_route": "direct_source_boundary",
+  "schema_version": "1.0.0",
+  "single_polity_component_count": 33,
+  "source_coverage_ratio": 0.673469387755,
+  "start_date": "1444-11-11",
+  "status": "pending_independent_review"
+}

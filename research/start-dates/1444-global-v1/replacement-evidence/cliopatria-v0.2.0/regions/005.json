@@ -1,0 +1,771 @@
+{
+  "cliopatria_source": {
+    "commit": "ad28a691b7c07c1fca89d0e0636d324667d2a258",
+    "date_rule": "FromYear <= 1444 <= ToYear",
+    "license": "CC BY 4.0",
+    "peer_reviewed_method_doi": "https://doi.org/10.1038/s41597-025-04516-9",
+    "polity_mapping_feature_count": 137,
+    "snapshot_feature_count": 144,
+    "source_geojson_sha256": "5df3b5868cfab8f76030853fa2346ed3cd71171ad807b6f72d783ee2dce6839e",
+    "version": "v0.2.0"
+  },
+  "corridor_component_count": 22,
+  "corridor_component_mapping": [
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_25711345a021b3b0c8f6",
+      "current_evidence_ids": [
+        "argentina-loma-rica",
+        "banrep-tairona-muisca",
+        "cnrs-guiana-precolumbian-forest",
+        "inrap-guyane-kourou-luna1",
+        "inrap-guyane-precolumbian",
+        "iphan-amazonian-archaeology",
+        "met-chimor",
+        "npolar-bouvet-history",
+        "regional-survey-005",
+        "shepherd-historical-atlas",
+        "smithsonian-handbook-south-america-v1",
+        "smithsonian-handbook-south-america-v2",
+        "unesco-qhapaq-nan"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-aymara-kingdoms",
+      "current_relationship_actors": [
+        "scenario-aymara-kingdoms"
+      ],
+      "distance_to_modern_seam_km": 45.697236,
+      "province_id": "prv_25711345a021b3b0c8f6",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_288f1a2e53c3d5495bdb",
+      "current_evidence_ids": [
+        "argentina-loma-rica",
+        "banrep-tairona-muisca",
+        "cnrs-guiana-precolumbian-forest",
+        "inrap-guyane-kourou-luna1",
+        "inrap-guyane-precolumbian",
+        "iphan-amazonian-archaeology",
+        "met-chimor",
+        "npolar-bouvet-history",
+        "regional-survey-005",
+        "shepherd-historical-atlas",
+        "smithsonian-handbook-south-america-v1",
+        "smithsonian-handbook-south-america-v2",
+        "unesco-qhapaq-nan"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-amazonian-riverine"
+      ],
+      "distance_to_modern_seam_km": 51.422291,
+      "province_id": "prv_288f1a2e53c3d5495bdb",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_2a2abea6dde8cf13a72f",
+      "current_evidence_ids": [
+        "argentina-loma-rica",
+        "banrep-tairona-muisca",
+        "cnrs-guiana-precolumbian-forest",
+        "inrap-guyane-kourou-luna1",
+        "inrap-guyane-precolumbian",
+        "iphan-amazonian-archaeology",
+        "met-chimor",
+        "npolar-bouvet-history",
+        "regional-survey-005",
+        "shepherd-historical-atlas",
+        "smithsonian-handbook-south-america-v1",
+        "smithsonian-handbook-south-america-v2",
+        "unesco-qhapaq-nan"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-aymara-kingdoms",
+      "current_relationship_actors": [
+        "scenario-aymara-kingdoms"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_2a2abea6dde8cf13a72f",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_3ab7e4f6903f94f47c8a",
+      "current_evidence_ids": [
+        "argentina-loma-rica",
+        "banrep-tairona-muisca",
+        "cnrs-guiana-precolumbian-forest",
+        "inrap-guyane-kourou-luna1",
+        "inrap-guyane-precolumbian",
+        "iphan-amazonian-archaeology",
+        "met-chimor",
+        "npolar-bouvet-history",
+        "regional-survey-005",
+        "shepherd-historical-atlas",
+        "smithsonian-handbook-south-america-v1",
+        "smithsonian-handbook-south-america-v2",
+        "unesco-qhapaq-nan"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-diaguita-calchaqui"
+      ],
+      "distance_to_modern_seam_km": 60.765038,
+      "province_id": "prv_3ab7e4f6903f94f47c8a",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_3d3ce5c55cd0f561a0ea",
+      "current_evidence_ids": [
+        "argentina-loma-rica",
+        "banrep-tairona-muisca",
+        "cnrs-guiana-precolumbian-forest",
+        "inrap-guyane-kourou-luna1",
+        "inrap-guyane-precolumbian",
+        "iphan-amazonian-archaeology",
+        "met-chimor",
+        "npolar-bouvet-history",
+        "regional-survey-005",
+        "shepherd-historical-atlas",
+        "smithsonian-handbook-south-america-v1",
+        "smithsonian-handbook-south-america-v2",
+        "unesco-qhapaq-nan"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-aymara-kingdoms",
+      "current_relationship_actors": [
+        "scenario-aymara-kingdoms"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_3d3ce5c55cd0f561a0ea",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_442207513776cbb5712d",
+      "current_evidence_ids": [
+        "argentina-loma-rica",
+        "banrep-tairona-muisca",
+        "cnrs-guiana-precolumbian-forest",
+        "inrap-guyane-kourou-luna1",
+        "inrap-guyane-precolumbian",
+        "iphan-amazonian-archaeology",
+        "met-chimor",
+        "npolar-bouvet-history",
+        "regional-survey-005",
+        "shepherd-historical-atlas",
+        "smithsonian-handbook-south-america-v1",
+        "smithsonian-handbook-south-america-v2",
+        "unesco-qhapaq-nan"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-inca-cusco",
+      "current_relationship_actors": [
+        "scenario-inca-cusco"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_442207513776cbb5712d",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_56b052b837eac242f4c3",
+      "current_evidence_ids": [
+        "argentina-loma-rica",
+        "banrep-tairona-muisca",
+        "cnrs-guiana-precolumbian-forest",
+        "inrap-guyane-kourou-luna1",
+        "inrap-guyane-precolumbian",
+        "iphan-amazonian-archaeology",
+        "met-chimor",
+        "npolar-bouvet-history",
+        "regional-survey-005",
+        "shepherd-historical-atlas",
+        "smithsonian-handbook-south-america-v1",
+        "smithsonian-handbook-south-america-v2",
+        "unesco-qhapaq-nan"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-aymara-kingdoms",
+      "current_relationship_actors": [
+        "scenario-aymara-kingdoms"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_56b052b837eac242f4c3",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_62fb7ca86d4a70bcf721",
+      "current_evidence_ids": [
+        "argentina-loma-rica",
+        "banrep-tairona-muisca",
+        "cnrs-guiana-precolumbian-forest",
+        "inrap-guyane-kourou-luna1",
+        "inrap-guyane-precolumbian",
+        "iphan-amazonian-archaeology",
+        "met-chimor",
+        "npolar-bouvet-history",
+        "regional-survey-005",
+        "shepherd-historical-atlas",
+        "smithsonian-handbook-south-america-v1",
+        "smithsonian-handbook-south-america-v2",
+        "unesco-qhapaq-nan"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-aymara-kingdoms",
+      "current_relationship_actors": [
+        "scenario-aymara-kingdoms"
+      ],
+      "distance_to_modern_seam_km": 31.284006,
+      "province_id": "prv_62fb7ca86d4a70bcf721",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_74938a89caab572f953f",
+      "current_evidence_ids": [
+        "argentina-loma-rica",
+        "banrep-tairona-muisca",
+        "cnrs-guiana-precolumbian-forest",
+        "inrap-guyane-kourou-luna1",
+        "inrap-guyane-precolumbian",
+        "iphan-amazonian-archaeology",
+        "met-chimor",
+        "npolar-bouvet-history",
+        "regional-survey-005",
+        "shepherd-historical-atlas",
+        "smithsonian-handbook-south-america-v1",
+        "smithsonian-handbook-south-america-v2",
+        "unesco-qhapaq-nan"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-aymara-kingdoms",
+      "current_relationship_actors": [
+        "scenario-aymara-kingdoms"
+      ],
+      "distance_to_modern_seam_km": 57.74668,
+      "province_id": "prv_74938a89caab572f953f",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_7fb8734ec436d4da5d9a",
+      "current_evidence_ids": [
+        "argentina-loma-rica",
+        "banrep-tairona-muisca",
+        "cnrs-guiana-precolumbian-forest",
+        "inrap-guyane-kourou-luna1",
+        "inrap-guyane-precolumbian",
+        "iphan-amazonian-archaeology",
+        "met-chimor",
+        "npolar-bouvet-history",
+        "regional-survey-005",
+        "shepherd-historical-atlas",
+        "smithsonian-handbook-south-america-v1",
+        "smithsonian-handbook-south-america-v2",
+        "unesco-qhapaq-nan"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-aymara-kingdoms",
+      "current_relationship_actors": [
+        "scenario-aymara-kingdoms"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_7fb8734ec436d4da5d9a",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_8e4020a2eac6cb7317b6",
+      "current_evidence_ids": [
+        "argentina-loma-rica",
+        "banrep-tairona-muisca",
+        "cnrs-guiana-precolumbian-forest",
+        "inrap-guyane-kourou-luna1",
+        "inrap-guyane-precolumbian",
+        "iphan-amazonian-archaeology",
+        "met-chimor",
+        "npolar-bouvet-history",
+        "regional-survey-005",
+        "shepherd-historical-atlas",
+        "smithsonian-handbook-south-america-v1",
+        "smithsonian-handbook-south-america-v2",
+        "unesco-qhapaq-nan"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-aymara-kingdoms",
+      "current_relationship_actors": [
+        "scenario-aymara-kingdoms"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_8e4020a2eac6cb7317b6",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_95f1bb5d63b6d1b2d570",
+      "current_evidence_ids": [
+        "argentina-loma-rica",
+        "banrep-tairona-muisca",
+        "cnrs-guiana-precolumbian-forest",
+        "inrap-guyane-kourou-luna1",
+        "inrap-guyane-precolumbian",
+        "iphan-amazonian-archaeology",
+        "met-chimor",
+        "npolar-bouvet-history",
+        "regional-survey-005",
+        "shepherd-historical-atlas",
+        "smithsonian-handbook-south-america-v1",
+        "smithsonian-handbook-south-america-v2",
+        "unesco-qhapaq-nan"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-aymara-kingdoms",
+      "current_relationship_actors": [
+        "scenario-aymara-kingdoms"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_95f1bb5d63b6d1b2d570",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_9d9c8cc3410367bb699d",
+      "current_evidence_ids": [
+        "argentina-loma-rica",
+        "banrep-tairona-muisca",
+        "cnrs-guiana-precolumbian-forest",
+        "inrap-guyane-kourou-luna1",
+        "inrap-guyane-precolumbian",
+        "iphan-amazonian-archaeology",
+        "met-chimor",
+        "npolar-bouvet-history",
+        "regional-survey-005",
+        "shepherd-historical-atlas",
+        "smithsonian-handbook-south-america-v1",
+        "smithsonian-handbook-south-america-v2",
+        "unesco-qhapaq-nan"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-aymara-kingdoms",
+      "current_relationship_actors": [
+        "scenario-aymara-kingdoms"
+      ],
+      "distance_to_modern_seam_km": 53.041706,
+      "province_id": "prv_9d9c8cc3410367bb699d",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_a30c6b9fb800f85409e8",
+      "current_evidence_ids": [
+        "argentina-loma-rica",
+        "banrep-tairona-muisca",
+        "cnrs-guiana-precolumbian-forest",
+        "inrap-guyane-kourou-luna1",
+        "inrap-guyane-precolumbian",
+        "iphan-amazonian-archaeology",
+        "met-chimor",
+        "npolar-bouvet-history",
+        "regional-survey-005",
+        "shepherd-historical-atlas",
+        "smithsonian-handbook-south-america-v1",
+        "smithsonian-handbook-south-america-v2",
+        "unesco-qhapaq-nan"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-amazonian-riverine"
+      ],
+      "distance_to_modern_seam_km": 40.613683,
+      "province_id": "prv_a30c6b9fb800f85409e8",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_abb615aff26d77f894ce",
+      "current_evidence_ids": [
+        "argentina-loma-rica",
+        "banrep-tairona-muisca",
+        "cnrs-guiana-precolumbian-forest",
+        "inrap-guyane-kourou-luna1",
+        "inrap-guyane-precolumbian",
+        "iphan-amazonian-archaeology",
+        "met-chimor",
+        "npolar-bouvet-history",
+        "regional-survey-005",
+        "shepherd-historical-atlas",
+        "smithsonian-handbook-south-america-v1",
+        "smithsonian-handbook-south-america-v2",
+        "unesco-qhapaq-nan"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-aymara-kingdoms",
+      "current_relationship_actors": [
+        "scenario-aymara-kingdoms"
+      ],
+      "distance_to_modern_seam_km": 43.135112,
+      "province_id": "prv_abb615aff26d77f894ce",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_db32e7b22fc09648e1f7",
+      "current_evidence_ids": [
+        "argentina-loma-rica",
+        "banrep-tairona-muisca",
+        "cnrs-guiana-precolumbian-forest",
+        "inrap-guyane-kourou-luna1",
+        "inrap-guyane-precolumbian",
+        "iphan-amazonian-archaeology",
+        "met-chimor",
+        "npolar-bouvet-history",
+        "regional-survey-005",
+        "shepherd-historical-atlas",
+        "smithsonian-handbook-south-america-v1",
+        "smithsonian-handbook-south-america-v2",
+        "unesco-qhapaq-nan"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-inca-cusco",
+      "current_relationship_actors": [
+        "scenario-inca-cusco"
+      ],
+      "distance_to_modern_seam_km": 11.609637,
+      "province_id": "prv_db32e7b22fc09648e1f7",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_e940906cbdb2f1cdcb54",
+      "current_evidence_ids": [
+        "argentina-loma-rica",
+        "banrep-tairona-muisca",
+        "cnrs-guiana-precolumbian-forest",
+        "inrap-guyane-kourou-luna1",
+        "inrap-guyane-precolumbian",
+        "iphan-amazonian-archaeology",
+        "met-chimor",
+        "npolar-bouvet-history",
+        "regional-survey-005",
+        "shepherd-historical-atlas",
+        "smithsonian-handbook-south-america-v1",
+        "smithsonian-handbook-south-america-v2",
+        "unesco-qhapaq-nan"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-inca-cusco",
+      "current_relationship_actors": [
+        "scenario-inca-cusco"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_e940906cbdb2f1cdcb54",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_eb3d7a9248ecb13ae234",
+      "current_evidence_ids": [
+        "argentina-loma-rica",
+        "banrep-tairona-muisca",
+        "cnrs-guiana-precolumbian-forest",
+        "inrap-guyane-kourou-luna1",
+        "inrap-guyane-precolumbian",
+        "iphan-amazonian-archaeology",
+        "met-chimor",
+        "npolar-bouvet-history",
+        "regional-survey-005",
+        "shepherd-historical-atlas",
+        "smithsonian-handbook-south-america-v1",
+        "smithsonian-handbook-south-america-v2",
+        "unesco-qhapaq-nan"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-amazonian-riverine"
+      ],
+      "distance_to_modern_seam_km": 35.692129,
+      "province_id": "prv_eb3d7a9248ecb13ae234",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_ebee30432e9d4960fa6b",
+      "current_evidence_ids": [
+        "argentina-loma-rica",
+        "banrep-tairona-muisca",
+        "cnrs-guiana-precolumbian-forest",
+        "inrap-guyane-kourou-luna1",
+        "inrap-guyane-precolumbian",
+        "iphan-amazonian-archaeology",
+        "met-chimor",
+        "npolar-bouvet-history",
+        "regional-survey-005",
+        "shepherd-historical-atlas",
+        "smithsonian-handbook-south-america-v1",
+        "smithsonian-handbook-south-america-v2",
+        "unesco-qhapaq-nan"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-inca-cusco",
+      "current_relationship_actors": [
+        "scenario-inca-cusco"
+      ],
+      "distance_to_modern_seam_km": 23.467005,
+      "province_id": "prv_ebee30432e9d4960fa6b",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_f1fbd75512a76a1ae568",
+      "current_evidence_ids": [
+        "argentina-loma-rica",
+        "banrep-tairona-muisca",
+        "cnrs-guiana-precolumbian-forest",
+        "inrap-guyane-kourou-luna1",
+        "inrap-guyane-precolumbian",
+        "iphan-amazonian-archaeology",
+        "met-chimor",
+        "npolar-bouvet-history",
+        "regional-survey-005",
+        "shepherd-historical-atlas",
+        "smithsonian-handbook-south-america-v1",
+        "smithsonian-handbook-south-america-v2",
+        "unesco-qhapaq-nan"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-aymara-kingdoms",
+      "current_relationship_actors": [
+        "scenario-aymara-kingdoms"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_f1fbd75512a76a1ae568",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_f8a4799c6b5188f87f7b",
+      "current_evidence_ids": [
+        "argentina-loma-rica",
+        "banrep-tairona-muisca",
+        "cnrs-guiana-precolumbian-forest",
+        "inrap-guyane-kourou-luna1",
+        "inrap-guyane-precolumbian",
+        "iphan-amazonian-archaeology",
+        "met-chimor",
+        "npolar-bouvet-history",
+        "regional-survey-005",
+        "shepherd-historical-atlas",
+        "smithsonian-handbook-south-america-v1",
+        "smithsonian-handbook-south-america-v2",
+        "unesco-qhapaq-nan"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-inca-cusco",
+      "current_relationship_actors": [
+        "scenario-inca-cusco"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_f8a4799c6b5188f87f7b",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_fdcde264be28c57ebecc",
+      "current_evidence_ids": [
+        "argentina-loma-rica",
+        "banrep-tairona-muisca",
+        "cnrs-guiana-precolumbian-forest",
+        "inrap-guyane-kourou-luna1",
+        "inrap-guyane-precolumbian",
+        "iphan-amazonian-archaeology",
+        "met-chimor",
+        "npolar-bouvet-history",
+        "regional-survey-005",
+        "shepherd-historical-atlas",
+        "smithsonian-handbook-south-america-v1",
+        "smithsonian-handbook-south-america-v2",
+        "unesco-qhapaq-nan"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-aymara-kingdoms",
+      "current_relationship_actors": [
+        "scenario-aymara-kingdoms"
+      ],
+      "distance_to_modern_seam_km": 21.934755,
+      "province_id": "prv_fdcde264be28c57ebecc",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    }
+  ],
+  "direct_border_pair": null,
+  "document_type": "m25c_replacement_evidence_dossier",
+  "frozen_findings": [
+    {
+      "code": "MISSING_POSITIVE_BORDER_ASSERTION",
+      "message": "Priority region 005 needs a positive border assertion."
+    },
+    {
+      "code": "SPATIAL_ASSERTION_FAILED",
+      "message": "Executed spatial assertion region-005-negative-modern-peru-bolivia-seam failed."
+    },
+    {
+      "code": "UNCERTIFIED_A_GRADE",
+      "message": "A grade for 005/geometry is not supported by matching reviewed evidence and executed gates."
+    }
+  ],
+  "independence_statement": "Cliopatria bytes and source geometry predate this candidate; the derivation reads neither candidate boundaries nor modern-control geometry when selecting source polity values.",
+  "limitations": [
+    "Cliopatria encodes unquantified historical-border uncertainty.",
+    "Its raster-to-vector workflow was smoothed to 0.07 degrees; the proposed 20 km budget is conservative but requires reviewer acceptance.",
+    "A component outside Cliopatria polity coverage is not evidence of an empty or ungoverned landscape.",
+    "This dossier authorizes no packet mutation; uncovered or overlapping components require an explicit reviewer disposition."
+  ],
+  "region_id": "005",
+  "review_route": "applicability_candidate",
+  "schema_version": "1.0.0",
+  "single_polity_component_count": 0,
+  "source_coverage_ratio": 0.0,
+  "start_date": "1444-11-11",
+  "status": "pending_independent_review"
+}

@@ -1,0 +1,1132 @@
+{
+  "cliopatria_source": {
+    "commit": "ad28a691b7c07c1fca89d0e0636d324667d2a258",
+    "date_rule": "FromYear <= 1444 <= ToYear",
+    "license": "CC BY 4.0",
+    "peer_reviewed_method_doi": "https://doi.org/10.1038/s41597-025-04516-9",
+    "polity_mapping_feature_count": 137,
+    "snapshot_feature_count": 144,
+    "source_geojson_sha256": "5df3b5868cfab8f76030853fa2346ed3cd71171ad807b6f72d783ee2dce6839e",
+    "version": "v0.2.0"
+  },
+  "corridor_component_count": 35,
+  "corridor_component_mapping": [
+    {
+      "cliopatria_representative_point_matches": [
+        "Marinid Sultanate"
+      ],
+      "component_id": "cmp-prv_0cbd6b585c399bf8b251",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mor",
+      "current_relationship_actors": [
+        "scenario-mor"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_0cbd6b585c399bf8b251",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Marinid Sultanate"
+      ],
+      "component_id": "cmp-prv_0feecb4f065e3d1f291a",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mor",
+      "current_relationship_actors": [
+        "scenario-mor"
+      ],
+      "distance_to_modern_seam_km": 11.487216,
+      "province_id": "prv_0feecb4f065e3d1f291a",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_11fd9af3ac4e24f7d965",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-tlc",
+      "current_relationship_actors": [
+        "scenario-tlc"
+      ],
+      "distance_to_modern_seam_km": 44.982613,
+      "province_id": "prv_11fd9af3ac4e24f7d965",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Marinid Sultanate"
+      ],
+      "component_id": "cmp-prv_1c9487014f99ae738110",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-tlc",
+      "current_relationship_actors": [
+        "scenario-tlc"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_1c9487014f99ae738110",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_1fcddf25dcc32217ad88",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mor",
+      "current_relationship_actors": [
+        "scenario-mor"
+      ],
+      "distance_to_modern_seam_km": 0.935407,
+      "province_id": "prv_1fcddf25dcc32217ad88",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Marinid Sultanate"
+      ],
+      "component_id": "cmp-prv_21e1b5df0a32d8bfcff8",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mor",
+      "current_relationship_actors": [
+        "scenario-mor"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_21e1b5df0a32d8bfcff8",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_29e667bdbfb94a33c2a1",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-tlc",
+      "current_relationship_actors": [
+        "scenario-tlc"
+      ],
+      "distance_to_modern_seam_km": 34.070315,
+      "province_id": "prv_29e667bdbfb94a33c2a1",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_2c111520b4dd11459759",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-tlc",
+      "current_relationship_actors": [
+        "scenario-tlc"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_2c111520b4dd11459759",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Zayyanid dynasty"
+      ],
+      "component_id": "cmp-prv_3b2184bdacf874b3e79c",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-tlc",
+      "current_relationship_actors": [
+        "scenario-tlc"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_3b2184bdacf874b3e79c",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_4295ce0e6495d0170935",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-tlc",
+      "current_relationship_actors": [
+        "scenario-tlc"
+      ],
+      "distance_to_modern_seam_km": 14.442087,
+      "province_id": "prv_4295ce0e6495d0170935",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_4f7b4787ce058b1a704c",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-tlc",
+      "current_relationship_actors": [
+        "scenario-tlc"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_4f7b4787ce058b1a704c",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Marinid Sultanate"
+      ],
+      "component_id": "cmp-prv_527fcb9fb9a051dc776f",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mor",
+      "current_relationship_actors": [
+        "scenario-mor"
+      ],
+      "distance_to_modern_seam_km": 50.384656,
+      "province_id": "prv_527fcb9fb9a051dc776f",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Zayyanid dynasty"
+      ],
+      "component_id": "cmp-prv_5c8faabd357f5b75b209",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-tlc",
+      "current_relationship_actors": [
+        "scenario-tlc"
+      ],
+      "distance_to_modern_seam_km": 55.766932,
+      "province_id": "prv_5c8faabd357f5b75b209",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_6543790fcd72d6793a43",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-sah"
+      ],
+      "distance_to_modern_seam_km": 72.31932,
+      "province_id": "prv_6543790fcd72d6793a43",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Marinid Sultanate"
+      ],
+      "component_id": "cmp-prv_699f9b74b7469deb72cd",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mor",
+      "current_relationship_actors": [
+        "scenario-mor"
+      ],
+      "distance_to_modern_seam_km": 6.975142,
+      "province_id": "prv_699f9b74b7469deb72cd",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Marinid Sultanate"
+      ],
+      "component_id": "cmp-prv_6ccde1f12bca7f8e1517",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mor",
+      "current_relationship_actors": [
+        "scenario-mor"
+      ],
+      "distance_to_modern_seam_km": 51.702051,
+      "province_id": "prv_6ccde1f12bca7f8e1517",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Marinid Sultanate"
+      ],
+      "component_id": "cmp-prv_6ed893f8f84031de9175",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mor",
+      "current_relationship_actors": [
+        "scenario-mor"
+      ],
+      "distance_to_modern_seam_km": 43.7678,
+      "province_id": "prv_6ed893f8f84031de9175",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_70dc7d4158931889e154",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mor",
+      "current_relationship_actors": [
+        "scenario-mor"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_70dc7d4158931889e154",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Marinid Sultanate"
+      ],
+      "component_id": "cmp-prv_713e5d932463ca4e6964",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mor",
+      "current_relationship_actors": [
+        "scenario-mor"
+      ],
+      "distance_to_modern_seam_km": 62.250306,
+      "province_id": "prv_713e5d932463ca4e6964",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_831c6703ea45d989817c",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-tlc",
+      "current_relationship_actors": [
+        "scenario-tlc"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_831c6703ea45d989817c",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Marinid Sultanate"
+      ],
+      "component_id": "cmp-prv_83ee9f6cd2593419f84c",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mor",
+      "current_relationship_actors": [
+        "scenario-mor"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_83ee9f6cd2593419f84c",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Marinid Sultanate"
+      ],
+      "component_id": "cmp-prv_860888c8b4e812b9ee67",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mor",
+      "current_relationship_actors": [
+        "scenario-mor"
+      ],
+      "distance_to_modern_seam_km": 23.940789,
+      "province_id": "prv_860888c8b4e812b9ee67",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_8b86a2fb0f91fc7d9cd0",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-tlc",
+      "current_relationship_actors": [
+        "scenario-tlc"
+      ],
+      "distance_to_modern_seam_km": 46.568345,
+      "province_id": "prv_8b86a2fb0f91fc7d9cd0",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_92348870bf2d0e06adb8",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-tlc",
+      "current_relationship_actors": [
+        "scenario-tlc"
+      ],
+      "distance_to_modern_seam_km": 23.315818,
+      "province_id": "prv_92348870bf2d0e06adb8",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_95191940c54724ff5fec",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-tlc",
+      "current_relationship_actors": [
+        "scenario-tlc"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_95191940c54724ff5fec",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_a813a8f8122dd84b6590",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-tlc",
+      "current_relationship_actors": [
+        "scenario-tlc"
+      ],
+      "distance_to_modern_seam_km": 41.241447,
+      "province_id": "prv_a813a8f8122dd84b6590",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_afda53f38757ed9f3f13",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mor",
+      "current_relationship_actors": [
+        "scenario-mor"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_afda53f38757ed9f3f13",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Marinid Sultanate"
+      ],
+      "component_id": "cmp-prv_b02de91dae63d60e2d5f",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mor",
+      "current_relationship_actors": [
+        "scenario-mor"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_b02de91dae63d60e2d5f",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_bea4833b7d6907692068",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mor",
+      "current_relationship_actors": [
+        "scenario-mor"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_bea4833b7d6907692068",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Marinid Sultanate"
+      ],
+      "component_id": "cmp-prv_bfc9324cbcd05ea3266f",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mor",
+      "current_relationship_actors": [
+        "scenario-mor"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_bfc9324cbcd05ea3266f",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_c14cea4c94ca6928cec9",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-tlc",
+      "current_relationship_actors": [
+        "scenario-tlc"
+      ],
+      "distance_to_modern_seam_km": 67.104372,
+      "province_id": "prv_c14cea4c94ca6928cec9",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Marinid Sultanate"
+      ],
+      "component_id": "cmp-prv_daaa6b43acd6179e0b54",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mor",
+      "current_relationship_actors": [
+        "scenario-mor"
+      ],
+      "distance_to_modern_seam_km": 30.874743,
+      "province_id": "prv_daaa6b43acd6179e0b54",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_dc69507d93f6a73ffc2b",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-tlc",
+      "current_relationship_actors": [
+        "scenario-tlc"
+      ],
+      "distance_to_modern_seam_km": 68.123488,
+      "province_id": "prv_dc69507d93f6a73ffc2b",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Marinid Sultanate"
+      ],
+      "component_id": "cmp-prv_ed7d5bf80d42ddec8ca1",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-mor",
+      "current_relationship_actors": [
+        "scenario-mor"
+      ],
+      "distance_to_modern_seam_km": 49.126621,
+      "province_id": "prv_ed7d5bf80d42ddec8ca1",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_f1237876fc0d89376857",
+      "current_evidence_ids": [
+        "antiquity-soba-alwa",
+        "cambridge-maghrib-islamic-period",
+        "cambridge-mamluk-sultanate",
+        "cambridge-north-africa-dynasties",
+        "cambridge-old-dongola-transition",
+        "cambridge-portugal-ceuta",
+        "cambridge-post-almohad-maghrib",
+        "cambridge-tlemcen-1439",
+        "regional-survey-015",
+        "shepherd-historical-atlas"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-tlc",
+      "current_relationship_actors": [
+        "scenario-tlc"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_f1237876fc0d89376857",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    }
+  ],
+  "direct_border_pair": [
+    "Marinid Sultanate",
+    "Zayyanid dynasty"
+  ],
+  "document_type": "m25c_replacement_evidence_dossier",
+  "frozen_findings": [
+    {
+      "code": "MISSING_POSITIVE_BORDER_ASSERTION",
+      "message": "Priority region 015 needs a positive border assertion."
+    },
+    {
+      "code": "SPATIAL_ASSERTION_FAILED",
+      "message": "Executed spatial assertion region-015-negative-modern-morocco-algeria-seam failed."
+    },
+    {
+      "code": "UNCERTIFIED_A_GRADE",
+      "message": "A grade for 015/geometry is not supported by matching reviewed evidence and executed gates."
+    }
+  ],
+  "independence_statement": "Cliopatria bytes and source geometry predate this candidate; the derivation reads neither candidate boundaries nor modern-control geometry when selecting source polity values.",
+  "limitations": [
+    "Cliopatria encodes unquantified historical-border uncertainty.",
+    "Its raster-to-vector workflow was smoothed to 0.07 degrees; the proposed 20 km budget is conservative but requires reviewer acceptance.",
+    "A component outside Cliopatria polity coverage is not evidence of an empty or ungoverned landscape.",
+    "This dossier authorizes no packet mutation; uncovered or overlapping components require an explicit reviewer disposition."
+  ],
+  "region_id": "015",
+  "review_route": "direct_source_boundary",
+  "schema_version": "1.0.0",
+  "single_polity_component_count": 17,
+  "source_coverage_ratio": 0.485714285714,
+  "start_date": "1444-11-11",
+  "status": "pending_independent_review"
+}

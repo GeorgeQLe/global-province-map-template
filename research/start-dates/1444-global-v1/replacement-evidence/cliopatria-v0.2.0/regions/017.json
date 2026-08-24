@@ -1,0 +1,1387 @@
+{
+  "cliopatria_source": {
+    "commit": "ad28a691b7c07c1fca89d0e0636d324667d2a258",
+    "date_rule": "FromYear <= 1444 <= ToYear",
+    "license": "CC BY 4.0",
+    "peer_reviewed_method_doi": "https://doi.org/10.1038/s41597-025-04516-9",
+    "polity_mapping_feature_count": 137,
+    "snapshot_feature_count": 144,
+    "source_geojson_sha256": "5df3b5868cfab8f76030853fa2346ed3cd71171ad807b6f72d783ee2dce6839e",
+    "version": "v0.2.0"
+  },
+  "corridor_component_count": 47,
+  "corridor_component_mapping": [
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_05e8c34b0572493503aa",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-central-congo-communities"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_05e8c34b0572493503aa",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_0cc51b70985721c9582c",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-mbundu-polities"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_0cc51b70985721c9582c",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Kingdom of Kongo"
+      ],
+      "component_id": "cmp-prv_0f360a62a230a442e594",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-kongo-kingdom",
+      "current_relationship_actors": [
+        "scenario-kongo-kingdom"
+      ],
+      "distance_to_modern_seam_km": 61.398898,
+      "province_id": "prv_0f360a62a230a442e594",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_1b150bbed546e22f9d34",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-central-congo-communities"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_1b150bbed546e22f9d34",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Kingdom of Kongo"
+      ],
+      "component_id": "cmp-prv_248c336a65f054e1eb36",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-kongo-adjacent-polities"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_248c336a65f054e1eb36",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Kingdom of Kongo"
+      ],
+      "component_id": "cmp-prv_27d5ed4f44cf8cc75e8e",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-kongo-kingdom",
+      "current_relationship_actors": [
+        "scenario-kongo-kingdom"
+      ],
+      "distance_to_modern_seam_km": 39.959358,
+      "province_id": "prv_27d5ed4f44cf8cc75e8e",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_2d2a2259b7261b17fb74",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-central-congo-communities"
+      ],
+      "distance_to_modern_seam_km": 26.487996,
+      "province_id": "prv_2d2a2259b7261b17fb74",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_33618a764ce5c11efdd3",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-central-congo-communities"
+      ],
+      "distance_to_modern_seam_km": 23.828322,
+      "province_id": "prv_33618a764ce5c11efdd3",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Kingdom of Kongo"
+      ],
+      "component_id": "cmp-prv_3c536af9cf4ffd421235",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-kongo-kingdom",
+      "current_relationship_actors": [
+        "scenario-kongo-kingdom"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_3c536af9cf4ffd421235",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_46264e0f9a559d415fdb",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-central-congo-communities"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_46264e0f9a559d415fdb",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_46f5fc2915d104edad84",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-upemba-polities"
+      ],
+      "distance_to_modern_seam_km": 0.073589,
+      "province_id": "prv_46f5fc2915d104edad84",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_4abaa76ee0a13ce276c6",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-upemba-polities"
+      ],
+      "distance_to_modern_seam_km": 22.407002,
+      "province_id": "prv_4abaa76ee0a13ce276c6",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Kingdom of Kongo"
+      ],
+      "component_id": "cmp-prv_515d2e3ac2c1978d4e89",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-kongo-kingdom",
+      "current_relationship_actors": [
+        "scenario-kongo-kingdom"
+      ],
+      "distance_to_modern_seam_km": 68.147958,
+      "province_id": "prv_515d2e3ac2c1978d4e89",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_56ed6304eea1e815ef8c",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-central-congo-communities"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_56ed6304eea1e815ef8c",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Kingdom of Kongo"
+      ],
+      "component_id": "cmp-prv_5c7811c5831f043fe70b",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-kongo-adjacent-polities"
+      ],
+      "distance_to_modern_seam_km": 20.919545,
+      "province_id": "prv_5c7811c5831f043fe70b",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_66b846dfb31f558fef53",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-central-congo-communities"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_66b846dfb31f558fef53",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_6aa121844a49738c2a0a",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-central-congo-communities"
+      ],
+      "distance_to_modern_seam_km": 35.086881,
+      "province_id": "prv_6aa121844a49738c2a0a",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_6b26ca4a8f4d33063cc5",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-central-congo-communities"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_6b26ca4a8f4d33063cc5",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_6d97b73473e658e36b3a",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-upemba-polities"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_6d97b73473e658e36b3a",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_6dd1dd39f3106b17e3a0",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-tio-anziku-polities"
+      ],
+      "distance_to_modern_seam_km": 18.329554,
+      "province_id": "prv_6dd1dd39f3106b17e3a0",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_73ca3fd109504459a630",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-tio-anziku-polities"
+      ],
+      "distance_to_modern_seam_km": 29.425684,
+      "province_id": "prv_73ca3fd109504459a630",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Kingdom of Kongo"
+      ],
+      "component_id": "cmp-prv_74c2c1bfcb2732bff076",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-kongo-adjacent-polities"
+      ],
+      "distance_to_modern_seam_km": 2.577599,
+      "province_id": "prv_74c2c1bfcb2732bff076",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Kingdom of Kongo"
+      ],
+      "component_id": "cmp-prv_755cc783f6c87bb472b5",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-kongo-kingdom",
+      "current_relationship_actors": [
+        "scenario-kongo-kingdom"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_755cc783f6c87bb472b5",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_910fca4b9f8ee1d225a0",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-mbundu-polities"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_910fca4b9f8ee1d225a0",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_93cda587b244b36beef0",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-upemba-polities"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_93cda587b244b36beef0",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_94f418c2ba3ee16efa93",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-central-congo-communities"
+      ],
+      "distance_to_modern_seam_km": 41.022066,
+      "province_id": "prv_94f418c2ba3ee16efa93",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_a58f84632008da31bf6f",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-kongo-adjacent-polities"
+      ],
+      "distance_to_modern_seam_km": 9.197766,
+      "province_id": "prv_a58f84632008da31bf6f",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_b2360fb041b153e051ad",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-central-congo-communities"
+      ],
+      "distance_to_modern_seam_km": 18.276979,
+      "province_id": "prv_b2360fb041b153e051ad",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_b7fde006f6fac56380e6",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-central-congo-communities"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_b7fde006f6fac56380e6",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_bf8dedd392509108c2a6",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-kongo-adjacent-polities"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_bf8dedd392509108c2a6",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_c39335ceb792857dc4c7",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-central-congo-communities"
+      ],
+      "distance_to_modern_seam_km": 28.289073,
+      "province_id": "prv_c39335ceb792857dc4c7",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_c57168f198a2f4c4a969",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-kongo-kingdom",
+      "current_relationship_actors": [
+        "scenario-kongo-kingdom"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_c57168f198a2f4c4a969",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_c732004af57f653ac83c",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-central-congo-communities"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_c732004af57f653ac83c",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Kingdom of Kongo"
+      ],
+      "component_id": "cmp-prv_ca153cb9e5063e4d27b1",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-kongo-kingdom",
+      "current_relationship_actors": [
+        "scenario-kongo-kingdom"
+      ],
+      "distance_to_modern_seam_km": 36.697242,
+      "province_id": "prv_ca153cb9e5063e4d27b1",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_d487afbb8ff22afbb76f",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-central-congo-communities"
+      ],
+      "distance_to_modern_seam_km": 71.720781,
+      "province_id": "prv_d487afbb8ff22afbb76f",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_d7265ba9c40d3ce207c8",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-mbundu-polities"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_d7265ba9c40d3ce207c8",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_dcd02a7c0fe9450c6848",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-central-congo-communities"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_dcd02a7c0fe9450c6848",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_de7e94aa1c34f5d30933",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-upemba-polities"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_de7e94aa1c34f5d30933",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_e56915374fa43aeb08d4",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-central-congo-communities"
+      ],
+      "distance_to_modern_seam_km": 37.142652,
+      "province_id": "prv_e56915374fa43aeb08d4",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_e7c7f16d50f7ed484e19",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-mbundu-polities"
+      ],
+      "distance_to_modern_seam_km": 47.429172,
+      "province_id": "prv_e7c7f16d50f7ed484e19",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_e950bd0a71bc0f17490d",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-tio-anziku-polities"
+      ],
+      "distance_to_modern_seam_km": 9.549222,
+      "province_id": "prv_e950bd0a71bc0f17490d",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_eb1219e8b5b0b6e3fce5",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-mbundu-polities"
+      ],
+      "distance_to_modern_seam_km": 70.974267,
+      "province_id": "prv_eb1219e8b5b0b6e3fce5",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_ebe8a2d0b8a55b79275f",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-central-congo-communities"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_ebe8a2d0b8a55b79275f",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_ef2faf356159ea5d87f2",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-central-congo-communities"
+      ],
+      "distance_to_modern_seam_km": 12.45357,
+      "province_id": "prv_ef2faf356159ea5d87f2",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Kingdom of Kongo"
+      ],
+      "component_id": "cmp-prv_f24ffe10288e870f123f",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-kongo-kingdom",
+      "current_relationship_actors": [
+        "scenario-kongo-kingdom"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_f24ffe10288e870f123f",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_f44a75c70a10972636c1",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "local_decentralized",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "dispersed",
+        "tenure": "customary_community"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-upemba-polities"
+      ],
+      "distance_to_modern_seam_km": 43.664189,
+      "province_id": "prv_f44a75c70a10972636c1",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Kingdom of Kongo"
+      ],
+      "component_id": "cmp-prv_fe00d0a4759f1ad3cd99",
+      "current_evidence_ids": [
+        "british-museum-african-kingdoms",
+        "met-arts-africa-kongo",
+        "met-kongo-christianity",
+        "met-kongo-power-majesty",
+        "regional-survey-017",
+        "shepherd-historical-atlas",
+        "smarthistory-africa-to-1600",
+        "unesco-general-history-africa-iv"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-kongo-kingdom",
+      "current_relationship_actors": [
+        "scenario-kongo-kingdom"
+      ],
+      "distance_to_modern_seam_km": 69.140082,
+      "province_id": "prv_fe00d0a4759f1ad3cd99",
+      "source_classification": "single_polity"
+    }
+  ],
+  "direct_border_pair": null,
+  "document_type": "m25c_replacement_evidence_dossier",
+  "frozen_findings": [
+    {
+      "code": "MISSING_POSITIVE_BORDER_ASSERTION",
+      "message": "Priority region 017 needs a positive border assertion."
+    },
+    {
+      "code": "NON_EXECUTABLE_SEAM_ASSERTION",
+      "message": "region-017-negative-modern-angola-drc-seam lacks complete eligible on-seam and deterministic both-side coverage."
+    },
+    {
+      "code": "SPATIAL_ASSERTION_FAILED",
+      "message": "Executed spatial assertion region-017-negative-modern-angola-drc-seam failed."
+    },
+    {
+      "code": "UNCERTIFIED_A_GRADE",
+      "message": "A grade for 017/geometry is not supported by matching reviewed evidence and executed gates."
+    }
+  ],
+  "independence_statement": "Cliopatria bytes and source geometry predate this candidate; the derivation reads neither candidate boundaries nor modern-control geometry when selecting source polity values.",
+  "limitations": [
+    "Cliopatria encodes unquantified historical-border uncertainty.",
+    "Its raster-to-vector workflow was smoothed to 0.07 degrees; the proposed 20 km budget is conservative but requires reviewer acceptance.",
+    "A component outside Cliopatria polity coverage is not evidence of an empty or ungoverned landscape.",
+    "This dossier authorizes no packet mutation; uncovered or overlapping components require an explicit reviewer disposition."
+  ],
+  "region_id": "017",
+  "review_route": "applicability_candidate",
+  "schema_version": "1.0.0",
+  "single_polity_component_count": 11,
+  "source_coverage_ratio": 0.234042553191,
+  "start_date": "1444-11-11",
+  "status": "pending_independent_review"
+}

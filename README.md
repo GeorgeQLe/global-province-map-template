@@ -119,6 +119,13 @@ complete reviewed, date-valid, non-unknown both-side coverage; region 057's
 exact hash-bound `no_land_adjacency` record qualifies, while the other four
 border-applicability candidates remain fail-closed. The candidate cannot be
 accepted, certified, published, or deployed.
+
+Replacement evidence for those 56 defects is now staged separately under
+`research/start-dates/1444-global-v1/replacement-evidence/cliopatria-v0.2.0/`.
+It pins a peer-reviewed 1444 source slice, eight direct-border candidates, ten
+complete applicability audits, and 18 corridor dossiers that account for every
+error exactly once. The packet is unsigned and unimplemented; source gaps
+remain explicit reviewer decisions, and Task 17 stays closed.
 `gpm build provinces` now consumes `data/processed/locations.geojson` by
 default; the former Natural Earth scaffold is available only through the
 explicit `--legacy-modern-admin` compatibility flag. Targeted splits require a

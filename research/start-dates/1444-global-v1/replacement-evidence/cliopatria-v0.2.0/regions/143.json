@@ -1,0 +1,1399 @@
+{
+  "cliopatria_source": {
+    "commit": "ad28a691b7c07c1fca89d0e0636d324667d2a258",
+    "date_rule": "FromYear <= 1444 <= ToYear",
+    "license": "CC BY 4.0",
+    "peer_reviewed_method_doi": "https://doi.org/10.1038/s41597-025-04516-9",
+    "polity_mapping_feature_count": 137,
+    "snapshot_feature_count": 144,
+    "source_geojson_sha256": "5df3b5868cfab8f76030853fa2346ed3cd71171ad807b6f72d783ee2dce6839e",
+    "version": "v0.2.0"
+  },
+  "corridor_component_count": 47,
+  "corridor_component_mapping": [
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_01daf987d96f0e922cb8",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-syr-darya-frontier"
+      ],
+      "distance_to_modern_seam_km": 16.216763,
+      "province_id": "prv_01daf987d96f0e922cb8",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_047a00219c00661b52ea",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-timurid-transoxiana"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_047a00219c00661b52ea",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_0b5a1f943421f5ea482b",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-timurid-transoxiana"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_0b5a1f943421f5ea482b",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_0d8b42bdb4317d625b36",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-timurid-transoxiana"
+      ],
+      "distance_to_modern_seam_km": 52.201129,
+      "province_id": "prv_0d8b42bdb4317d625b36",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_0e51974126932b576227",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-timurid-transoxiana"
+      ],
+      "distance_to_modern_seam_km": 56.575531,
+      "province_id": "prv_0e51974126932b576227",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_114e5e2bfaf13e707bc2",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-timurid-transoxiana"
+      ],
+      "distance_to_modern_seam_km": 71.06826,
+      "province_id": "prv_114e5e2bfaf13e707bc2",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_14de522b119e2188932a",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-syr-darya-frontier"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_14de522b119e2188932a",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_1fb4849a183004ca94b8",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-syr-darya-frontier"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_1fb4849a183004ca94b8",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_26d02aabb1c9fb3a7b48",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-timurid-khwarazm",
+      "current_relationship_actors": [
+        "scenario-timurid-khwarazm"
+      ],
+      "distance_to_modern_seam_km": 60.485303,
+      "province_id": "prv_26d02aabb1c9fb3a7b48",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_2c9a9eeedf53b4986343",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-abul-khayr-uzbek"
+      ],
+      "distance_to_modern_seam_km": 70.933662,
+      "province_id": "prv_2c9a9eeedf53b4986343",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_2e360097588cc19b8ec0",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-abul-khayr-uzbek"
+      ],
+      "distance_to_modern_seam_km": 28.798632,
+      "province_id": "prv_2e360097588cc19b8ec0",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_2e6629e53b3437e98c10",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-nogai"
+      ],
+      "distance_to_modern_seam_km": 29.387021,
+      "province_id": "prv_2e6629e53b3437e98c10",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_32238fb89f0dd3a733d7",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-local-turkmen"
+      ],
+      "distance_to_modern_seam_km": 50.862643,
+      "province_id": "prv_32238fb89f0dd3a733d7",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_34601d92a6a17ee72f6b",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-timurid-khwarazm",
+      "current_relationship_actors": [
+        "scenario-timurid-khwarazm"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_34601d92a6a17ee72f6b",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_3672508dc500051eecd6",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-abul-khayr-uzbek"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_3672508dc500051eecd6",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_3831dbb44d03eebb3a4b",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-timurid-khwarazm",
+      "current_relationship_actors": [
+        "scenario-timurid-khwarazm"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_3831dbb44d03eebb3a4b",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_383ee80e92c8204ca0cb",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-nogai"
+      ],
+      "distance_to_modern_seam_km": 55.22319,
+      "province_id": "prv_383ee80e92c8204ca0cb",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_39656a83de2883b616b5",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-timurid-khwarazm",
+      "current_relationship_actors": [
+        "scenario-timurid-khwarazm"
+      ],
+      "distance_to_modern_seam_km": 65.163292,
+      "province_id": "prv_39656a83de2883b616b5",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_39b09e23c467169e8feb",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-local-turkmen"
+      ],
+      "distance_to_modern_seam_km": 24.48743,
+      "province_id": "prv_39b09e23c467169e8feb",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Khanate of Sibir"
+      ],
+      "component_id": "cmp-prv_3e0d97b973f45fd876d2",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-abul-khayr-uzbek"
+      ],
+      "distance_to_modern_seam_km": 21.928339,
+      "province_id": "prv_3e0d97b973f45fd876d2",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_40d06237a57a5d972feb",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-timurid-transoxiana"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_40d06237a57a5d972feb",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_429b3ae6d4738d327d4c",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-timurid-transoxiana"
+      ],
+      "distance_to_modern_seam_km": 54.8012,
+      "province_id": "prv_429b3ae6d4738d327d4c",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_471fd394e3ae3fd4bc9a",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-nogai"
+      ],
+      "distance_to_modern_seam_km": 10.672877,
+      "province_id": "prv_471fd394e3ae3fd4bc9a",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_47decbc4a31dc582396c",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-abul-khayr-uzbek"
+      ],
+      "distance_to_modern_seam_km": 70.47383,
+      "province_id": "prv_47decbc4a31dc582396c",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_548d7c39d9b64ef9bb01",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-syr-darya-frontier"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_548d7c39d9b64ef9bb01",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_586fd1cec428c8ca4db8",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-abul-khayr-uzbek"
+      ],
+      "distance_to_modern_seam_km": 4.189467,
+      "province_id": "prv_586fd1cec428c8ca4db8",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_5d60c71d3b4655800933",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-timurid-transoxiana"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_5d60c71d3b4655800933",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_60a6bad4f7da038ca1e0",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-nogai"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_60a6bad4f7da038ca1e0",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_79456d2050ff30dbe5aa",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-timurid-khwarazm",
+      "current_relationship_actors": [
+        "scenario-timurid-khwarazm"
+      ],
+      "distance_to_modern_seam_km": 44.359147,
+      "province_id": "prv_79456d2050ff30dbe5aa",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_794f3859ec43c6f5d7f9",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-timurid-khwarazm",
+      "current_relationship_actors": [
+        "scenario-timurid-khwarazm"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_794f3859ec43c6f5d7f9",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_79911e8665948d362600",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-syr-darya-frontier"
+      ],
+      "distance_to_modern_seam_km": 59.102522,
+      "province_id": "prv_79911e8665948d362600",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_7d23b69ae29cd6000f19",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-nogai"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_7d23b69ae29cd6000f19",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Chagatai Khanate"
+      ],
+      "component_id": "cmp-prv_878af2581b4535f6729a",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-moghulistan"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_878af2581b4535f6729a",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Chagatai Khanate"
+      ],
+      "component_id": "cmp-prv_8b89511a44d9eb1487d7",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-moghulistan"
+      ],
+      "distance_to_modern_seam_km": 72.48694,
+      "province_id": "prv_8b89511a44d9eb1487d7",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_931937374a8880402648",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-timurid-khwarazm",
+      "current_relationship_actors": [
+        "scenario-timurid-khwarazm"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_931937374a8880402648",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_9b2bbc0c30499f2d7226",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-abul-khayr-uzbek"
+      ],
+      "distance_to_modern_seam_km": 8.809229,
+      "province_id": "prv_9b2bbc0c30499f2d7226",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_a14d60d440e9e7fbb6f4",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-syr-darya-frontier"
+      ],
+      "distance_to_modern_seam_km": 47.960867,
+      "province_id": "prv_a14d60d440e9e7fbb6f4",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [],
+      "component_id": "cmp-prv_a4f5e2f3f0d017bf29ef",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-timurid-khwarazm",
+      "current_relationship_actors": [
+        "scenario-timurid-khwarazm"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_a4f5e2f3f0d017bf29ef",
+      "source_classification": "outside_cliopatria_polity_coverage"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_a82b6ec34be92d9e3720",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-abul-khayr-uzbek"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_a82b6ec34be92d9e3720",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_a95ae54b7e8db37b88f3",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-timurid-transoxiana"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_a95ae54b7e8db37b88f3",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_bd4cd0eeed0d117bd597",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-timurid-transoxiana"
+      ],
+      "distance_to_modern_seam_km": 9.883142,
+      "province_id": "prv_bd4cd0eeed0d117bd597",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_cdec01acfbde7f080186",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-timurid-khwarazm",
+      "current_relationship_actors": [
+        "scenario-timurid-khwarazm"
+      ],
+      "distance_to_modern_seam_km": 43.096583,
+      "province_id": "prv_cdec01acfbde7f080186",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_d7b2aab0db942ad8b502",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-moghulistan"
+      ],
+      "distance_to_modern_seam_km": 18.022085,
+      "province_id": "prv_d7b2aab0db942ad8b502",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_e2ecb9de4324a4c6d443",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-nogai"
+      ],
+      "distance_to_modern_seam_km": 48.856866,
+      "province_id": "prv_e2ecb9de4324a4c6d443",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_f1963dd21e9dbd4e066e",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-abul-khayr-uzbek"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_f1963dd21e9dbd4e066e",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_f3fd86666b7220e4d9f5",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "administered",
+        "habitability": "habitable",
+        "population_presence": "resident",
+        "settlement_pattern": "nucleated",
+        "tenure": "polity_associated"
+      },
+      "current_political_unit_id": "scenario-timurid-khwarazm",
+      "current_relationship_actors": [
+        "scenario-timurid-khwarazm"
+      ],
+      "distance_to_modern_seam_km": 14.586934,
+      "province_id": "prv_f3fd86666b7220e4d9f5",
+      "source_classification": "single_polity"
+    },
+    {
+      "cliopatria_representative_point_matches": [
+        "Timurid Empire"
+      ],
+      "component_id": "cmp-prv_f80135a16095a5f2d06a",
+      "current_evidence_ids": [
+        "iranica-abul-khayr-khan",
+        "iranica-central-asia-v",
+        "iranica-khujand",
+        "iranica-qepcaq",
+        "regional-survey-143",
+        "shepherd-historical-atlas",
+        "unesco-central-asia-timur"
+      ],
+      "current_facets": {
+        "authority": "unknown",
+        "habitability": "unknown",
+        "population_presence": "unknown",
+        "settlement_pattern": "unknown",
+        "tenure": "unknown"
+      },
+      "current_political_unit_id": null,
+      "current_relationship_actors": [
+        "scenario-nogai"
+      ],
+      "distance_to_modern_seam_km": 0.0,
+      "province_id": "prv_f80135a16095a5f2d06a",
+      "source_classification": "single_polity"
+    }
+  ],
+  "direct_border_pair": [
+    "Chagatai Khanate",
+    "Timurid Empire"
+  ],
+  "document_type": "m25c_replacement_evidence_dossier",
+  "frozen_findings": [
+    {
+      "code": "MISSING_POSITIVE_BORDER_ASSERTION",
+      "message": "Priority region 143 needs a positive border assertion."
+    },
+    {
+      "code": "NON_EXECUTABLE_SEAM_ASSERTION",
+      "message": "region-143-negative-modern-kazakhstan-uzbekistan-seam lacks complete eligible on-seam and deterministic both-side coverage."
+    },
+    {
+      "code": "SPATIAL_ASSERTION_FAILED",
+      "message": "Executed spatial assertion region-143-negative-modern-kazakhstan-uzbekistan-seam failed."
+    },
+    {
+      "code": "UNCERTIFIED_A_GRADE",
+      "message": "A grade for 143/geometry is not supported by matching reviewed evidence and executed gates."
+    }
+  ],
+  "independence_statement": "Cliopatria bytes and source geometry predate this candidate; the derivation reads neither candidate boundaries nor modern-control geometry when selecting source polity values.",
+  "limitations": [
+    "Cliopatria encodes unquantified historical-border uncertainty.",
+    "Its raster-to-vector workflow was smoothed to 0.07 degrees; the proposed 20 km budget is conservative but requires reviewer acceptance.",
+    "A component outside Cliopatria polity coverage is not evidence of an empty or ungoverned landscape.",
+    "This dossier authorizes no packet mutation; uncovered or overlapping components require an explicit reviewer disposition."
+  ],
+  "region_id": "143",
+  "review_route": "direct_source_boundary",
+  "schema_version": "1.0.0",
+  "single_polity_component_count": 39,
+  "source_coverage_ratio": 0.829787234043,
+  "start_date": "1444-11-11",
+  "status": "pending_independent_review"
+}

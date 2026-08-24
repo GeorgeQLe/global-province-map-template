@@ -1,0 +1,172 @@
+{
+  "accounting": {
+    "applicability_audits": 10,
+    "direct_border_candidates": 8,
+    "frozen_error_count": 56,
+    "regional_dossiers": 18,
+    "regions_with_errors": 18,
+    "task_17_advanced": false
+  },
+  "artifacts": {
+    "applicability_review_candidates": {
+      "bytes": 588120,
+      "path": "applicability-review-candidates.json",
+      "sha256": "4812a045f99581733009fa1fc80259f8c43f1794c21b437290cd3bd74fa7f7eb"
+    },
+    "cliopatria_1444": {
+      "bytes": 1822675,
+      "path": "cliopatria-1444.geojson",
+      "sha256": "8e696388a934cdf15290ca65a3e8dcc0b5838304cffd448b9ae06d5771dcb199"
+    },
+    "direct_border_candidates": {
+      "bytes": 34680,
+      "path": "direct-border-candidates.geojson",
+      "sha256": "fa302682bc8306cd109a1d1ed667df23c45c55d938509b24ee2ae71916d6969d"
+    }
+  },
+  "candidate_mutated": false,
+  "document_type": "m25c_replacement_evidence_manifest",
+  "frozen_inputs": {
+    "assignments.json": {
+      "bytes": 40204916,
+      "sha256": "8b49507e9d373b422c2402da2cb550e8fc855ce7a8f140110bf7831cfecd7a85"
+    },
+    "golden.json": {
+      "bytes": 690586,
+      "sha256": "2ef4feede67d460631ab70ffd43b295d921af8d1b109698370722a1b836db4b8"
+    },
+    "historical-territory-status.json": {
+      "bytes": 106851880,
+      "sha256": "bcdb93f3d828bf87643e36f4d848499bfb6e67da87c5f52fe3474fce301ff080"
+    },
+    "positive-border-applicability.json": {
+      "bytes": 254114,
+      "sha256": "470f8c4e661cdeb7389a3e332581a786ea14c2ed3998ff47a5106c2f6193d7d4"
+    },
+    "sidecars/adjacency.csv": {
+      "bytes": 1757232,
+      "sha256": "31a9e46a40011dd0a17508cf75ca92acb5334f8253ea160a5617b8e5140e5ff9"
+    },
+    "start_date_preflight.json": {
+      "bytes": 409912,
+      "sha256": "659d36cb28745782718ca5fab23830817eb48ad31d3016c1fa081e01ef3c52c6"
+    }
+  },
+  "generated_for": "56 non-review errors before Task 17",
+  "method": {
+    "candidate_geometry_used_to_choose_source_values": false,
+    "component_sample": "Shapely representative_point tested against untouched source polygons",
+    "corridor_scope": "all region components at projected distance <= 75 km from the frozen modern negative-control seam",
+    "direct_border_derivation": "exact boundary intersection of two untouched same-snapshot source polygons",
+    "modern_control_used_to_choose_source_values": false,
+    "source_snapshot_rule": "FromYear <= 1444 <= ToYear"
+  },
+  "region_artifacts": {
+    "005": {
+      "bytes": 27622,
+      "path": "regions/005.json",
+      "sha256": "b630d78923de6ef824465f925b0fff07dce854f0f33cb07b04446e156d86d05d"
+    },
+    "011": {
+      "bytes": 23738,
+      "path": "regions/011.json",
+      "sha256": "b5103d60ca86267add165541161f824513a6eccb7436cf7c001c5dd361d5b247"
+    },
+    "013": {
+      "bytes": 22413,
+      "path": "regions/013.json",
+      "sha256": "2225b019ea34bc9c1ee5e4647404041c799989bb062ce508f505059eb7c416f5"
+    },
+    "014": {
+      "bytes": 32493,
+      "path": "regions/014.json",
+      "sha256": "a540b7f349ce5beccbe6a003bae9849d8fd5dbb597c57741f82c8be2a68c8e2d"
+    },
+    "015": {
+      "bytes": 39270,
+      "path": "regions/015.json",
+      "sha256": "7e06c68e2fc2afa62cac2b461974fb04fa6657ac4af232a4dfd9366343eadb22"
+    },
+    "017": {
+      "bytes": 48579,
+      "path": "regions/017.json",
+      "sha256": "43aaaa2a18a29a2cddc6b7e0c2d2bf06d34df5d369caec8453cc0e61abf55fdb"
+    },
+    "018": {
+      "bytes": 33251,
+      "path": "regions/018.json",
+      "sha256": "93603e1a6e77e4eba52774fafb267e9d4dcfb6dc53258bed673c26b72a289f8d"
+    },
+    "021": {
+      "bytes": 257383,
+      "path": "regions/021.json",
+      "sha256": "113c3f23d70afd394eb8e278ea261029dcfd4e693511baafe3518ea6ec5e6ba8"
+    },
+    "029": {
+      "bytes": 18898,
+      "path": "regions/029.json",
+      "sha256": "22f9057e3d072b97a85fca8baa64242cd8376af159bca8cb86ba83674fdc1d08"
+    },
+    "030": {
+      "bytes": 96059,
+      "path": "regions/030.json",
+      "sha256": "9af9a1bdf6cee5287f71e10e0bec415936f656c24bf184b863434c6e9667d91f"
+    },
+    "034": {
+      "bytes": 54468,
+      "path": "regions/034.json",
+      "sha256": "294c760599e4370f2c0c96e7bfaddee3517c1bee02e91148500f26bba036401e"
+    },
+    "035": {
+      "bytes": 47678,
+      "path": "regions/035.json",
+      "sha256": "04afb6814e003d54b46a46bf271852cfba478e1f9ac248543dcf62d8df92bccc"
+    },
+    "039": {
+      "bytes": 11767,
+      "path": "regions/039.json",
+      "sha256": "8cbdd07eba85021d60fe64160a09a38ca611bf522627c48f9d676ce3d6cd14e6"
+    },
+    "053": {
+      "bytes": 21922,
+      "path": "regions/053.json",
+      "sha256": "c249e8643a1da7445b8a219836d7ffe45d5b0e7304904f767e01864f6757afb6"
+    },
+    "054": {
+      "bytes": 7001,
+      "path": "regions/054.json",
+      "sha256": "e2ce67cf84e391238cc615de6146028bfd1e97c12aeaaf5cf8a0b7870deb1c2e"
+    },
+    "061": {
+      "bytes": 2904,
+      "path": "regions/061.json",
+      "sha256": "2293354184585b68b73e1faa2082f7357755ed1fd00b51a38a808ca9f5a7813c"
+    },
+    "143": {
+      "bytes": 44727,
+      "path": "regions/143.json",
+      "sha256": "ee65171095a5b42af416b8fb597e5515c01892fddce2a0920f465c5c16810fe8"
+    },
+    "145": {
+      "bytes": 35025,
+      "path": "regions/145.json",
+      "sha256": "9f37c361409f43b09a85d99a75142b0188c34ea42a37196ed84fbdcfba688fb4"
+    }
+  },
+  "schema_version": "1.0.0",
+  "source": {
+    "archive_sha256": "d01ae3a20d358cc5d54f69d9d725d390767d9c8759ac89ad6f90c58d106f3370",
+    "citation": "Bennett, J. S. et al. Cliopatria — A geospatial database of world-wide political entities from 3400 BCE to 2024 CE. Scientific Data 12, 247 (2025).",
+    "commit": "ad28a691b7c07c1fca89d0e0636d324667d2a258",
+    "doi": "https://doi.org/10.1038/s41597-025-04516-9",
+    "geojson_sha256": "5df3b5868cfab8f76030853fa2346ed3cd71171ad807b6f72d783ee2dce6839e",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "review_status": "pending_independent_project_review",
+    "source_id": "cliopatria-v0.2.0-1444",
+    "title": "Cliopatria — worldwide political entities, 3400 BCE–2024 CE",
+    "url": "https://github.com/Seshat-Global-History-Databank/cliopatria/blob/ad28a691b7c07c1fca89d0e0636d324667d2a258/cliopatria.geojson.zip",
+    "version": "v0.2.0"
+  },
+  "start_date": "1444-11-11"
+}

@@ -1,5 +1,21 @@
 # History
 
+## 2026-08-24 - M25C worldwide replacement evidence before Task 17
+
+- Pinned Seshat Cliopatria `v0.2.0` at exact commit and archive/unpacked
+  SHA-256 values, then extracted the deterministic 144-record source snapshot
+  whose inclusive ranges contain `1444-11-11`.
+- Produced eight candidate-independent direct historical borders, ten
+  schema-valid unsigned applicability records with exhaustive cross-actor
+  adjacency audits, and 18 corridor dossiers covering all 56 frozen errors
+  exactly once.
+- Preserved the source's published uncertainty and proposed a separately
+  reviewable `20 km` error budget. Source silence and overlaps remain explicit
+  decision gates rather than inferred historical values.
+- Added deterministic generation and regression coverage. No packet, assembled
+  artifact, tolerance, QA result, permission, or Task 17 state changed; the
+  evidence awaits independent record-by-record decisions.
+
 ## 2026-08-23 - M25C region 057 applicability implementation
 
 - Implemented the independently approved region `057` `no_land_adjacency`

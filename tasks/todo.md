@@ -142,8 +142,15 @@
       remaining findings, all affected assertions pass, and ordinary worldwide
       QA falls exactly from 58 to 56 non-review errors plus one warning. The
       other four applicability candidates remain pending, no corridor,
-      tolerance, packet, or permission changed, and replacement evidence is
-      still required for the unrelated blockers before Task 17. See
+      tolerance, packet, or permission changed. Replacement evidence for all
+      56 unrelated blockers is now obtained and separately hash-bound: a pinned
+      peer-reviewed 1444 source slice, eight direct-border candidates, ten
+      complete applicability audits, and 18 exact corridor dossiers. It remains
+      unsigned and unimplemented pending independent decisions, so Task 17 is
+      still blocked. See
+      `tasks/m25c-worldwide-replacement-evidence.md` and
+      `tasks/m25c-worldwide-replacement-evidence-ship-manifest.md`; the earlier
+      implementation boundary is recorded in
       `tasks/m25c-region-057-applicability-implementation-ship-manifest.md`.
   17. [ ] After ordinary QA is clean, render the final review bundle and stop
       for independent human review before runtime certification or publication.
