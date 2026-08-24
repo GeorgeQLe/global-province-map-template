@@ -1,5 +1,24 @@
 # History
 
+## 2026-08-23 - M25C Task 16 region 011 corridor review
+
+- Separately reviewed the next ordered Task 16 packet: Western Africa's
+  Mali-Niger negative-control corridor and missing positive-border gate.
+- Rejected implementation. The current region generator resolves every
+  province representative point to Natural Earth `ADM0_A3` and dispatches
+  historical actors through country-specific branches, including separate
+  `MLI` and `NER` logic.
+- Reproduced the current stricter seam result: only
+  `174.18870486197656 / 843.7078279840698 km` is covered, 134 normal side
+  samples are missing, and the measurement is correctly null/non-executable.
+  Hash-bound the five affected components, 429 unknown-facet rejections,
+  current source pins, assembled artifacts, and four region findings.
+- Authorized no edits. The packet contains broad regional syntheses and eight
+  checked centers but no independently georeferenced exact-date boundary,
+  complete two-sided fabric, or evidence-to-component old/new mapping. All
+  review, certification, runtime, publication, and deployment permissions
+  remain unchanged. Task 16 continues with region `013`.
+
 ## 2026-08-23 - M25C Task 16 region 005 corridor review
 
 - Separately reviewed the next ordered Task 16 packet: South America's

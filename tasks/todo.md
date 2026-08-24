@@ -96,6 +96,14 @@
       no exact-date, independently georeferenced line or component mapping. No
       bytes or QA/release state changed; see
       `tasks/m25c-region-005-corridor-evidence-review.md`.
+      The second separate review, region `011` Mali-Niger / positive-border,
+      is also complete and rejected before implementation: its actor chooser
+      dispatches on Natural Earth `ADM0_A3`, while the stricter current seam
+      result is non-executable at only `0.20645619144980298` eligible coverage
+      with 134 missing side samples. The packet has no independently derived
+      historical boundary or exhaustive old/new component mapping. No bytes or
+      QA/release state changed; see
+      `tasks/m25c-region-011-corridor-evidence-review.md`.
   17. [ ] After ordinary QA is clean, render the final review bundle and stop
       for independent human review before runtime certification or publication.
 
