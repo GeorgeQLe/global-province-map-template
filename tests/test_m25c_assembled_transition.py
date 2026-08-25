@@ -10,7 +10,12 @@ from types import SimpleNamespace
 
 import pytest
 
-from gpm.qa.m25c_assembled import ASSEMBLED_VERSION, qualify_assembled_pass
+from gpm.qa.m25c_assembled import (
+    ASSEMBLED_VERSION,
+    REGION_014_GRADE_C_CHANGE_IDS,
+    REGION_014_GRADE_C_GAPS,
+    qualify_assembled_pass,
+)
 from gpm.qa import m25c_assembled
 from gpm.qa import start_date as start_date_qa
 from gpm.schemas import WORLDWIDE_M49_SUBREGIONS
@@ -81,6 +86,12 @@ def _assembled_fixture(root: Path) -> list[dict]:
         for region in regions
         for layer in ("geometry", "politics", "hierarchy", "gazetteer_relationships")
     ]
+    grade_c_row = next(
+        row for row in coverage
+        if (row["region_id"], row["layer"]) == ("014", "geometry")
+    )
+    grade_c_row["grade"] = "C"
+    grade_c_row["known_gaps"] = list(REGION_014_GRADE_C_GAPS)
     documents = {
         "source_manifest.json": {"sources": []},
         "boundaries.geojson": {"features": []},
@@ -89,7 +100,9 @@ def _assembled_fixture(root: Path) -> list[dict]:
         "golden.json": {"assertions": []},
         "build.geojson": {"features": []},
         "coverage.json": {"coverage": coverage, "known_gaps": [], "exclusions": []},
-        "changelog.json": {"changes": []},
+        "changelog.json": {"changes": [
+            {"change_id": change_id} for change_id in REGION_014_GRADE_C_CHANGE_IDS
+        ]},
         "historical-territory-status.json": {
             "qa_mode": "certification_review", "provisional": False,
             "components": [{"provisional": False} for _ in province_ids],
@@ -131,7 +144,7 @@ def test_assembled_qualifier_accepts_exact_world_closure(tmp_path):
 @pytest.mark.parametrize("mutation,match", [
     ("missing_packet", "exactly one packet"),
     ("duplicate_override", "exactly one override"),
-    ("coverage_gap", "gap-free Grade A"),
+    ("coverage_gap", "reviewed region 014 Grade C"),
     ("mixed_mode", "mixed QA modes"),
     ("provisional_flag", "explicitly reject provisional"),
     ("sentinel", "provisional source lineage"),

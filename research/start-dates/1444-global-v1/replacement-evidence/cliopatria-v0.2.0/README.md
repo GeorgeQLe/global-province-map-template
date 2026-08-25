@@ -2,6 +2,10 @@
 
 Status: **pending independent review; no candidate input is changed**
 
+The reviewed pre-implementation `start_date_preflight.json` is retained under
+`frozen-inputs/` so later serial implementations can regenerate the live
+assembled QA report without invalidating this packet's accepted input hash.
+
 This directory accounts for all 56 ordinary-QA errors on the frozen assembled
 candidate and exposes each underlying regional evidence decision separately.
 It is a research packet before Task 17, not an accepted pass, implementation,

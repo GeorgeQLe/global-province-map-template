@@ -90,7 +90,8 @@ def test_applicability_candidates_are_schema_valid_hash_bound_and_unsigned():
 def test_manifest_pins_every_generated_artifact_and_frozen_input():
     manifest = _load("manifest.json")
     for relative, record in manifest["frozen_inputs"].items():
-        path = ASSEMBLED / relative
+        archived = EVIDENCE / "frozen-inputs" / relative
+        path = archived if archived.is_file() else ASSEMBLED / relative
         assert path.stat().st_size == record["bytes"]
         assert hashlib.sha256(path.read_bytes()).hexdigest() == record["sha256"]
     for record in manifest["artifacts"].values():

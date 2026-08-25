@@ -406,6 +406,56 @@ def test_region_057_applicability_review_is_assembled_only_and_hash_bound(monkey
         )
 
 
+def test_region_014_grade_c_routes_are_serial_hash_bound_and_gap_preserving(monkeypatch, tmp_path):
+    provisional = _provisional_module()
+    assembled = importlib.import_module("gpm.qa.m25c_assembled")
+    coverage = {"coverage": [{
+        "region_id": "014", "layer": "geometry", "grade": "A",
+        "source_ids": ["source-014"], "assertion_ids": ["seam-014"],
+        "evidence_summary": "reviewed Grade A packet claim",
+        "exclusions": [], "known_gaps": [],
+    }]}
+
+    changes = provisional._apply_region_014_grade_c_routes(coverage)
+    row = coverage["coverage"][0]
+    assert row["grade"] == "C"
+    assert row["known_gaps"] == list(assembled.REGION_014_GRADE_C_GAPS)
+    assert [change["change_id"] for change in changes] == list(
+        assembled.REGION_014_GRADE_C_CHANGE_IDS
+    )
+    for change, route in zip(changes, provisional.REGION_014_GRADE_C_ROUTES, strict=True):
+        assert route[1] in change["summary"]
+        assert route[2] in change["summary"]
+
+    review_root = tmp_path / "replacement-evidence" / "best-reasonable-v1"
+    review_root.mkdir(parents=True)
+    (review_root / "review-decisions.json").write_text("{}\n")
+    monkeypatch.setattr(provisional, "GLOBAL", tmp_path)
+    with pytest.raises(SystemExit, match="review decisions drifted"):
+        provisional._apply_region_014_grade_c_routes({"coverage": []})
+
+
+def test_assembled_coverage_allows_only_exact_region_014_grade_c_exception():
+    assembled = importlib.import_module("gpm.qa.m25c_assembled")
+    rows = [
+        {"region_id": region, "layer": layer, "grade": "A", "known_gaps": [], "exclusions": []}
+        for region in sorted(WORLDWIDE_M49_SUBREGIONS)
+        for layer in assembled.LAYERS
+    ]
+    exception = next(row for row in rows if (row["region_id"], row["layer"]) == ("014", "geometry"))
+    exception["grade"] = "C"
+    exception["known_gaps"] = list(assembled.REGION_014_GRADE_C_GAPS)
+    changelog = {"changes": [
+        {"change_id": change_id} for change_id in assembled.REGION_014_GRADE_C_CHANGE_IDS
+    ]}
+    coverage = {"coverage": rows, "known_gaps": [], "exclusions": []}
+
+    assembled._qualify_assembled_coverage(coverage, changelog)
+    exception["known_gaps"] = exception["known_gaps"][:-1]
+    with pytest.raises(ValueError, match="unreviewed Grade C exception"):
+        assembled._qualify_assembled_coverage(coverage, changelog)
+
+
 def test_regional_packet_cannot_promote_a_weak_grade_a_claim():
     provisional = _provisional_module()
     packet = {

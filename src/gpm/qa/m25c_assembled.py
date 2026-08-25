@@ -17,6 +17,19 @@ START_DATE = "1444-11-11"
 ASSEMBLED_VERSION = "1.0.0-assembled.1"
 LAYERS = ("geometry", "politics", "hierarchy", "gazetteer_relationships")
 PROVISIONAL_SENTINEL = "official-1444-modern-scaffold-provisional"
+REGION_014_GRADE_C_GAPS = (
+    "The source snapshots bracket 1444-11-11 by 44 and 48 years.",
+    "Only one representative point per accepted component was tested against approximate source polygons.",
+    "No source-derived component edge, error measurement, or complete containment test is present.",
+    "Political actors, facets, relationships, and Grade A/B are not accepted by this reconstruction.",
+    "The Ethiopia-Somalia negative control remains non-executable because eligible seam and both-side coverage is incomplete.",
+    "The Ethiopia-Somalia negative-control spatial assertion remains failed.",
+)
+REGION_014_GRADE_C_CHANGE_IDS = (
+    "region-014-grade-c-non-executable-seam",
+    "region-014-grade-c-spatial-assertion",
+    "region-014-grade-c-coverage-downgrade",
+)
 ARTIFACT_FILES = (
     "source_manifest.json", "boundaries.geojson", "gazetteer.json",
     "assignments.json", "golden.json", "build.geojson", "coverage.json",
@@ -117,16 +130,7 @@ def qualify_assembled_pass(root: Path, *, packets: Iterable[dict[str, Any]] | No
         raise ValueError("assembled assignments must cover all 23,582 playable locations exactly once")
 
     coverage = documents["coverage.json"]
-    coverage_rows = coverage.get("coverage") or []
-    expected = {(region, layer) for region in WORLDWIDE_M49_SUBREGIONS for layer in LAYERS}
-    actual = [(row.get("region_id"), row.get("layer")) for row in coverage_rows]
-    if len(coverage_rows) != 88 or set(actual) != expected or len(set(actual)) != 88:
-        raise ValueError("assembled coverage must contain the exact 88 region/layer rows")
-    if coverage.get("known_gaps") or coverage.get("exclusions") or any(
-        row.get("grade") != "A" or row.get("known_gaps") or row.get("exclusions")
-        for row in coverage_rows
-    ):
-        raise ValueError("assembled coverage must be gap-free Grade A")
+    _qualify_assembled_coverage(coverage, documents["changelog.json"])
 
     if packets is not None:
         packet_rows = list(packets)
@@ -207,6 +211,34 @@ def qualify_assembled_pass(root: Path, *, packets: Iterable[dict[str, Any]] | No
         if PROVISIONAL_SENTINEL in text:
             raise ValueError(f"assembled artifact retains provisional source lineage: {name}")
     _verify_sidecar_hashes(root, assignments)
+
+
+def _qualify_assembled_coverage(coverage: dict[str, Any], changelog: dict[str, Any]) -> None:
+    """Allow only the exact reviewed region 014 Grade C exception."""
+    coverage_rows = coverage.get("coverage") or []
+    expected = {(region, layer) for region in WORLDWIDE_M49_SUBREGIONS for layer in LAYERS}
+    actual = [(row.get("region_id"), row.get("layer")) for row in coverage_rows]
+    if len(coverage_rows) != 88 or set(actual) != expected or len(set(actual)) != 88:
+        raise ValueError("assembled coverage must contain the exact 88 region/layer rows")
+    if coverage.get("known_gaps") or coverage.get("exclusions"):
+        raise ValueError("assembled coverage may not declare unscoped worldwide gaps")
+    exceptions = [
+        row for row in coverage_rows
+        if row.get("grade") != "A" or row.get("known_gaps") or row.get("exclusions")
+    ]
+    if len(exceptions) != 1:
+        raise ValueError("assembled coverage must contain exactly the reviewed region 014 Grade C exception")
+    exception = exceptions[0]
+    if (
+        (exception.get("region_id"), exception.get("layer"), exception.get("grade"))
+        != ("014", "geometry", "C")
+        or exception.get("known_gaps") != list(REGION_014_GRADE_C_GAPS)
+        or exception.get("exclusions")
+    ):
+        raise ValueError("assembled coverage contains an unreviewed Grade C exception")
+    change_ids = [row.get("change_id") for row in changelog.get("changes") or []]
+    if change_ids[-3:] != list(REGION_014_GRADE_C_CHANGE_IDS):
+        raise ValueError("region 014 Grade C routes were not recorded serially")
 
 
 def _collect_citations(value: Any, result: set[str], key: str | None = None) -> None:
