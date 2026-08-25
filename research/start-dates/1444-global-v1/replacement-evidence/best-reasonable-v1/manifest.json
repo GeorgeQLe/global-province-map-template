@@ -1,0 +1,235 @@
+{
+  "artifacts": [
+    {
+      "bytes": 565172,
+      "path": "pair-evidence.json",
+      "sha256": "e155bd4227a00492a68f22007c60df37de24079ff575589dc72008e0fa6ad262"
+    },
+    {
+      "bytes": 1363798,
+      "path": "component-evidence.json",
+      "sha256": "ee3db7fc9200b3cc4bf89d4da249a4098b5748836ab3565ca93f7ad76451126b"
+    },
+    {
+      "bytes": 61337,
+      "path": "finding-routes.json",
+      "sha256": "f70f71ce552e69961489d3d35c4ebce4ad73974e1050650eea96475afb90549d"
+    }
+  ],
+  "decision_boundary": [
+    "Every record remains unsigned and pending independent review.",
+    "Approximate evidence may support a zone or Grade-B/C reconstruction but never surveyed precision.",
+    "No packet, assembled artifact, tolerance, permission, or Task 17 state changes here."
+  ],
+  "document_type": "m25c_best_reasonable_evidence_manifest",
+  "frozen_inputs": {
+    "applicability_review_candidates_sha256": "4812a045f99581733009fa1fc80259f8c43f1794c21b437290cd3bd74fa7f7eb",
+    "assembled_status_sha256": "bcdb93f3d828bf87643e36f4d848499bfb6e67da87c5f52fe3474fce301ff080",
+    "regional_dossiers": [
+      {
+        "path": "research/start-dates/1444-global-v1/replacement-evidence/cliopatria-v0.2.0/regions/005.json",
+        "sha256": "b630d78923de6ef824465f925b0fff07dce854f0f33cb07b04446e156d86d05d"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/replacement-evidence/cliopatria-v0.2.0/regions/011.json",
+        "sha256": "b5103d60ca86267add165541161f824513a6eccb7436cf7c001c5dd361d5b247"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/replacement-evidence/cliopatria-v0.2.0/regions/013.json",
+        "sha256": "2225b019ea34bc9c1ee5e4647404041c799989bb062ce508f505059eb7c416f5"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/replacement-evidence/cliopatria-v0.2.0/regions/014.json",
+        "sha256": "a540b7f349ce5beccbe6a003bae9849d8fd5dbb597c57741f82c8be2a68c8e2d"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/replacement-evidence/cliopatria-v0.2.0/regions/015.json",
+        "sha256": "7e06c68e2fc2afa62cac2b461974fb04fa6657ac4af232a4dfd9366343eadb22"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/replacement-evidence/cliopatria-v0.2.0/regions/017.json",
+        "sha256": "43aaaa2a18a29a2cddc6b7e0c2d2bf06d34df5d369caec8453cc0e61abf55fdb"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/replacement-evidence/cliopatria-v0.2.0/regions/018.json",
+        "sha256": "93603e1a6e77e4eba52774fafb267e9d4dcfb6dc53258bed673c26b72a289f8d"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/replacement-evidence/cliopatria-v0.2.0/regions/021.json",
+        "sha256": "113c3f23d70afd394eb8e278ea261029dcfd4e693511baafe3518ea6ec5e6ba8"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/replacement-evidence/cliopatria-v0.2.0/regions/029.json",
+        "sha256": "22f9057e3d072b97a85fca8baa64242cd8376af159bca8cb86ba83674fdc1d08"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/replacement-evidence/cliopatria-v0.2.0/regions/030.json",
+        "sha256": "9af9a1bdf6cee5287f71e10e0bec415936f656c24bf184b863434c6e9667d91f"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/replacement-evidence/cliopatria-v0.2.0/regions/034.json",
+        "sha256": "294c760599e4370f2c0c96e7bfaddee3517c1bee02e91148500f26bba036401e"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/replacement-evidence/cliopatria-v0.2.0/regions/035.json",
+        "sha256": "04afb6814e003d54b46a46bf271852cfba478e1f9ac248543dcf62d8df92bccc"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/replacement-evidence/cliopatria-v0.2.0/regions/039.json",
+        "sha256": "8cbdd07eba85021d60fe64160a09a38ca611bf522627c48f9d676ce3d6cd14e6"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/replacement-evidence/cliopatria-v0.2.0/regions/053.json",
+        "sha256": "c249e8643a1da7445b8a219836d7ffe45d5b0e7304904f767e01864f6757afb6"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/replacement-evidence/cliopatria-v0.2.0/regions/054.json",
+        "sha256": "e2ce67cf84e391238cc615de6146028bfd1e97c12aeaaf5cf8a0b7870deb1c2e"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/replacement-evidence/cliopatria-v0.2.0/regions/061.json",
+        "sha256": "2293354184585b68b73e1faa2082f7357755ed1fd00b51a38a808ca9f5a7813c"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/replacement-evidence/cliopatria-v0.2.0/regions/143.json",
+        "sha256": "ee65171095a5b42af416b8fb597e5515c01892fddce2a0920f465c5c16810fe8"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/replacement-evidence/cliopatria-v0.2.0/regions/145.json",
+        "sha256": "9f37c361409f43b09a85d99a75142b0188c34ea42a37196ed84fbdcfba688fb4"
+      }
+    ],
+    "regional_packets": [
+      {
+        "path": "research/start-dates/1444-global-v1/regional-packets/005-south-america-2026-08-16.json",
+        "sha256": "6b7f88420e8027f8daca9ad17e738af7db2882ceb194ee9d79c8215e633831c4"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/regional-packets/011-western-africa-2026-08-16.json",
+        "sha256": "d336c39095ee78d46fb840ca7681895c6b401d854b6ab4c3f01a050395e3049c"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/regional-packets/013-central-america-2026-08-16.json",
+        "sha256": "ac5452926e0f9c12c1d61cf8451557819b6ecf3d120748aa9a212c697bf57618"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/regional-packets/014-eastern-africa-2026-08-16.json",
+        "sha256": "f5d73689ebddccd284b6bcdd7f38b0c814b113e6b84aa8a7477a7e66b50fb9a0"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/regional-packets/015-northern-africa-2026-08-16.json",
+        "sha256": "3d5e9e73ffaafb4358bfcf634e05546bbaac51c83a6f85b6b25afc22b65588fa"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/regional-packets/017-middle-africa-2026-08-16.json",
+        "sha256": "a576ce1320bbf31027d36ca70da614ade4acc23868867b7f2d5e1fbe797264e7"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/regional-packets/018-southern-africa-2026-08-16.json",
+        "sha256": "8e491e1044fda6b6c1f27e995733c8eececbbc85c79f16ff72ee440c505e7915"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/regional-packets/021-northern-america-2026-08-16.json",
+        "sha256": "c6cc7ba9a335894dd4c1aae581da825d4af2c06b7a48c9ab3045adb4a4da3694"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/regional-packets/029-caribbean-2026-08-16.json",
+        "sha256": "22f06dcd561070fa9ee35eacc56c53dcdc2cf7b0a1b95024a66d49cfb861acf7"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/regional-packets/030-eastern-asia-2026-08-16.json",
+        "sha256": "a7553c0428cfe299bfbff6f172cbc66f7a66a9ef40dfd033ae7685ddcc000efb"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/regional-packets/034-southern-asia-2026-08-16.json",
+        "sha256": "13282e87602dfd8909d727021e5618ef632407a33fd0672a5496c07c32f94b2d"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/regional-packets/035-south-eastern-asia-2026-08-16.json",
+        "sha256": "e4282e8f91248274f5b591036d84cc5f435f853264d15eea9800cce26b8b7c1a"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/regional-packets/039-southern-europe-2026-08-15.json",
+        "sha256": "bb3030d2022ebb35bcd468632813c18b24fb5f12e8c5dbc0b6e6b2a9aa1e1cfa"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/regional-packets/053-australia-new-zealand-2026-08-16.json",
+        "sha256": "e2214485680a91b49eb8ce387ab6d3200f318fd7688876aa7d6fccf9dbce8e13"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/regional-packets/054-melanesia-2026-08-16.json",
+        "sha256": "e4e2e05ac3c78ff5eed5b684b8d8644bd5d565455ab2502162283d9175041780"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/regional-packets/057-micronesia-2026-08-16.json",
+        "sha256": "738a78ec46c7e92bdc4ec7ac2cce611ac3b810a5f4077bae719f66e7f6fc0c3a"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/regional-packets/061-polynesia-2026-08-16.json",
+        "sha256": "84602724a380b4210915d8fecbcf4fc5dca5d7cfbc64c8105adc45f83945e7d9"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/regional-packets/143-central-asia-2026-08-16.json",
+        "sha256": "c2f3208a93722a4bd16aa1ae851805a6f3b6cb22f060a88a8790e4095a16f9a0"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/regional-packets/145-western-asia-2026-08-15.json",
+        "sha256": "14a98dbf36884cd9eec5f6f446cc8b1ce929553df5da0c983e696d8b51a97658"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/regional-packets/151-eastern-europe-2026-08-15.json",
+        "sha256": "dc59f3948a72e7511572af5a55826d511af6723033fc4b0bc419660a2ad20014"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/regional-packets/154-northern-europe-2026-08-15.json",
+        "sha256": "fa14afa36e9086433f227c53255f8de2b033b9d593c696f991ddfac4ae4d40c8"
+      },
+      {
+        "path": "research/start-dates/1444-global-v1/regional-packets/155-western-europe-2026-08-15.json",
+        "sha256": "1a41a5a6b91d56cc62d267051f417b2705fe831682809d7b9d90998c88a3ed65"
+      }
+    ]
+  },
+  "schema_version": "1.0.0",
+  "source_records": {
+    "historical_basemaps": {
+      "commit": "62d8f1a03a71f2d3ff17f2d166f7553f256bce68",
+      "license": "GPL-3.0",
+      "qualification": "approximate bracketing corroboration only",
+      "repository": "https://github.com/aourednik/historical-basemaps",
+      "snapshots": [
+        {
+          "sha256": "9349daa1afe05e4b73c56e31735bf8c13625bd35b7a23f17aa2f3a4bc672a20f",
+          "url": "https://raw.githubusercontent.com/aourednik/historical-basemaps/62d8f1a03a71f2d3ff17f2d166f7553f256bce68/geojson/world_1400.geojson",
+          "year": 1400
+        },
+        {
+          "sha256": "b952a7804cc4ed6c14aaebcb78e2e087c34ee5b1ffa1b659325cdfb45a806af3",
+          "url": "https://raw.githubusercontent.com/aourednik/historical-basemaps/62d8f1a03a71f2d3ff17f2d166f7553f256bce68/geojson/world_1492.geojson",
+          "year": 1492
+        }
+      ]
+    },
+    "openhistoricalmap": {
+      "endpoint": "https://overpass-api.openhistoricalmap.org/api/interpreter",
+      "license": "CC0 by default; feature-specific license tags override",
+      "qualification": "exact-date corroboration; feature-specific source review required",
+      "query": "[out:json][timeout:240][maxsize:1073741824];relation(-90,-180,90,180)[\"admin_level\"=\"2\"](if:t[\"start_date\"] <= \"1444-11-11\" && (!is_tag(\"end_date\") || t[\"end_date\"] > \"1444-11-11\"));out body geom;",
+      "returned_relation_count": 116,
+      "snapshot_sha256": "90d7b175b48ca1382e35c3e313761481e9139e8a646eb8ba086e49e7d7b12b89",
+      "sourced_polygon_count": 21,
+      "usable_polygon_count": 113
+    }
+  },
+  "start_date": "1444-11-11",
+  "status": "research complete; pending independent review; not implemented",
+  "totals": {
+    "component_records": 512,
+    "deferred_finding_routes": 43,
+    "low_confidence_components": 200,
+    "low_confidence_pairs": 53,
+    "medium_confidence_components": 312,
+    "medium_confidence_pairs": 127,
+    "pair_records": 180
+  }
+}

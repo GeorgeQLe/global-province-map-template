@@ -151,10 +151,18 @@
       region `061`'s zero-adjacency applicability record are accepted; the
       other nine applicability records, their 180 actor-pair dispositions, and
       512 uncovered or overlapping corridor rows remain fail-closed. Nothing is
-      implemented and Task 17 is still blocked. See
+      implemented and Task 17 is still blocked. A best-reasonable supplemental
+      evidence packet is now obtained for all 43 deferred routes: it binds all
+      180 pairs and all 512 components to pinned 1400/1492 approximate zones,
+      an exact-date OpenHistoricalMap query, and the reviewed regional source
+      pins. The packet contains 127 medium- and 53 low-confidence pairs plus
+      312 medium- and 200 low-confidence components; every record remains
+      pending independent review, and approximate evidence may support only a
+      zonal or documented Grade-B/C result unless its exact source lineage
+      separately qualifies Grade A. See
       `tasks/m25c-worldwide-replacement-evidence.md`,
       `tasks/m25c-worldwide-replacement-evidence-independent-review.md`, and
-      `tasks/m25c-worldwide-replacement-evidence-ship-manifest.md`; the earlier
+      `tasks/m25c-best-reasonable-supplemental-evidence.md`; the earlier
       implementation boundary is recorded in
       `tasks/m25c-region-057-applicability-implementation-ship-manifest.md`.
   17. [ ] After ordinary QA is clean, render the final review bundle and stop

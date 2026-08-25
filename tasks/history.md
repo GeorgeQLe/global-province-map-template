@@ -1,5 +1,22 @@
 # History
 
+## 2026-08-24 - M25C best-reasonable supplemental evidence
+
+- Obtained a hash-bound best-available evidence attempt for all 43 deferred
+  finding routes, all 180 nonzero actor pairs, and all 512 uncovered or
+  overlapping corridor components. Every record binds exact frozen IDs,
+  reviewed regional sources, spatial corroboration, confidence, limitations,
+  and a pending independent-review state.
+- Pinned approximate Historical Basemaps 1400 and 1492 snapshots and an
+  exact-date OpenHistoricalMap query. The query returned 116 relations, 113
+  usable polygons, and 21 source-tagged polygons. Classified 127 pairs and 312
+  components medium confidence; retained 53 pairs and 200 components as low
+  confidence rather than promoting incomplete evidence.
+- Preserved the certification boundary: approximate evidence may support
+  zones or documented Grade-B/C reconstruction, not automatic Grade A. No
+  regional packet, assembled artifact, tolerance, permission, QA result, or
+  Task 17 state changed.
+
 ## 2026-08-24 - M25C worldwide replacement-evidence independent review
 
 - Independently decided all replacement-evidence surfaces before

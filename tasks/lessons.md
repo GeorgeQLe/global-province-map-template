@@ -1,5 +1,18 @@
 # Lessons
 
+## 2026-08-24 — Preserve the distinction between exact and best-reasonable evidence
+
+- When an exact global source search cannot qualify every deferred finding and
+  the user asks for the best reasonable attempt, produce a complete,
+  confidence-graded evidence surface instead of treating exact-source failure
+  as the end of the research task.
+- Keep the qualification boundary explicit: bracketing or incompletely sourced
+  geometry may support a zone or documented Grade-B/C reconstruction, but it
+  does not become surveyed Grade-A linework through aggregation.
+- Correction enforcement: the M25C generator and executable tests now require
+  exact 43-finding, 180-pair, and 512-component coverage, record-level hashes,
+  pinned input hashes, confidence labels, and pending independent review.
+
 ## 2026-08-14 — Do not reopen locked review decisions
 
 - When a task explicitly says prior treatments are locked and confirmed
