@@ -188,6 +188,14 @@
       century and has conflicting license metadata, while the other sources
       fail exact-date, line, licensing, or reproducibility gates. All 32 routes
       remain rejected; see `tasks/m25c-exact-source-evidence.md`.
+      A named aggregate-model revision is now recommended for
+      `scenario-chorotega-polities`: its modern Nicaragua-plus-latitude dispatch,
+      unknown authority, and later non-Chorotega source bindings support an
+      identity-unresolved community fabric rather than a territorial polity.
+      The one component and three incident pairs are hash-bound; no remediation
+      or QA change is authorized pending independent review and a complete
+      region `013` adjacency audit. See
+      `tasks/m25c-synthetic-actor-model-revision.md`.
   17. [ ] After ordinary QA is clean, render the final review bundle and stop
       for independent human review before runtime certification or publication.
 

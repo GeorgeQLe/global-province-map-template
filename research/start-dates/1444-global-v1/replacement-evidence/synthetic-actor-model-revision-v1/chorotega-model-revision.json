@@ -1,0 +1,161 @@
+{
+  "actor_revision": {
+    "actor_id": "scenario-chorotega-polities",
+    "component_ids": [
+      "cmp-prv_4839d93e9052a93c9eff"
+    ],
+    "current_model": {
+      "actor_kind": "polity",
+      "assignment_polity_ids": [
+        "scenario-chorotega-polities"
+      ],
+      "authority_facet": "unknown",
+      "generator_dispatch": "Natural Earth NIC country membership, then centroid latitude >= 13.2 degrees",
+      "status_relationships": [
+        {
+          "actor_political_unit_id": "scenario-chorotega-polities",
+          "relationship": "territorial_presence"
+        }
+      ]
+    },
+    "current_name": "Chorotega polities",
+    "diagnosis": [
+      "The current polity label is assigned by a modern-country and latitude heuristic rather than an exact-date Chorotega polygon.",
+      "The only measurable polygon binding is a later generalized ethnolinguistic surface and names Matagalpa, Silam, Ulva, Yosco, and Maribichicoa rather than Chorotega.",
+      "A territorial_presence relationship with unknown authority supports a coarse community fabric, not a hard polity boundary."
+    ],
+    "expected_immediate_qa_impact": {
+      "non_review_errors": 0,
+      "reason": "This research packet changes no canonical or assembled artifact. Even after approval, region 013 requires a complete independently reviewed adjacency audit before any positive-border exemption can pass.",
+      "warnings": 0
+    },
+    "implementation_status": "not_implemented_pending_reviewer_decision",
+    "named_later_source_features": [
+      {
+        "component_area_ratio": 0.426232163,
+        "feature_sha256": "85aaf4aeaafad85af279243ad4e1fda9fe72768d2a831575c9c34a57db6a9522",
+        "language_family": "Misumalpan",
+        "name": "Matagalpa",
+        "source_feature_id": "driver-1953:509"
+      },
+      {
+        "component_area_ratio": 0.369706734,
+        "feature_sha256": "ec0b9b614374194e85011005074c592143aa4e13a28bf393d653f4bfa98241a6",
+        "language_family": "Misumalpan",
+        "name": "Silam",
+        "source_feature_id": "driver-1953:579"
+      },
+      {
+        "component_area_ratio": 0.098007403,
+        "feature_sha256": "4b834ebb52d899f8858063222c51ceced684876466abef1286e1d48d347203ca",
+        "language_family": "Misumalpan",
+        "name": "Ulva",
+        "source_feature_id": "driver-1953:511"
+      },
+      {
+        "component_area_ratio": 0.054748269,
+        "feature_sha256": "ee825053b6113c4f2f3aeba0b6fb453851edcabdacaf35dc9860fcd23e91f821",
+        "language_family": "Misumalpan",
+        "name": "Yosco",
+        "source_feature_id": "driver-1953:510"
+      },
+      {
+        "component_area_ratio": 0.051446145,
+        "feature_sha256": "6aada08a70bbc8a5670e3cd87e64cd21f6786e9147ae45a968bfe9ebf9b7b6e8",
+        "language_family": "Supanecan",
+        "name": "Maribichicoa",
+        "source_feature_id": "driver-1953:507"
+      }
+    ],
+    "prior_actor_specific_record_sha256": "5c5370c8b3e79c62b47193c77f62a89b3180e4b430b196b2b26a08db12b76cd3",
+    "prior_exact_source_record_sha256": "2166a6c3937d471c392ef0b225109b7ca1150db42da844a9a16586f7c7c5b127",
+    "proposed_model": {
+      "actor_kind": "community",
+      "authority_facet": "unknown",
+      "certainty": "uncertain",
+      "controller_polity_id": null,
+      "hard_border_eligible": false,
+      "name": "Northern Nicaraguan community fabric (1444 identity unresolved)",
+      "owner_polity_id": null,
+      "relationship": "territorial_presence",
+      "replacement_actor_id": "scenario-northern-nicaragua-community-fabric-unresolved",
+      "sovereign_polity_id": null
+    },
+    "recommendation": "approve_for_serial_implementation_after_independent_review",
+    "record_sha256": "5249a37ebef94113b1f77de94d5cc4d9c134986713460429889a78b95bd77116",
+    "region_id": "013"
+  },
+  "alternatives": [
+    {
+      "alternative": "retain_chorotega_polity",
+      "disposition": "rejected",
+      "tradeoff": "Preserves a familiar label but continues to imply an exact actor identity and three hard borders unsupported by the sources."
+    },
+    {
+      "alternative": "rename_to_the_later_driver_features",
+      "disposition": "rejected",
+      "tradeoff": "Would improve agreement with a later map while projecting sixteenth-to-twentieth-century observations backward to 1444."
+    },
+    {
+      "alternative": "remove_all_human_presence",
+      "disposition": "rejected",
+      "tradeoff": "Avoids synthetic identity but falsely converts source uncertainty into evidence of an empty landscape."
+    }
+  ],
+  "decision_boundary": [
+    "No exact-date actor polygon or independently derived shared line was obtained.",
+    "The later Driver geometry is mismatch evidence only and is not promoted into 1444 geometry.",
+    "The proposed community fabric must not qualify region 013 by itself; all land-adjacent pairs still require a complete hash-bound applicability audit and independent acceptance.",
+    "No packet, QA result, tolerance, permission, or Task 17 state is changed."
+  ],
+  "decision_status": "recommended_pending_independent_review",
+  "document_type": "m25c-synthetic-aggregate-actor-model-revision",
+  "incident_pair_revisions": [
+    {
+      "implementation_status": "not_implemented_pending_reviewer_decision",
+      "incident_component_ids": [
+        "cmp-prv_4839d93e9052a93c9eff",
+        "cmp-prv_d2f9cd22e37206b7cc7f"
+      ],
+      "independent_shared_line_obtained": false,
+      "neighbor_actor_id": "scenario-lenca-polities",
+      "pair_id": "pair-033c8c56f58879850c13",
+      "positive_border_disposition": "not_applicable_only_if_independent_region_013_adjacency_review_accepts_the_revised_model",
+      "prior_exact_source_record_sha256": "b8463436d39f4f4163b99bf3a417f0932f5f13928414167b941b4ac99df24f34",
+      "proposed_semantics": "community_fabric_transition_not_hard_border",
+      "record_sha256": "21355dd716aadebe4a1a26215998b285236ea365a83f1081f2c1978c08dcb085"
+    },
+    {
+      "implementation_status": "not_implemented_pending_reviewer_decision",
+      "incident_component_ids": [
+        "cmp-prv_4839d93e9052a93c9eff",
+        "cmp-prv_88e0bf1ade3af5dd0ad4",
+        "cmp-prv_9230a881e63b9738b007"
+      ],
+      "independent_shared_line_obtained": false,
+      "neighbor_actor_id": "scenario-caribbean-central-america",
+      "pair_id": "pair-6ccc8630a36792a6b485",
+      "positive_border_disposition": "not_applicable_only_if_independent_region_013_adjacency_review_accepts_the_revised_model",
+      "prior_exact_source_record_sha256": "7b4d7f1eb3b9502ed49e8528528fbd021c85de7cb250a6cdf762b943152d1c65",
+      "proposed_semantics": "community_fabric_transition_not_hard_border",
+      "record_sha256": "1652ffef72d5d2a647af06cb67b9cbe44f373c4855e89842adf3ec0399570ab6"
+    },
+    {
+      "implementation_status": "not_implemented_pending_reviewer_decision",
+      "incident_component_ids": [
+        "cmp-prv_14d579ed489284f4826a",
+        "cmp-prv_31db526d508a631bf378",
+        "cmp-prv_4839d93e9052a93c9eff"
+      ],
+      "independent_shared_line_obtained": false,
+      "neighbor_actor_id": "scenario-nicarao-polities",
+      "pair_id": "pair-bb3626368adadb263232",
+      "positive_border_disposition": "not_applicable_only_if_independent_region_013_adjacency_review_accepts_the_revised_model",
+      "prior_exact_source_record_sha256": "d5cede8609792a991212bd84ebd6d28fcf4da564ab681600e6d2a61488e99190",
+      "proposed_semantics": "community_fabric_transition_not_hard_border",
+      "record_sha256": "ed305ffa8dc144785517f1b8d8fa557036ec93a44af5018e36e75103c0c257f4"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "start_date": "1444-11-11"
+}

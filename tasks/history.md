@@ -1,5 +1,19 @@
 # History
 
+## 2026-08-24 - M25C Chorotega aggregate-model revision research
+
+- Traced `scenario-chorotega-polities` to a modern Nicaragua plus latitude
+  generator dispatch and one component with null ownership/control, unknown
+  authority, and only a territorial-presence relationship.
+- Bound the actor to the exact-source audit's later Matagalpa, Silam, Ulva,
+  Yosco, and Maribichicoa features, using them as mismatch evidence rather than
+  projecting their geometry backward to 1444.
+- Recommended replacement by an identity-unresolved northern Nicaraguan
+  community fabric and classified its three incident transitions as non-hard-
+  border semantics pending complete region `013` applicability review.
+- Changed no packet, assembled artifact, QA count, tolerance, permission, or
+  Task 17 state; remediation remains pending independent decision.
+
 ## 2026-08-24 - M25C exact actor/component/line source attempt
 
 - Audited eight new scholarly or institutional source routes with exact

@@ -1,0 +1,44 @@
+{
+  "artifacts": [
+    {
+      "bytes": 7616,
+      "path": "chorotega-model-revision.json",
+      "sha256": "489d2e3a87852a76fe45863c64e6de35085486248c7fe268ed1be5645fe083d6"
+    }
+  ],
+  "document_type": "m25c-synthetic-actor-model-revision-manifest",
+  "frozen_inputs": [
+    {
+      "path": "research/start-dates/1444-global-v1/regional-packets/013-central-america-2026-08-16.json",
+      "sha256": "ac5452926e0f9c12c1d61cf8451557819b6ecf3d120748aa9a212c697bf57618"
+    },
+    {
+      "path": "scripts/generate-m25c-region-013-packet.py",
+      "sha256": "c6d1f63efb9e1f4da0fabbc74281ace92514324733be99049b5295a94df0a2c8"
+    },
+    {
+      "path": "research/start-dates/1444-global-v1/replacement-evidence/actor-component-specific-v1/actor-specific-evidence.json",
+      "sha256": "606cb50e6ed36cb306d0803a3539f4dff223e09b23a8e007235a5604e1a1c4e3"
+    },
+    {
+      "path": "research/start-dates/1444-global-v1/replacement-evidence/exact-source-v1/actor-citation-evidence.json",
+      "sha256": "aa3ff264e48f17ca33db63c592fd64890ea9dad2b5900210e2f4c56dc7c7100c"
+    },
+    {
+      "path": "research/start-dates/1444-global-v1/replacement-evidence/exact-source-v1/pair-evidence.json",
+      "sha256": "bb9810a85792c29d72dcfa3a4b2eefab39fb25d1e0aa4cf7b6eee62d2d3bfd67"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "start_date": "1444-11-11",
+  "status": "research complete; one aggregate-model revision recommended; not implemented",
+  "totals": {
+    "exact_date_actor_polygons_obtained": 0,
+    "immediate_qa_change": 0,
+    "implementation_changes": 0,
+    "incident_components": 1,
+    "incident_pairs": 3,
+    "independent_shared_lines_obtained": 0,
+    "named_actor_revisions": 1
+  }
+}
