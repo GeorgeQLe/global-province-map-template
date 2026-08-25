@@ -27,8 +27,8 @@ from gpm.qa.start_date import run_start_date_qa  # noqa: E402
 from gpm.qa.m25c_assembled import (  # noqa: E402
     ACCEPTED_WORLD_MASK_SHA256,
     ASSEMBLED_VERSION,
-    REGION_014_GRADE_C_CHANGE_IDS,
-    REGION_014_GRADE_C_GAPS,
+    GRADE_C_CHANGE_IDS_BY_REGION,
+    GRADE_C_GAPS_BY_REGION,
     qualify_accepted_anomaly,
     qualify_assembled_pass,
     qualify_fabric_sidecars,
@@ -132,6 +132,24 @@ REGION_014_GRADE_C_ROUTES = (
     ("SPATIAL_ASSERTION_FAILED", "7ebb8826c48b59fbbf66d5cca5fbf0fca58359ff5ee56375a19d038eea33e70c", "19dc79fe11921eb85f98c3e17b8196b69910e13e65e6557b2c6ab302f189af88"),
     ("UNCERTIFIED_A_GRADE", "fc71a2e7669af0dcdd199a2074d490749b9c28c335188dbe8787225c8f6c5ad6", "aee36988504f4403426a27bf3fba2c288f9313c663a391f494e30e59ab87025c"),
 )
+GRADE_C_ROUTES_BY_REGION = {
+    "014": REGION_014_GRADE_C_ROUTES,
+    "017": (
+        ("NON_EXECUTABLE_SEAM_ASSERTION", "36dfd24589d7369d831a39e4302bc4c2e6259781f8ebd1a1da2ae498f0c96985", "798b15236b8c194f5c2976fe342b83ef5d588d95e7066f59f75d601cac00bebc"),
+        ("SPATIAL_ASSERTION_FAILED", "61abdaea1901610878ddb31af364a0f947f4f19b5043fd0cf05d47d27b6eb656", "8f8de8052b0bdac35d7fdbc856c92d35ae2e1ec8163d5cfe3c8d805801f778bb"),
+        ("UNCERTIFIED_A_GRADE", "41e678055d9e1fe2619846e7ea9e870ecf6dbd8df0abce0a50427796cfe05236", "6318ff533a18a4a0004d876af49a3de88d2f303b53017fdc97f5f87e7c6048d1"),
+    ),
+    "018": (
+        ("NON_EXECUTABLE_SEAM_ASSERTION", "64248689278c0bb0062a1cc958a5b9a3a560ef4340ee54349370aebe3de56f4d", "2c2f99ac33dcdc1ddffc1b3cb20e35375eb2c00cb94eeeec52b04558a91efc8c"),
+        ("SPATIAL_ASSERTION_FAILED", "87d85e9074c672bc13b28a733fdc817cc98fab6e2dbf1c4c2ee45995b932c986", "16aeac35e6ccb97593d1a067d2752dc65935a53202a10264fd3e3aa5233c86a3"),
+        ("UNCERTIFIED_A_GRADE", "8c36312d47e1ef5ef4cd96988c3ab2940d232f8625e4d5407a80ae1cb224cd21", "6ec02ff944591ea1ba90ad4509a187bf677933fe072f71f8f395c3be2055c490"),
+    ),
+    "053": (
+        ("SPATIAL_ASSERTION_FAILED", "850028ea78fe16d2c5c8c9c8bf3d32e3aed29a775900294df2f667ef70b83043", "b97c8808de3dfcfa23756d481cc7bf81041b1cc44f3ed5c47c50a092d19e2446"),
+        ("UNCERTIFIED_A_GRADE", "321f2c61ec736b6e0a3375c762ac48dd6c112c9763113a6c3fd8f6e63334ba57", "c861d01f2a8ee0b01a4ec933ee7cf7029f2c8de6df2b0fbf21f211460b3f4e4c"),
+    ),
+}
+GRADE_C_COMPONENT_COUNTS = {"014": 25, "017": 36, "018": 32, "053": 18}
 
 DEFAULT_OUTPUT = ROOT / "data" / "processed" / "m25c-provisional"
 DEFAULT_ASSEMBLED_OUTPUT = ROOT / "data" / "processed" / "m25c-assembled-pass"
@@ -472,7 +490,7 @@ def _generate_into(args: argparse.Namespace) -> None:
         source_manifest, gazetteer, boundaries, golden, assignments, coverage,
         stage="polities",
     )
-    grade_c_changes = _apply_region_014_grade_c_routes(coverage) if assembled else []
+    grade_c_changes = _apply_grade_c_routes(coverage) if assembled else []
     if all(row.get("facets") for row in assignments["assignments"]):
         assignments["schema_version"] = "0.4.0"
         gazetteer["schema_version"] = "0.4.0"
@@ -1196,82 +1214,84 @@ def _hash_json(value: Any) -> str:
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
 
-def _apply_region_014_grade_c_routes(coverage: dict[str, Any]) -> list[dict[str, Any]]:
-    """Apply only the three exact, serially reviewed region 014 Grade C routes."""
+def _apply_grade_c_routes(coverage: dict[str, Any]) -> list[dict[str, Any]]:
+    """Apply only the eleven exact, serially reviewed Grade C routes."""
     review_root = GLOBAL / "replacement-evidence" / "best-reasonable-v1"
     review_path = review_root / "review-decisions.json"
     if review_path.is_symlink() or not review_path.is_file() or _sha256(review_path) != BEST_REASONABLE_REVIEW_SHA256:
-        raise SystemExit("region 014 Grade C review decisions drifted; new independent review required")
+        raise SystemExit("Grade C review decisions drifted; new independent review required")
     review = _load(review_path)
     for artifact in review.get("reviewed_artifacts") or []:
         path = review_root / str(artifact.get("path") or "")
         if path.is_symlink() or not path.is_file() or _sha256(path) != artifact.get("sha256"):
-            raise SystemExit("region 014 Grade C reviewed evidence drifted; new independent review required")
+            raise SystemExit("Grade C reviewed evidence drifted; new independent review required")
 
-    decisions = {
-        row.get("finding_code"): row
-        for row in review.get("finding_decisions") or []
-        if row.get("region_id") == "014"
-    }
     route_document = _load(review_root / "finding-routes.json")
-    routes = {
-        row.get("finding_code"): row
-        for row in route_document.get("records") or []
-        if row.get("region_id") == "014"
-    }
-    component_ids: set[str] = set()
-    for finding_code, decision_sha256, evidence_sha256 in REGION_014_GRADE_C_ROUTES:
-        decision = decisions.get(finding_code) or {}
-        route = routes.get(finding_code) or {}
-        if (
-            decision.get("decision") != "accept"
-            or decision.get("geometry_grade") != "C"
-            or decision.get("accepted_scope") != "serial_documented_grade_c_reconstruction_only"
-            or decision.get("decision_sha256") != decision_sha256
-            or decision.get("evidence_record_sha256") != evidence_sha256
-            or route.get("record_sha256") != evidence_sha256
-        ):
-            raise SystemExit(f"region 014 Grade C route review drifted: {finding_code}")
-        component_ids.update(route.get("component_evidence_ids") or [])
-    component_decisions = {
-        row.get("component_id"): row
-        for row in review.get("component_decisions") or []
-        if row.get("region_id") == "014"
-    }
-    if len(component_ids) != 25 or set(component_decisions) != component_ids or any(
-        row.get("decision") != "accept" or row.get("geometry_grade") != "C"
-        or row.get("accepted_scope") != "documented_approximate_geometry_scaffold_only"
-        for row in component_decisions.values()
-    ):
-        raise SystemExit("region 014 Grade C component review drifted; new independent review required")
-
-    rows = [
-        row for row in coverage.get("coverage") or []
-        if row.get("region_id") == "014" and row.get("layer") == "geometry"
-    ]
-    if len(rows) != 1 or rows[0].get("grade") != "A" or rows[0].get("known_gaps"):
-        raise SystemExit("region 014 geometry coverage is not the reviewed Grade A starting point")
-    row = rows[0]
-    row["grade"] = "C"
-    row["evidence_summary"] = (
-        "Twenty-five hash-bound component records support only an approximate two-snapshot "
-        "representative-point geometry scaffold; the failed Ethiopia-Somalia seam is retained."
-    )
-    row["known_gaps"] = list(REGION_014_GRADE_C_GAPS)
-
     changes = []
-    for change_id, (finding_code, decision_sha256, evidence_sha256) in zip(
-        REGION_014_GRADE_C_CHANGE_IDS, REGION_014_GRADE_C_ROUTES, strict=True,
-    ):
-        changes.append({
-            "change_id": change_id,
-            "category": "qa" if finding_code != "UNCERTIFIED_A_GRADE" else "geometry",
-            "summary": (
-                f"Serial Grade C route {finding_code} implemented from decision "
-                f"{decision_sha256} and evidence record {evidence_sha256}; accepted gaps remain fail-closed."
-            ),
-            "affected_ids": ["014", "geometry", finding_code],
-        })
+    for region, reviewed_routes in GRADE_C_ROUTES_BY_REGION.items():
+        decisions = {
+            row.get("finding_code"): row for row in review.get("finding_decisions") or []
+            if row.get("region_id") == region
+        }
+        routes = {
+            row.get("finding_code"): row for row in route_document.get("records") or []
+            if row.get("region_id") == region
+        }
+        component_ids: set[str] = set()
+        for finding_code, decision_sha256, evidence_sha256 in reviewed_routes:
+            decision = decisions.get(finding_code) or {}
+            route = routes.get(finding_code) or {}
+            if (
+                decision.get("decision") != "accept"
+                or decision.get("geometry_grade") != "C"
+                or decision.get("accepted_scope") != "serial_documented_grade_c_reconstruction_only"
+                or decision.get("decision_sha256") != decision_sha256
+                or decision.get("evidence_record_sha256") != evidence_sha256
+                or route.get("record_sha256") != evidence_sha256
+            ):
+                raise SystemExit(f"region {region} Grade C route review drifted: {finding_code}")
+            component_ids.update(route.get("component_evidence_ids") or [])
+        component_decisions = {
+            row.get("component_id"): row for row in review.get("component_decisions") or []
+            if row.get("region_id") == region
+        }
+        if (
+            len(component_ids) != GRADE_C_COMPONENT_COUNTS[region]
+            or set(component_decisions) != component_ids
+            or any(
+                row.get("decision") != "accept" or row.get("geometry_grade") != "C"
+                or row.get("accepted_scope") != "documented_approximate_geometry_scaffold_only"
+                for row in component_decisions.values()
+            )
+        ):
+            raise SystemExit(f"region {region} Grade C component review drifted; new independent review required")
+
+        rows = [
+            row for row in coverage.get("coverage") or []
+            if row.get("region_id") == region and row.get("layer") == "geometry"
+        ]
+        if len(rows) != 1 or rows[0].get("grade") != "A" or rows[0].get("known_gaps"):
+            raise SystemExit(f"region {region} geometry coverage is not the reviewed Grade A starting point")
+        row = rows[0]
+        row["grade"] = "C"
+        row["evidence_summary"] = (
+            f"{GRADE_C_COMPONENT_COUNTS[region]} hash-bound component records support only an approximate "
+            "two-snapshot representative-point geometry scaffold; the failed negative seam is retained."
+        )
+        row["known_gaps"] = list(GRADE_C_GAPS_BY_REGION[region])
+
+        for change_id, (finding_code, decision_sha256, evidence_sha256) in zip(
+            GRADE_C_CHANGE_IDS_BY_REGION[region], reviewed_routes, strict=True,
+        ):
+            changes.append({
+                "change_id": change_id,
+                "category": "qa" if finding_code != "UNCERTIFIED_A_GRADE" else "geometry",
+                "summary": (
+                    f"Serial Grade C route {finding_code} implemented from decision "
+                    f"{decision_sha256} and evidence record {evidence_sha256}; accepted gaps remain fail-closed."
+                ),
+                "affected_ids": [region, "geometry", finding_code],
+            })
     return changes
 
 

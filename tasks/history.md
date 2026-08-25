@@ -1,5 +1,20 @@
 # History
 
+## 2026-08-24 - M25C remaining Grade C route implementation
+
+- Serially applied the eight remaining accepted routes in reviewed order:
+  three each for regions `017` and `018`, followed by two for region `053`.
+  Every route and all 86 underlying accepted component decisions remain bound
+  to the unchanged independent-review bundle and evidence-record hashes.
+- Downgraded only `017/geometry`, `018/geometry`, and `053/geometry` from Grade
+  A to Grade C. The shared snapshot, representative-point, edge/error/
+  containment, and non-geometry gaps remain explicit; region-specific seam
+  failures and the two non-executable seam gaps are retained.
+- Regenerated the assembled candidate and all 30 review sheets. Ordinary QA
+  remains at 56 non-review errors plus one warning: four
+  `GLOBAL_COVERAGE_NOT_A` blockers replace the four former regional
+  `UNCERTIFIED_A_GRADE` findings. All release permissions remain false.
+
 ## 2026-08-24 - M25C region 014 Grade C route implementation
 
 - Serially applied the accepted `NON_EXECUTABLE_SEAM_ASSERTION`,

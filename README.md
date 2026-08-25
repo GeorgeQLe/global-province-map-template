@@ -112,15 +112,17 @@ until rendering plus ordinary pending-review QA are clean:
   --output-dir data/processed/m25c-assembled-pass
 ```
 
-After region 014's three accepted Grade C routes and region 057's independently
+After all eleven accepted Grade C routes and region 057's independently
 approved applicability update, the current assembled candidate intentionally
-fails preflight on 56 research defects and one pending-review warning. Region
-014 geometry is honestly downgraded to Grade C with six explicit gaps; its
-non-executable, failed Ethiopia-Somalia seam remains fail-closed, and the former
-`UNCERTIFIED_A_GRADE` finding is now the expected `GLOBAL_COVERAGE_NOT_A`
-blocker. Region 057's exact hash-bound `no_land_adjacency` record qualifies,
-while the other four border-applicability candidates remain fail-closed. The
-candidate cannot be accepted, certified, published, or deployed.
+fails preflight on 56 research defects and one pending-review warning. Geometry
+in regions 014, 017, 018, and 053 is honestly downgraded to Grade C with its
+explicit source and seam gaps. The Ethiopia-Somalia, Angola-DRC,
+Botswana-South Africa, and Western Australia-South Australia seam failures
+remain fail-closed, and the four former `UNCERTIFIED_A_GRADE` findings are now
+the expected `GLOBAL_COVERAGE_NOT_A` blockers. Region 057's exact hash-bound
+`no_land_adjacency` record qualifies, while the other four
+border-applicability candidates remain fail-closed. The candidate cannot be
+accepted, certified, published, or deployed.
 
 Replacement evidence for those 56 defects is now staged separately under
 `research/start-dates/1444-global-v1/replacement-evidence/cliopatria-v0.2.0/`.

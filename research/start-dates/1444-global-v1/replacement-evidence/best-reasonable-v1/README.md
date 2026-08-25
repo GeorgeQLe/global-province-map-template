@@ -1,6 +1,6 @@
 # M25C best-reasonable supplemental evidence
 
-Status: **independently reviewed; region 014 routes implemented at Grade C**
+Status: **independently reviewed; all eleven accepted routes implemented at Grade C**
 
 This packet supplies an explicit best-available attempt for every one of the
 43 deferred frozen findings. It binds all 180 nonzero actor-pair records and
@@ -49,8 +49,9 @@ qualifying claim to both exact actors. Eleven complete component-only finding
 routes may proceed serially at Grade C; the other 32 routes remain rejected.
 No decision is Grade A or B.
 
-Region `014`'s three accepted routes were implemented on `2026-08-24`; eight
-accepted routes remain unimplemented.
+All eleven accepted routes in regions `014`, `017`, `018`, and `053` were
+implemented serially on `2026-08-24` with their exact reviewed hashes and
+explicit Grade C gaps.
 
 ## Reproduction
 

@@ -17,18 +17,54 @@ START_DATE = "1444-11-11"
 ASSEMBLED_VERSION = "1.0.0-assembled.1"
 LAYERS = ("geometry", "politics", "hierarchy", "gazetteer_relationships")
 PROVISIONAL_SENTINEL = "official-1444-modern-scaffold-provisional"
-REGION_014_GRADE_C_GAPS = (
+GRADE_C_COMMON_GAPS = (
     "The source snapshots bracket 1444-11-11 by 44 and 48 years.",
     "Only one representative point per accepted component was tested against approximate source polygons.",
     "No source-derived component edge, error measurement, or complete containment test is present.",
     "Political actors, facets, relationships, and Grade A/B are not accepted by this reconstruction.",
-    "The Ethiopia-Somalia negative control remains non-executable because eligible seam and both-side coverage is incomplete.",
-    "The Ethiopia-Somalia negative-control spatial assertion remains failed.",
 )
-REGION_014_GRADE_C_CHANGE_IDS = (
-    "region-014-grade-c-non-executable-seam",
-    "region-014-grade-c-spatial-assertion",
-    "region-014-grade-c-coverage-downgrade",
+GRADE_C_GAPS_BY_REGION = {
+    "014": GRADE_C_COMMON_GAPS + (
+        "The Ethiopia-Somalia negative control remains non-executable because eligible seam and both-side coverage is incomplete.",
+        "The Ethiopia-Somalia negative-control spatial assertion remains failed.",
+    ),
+    "017": GRADE_C_COMMON_GAPS + (
+        "The Angola-DRC negative control remains non-executable because eligible seam and both-side coverage is incomplete.",
+        "The Angola-DRC negative-control spatial assertion remains failed.",
+    ),
+    "018": GRADE_C_COMMON_GAPS + (
+        "The Botswana-South Africa negative control remains non-executable because eligible seam and both-side coverage is incomplete.",
+        "The Botswana-South Africa negative-control spatial assertion remains failed.",
+    ),
+    "053": GRADE_C_COMMON_GAPS + (
+        "The Western Australia-South Australia negative-control spatial assertion remains failed.",
+    ),
+}
+GRADE_C_CHANGE_IDS_BY_REGION = {
+    "014": (
+        "region-014-grade-c-non-executable-seam",
+        "region-014-grade-c-spatial-assertion",
+        "region-014-grade-c-coverage-downgrade",
+    ),
+    "017": (
+        "region-017-grade-c-non-executable-seam",
+        "region-017-grade-c-spatial-assertion",
+        "region-017-grade-c-coverage-downgrade",
+    ),
+    "018": (
+        "region-018-grade-c-non-executable-seam",
+        "region-018-grade-c-spatial-assertion",
+        "region-018-grade-c-coverage-downgrade",
+    ),
+    "053": (
+        "region-053-grade-c-spatial-assertion",
+        "region-053-grade-c-coverage-downgrade",
+    ),
+}
+GRADE_C_CHANGE_IDS = tuple(
+    change_id
+    for region in ("014", "017", "018", "053")
+    for change_id in GRADE_C_CHANGE_IDS_BY_REGION[region]
 )
 ARTIFACT_FILES = (
     "source_manifest.json", "boundaries.geojson", "gazetteer.json",
@@ -214,7 +250,7 @@ def qualify_assembled_pass(root: Path, *, packets: Iterable[dict[str, Any]] | No
 
 
 def _qualify_assembled_coverage(coverage: dict[str, Any], changelog: dict[str, Any]) -> None:
-    """Allow only the exact reviewed region 014 Grade C exception."""
+    """Allow only the exact serially reviewed Grade C geometry exceptions."""
     coverage_rows = coverage.get("coverage") or []
     expected = {(region, layer) for region in WORLDWIDE_M49_SUBREGIONS for layer in LAYERS}
     actual = [(row.get("region_id"), row.get("layer")) for row in coverage_rows]
@@ -226,19 +262,19 @@ def _qualify_assembled_coverage(coverage: dict[str, Any], changelog: dict[str, A
         row for row in coverage_rows
         if row.get("grade") != "A" or row.get("known_gaps") or row.get("exclusions")
     ]
-    if len(exceptions) != 1:
-        raise ValueError("assembled coverage must contain exactly the reviewed region 014 Grade C exception")
-    exception = exceptions[0]
-    if (
-        (exception.get("region_id"), exception.get("layer"), exception.get("grade"))
-        != ("014", "geometry", "C")
-        or exception.get("known_gaps") != list(REGION_014_GRADE_C_GAPS)
-        or exception.get("exclusions")
+    if len(exceptions) != len(GRADE_C_GAPS_BY_REGION):
+        raise ValueError("assembled coverage must contain exactly the reviewed Grade C exceptions")
+    exception_by_region = {row.get("region_id"): row for row in exceptions}
+    if set(exception_by_region) != set(GRADE_C_GAPS_BY_REGION) or any(
+        (row.get("layer"), row.get("grade")) != ("geometry", "C")
+        or row.get("known_gaps") != list(GRADE_C_GAPS_BY_REGION[region])
+        or row.get("exclusions")
+        for region, row in exception_by_region.items()
     ):
         raise ValueError("assembled coverage contains an unreviewed Grade C exception")
     change_ids = [row.get("change_id") for row in changelog.get("changes") or []]
-    if change_ids[-3:] != list(REGION_014_GRADE_C_CHANGE_IDS):
-        raise ValueError("region 014 Grade C routes were not recorded serially")
+    if change_ids[-len(GRADE_C_CHANGE_IDS):] != list(GRADE_C_CHANGE_IDS):
+        raise ValueError("Grade C routes were not recorded serially")
 
 
 def _collect_citations(value: Any, result: set[str], key: str | None = None) -> None:

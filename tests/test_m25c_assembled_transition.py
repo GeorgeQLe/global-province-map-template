@@ -12,8 +12,8 @@ import pytest
 
 from gpm.qa.m25c_assembled import (
     ASSEMBLED_VERSION,
-    REGION_014_GRADE_C_CHANGE_IDS,
-    REGION_014_GRADE_C_GAPS,
+    GRADE_C_CHANGE_IDS,
+    GRADE_C_GAPS_BY_REGION,
     qualify_assembled_pass,
 )
 from gpm.qa import m25c_assembled
@@ -86,12 +86,13 @@ def _assembled_fixture(root: Path) -> list[dict]:
         for region in regions
         for layer in ("geometry", "politics", "hierarchy", "gazetteer_relationships")
     ]
-    grade_c_row = next(
-        row for row in coverage
-        if (row["region_id"], row["layer"]) == ("014", "geometry")
-    )
-    grade_c_row["grade"] = "C"
-    grade_c_row["known_gaps"] = list(REGION_014_GRADE_C_GAPS)
+    for region, gaps in GRADE_C_GAPS_BY_REGION.items():
+        grade_c_row = next(
+            row for row in coverage
+            if (row["region_id"], row["layer"]) == (region, "geometry")
+        )
+        grade_c_row["grade"] = "C"
+        grade_c_row["known_gaps"] = list(gaps)
     documents = {
         "source_manifest.json": {"sources": []},
         "boundaries.geojson": {"features": []},
@@ -101,7 +102,7 @@ def _assembled_fixture(root: Path) -> list[dict]:
         "build.geojson": {"features": []},
         "coverage.json": {"coverage": coverage, "known_gaps": [], "exclusions": []},
         "changelog.json": {"changes": [
-            {"change_id": change_id} for change_id in REGION_014_GRADE_C_CHANGE_IDS
+            {"change_id": change_id} for change_id in GRADE_C_CHANGE_IDS
         ]},
         "historical-territory-status.json": {
             "qa_mode": "certification_review", "provisional": False,
@@ -144,7 +145,7 @@ def test_assembled_qualifier_accepts_exact_world_closure(tmp_path):
 @pytest.mark.parametrize("mutation,match", [
     ("missing_packet", "exactly one packet"),
     ("duplicate_override", "exactly one override"),
-    ("coverage_gap", "reviewed region 014 Grade C"),
+    ("coverage_gap", "reviewed Grade C"),
     ("mixed_mode", "mixed QA modes"),
     ("provisional_flag", "explicitly reject provisional"),
     ("sentinel", "provisional source lineage"),
