@@ -1,6 +1,6 @@
 # M25C best-reasonable evidence independent review
 
-Status: **reviewed record by record; narrow Grade C acceptance; not implemented**
+Status: **reviewed record by record; region 014 routes implemented at Grade C; eight accepted routes remain**
 
 Review date: `2026-08-24`
 Start date: `1444-11-11`
@@ -102,6 +102,10 @@ support an honest provisional reconstruction with explicit gaps, but cannot
 open Task 17 or the assembled-pass acceptance gate. Serial implementation must
 preserve the exact review hashes, retain the downgrade, and regenerate
 affected, neighboring, and worldwide QA before any further review.
+
+Region `014`'s three routes were serially implemented on `2026-08-24` with
+those exact hashes and explicit gaps. The eight accepted routes in regions
+`017`, `018`, and `053` remain unimplemented.
 
 ## Verification
 

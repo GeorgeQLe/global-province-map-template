@@ -166,6 +166,14 @@
       `tasks/m25c-best-reasonable-independent-review.md`; the earlier
       implementation boundary is recorded in
       `tasks/m25c-region-057-applicability-implementation-ship-manifest.md`.
+      Region `014`'s three accepted routes are now serially implemented with
+      exact review hashes and six explicit Grade C gaps. Its seam remains
+      non-executable and failed, while its former `UNCERTIFIED_A_GRADE` finding
+      is now the truthful `GLOBAL_COVERAGE_NOT_A` blocker. Fresh affected QA
+      has 32 passing assertions and one failed seam; worldwide QA remains at 56
+      non-review errors plus one warning, with every permission false. Eight
+      accepted Grade C routes remain unimplemented; see
+      `tasks/m25c-region-014-grade-c-implementation-ship-manifest.md`.
   17. [ ] After ordinary QA is clean, render the final review bundle and stop
       for independent human review before runtime certification or publication.
 

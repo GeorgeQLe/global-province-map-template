@@ -1,5 +1,21 @@
 # History
 
+## 2026-08-24 - M25C region 014 Grade C route implementation
+
+- Serially applied the accepted `NON_EXECUTABLE_SEAM_ASSERTION`,
+  `SPATIAL_ASSERTION_FAILED`, and `UNCERTIFIED_A_GRADE` routes using their exact
+  review-decision and evidence-record hashes. The generator also pins the full
+  reviewed decision bundle and its four reviewed input artifacts.
+- Downgraded only `014/geometry` from Grade A to Grade C and recorded six gaps:
+  bracketing dates, representative-point-only tests, absent edge/error/full-
+  containment evidence, no political/facet/relationship acceptance, and the
+  retained non-executable and failed Ethiopia-Somalia seam.
+- Regenerated the assembled candidate and all 30 review sheets. Region `014`
+  has 32 passing assertions and the one retained seam failure; worldwide QA
+  remains at 56 non-review errors plus one warning, replacing the region's
+  `UNCERTIFIED_A_GRADE` error with `GLOBAL_COVERAGE_NOT_A`. All four release
+  permissions remain false.
+
 ## 2026-08-24 - M25C best-reasonable independent review
 
 - Independently decided all 180 pair, 512 component, and 43 finding-route

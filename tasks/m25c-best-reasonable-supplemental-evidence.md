@@ -1,6 +1,6 @@
 # M25C best-reasonable supplemental evidence
 
-Status: **obtained and independently reviewed; narrow Grade C acceptance; not implemented**
+Status: **obtained and independently reviewed; region 014 routes implemented at Grade C**
 
 Date: `2026-08-24`
 
@@ -81,3 +81,6 @@ may proceed serially at Grade C; 32 routes remain rejected. No record qualifies
 for Grade A or Grade B. See
 `tasks/m25c-best-reasonable-independent-review.md` and the hash-bound
 `review-decisions.json` sidecar.
+
+Region `014`'s three accepted routes are now implemented with the exact review
+hashes and recorded Grade C gaps; eight accepted routes remain unimplemented.
