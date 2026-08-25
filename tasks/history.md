@@ -1,5 +1,17 @@
 # History
 
+## 2026-08-24 - M25C Actor/Component-Specific Full-Geometry Evidence
+
+- Replaced representative-point inference for the remaining rejected surface
+  with full assembled-component intersections against the pinned Cliopatria
+  1444 polity slice.
+- Added hash-bound records for 206 rejected components, 107 affected actors,
+  180 rejected pairs, and all 32 remaining finding routes.
+- Confirmed stronger negative evidence: 187 components have zero source
+  coverage, 19 have minor overlap below 50%, and all 180 pairs remain
+  insufficient; no implementation or Task 17 state changed.
+- Added focused generation and integrity tests.
+
 ## 2026-08-24 - M25C remaining Grade C route implementation
 
 - Serially applied the eight remaining accepted routes in reviewed order:

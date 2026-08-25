@@ -174,6 +174,12 @@
       worldwide QA remains at 56 non-review errors plus one warning, with every
       permission false; see
       `tasks/m25c-remaining-grade-c-implementation-ship-manifest.md`.
+      Stronger full-polygon evidence is now bound to the remaining 206 rejected
+      components, 107 affected actors, 180 pairs, and 32 finding routes. It
+      confirms that representative-point sampling was not the blocker: 187
+      components have zero Cliopatria polity coverage, 19 have only minor
+      overlap below 50%, and all 180 pairs remain insufficient. No remediation
+      is authorized; see `tasks/m25c-actor-component-specific-evidence.md`.
   17. [ ] After ordinary QA is clean, render the final review bundle and stop
       for independent human review before runtime certification or publication.
 

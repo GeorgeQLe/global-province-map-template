@@ -130,6 +130,11 @@ It pins a peer-reviewed 1444 source slice, eight direct-border candidates, ten
 complete applicability audits, and 18 corridor dossiers that account for every
 error exactly once. The packet is unsigned and unimplemented; source gaps
 remain explicit reviewer decisions, and Task 17 stays closed.
+The follow-up full-polygon audit of every still-rejected record is under
+`research/start-dates/1444-global-v1/replacement-evidence/actor-component-specific-v1/`.
+It binds 206 components, 107 actors, 180 pairs, and 32 routes to exact geometry
+measurements. The result remains fail-closed: 187 components have no source
+polity coverage, 19 have only minor overlap below 50%, and no pair qualifies.
 `gpm build provinces` now consumes `data/processed/locations.geojson` by
 default; the former Natural Earth scaffold is available only through the
 explicit `--legacy-modern-admin` compatibility flag. Targeted splits require a

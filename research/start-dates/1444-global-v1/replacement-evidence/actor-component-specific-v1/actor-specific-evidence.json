@@ -1,0 +1,2415 @@
+{
+  "document_type": "m25c-actor-specific-geometry-evidence",
+  "records": [
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-akan-states",
+      "actor_name": "Emerging Akan states and gold-field communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "c7f8bb24353edf808fb323064012d7c6fe595744a8b59efb2b62540a7b201c72",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-amazonian-riverine",
+      "actor_name": "Amazonian riverine and earthwork communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "e49e11333de3df7416437bbf641e74fc5658dc5f708d8509d07cecd6d725564b",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-arnhem-top-end-communities",
+      "actor_name": "Arnhem Land and Top End Aboriginal nations and communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "11bfd1786ebf4ee37551c7d6238cd5be4d27d974f66db4279ec15484c191eb57",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 934777.477918,
+      "actor_id": "scenario-aymara-kingdoms",
+      "actor_name": "Aymara kingdoms and Altiplano polities",
+      "component_count": 76,
+      "component_inventory": [
+        "cmp-prv_007ae5318f8def025ce6",
+        "cmp-prv_011764f1f7f3e2082815",
+        "cmp-prv_016050b20a31fe4b5edb",
+        "cmp-prv_038b6fc8f08a60b16128",
+        "cmp-prv_065cce95e0ffe4407f36",
+        "cmp-prv_0bff9a067fcfa1ccebbd",
+        "cmp-prv_0f0c5451f42f7d9c7a30",
+        "cmp-prv_12211dd1d83ccd231678",
+        "cmp-prv_16d7ad4f8c9ee49c6cbd",
+        "cmp-prv_1fbb524e054e3f09c2de",
+        "cmp-prv_25711345a021b3b0c8f6",
+        "cmp-prv_28bc3aeff5842fc23dfa",
+        "cmp-prv_2a2abea6dde8cf13a72f",
+        "cmp-prv_2adc0064d5181f562949",
+        "cmp-prv_313d303be5bbf98ed00a",
+        "cmp-prv_3219cb645ab5331ed0ec",
+        "cmp-prv_3b24a62b7e5c4567e7e2",
+        "cmp-prv_3b800894068ade0dab89",
+        "cmp-prv_3d3ce5c55cd0f561a0ea",
+        "cmp-prv_3edb217bc639eddc383f",
+        "cmp-prv_42de06c45ccc1931481c",
+        "cmp-prv_42f695b2f961341f4d88",
+        "cmp-prv_48c3bca28e23d0312a30",
+        "cmp-prv_4909cbb9b256a3c8e3da",
+        "cmp-prv_4a7edfd4b5179bc9ef1b",
+        "cmp-prv_56b052b837eac242f4c3",
+        "cmp-prv_573e66e80aee2cbc0a8b",
+        "cmp-prv_57694d7428f47f0bcd4d",
+        "cmp-prv_5901b08e10cd9077f624",
+        "cmp-prv_5e007793c4c70defec37",
+        "cmp-prv_5e4121fbb98e63e795c9",
+        "cmp-prv_5f21200bc0af3240e338",
+        "cmp-prv_62fb7ca86d4a70bcf721",
+        "cmp-prv_637e03ae24de713bff60",
+        "cmp-prv_6470c1e681da9b5353c0",
+        "cmp-prv_68373c9b5026076409c7",
+        "cmp-prv_6a40227bffab9b9a3e59",
+        "cmp-prv_721a9af50c60f01de20e",
+        "cmp-prv_74938a89caab572f953f",
+        "cmp-prv_752dae1633f10b526eaf",
+        "cmp-prv_7976dd68d5f2e193c78d",
+        "cmp-prv_7fb8734ec436d4da5d9a",
+        "cmp-prv_8986388c3bab649cde02",
+        "cmp-prv_8e4020a2eac6cb7317b6",
+        "cmp-prv_8f85e57ca5502c4278b0",
+        "cmp-prv_947f37c15822c25d3e3a",
+        "cmp-prv_95f1bb5d63b6d1b2d570",
+        "cmp-prv_96cef7eb4224d7943aa9",
+        "cmp-prv_9c3ba0acf44362bf9e6f",
+        "cmp-prv_9d9c8cc3410367bb699d",
+        "cmp-prv_9f60d1429627b2f30ac6",
+        "cmp-prv_a5f9152083aef6ba948b",
+        "cmp-prv_a8cbd4865d9f765a2b1f",
+        "cmp-prv_abb615aff26d77f894ce",
+        "cmp-prv_adcf5cc16789facf6a02",
+        "cmp-prv_b756618431862410e087",
+        "cmp-prv_bf7010a71a26a362206d",
+        "cmp-prv_c7b01ed45b887f124e39",
+        "cmp-prv_c84e99b20efc05ce42bf",
+        "cmp-prv_c8a556034a20788b2dbc",
+        "cmp-prv_c9c04985ffdc7dcc2eb9",
+        "cmp-prv_ca25c7d4bf5e7b6365f6",
+        "cmp-prv_ca2aa90c45f13d3a46f5",
+        "cmp-prv_cbb081754474dc1cd302",
+        "cmp-prv_cc3cef114d73ff5db439",
+        "cmp-prv_d365ae3fcf29582473e4",
+        "cmp-prv_d5fac75ea288b1351854",
+        "cmp-prv_db2366d85ba8a8c13749",
+        "cmp-prv_dbfdcb2dbd651b1d161b",
+        "cmp-prv_df7ae518ba4caa03a55d",
+        "cmp-prv_ed8388e2b1825f5a610b",
+        "cmp-prv_f0a7560ac8cb2dbcbaae",
+        "cmp-prv_f1fbd75512a76a1ae568",
+        "cmp-prv_fc27a673407e87485776",
+        "cmp-prv_fdcde264be28c57ebecc",
+        "cmp-prv_ff2506b10e320aa4de57"
+      ],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "d61317483f9bfe967ee9c7fced245f9d9361e3f273f84a2dfeacb8870e7371e6",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 133529.683174,
+      "actor_id": "scenario-benin-kingdom",
+      "actor_name": "Kingdom of Benin under the later Eweka dynasty",
+      "component_count": 15,
+      "component_inventory": [
+        "cmp-prv_0b2f4f969cb8035f9eb4",
+        "cmp-prv_224f59307bed2684fdb5",
+        "cmp-prv_3bea337f73f124f30996",
+        "cmp-prv_458a864bff7514ef7e74",
+        "cmp-prv_5ed5f7ffadc781d0002e",
+        "cmp-prv_66cbabb8d5e1d8f402e2",
+        "cmp-prv_6c8a4ff9b87d172192a7",
+        "cmp-prv_8e48fd5efebad13caa22",
+        "cmp-prv_ae7b9994343d2939a628",
+        "cmp-prv_b0a2c48330eadf384b27",
+        "cmp-prv_b6aad74e221889f50add",
+        "cmp-prv_bc6ef995464a3f780aba",
+        "cmp-prv_c1169691484dbed801cf",
+        "cmp-prv_cda66ba68812143ad16e",
+        "cmp-prv_f58295638b2b63da36ee"
+      ],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "866c9d55343d29ec386fdd17b1245a813ee1bc781a734a205164f1f484673fd8",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-bismarck-bougainville-communities",
+      "actor_name": "Bismarck and Bougainville island communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "0dbc607f00caa14ddad1b5b169dc4ab325a4d1f3e2bbf1ae76df566588bf6b86",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-california-great-basin",
+      "actor_name": "California and Great Basin local polities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "c4195825f52219729869b2aa49eb202ed78d5317af454dd18ce35a1a28532532",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-cameroon-grassfields",
+      "actor_name": "Cameroon Grassfields political communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "6799cb5ceb471fbd8d23f750d2df13f331f2e6fa1660d1b122204ec3912d67ef",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-cape-khoekhoe-san",
+      "actor_name": "Cape Khoekhoe pastoral and San communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "fe32329158e2c5d47f65b897a878be8acd16f8de72a404696eda192a2f6b2db3",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-cape-york-torres-communities",
+      "actor_name": "Cape York and Torres Strait peoples and communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "01a2935a711247f89ce26becb3faa0054a949bb0e7cb4f86032955e138f318a6",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-caribbean-central-america",
+      "actor_name": "Caribbean-coast Central American communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "c6c28fa6ef4c6a135792625ae6b297c467f981ca1eef6ba9edb2acfa8c69c941",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-central-andean-local",
+      "actor_name": "Central Andean local polities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "abddfaa113cfad309e7f060f7cc096e4a8655f2faa2c9e347f2d088dfb1dd6a2",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-central-congo-communities",
+      "actor_name": "Central Congo-basin political communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "6459b032a26c40d11951232f77ca77e6e2e3ec846ca48c05750f0c0b654e3dfb",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-central-costa-rica-chiefdoms",
+      "actor_name": "Central Costa Rican chiefdoms",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "548da4211dfafd89e03fb053db799622c220a068d0ba3d409e2d747917c770ee",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-central-desert-communities",
+      "actor_name": "Central Australian Aboriginal nations and communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "8bf5862ab95c1039f1c64b02bdcb31ae6c10e061933e829f7923019a4ad0340d",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-central-solomons-communities",
+      "actor_name": "Central and eastern Solomon island communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "23fbde15a9718446a83cec1ea93dd2491ad10a43ea39ed62bb33dd5a2f81edc3",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-central-southern-vanuatu-chiefdoms",
+      "actor_name": "Central and southern Vanuatu chiefly communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "e8ed6cbd88f532d1036c58513d2619ba20f8f28bed09c5b8db75e29245aba7a9",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 271445.422704,
+      "actor_id": "scenario-chimor",
+      "actor_name": "Kingdom of Chimor",
+      "component_count": 27,
+      "component_inventory": [
+        "cmp-prv_0c9ccbc71beab11fda9d",
+        "cmp-prv_205c264e546f7c82d95b",
+        "cmp-prv_20b24bf204809b3f9128",
+        "cmp-prv_2184e8d59e663a197d70",
+        "cmp-prv_22490fb4ca104e8ba88b",
+        "cmp-prv_2d8269dad21da33ae82a",
+        "cmp-prv_3ca1be3b5d68787b8003",
+        "cmp-prv_45a9bfc1e507dda7640c",
+        "cmp-prv_4baba35df8c9d17b626a",
+        "cmp-prv_4f53648ba0b3190becfe",
+        "cmp-prv_548ac3b9c307b27c781d",
+        "cmp-prv_56b842a7ceb16d075845",
+        "cmp-prv_586f9d2de3c74c4f46fd",
+        "cmp-prv_5fc6d506d20c4e4009fd",
+        "cmp-prv_62861fa633055461b33b",
+        "cmp-prv_704011da110e1ab5236e",
+        "cmp-prv_925e899f60c47bc072e2",
+        "cmp-prv_a48c4705b03668dce234",
+        "cmp-prv_b254e915a58e975e8c23",
+        "cmp-prv_b63cea3393391cbb23e0",
+        "cmp-prv_c74e55313d2bd2f980fe",
+        "cmp-prv_d5ba8add304fbf373760",
+        "cmp-prv_d7a4ff452f993b905f2f",
+        "cmp-prv_e904db559ef4ad5c4009",
+        "cmp-prv_ea1050b31c987e24b342",
+        "cmp-prv_ef1d0b0355e45d87935a",
+        "cmp-prv_f4d4e3be930ab8a22373"
+      ],
+      "evidence_class": "minor_source_overlap",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "7421e7272a62e42aa43b11629b594c0c9712dd454ed995e92f378946de828bda",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.260932932,
+      "source_covered_area_sq_km": 70829.050147,
+      "source_zone_attribution": [
+        {
+          "actor_area_ratio": 0.260932932,
+          "feature_sha256": "05157926479ff682f3b185382d1671c6497162b40f3e45f5d6b1e4ec6bf9ecfb",
+          "intersection_area_sq_km": 70829.050147,
+          "name": "Chimu Empire",
+          "seshat_id": "",
+          "source_feature_id": "cliopatria-1444:32",
+          "valid_from": 1375,
+          "valid_to": 1474,
+          "wikidata_id": "Q581741",
+          "wikipedia": "Chimor"
+        }
+      ]
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-chiriqui-chiefdoms",
+      "actor_name": "Greater Chiriqui chiefdoms",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "4bafee9986a173d1543eaf68fc601aacdc1b5478e23b22fc38fa6336e218b146",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-chorotega-polities",
+      "actor_name": "Chorotega polities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "5c5370c8b3e79c62b47193c77f62a89b3180e4b430b196b2b26a08db12b76cd3",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-cocle-parita-chiefdoms",
+      "actor_name": "Greater Cocle and Parita chiefdoms",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "7115be08e44b66210e5d88b035f103c0cd6c0c945ac61f80b0fe3ac60c76734e",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-columbia-plateau",
+      "actor_name": "Columbia Plateau village networks",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "095252ca9b3fd774b9df6a60a825d52a9829fdf87c6ea0b76b21fd63ce22fe7f",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-cuba-taino-chiefdoms",
+      "actor_name": "Cuban Taino chiefdoms and communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "957423a9c2848282c87dcccb7f3a1c906acdcf286d557ad9377408d5e680bfd8",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-diaguita-calchaqui",
+      "actor_name": "Diaguita-Calchaqui and southern Andean polities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "2ddcb9cb61ad3141f92efd61b69b0dca1642ac0dded2412000c1a13161e6032b",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-diquis-chiefdoms",
+      "actor_name": "Diquis chiefdoms",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "91d1d05fb455064feefeab3a5283e29164a2f0c3139615e078f3f328a24624f1",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-dogon-communities",
+      "actor_name": "Decentralized Dogon escarpment communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "a9137ff651b1aa16555165efb4ef5cc1137df11bd84741ca6aa37501953c92f0",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-east-coast-australia-communities",
+      "actor_name": "Eastern coastal Aboriginal nations and communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "499ee1d4eb20953bf4dcb518468a0dfdd2c9f715b708d5aedcb94b7075b94371",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-eastern-fiji-chiefdoms",
+      "actor_name": "Vanua Levu, Taveuni, and eastern Fijian chiefdoms",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "ef153fba9e5d6b2fe1401b42bfe113b574ed1c63042653f624b653d1a59d1f08",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-eastern-panama-chiefdoms",
+      "actor_name": "Eastern Panamanian chiefdoms",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "40a9b862947db608b11ed3c03739c3383fc0a01a95b87167f65d445445cae005",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-eastern-sahel-polities",
+      "actor_name": "Eastern Sahel and Kanem-Bornu frontier polities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "db1fd9fa84d5f15ef1233e0d9b3fab437117643b5e505dfb262db05976c760af",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-eastern-woodlands",
+      "actor_name": "Eastern Woodlands local polities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "bc926fe4bcb8304321080b2f68db6e6d937e50427b75137e1dd5d81191066bf3",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-equatorial-forest-communities",
+      "actor_name": "Equatorial forest political communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "020be68d5690d4f07907daa498f341bc5c2be183c6b0a22b4a5d30ad0d5c7767",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-gran-chaco-communities",
+      "actor_name": "Gran Chaco communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "e6ec9433a4749eb8520bded7cef73da9a2cf39d8dff9ca207d922c80397fb9eb",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-greater-nicoya-chiefdoms",
+      "actor_name": "Greater Nicoya chiefdoms",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "0510a7e57f56e026e3938dac03a58f95eff3df5ec058271a47ccc2a68371f521",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-guanahatabey-communities",
+      "actor_name": "Guanahatabey communities of western Cuba",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "40a337972c181aa3c4d8bcac3aea565dbb72df6bd4034596643e337ca4714f23",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 399627.475393,
+      "actor_id": "scenario-hausa-city-states",
+      "actor_name": "Hausa city-states and neighbouring polities",
+      "component_count": 33,
+      "component_inventory": [
+        "cmp-prv_0c73bb5de92dc0fa5f86",
+        "cmp-prv_0e615aab96b7dce61267",
+        "cmp-prv_16d51a6689f96c1fa53e",
+        "cmp-prv_1e1fb7437cc1ed44b4f0",
+        "cmp-prv_2ba8ab3b33d63d21d90b",
+        "cmp-prv_2c0f368da3603757df01",
+        "cmp-prv_331f48cee939e046fd24",
+        "cmp-prv_361804fcf4ae97a020bc",
+        "cmp-prv_361a236a50e1f74924ef",
+        "cmp-prv_3cd5087aee57674574fe",
+        "cmp-prv_45a9353e99c225d34bf8",
+        "cmp-prv_4a770d10ba4673deff89",
+        "cmp-prv_4f77a8044e332f7f66b2",
+        "cmp-prv_51183ebaae0805210329",
+        "cmp-prv_53ff12eddbaeb5c30a10",
+        "cmp-prv_58c14f632200c7745b22",
+        "cmp-prv_5d93492cc4d161ed59ec",
+        "cmp-prv_6027b7d9e7aacbc1d339",
+        "cmp-prv_68df0f19eea6a683c008",
+        "cmp-prv_6c77375ea8ec348f56ba",
+        "cmp-prv_6d88aaf7a28e1562f2af",
+        "cmp-prv_72f284a8b6c8c1b3d185",
+        "cmp-prv_7952417802d8e59fc6fc",
+        "cmp-prv_84c4cbe396679829954f",
+        "cmp-prv_87111d1bb59fccd60e76",
+        "cmp-prv_9a7d98eb65fd0bee48fc",
+        "cmp-prv_c81564081ad4f3aa9193",
+        "cmp-prv_cd1bcc4d53568dc6c566",
+        "cmp-prv_d76d58cae4cb5c7731a5",
+        "cmp-prv_efcbd8fc03f585cf64c0",
+        "cmp-prv_f72b0f8aa283f56b55d4",
+        "cmp-prv_f7fad651551565dac72e",
+        "cmp-prv_f9a8eebca1b814bd3013"
+      ],
+      "evidence_class": "minor_source_overlap",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "cf7cd879a4d7a7973f0c830be056c52e6ed7db8e197c9d81cdd256a80e8340f0",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.026767121,
+      "source_covered_area_sq_km": 10696.877077,
+      "source_zone_attribution": [
+        {
+          "actor_area_ratio": 0.026767121,
+          "feature_sha256": "077af284c3e2bb7dffb143eec5a3ae26a5e03ea421e3ec2379f4baf786d00d65",
+          "intersection_area_sq_km": 10696.877077,
+          "name": "Bornu Empire",
+          "seshat_id": "ni_bornu_emp",
+          "source_feature_id": "cliopatria-1444:28",
+          "valid_from": 1385,
+          "valid_to": 1481,
+          "wikidata_id": "Q1139762",
+          "wikipedia": "Kanem-Bornu Empire"
+        }
+      ]
+    },
+    {
+      "actor_area_sq_km": 12403.417809,
+      "actor_id": "scenario-highland-maya-kingdoms",
+      "actor_name": "Highland Maya kingdoms and rivals",
+      "component_count": 3,
+      "component_inventory": [
+        "cmp-prv_10cf3b8579f3abff8e8f",
+        "cmp-prv_3b14df1caba90fad0374",
+        "cmp-prv_5c67d8343e8c86941d04"
+      ],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "fa4a0a712b6ed91886740b21c5b7996cc6ccee1b38bd4beb04785d0f816ddfc9",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-hispaniola-taino-chiefdoms",
+      "actor_name": "Hispaniolan Taino regional chiefdoms",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "e9350d270c7770967807a4660eaf20ac6800230f4d681bf8de2443e763f60b9c",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-hohokam-communities",
+      "actor_name": "Late Hohokam village networks",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "c408c80b5f753a5a40299fa7b0dcb24fcc51222fb8bb894f37b7b5b4d2db3db2",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-huastec-polities",
+      "actor_name": "Huastec polities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "879bf464c664297c51ceddab94c690054c123df57fab910fff87dcb2580c17eb",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 260175.937212,
+      "actor_id": "scenario-inca-cusco",
+      "actor_name": "Inca state under Pachakuti around Cusco",
+      "component_count": 19,
+      "component_inventory": [
+        "cmp-prv_124dcf3d20b3e8326378",
+        "cmp-prv_1396b1a12b73bee2e4c4",
+        "cmp-prv_24d66f2d76b8785b3a83",
+        "cmp-prv_2d89018118781eb22045",
+        "cmp-prv_442207513776cbb5712d",
+        "cmp-prv_491b14f3cf39f397612c",
+        "cmp-prv_577175ce5a8d2fcf2c4d",
+        "cmp-prv_5bae55c688f599ccd70b",
+        "cmp-prv_82dd4ffef16c5f1a573d",
+        "cmp-prv_8d6bd19e714c1c2f0c70",
+        "cmp-prv_950c99d546b848fbc7c8",
+        "cmp-prv_98038a99422b854df43a",
+        "cmp-prv_a44d1b9e493b24d56eca",
+        "cmp-prv_a7643d6b25488a3d09be",
+        "cmp-prv_db32e7b22fc09648e1f7",
+        "cmp-prv_e940906cbdb2f1cdcb54",
+        "cmp-prv_ebee30432e9d4960fa6b",
+        "cmp-prv_f4849502006326440ea0",
+        "cmp-prv_f8a4799c6b5188f87f7b"
+      ],
+      "evidence_class": "minor_source_overlap",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "bb940a7863ec597e1344274386bd969e997932d33a4c6625daf6c10528a700c9",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.033884414,
+      "source_covered_area_sq_km": 8815.909144,
+      "source_zone_attribution": [
+        {
+          "actor_area_ratio": 0.033884414,
+          "feature_sha256": "d98d469902ed7dee6229b8f3db0065be59fc39e3fedb20ba8a963e36ab243c60",
+          "intersection_area_sq_km": 8815.909144,
+          "name": "Inca Empire",
+          "seshat_id": "pe_inca_emp",
+          "source_feature_id": "cliopatria-1444:70",
+          "valid_from": 1440,
+          "valid_to": 1449,
+          "wikidata_id": "Q28573",
+          "wikipedia": "Inca Empire"
+        }
+      ]
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-iroquoian-villages",
+      "actor_name": "St. Lawrence and Great Lakes Iroquoian village polities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "dfe45735d707c4575b9675d7f03357e3eb413fde67e060fe357250137d2232eb",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-jolof-senegambia",
+      "actor_name": "Jolof-led Senegambian political field",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "c375922135c2e96aeea0aa2206661a652c3a62939e513981a2d89c7473c7c264",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-kalahari-san-communities",
+      "actor_name": "Kalahari San and neighbouring forager communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "e3e8258552393572c087e73a5d12c98170a9d0f4f763fc89811474d9ffb66dd3",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 894587.72185,
+      "actor_id": "scenario-kanem-bornu",
+      "actor_name": "Kanem-Bornu under the Sayfawa dynasty",
+      "component_count": 64,
+      "component_inventory": [
+        "cmp-prv_05f64e8944a343e1102d",
+        "cmp-prv_088c50e5fc807a30930c",
+        "cmp-prv_0bb38fa1569a4494f5b7",
+        "cmp-prv_15c4445c7a7be9934d93",
+        "cmp-prv_188b31d0d63b55352fff",
+        "cmp-prv_1d0075a422bf6a9e4d03",
+        "cmp-prv_27c6db2f2d7f7fbd6646",
+        "cmp-prv_27df1573c8bd61fd1787",
+        "cmp-prv_2a6edc753c997f924bb3",
+        "cmp-prv_30b2a3c999eb46b02be8",
+        "cmp-prv_312233b8139fb250df98",
+        "cmp-prv_31dfccfc7d20b725b260",
+        "cmp-prv_31f5d3abdc6637e21b46",
+        "cmp-prv_35e5937518fa1fe59b1b",
+        "cmp-prv_39ce702a2f081abf9128",
+        "cmp-prv_3aa3d19af7276ffe32c9",
+        "cmp-prv_3ef96bf3b6ce7af1425b",
+        "cmp-prv_3f14761dfcaec25394b9",
+        "cmp-prv_4b7e4a93f66c3d026004",
+        "cmp-prv_51d4203fe5dd7ca82bea",
+        "cmp-prv_5478bb554c2cd08f2258",
+        "cmp-prv_581c6e2ad19a5452eeef",
+        "cmp-prv_594e2d16276a31c61c53",
+        "cmp-prv_5ae94dcd6feafc672832",
+        "cmp-prv_6522ef4e5ba5771b4e2f",
+        "cmp-prv_669f2a24da473a8f1b9d",
+        "cmp-prv_6cb9b2d1654b1c1c562e",
+        "cmp-prv_6f70e5eec52156bd5381",
+        "cmp-prv_746bca6bc69299850472",
+        "cmp-prv_74f694ce1d897e6cbede",
+        "cmp-prv_837bf72aa4c2402014ac",
+        "cmp-prv_8a9f093136b17bc45fd8",
+        "cmp-prv_8d0c58d2918f82ba596d",
+        "cmp-prv_91d77c04a2317b559929",
+        "cmp-prv_92189b7c28c74c7755ac",
+        "cmp-prv_97747332043c5fbaaf38",
+        "cmp-prv_9815f8c40cfd5fc88c43",
+        "cmp-prv_a0965a53e6219faaae42",
+        "cmp-prv_a1aa944867dc43fb7124",
+        "cmp-prv_a49ab66e5571412fa49e",
+        "cmp-prv_a9600409f48ac00522f9",
+        "cmp-prv_ae48bdfe71116cdfac14",
+        "cmp-prv_b487f739667b36509157",
+        "cmp-prv_bdf5fce92d2369c0c68f",
+        "cmp-prv_c2cf726c73449bc4a40a",
+        "cmp-prv_c2d11bd602081ee09853",
+        "cmp-prv_c32612478cda0c921e88",
+        "cmp-prv_c32654ae49bf29a9c396",
+        "cmp-prv_c36e800db28d530b6e23",
+        "cmp-prv_c7fde6e08c9a946965da",
+        "cmp-prv_c9b20ce518ea62207079",
+        "cmp-prv_cc17596701628478fc8b",
+        "cmp-prv_d0e9bf8c6c8668d854f7",
+        "cmp-prv_d1f47daf80483d2e7796",
+        "cmp-prv_d310037572561dc5be3d",
+        "cmp-prv_d6c2677f096036d9fa52",
+        "cmp-prv_dc7f5585b7ceedfc027e",
+        "cmp-prv_de5be5b38a98504e33ca",
+        "cmp-prv_dfc95e8addea94147467",
+        "cmp-prv_f4acba9a7602c2b1511a",
+        "cmp-prv_f5eb247a8907463e1482",
+        "cmp-prv_f77759c0d9330be7b55b",
+        "cmp-prv_fd02746fed60b39547aa",
+        "cmp-prv_ffc6eef2df79b0e43467"
+      ],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "3a16e5d07ee42349d7995ebad9afeb4457b27ca0f574754ec71c38efa7ae1ab4",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-khoe-pastoral-communities",
+      "actor_name": "Khoe pastoral and western interior communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "cca2257ea99005be2e13f0ab748a3b873e8dfdaf58db33991ac97837e78f7713",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 45906.683775,
+      "actor_id": "scenario-kiche-state",
+      "actor_name": "K'iche' state centered on Q'umarkaj",
+      "component_count": 5,
+      "component_inventory": [
+        "cmp-prv_6cbc3f1313716bf34272",
+        "cmp-prv_981651d83dbca8a120b9",
+        "cmp-prv_b6d5b49e25726e9280d0",
+        "cmp-prv_ca5a86dd6a25f815e1fc",
+        "cmp-prv_dd7d55db86fac42d2263"
+      ],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "dfeb0616fcc6830f61406991fa33090d619e5c47b9361b50e9aa5ed9b42f4f7e",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-kimberley-communities",
+      "actor_name": "Kimberley Aboriginal nations and communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "c5966f3ab63cc963859556cab9ec7504dff1635c806f0a350840e4a3e14df0ca",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-kongo-adjacent-polities",
+      "actor_name": "Kongo-adjacent Atlantic and lower-Congo polities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "aeb892953664a891c91e1a4e67ce0c978a860b2e842041a76b6bf38f230f0727",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 93119.230825,
+      "actor_id": "scenario-kongo-kingdom",
+      "actor_name": "Kingdom of Kongo under Nzinga a Nkwu",
+      "component_count": 10,
+      "component_inventory": [
+        "cmp-prv_0f360a62a230a442e594",
+        "cmp-prv_27d5ed4f44cf8cc75e8e",
+        "cmp-prv_2dbef9d34d4c71392b69",
+        "cmp-prv_3c536af9cf4ffd421235",
+        "cmp-prv_515d2e3ac2c1978d4e89",
+        "cmp-prv_755cc783f6c87bb472b5",
+        "cmp-prv_c57168f198a2f4c4a969",
+        "cmp-prv_ca153cb9e5063e4d27b1",
+        "cmp-prv_f24ffe10288e870f123f",
+        "cmp-prv_fe00d0a4759f1ad3cd99"
+      ],
+      "evidence_class": "partial_or_multiple_source_zones",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "98b78179850e35fdcc2f6a2d2078be0bee069c128ea26758ca92cb135937c5cc",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.882187241,
+      "source_covered_area_sq_km": 82148.597327,
+      "source_zone_attribution": [
+        {
+          "actor_area_ratio": 0.882187241,
+          "feature_sha256": "227b1b244453e02d3639b9169bd891b2f000f61d87f446d4c455d99c3f18f571",
+          "intersection_area_sq_km": 82148.597327,
+          "name": "Kingdom of Kongo",
+          "seshat_id": "",
+          "source_feature_id": "cliopatria-1444:87",
+          "valid_from": 1440,
+          "valid_to": 1491,
+          "wikidata_id": "Q796583",
+          "wikipedia": "Kingdom of Kongo"
+        }
+      ]
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-lenca-polities",
+      "actor_name": "Lenca polities of Honduras",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "a7984226c4258762176513fac8e0b883e4b68715ab419def768fee54cedd23af",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-limpopo-shashe-successors",
+      "actor_name": "Limpopo-Shashe successor and northern interior polities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "a82158907ce29b90761d077149cbb2458365e38383ed990d2b3313fa3c3d7cc4",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 464647.761892,
+      "actor_id": "scenario-mali-empire-decline",
+      "actor_name": "Mali Empire during its fifteenth-century contraction",
+      "component_count": 43,
+      "component_inventory": [
+        "cmp-prv_041a38acf88a42e4171c",
+        "cmp-prv_075fa393992bcc837ac2",
+        "cmp-prv_108cdddeb78bb6b906b4",
+        "cmp-prv_117e627c5d9675f6dfed",
+        "cmp-prv_18e3fc1ee6b9e635ce0f",
+        "cmp-prv_2ec3e41583d1f9fe53d6",
+        "cmp-prv_32a45dec39a1fa42e817",
+        "cmp-prv_3408affb1e54987f6a8c",
+        "cmp-prv_35b81de2e5e961c15fd3",
+        "cmp-prv_42f50f6e20dff7831759",
+        "cmp-prv_453290117216209d1e3c",
+        "cmp-prv_48992be29fbd1a513124",
+        "cmp-prv_4b88cf63a5ccae823166",
+        "cmp-prv_4d80d896eb54cfac2c85",
+        "cmp-prv_524db9b2a0e63d5439c7",
+        "cmp-prv_53a357ee4ed41811d8dd",
+        "cmp-prv_541d2ee38154f034d2b5",
+        "cmp-prv_563cc67fa209efbec244",
+        "cmp-prv_566ae156537c8b5ebf60",
+        "cmp-prv_57cf8f888b94cc080188",
+        "cmp-prv_64864b55a94d779659cd",
+        "cmp-prv_6db31470e1071573f539",
+        "cmp-prv_6f5b863e34f6c8260715",
+        "cmp-prv_747630087301e7bf1555",
+        "cmp-prv_758161c9083a6e39235d",
+        "cmp-prv_759b0fb8651ff57e8f71",
+        "cmp-prv_811d423009554f504381",
+        "cmp-prv_8f4df28ff96c432f2d93",
+        "cmp-prv_91b6148bc192dfd98cf9",
+        "cmp-prv_92f48a2c5e13673f1f4b",
+        "cmp-prv_933495aa836c19114fe0",
+        "cmp-prv_95a3ffe33482721b0a38",
+        "cmp-prv_adda5df69a99ee3ff830",
+        "cmp-prv_ca04521574c9ff68e6de",
+        "cmp-prv_d36d124f2eb75bfb57af",
+        "cmp-prv_e4a1952d563bd5094462",
+        "cmp-prv_e5a04d22610a84096f73",
+        "cmp-prv_e629b07e495e33d03c82",
+        "cmp-prv_e98d371840f77bb0613c",
+        "cmp-prv_ea86a84c215b005f9a54",
+        "cmp-prv_eb58b57731d703c3e13a",
+        "cmp-prv_f1f2c161e7ed9c7485f4",
+        "cmp-prv_fdd97f460ce90bc19824"
+      ],
+      "evidence_class": "partial_or_multiple_source_zones",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "b67fcf9c1e3a0a06f5348ee6252ead0496709e4c6d1f9479b515b1704d7f11fd",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.878036357,
+      "source_covered_area_sq_km": 407977.62812,
+      "source_zone_attribution": [
+        {
+          "actor_area_ratio": 0.878036357,
+          "feature_sha256": "08fae86c4a1e2ff3b8437c46e4f73d27aafcaeb9b5229736c31af34e7c09196f",
+          "intersection_area_sq_km": 407977.62812,
+          "name": "Mali Empire",
+          "seshat_id": "",
+          "source_feature_id": "cliopatria-1444:101",
+          "valid_from": 1415,
+          "valid_to": 1462,
+          "wikidata_id": "Q184536",
+          "wikipedia": "Mali Empire"
+        }
+      ]
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-maori-north-island-hapu",
+      "actor_name": "Te Ika-a-Maui Maori iwi and hapu",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "7783a6c944a3ed1c27e491740276f3b0747d9f2ccfda5816ea4c89c88792fc3c",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-maori-south-island-hapu",
+      "actor_name": "Te Waipounamu Maori iwi and hapu",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "e1bcb76473e06f2715ca27d530d2db7534ce4c42a8067f9ef4600db8ef15dcf6",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-mapuche-communities",
+      "actor_name": "Mapuche-speaking local communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "6d3e6c4060f42ac4255eb89472cc4a4ac7c684de48296d7f1d7296dee38f204e",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-mbundu-polities",
+      "actor_name": "Mbundu and neighbouring Angolan polities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "659162fa718a56de9c6f19d7266a58c7d80aa9690a66898794276c6b6edbdedd",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-mexica-triple-alliance",
+      "actor_name": "Mexica-led Triple Alliance under Moctezuma I",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "2518cfd3757aad6ff2ddaab96ddf4d6c08a7a6749692ee5f0d1d8178bb250f03",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-mississippian-chiefdoms",
+      "actor_name": "Late Mississippian chiefdoms",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "6c3e17ab31242dedeed4605d0c5c6c52bf3e393a6b671f2404e4861461453d6f",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 69091.93055,
+      "actor_id": "scenario-mixtec-kingdoms",
+      "actor_name": "Mixtec kingdoms",
+      "component_count": 8,
+      "component_inventory": [
+        "cmp-prv_23e958f23af0afeb8e02",
+        "cmp-prv_827474df3001c4f3a7c7",
+        "cmp-prv_95244cada2bd4efc29b3",
+        "cmp-prv_9e20627b7fc2744b0b0a",
+        "cmp-prv_d601a299ae69e7bf676e",
+        "cmp-prv_d73e0300a07a321f782f",
+        "cmp-prv_de611c46b97cfb247388",
+        "cmp-prv_dfb3565f84db00285c85"
+      ],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "1255f83cdb5cd34468148ae773c96765ff5974e926342768ae573bd9e680a86f",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 227586.00883,
+      "actor_id": "scenario-mossi-kingdoms",
+      "actor_name": "Mossi kingdoms of the Volta basin",
+      "component_count": 22,
+      "component_inventory": [
+        "cmp-prv_084d460e6e44333e70e8",
+        "cmp-prv_2506cc224ebefadf0185",
+        "cmp-prv_2b770044745226c3399e",
+        "cmp-prv_36e38be42a1296c0b852",
+        "cmp-prv_44165669a71cd113ad69",
+        "cmp-prv_4512793f0955f7e0cf48",
+        "cmp-prv_483d1f8fb31be791a557",
+        "cmp-prv_4e392654faa82e414319",
+        "cmp-prv_583f3c97bdd3c2cefca8",
+        "cmp-prv_5d9ab48bc515b28bc177",
+        "cmp-prv_638b275cac8a5ef2a63f",
+        "cmp-prv_67a50e1ff2382859ef73",
+        "cmp-prv_6c3954bd65719a623626",
+        "cmp-prv_6eec22f8287775036a97",
+        "cmp-prv_81ba79ac55ade814388e",
+        "cmp-prv_8593a5d62e3d7da04ac8",
+        "cmp-prv_8e21ebf517fd52c01383",
+        "cmp-prv_a987f0320b25a2022c8e",
+        "cmp-prv_af1580cfcfa3d29004a2",
+        "cmp-prv_b358f6ff137e917bb7ec",
+        "cmp-prv_c3223ed78ae39322dc2e",
+        "cmp-prv_f92299712d97676fec57"
+      ],
+      "evidence_class": "minor_source_overlap",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "9489276f4826986f984fd40aeedaa336a6d8e2b7e991125f808b44618fbe644a",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.001065887,
+      "source_covered_area_sq_km": 242.580926,
+      "source_zone_attribution": [
+        {
+          "actor_area_ratio": 0.001065887,
+          "feature_sha256": "08fae86c4a1e2ff3b8437c46e4f73d27aafcaeb9b5229736c31af34e7c09196f",
+          "intersection_area_sq_km": 242.580926,
+          "name": "Mali Empire",
+          "seshat_id": "",
+          "source_feature_id": "cliopatria-1444:101",
+          "valid_from": 1415,
+          "valid_to": 1462,
+          "wikidata_id": "Q184536",
+          "wikipedia": "Mali Empire"
+        }
+      ]
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-muisca-chiefdoms",
+      "actor_name": "Muisca chiefdoms",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "89c4894459aee9e05d00fad731236a8e2920e8844c8c588558f9d6b512d50ca5",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-murray-southeast-communities",
+      "actor_name": "Murray basin and south-eastern Aboriginal nations and communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "f1dc3b17d0654034c3daa4fc7e79435e3896e1bdca29eda90e8d99107f1c5f08",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-new-guinea-highlands-communities",
+      "actor_name": "New Guinea highland farming communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "ed28ce2572c006cba52cee5ddd94ea7f39586cbae8982bb6f89443ab3f2fa9ab",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-new-guinea-north-coast-communities",
+      "actor_name": "Sepik and north-coast New Guinea communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "24fc58646243b5b5013486c8520c35b8fbd3297895ef7b09d3b0ecadb1dc6f72",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-new-guinea-south-coast-communities",
+      "actor_name": "Papuan south-coast and Massim communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "acf2b7f89dd87be7883739300e9499effe10249b190774c4778cfb39d82456dc",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-nguni-speaking-communities",
+      "actor_name": "South-eastern Nguni-speaking farming communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "2321f2e88db57066e0e2ce0adb3ba47372defcf4002df52b3fc53487b7f5a9c5",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-nicarao-polities",
+      "actor_name": "Nicarao polities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "1ffa88a7e149e79132ac80e2295dc22bcfde606f4d7bec2274dcde9a5888a83d",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-niger-delta-polities",
+      "actor_name": "Niger delta and lower Niger polities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "a1af51a4a1ff9fe44e69b032910e54cdf8241d58701dafea052a43724147c4c2",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-norse-greenland",
+      "actor_name": "Late Norse Greenland settlements",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "72a64d4dc67a5ee21c5c7b98c8710ed87774302bebfb3fe8eb383dc9135e92fb",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-northern-andean-polities",
+      "actor_name": "Northern Andean local polities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "236100918a2f515131accc597f3315971cdf6def131e6e35b0156daa4e8cdbe7",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-northern-mexico-communities",
+      "actor_name": "Northern Mexican local communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "b63cfbb764d45c42d9884890813e169bfbad395f598343904618b579d1047928",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-northern-vanuatu-communities",
+      "actor_name": "Northern Vanuatu island communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "7f99c30174562c2d094bd4d770918718472ab0b7406281799f77f06d4a590e5c",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-northwest-coast",
+      "actor_name": "Northwest Coast village polities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "bed3acf5607a512a4f44d0fb52b4c120fe6b007706f1cf0d9105c111d1181fde",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-orinoco-guianas",
+      "actor_name": "Orinoco and Guianas community networks",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "604542a7475adef6c5228a676c2af91f7771c456d1eddbdd66affda7b372df0b",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-ovambo-kavango-communities",
+      "actor_name": "Ovambo, Kavango, and northern Namibian communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "0fa551fffdf04df1deeeed4472038d2e2c508796f919c64e9ac2b9c227b31b22",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-pampas-patagonian",
+      "actor_name": "Pampas and Patagonian local communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "b4e5840e64f182f44b44061d2923b3f904e77877ae8f486a9776b24f15dd6b2d",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-peten-belize-maya",
+      "actor_name": "Peten and Belize Maya polities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "db3da3fad6db3a5edb016d9a0bc59d74ed14fa288d69786e9c8b773a042e5067",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-pipil-cuzcatlan",
+      "actor_name": "Pipil polity of Cuzcatlan",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "7e4cc8a24bcda0479d22521e32084db533362436a81c4717851ceddcab1086ca",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-plains-communities",
+      "actor_name": "Plains village and mobile communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "d4b7c01d8d85c4b3ccde40a9582141b028d4c63e94f69c3e0dced74499c71210",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-puebloan-polities",
+      "actor_name": "Puebloan town polities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "329fd73ce523d9299f7c19b5ce1d2f43c9e18885001403849ca9741a7e11429d",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 192144.920893,
+      "actor_id": "scenario-purepecha-state",
+      "actor_name": "Purepecha state of Michoacan",
+      "component_count": 15,
+      "component_inventory": [
+        "cmp-prv_1b4c2509fd2fd5f5d972",
+        "cmp-prv_2f6d7ea1211a58525f88",
+        "cmp-prv_3131c7e4c14c701558db",
+        "cmp-prv_46ee2b47a5daac82da60",
+        "cmp-prv_5623e90b82537e77da7c",
+        "cmp-prv_64b379f94d4b12f2b735",
+        "cmp-prv_8209379702e76302b5eb",
+        "cmp-prv_aa0bf48763ae446ad2fe",
+        "cmp-prv_b0f0d574c644e9aca478",
+        "cmp-prv_c96b34c72972c687a322",
+        "cmp-prv_ca849f220bdd2fb42b6b",
+        "cmp-prv_d68e6426a39210b23c92",
+        "cmp-prv_dc566bef1b3120d5a4d4",
+        "cmp-prv_f2d1ae1c99b6caa04a3a",
+        "cmp-prv_f6d34b4e0cc47cc39eed"
+      ],
+      "evidence_class": "minor_source_overlap",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "a24a9ff96eb732f7988386f15ce01b430a8137f66151ab48e1a713b7df581c98",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.251492316,
+      "source_covered_area_sq_km": 48322.971138,
+      "source_zone_attribution": [
+        {
+          "actor_area_ratio": 0.239013429,
+          "feature_sha256": "599ee3651ef2574da38aef129d7fbaa2b2212b52c2f2eeedbc1bcf763a03f427",
+          "intersection_area_sq_km": 45925.216342,
+          "name": "Michoacán",
+          "seshat_id": "",
+          "source_feature_id": "cliopatria-1444:104",
+          "valid_from": 1440,
+          "valid_to": 1449,
+          "wikidata_id": "Q79861",
+          "wikipedia": "Michoacán"
+        },
+        {
+          "actor_area_ratio": 0.012478887,
+          "feature_sha256": "380b2e8c40d627a70b65eb5131424ee530f88418efe822c8b2417975c107be94",
+          "intersection_area_sq_km": 2397.754796,
+          "name": "Aztec Triple Alliance",
+          "seshat_id": "mx_aztec_emp",
+          "source_feature_id": "cliopatria-1444:21",
+          "valid_from": 1440,
+          "valid_to": 1449,
+          "wikidata_id": "Q2608489",
+          "wikipedia": "Aztec Empire"
+        }
+      ]
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-saharan-confederations",
+      "actor_name": "Saharan Sanhaja and Tuareg confederations",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "688a436f16a037f8c92b57c76037cc6b1e4bdf9830e7753c108b2e6dab0e60eb",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-sao-lake-chad",
+      "actor_name": "Sao and Lake Chad communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "0b133597e062d3a40464db1660b8440b5ee35111e627ea83e7c9258e9d95f17a",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 44816.148803,
+      "actor_id": "scenario-songhai-kingdom",
+      "actor_name": "Songhai kingdom before Sonni Ali's imperial expansion",
+      "component_count": 4,
+      "component_inventory": [
+        "cmp-prv_18887afe97533756c7f6",
+        "cmp-prv_29eb1bf6bde16c1c7f58",
+        "cmp-prv_adc62ca6e72eaa2b7ad9",
+        "cmp-prv_bf91a4b3014bb0d8f029"
+      ],
+      "evidence_class": "minor_source_overlap",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "f1de5e73236b4aa353319ce4c0cc8ecd89c8feffd916cd772f0cc81dccbb1a99",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.358546684,
+      "source_covered_area_sq_km": 16068.681545,
+      "source_zone_attribution": [
+        {
+          "actor_area_ratio": 0.358546684,
+          "feature_sha256": "08fae86c4a1e2ff3b8437c46e4f73d27aafcaeb9b5229736c31af34e7c09196f",
+          "intersection_area_sq_km": 16068.681545,
+          "name": "Mali Empire",
+          "seshat_id": "",
+          "source_feature_id": "cliopatria-1444:101",
+          "valid_from": 1415,
+          "valid_to": 1462,
+          "wikidata_id": "Q184536",
+          "wikipedia": "Mali Empire"
+        }
+      ]
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-sotho-tswana-communities",
+      "actor_name": "Sotho-Tswana farming and political communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "f779acaa09116451bd3583b87c51e813cee8872afc7c9b210d70cd9c51812c1d",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-southern-chad-polities",
+      "actor_name": "Southern Chadian river-basin polities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "ef8d9acc5016825221727a1e2210ef03ecccc3cbc576cbe1d70d535ea2cbc505",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-southwest-australia-communities",
+      "actor_name": "South-west Australian Aboriginal nations and communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "19d34c1f0d446b47c19d3f51e25e4315d64a26ad66e78cf31de47a0fe4a13b8b",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-subarctic-communities",
+      "actor_name": "Subarctic Indigenous communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "322648b58b642c9c25c61ddded0b5e6c79e122fb3e726a205abd2acfa4c7b471",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-tairona-chiefdoms",
+      "actor_name": "Tairona chiefdoms",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "f5c5aebd195340960528f2ac0c7128b6cb0f3721bd078b7325980554b8969ee5",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-tasmanian-communities",
+      "actor_name": "Tasmanian Aboriginal nations and communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "5bd94456edac3894531b6797f58815d11ab0d169c92fbd74849578c70408ffa8",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-thule-inuit",
+      "actor_name": "Thule and ancestral Inuit communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "0fe31f7d2b88fbdbe413b2d57d8f6fe263c1b18ac489966e43a6acc259b06998",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-tio-anziku-polities",
+      "actor_name": "Tio and Anziku political communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "2c91635590e549240f983ab97f79e7364dd4f07c95608134ad05cf63b4593146",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-tlaxcalan-confederation",
+      "actor_name": "Tlaxcalan confederation",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "0a43c9e231b4ba6318977ac27646d9ec54efd02200d22dec52f7f392a5f77554",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-totonac-cempoala",
+      "actor_name": "Totonac and Cempoala city-state network",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "b067d7dce3013246c534a91965bdd27d95a18a5e24c0656e1abadd8dd50bd731",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-tuareg-niger-bend",
+      "actor_name": "Tuareg confederations controlling Timbuktu and Gao",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "33b0a57668e9613aba7be6dc49611e972aca79bb2ebeeb4926b5700d44780a97",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-tupi-guarani-networks",
+      "actor_name": "Tupi-Guarani community networks",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "3296cb1a9e9523640e819a9d81bdaa576e3c2ff6b918d260df0796332b697c63",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-ubangian-communities",
+      "actor_name": "Ubangian and northern Congo-basin communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "1c0fd3cec4c8416bbf582d6e958b826b2041ae79178abaaf7b0d691c7662e670",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-upemba-polities",
+      "actor_name": "Upemba and early Luba-region political communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "2537b1945b2c5d4ac0d92466e10d16d32ddb8f689b2a20fcb2f971d7622c9472",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-upper-guinea-polities",
+      "actor_name": "Upper Guinea Mande and coastal polities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "d465cfbd31da31744533c7016ded5b212d6b3407f35ff8c2165b3bf82121db09",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-western-desert-communities",
+      "actor_name": "Western Desert Aboriginal nations and communities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "af79996bebf94703fec4206668bd28644d3f5af5add2d63cf9e2abb13f2b6295",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-western-fiji-chiefdoms",
+      "actor_name": "Viti Levu and western Fijian chiefdoms",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "1433c762449b122ffec04dbe69a7ee71b474e84671b2d4e8106ed27e90b563bd",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-western-mexico-polities",
+      "actor_name": "Western Mexican local polities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "c780a51ee169b8cef6f4838fdbe6227726145f77a2c9f6c7164d45c070802668",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-western-solomons-communities",
+      "actor_name": "Western Solomon communities and early Roviana formations",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "95fb26b4a9ea3e9ee8e7200c7b5de58ba83e2ef4e9db55a66fde94f652a9e819",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-yoruba-polities",
+      "actor_name": "Ife, Oyo, and neighbouring Yoruba polities",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "4aa20f516b3bd1a09a6f37790036bbb942e3a177c6287bd775f0d3407dc2790e",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 0.0,
+      "actor_id": "scenario-yucatan-successor-polities",
+      "actor_name": "Yucatan successor polities after Mayapan",
+      "component_count": 0,
+      "component_inventory": [],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "0ed426d77ca186a597a998c7505d03fb85d0b070ac51c987c428f0dec7440b7d",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    },
+    {
+      "actor_area_sq_km": 54828.06444,
+      "actor_id": "scenario-zapotec-kingdoms",
+      "actor_name": "Zapotec kingdoms",
+      "component_count": 7,
+      "component_inventory": [
+        "cmp-prv_097fbf70f64e79a59d11",
+        "cmp-prv_2caca6786f13c5b14228",
+        "cmp-prv_591fa87a505f75d53cfe",
+        "cmp-prv_767ed97b2c57036a9d46",
+        "cmp-prv_a0c999ecd58629cf0d78",
+        "cmp-prv_a26405f308016ff6d46c",
+        "cmp-prv_d39a1724eb11d19b9a56"
+      ],
+      "evidence_class": "outside_source_polity_coverage",
+      "identity_assessment": "not_established_by_geometry",
+      "limitations": [
+        "The current actor label is compared spatially but is not asserted to be the same entity as any source polygon.",
+        "Coverage is aggregated over the actor's complete assembled component inventory; overlapping source polygons may make per-source ratios non-additive."
+      ],
+      "record_sha256": "ced62f54eca6824149727a0407b08cb1596d1aec6ddc2e32069b6effaf6d493e",
+      "review_status": "pending_independent_review",
+      "source_coverage_ratio": 0.0,
+      "source_covered_area_sq_km": 0.0,
+      "source_zone_attribution": []
+    }
+  ],
+  "schema_version": "1.0.0",
+  "start_date": "1444-11-11"
+}
