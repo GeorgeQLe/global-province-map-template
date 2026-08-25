@@ -1,0 +1,130 @@
+{
+  "access_date": "2026-08-24",
+  "document_type": "m25c-exact-source-qualification-registry",
+  "schema_version": "1.0.0",
+  "sources": [
+    {
+      "applicable_region_ids": ["013", "021", "029"],
+      "citation": "Charles Perreault, ‘A Georeferenced Ethnolinguistic Map of Driver et al. Indian Tribes of North America (1953),’ Journal of Open Archaeology Data 13 (2025), article 18.",
+      "data_doi": "10.5281/zenodo.17289576",
+      "data_url": "https://zenodo.org/records/17289576",
+      "exact_locator": "article sections 1–3; Driver et al. (1953), pp. 1–2; Zenodo record 17289576",
+      "geometry_kind": "digitized ethnolinguistic polygons",
+      "license_assessment": "unresolved_conflict",
+      "limitations": [
+        "The paper dates the underlying evidence from the sixteenth through twentieth centuries, not 1444.",
+        "The paper says the dataset is CC BY-NC 2.5 while the Zenodo record metadata says CC BY 4.0.",
+        "The paper describes generalized approximate ranges, enlarged small territories, excluded sparse interiors, and merged boundary types."
+      ],
+      "publication_doi": "10.5334/joad.185",
+      "publication_url": "https://doi.org/10.5334/joad.185",
+      "source_id": "perreault-driver-1953-georeferenced",
+      "target_date_qualified": false
+    },
+    {
+      "applicable_region_ids": ["034", "035"],
+      "citation": "Joseph E. Schwartzberg, ed., A Historical Atlas of South Asia, second impression (1992).",
+      "data_url": "https://dsal.uchicago.edu/reference/schwartzberg/",
+      "exact_locator": "plate 39, ‘Political disintegration in Northern South Asia, c. 1390–1450’; plate 43, ‘Southeast Asia, c. 1250–1550’",
+      "geometry_kind": "copyrighted raster atlas plates",
+      "license_assessment": "citation_only_no_reproduction_or_derived_geometry_permission",
+      "limitations": [
+        "The target date falls inside both plate ranges, but neither plate is an exact-date snapshot.",
+        "The publisher page forbids storage, transmission, reproduction, or retransmission without permission.",
+        "No independently licensed vector line or component polygon can be pinned from the cited plates."
+      ],
+      "source_id": "schwartzberg-south-asia-plates-39-43",
+      "target_date_qualified": false
+    },
+    {
+      "applicable_region_ids": ["013", "021", "029"],
+      "citation": "D-PLACE, Data Sources and Glossary.",
+      "data_url": "https://d-place.org/source",
+      "exact_locator": "Data Sources, Cultural data; Glossary, society",
+      "geometry_kind": "society focal-location points",
+      "license_assessment": "source_specific",
+      "limitations": [
+        "D-PLACE supplies focal locations rather than territorial polygons or shared lines.",
+        "Most cultural observations date to 1901–1950.",
+        "A point cannot establish whole-component coverage or pair adjacency."
+      ],
+      "source_id": "dplace-society-focal-locations",
+      "target_date_qualified": false
+    },
+    {
+      "applicable_region_ids": ["053"],
+      "citation": "AIATSIS, Map of Indigenous Australia, David R. Horton (1996).",
+      "data_url": "https://aiatsis.gov.au/explore/map-indigenous-australia",
+      "exact_locator": "Map disclaimer and ‘Map of Indigenous Australia’ description",
+      "geometry_kind": "generalized raster map with deliberately blurred boundaries",
+      "license_assessment": "permission_required",
+      "limitations": [
+        "AIATSIS says the map uses sources from the eighteenth century through 1994.",
+        "AIATSIS says locations are general, boundaries are not exact or fixed, and some information is contested.",
+        "Reproduction requires permission and no reviewable vector geometry is supplied."
+      ],
+      "source_id": "aiatsis-horton-indigenous-australia",
+      "target_date_qualified": false
+    },
+    {
+      "applicable_region_ids": ["005", "013", "021", "029", "053", "054"],
+      "citation": "Native Land Digital API, About and Disclaimers.",
+      "data_url": "https://api-docs.native-land.ca/about-and-disclaimers",
+      "exact_locator": "API Metadata and Disclaimer",
+      "geometry_kind": "living territory polygons",
+      "license_assessment": "cc0_with_source_disclaimer",
+      "limitations": [
+        "The source is updated daily or weekly and is not a frozen 1444 record.",
+        "The publisher says it is not an academic or legal source and does not represent official or legal boundaries.",
+        "Current living-territory data cannot establish a fifteenth-century actor or line without separate historical evidence."
+      ],
+      "source_id": "native-land-digital-api",
+      "target_date_qualified": false
+    },
+    {
+      "applicable_region_ids": ["015", "039", "145"],
+      "citation": "Euratlas Historical Political Boundaries of Europe, 1500 vector data; Duke University Libraries catalog record.",
+      "data_url": "https://library.duke.edu/data/sources/euratlas",
+      "exact_locator": "‘16th century A.D. (1500)’ archive description and licensing notice",
+      "geometry_kind": "1500 political vector polygons",
+      "license_assessment": "restricted_to_eligible_duke_users_and_euratlas_terms",
+      "limitations": [
+        "The only nearby snapshot is 1500, 56 years after the target date.",
+        "Access is restricted and redistribution is governed by separate Euratlas terms.",
+        "The catalog does not supply a target-date actor-pair line."
+      ],
+      "source_id": "euratlas-1500-vector",
+      "target_date_qualified": false
+    },
+    {
+      "applicable_region_ids": ["005", "011", "013", "015", "017", "018", "021", "029", "034", "035", "039", "053", "054", "143", "145"],
+      "citation": "SUNGEO Historical GIS, University of Michigan Center for Political Studies (2020).",
+      "data_url": "https://www.sungeo.org/documentation",
+      "exact_locator": "SUNGEO Documentation, section 9 SHGIS",
+      "geometry_kind": "historical administrative polygons",
+      "license_assessment": "not_stated_in_catalog",
+      "limitations": [
+        "SHGIS coverage begins in 1895 and varies by country through 1982.",
+        "The dataset cannot support a 1444 actor, component, or shared line."
+      ],
+      "source_id": "sungeo-shgis",
+      "target_date_qualified": false
+    },
+    {
+      "applicable_region_ids": ["005", "011", "013", "015", "017", "018", "021", "029", "034", "035", "039", "053", "054", "143", "145"],
+      "citation": "World Historical Gazetteer API documentation, version 3.0.",
+      "data_url": "https://docs.whgazetteer.org/content/technical/apis.html",
+      "exact_locator": "sections 2.1, 2.2.2.3–2.2.2.5, 2.3.3–2.3.7, and 2.4",
+      "geometry_kind": "aggregated source-dependent points and polygons",
+      "license_assessment": "record_and_namespace_specific",
+      "limitations": [
+        "Most API access requires a user token that is not part of the reproducible packet.",
+        "Geometry, dates, and licenses vary by upstream namespace and record.",
+        "The documentation is a discovery route, not an actor-to-citation claim or a pinned target-date line."
+      ],
+      "source_id": "world-historical-gazetteer-api",
+      "target_date_qualified": false
+    }
+  ],
+  "start_date": "1444-11-11"
+}

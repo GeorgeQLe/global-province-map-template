@@ -1,0 +1,112 @@
+{
+  "artifacts": [
+    {
+      "bytes": 8427,
+      "path": "source-audit.json",
+      "sha256": "7413f3782a192762c2ffac92bb09833282598f83d3a4fc877b339456285610e9"
+    },
+    {
+      "bytes": 823597,
+      "path": "actor-citation-evidence.json",
+      "sha256": "aa3ff264e48f17ca33db63c592fd64890ea9dad2b5900210e2f4c56dc7c7100c"
+    },
+    {
+      "bytes": 369398,
+      "path": "component-line-evidence.json",
+      "sha256": "75d7fb84f2fffe018f1ffa3fdf24fcaa766a6567d4e8ed80df8a2555a1f5cae5"
+    },
+    {
+      "bytes": 261695,
+      "path": "pair-evidence.json",
+      "sha256": "bb9810a85792c29d72dcfa3a4b2eefab39fb25d1e0aa4cf7b6eee62d2d3bfd67"
+    },
+    {
+      "bytes": 58108,
+      "path": "finding-submissions.json",
+      "sha256": "b1354600a6373eb5efcffc3e27d6bae51ff00c04e816aff998c142160821d9a0"
+    }
+  ],
+  "decision_boundary": [
+    "Exact record binding is not exact historical truth.",
+    "A source with the wrong date cannot qualify a 1444 record even when polygon coverage is complete.",
+    "Citation-only copyrighted raster plates are not redistributed, traced, or treated as licensed linework.",
+    "No record is submitted for independent acceptance and no implementation or permission changes."
+  ],
+  "document_type": "m25c-exact-source-evidence-manifest",
+  "driver_source_files": [
+    {
+      "bytes": 24115396,
+      "path": "driver.shp",
+      "sha256": "1339480bd5cdb2b92bd5729578e5704e929b95d634a144f701b7571effe49356"
+    },
+    {
+      "bytes": 4772,
+      "path": "driver.shx",
+      "sha256": "6eca93e3f92d9dfe7bfc271d6bfc3b0c792bc4f627c5144f3be98846dc69c431"
+    },
+    {
+      "bytes": 199274,
+      "path": "driver.dbf",
+      "sha256": "9da7f53ef3be120ad360e8859430f7cfedf6c347942d0035f8ee6a94aab073f5"
+    },
+    {
+      "bytes": 466,
+      "path": "driver.prj",
+      "sha256": "196efbc101bdf96bb8f05e963169714226001a34667d8ad3ac3473d1761e3d1e"
+    },
+    {
+      "bytes": 5,
+      "path": "driver.cpg",
+      "sha256": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824"
+    }
+  ],
+  "frozen_inputs": [
+    {
+      "path": "data/processed/m25c-assembled-pass/historical-territory-status.json",
+      "sha256": "bcdb93f3d828bf87643e36f4d848499bfb6e67da87c5f52fe3474fce301ff080"
+    },
+    {
+      "path": "data/processed/m25c-assembled-pass/assignments.json",
+      "sha256": "8b49507e9d373b422c2402da2cb550e8fc855ce7a8f140110bf7831cfecd7a85"
+    },
+    {
+      "path": "research/start-dates/1444-global-v1/replacement-evidence/actor-component-specific-v1/component-specific-evidence.json",
+      "sha256": "68c887b34a814172f4b6bc80ad3f522e23d07b1ca8e14701ac2c0604250a46fb"
+    },
+    {
+      "path": "research/start-dates/1444-global-v1/replacement-evidence/actor-component-specific-v1/actor-specific-evidence.json",
+      "sha256": "606cb50e6ed36cb306d0803a3539f4dff223e09b23a8e007235a5604e1a1c4e3"
+    },
+    {
+      "path": "research/start-dates/1444-global-v1/replacement-evidence/actor-component-specific-v1/pair-specific-evidence.json",
+      "sha256": "27e20d7ed6523d8ba753369069bab2a609039fe5c03641568363c6499deeed6a"
+    },
+    {
+      "path": "research/start-dates/1444-global-v1/replacement-evidence/actor-component-specific-v1/finding-routes.json",
+      "sha256": "e8ef19a421393bc72e302ce0a0ec6fa2214a9c8bccc67d3a1942012817294a01"
+    },
+    {
+      "path": "research/start-dates/1444-global-v1/replacement-evidence/best-reasonable-v1/finding-routes.json",
+      "sha256": "f70f71ce552e69961489d3d35c4ebce4ad73974e1050650eea96475afb90549d"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_registry": {
+    "path": "research/start-dates/1444-global-v1/replacement-evidence/exact-source-v1/source-registry.json",
+    "sha256": "f756892247fc07b3711be98c9da2049a313191e0942e38168d85736c04491457"
+  },
+  "start_date": "1444-11-11",
+  "status": "source audit complete; no qualifying exact-date record; not implemented",
+  "totals": {
+    "actors": 107,
+    "actors_with_complete_named_driver_binding": 32,
+    "audited_sources": 8,
+    "components": 206,
+    "components_with_driver_intersection": 74,
+    "driver_features": 584,
+    "finding_routes": 32,
+    "pairs": 180,
+    "pairs_with_complete_named_driver_binding": 53,
+    "qualifying_exact_date_records": 0
+  }
+}

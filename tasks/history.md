@@ -1,5 +1,19 @@
 # History
 
+## 2026-08-24 - M25C exact actor/component/line source attempt
+
+- Audited eight new scholarly or institutional source routes with exact
+  locators against all 107 actors, 206 rejected components, 180 pairs, and 32
+  remaining finding routes.
+- Pinned and measured the peer-reviewed Driver ethnolinguistic polygons,
+  producing 74 positive component intersections, 32 complete named actor
+  bindings, and 53 complete pair bindings.
+- Retained every record as rejected: the measurable source starts in the
+  sixteenth century, generalizes ranges, and has conflicting license metadata;
+  the other candidates fail date, linework, license, or reproducibility gates.
+- Submitted zero records for acceptance and changed no implementation, QA,
+  permission, or Task 17 state.
+
 ## 2026-08-24 - M25C Actor/Component-Specific Full-Geometry Evidence
 
 - Replaced representative-point inference for the remaining rejected surface

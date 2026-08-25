@@ -180,6 +180,14 @@
       components have zero Cliopatria polity coverage, 19 have only minor
       overlap below 50%, and all 180 pairs remain insufficient. No remediation
       is authorized; see `tasks/m25c-actor-component-specific-evidence.md`.
+      A subsequent exact-source audit checked eight new source routes and
+      pinned the peer-reviewed Driver ethnolinguistic polygons. It now binds 74
+      rejected components to named features, completes named bindings for 32
+      actors and 53 pairs, and records exact locators for every candidate.
+      Zero records qualify: the measurable chronology starts in the sixteenth
+      century and has conflicting license metadata, while the other sources
+      fail exact-date, line, licensing, or reproducibility gates. All 32 routes
+      remain rejected; see `tasks/m25c-exact-source-evidence.md`.
   17. [ ] After ordinary QA is clean, render the final review bundle and stop
       for independent human review before runtime certification or publication.
 
