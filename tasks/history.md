@@ -1,5 +1,19 @@
 # History
 
+## 2026-08-24 - M25C best-reasonable independent review
+
+- Independently decided all 180 pair, 512 component, and 43 finding-route
+  records and bound every decision to its evidence-record hash. Rejected all
+  pair dispositions because aggregated regional citations and point-match
+  names do not map a qualifying claim to both exact actors.
+- Accepted 306 two-bracket representative-point component records only as
+  documented Grade C geometry scaffolding and rejected 206 as ungraded. No
+  political actor, facet, relationship, source-derived edge, Grade A, or Grade
+  B claim was accepted.
+- Accepted eleven complete component-only routes for later serial Grade C work
+  and rejected 32 routes. No packet, assembled artifact, tolerance, QA result,
+  permission, runtime output, or Task 17 state changed.
+
 ## 2026-08-24 - M25C best-reasonable supplemental evidence
 
 - Obtained a hash-bound best-available evidence attempt for all 43 deferred

@@ -1,6 +1,6 @@
 # M25C best-reasonable supplemental evidence
 
-Status: **obtained; pending independent review; not implemented**
+Status: **obtained and independently reviewed; narrow Grade C acceptance; not implemented**
 
 Date: `2026-08-24`
 
@@ -72,9 +72,12 @@ The focused suite verifies all source/output hashes, exact 43/180/512
 accounting, frozen pair/component identity, confidence totals, finding-type
 totals, and the pending-review boundary.
 
-## Next step
+## Independent-review result
 
-Independently review the best-reasonable packet record by record. Accept only
-the narrow pair or component use supported by each source surface, explicitly
-choose Grade A versus documented Grade B/C for reconstructed geometry, and
-then implement accepted records serially.
+The record-by-record review rejects all 180 pair dispositions, accepts 306
+component records only as documented Grade C scaffolding, and rejects 206
+component records as ungraded. Eleven complete component-only finding routes
+may proceed serially at Grade C; 32 routes remain rejected. No record qualifies
+for Grade A or Grade B. See
+`tasks/m25c-best-reasonable-independent-review.md` and the hash-bound
+`review-decisions.json` sidecar.

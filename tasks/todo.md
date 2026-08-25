@@ -155,14 +155,15 @@
       evidence packet is now obtained for all 43 deferred routes: it binds all
       180 pairs and all 512 components to pinned 1400/1492 approximate zones,
       an exact-date OpenHistoricalMap query, and the reviewed regional source
-      pins. The packet contains 127 medium- and 53 low-confidence pairs plus
-      312 medium- and 200 low-confidence components; every record remains
-      pending independent review, and approximate evidence may support only a
-      zonal or documented Grade-B/C result unless its exact source lineage
-      separately qualifies Grade A. See
+      pins. Independent review now rejects all 180 pair dispositions because
+      they lack pair-to-citation claim mapping, accepts 306 two-bracket
+      component records only as Grade C scaffolding, and rejects 206 component
+      records as ungraded. Eleven complete component-only routes may proceed
+      serially at Grade C; 32 routes remain rejected, no record qualifies for
+      Grade A or B, and Task 17 stays blocked. See
       `tasks/m25c-worldwide-replacement-evidence.md`,
       `tasks/m25c-worldwide-replacement-evidence-independent-review.md`, and
-      `tasks/m25c-best-reasonable-supplemental-evidence.md`; the earlier
+      `tasks/m25c-best-reasonable-independent-review.md`; the earlier
       implementation boundary is recorded in
       `tasks/m25c-region-057-applicability-implementation-ship-manifest.md`.
   17. [ ] After ordinary QA is clean, render the final review bundle and stop

@@ -1,6 +1,6 @@
 # M25C best-reasonable supplemental evidence
 
-Status: **research complete; pending independent review; not implemented**
+Status: **independently reviewed; narrow Grade C acceptance; not implemented**
 
 This packet supplies an explicit best-available attempt for every one of the
 43 deferred frozen findings. It binds all 180 nonzero actor-pair records and
@@ -28,6 +28,8 @@ three supplemental surfaces:
   component records needed for review.
 - `manifest.json` pins sources, frozen inputs, output hashes, counts, and the
   non-implementation boundary.
+- `review-decisions.json` is an external review sidecar binding all 180 pair,
+  512 component, and 43 finding-route decisions to their exact record hashes.
 
 ## Interpretation
 
@@ -39,8 +41,13 @@ available. Neither label is approval.
 The reasonable completion policy is deliberately asymmetric: approximate
 evidence may support a frontier zone, non-territorial applicability decision,
 or documented Grade-B/C reconstruction. It cannot support surveyed precision
-or a gap-free Grade-A claim. Independent review must decide every record before
-any serial implementation.
+or a gap-free Grade-A claim. Independent review has now decided every record.
+It accepts 306 component records only as documented Grade C geometry
+scaffolding, rejects the other 206 component records as ungraded, and rejects
+all 180 pair dispositions because their aggregated evidence does not map a
+qualifying claim to both exact actors. Eleven complete component-only finding
+routes may proceed serially at Grade C; the other 32 routes remain rejected.
+No decision is Grade A or B.
 
 ## Reproduction
 
